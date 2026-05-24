@@ -3,9 +3,18 @@ export default function App() {
     <main className="min-h-screen bg-[#f7f5f1] text-[#17213a]">
       <header className="fixed left-0 right-0 top-0 z-50 border-b border-black/10 bg-[#f7f5f1]/90 backdrop-blur">
         <div className="mx-auto flex max-w-[1500px] items-center justify-between px-6 py-4">
-          <div>
-            <p className="text-sm font-black tracking-[0.28em]">UNICORN1</p>
-            <p className="text-xs text-slate-500">Psychedelic Trial Atlas</p>
+          
+          <div className="flex items-center gap-3">
+            <img
+              src="/icon_animated_upright.gif"
+              alt="UNICORN1 animated iris logo"
+              className="h-10 w-10 rounded-full object-cover"
+            />
+
+            <div>
+              <p className="text-sm font-black tracking-[0.28em]">UNICORN1</p>
+              <p className="text-xs text-slate-500">Psychedelic Trial Atlas</p>
+            </div>
           </div>
 
           <div className="text-sm font-semibold text-slate-600">
