@@ -51,20 +51,22 @@ function App() {
           style={{
             border: "1px solid rgba(180, 185, 200, 0.45)",
             borderRadius: "28px",
-            background: "rgba(255, 255, 255, 0.72)",
+            background: "#f4f4f2",
             boxShadow: "0 18px 50px rgba(30, 40, 70, 0.08)",
-            overflow: "hidden",
+            overflow: "visible",
           }}
         >
           <iframe
             title="Psychedelic Trial Atlas Visuals"
             width="100%"
-            height="1229.765625"
+            height="2300"
             frameBorder="0"
+            scrolling="no"
             src="https://observablehq.com/embed/e3028f2577c04f9a@617?cells=visual2Chartminimalistic%2Cvisual3Chart&api_key=bd252c7dc3e9ff082411ba5bc8f2fd2b24c00bfd"
             style={{
               display: "block",
               width: "100%",
+              height: "2300px",
               border: 0,
               background: "#f4f4f2",
             }}
