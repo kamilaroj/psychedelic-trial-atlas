@@ -1,28 +1,80 @@
-export default function App() {
+function App() {
   return (
     <main
       style={{
-        width: "100%",
-        minHeight: "100vh",
-        margin: 0,
-        padding: 0,
         background: "#f4f4f2",
-        overflowX: "hidden"
+        minHeight: "100vh",
+        color: "#1b2a4a",
+        fontFamily:
+          'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
     >
-      <iframe
-        title="Psychedelic Trial Atlas — Indication Landscape"
-        width="100%"
-        height="853"
-        frameBorder="0"
-        src="https://observablehq.com/embed/e3028f2577c04f9a@666?cells=visual3Chart"
+      <header
         style={{
-          border: "none",
-          display: "block",
-          width: "100%",
-          minHeight: "853px"
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "56px 28px 28px",
         }}
-      />
+      >
+        <h1
+          style={{
+            margin: "0 0 12px",
+            fontSize: "44px",
+            lineHeight: "1.05",
+            letterSpacing: "-0.04em",
+          }}
+        >
+          Psychedelic Trial Atlas
+        </h1>
+
+        <p
+          style={{
+            maxWidth: "760px",
+            margin: 0,
+            color: "#5b6475",
+            fontSize: "16px",
+            lineHeight: 1.5,
+          }}
+        >
+          Prototype preview of the compound and indication landscapes.
+        </p>
+      </header>
+
+      <section
+        style={{
+          maxWidth: "1500px",
+          margin: "0 auto",
+          padding: "24px 20px 70px",
+        }}
+      >
+        <div
+          style={{
+            border: "1px solid rgba(180, 185, 200, 0.45)",
+            borderRadius: "28px",
+            background: "#f4f4f2",
+            boxShadow: "0 18px 50px rgba(30, 40, 70, 0.08)",
+            overflow: "visible",
+          }}
+        >
+          <iframe
+            title="Psychedelic Trial Atlas Visuals"
+            width="100%"
+            height="2300"
+            frameBorder="0"
+            scrolling="no"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@666?cells=visual2Chartminimalistic%2Cvisual3Chart"
+            style={{
+              display: "block",
+              width: "100%",
+              height: "2300px",
+              border: 0,
+              background: "#f4f4f2",
+            }}
+          />
+        </div>
+      </section>
     </main>
   );
 }
+
+export default App;
