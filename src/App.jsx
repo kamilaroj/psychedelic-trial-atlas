@@ -14,7 +14,6 @@ function App() {
           maxWidth: "1200px",
           margin: "0 auto",
           padding: "56px 28px 28px",
-          textAlign: "center",
         }}
       >
         <h1
@@ -31,7 +30,7 @@ function App() {
         <p
           style={{
             maxWidth: "760px",
-            margin: "0 auto",
+            margin: 0,
             color: "#5b6475",
             fontSize: "16px",
             lineHeight: 1.5,
@@ -63,7 +62,7 @@ function App() {
             height="2300"
             frameBorder="0"
             scrolling="no"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@617?cells=visual2Chartminimalistic%2Cvisual3Chart&api_key=bd252c7dc3e9ff082411ba5bc8f2fd2b24c00bfd"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@666?cells=visual2Chartminimalistic%2Cvisual3Chart&api_key=bd252c7dc3e9ff082411ba5bc8f2fd2b24c00bfd"
             style={{
               display: "block",
               width: "100%",
