@@ -9,7 +9,7 @@ function App() {
     margin: 0,
     padding: 0,
     background: pageBackground,
-    overflow: "hidden",
+    overflow: "visible",
   };
 
   const fullBleedIframe = {
@@ -21,6 +21,7 @@ function App() {
     padding: 0,
     border: 0,
     background: pageBackground,
+    overflow: "visible",
   };
 
   return (
@@ -32,6 +33,7 @@ function App() {
         margin: 0,
         padding: 0,
         overflowX: "hidden",
+        overflowY: "visible",
         background: pageBackground,
         color: "#1b2a4a",
         fontFamily:
@@ -129,7 +131,7 @@ function App() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          overflow: "hidden",
+          overflow: "visible",
         }}
       >
         <iframe
@@ -147,17 +149,22 @@ function App() {
       </section>
 
       {/* VISUAL 3 — INDICATION LANDSCAPE */}
-      <section style={fullBleedSection}>
+      <section
+        style={{
+          ...fullBleedSection,
+          minHeight: "1800px",
+        }}
+      >
         <iframe
           title="Psychedelic Trial Atlas Visual 3"
           width="100%"
-          height="1017"
+          height="1800"
           frameBorder="0"
           scrolling="no"
           src={`https://observablehq.com/embed/e3028f2577c04f9a@688?cells=visual3Chart&api_key=${observableApiKey}`}
           style={{
             ...fullBleedIframe,
-            height: "1017px",
+            height: "1800px",
           }}
         />
       </section>
