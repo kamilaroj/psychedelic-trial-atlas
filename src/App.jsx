@@ -154,7 +154,7 @@ function App() {
           height="1017"
           frameBorder="0"
           scrolling="no"
-          src={`https://observablehq.com/embed/e3028f2577c04f9a@687?cells=visual3Chart&api_key=${observableApiKey}`}
+          src={`https://observablehq.com/embed/e3028f2577c04f9a@688?cells=visual3Chart&api_key=${observableApiKey}`}
           style={{
             ...fullBleedIframe,
             height: "1017px",
