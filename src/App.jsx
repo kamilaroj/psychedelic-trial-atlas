@@ -1,4 +1,6 @@
 function App() {
+  const observableApiKey = "bd252c7dc3e9ff082411ba5bc8f2fd2b24c00bfd";
+
   return (
     <main
       style={{
@@ -63,7 +65,7 @@ function App() {
             height="1180"
             frameBorder="0"
             scrolling="no"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual2Chartminimalistic"
+            src={`https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual2Chartminimalistic&api_key=${observableApiKey}`}
             style={{
               display: "block",
               width: "100%",
@@ -80,7 +82,7 @@ function App() {
             height="758"
             frameBorder="0"
             scrolling="no"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3IntroTransition"
+            src={`https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3IntroTransition&api_key=${observableApiKey}`}
             style={{
               display: "block",
               width: "100%",
@@ -97,7 +99,7 @@ function App() {
             height="1017"
             frameBorder="0"
             scrolling="no"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3Chart"
+            src={`https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3Chart&api_key=${observableApiKey}`}
             style={{
               display: "block",
               width: "100%",
