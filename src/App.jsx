@@ -1,5 +1,9 @@
+import { useState } from "react";
+
 function App() {
   const observableApiKey = "bd252c7dc3e9ff082411ba5bc8f2fd2b24c00bfd";
+
+  const [visual3LegendOpen, setVisual3LegendOpen] = useState(false);
 
   const pageBackground = "#f4f4f2";
 
@@ -165,20 +169,388 @@ function App() {
         style={{
           ...visualSection,
           minHeight: "1180px",
+          position: "relative",
         }}
       >
-        <iframe
-          title="Psychedelic Trial Atlas Visual 3"
-          width="100%"
-          height="1180"
-          frameBorder="0"
-          scrolling="no"
-          src={`https://observablehq.com/embed/e3028f2577c04f9a@688?cells=visual3Chart&api_key=${observableApiKey}`}
+        <div
           style={{
-            ...visualIframe,
+            position: "relative",
+            width: "100%",
+            maxWidth: "1500px",
             height: "1180px",
+            margin: "0 auto",
+            background: pageBackground,
           }}
-        />
+        >
+          <iframe
+            title="Psychedelic Trial Atlas Visual 3"
+            width="100%"
+            height="1180"
+            frameBorder="0"
+            scrolling="no"
+            src={`https://observablehq.com/embed/e3028f2577c04f9a@688?cells=visual3Chart&api_key=${observableApiKey}`}
+            style={{
+              display: "block",
+              width: "100%",
+              height: "1180px",
+              margin: "0 auto",
+              padding: 0,
+              border: 0,
+              background: pageBackground,
+            }}
+          />
+
+          {/* LEGEND BUTTON */}
+          <button
+            type="button"
+            onClick={() => setVisual3LegendOpen(true)}
+            style={{
+              position: "absolute",
+              left: "24px",
+              bottom: "24px",
+              zIndex: 20,
+              border: "0",
+              borderRadius: "14px",
+              background: "rgba(255, 255, 255, 0.94)",
+              color: "#202124",
+              padding: "16px 22px",
+              fontSize: "22px",
+              fontWeight: 800,
+              letterSpacing: "-0.02em",
+              boxShadow: "0 12px 34px rgba(27, 42, 74, 0.12)",
+              cursor: "pointer",
+            }}
+          >
+            Legend
+          </button>
+
+          {/* LEGEND MODAL */}
+          {visual3LegendOpen && (
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                zIndex: 40,
+                background: "rgba(27, 42, 74, 0.38)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                padding: "32px",
+                boxSizing: "border-box",
+              }}
+              onClick={() => setVisual3LegendOpen(false)}
+            >
+              <div
+                style={{
+                  width: "min(980px, 92vw)",
+                  maxHeight: "82vh",
+                  overflowY: "auto",
+                  background: "rgba(255, 255, 255, 0.98)",
+                  borderRadius: "4px",
+                  boxShadow: "0 28px 80px rgba(27, 42, 74, 0.24)",
+                  color: "#202124",
+                }}
+                onClick={(event) => event.stopPropagation()}
+              >
+                <div
+                  style={{
+                    height: "72px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "0 28px",
+                    borderBottom: "1px solid rgba(27, 42, 74, 0.12)",
+                    boxSizing: "border-box",
+                  }}
+                >
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "14px",
+                      fontSize: "26px",
+                      fontWeight: 850,
+                      letterSpacing: "-0.03em",
+                    }}
+                  >
+                    <span style={{ fontSize: "34px", lineHeight: 1 }}>✦</span>
+                    Legend
+                  </div>
+
+                  <button
+                    type="button"
+                    onClick={() => setVisual3LegendOpen(false)}
+                    style={{
+                      border: "0",
+                      background: "transparent",
+                      color: "rgba(32, 33, 36, 0.62)",
+                      fontSize: "42px",
+                      lineHeight: 1,
+                      cursor: "pointer",
+                    }}
+                  >
+                    ×
+                  </button>
+                </div>
+
+                <div
+                  style={{
+                    padding: "34px 42px 42px",
+                    display: "grid",
+                    gap: "32px",
+                  }}
+                >
+                  <section>
+                    <h2
+                      style={{
+                        margin: "0 0 12px",
+                        fontSize: "28px",
+                        lineHeight: 1.1,
+                        letterSpacing: "-0.04em",
+                        color: "#1b2a4a",
+                      }}
+                    >
+                      Visual 3 — Indication Landscape
+                    </h2>
+
+                    <p
+                      style={{
+                        margin: 0,
+                        maxWidth: "760px",
+                        fontSize: "17px",
+                        lineHeight: 1.55,
+                        color: "#4f596b",
+                      }}
+                    >
+                      This view groups registered clinical-trial records by
+                      indication. It shows the final public indication layer of
+                      the Psychedelic Trial Atlas.
+                    </p>
+                  </section>
+
+                  <section
+                    style={{
+                      display: "grid",
+                      gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+                      gap: "24px",
+                    }}
+                  >
+                    <div>
+                      <div
+                        style={{
+                          width: "58px",
+                          height: "58px",
+                          borderRadius: "50%",
+                          background: "#fff",
+                          border: "1px solid rgba(27, 42, 74, 0.12)",
+                          boxShadow: "0 10px 28px rgba(27, 42, 74, 0.08)",
+                          marginBottom: "12px",
+                        }}
+                      />
+                      <div
+                        style={{
+                          fontSize: "16px",
+                          lineHeight: 1.4,
+                          color: "#202124",
+                        }}
+                      >
+                        <strong>One circle</strong>
+                        <br />
+                        one registered trial record
+                      </div>
+                    </div>
+
+                    <div>
+                      <div
+                        style={{
+                          width: "58px",
+                          height: "58px",
+                          borderRadius: "50%",
+                          background: "#fff",
+                          border: "4px solid #198754",
+                          boxShadow: "0 10px 28px rgba(27, 42, 74, 0.08)",
+                          marginBottom: "12px",
+                        }}
+                      />
+                      <div
+                        style={{
+                          fontSize: "16px",
+                          lineHeight: 1.4,
+                          color: "#202124",
+                        }}
+                      >
+                        <strong>Green outline</strong>
+                        <br />
+                        currently recruiting
+                      </div>
+                    </div>
+
+                    <div>
+                      <div
+                        style={{
+                          width: "58px",
+                          height: "58px",
+                          borderRadius: "50%",
+                          background: "#fff",
+                          border: "1px solid rgba(27, 42, 74, 0.12)",
+                          boxShadow: "0 10px 28px rgba(27, 42, 74, 0.08)",
+                          display: "flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          marginBottom: "12px",
+                        }}
+                      >
+                        <div
+                          style={{
+                            width: "14px",
+                            height: "14px",
+                            borderRadius: "50%",
+                            background: "#0d6efd",
+                          }}
+                        />
+                      </div>
+                      <div
+                        style={{
+                          fontSize: "16px",
+                          lineHeight: 1.4,
+                          color: "#202124",
+                        }}
+                      >
+                        <strong>Inner dot</strong>
+                        <br />
+                        compound family
+                      </div>
+                    </div>
+                  </section>
+
+                  <section
+                    style={{
+                      borderTop: "1px solid rgba(27, 42, 74, 0.12)",
+                      paddingTop: "28px",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        margin: "0 0 18px",
+                        fontSize: "20px",
+                        letterSpacing: "-0.02em",
+                        color: "#1b2a4a",
+                      }}
+                    >
+                      Compound family colors
+                    </h3>
+
+                    <div
+                      style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                        gap: "14px 28px",
+                      }}
+                    >
+                      {[
+                        ["DMT and related", "#6610f2"],
+                        ["5-MeO-DMT and related", "#6f42c1"],
+                        ["Ketamine and related", "#0dcaf0"],
+                        ["MDMA and related", "#d63384"],
+                        ["LSD and related", "#6f42c1"],
+                        ["Psilocybin and related", "#0d6efd"],
+                        ["Ibogaine and related", "#dc3545"],
+                        ["Ibogaine analogs", "#fd7e14"],
+                        ["Other psychoplastogens", "#ffc107"],
+                        ["Other / unclassified", "#343a40"],
+                      ].map(([label, color]) => (
+                        <div
+                          key={label}
+                          style={{
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "12px",
+                            fontSize: "15px",
+                            color: "#202124",
+                          }}
+                        >
+                          <span
+                            style={{
+                              width: "16px",
+                              height: "16px",
+                              borderRadius: "50%",
+                              background: color,
+                              display: "inline-block",
+                              flex: "0 0 auto",
+                            }}
+                          />
+                          <span>{label}</span>
+                        </div>
+                      ))}
+                    </div>
+                  </section>
+
+                  <section
+                    style={{
+                      borderTop: "1px solid rgba(27, 42, 74, 0.12)",
+                      paddingTop: "28px",
+                    }}
+                  >
+                    <h3
+                      style={{
+                        margin: "0 0 12px",
+                        fontSize: "20px",
+                        letterSpacing: "-0.02em",
+                        color: "#1b2a4a",
+                      }}
+                    >
+                      What this visual shows
+                    </h3>
+
+                    <p
+                      style={{
+                        margin: "0 0 10px",
+                        fontSize: "15px",
+                        lineHeight: 1.55,
+                        color: "#4f596b",
+                      }}
+                    >
+                      This visual shows registered patient-indication trial
+                      records that are current, upcoming, active, recruiting,
+                      recently completed, or strategically relevant.
+                    </p>
+
+                    <p
+                      style={{
+                        margin: 0,
+                        fontSize: "15px",
+                        lineHeight: 1.55,
+                        color: "#4f596b",
+                      }}
+                    >
+                      Historical completed studies, stopped or withdrawn trials,
+                      expanded-access records, approved-market-only assets,
+                      unclear records, and non-mental-health-adjacent studies
+                      are kept in the master dataset but excluded from this
+                      public view.
+                    </p>
+                  </section>
+
+                  <section
+                    style={{
+                      background: "rgba(13, 110, 253, 0.05)",
+                      border: "1px solid rgba(13, 110, 253, 0.16)",
+                      borderRadius: "14px",
+                      padding: "18px 20px",
+                      color: "#1b2a4a",
+                      fontSize: "15px",
+                      lineHeight: 1.55,
+                    }}
+                  >
+                    Visual 3 is the strictest layer. One circle means one
+                    registered clinical-trial record. Pipeline-only assets are
+                    not shown here unless a public trial record exists.
+                  </section>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
       </section>
     </main>
   );
