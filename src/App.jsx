@@ -53,20 +53,55 @@ function App() {
             borderRadius: "28px",
             background: "#f4f4f2",
             boxShadow: "0 18px 50px rgba(30, 40, 70, 0.08)",
-            overflow: "visible",
+            overflow: "hidden",
           }}
         >
+          {/* Visual 2 — Compound Landscape */}
           <iframe
-            title="Psychedelic Trial Atlas Visuals"
+            title="Psychedelic Trial Atlas Visual 2"
             width="100%"
-            height="2300"
+            height="1180"
             frameBorder="0"
             scrolling="no"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@666?cells=visual2Chartminimalistic%2Cvisual3Chart&api_key=bd252c7dc3e9ff082411ba5bc8f2fd2b24c00bfd"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual2Chartminimalistic"
             style={{
               display: "block",
               width: "100%",
-              height: "2300px",
+              height: "1180px",
+              border: 0,
+              background: "#f4f4f2",
+            }}
+          />
+
+          {/* Transition page between Visual 2 and Visual 3 */}
+          <iframe
+            title="Indication Landscape Intro"
+            width="100%"
+            height="758"
+            frameBorder="0"
+            scrolling="no"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3IntroTransition"
+            style={{
+              display: "block",
+              width: "100%",
+              height: "758px",
+              border: 0,
+              background: "#f4f4f2",
+            }}
+          />
+
+          {/* Visual 3 — Indication Landscape */}
+          <iframe
+            title="Psychedelic Trial Atlas Visual 3"
+            width="100%"
+            height="1017"
+            frameBorder="0"
+            scrolling="no"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3Chart"
+            style={{
+              display: "block",
+              width: "100%",
+              height: "1017px",
               border: 0,
               background: "#f4f4f2",
             }}
