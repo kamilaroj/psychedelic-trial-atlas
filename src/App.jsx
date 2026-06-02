@@ -3,25 +3,27 @@ function App() {
 
   const pageBackground = "#f4f4f2";
 
-  const fullBleedSection = {
+  const visualSection = {
     width: "100vw",
     maxWidth: "100vw",
     margin: 0,
     padding: 0,
     background: pageBackground,
-    overflow: "visible",
+    overflow: "hidden",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   };
 
-  const fullBleedIframe = {
+  const visualIframe = {
     display: "block",
-    width: "100vw",
-    maxWidth: "100vw",
-    minWidth: "100vw",
-    margin: 0,
+    width: "100%",
+    maxWidth: "1500px",
+    minWidth: "0",
+    margin: "0 auto",
     padding: 0,
     border: 0,
     background: pageBackground,
-    overflow: "visible",
   };
 
   return (
@@ -33,7 +35,6 @@ function App() {
         margin: 0,
         padding: 0,
         overflowX: "hidden",
-        overflowY: "visible",
         background: pageBackground,
         color: "#1b2a4a",
         fontFamily:
@@ -104,7 +105,12 @@ function App() {
       </section>
 
       {/* VISUAL 2 — COMPOUND LANDSCAPE */}
-      <section style={fullBleedSection}>
+      <section
+        style={{
+          ...visualSection,
+          minHeight: "1180px",
+        }}
+      >
         <iframe
           title="Psychedelic Trial Atlas Visual 2"
           width="100%"
@@ -113,7 +119,7 @@ function App() {
           scrolling="no"
           src={`https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual2Chartminimalistic&api_key=${observableApiKey}`}
           style={{
-            ...fullBleedIframe,
+            ...visualIframe,
             height: "1180px",
           }}
         />
@@ -131,7 +137,7 @@ function App() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          overflow: "visible",
+          overflow: "hidden",
         }}
       >
         <iframe
@@ -142,8 +148,14 @@ function App() {
           scrolling="no"
           src={`https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3IntroTransition&api_key=${observableApiKey}`}
           style={{
-            ...fullBleedIframe,
+            display: "block",
+            width: "100%",
+            maxWidth: "1500px",
             height: "758px",
+            margin: "0 auto",
+            padding: 0,
+            border: 0,
+            background: pageBackground,
           }}
         />
       </section>
@@ -151,20 +163,20 @@ function App() {
       {/* VISUAL 3 — INDICATION LANDSCAPE */}
       <section
         style={{
-          ...fullBleedSection,
-          minHeight: "1800px",
+          ...visualSection,
+          minHeight: "1180px",
         }}
       >
         <iframe
           title="Psychedelic Trial Atlas Visual 3"
           width="100%"
-          height="1800"
+          height="1180"
           frameBorder="0"
           scrolling="no"
           src={`https://observablehq.com/embed/e3028f2577c04f9a@688?cells=visual3Chart&api_key=${observableApiKey}`}
           style={{
-            ...fullBleedIframe,
-            height: "1800px",
+            ...visualIframe,
+            height: "1180px",
           }}
         />
       </section>
