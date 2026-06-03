@@ -20,6 +20,10 @@ body {
   box-sizing: border-box;
 }
 
+iframe {
+  max-width: 100%;
+}
+
 @media print {
   body {
     -webkit-print-color-adjust: exact;
