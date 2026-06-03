@@ -30,6 +30,9 @@ function App() {
     background: pageBackground,
   };
 
+  const observableBase =
+    "https://observablehq.com/embed/e3028f2577c04f9a@758";
+
   return (
     <main
       style={{
@@ -45,121 +48,86 @@ function App() {
           'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
     >
-      {/* HERO / START */}
-      <section
-        style={{
-          width: "100vw",
-          minHeight: "72vh",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          padding: "72px 28px 56px",
-          boxSizing: "border-box",
-          background:
-            "radial-gradient(circle at 50% 45%, rgba(255,255,255,0.88) 0%, rgba(244,244,242,1) 62%)",
-        }}
-      >
-        <div
-          style={{
-            width: "100%",
-            maxWidth: "980px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "12px",
-              letterSpacing: "0.14em",
-              textTransform: "uppercase",
-              fontWeight: 800,
-              color: "rgba(27, 42, 74, 0.56)",
-              marginBottom: "18px",
-            }}
-          >
-            UNICORN1
-          </div>
-
-          <h1
-            style={{
-              margin: "0 0 18px",
-              fontSize: "clamp(48px, 7vw, 96px)",
-              lineHeight: "0.95",
-              letterSpacing: "-0.07em",
-              fontWeight: 850,
-              color: "#202124",
-            }}
-          >
-            Psychedelic Trial Atlas
-          </h1>
-
-          <p
-            style={{
-              maxWidth: "760px",
-              margin: "0 auto",
-              color: "#5b6475",
-              fontSize: "18px",
-              lineHeight: 1.55,
-            }}
-          >
-            A visual data project mapping registered clinical-trial activity
-            and visible pipeline context across psychedelic and
-            psychedelic-adjacent medicines.
-          </p>
-        </div>
-      </section>
-
-      {/* VISUAL 2 — COMPOUND LANDSCAPE */}
+      {/* HERO SECTION */}
       <section
         style={{
           ...visualSection,
-          minHeight: "1180px",
+          minHeight: "836px",
         }}
       >
         <iframe
-          title="Psychedelic Trial Atlas Visual 2"
+          title="Psychedelic Trial Atlas Hero"
           width="100%"
-          height="1180"
+          height="836"
           frameBorder="0"
           scrolling="no"
-          src={`https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual2Chartminimalistic&api_key=${observableApiKey}`}
+          src={`${observableBase}?cells=heroSection&api_key=${observableApiKey}`}
           style={{
             ...visualIframe,
-            height: "1180px",
+            height: "836px",
           }}
         />
       </section>
 
-      {/* TRANSITION PAGE BETWEEN VISUAL 2 AND VISUAL 3 */}
+      {/* VISUAL 2 INTRO TRANSITION */}
       <section
         style={{
-          width: "100vw",
-          maxWidth: "100vw",
-          minHeight: "78vh",
-          margin: 0,
-          padding: 0,
-          background: pageBackground,
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          overflow: "hidden",
+          ...visualSection,
+          minHeight: "809px",
+        }}
+      >
+        <iframe
+          title="Compound Activity Landscape Intro"
+          width="100%"
+          height="809"
+          frameBorder="0"
+          scrolling="no"
+          src={`${observableBase}?cells=visual2IntroTransition&api_key=${observableApiKey}`}
+          style={{
+            ...visualIframe,
+            height: "809px",
+          }}
+        />
+      </section>
+
+      {/* VISUAL 2 — COMPOUND ACTIVITY LANDSCAPE */}
+      <section
+        style={{
+          ...visualSection,
+          minHeight: "724px",
+        }}
+      >
+        <iframe
+          title="Compound Activity Landscape"
+          width="100%"
+          height="724"
+          frameBorder="0"
+          scrolling="no"
+          src={`${observableBase}?cells=visual2Chartminimalistic&api_key=${observableApiKey}`}
+          style={{
+            ...visualIframe,
+            height: "724px",
+          }}
+        />
+      </section>
+
+      {/* VISUAL 3 INTRO TRANSITION */}
+      <section
+        style={{
+          ...visualSection,
+          minHeight: "759px",
         }}
       >
         <iframe
           title="Indication Landscape Intro"
           width="100%"
-          height="758"
+          height="759"
           frameBorder="0"
           scrolling="no"
-          src={`https://observablehq.com/embed/e3028f2577c04f9a@677?cells=visual3IntroTransition&api_key=${observableApiKey}`}
+          src={`${observableBase}?cells=visual3IntroTransition&api_key=${observableApiKey}`}
           style={{
-            display: "block",
-            width: "100%",
-            maxWidth: "1500px",
-            height: "758px",
-            margin: "0 auto",
-            padding: 0,
-            border: 0,
-            background: pageBackground,
+            ...visualIframe,
+            height: "759px",
           }}
         />
       </section>
@@ -168,7 +136,7 @@ function App() {
       <section
         style={{
           ...visualSection,
-          minHeight: "1180px",
+          minHeight: "1036px",
           position: "relative",
         }}
       >
@@ -177,22 +145,22 @@ function App() {
             position: "relative",
             width: "100%",
             maxWidth: "1500px",
-            height: "1180px",
+            height: "1036px",
             margin: "0 auto",
             background: pageBackground,
           }}
         >
           <iframe
-            title="Psychedelic Trial Atlas Visual 3"
+            title="Indication Landscape"
             width="100%"
-            height="1180"
+            height="1036"
             frameBorder="0"
             scrolling="no"
-            src={`https://observablehq.com/embed/e3028f2577c04f9a@688?cells=visual3Chart&api_key=${observableApiKey}`}
+            src={`${observableBase}?cells=visual3Chart&api_key=${observableApiKey}`}
             style={{
               display: "block",
               width: "100%",
-              height: "1180px",
+              height: "1036px",
               margin: "0 auto",
               padding: 0,
               border: 0,
