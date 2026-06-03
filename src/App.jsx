@@ -10,6 +10,8 @@ function App() {
   const observableBase =
     "https://observablehq.com/embed/e3028f2577c04f9a@758";
 
+  const footerCrop = 42;
+
   const sectionStyle = {
     width: "100vw",
     minHeight: "100vh",
@@ -23,11 +25,19 @@ function App() {
     scrollSnapAlign: "start",
   };
 
-  const iframeStyle = (height) => ({
-    display: "block",
+  const iframeCropWrapper = (height) => ({
     width: "100%",
     maxWidth: "1500px",
     height,
+    overflow: "hidden",
+    margin: "0 auto",
+    background: pageBackground,
+  });
+
+  const iframeStyle = (height) => ({
+    display: "block",
+    width: "100%",
+    height: `calc(${height} + ${footerCrop}px)`,
     margin: "0 auto",
     padding: 0,
     border: 0,
@@ -52,54 +62,67 @@ function App() {
         scrollSnapType: "y proximity",
       }}
     >
+      {/* HERO SECTION */}
       <section style={sectionStyle}>
-        <iframe
-          title="Hero Section"
-          width="100%"
-          height="836"
-          frameBorder="0"
-          scrolling="no"
-          src={embedSrc("heroSection")}
-          style={iframeStyle("836px")}
-        />
+        <div style={iframeCropWrapper("836px")}>
+          <iframe
+            title="Hero Section"
+            width="100%"
+            height="878"
+            frameBorder="0"
+            scrolling="no"
+            src={embedSrc("heroSection")}
+            style={iframeStyle("836px")}
+          />
+        </div>
       </section>
 
+      {/* VISUAL 2 INTRO */}
       <section style={sectionStyle}>
-        <iframe
-          title="Visual 2 Intro"
-          width="100%"
-          height="809"
-          frameBorder="0"
-          scrolling="no"
-          src={embedSrc("visual2IntroTransition")}
-          style={iframeStyle("809px")}
-        />
+        <div style={iframeCropWrapper("809px")}>
+          <iframe
+            title="Visual 2 Intro"
+            width="100%"
+            height="851"
+            frameBorder="0"
+            scrolling="no"
+            src={embedSrc("visual2IntroTransition")}
+            style={iframeStyle("809px")}
+          />
+        </div>
       </section>
 
+      {/* VISUAL 2 CHART */}
       <section style={sectionStyle}>
-        <iframe
-          title="Visual 2 Chart"
-          width="100%"
-          height="724"
-          frameBorder="0"
-          scrolling="no"
-          src={embedSrc("visual2Chartminimalistic")}
-          style={iframeStyle("724px")}
-        />
+        <div style={iframeCropWrapper("724px")}>
+          <iframe
+            title="Visual 2 Chart"
+            width="100%"
+            height="766"
+            frameBorder="0"
+            scrolling="no"
+            src={embedSrc("visual2Chartminimalistic")}
+            style={iframeStyle("724px")}
+          />
+        </div>
       </section>
 
+      {/* VISUAL 3 INTRO */}
       <section style={sectionStyle}>
-        <iframe
-          title="Visual 3 Intro"
-          width="100%"
-          height="759"
-          frameBorder="0"
-          scrolling="no"
-          src={embedSrc("visual3IntroTransition")}
-          style={iframeStyle("759px")}
-        />
+        <div style={iframeCropWrapper("759px")}>
+          <iframe
+            title="Visual 3 Intro"
+            width="100%"
+            height="801"
+            frameBorder="0"
+            scrolling="no"
+            src={embedSrc("visual3IntroTransition")}
+            style={iframeStyle("759px")}
+          />
+        </div>
       </section>
 
+      {/* VISUAL 3 CHART */}
       <section
         style={{
           ...sectionStyle,
@@ -114,24 +137,17 @@ function App() {
             height: "1036px",
             margin: "0 auto",
             background: pageBackground,
+            overflow: "hidden",
           }}
         >
           <iframe
             title="Visual 3 Chart"
             width="100%"
-            height="1036"
+            height="1078"
             frameBorder="0"
             scrolling="no"
             src={embedSrc("visual3Chart")}
-            style={{
-              display: "block",
-              width: "100%",
-              height: "1036px",
-              margin: "0 auto",
-              padding: 0,
-              border: 0,
-              background: pageBackground,
-            }}
+            style={iframeStyle("1036px")}
           />
 
           <button
