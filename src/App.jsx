@@ -6,85 +6,138 @@ function App() {
   const [visual3LegendOpen, setVisual3LegendOpen] = useState(false);
 
   const pageBackground = "#f4f4f2";
+  const panelBackground = "#f8f8f6";
   const ink = "#1d1d1f";
   const muted = "#61656f";
+  const tiny = "#8c9098";
 
   const observableBase =
     "https://observablehq.com/embed/e3028f2577c04f9a@758";
 
-  const footerCrop = 42;
+  const footerCrop = 44;
 
   const embedSrc = (cell) =>
     `${observableBase}?cells=${cell}&api_key=${observableApiKey}`;
 
-  const pageSection = {
-    width: "100%",
-    minHeight: "100vh",
-    margin: 0,
-    padding: "0 24px",
-    background: pageBackground,
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "center",
-    overflow: "hidden",
-    scrollSnapAlign: "start",
+  const ObservableFrame = ({ title, cell, height }) => {
+    const numericHeight = Number(String(height).replace("px", ""));
+    const iframeHeight = numericHeight + footerCrop;
+
+    return (
+      <div
+        style={{
+          width: "100%",
+          maxWidth: "1500px",
+          height,
+          overflow: "hidden",
+          margin: "0 auto",
+          background: pageBackground,
+        }}
+      >
+        <iframe
+          title={title}
+          width="100%"
+          height={iframeHeight}
+          frameBorder="0"
+          scrolling="no"
+          src={embedSrc(cell)}
+          style={{
+            display: "block",
+            width: "100%",
+            height: `${iframeHeight}px`,
+            margin: 0,
+            padding: 0,
+            border: 0,
+            background: pageBackground,
+          }}
+        />
+      </div>
+    );
   };
 
-  const cropWrapper = (height) => ({
-    width: "100%",
-    maxWidth: "1500px",
-    height,
-    overflow: "hidden",
-    margin: "0 auto",
-    background: pageBackground,
-  });
+  const FullSection = ({ children, minHeight = "100svh" }) => (
+    <section
+      style={{
+        width: "100%",
+        minHeight,
+        padding: "40px 24px",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: pageBackground,
+        overflow: "hidden",
+      }}
+    >
+      {children}
+    </section>
+  );
 
-  const iframeStyle = (height) => ({
-    display: "block",
-    width: "100%",
-    height: `calc(${height} + ${footerCrop}px)`,
-    margin: 0,
-    padding: 0,
-    border: 0,
-    background: pageBackground,
-  });
+  const VisualSection = ({ children }) => (
+    <section
+      style={{
+        width: "100%",
+        padding: "72px 24px",
+        background: pageBackground,
+        overflow: "hidden",
+      }}
+    >
+      {children}
+    </section>
+  );
 
-  const textCard = {
-    position: "absolute",
-    left: "clamp(24px, 6vw, 96px)",
-    bottom: "clamp(32px, 8vh, 96px)",
-    width: "min(430px, 88vw)",
-    padding: "28px 30px",
-    borderRadius: "18px",
-    background: "rgba(255, 255, 255, 0.9)",
-    boxShadow: "0 24px 70px rgba(27, 42, 74, 0.12)",
-    border: "1px solid rgba(27, 42, 74, 0.08)",
-    zIndex: 10,
-  };
+  const TextSection = ({ eyebrow, title, children }) => (
+    <section
+      style={{
+        width: "100%",
+        padding: "96px 24px",
+        background: panelBackground,
+      }}
+    >
+      <div
+        style={{
+          maxWidth: "1040px",
+          margin: "0 auto",
+        }}
+      >
+        <div
+          style={{
+            marginBottom: "18px",
+            fontSize: "12px",
+            letterSpacing: "0.16em",
+            textTransform: "uppercase",
+            fontWeight: 800,
+            color: tiny,
+          }}
+        >
+          {eyebrow}
+        </div>
 
-  const eyebrowStyle = {
-    marginBottom: "14px",
-    fontSize: "12px",
-    letterSpacing: "0.16em",
-    textTransform: "uppercase",
-    fontWeight: 800,
-    color: "#8c9098",
-  };
+        <h2
+          style={{
+            margin: "0 0 28px",
+            maxWidth: "820px",
+            fontSize: "clamp(40px, 6vw, 76px)",
+            lineHeight: 0.95,
+            letterSpacing: "-0.07em",
+            color: ink,
+          }}
+        >
+          {title}
+        </h2>
 
-  const cardTitleStyle = {
-    margin: "0 0 14px",
-    fontSize: "34px",
-    lineHeight: 1,
-    letterSpacing: "-0.05em",
-    color: ink,
-  };
-
-  const cardTextStyle = {
-    margin: 0,
-    fontSize: "16px",
-    lineHeight: 1.55,
-    color: muted,
-  };
+        <div
+          style={{
+            maxWidth: "820px",
+            fontSize: "18px",
+            lineHeight: 1.65,
+            color: muted,
+          }}
+        >
+          {children}
+        </div>
+      </div>
+    </section>
+  );
 
   return (
     <main
@@ -98,135 +151,349 @@ function App() {
         color: ink,
         fontFamily:
           'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-        scrollSnapType: "y proximity",
       }}
     >
       {/* HERO */}
-      <section style={pageSection}>
-        <div style={cropWrapper("836px")}>
-          <iframe
-            title="Hero Section"
-            width="100%"
-            height="878"
-            frameBorder="0"
-            scrolling="no"
-            src={embedSrc("heroSection")}
-            style={iframeStyle("836px")}
-          />
-        </div>
-      </section>
+      <FullSection>
+        <ObservableFrame
+          title="Hero Section"
+          cell="heroSection"
+          height="836px"
+        />
+      </FullSection>
 
-      {/* VISUAL 2 INTRO */}
-      <section style={pageSection}>
-        <div style={cropWrapper("809px")}>
-          <iframe
-            title="Visual 2 Intro"
-            width="100%"
-            height="851"
-            frameBorder="0"
-            scrolling="no"
-            src={embedSrc("visual2IntroTransition")}
-            style={iframeStyle("809px")}
-          />
-        </div>
-      </section>
+      {/* COMPOUND INTRO */}
+      <FullSection>
+        <ObservableFrame
+          title="Compound Activity Landscape Intro"
+          cell="visual2IntroTransition"
+          height="809px"
+        />
+      </FullSection>
 
-      {/* VISUAL 2 CHART */}
-      <section
-        style={{
-          ...pageSection,
-          position: "relative",
-        }}
+      {/* COMPOUND VISUAL */}
+      <VisualSection>
+        <ObservableFrame
+          title="Compound Activity Landscape"
+          cell="visual2Chartminimalistic"
+          height="724px"
+        />
+      </VisualSection>
+
+      {/* COMPOUND TEXT */}
+      <TextSection
+        eyebrow="Compound view"
+        title="Which compounds are publicly visible?"
       >
-        <div style={cropWrapper("724px")}>
-          <iframe
-            title="Visual 2 Chart"
-            width="100%"
-            height="766"
-            frameBorder="0"
-            scrolling="no"
-            src={embedSrc("visual2Chartminimalistic")}
-            style={iframeStyle("724px")}
+        <p>
+          This layer groups visible activity by compound family. Solid circles
+          represent registered clinical-trial activity. Dashed circles represent
+          selected pipeline context that is not counted as the main registered
+          trial layer.
+        </p>
+
+        <p>
+          This is a compound-family view. It helps the viewer see where public
+          activity is concentrated across DMT, 5-MeO-DMT, MDMA, LSD, ketamine,
+          psilocybin and ibogaine-related development.
+        </p>
+      </TextSection>
+
+      {/* INDICATION INTRO */}
+      <FullSection>
+        <ObservableFrame
+          title="Indication Landscape Intro"
+          cell="visual3IntroTransition"
+          height="759px"
+        />
+      </FullSection>
+
+      {/* INDICATION VISUAL */}
+      <VisualSection>
+        <div
+          style={{
+            position: "relative",
+            width: "100%",
+            maxWidth: "1500px",
+            margin: "0 auto",
+          }}
+        >
+          <ObservableFrame
+            title="Indication Landscape"
+            cell="visual3Chart"
+            height="1036px"
           />
-        </div>
-
-        <article style={textCard}>
-          <div style={eyebrowStyle}>Compound view</div>
-
-          <h2 style={cardTitleStyle}>Which compounds are publicly visible?</h2>
-
-          <p style={cardTextStyle}>
-            Each cluster represents visible activity around a compound family.
-            Solid circles show registered trial records. Dashed or ghost
-            circles show selected pipeline context.
-          </p>
-        </article>
-      </section>
-
-      {/* VISUAL 3 INTRO */}
-      <section style={pageSection}>
-        <div style={cropWrapper("759px")}>
-          <iframe
-            title="Visual 3 Intro"
-            width="100%"
-            height="801"
-            frameBorder="0"
-            scrolling="no"
-            src={embedSrc("visual3IntroTransition")}
-            style={iframeStyle("759px")}
-          />
-        </div>
-      </section>
-
-      {/* VISUAL 3 CHART */}
-      <section
-        style={{
-          ...pageSection,
-          position: "relative",
-        }}
-      >
-        <div style={cropWrapper("1036px")}>
-          <iframe
-            title="Visual 3 Chart"
-            width="100%"
-            height="1078"
-            frameBorder="0"
-            scrolling="no"
-            src={embedSrc("visual3Chart")}
-            style={iframeStyle("1036px")}
-          />
-        </div>
-
-        <article style={textCard}>
-          <div style={eyebrowStyle}>Indication view</div>
-
-          <h2 style={cardTitleStyle}>Where is trial activity concentrated?</h2>
-
-          <p style={cardTextStyle}>
-            One circle represents one registered clinical-trial record. The
-            inner dot shows the compound family. A green outline means the trial
-            is currently recruiting.
-          </p>
 
           <button
             type="button"
             onClick={() => setVisual3LegendOpen(true)}
             style={{
-              marginTop: "22px",
-              border: "0",
+              position: "absolute",
+              left: "24px",
+              bottom: "24px",
+              zIndex: 20,
+              border: 0,
               borderRadius: "14px",
               background: "#1d1d1f",
               color: "#ffffff",
-              padding: "13px 18px",
+              padding: "14px 20px",
               fontSize: "15px",
               fontWeight: 800,
               cursor: "pointer",
+              boxShadow: "0 16px 40px rgba(27, 42, 74, 0.18)",
             }}
           >
             Legend
           </button>
-        </article>
+        </div>
+      </VisualSection>
+
+      {/* INDICATION TEXT */}
+      <TextSection
+        eyebrow="Indication view"
+        title="Where is trial activity concentrated?"
+      >
+        <p>
+          This layer groups registered patient-indication trial records by
+          indication. One circle represents one registered clinical-trial record.
+          The inner dot shows the compound family. A green outline means the
+          specific trial record is currently recruiting.
+        </p>
+
+        <p>
+          Visual 3 is the strictest public layer. Pipeline-only assets are not
+          shown here unless a public trial record exists.
+        </p>
+      </TextSection>
+
+      {/* METHODOLOGY */}
+      <section
+        style={{
+          width: "100%",
+          padding: "110px 24px",
+          background: "#ffffff",
+          borderTop: "1px solid rgba(29, 29, 31, 0.08)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1180px",
+            margin: "0 auto",
+          }}
+        >
+          <div
+            style={{
+              marginBottom: "18px",
+              fontSize: "12px",
+              letterSpacing: "0.16em",
+              textTransform: "uppercase",
+              fontWeight: 800,
+              color: tiny,
+            }}
+          >
+            Methodology
+          </div>
+
+          <h2
+            style={{
+              margin: "0 0 42px",
+              fontSize: "clamp(42px, 6vw, 82px)",
+              lineHeight: 0.95,
+              letterSpacing: "-0.07em",
+              color: ink,
+            }}
+          >
+            What this project maps
+          </h2>
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
+              gap: "28px",
+            }}
+          >
+            <div>
+              <h3
+                style={{
+                  margin: "0 0 12px",
+                  fontSize: "24px",
+                  letterSpacing: "-0.04em",
+                  color: ink,
+                }}
+              >
+                Registered trials
+              </h3>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "16px",
+                  lineHeight: 1.6,
+                  color: muted,
+                }}
+              >
+                Registered clinical-trial records are treated as evidence units.
+                They show public evidence-generation activity, not proof of
+                efficacy, safety or approval.
+              </p>
+            </div>
+
+            <div>
+              <h3
+                style={{
+                  margin: "0 0 12px",
+                  fontSize: "24px",
+                  letterSpacing: "-0.04em",
+                  color: ink,
+                }}
+              >
+                Pipeline context
+              </h3>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "16px",
+                  lineHeight: 1.6,
+                  color: muted,
+                }}
+              >
+                Pipeline-only assets are treated as context units. They are
+                separated from registered clinical-trial activity.
+              </p>
+            </div>
+
+            <div>
+              <h3
+                style={{
+                  margin: "0 0 12px",
+                  fontSize: "24px",
+                  letterSpacing: "-0.04em",
+                  color: ink,
+                }}
+              >
+                Public visibility
+              </h3>
+
+              <p
+                style={{
+                  margin: 0,
+                  fontSize: "16px",
+                  lineHeight: 1.6,
+                  color: muted,
+                }}
+              >
+                The atlas maps what is publicly visible. It does not provide
+                medical advice, treatment guidance, investment advice or
+                regulatory conclusions.
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
+
+      {/* CREDITS */}
+      <footer
+        style={{
+          width: "100%",
+          padding: "72px 24px",
+          background: pageBackground,
+          borderTop: "1px solid rgba(29, 29, 31, 0.08)",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1180px",
+            margin: "0 auto",
+            display: "grid",
+            gridTemplateColumns: "1.4fr 1fr 1fr",
+            gap: "32px",
+            alignItems: "start",
+          }}
+        >
+          <div>
+            <h2
+              style={{
+                margin: "0 0 12px",
+                fontSize: "34px",
+                letterSpacing: "-0.05em",
+                color: ink,
+              }}
+            >
+              UNICORN1
+            </h2>
+
+            <p
+              style={{
+                margin: 0,
+                maxWidth: "520px",
+                fontSize: "16px",
+                lineHeight: 1.6,
+                color: muted,
+              }}
+            >
+              Psychedelic Trial Atlas is a visual data project mapping public
+              clinical-trial activity and selected pipeline context across
+              psychedelic and psychedelic-adjacent medicines.
+            </p>
+          </div>
+
+          <div>
+            <h3
+              style={{
+                margin: "0 0 12px",
+                fontSize: "16px",
+                color: ink,
+              }}
+            >
+              Built with
+            </h3>
+
+            <p
+              style={{
+                margin: 0,
+                fontSize: "15px",
+                lineHeight: 1.6,
+                color: muted,
+              }}
+            >
+              React
+              <br />
+              Vercel
+              <br />
+              Observable
+            </p>
+          </div>
+
+          <div>
+            <h3
+              style={{
+                margin: "0 0 12px",
+                fontSize: "16px",
+                color: ink,
+              }}
+            >
+              Status
+            </h3>
+
+            <p
+              style={{
+                margin: 0,
+                fontSize: "15px",
+                lineHeight: 1.6,
+                color: muted,
+              }}
+            >
+              Public prototype
+              <br />
+              Portfolio project
+              <br />
+              Data visualization
+            </p>
+          </div>
+        </div>
+      </footer>
 
       {/* LEGEND MODAL */}
       {visual3LegendOpen && (
@@ -304,6 +571,25 @@ function App() {
           </div>
         </div>
       )}
+
+      <style>
+        {`
+          @media (max-width: 900px) {
+            section {
+              padding-left: 16px !important;
+              padding-right: 16px !important;
+            }
+
+            footer > div {
+              grid-template-columns: 1fr !important;
+            }
+
+            section div[style*="grid-template-columns"] {
+              grid-template-columns: 1fr !important;
+            }
+          }
+        `}
+      </style>
     </main>
   );
 }
