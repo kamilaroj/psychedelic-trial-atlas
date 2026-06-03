@@ -6,10 +6,8 @@ function App() {
   const [visual3LegendOpen, setVisual3LegendOpen] = useState(false);
 
   const pageBackground = "#f4f4f2";
-  const panelBackground = "#f8f8f6";
   const ink = "#1d1d1f";
   const muted = "#61656f";
-  const tiny = "#8c9098";
 
   const observableBase =
     "https://observablehq.com/embed/e3028f2577c04f9a@758";
@@ -90,7 +88,7 @@ function App() {
       style={{
         width: "100%",
         padding: "96px 24px",
-        background: panelBackground,
+        background: "#f8f8f6",
       }}
     >
       <div
@@ -106,7 +104,7 @@ function App() {
             letterSpacing: "0.16em",
             textTransform: "uppercase",
             fontWeight: 800,
-            color: tiny,
+            color: "#8c9098",
           }}
         >
           {eyebrow}
@@ -248,253 +246,6 @@ function App() {
         </div>
       </VisualSection>
 
-      {/* INDICATION TEXT */}
-      <TextSection
-        eyebrow="Indication view"
-        title="Where is trial activity concentrated?"
-      >
-        <p>
-          This layer groups registered patient-indication trial records by
-          indication. One circle represents one registered clinical-trial record.
-          The inner dot shows the compound family. A green outline means the
-          specific trial record is currently recruiting.
-        </p>
-
-        <p>
-          Visual 3 is the strictest public layer. Pipeline-only assets are not
-          shown here unless a public trial record exists.
-        </p>
-      </TextSection>
-
-      {/* METHODOLOGY */}
-      <section
-        style={{
-          width: "100%",
-          padding: "110px 24px",
-          background: "#ffffff",
-          borderTop: "1px solid rgba(29, 29, 31, 0.08)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1180px",
-            margin: "0 auto",
-          }}
-        >
-          <div
-            style={{
-              marginBottom: "18px",
-              fontSize: "12px",
-              letterSpacing: "0.16em",
-              textTransform: "uppercase",
-              fontWeight: 800,
-              color: tiny,
-            }}
-          >
-            Methodology
-          </div>
-
-          <h2
-            style={{
-              margin: "0 0 42px",
-              fontSize: "clamp(42px, 6vw, 82px)",
-              lineHeight: 0.95,
-              letterSpacing: "-0.07em",
-              color: ink,
-            }}
-          >
-            What this project maps
-          </h2>
-
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(3, minmax(0, 1fr))",
-              gap: "28px",
-            }}
-          >
-            <div>
-              <h3
-                style={{
-                  margin: "0 0 12px",
-                  fontSize: "24px",
-                  letterSpacing: "-0.04em",
-                  color: ink,
-                }}
-              >
-                Registered trials
-              </h3>
-
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "16px",
-                  lineHeight: 1.6,
-                  color: muted,
-                }}
-              >
-                Registered clinical-trial records are treated as evidence units.
-                They show public evidence-generation activity, not proof of
-                efficacy, safety or approval.
-              </p>
-            </div>
-
-            <div>
-              <h3
-                style={{
-                  margin: "0 0 12px",
-                  fontSize: "24px",
-                  letterSpacing: "-0.04em",
-                  color: ink,
-                }}
-              >
-                Pipeline context
-              </h3>
-
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "16px",
-                  lineHeight: 1.6,
-                  color: muted,
-                }}
-              >
-                Pipeline-only assets are treated as context units. They are
-                separated from registered clinical-trial activity.
-              </p>
-            </div>
-
-            <div>
-              <h3
-                style={{
-                  margin: "0 0 12px",
-                  fontSize: "24px",
-                  letterSpacing: "-0.04em",
-                  color: ink,
-                }}
-              >
-                Public visibility
-              </h3>
-
-              <p
-                style={{
-                  margin: 0,
-                  fontSize: "16px",
-                  lineHeight: 1.6,
-                  color: muted,
-                }}
-              >
-                The atlas maps what is publicly visible. It does not provide
-                medical advice, treatment guidance, investment advice or
-                regulatory conclusions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CREDITS */}
-      <footer
-        style={{
-          width: "100%",
-          padding: "72px 24px",
-          background: pageBackground,
-          borderTop: "1px solid rgba(29, 29, 31, 0.08)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1180px",
-            margin: "0 auto",
-            display: "grid",
-            gridTemplateColumns: "1.4fr 1fr 1fr",
-            gap: "32px",
-            alignItems: "start",
-          }}
-        >
-          <div>
-            <h2
-              style={{
-                margin: "0 0 12px",
-                fontSize: "34px",
-                letterSpacing: "-0.05em",
-                color: ink,
-              }}
-            >
-              UNICORN1
-            </h2>
-
-            <p
-              style={{
-                margin: 0,
-                maxWidth: "520px",
-                fontSize: "16px",
-                lineHeight: 1.6,
-                color: muted,
-              }}
-            >
-              Psychedelic Trial Atlas is a visual data project mapping public
-              clinical-trial activity and selected pipeline context across
-              psychedelic and psychedelic-adjacent medicines.
-            </p>
-          </div>
-
-          <div>
-            <h3
-              style={{
-                margin: "0 0 12px",
-                fontSize: "16px",
-                color: ink,
-              }}
-            >
-              Built with
-            </h3>
-
-            <p
-              style={{
-                margin: 0,
-                fontSize: "15px",
-                lineHeight: 1.6,
-                color: muted,
-              }}
-            >
-              React
-              <br />
-              Vercel
-              <br />
-              Observable
-            </p>
-          </div>
-
-          <div>
-            <h3
-              style={{
-                margin: "0 0 12px",
-                fontSize: "16px",
-                color: ink,
-              }}
-            >
-              Status
-            </h3>
-
-            <p
-              style={{
-                margin: 0,
-                fontSize: "15px",
-                lineHeight: 1.6,
-                color: muted,
-              }}
-            >
-              Public prototype
-              <br />
-              Portfolio project
-              <br />
-              Data visualization
-            </p>
-          </div>
-        </div>
-      </footer>
-
       {/* LEGEND MODAL */}
       {visual3LegendOpen && (
         <div
@@ -578,14 +329,6 @@ function App() {
             section {
               padding-left: 16px !important;
               padding-right: 16px !important;
-            }
-
-            footer > div {
-              grid-template-columns: 1fr !important;
-            }
-
-            section div[style*="grid-template-columns"] {
-              grid-template-columns: 1fr !important;
             }
           }
         `}
