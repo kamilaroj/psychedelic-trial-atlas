@@ -88,7 +88,7 @@ function App() {
       style={{
         width: "100%",
         padding: "96px 24px",
-        background: "#f8f8f6",
+        background: pageBackground,
       }}
     >
       <div
@@ -214,6 +214,7 @@ function App() {
             width: "100%",
             maxWidth: "1500px",
             margin: "0 auto",
+            background: pageBackground,
           }}
         >
           <ObservableFrame
