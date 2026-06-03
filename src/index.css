@@ -5,6 +5,7 @@ body,
   min-height: 100%;
   margin: 0;
   padding: 0;
+  background: #f4f4f2;
 }
 
 html {
@@ -22,4 +23,5 @@ body {
 
 iframe {
   max-width: 100%;
+  background: #f4f4f2;
 }
