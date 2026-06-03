@@ -23,10 +23,3 @@ body {
 iframe {
   max-width: 100%;
 }
-
-@media print {
-  body {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-}
