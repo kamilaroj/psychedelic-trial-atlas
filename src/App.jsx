@@ -1,15 +1,63 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 function App() {
   const observableApiKey = "bd252c7dc3e9ff082411ba5bc8f2fd2b24c00bfd";
 
+  const [activeSection, setActiveSection] = useState(0);
   const [visual3LegendOpen, setVisual3LegendOpen] = useState(false);
+
+  const sectionRefs = useRef([]);
 
   const pageBackground = "#f4f4f2";
 
-  const visualSection = {
+  const observableBase =
+    "https://observablehq.com/embed/e3028f2577c04f9a@758";
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const index = Number(entry.target.dataset.index);
+
+          if (entry.isIntersecting) {
+            setActiveSection(index);
+          }
+        });
+      },
+      {
+        threshold: 0.55,
+      }
+    );
+
+    sectionRefs.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const setSectionRef = (element, index) => {
+    sectionRefs.current[index] = element;
+  };
+
+  const pageStyle = {
     width: "100vw",
     maxWidth: "100vw",
+    minHeight: "100vh",
+    margin: 0,
+    padding: 0,
+    overflowX: "hidden",
+    scrollSnapType: "y mandatory",
+    background: pageBackground,
+    color: "#1b2a4a",
+    fontFamily:
+      'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+  };
+
+  const scrollSection = (index) => ({
+    width: "100vw",
+    maxWidth: "100vw",
+    minHeight: "100vh",
     margin: 0,
     padding: 0,
     background: pageBackground,
@@ -17,43 +65,40 @@ function App() {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-  };
+    scrollSnapAlign: "start",
+    scrollSnapStop: "always",
+    opacity: activeSection === index ? 1 : 0.35,
+    transform:
+      activeSection === index
+        ? "translateY(0px) scale(1)"
+        : "translateY(32px) scale(0.985)",
+    transition:
+      "opacity 700ms ease, transform 700ms ease, filter 700ms ease",
+    filter: activeSection === index ? "blur(0px)" : "blur(1px)",
+  });
 
-  const visualIframe = {
+  const iframeStyle = (height) => ({
     display: "block",
     width: "100%",
     maxWidth: "1500px",
+    height,
     minWidth: "0",
     margin: "0 auto",
     padding: 0,
     border: 0,
     background: pageBackground,
-  };
+  });
 
-  const observableBase =
-    "https://observablehq.com/embed/e3028f2577c04f9a@758";
+  const embedSrc = (cell) =>
+    `${observableBase}?cells=${cell}&api_key=${observableApiKey}`;
 
   return (
-    <main
-      style={{
-        width: "100vw",
-        maxWidth: "100vw",
-        minHeight: "100vh",
-        margin: 0,
-        padding: 0,
-        overflowX: "hidden",
-        background: pageBackground,
-        color: "#1b2a4a",
-        fontFamily:
-          'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-      }}
-    >
+    <main style={pageStyle}>
       {/* HERO SECTION */}
       <section
-        style={{
-          ...visualSection,
-          minHeight: "836px",
-        }}
+        ref={(element) => setSectionRef(element, 0)}
+        data-index="0"
+        style={scrollSection(0)}
       >
         <iframe
           title="Psychedelic Trial Atlas Hero"
@@ -61,20 +106,16 @@ function App() {
           height="836"
           frameBorder="0"
           scrolling="no"
-          src={`${observableBase}?cells=heroSection&api_key=${observableApiKey}`}
-          style={{
-            ...visualIframe,
-            height: "836px",
-          }}
+          src={embedSrc("heroSection")}
+          style={iframeStyle("836px")}
         />
       </section>
 
-      {/* VISUAL 2 INTRO TRANSITION */}
+      {/* VISUAL 2 INTRO */}
       <section
-        style={{
-          ...visualSection,
-          minHeight: "809px",
-        }}
+        ref={(element) => setSectionRef(element, 1)}
+        data-index="1"
+        style={scrollSection(1)}
       >
         <iframe
           title="Compound Activity Landscape Intro"
@@ -82,20 +123,16 @@ function App() {
           height="809"
           frameBorder="0"
           scrolling="no"
-          src={`${observableBase}?cells=visual2IntroTransition&api_key=${observableApiKey}`}
-          style={{
-            ...visualIframe,
-            height: "809px",
-          }}
+          src={embedSrc("visual2IntroTransition")}
+          style={iframeStyle("809px")}
         />
       </section>
 
-      {/* VISUAL 2 — COMPOUND ACTIVITY LANDSCAPE */}
+      {/* VISUAL 2 CHART */}
       <section
-        style={{
-          ...visualSection,
-          minHeight: "724px",
-        }}
+        ref={(element) => setSectionRef(element, 2)}
+        data-index="2"
+        style={scrollSection(2)}
       >
         <iframe
           title="Compound Activity Landscape"
@@ -103,20 +140,16 @@ function App() {
           height="724"
           frameBorder="0"
           scrolling="no"
-          src={`${observableBase}?cells=visual2Chartminimalistic&api_key=${observableApiKey}`}
-          style={{
-            ...visualIframe,
-            height: "724px",
-          }}
+          src={embedSrc("visual2Chartminimalistic")}
+          style={iframeStyle("724px")}
         />
       </section>
 
-      {/* VISUAL 3 INTRO TRANSITION */}
+      {/* VISUAL 3 INTRO */}
       <section
-        style={{
-          ...visualSection,
-          minHeight: "759px",
-        }}
+        ref={(element) => setSectionRef(element, 3)}
+        data-index="3"
+        style={scrollSection(3)}
       >
         <iframe
           title="Indication Landscape Intro"
@@ -124,19 +157,17 @@ function App() {
           height="759"
           frameBorder="0"
           scrolling="no"
-          src={`${observableBase}?cells=visual3IntroTransition&api_key=${observableApiKey}`}
-          style={{
-            ...visualIframe,
-            height: "759px",
-          }}
+          src={embedSrc("visual3IntroTransition")}
+          style={iframeStyle("759px")}
         />
       </section>
 
-      {/* VISUAL 3 — INDICATION LANDSCAPE */}
+      {/* VISUAL 3 CHART */}
       <section
+        ref={(element) => setSectionRef(element, 4)}
+        data-index="4"
         style={{
-          ...visualSection,
-          minHeight: "1036px",
+          ...scrollSection(4),
           position: "relative",
         }}
       >
@@ -156,7 +187,7 @@ function App() {
             height="1036"
             frameBorder="0"
             scrolling="no"
-            src={`${observableBase}?cells=visual3Chart&api_key=${observableApiKey}`}
+            src={embedSrc("visual3Chart")}
             style={{
               display: "block",
               width: "100%",
@@ -168,7 +199,6 @@ function App() {
             }}
           />
 
-          {/* LEGEND BUTTON */}
           <button
             type="button"
             onClick={() => setVisual3LegendOpen(true)}
@@ -192,7 +222,6 @@ function App() {
             Legend
           </button>
 
-          {/* LEGEND MODAL */}
           {visual3LegendOpen && (
             <div
               style={{
