@@ -5,7 +5,7 @@ function App() {
 
   const [visual3LegendOpen, setVisual3LegendOpen] = useState(false);
 
-  const pageBackground = "#f4f4f2";
+  const pageBackground = "#f1f0ec";
   const ink = "#1d1d1f";
   const muted = "#61656f";
 
