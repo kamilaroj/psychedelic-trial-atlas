@@ -9,14 +9,14 @@ function App() {
   const ink = "#1d1d1f";
 
   const observableBase =
-    "https://observablehq.com/embed/e3028f2577c04f9a@758";
+    "https://observablehq.com/embed/e3028f2577c04f9a@803";
 
   const footerCrop = 44;
 
   const embedSrc = (cell) =>
     `${observableBase}?cells=${cell}&api_key=${observableApiKey}`;
 
-  const ObservableFrame = ({ title, cell, height }) => {
+  const ObservableFrame = ({ title, cell, height, maxWidth = "1500px" }) => {
     const numericHeight = Number(String(height).replace("px", ""));
     const iframeHeight = numericHeight + footerCrop;
 
@@ -24,7 +24,7 @@ function App() {
       <div
         style={{
           width: "100%",
-          maxWidth: "1500px",
+          maxWidth,
           height,
           overflow: "hidden",
           margin: "0 auto",
@@ -69,11 +69,11 @@ function App() {
     </section>
   );
 
-  const VisualSection = ({ children }) => (
+  const VisualSection = ({ children, padding = "40px 24px" }) => (
     <section
       style={{
         width: "100%",
-        padding: "40px 24px",
+        padding,
         background: pageBackground,
         overflow: "hidden",
       }}
@@ -105,6 +105,24 @@ function App() {
         />
       </FullSection>
 
+      {/* VISUAL 1 — ECOSYSTEM OVERVIEW */}
+      <VisualSection padding="28px 24px 20px">
+        <ObservableFrame
+          title="Psychedelic Ecosystem Overview"
+          cell="visual1EcosystemOverview"
+          height="724px"
+        />
+      </VisualSection>
+
+      {/* VISUAL 1 — COMPANY LANDSCAPE */}
+      <VisualSection padding="20px 24px 40px">
+        <ObservableFrame
+          title="Company Landscape"
+          cell="visual1CompanyLandscape"
+          height="1127px"
+        />
+      </VisualSection>
+
       {/* COMPOUND INTRO */}
       <FullSection>
         <ObservableFrame
@@ -119,7 +137,7 @@ function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic"
-          height="900px"
+          height="724px"
         />
       </VisualSection>
 
@@ -128,7 +146,7 @@ function App() {
         <ObservableFrame
           title="Indication Landscape Intro"
           cell="visual3IntroTransition"
-          height="759px"
+          height="758px"
         />
       </FullSection>
 
@@ -146,7 +164,7 @@ function App() {
           <ObservableFrame
             title="Indication Landscape"
             cell="visual3Chart"
-            height="1120px"
+            height="724px"
           />
 
           <button
