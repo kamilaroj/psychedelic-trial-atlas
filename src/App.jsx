@@ -9,7 +9,7 @@ function App() {
   const ink = "#1d1d1f";
 
   const observableBase =
-    "https://observablehq.com/embed/e3028f2577c04f9a@803";
+    "https://observablehq.com/embed/e3028f2577c04f9a@804";
 
   const footerCrop = 44;
 
