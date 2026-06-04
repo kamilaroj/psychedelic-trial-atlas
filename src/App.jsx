@@ -7,7 +7,6 @@ function App() {
 
   const pageBackground = "#f1f0ec";
   const ink = "#1d1d1f";
-  const muted = "#61656f";
 
   const observableBase =
     "https://observablehq.com/embed/e3028f2577c04f9a@758";
@@ -74,66 +73,12 @@ function App() {
     <section
       style={{
         width: "100%",
-        padding: "72px 24px",
+        padding: "40px 24px",
         background: pageBackground,
         overflow: "hidden",
       }}
     >
       {children}
-    </section>
-  );
-
-  const TextSection = ({ eyebrow, title, children }) => (
-    <section
-      style={{
-        width: "100%",
-        padding: "96px 24px",
-        background: pageBackground,
-      }}
-    >
-      <div
-        style={{
-          maxWidth: "1040px",
-          margin: "0 auto",
-        }}
-      >
-        <div
-          style={{
-            marginBottom: "18px",
-            fontSize: "12px",
-            letterSpacing: "0.16em",
-            textTransform: "uppercase",
-            fontWeight: 800,
-            color: "#8c9098",
-          }}
-        >
-          {eyebrow}
-        </div>
-
-        <h2
-          style={{
-            margin: "0 0 28px",
-            maxWidth: "820px",
-            fontSize: "clamp(40px, 6vw, 76px)",
-            lineHeight: 0.95,
-            letterSpacing: "-0.07em",
-            color: ink,
-          }}
-        >
-          {title}
-        </h2>
-
-        <div
-          style={{
-            maxWidth: "820px",
-            fontSize: "18px",
-            lineHeight: 1.65,
-            color: muted,
-          }}
-        >
-          {children}
-        </div>
-      </div>
     </section>
   );
 
@@ -174,28 +119,9 @@ function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic"
-          height="724px"
+          height="900px"
         />
       </VisualSection>
-
-      {/* COMPOUND TEXT */}
-      <TextSection
-        eyebrow="Compound view"
-        title="Which compounds are publicly visible?"
-      >
-        <p>
-          This layer groups visible activity by compound family. Solid circles
-          represent registered clinical-trial activity. Dashed circles represent
-          selected pipeline context that is not counted as the main registered
-          trial layer.
-        </p>
-
-        <p>
-          This is a compound-family view. It helps the viewer see where public
-          activity is concentrated across DMT, 5-MeO-DMT, MDMA, LSD, ketamine,
-          psilocybin and ibogaine-related development.
-        </p>
-      </TextSection>
 
       {/* INDICATION INTRO */}
       <FullSection>
@@ -220,7 +146,7 @@ function App() {
           <ObservableFrame
             title="Indication Landscape"
             cell="visual3Chart"
-            height="1036px"
+            height="1120px"
           />
 
           <button
