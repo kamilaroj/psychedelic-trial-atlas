@@ -7,13 +7,19 @@ function App() {
   const observableBase =
     "https://observablehq.com/embed/e3028f2577c04f9a@831";
 
-  // Crops the Observable attribution/footer area from the visible frame.
-  const footerCrop = 44;
+  // Extra iframe height hidden by the wrapper.
+  // This helps hide the Observable footer / attribution area.
+  const footerCrop = 64;
 
   const embedSrc = (cell) =>
     `${observableBase}?cells=${cell}&api_key=${observableApiKey}`;
 
-  const ObservableFrame = ({ title, cell, height, maxWidth = "1500px" }) => {
+  const ObservableFrame = ({
+    title,
+    cell,
+    height,
+    maxWidth = "1500px",
+  }) => {
     const numericHeight = Number(String(height).replace("px", ""));
     const iframeHeight = numericHeight + footerCrop;
 
@@ -49,16 +55,12 @@ function App() {
     );
   };
 
-  const FullSection = ({
-    children,
-    minHeight = "100svh",
-    padding = "0 24px",
-  }) => (
+  const HeroSection = ({ children }) => (
     <section
       style={{
         width: "100%",
-        minHeight,
-        padding,
+        minHeight: "100svh",
+        padding: "0 24px",
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
@@ -70,7 +72,7 @@ function App() {
     </section>
   );
 
-  const VisualSection = ({ children, padding = "16px 24px" }) => (
+  const Section = ({ children, padding = "12px 24px" }) => (
     <section
       style={{
         width: "100%",
@@ -98,67 +100,67 @@ function App() {
       }}
     >
       {/* HERO */}
-      <FullSection padding="0 24px">
+      <HeroSection>
         <ObservableFrame
           title="Hero Section"
           cell="heroSection"
-          height="792px"
+          height="760px"
         />
-      </FullSection>
+      </HeroSection>
 
       {/* VISUAL 1 — ECOSYSTEM OVERVIEW */}
-      <VisualSection padding="4px 24px 4px">
+      <Section padding="8px 24px 4px">
         <ObservableFrame
           title="Psychedelic Ecosystem Overview"
           cell="visual1EcosystemOverview"
-          height="560px"
+          height="630px"
         />
-      </VisualSection>
+      </Section>
 
       {/* VISUAL 1 — COMPANY LANDSCAPE */}
-      <VisualSection padding="4px 24px 16px">
+      <Section padding="0 24px 20px">
         <ObservableFrame
           title="Company Landscape"
           cell="visual1CompanyLandscape"
-          height="620px"
+          height="700px"
         />
-      </VisualSection>
+      </Section>
 
       {/* COMPOUND INTRO */}
-      <FullSection padding="0 24px">
+      <Section padding="28px 24px 8px">
         <ObservableFrame
           title="Compound Activity Landscape Intro"
           cell="visual2IntroTransition"
-          height="760px"
+          height="700px"
         />
-      </FullSection>
+      </Section>
 
       {/* VISUAL 2 — COMPOUND ACTIVITY LANDSCAPE */}
-      <VisualSection padding="4px 24px 16px">
+      <Section padding="0 24px 20px">
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic"
-          height="680px"
+          height="700px"
         />
-      </VisualSection>
+      </Section>
 
       {/* INDICATION INTRO */}
-      <FullSection padding="0 24px">
+      <Section padding="28px 24px 8px">
         <ObservableFrame
           title="Indication Landscape Intro"
           cell="visual3IntroTransition"
-          height="720px"
+          height="690px"
         />
-      </FullSection>
+      </Section>
 
       {/* VISUAL 3 — INDICATION LANDSCAPE */}
-      <VisualSection padding="4px 24px 36px">
+      <Section padding="0 24px 48px">
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          height="680px"
+          height="700px"
         />
-      </VisualSection>
+      </Section>
 
       <style>
         {`
