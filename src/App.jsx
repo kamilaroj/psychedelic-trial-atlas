@@ -9,7 +9,7 @@ function App() {
   const ink = "#1d1d1f";
 
   const observableBase =
-    "https://observablehq.com/embed/e3028f2577c04f9a@804";
+    "https://observablehq.com/embed/e3028f2577c04f9a@814";
 
   const footerCrop = 44;
 
@@ -128,7 +128,7 @@ function App() {
         <ObservableFrame
           title="Compound Activity Landscape Intro"
           cell="visual2IntroTransition"
-          height="809px"
+          height="808px"
         />
       </FullSection>
 
@@ -146,7 +146,7 @@ function App() {
         <ObservableFrame
           title="Indication Landscape Intro"
           cell="visual3IntroTransition"
-          height="758px"
+          height="757px"
         />
       </FullSection>
 
@@ -183,7 +183,7 @@ function App() {
               fontSize: "15px",
               fontWeight: 800,
               cursor: "pointer",
-              boxShadow: "0 16px 40px rgba(27, 42, 74, 0.18)",
+              boxShadow: "0 16px 40px rgba(29, 29, 31, 0.18)",
             }}
           >
             Legend
@@ -198,7 +198,7 @@ function App() {
             position: "fixed",
             inset: 0,
             zIndex: 100,
-            background: "rgba(27, 42, 74, 0.38)",
+            background: "rgba(29, 29, 31, 0.38)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -211,8 +211,8 @@ function App() {
               width: "min(780px, 92vw)",
               background: "rgba(255, 255, 255, 0.98)",
               borderRadius: "8px",
-              boxShadow: "0 28px 80px rgba(27, 42, 74, 0.24)",
-              color: "#202124",
+              boxShadow: "0 28px 80px rgba(29, 29, 31, 0.24)",
+              color: "#1d1d1f",
               padding: "32px",
             }}
             onClick={(event) => event.stopPropagation()}
@@ -226,7 +226,7 @@ function App() {
                 background: "transparent",
                 fontSize: "36px",
                 cursor: "pointer",
-                color: "rgba(32, 33, 36, 0.62)",
+                color: "rgba(29, 29, 31, 0.62)",
               }}
             >
               ×
@@ -236,7 +236,7 @@ function App() {
               style={{
                 margin: "0 0 16px",
                 fontSize: "28px",
-                color: "#1b2a4a",
+                color: "#1d1d1f",
               }}
             >
               Visual 3 — Indication Landscape
@@ -246,7 +246,7 @@ function App() {
               style={{
                 fontSize: "16px",
                 lineHeight: 1.55,
-                color: "#4f596b",
+                color: "#61656f",
               }}
             >
               One circle represents one registered clinical-trial record. The
@@ -258,7 +258,7 @@ function App() {
               style={{
                 fontSize: "16px",
                 lineHeight: 1.55,
-                color: "#4f596b",
+                color: "#61656f",
               }}
             >
               Visual 3 is the strictest layer. Pipeline-only assets are not
@@ -270,6 +270,20 @@ function App() {
 
       <style>
         {`
+          html,
+          body,
+          #root {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            min-height: 100%;
+            background: ${pageBackground};
+          }
+
+          * {
+            box-sizing: border-box;
+          }
+
           @media (max-width: 900px) {
             section {
               padding-left: 16px !important;
