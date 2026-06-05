@@ -7,10 +7,6 @@ function App() {
   const observableBase =
     "https://observablehq.com/embed/e3028f2577c04f9a@831";
 
-  // Extra iframe height hidden by the wrapper.
-  // This helps hide the Observable footer / attribution area.
-  const footerCrop = 64;
-
   const embedSrc = (cell) =>
     `${observableBase}?cells=${cell}&api_key=${observableApiKey}`;
 
@@ -19,66 +15,44 @@ function App() {
     cell,
     height,
     maxWidth = "1500px",
-  }) => {
-    const numericHeight = Number(String(height).replace("px", ""));
-    const iframeHeight = numericHeight + footerCrop;
-
-    return (
-      <div
-        style={{
-          width: "100%",
-          maxWidth,
-          height,
-          overflow: "hidden",
-          margin: "0 auto",
-          background: pageBackground,
-        }}
-      >
-        <iframe
-          title={title}
-          width="100%"
-          height={iframeHeight}
-          frameBorder="0"
-          scrolling="no"
-          src={embedSrc(cell)}
-          style={{
-            display: "block",
-            width: "100%",
-            height: `${iframeHeight}px`,
-            margin: 0,
-            padding: 0,
-            border: 0,
-            background: pageBackground,
-          }}
-        />
-      </div>
-    );
-  };
-
-  const HeroSection = ({ children }) => (
-    <section
+  }) => (
+    <div
       style={{
         width: "100%",
-        minHeight: "100svh",
-        padding: "0 24px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
+        maxWidth,
+        margin: "0 auto",
         background: pageBackground,
-        overflow: "hidden",
       }}
     >
-      {children}
-    </section>
+      <iframe
+        title={title}
+        width="100%"
+        height={height}
+        frameBorder="0"
+        scrolling="no"
+        src={embedSrc(cell)}
+        style={{
+          display: "block",
+          width: "100%",
+          height,
+          margin: 0,
+          padding: 0,
+          border: 0,
+          background: pageBackground,
+          overflow: "hidden",
+        }}
+      />
+    </div>
   );
 
-  const Section = ({ children, padding = "12px 24px" }) => (
+  const Section = ({ children, padding = "0 24px" }) => (
     <section
       style={{
         width: "100%",
         padding,
+        margin: 0,
         background: pageBackground,
-        overflow: "hidden",
+        overflow: "visible",
       }}
     >
       {children}
@@ -100,65 +74,65 @@ function App() {
       }}
     >
       {/* HERO */}
-      <HeroSection>
+      <Section padding="0 24px 0">
         <ObservableFrame
           title="Hero Section"
           cell="heroSection"
-          height="760px"
+          height="836px"
         />
-      </HeroSection>
+      </Section>
 
       {/* VISUAL 1 — ECOSYSTEM OVERVIEW */}
-      <Section padding="8px 24px 4px">
+      <Section padding="0 24px 0">
         <ObservableFrame
           title="Psychedelic Ecosystem Overview"
           cell="visual1EcosystemOverview"
-          height="630px"
+          height="594px"
         />
       </Section>
 
       {/* VISUAL 1 — COMPANY LANDSCAPE */}
-      <Section padding="0 24px 20px">
+      <Section padding="0 24px 0">
         <ObservableFrame
           title="Company Landscape"
           cell="visual1CompanyLandscape"
-          height="700px"
+          height="666px"
         />
       </Section>
 
       {/* COMPOUND INTRO */}
-      <Section padding="28px 24px 8px">
+      <Section padding="0 24px 0">
         <ObservableFrame
           title="Compound Activity Landscape Intro"
           cell="visual2IntroTransition"
-          height="700px"
+          height="808px"
         />
       </Section>
 
       {/* VISUAL 2 — COMPOUND ACTIVITY LANDSCAPE */}
-      <Section padding="0 24px 20px">
+      <Section padding="0 24px 0">
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic"
-          height="700px"
+          height="724px"
         />
       </Section>
 
       {/* INDICATION INTRO */}
-      <Section padding="28px 24px 8px">
+      <Section padding="0 24px 0">
         <ObservableFrame
           title="Indication Landscape Intro"
           cell="visual3IntroTransition"
-          height="690px"
+          height="757px"
         />
       </Section>
 
       {/* VISUAL 3 — INDICATION LANDSCAPE */}
-      <Section padding="0 24px 48px">
+      <Section padding="0 24px 40px">
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          height="700px"
+          height="724px"
         />
       </Section>
 
@@ -180,12 +154,13 @@ function App() {
 
           iframe {
             background: ${pageBackground};
+            overflow: hidden;
           }
 
           @media (max-width: 900px) {
             section {
-              padding-left: 16px !important;
-              padding-right: 16px !important;
+              padding-left: 12px !important;
+              padding-right: 12px !important;
             }
           }
         `}
