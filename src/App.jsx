@@ -13,37 +13,46 @@ function App() {
   const ObservableFrame = ({
     title,
     cell,
-    height,
+    visibleHeight,
     maxWidth = "1500px",
-  }) => (
-    <div
-      style={{
-        width: "100%",
-        maxWidth,
-        margin: "0 auto",
-        background: pageBackground,
-      }}
-    >
-      <iframe
-        title={title}
-        width="100%"
-        height={height}
-        frameBorder="0"
-        scrolling="no"
-        src={embedSrc(cell)}
+    cropTop = 34,
+    extraHeight = 260,
+  }) => {
+    const iframeHeight = visibleHeight + cropTop + extraHeight;
+
+    return (
+      <div
         style={{
-          display: "block",
           width: "100%",
-          height,
-          margin: 0,
-          padding: 0,
-          border: 0,
-          background: pageBackground,
+          maxWidth,
+          height: `${visibleHeight}px`,
           overflow: "hidden",
+          margin: "0 auto",
+          background: pageBackground,
+          position: "relative",
         }}
-      />
-    </div>
-  );
+      >
+        <iframe
+          title={title}
+          width="100%"
+          height={iframeHeight}
+          frameBorder="0"
+          scrolling="no"
+          src={embedSrc(cell)}
+          style={{
+            display: "block",
+            width: "100%",
+            height: `${iframeHeight}px`,
+            margin: 0,
+            padding: 0,
+            border: 0,
+            background: pageBackground,
+            transform: `translateY(-${cropTop}px)`,
+          }}
+        />
+      </div>
+    );
+  };
 
   const Section = ({ children, padding = "0 24px" }) => (
     <section
@@ -52,7 +61,7 @@ function App() {
         padding,
         margin: 0,
         background: pageBackground,
-        overflow: "visible",
+        overflow: "hidden",
       }}
     >
       {children}
@@ -78,7 +87,9 @@ function App() {
         <ObservableFrame
           title="Hero Section"
           cell="heroSection"
-          height="836px"
+          visibleHeight={760}
+          cropTop={34}
+          extraHeight={220}
         />
       </Section>
 
@@ -87,7 +98,9 @@ function App() {
         <ObservableFrame
           title="Psychedelic Ecosystem Overview"
           cell="visual1EcosystemOverview"
-          height="594px"
+          visibleHeight={620}
+          cropTop={34}
+          extraHeight={320}
         />
       </Section>
 
@@ -96,7 +109,9 @@ function App() {
         <ObservableFrame
           title="Company Landscape"
           cell="visual1CompanyLandscape"
-          height="666px"
+          visibleHeight={690}
+          cropTop={34}
+          extraHeight={340}
         />
       </Section>
 
@@ -105,7 +120,9 @@ function App() {
         <ObservableFrame
           title="Compound Activity Landscape Intro"
           cell="visual2IntroTransition"
-          height="808px"
+          visibleHeight={760}
+          cropTop={34}
+          extraHeight={260}
         />
       </Section>
 
@@ -114,7 +131,9 @@ function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic"
-          height="724px"
+          visibleHeight={700}
+          cropTop={34}
+          extraHeight={320}
         />
       </Section>
 
@@ -123,7 +142,9 @@ function App() {
         <ObservableFrame
           title="Indication Landscape Intro"
           cell="visual3IntroTransition"
-          height="757px"
+          visibleHeight={720}
+          cropTop={34}
+          extraHeight={260}
         />
       </Section>
 
@@ -132,7 +153,9 @@ function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          height="724px"
+          visibleHeight={700}
+          cropTop={34}
+          extraHeight={320}
         />
       </Section>
 
@@ -154,7 +177,6 @@ function App() {
 
           iframe {
             background: ${pageBackground};
-            overflow: hidden;
           }
 
           @media (max-width: 900px) {
