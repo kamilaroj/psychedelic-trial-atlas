@@ -15,7 +15,7 @@ function App() {
     cell,
     visibleHeight,
     maxWidth = "1500px",
-    cropTop = 34,
+    cropTop = 20,
     extraHeight = 500,
   }) => {
     const iframeHeight = visibleHeight + cropTop + extraHeight;
@@ -88,74 +88,74 @@ function App() {
           title="Hero Section"
           cell="heroSection"
           visibleHeight={836}
-          cropTop={34}
+          cropTop={20}
           extraHeight={500}
         />
       </Section>
 
       {/* VISUAL 1 — ECOSYSTEM OVERVIEW */}
-      <Section padding="0 24px 28px">
+      <Section padding="20px 24px 44px">
         <ObservableFrame
           title="Psychedelic Ecosystem Overview"
           cell="visual1EcosystemOverview"
-          visibleHeight={690}
-          cropTop={34}
-          extraHeight={500}
-        />
-      </Section>
-
-      {/* VISUAL 1 — COMPANY LANDSCAPE */}
-      <Section padding="28px 24px 44px">
-        <ObservableFrame
-          title="Company Landscape"
-          cell="visual1CompanyLandscape"
-          visibleHeight={760}
-          cropTop={34}
+          visibleHeight={740}
+          cropTop={20}
           extraHeight={520}
         />
       </Section>
 
+      {/* VISUAL 1 — COMPANY LANDSCAPE */}
+      <Section padding="24px 24px 56px">
+        <ObservableFrame
+          title="Company Landscape"
+          cell="visual1CompanyLandscape"
+          visibleHeight={800}
+          cropTop={20}
+          extraHeight={540}
+        />
+      </Section>
+
       {/* COMPOUND INTRO */}
-      <Section padding="24px 24px 24px">
+      <Section padding="36px 24px 32px">
         <ObservableFrame
           title="Compound Activity Landscape Intro"
           cell="visual2IntroTransition"
-          visibleHeight={850}
-          cropTop={34}
+          visibleHeight={820}
+          cropTop={20}
           extraHeight={500}
         />
       </Section>
 
       {/* VISUAL 2 — COMPOUND ACTIVITY LANDSCAPE */}
-      <Section padding="12px 24px 48px">
+      <Section padding="20px 24px 56px">
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic"
           visibleHeight={805}
-          cropTop={34}
-          extraHeight={520}
+          cropTop={20}
+          extraHeight={540}
         />
       </Section>
 
       {/* INDICATION INTRO */}
-      <Section padding="24px 24px 24px">
+      <Section padding="36px 24px 32px">
         <ObservableFrame
           title="Indication Landscape Intro"
           cell="visual3IntroTransition"
           visibleHeight={805}
-          cropTop={34}
+          cropTop={20}
           extraHeight={500}
         />
       </Section>
 
       {/* VISUAL 3 — INDICATION LANDSCAPE */}
-      <Section padding="12px 24px 64px">
+      <Section padding="20px 24px 72px">
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
           visibleHeight={805}
-          cropTop={34}
-          extraHeight={520}
+          cropTop={20}
+          extraHeight={540}
         />
       </Section>
 
