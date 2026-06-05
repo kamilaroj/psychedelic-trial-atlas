@@ -2,8 +2,74 @@ function App() {
   const pageBackground = "#f1f0ec";
   const ink = "#1d1d1f";
 
-  const observableSrc =
-    "https://observablehq.com/embed/e3028f2577c04f9a@831?cells=heroSection%2Cvisual1EcosystemOverview%2Cvisual1CompanyLandscape%2Cvisual2IntroTransition%2Cvisual2Chartminimalistic%2Cvisual3IntroTransition%2Cvisual3Chart&api_key=ebe3768986d966e69077e8893a425ffaa2e55009";
+  const observableApiKey = "ebe3768986d966e69077e8893a425ffaa2e55009";
+
+  const observableBase =
+    "https://observablehq.com/embed/e3028f2577c04f9a@831";
+
+  const embedSrc = (cell) =>
+    `${observableBase}?cells=${cell}&api_key=${observableApiKey}`;
+
+  const ObservableFrame = ({ title, cell, height, maxWidth = "1500px" }) => (
+    <div
+      style={{
+        width: "100%",
+        maxWidth,
+        height,
+        overflow: "hidden",
+        margin: "0 auto",
+        background: pageBackground,
+      }}
+    >
+      <iframe
+        title={title}
+        width="100%"
+        height={height}
+        frameBorder="0"
+        scrolling="no"
+        src={embedSrc(cell)}
+        style={{
+          display: "block",
+          width: "100%",
+          height,
+          margin: 0,
+          padding: 0,
+          border: 0,
+          background: pageBackground,
+        }}
+      />
+    </div>
+  );
+
+  const FullSection = ({ children, minHeight = "100svh", padding = "0 24px" }) => (
+    <section
+      style={{
+        width: "100%",
+        minHeight,
+        padding,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: pageBackground,
+        overflow: "hidden",
+      }}
+    >
+      {children}
+    </section>
+  );
+
+  const VisualSection = ({ children, padding = "24px 24px" }) => (
+    <section
+      style={{
+        width: "100%",
+        padding,
+        background: pageBackground,
+        overflow: "hidden",
+      }}
+    >
+      {children}
+    </section>
+  );
 
   return (
     <main
@@ -19,34 +85,68 @@ function App() {
           'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
     >
-      <section
-        style={{
-          width: "100%",
-          minHeight: "100vh",
-          margin: 0,
-          padding: 0,
-          background: pageBackground,
-          overflow: "hidden",
-        }}
-      >
-        <iframe
-          title="Psychedelic Trial Atlas"
-          width="100%"
-          height="4755"
-          frameBorder="0"
-          scrolling="no"
-          src={observableSrc}
-          style={{
-            display: "block",
-            width: "100%",
-            height: "4755px",
-            margin: 0,
-            padding: 0,
-            border: 0,
-            background: pageBackground,
-          }}
+      {/* HERO */}
+      <FullSection padding="0 24px">
+        <ObservableFrame
+          title="Hero Section"
+          cell="heroSection"
+          height="836px"
         />
-      </section>
+      </FullSection>
+
+      {/* VISUAL 1 — ECOSYSTEM OVERVIEW */}
+      <VisualSection padding="8px 24px 8px">
+        <ObservableFrame
+          title="Psychedelic Ecosystem Overview"
+          cell="visual1EcosystemOverview"
+          height="594px"
+        />
+      </VisualSection>
+
+      {/* VISUAL 1 — COMPANY LANDSCAPE */}
+      <VisualSection padding="8px 24px 20px">
+        <ObservableFrame
+          title="Company Landscape"
+          cell="visual1CompanyLandscape"
+          height="666px"
+        />
+      </VisualSection>
+
+      {/* COMPOUND INTRO */}
+      <FullSection padding="0 24px">
+        <ObservableFrame
+          title="Compound Activity Landscape Intro"
+          cell="visual2IntroTransition"
+          height="808px"
+        />
+      </FullSection>
+
+      {/* COMPOUND VISUAL */}
+      <VisualSection padding="8px 24px 20px">
+        <ObservableFrame
+          title="Compound Activity Landscape"
+          cell="visual2Chartminimalistic"
+          height="724px"
+        />
+      </VisualSection>
+
+      {/* INDICATION INTRO */}
+      <FullSection padding="0 24px">
+        <ObservableFrame
+          title="Indication Landscape Intro"
+          cell="visual3IntroTransition"
+          height="757px"
+        />
+      </FullSection>
+
+      {/* INDICATION VISUAL */}
+      <VisualSection padding="8px 24px 40px">
+        <ObservableFrame
+          title="Indication Landscape"
+          cell="visual3Chart"
+          height="724px"
+        />
+      </VisualSection>
 
       <style>
         {`
@@ -66,6 +166,13 @@ function App() {
 
           iframe {
             background: ${pageBackground};
+          }
+
+          @media (max-width: 900px) {
+            section {
+              padding-left: 16px !important;
+              padding-right: 16px !important;
+            }
           }
         `}
       </style>
