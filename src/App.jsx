@@ -1,192 +1,79 @@
 function App() {
-  const pageBackground = "#f1f0ec";
-  const ink = "#1d1d1f";
-
-  const observableApiKey = "ebe3768986d966e69077e8893a425ffaa2e55009";
-
-  const observableBase =
-    "https://observablehq.com/embed/e3028f2577c04f9a@831";
-
-  const embedSrc = (cell) =>
-    `${observableBase}?cells=${cell}&api_key=${observableApiKey}`;
-
-  const ObservableFrame = ({
-    title,
-    cell,
-    visibleHeight,
-    maxWidth = "1500px",
-    cropTop = 20,
-    extraHeight = 500,
-  }) => {
-    const iframeHeight = visibleHeight + cropTop + extraHeight;
-
-    return (
-      <div
-        style={{
-          width: "100%",
-          maxWidth,
-          height: `${visibleHeight}px`,
-          overflow: "hidden",
-          margin: "0 auto",
-          background: pageBackground,
-          position: "relative",
-        }}
-      >
-        <iframe
-          title={title}
-          width="100%"
-          height={iframeHeight}
-          frameBorder="0"
-          scrolling="no"
-          src={embedSrc(cell)}
-          style={{
-            display: "block",
-            width: "100%",
-            height: `${iframeHeight}px`,
-            margin: 0,
-            padding: 0,
-            border: 0,
-            background: pageBackground,
-            transform: `translateY(-${cropTop}px)`,
-          }}
-        />
-      </div>
-    );
-  };
-
-  const Section = ({ children, padding = "0 24px" }) => (
-    <section
-      style={{
-        width: "100%",
-        padding,
-        margin: 0,
-        background: pageBackground,
-        overflow: "hidden",
-      }}
-    >
-      {children}
-    </section>
-  );
-
   return (
     <main
       style={{
-        width: "100%",
+        background: "#f1f0ec",
         minHeight: "100vh",
-        margin: 0,
-        padding: 0,
-        overflowX: "hidden",
-        background: pageBackground,
-        color: ink,
+        color: "#1d1d1f",
         fontFamily:
-          'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+          '"Inter", "Helvetica Neue", Arial, system-ui, sans-serif',
       }}
     >
-      {/* HERO */}
-      <Section padding="0 24px 0">
-        <ObservableFrame
-          title="Hero Section"
-          cell="heroSection"
-          visibleHeight={836}
-          cropTop={20}
-          extraHeight={500}
-        />
-      </Section>
+      <section
+        style={{
+          maxWidth: "1600px",
+          margin: "0 auto",
+          padding: "56px 24px 32px",
+        }}
+      >
+        <header
+          style={{
+            textAlign: "center",
+            marginBottom: "32px",
+          }}
+        >
+          <h1
+            style={{
+              margin: "0 0 12px",
+              fontFamily:
+                '"Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif',
+              fontSize: "44px",
+              lineHeight: 1.05,
+              letterSpacing: "-0.04em",
+              fontWeight: 800,
+            }}
+          >
+            Psychedelic Trial Atlas
+          </h1>
 
-      {/* VISUAL 1 — ECOSYSTEM OVERVIEW */}
-      <Section padding="20px 24px 44px">
-        <ObservableFrame
-          title="Psychedelic Ecosystem Overview"
-          cell="visual1EcosystemOverview"
-          visibleHeight={740}
-          cropTop={20}
-          extraHeight={520}
-        />
-      </Section>
+          <p
+            style={{
+              maxWidth: "760px",
+              margin: "0 auto",
+              color: "#61656f",
+              fontSize: "16px",
+              lineHeight: 1.5,
+            }}
+          >
+            Web preview of the Visual 1 Company Landscape embed.
+          </p>
+        </header>
 
-      {/* VISUAL 1 — COMPANY LANDSCAPE */}
-      <Section padding="24px 24px 56px">
-        <ObservableFrame
-          title="Company Landscape"
-          cell="visual1CompanyLandscape"
-          visibleHeight={800}
-          cropTop={20}
-          extraHeight={540}
-        />
-      </Section>
-
-      {/* COMPOUND INTRO */}
-      <Section padding="36px 24px 32px">
-        <ObservableFrame
-          title="Compound Activity Landscape Intro"
-          cell="visual2IntroTransition"
-          visibleHeight={820}
-          cropTop={20}
-          extraHeight={500}
-        />
-      </Section>
-
-      {/* VISUAL 2 — COMPOUND ACTIVITY LANDSCAPE */}
-      <Section padding="20px 24px 56px">
-        <ObservableFrame
-          title="Compound Activity Landscape"
-          cell="visual2Chartminimalistic"
-          visibleHeight={805}
-          cropTop={20}
-          extraHeight={540}
-        />
-      </Section>
-
-      {/* INDICATION INTRO */}
-      <Section padding="36px 24px 32px">
-        <ObservableFrame
-          title="Indication Landscape Intro"
-          cell="visual3IntroTransition"
-          visibleHeight={805}
-          cropTop={20}
-          extraHeight={500}
-        />
-      </Section>
-
-      {/* VISUAL 3 — INDICATION LANDSCAPE */}
-      <Section padding="20px 24px 72px">
-        <ObservableFrame
-          title="Indication Landscape"
-          cell="visual3Chart"
-          visibleHeight={805}
-          cropTop={20}
-          extraHeight={540}
-        />
-      </Section>
-
-      <style>
-        {`
-          html,
-          body,
-          #root {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            min-height: 100%;
-            background: ${pageBackground};
-          }
-
-          * {
-            box-sizing: border-box;
-          }
-
-          iframe {
-            background: ${pageBackground};
-          }
-
-          @media (max-width: 900px) {
-            section {
-              padding-left: 12px !important;
-              padding-right: 12px !important;
-            }
-          }
-        `}
-      </style>
+        <section
+          style={{
+            width: "100%",
+            maxWidth: "1600px",
+            margin: "0 auto",
+            background: "#f1f0ec",
+            overflow: "visible",
+          }}
+        >
+          <iframe
+            title="Visual 1 Company Landscape"
+            width="100%"
+            height="405"
+            frameBorder="0"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@870?cells=visual1CompanyLandscape&api_key=56b35abcad40d7e4fbaa74604e78458cb605565c"
+            style={{
+              display: "block",
+              width: "100%",
+              border: "0",
+              background: "#f1f0ec",
+              overflow: "hidden",
+            }}
+          />
+        </section>
+      </section>
     </main>
   );
 }
