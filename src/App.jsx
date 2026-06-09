@@ -10,35 +10,18 @@ function App() {
       }}
     >
       <iframe
-        title="Hero Section"
+        title="Hero, Ecosystem Overview, and Company Landscape"
         width="100%"
-        height="836"
+        height="1978"
         frameBorder="0"
-        src="https://observablehq.com/embed/e3028f2577c04f9a@870?cells=heroSection&api_key=56b35abcad40d7e4fbaa74604e78458cb605565c"
+        src="https://observablehq.com/embed/e3028f2577c04f9a@870?cells=heroSection%2Cvisual1EcosystemOverview%2Cvisual1CompanyLandscape&api_key=56b35abcad40d7e4fbaa74604e78458cb605565c"
         style={{
           display: "block",
           width: "100%",
-          height: "836px",
-          border: "0",
-          margin: "0",
-          padding: "0",
-          background: "#f1f0ec",
-        }}
-      />
-
-      <iframe
-        title="Visual 1 Company Landscape"
-        width="100%"
-        height="405"
-        frameBorder="0"
-        src="https://observablehq.com/embed/e3028f2577c04f9a@870?cells=visual1CompanyLandscape&api_key=56b35abcad40d7e4fbaa74604e78458cb605565c"
-        style={{
-          display: "block",
-          width: "100%",
-          height: "405px",
-          border: "0",
-          margin: "0",
-          padding: "0",
+          height: "1978px",
+          border: 0,
+          margin: 0,
+          padding: 0,
           background: "#f1f0ec",
         }}
       />
