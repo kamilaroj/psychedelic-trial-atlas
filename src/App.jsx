@@ -13,7 +13,7 @@ function App() {
       </h1>
 
       <p style={{ marginBottom: "24px", color: "#61656f" }}>
-        If you see this text, the Vercel deployment worked.
+        If you see this text, GitHub and Vercel are updated.
       </p>
 
       <iframe
@@ -25,7 +25,7 @@ function App() {
         style={{
           display: "block",
           width: "100%",
-          border: "0",
+          border: 0,
           background: "#f1f0ec",
         }}
       />
