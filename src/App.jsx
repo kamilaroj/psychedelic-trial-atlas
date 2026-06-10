@@ -33,9 +33,9 @@ function App() {
           <iframe
             title="Company Landscape"
             width="100%"
-            height="636.046875"
+            height="635.96875"
             frameBorder="0"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@934?cells=visual1CompanyLandscapePremium&api_key=77b6bc98497b8c40292d16061d9f5af1e2afe3f4"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@935?cells=visual1CompanyLandscapePremium&api_key=77b6bc98497b8c40292d16061d9f5af1e2afe3f4"
             style={{
               display: "block",
               width: "100%",
