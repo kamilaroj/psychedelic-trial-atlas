@@ -8,43 +8,83 @@ function ObservableFrame({
   scale = 1,
   translateY = "0px",
   maxWidth = "1280px",
-  lazy = false,
 }) {
-  const wrapperRef = useRef(null);
-  const [shouldLoad, setShouldLoad] = useState(!lazy);
-  const [frameKey, setFrameKey] = useState(0);
+  return (
+    <div
+      style={{
+        width: "100%",
+        maxWidth,
+        height: wrapperHeight,
+        overflow: "hidden",
+        background: "#f1f0ec",
+        margin: "0 auto",
+        position: "relative",
+      }}
+    >
+      <iframe
+        title={title}
+        width="100%"
+        height={iframeHeight}
+        frameBorder="0"
+        scrolling="no"
+        src={src}
+        style={{
+          display: "block",
+          width: "100%",
+          height: iframeHeight,
+          border: "0",
+          background: "#f1f0ec",
+          transform: `translateY(${translateY}) scale(${scale})`,
+          transformOrigin: "center top",
+        }}
+      />
+    </div>
+  );
+}
+
+function ScrollTriggeredObservableFrame({
+  title,
+  src,
+  iframeHeight,
+  wrapperHeight,
+  scale = 1,
+  translateY = "0px",
+  maxWidth = "1280px",
+}) {
+  const sectionRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(false);
+  const [srcWithRun, setSrcWithRun] = useState("");
 
   useEffect(() => {
-    if (!lazy) return;
-
-    const element = wrapperRef.current;
+    const element = sectionRef.current;
     if (!element) return;
 
     const observer = new IntersectionObserver(
       entries => {
         const entry = entries[0];
 
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && entry.intersectionRatio >= 0.42) {
+          const separator = src.includes("?") ? "&" : "?";
+          setSrcWithRun(`${src}${separator}run=${Date.now()}`);
           setShouldLoad(true);
-          setFrameKey(prev => prev + 1);
           observer.disconnect();
         }
       },
       {
         root: null,
-        threshold: 0.18,
-        rootMargin: "160px 0px 160px 0px",
+        threshold: [0, 0.25, 0.42, 0.55, 0.75],
+        rootMargin: "-18% 0px -18% 0px",
       }
     );
 
     observer.observe(element);
 
     return () => observer.disconnect();
-  }, [lazy]);
+  }, [src]);
 
   return (
     <div
-      ref={wrapperRef}
+      ref={sectionRef}
       style={{
         width: "100%",
         maxWidth,
@@ -57,13 +97,12 @@ function ObservableFrame({
     >
       {shouldLoad && (
         <iframe
-          key={frameKey}
           title={title}
           width="100%"
           height={iframeHeight}
           frameBorder="0"
           scrolling="no"
-          src={src}
+          src={srcWithRun}
           style={{
             display: "block",
             width: "100%",
@@ -156,9 +195,9 @@ function App() {
           />
         </section>
 
-        {/* COMPANY LANDSCAPE */}
+        {/* COMPANY LANDSCAPE — animation starts only when this section is actually visible */}
         <section style={sectionStyle}>
-          <ObservableFrame
+          <ScrollTriggeredObservableFrame
             title="Company Landscape"
             src={`${notebook}?cells=visual1CompanyLandscapePremium&api_key=${apiKey}`}
             iframeHeight="980px"
@@ -166,7 +205,6 @@ function App() {
             scale={1.14}
             translateY="-35px"
             maxWidth="1260px"
-            lazy={true}
           />
         </section>
       </main>
