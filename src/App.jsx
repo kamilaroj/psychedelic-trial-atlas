@@ -6,7 +6,7 @@ function App() {
         minHeight: "100vh",
         color: "#1d1d1f",
         fontFamily:
-          '"Inter", "Helvetica Neue", Arial, system-ui, sans-serif',
+          'Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
       }}
     >
       <section
@@ -14,33 +14,29 @@ function App() {
           width: "100%",
           minHeight: "100vh",
           display: "flex",
+          alignItems: "center",
           justifyContent: "center",
-          alignItems: "flex-start",
-          padding: "0",
-          margin: "0",
-          background: "#f1f0ec",
+          padding: "64px 24px",
+          boxSizing: "border-box",
         }}
       >
         <div
           style={{
             width: "100%",
-            maxWidth: "1600px",
+            maxWidth: "1180px",
             margin: "0 auto",
-            padding: "0",
           }}
         >
           <iframe
-            title="UNICORN1 Psychedelic Trial Atlas Visual 1"
+            title="Company Landscape"
             width="100%"
-            height="2245.890625"
+            height="636.09375"
             frameBorder="0"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@888?cells=heroSection%2Cvisual1EcosystemOverview%2CcreateVisual1CompanyLandscape%2Cvisual1CompanyLandscapePremium&api_key=4435d20fe2d84784a31c5b7c2aa450150c9773a7"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@933?cells=visual1CompanyLandscapePremium&api_key=77b6bc98497b8c40292d16061d9f5af1e2afe3f4"
             style={{
               display: "block",
               width: "100%",
-              height: "2245.890625px",
               border: "0",
-              margin: "0 auto",
               background: "#f1f0ec",
             }}
           />
