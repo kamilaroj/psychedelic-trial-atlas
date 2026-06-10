@@ -16,30 +16,31 @@ function App() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "24px 24px 40px",
+          padding: "18px 24px 34px",
           boxSizing: "border-box",
+          background: "#f1f0ec",
         }}
       >
         <div
           style={{
             width: "100%",
             maxWidth: "1200px",
-            height: "690px",
+            height: "735px",
             overflow: "hidden",
             background: "#f1f0ec",
-            transform: "translateY(-38px)",
+            transform: "translateY(-42px)",
           }}
         >
           <iframe
             title="Company Landscape"
             width="100%"
-            height="635.96875"
+            height="760"
             frameBorder="0"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@935?cells=visual1CompanyLandscapePremium&api_key=77b6bc98497b8c40292d16061d9f5af1e2afe3f4"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@936?cells=visual1CompanyLandscapePremium&api_key=77b6bc98497b8c40292d16061d9f5af1e2afe3f4"
             style={{
               display: "block",
               width: "100%",
-              height: "740px",
+              height: "760px",
               border: "0",
               background: "#f1f0ec",
               transform: "scale(1.21)",
