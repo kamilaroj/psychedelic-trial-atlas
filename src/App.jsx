@@ -122,12 +122,13 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-function StickyCompanyTransition({ ecosystemRef, companyRef }) {
-  const [styleState, setStyleState] = useState({
+function FallingCompanyTransition({ ecosystemRef, companyRef }) {
+  const [state, setState] = useState({
     opacity: 0,
     y: 0,
+    x: 0,
     scale: 1,
-    blur: 0,
+    rotate: 0,
   });
 
   useEffect(() => {
@@ -143,35 +144,34 @@ function StickyCompanyTransition({ ecosystemRef, companyRef }) {
       const companyRect = company.getBoundingClientRect();
       const viewportH = window.innerHeight;
 
-      const start = viewportH * 0.35;
-      const end = -viewportH * 0.28;
+      const start = viewportH * 0.25;
+      const end = -viewportH * 0.45;
 
       const raw = (ecoRect.bottom - start) / (start - end);
       const p = clamp(1 - raw, 0, 1);
 
       const isActive =
-        ecoRect.bottom < viewportH * 0.95 &&
-        companyRect.top > viewportH * 0.05 &&
+        ecoRect.bottom < viewportH * 1.05 &&
+        companyRect.top > -viewportH * 0.15 &&
         p > 0 &&
         p < 1;
 
       const opacity = isActive
-        ? p < 0.18
-          ? p / 0.18
-          : p > 0.82
-            ? (1 - p) / 0.18
+        ? p < 0.14
+          ? p / 0.14
+          : p > 0.86
+            ? (1 - p) / 0.14
             : 1
         : 0;
 
-      const y = -80 + p * 260;
-      const scale = 1 - p * 0.28;
-      const blur = p > 0.78 ? (p - 0.78) * 10 : 0;
+      const fallCurve = p * p * (3 - 2 * p);
 
-      setStyleState({
+      setState({
         opacity: clamp(opacity, 0, 1),
-        y,
-        scale,
-        blur,
+        y: -220 + fallCurve * 560,
+        x: Math.sin(p * Math.PI) * 26,
+        scale: 1 - p * 0.45,
+        rotate: p * 8,
       });
 
       ticking = false;
@@ -198,13 +198,13 @@ function StickyCompanyTransition({ ecosystemRef, companyRef }) {
     <div
       style={{
         position: "fixed",
-        left: "50%",
+        left: `calc(50% + ${state.x}px)`,
         top: "50%",
         width: "156px",
         height: "156px",
         borderRadius: "50%",
-        transform: `translate(-50%, calc(-50% + ${styleState.y}px)) scale(${styleState.scale})`,
-        opacity: styleState.opacity,
+        transform: `translate(-50%, calc(-50% + ${state.y}px)) scale(${state.scale}) rotate(${state.rotate}deg)`,
+        opacity: state.opacity,
         pointerEvents: "none",
         zIndex: 12,
         background:
@@ -212,7 +212,6 @@ function StickyCompanyTransition({ ecosystemRef, companyRef }) {
         border: "1px solid rgba(255,255,255,0.95)",
         boxShadow:
           "0 24px 70px rgba(29,29,31,0.12), inset 0 1px 0 rgba(255,255,255,0.9)",
-        filter: `blur(${styleState.blur}px)`,
         transition: "opacity 80ms linear",
         display: "flex",
         alignItems: "center",
@@ -296,7 +295,7 @@ function App() {
         }
       `}</style>
 
-      <StickyCompanyTransition
+      <FallingCompanyTransition
         ecosystemRef={ecosystemSectionRef}
         companyRef={companySectionRef}
       />
