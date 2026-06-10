@@ -122,13 +122,21 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 
-function FallingCompanyTransition({ ecosystemRef, companyRef }) {
+const particlePositions = Array.from({ length: 28 }, (_, i) => {
+  const angle = i * 2.399963;
+  const ring = i < 9 ? 68 : i < 19 ? 118 : 168;
+
+  return {
+    x: Math.cos(angle) * ring + Math.sin(i * 1.7) * 12,
+    y: Math.sin(angle) * ring * 0.62 + Math.cos(i * 1.3) * 9,
+    size: i % 5 === 0 ? 22 : i % 3 === 0 ? 17 : 13,
+  };
+});
+
+function MorphCompanyTransition({ ecosystemRef, companyRef }) {
   const [state, setState] = useState({
     opacity: 0,
-    y: 0,
-    x: 0,
-    scale: 1,
-    rotate: 0,
+    p: 0,
   });
 
   useEffect(() => {
@@ -144,34 +152,29 @@ function FallingCompanyTransition({ ecosystemRef, companyRef }) {
       const companyRect = company.getBoundingClientRect();
       const viewportH = window.innerHeight;
 
-      const start = viewportH * 0.25;
-      const end = -viewportH * 0.45;
+      const start = viewportH * 0.3;
+      const end = -viewportH * 0.36;
 
       const raw = (ecoRect.bottom - start) / (start - end);
       const p = clamp(1 - raw, 0, 1);
 
       const isActive =
         ecoRect.bottom < viewportH * 1.05 &&
-        companyRect.top > -viewportH * 0.15 &&
+        companyRect.top > -viewportH * 0.1 &&
         p > 0 &&
         p < 1;
 
       const opacity = isActive
-        ? p < 0.14
-          ? p / 0.14
-          : p > 0.86
-            ? (1 - p) / 0.14
+        ? p < 0.12
+          ? p / 0.12
+          : p > 0.9
+            ? (1 - p) / 0.1
             : 1
         : 0;
 
-      const fallCurve = p * p * (3 - 2 * p);
-
       setState({
         opacity: clamp(opacity, 0, 1),
-        y: -220 + fallCurve * 560,
-        x: Math.sin(p * Math.PI) * 26,
-        scale: 1 - p * 0.45,
-        rotate: p * 8,
+        p,
       });
 
       ticking = false;
@@ -194,58 +197,101 @@ function FallingCompanyTransition({ ecosystemRef, companyRef }) {
     };
   }, [ecosystemRef, companyRef]);
 
+  const p = state.p;
+  const mainOpacity = state.opacity * clamp(1 - p * 1.35, 0, 1);
+  const particleOpacity =
+    state.opacity * (p < 0.22 ? 0 : p > 0.86 ? (1 - p) / 0.14 : 1);
+  const mainScale = 1 + p * 1.15;
+  const mainBlur = p * 5;
+
   return (
     <div
       style={{
         position: "fixed",
-        left: `calc(50% + ${state.x}px)`,
+        left: "50%",
         top: "50%",
-        width: "156px",
-        height: "156px",
-        borderRadius: "50%",
-        transform: `translate(-50%, calc(-50% + ${state.y}px)) scale(${state.scale}) rotate(${state.rotate}deg)`,
-        opacity: state.opacity,
+        width: "420px",
+        height: "300px",
+        transform: "translate(-50%, -50%)",
         pointerEvents: "none",
         zIndex: 12,
-        background:
-          "radial-gradient(circle at 36% 28%, rgba(255,255,255,1), rgba(244,242,236,0.98) 48%, rgba(217,214,204,0.92) 100%)",
-        border: "1px solid rgba(255,255,255,0.95)",
-        boxShadow:
-          "0 24px 70px rgba(29,29,31,0.12), inset 0 1px 0 rgba(255,255,255,0.9)",
-        transition: "opacity 80ms linear",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        flexDirection: "column",
+        opacity: state.opacity,
       }}
     >
       <div
         style={{
-          fontSize: "44px",
-          lineHeight: 1,
-          fontWeight: 850,
-          letterSpacing: "-0.06em",
-          color: "#1d1d1f",
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          width: "156px",
+          height: "156px",
+          borderRadius: "50%",
+          transform: `translate(-50%, -50%) scale(${mainScale})`,
+          opacity: mainOpacity,
+          background:
+            "radial-gradient(circle at 36% 28%, rgba(255,255,255,1), rgba(244,242,236,0.98) 48%, rgba(217,214,204,0.92) 100%)",
+          border: "1px solid rgba(255,255,255,0.95)",
+          boxShadow:
+            "0 24px 70px rgba(29,29,31,0.12), inset 0 1px 0 rgba(255,255,255,0.9)",
+          filter: `blur(${mainBlur}px)`,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          flexDirection: "column",
         }}
       >
-        80
+        <div
+          style={{
+            fontSize: "44px",
+            lineHeight: 1,
+            fontWeight: 850,
+            letterSpacing: "-0.06em",
+            color: "#1d1d1f",
+          }}
+        >
+          80
+        </div>
+        <div
+          style={{
+            marginTop: "10px",
+            fontSize: "10px",
+            lineHeight: 1.12,
+            fontWeight: 800,
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            color: "#61656f",
+            textAlign: "center",
+          }}
+        >
+          Companies &
+          <br />
+          Developers
+        </div>
       </div>
-      <div
-        style={{
-          marginTop: "10px",
-          fontSize: "10px",
-          lineHeight: 1.12,
-          fontWeight: 800,
-          letterSpacing: "0.08em",
-          textTransform: "uppercase",
-          color: "#61656f",
-          textAlign: "center",
-        }}
-      >
-        Companies &
-        <br />
-        Developers
-      </div>
+
+      {particlePositions.map((dot, i) => {
+        const spread = clamp((p - 0.2) / 0.65, 0, 1);
+        const ease = spread * spread * (3 - 2 * spread);
+
+        return (
+          <div
+            key={i}
+            style={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              width: `${dot.size}px`,
+              height: `${dot.size}px`,
+              borderRadius: "50%",
+              transform: `translate(calc(-50% + ${dot.x * ease}px), calc(-50% + ${dot.y * ease}px)) scale(${0.35 + ease * 0.9})`,
+              opacity: particleOpacity * ease,
+              background: "rgba(255,255,255,0.96)",
+              border: "1px solid rgba(217,215,207,0.75)",
+              boxShadow: "0 10px 28px rgba(29,29,31,0.09)",
+            }}
+          />
+        );
+      })}
     </div>
   );
 }
@@ -295,7 +341,7 @@ function App() {
         }
       `}</style>
 
-      <FallingCompanyTransition
+      <MorphCompanyTransition
         ecosystemRef={ecosystemSectionRef}
         companyRef={companySectionRef}
       />
