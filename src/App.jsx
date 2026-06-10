@@ -16,18 +16,18 @@ function App() {
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
-          padding: "32px 24px 40px",
+          padding: "24px 24px 40px",
           boxSizing: "border-box",
         }}
       >
         <div
           style={{
             width: "100%",
-            maxWidth: "1160px",
-            height: "670px",
+            maxWidth: "1200px",
+            height: "690px",
             overflow: "hidden",
             background: "#f1f0ec",
-            transform: "translateY(-18px)",
+            transform: "translateY(-38px)",
           }}
         >
           <iframe
@@ -39,10 +39,10 @@ function App() {
             style={{
               display: "block",
               width: "100%",
-              height: "720px",
+              height: "740px",
               border: "0",
               background: "#f1f0ec",
-              transform: "scale(1.16)",
+              transform: "scale(1.21)",
               transformOrigin: "center top",
             }}
           />
