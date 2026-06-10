@@ -1,3 +1,5 @@
+import { useEffect, useRef, useState } from "react";
+
 function ObservableFrame({
   title,
   src,
@@ -6,9 +8,43 @@ function ObservableFrame({
   scale = 1,
   translateY = "0px",
   maxWidth = "1280px",
+  lazy = false,
 }) {
+  const wrapperRef = useRef(null);
+  const [shouldLoad, setShouldLoad] = useState(!lazy);
+  const [frameKey, setFrameKey] = useState(0);
+
+  useEffect(() => {
+    if (!lazy) return;
+
+    const element = wrapperRef.current;
+    if (!element) return;
+
+    const observer = new IntersectionObserver(
+      entries => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting) {
+          setShouldLoad(true);
+          setFrameKey(prev => prev + 1);
+          observer.disconnect();
+        }
+      },
+      {
+        root: null,
+        threshold: 0.18,
+        rootMargin: "160px 0px 160px 0px",
+      }
+    );
+
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [lazy]);
+
   return (
     <div
+      ref={wrapperRef}
       style={{
         width: "100%",
         maxWidth,
@@ -19,23 +55,26 @@ function ObservableFrame({
         position: "relative",
       }}
     >
-      <iframe
-        title={title}
-        width="100%"
-        height={iframeHeight}
-        frameBorder="0"
-        scrolling="no"
-        src={src}
-        style={{
-          display: "block",
-          width: "100%",
-          height: iframeHeight,
-          border: "0",
-          background: "#f1f0ec",
-          transform: `translateY(${translateY}) scale(${scale})`,
-          transformOrigin: "center top",
-        }}
-      />
+      {shouldLoad && (
+        <iframe
+          key={frameKey}
+          title={title}
+          width="100%"
+          height={iframeHeight}
+          frameBorder="0"
+          scrolling="no"
+          src={src}
+          style={{
+            display: "block",
+            width: "100%",
+            height: iframeHeight,
+            border: "0",
+            background: "#f1f0ec",
+            transform: `translateY(${translateY}) scale(${scale})`,
+            transformOrigin: "center top",
+          }}
+        />
+      )}
     </div>
   );
 }
@@ -127,6 +166,7 @@ function App() {
             scale={1.14}
             translateY="-35px"
             maxWidth="1260px"
+            lazy={true}
           />
         </section>
       </main>
