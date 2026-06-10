@@ -31,7 +31,7 @@ function App() {
             height: "900px",
             overflow: "hidden",
             background: "#f1f0ec",
-            transform: "translateY(-58px)",
+            transform: "translateY(-35px)",
           }}
         >
           <iframe
@@ -39,14 +39,14 @@ function App() {
             width="100%"
             height="980"
             frameBorder="0"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@946?cells=visual1CompanyLandscapePremium&api_key=a8002f8c0dbb441abb6abf8c5201b5059cd78991"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@947?cells=visual1CompanyLandscapePremium&api_key=a8002f8c0dbb441abb6abf8c5201b5059cd78991"
             style={{
               display: "block",
               width: "100%",
               height: "980px",
               border: "0",
               background: "#f1f0ec",
-              transform: "scale(1.1)",
+              transform: "scale(1.14)",
               transformOrigin: "center top",
             }}
           />
