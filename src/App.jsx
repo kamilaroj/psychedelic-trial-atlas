@@ -41,8 +41,8 @@ function ObservableFrame({
 }
 
 function App() {
-  const apiKey = "a8002f8c0dbb441abb6abf8c5201b5059cd78991";
-  const notebook = "https://observablehq.com/embed/e3028f2577c04f9a@951";
+  const apiKey = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
+  const notebook = "https://observablehq.com/embed/e3028f2577c04f9a@1000";
 
   const sectionStyle = {
     minHeight: "100vh",
@@ -97,7 +97,7 @@ function App() {
           <ObservableFrame
             title="Psychedelic Trial Atlas Hero"
             src={`${notebook}?cells=heroSection&api_key=${apiKey}`}
-            iframeHeight="900px"
+            iframeHeight="836px"
             wrapperHeight="760px"
             scale={1}
             translateY="-18px"
@@ -105,16 +105,29 @@ function App() {
           />
         </section>
 
-        {/* COMPANY LANDSCAPE — STATIC, WITHOUT FALLING COMPANY-COUNT TRANSITION */}
+        {/* VISUAL 1A — ECOSYSTEM OVERVIEW */}
         <section style={sectionStyle}>
           <ObservableFrame
-            title="Company Landscape"
-            src={`${notebook}?cells=visual1CompanyLandscapePremium&api_key=${apiKey}`}
-            iframeHeight="920px"
-            wrapperHeight="820px"
-            scale={1.08}
-            translateY="-30px"
-            maxWidth="1260px"
+            title="The Psychedelic Ecosystem Overview"
+            src={`${notebook}?cells=visual1EcosystemOverview&api_key=${apiKey}`}
+            iframeHeight="796px"
+            wrapperHeight="760px"
+            scale={1.02}
+            translateY="-18px"
+            maxWidth="1280px"
+          />
+        </section>
+
+        {/* VISUAL 1B — COMPANY LANDSCAPE TRANSITION */}
+        <section style={sectionStyle}>
+          <ObservableFrame
+            title="Psychedelic Ecosystem to Company Landscape"
+            src={`${notebook}?cells=visual1EcosystemToCompanyTransition&api_key=${apiKey}`}
+            iframeHeight="796px"
+            wrapperHeight="760px"
+            scale={1.02}
+            translateY="-18px"
+            maxWidth="1280px"
           />
         </section>
       </main>
