@@ -5,19 +5,19 @@ export default function App() {
     <main className="site">
       <section className="hero-section">
         <div className="hero-content">
-          <p className="hero-kicker">UNICORN1</p>
-
           <h1>Psychedelic Trial Atlas</h1>
 
           <p className="hero-subtitle">
-            A visual intelligence project mapping visible clinical-trial and
-            pipeline activity across psychedelic medicine.
+            A visual data project mapping registered clinical-trial activity and visible pipeline context
+            <br />
+            across psychedelic and psychedelic-adjacent medicines.
           </p>
-
-          <a className="hero-arrow" href="#journey" aria-label="Scroll to journey">
-            ↓
-          </a>
         </div>
+
+        <a className="journey-cue" href="#journey" aria-label="Start your journey">
+          <span className="journey-label">Start your journey</span>
+          <span className="journey-arrow" />
+        </a>
       </section>
 
       <section id="journey" className="visual-section">
