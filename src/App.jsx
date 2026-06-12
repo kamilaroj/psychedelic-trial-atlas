@@ -3,37 +3,11 @@ import { useRef, useEffect, useState } from "react";
 const OBSERVABLE_API_KEY = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
 const NOTEBOOK = "e3028f2577c04f9a@1010";
 
-const FOOTER_CROP = 64;
-
 const frames = [
-  {
-    key: "hero",
-    title: "Psychedelic Trial Atlas — Hero",
-    cell: "heroSection",
-    iframeHeight: 836,
-    visibleHeight: 772,
-  },
-  {
-    key: "visual1a",
-    title: "Psychedelic Trial Atlas — Ecosystem Overview",
-    cell: "visual1EcosystemOverview",
-    iframeHeight: 796,
-    visibleHeight: 732,
-  },
-  {
-    key: "visual1b",
-    title: "Psychedelic Trial Atlas — Company Landscape",
-    cell: "visual1EcosystemToCompanyTransition",
-    iframeHeight: 796,
-    visibleHeight: 732,
-  },
-  {
-    key: "visual2intro",
-    title: "Psychedelic Trial Atlas — Visual 2 Intro",
-    cell: "visual2IntroTransition",
-    iframeHeight: 747,
-    visibleHeight: 683,
-  },
+  { key: "hero", title: "Hero", cell: "heroSection", iframeHeight: 836, visibleHeight: 720 },
+  { key: "visual1a", title: "Ecosystem Overview", cell: "visual1EcosystemOverview", iframeHeight: 796, visibleHeight: 732 },
+  { key: "visual1b", title: "Company Landscape", cell: "visual1EcosystemToCompanyTransition", iframeHeight: 796, visibleHeight: 732 },
+  { key: "visual2intro", title: "Visual 2 Intro", cell: "visual2IntroTransition", iframeHeight: 747, visibleHeight: 683 },
 ];
 
 function src(cell) {
@@ -48,16 +22,9 @@ function ProgressBar() {
 
     function update() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollable =
-        document.documentElement.scrollHeight - window.innerHeight;
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
       const progress = scrollable > 0 ? scrollTop / scrollable : 0;
-
-      if (ref.current) {
-        ref.current.style.transform = `scaleX(${Math.max(
-          0,
-          Math.min(1, progress)
-        )})`;
-      }
+      if (ref.current) ref.current.style.transform = `scaleX(${Math.max(0, Math.min(1, progress))})`;
     }
 
     function onScroll() {
@@ -90,13 +57,10 @@ function ObservableFrame({ frame, targetRef, isHero = false }) {
   const [ready, setReady] = useState(false);
 
   return (
-    <section
-      className={isHero ? "hero-shell" : "frame-section"}
-      ref={targetRef}
-    >
+    <section className={isHero ? "hero-shell" : "frame-section"} ref={targetRef}>
       <div
         className={isHero ? "hero-crop" : "frame-crop"}
-        style={{ height: isHero ? "100vh" : frame.visibleHeight }}
+        style={{ height: frame.visibleHeight }}
       >
         <div className={`frame-mask ${ready ? "is-hidden" : ""}`} />
 
@@ -109,9 +73,7 @@ function ObservableFrame({ frame, targetRef, isHero = false }) {
           scrolling="no"
           className={`observable-frame ${ready ? "is-ready" : ""}`}
           onLoad={() => setTimeout(() => setReady(true), 160)}
-          style={{
-            height: `${frame.iframeHeight}px`,
-          }}
+          style={{ height: `${frame.iframeHeight}px` }}
         />
       </div>
 
@@ -120,11 +82,11 @@ function ObservableFrame({ frame, targetRef, isHero = false }) {
           type="button"
           className="journey-arrow-button"
           onClick={() =>
-            document
-              .querySelector("#visual1a")
-              ?.scrollIntoView({ behavior: "smooth", block: "start" })
+            document.querySelector("#visual1a")?.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            })
           }
-          aria-label="Start your journey"
         >
           <span className="journey-arrow-label">START YOUR JOURNEY</span>
           <span className="journey-arrow">
@@ -143,9 +105,7 @@ function App() {
   return (
     <>
       <style>{`
-        html,
-        body,
-        #root {
+        html, body, #root {
           margin: 0;
           width: 100%;
           min-height: 100%;
@@ -153,9 +113,7 @@ function App() {
           scroll-behavior: smooth;
         }
 
-        * {
-          box-sizing: border-box;
-        }
+        * { box-sizing: border-box; }
 
         body {
           overflow-x: hidden;
@@ -167,13 +125,7 @@ function App() {
           min-height: 100vh;
           background: #f1f0ec;
           color: #1d1d1f;
-          font-family:
-            Inter,
-            system-ui,
-            -apple-system,
-            BlinkMacSystemFont,
-            "Segoe UI",
-            sans-serif;
+          font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
           overflow-x: hidden;
         }
 
@@ -208,9 +160,11 @@ function App() {
           align-items: center;
         }
 
-        .hero-crop {
+        .hero-crop,
+        .frame-crop {
           width: 100%;
           max-width: 1320px;
+          margin: 0 auto;
           overflow: hidden;
           background: #f1f0ec;
           position: relative;
@@ -227,15 +181,6 @@ function App() {
           margin: 0;
         }
 
-        .frame-crop {
-          width: 100%;
-          max-width: 1320px;
-          margin: 0 auto;
-          background: #f1f0ec;
-          overflow: hidden;
-          position: relative;
-        }
-
         .observable-frame {
           display: block;
           width: 100%;
@@ -243,9 +188,7 @@ function App() {
           background: #f1f0ec;
           opacity: 0;
           transform: translateY(4px);
-          transition:
-            opacity 320ms ease,
-            transform 320ms ease;
+          transition: opacity 320ms ease, transform 320ms ease;
         }
 
         .observable-frame.is-ready {
@@ -258,9 +201,7 @@ function App() {
           inset: 0;
           z-index: 2;
           background: #f1f0ec;
-          transition:
-            opacity 240ms ease,
-            visibility 240ms ease;
+          transition: opacity 240ms ease, visibility 240ms ease;
         }
 
         .frame-mask.is-hidden {
@@ -272,7 +213,7 @@ function App() {
         .journey-arrow-button {
           position: absolute;
           left: 50%;
-          bottom: 92px;
+          bottom: 72px;
           transform: translateX(-50%);
           z-index: 8;
           border: 0;
@@ -326,69 +267,21 @@ function App() {
         }
 
         @keyframes arrowFloat {
-          0% {
-            transform: translateY(0);
-            opacity: 0.62;
-          }
-
-          42% {
-            transform: translateY(12px);
-            opacity: 1;
-          }
-
-          100% {
-            transform: translateY(0);
-            opacity: 0.62;
-          }
+          0% { transform: translateY(0); opacity: 0.62; }
+          42% { transform: translateY(12px); opacity: 1; }
+          100% { transform: translateY(0); opacity: 0.62; }
         }
 
         @keyframes arrowStem {
-          0% {
-            height: 18px;
-            opacity: 0.2;
-          }
-
-          42% {
-            height: 34px;
-            opacity: 0.68;
-          }
-
-          100% {
-            height: 18px;
-            opacity: 0.2;
-          }
+          0% { height: 18px; opacity: 0.2; }
+          42% { height: 34px; opacity: 0.68; }
+          100% { height: 18px; opacity: 0.2; }
         }
 
         @keyframes arrowHead {
-          0% {
-            bottom: 18px;
-            opacity: 0.14;
-          }
-
-          42% {
-            bottom: 5px;
-            opacity: 0.72;
-          }
-
-          100% {
-            bottom: 18px;
-            opacity: 0.14;
-          }
-        }
-
-        @media (max-width: 900px) {
-          .hero-shell {
-            min-height: 720px;
-          }
-
-          .journey-arrow-button {
-            bottom: 70px;
-          }
-
-          .frame-crop,
-          .hero-crop {
-            max-width: 100%;
-          }
+          0% { bottom: 18px; opacity: 0.14; }
+          42% { bottom: 5px; opacity: 0.72; }
+          100% { bottom: 18px; opacity: 0.14; }
         }
       `}</style>
 
