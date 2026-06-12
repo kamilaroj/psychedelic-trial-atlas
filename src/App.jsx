@@ -1,98 +1,42 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 
 const OBSERVABLE_API_KEY = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
 const NOTEBOOK = "e3028f2577c04f9a@1010";
+
 const OBSERVABLE_FOOTER_CROP = 42;
 
-const frames = {
-  visual1a: {
+const frames = [
+  {
+    id: "hero",
+    title: "Psychedelic Trial Atlas — Hero",
+    cell: "heroSection",
+    iframeHeight: 862,
+    type: "hero",
+  },
+  {
+    id: "visual1a",
     title: "Psychedelic Trial Atlas — Ecosystem Overview",
     cell: "visual1EcosystemOverview",
     iframeHeight: 842,
+    type: "visual",
   },
-  visual1b: {
+  {
+    id: "visual1b",
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
     iframeHeight: 870,
+    type: "visual",
   },
-  visual2intro: {
+  {
+    id: "visual2intro",
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
     iframeHeight: 980,
+    type: "visual",
   },
-};
+];
 
-function clamp(value, min = 0, max = 1) {
-  return Math.max(min, Math.min(max, value));
-}
-
-function usePageScrollProgress() {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    function update() {
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const scrollHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-
-      setProgress(scrollHeight > 0 ? clamp(scrollTop / scrollHeight) : 0);
-    }
-
-    update();
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, []);
-
-  return progress;
-}
-
-function useElementScrollProgress(ref) {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    function update() {
-      if (!ref.current) return;
-
-      const section = ref.current;
-      const rect = section.getBoundingClientRect();
-      const total = section.offsetHeight - window.innerHeight;
-      const current = -rect.top;
-
-      setProgress(total > 0 ? clamp(current / total) : 0);
-    }
-
-    update();
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, [ref]);
-
-  return progress;
-}
-
-function ScrollProgressBar({ progress }) {
-  return (
-    <div className="scroll-progress-track" aria-hidden="true">
-      <div
-        className="scroll-progress-line"
-        style={{ transform: `scaleX(${progress})` }}
-      />
-    </div>
-  );
-}
-
-function HeroAmbient({ progress }) {
+function HeroAmbient() {
   const circles = [
     { x: "13%", y: "18%", s: 108, d: "0s" },
     { x: "22%", y: "64%", s: 66, d: "1.2s" },
@@ -103,14 +47,7 @@ function HeroAmbient({ progress }) {
   ];
 
   return (
-    <div
-      className="hero-ambient"
-      aria-hidden="true"
-      style={{
-        opacity: 0.42 - progress * 0.16,
-        transform: `translateY(${-progress * 32}px)`,
-      }}
-    >
+    <div className="hero-ambient" aria-hidden="true">
       {circles.map((circle, index) => (
         <span
           key={index}
@@ -128,120 +65,53 @@ function HeroAmbient({ progress }) {
   );
 }
 
-function ObservableEmbed({
-  title,
-  cell,
-  iframeHeight,
-  className = "",
-  quiet = true,
-}) {
-  const [ready, setReady] = useState(false);
+function ObservableFrame({ title, cell, iframeHeight, type }) {
+  const [ready, setReady] = useState(type === "hero");
 
   const visibleHeight = iframeHeight - OBSERVABLE_FOOTER_CROP;
   const src = `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
 
   function handleLoad() {
+    if (type === "hero") {
+      setReady(true);
+      return;
+    }
+
     window.setTimeout(() => {
       setReady(true);
-    }, quiet ? 260 : 500);
+    }, 320);
   }
 
   return (
-    <div
-      className={`atlas-frame-outer ${className}`}
-      style={{ height: visibleHeight }}
-    >
-      <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
-        <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`} />
+    <section className={`atlas-frame-section atlas-frame-section-${type}`}>
+      <div
+        className={`atlas-frame-outer atlas-frame-outer-${type}`}
+        style={{ height: visibleHeight }}
+      >
+        {type === "hero" && <HeroAmbient />}
 
-        <iframe
-          className={`atlas-frame ${ready ? "is-ready" : ""}`}
-          title={title}
-          width="100%"
-          height={iframeHeight}
-          frameBorder="0"
-          scrolling="no"
-          src={src}
-          onLoad={handleLoad}
-          style={{
-            height: `${iframeHeight}px`,
-          }}
-        />
-      </div>
-    </div>
-  );
-}
+        <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
+          {type !== "hero" && (
+            <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`} />
+          )}
 
-function HeroHandoff() {
-  const sectionRef = useRef(null);
-  const progress = useElementScrollProgress(sectionRef);
-
-  const heroOpacity = clamp(1 - progress * 1.55);
-  const heroTranslate = -progress * 135;
-  const heroScale = 1 - progress * 0.055;
-
-  const visualProgress = clamp((progress - 0.08) / 0.78);
-  const visualOpacity = clamp((progress - 0.06) / 0.36);
-  const visualTranslate = (1 - visualProgress) * 58;
-  const visualScale = 0.955 + visualProgress * 0.045;
-
-  return (
-    <section className="hero-handoff-section" ref={sectionRef}>
-      <div className="hero-sticky-scene">
-        <HeroAmbient progress={progress} />
-
-        <div
-          className="hero-visual-reveal"
-          style={{
-            opacity: visualOpacity,
-            transform: `translate3d(0, ${visualTranslate}vh, 0) scale(${visualScale})`,
-          }}
-        >
-          <ObservableEmbed
-            {...frames.visual1a}
-            className="atlas-frame-outer-handoff"
-            quiet
+          <iframe
+            className={`atlas-frame atlas-frame-${type} ${
+              ready ? "is-ready" : ""
+            }`}
+            title={title}
+            width="100%"
+            height={iframeHeight}
+            frameBorder="0"
+            scrolling="no"
+            src={src}
+            onLoad={handleLoad}
+            style={{
+              height: `${iframeHeight}px`,
+            }}
           />
         </div>
-
-        <div
-          className="hero-card-wrap"
-          style={{
-            opacity: heroOpacity,
-            transform: `translate3d(0, ${heroTranslate}px, 0) scale(${heroScale})`,
-            pointerEvents: heroOpacity < 0.08 ? "none" : "auto",
-          }}
-        >
-          <div className="hero-card">
-            <div className="hero-kicker">UNICORN1</div>
-
-            <h1>Psychedelic Trial Atlas</h1>
-
-            <p>
-              Mapping visible clinical-trial and pipeline activity across
-              psychedelic and psychedelic-adjacent medicine.
-            </p>
-
-            <div className="hero-method-note">
-              Public trial records and selected pipeline context — separated,
-              not collapsed.
-            </div>
-
-            <div className="hero-scroll-cue">
-              <span />
-              Scroll to enter the atlas
-            </div>
-          </div>
-        </div>
       </div>
-    </section>
-  );
-}
-
-function NormalObservableSection({ frame }) {
-  return (
-    <section className="atlas-frame-section">
-      <ObservableEmbed {...frame} quiet />
     </section>
   );
 }
@@ -262,8 +132,6 @@ function BridgeCard() {
 }
 
 function App() {
-  const pageProgress = usePageScrollProgress();
-
   return (
     <>
       <style>{`
@@ -300,53 +168,87 @@ function App() {
           overflow-x: hidden;
         }
 
-        .scroll-progress-track {
-          position: fixed;
-          top: 0;
-          left: 0;
+        .atlas-frame-section {
           width: 100%;
-          height: 3px;
-          z-index: 9999;
-          background: rgba(29,29,31,0.045);
-          pointer-events: none;
-        }
-
-        .scroll-progress-line {
-          width: 100%;
-          height: 100%;
-          transform-origin: left center;
-          background: rgba(97,101,111,0.74);
-          box-shadow: 0 0 18px rgba(97,101,111,0.16);
-          transition: transform 80ms linear;
-        }
-
-        .hero-handoff-section {
-          position: relative;
-          height: 178vh;
-          background: #f1f0ec;
-        }
-
-        .hero-sticky-scene {
-          position: sticky;
-          top: 0;
-          width: 100%;
-          height: 100vh;
-          overflow: hidden;
           background: #f1f0ec;
           display: flex;
-          align-items: center;
           justify-content: center;
+          align-items: flex-start;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .atlas-frame-section-hero {
+          min-height: 800px;
+        }
+
+        .atlas-frame-section-visual {
+          margin-top: -10px;
+        }
+
+        .atlas-frame-outer {
+          width: 100%;
+          max-width: 1320px;
+          margin: 0 auto;
+          background: #f1f0ec;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .atlas-frame-crop {
+          width: 100%;
+          background: #f1f0ec;
+          position: relative;
+          overflow: hidden;
+          z-index: 2;
+        }
+
+        .atlas-frame {
+          width: 100%;
+          border: 0;
+          display: block;
+          background: #f1f0ec;
+          opacity: 0;
+          transform: translateY(4px);
+          transition:
+            opacity 620ms ease,
+            transform 620ms ease;
+        }
+
+        .atlas-frame-hero {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .atlas-frame.is-ready {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .atlas-frame-mask {
+          position: absolute;
+          inset: 0;
+          z-index: 5;
+          background: #f1f0ec;
+          transition:
+            opacity 520ms ease,
+            visibility 520ms ease;
+        }
+
+        .atlas-frame-mask.is-hidden {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
         }
 
         .hero-ambient {
           position: absolute;
           inset: 0;
-          z-index: 1;
+          z-index: 3;
           pointer-events: none;
           overflow: hidden;
-          transition:
-            opacity 80ms linear,
-            transform 80ms linear;
+          opacity: 0.42;
         }
 
         .hero-ambient-circle {
@@ -383,183 +285,6 @@ function App() {
             transform: translate(-50%, -50%) translate3d(4px, 7px, 0) scale(1);
             opacity: 0.28;
           }
-        }
-
-        .hero-card-wrap {
-          position: relative;
-          z-index: 4;
-          width: min(680px, calc(100vw - 42px));
-          transition:
-            opacity 70ms linear,
-            transform 70ms linear;
-          will-change: transform, opacity;
-        }
-
-        .hero-card {
-          width: 100%;
-          background: rgba(255,255,255,0.76);
-          border: 1px solid rgba(29,29,31,0.075);
-          border-radius: 30px;
-          box-shadow: 0 28px 90px rgba(29,29,31,0.08);
-          padding: 54px 58px 42px;
-          text-align: center;
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-        }
-
-        .hero-kicker {
-          font-size: 10px;
-          font-weight: 840;
-          letter-spacing: 0.13em;
-          text-transform: uppercase;
-          color: #8c9098;
-          margin-bottom: 18px;
-        }
-
-        .hero-card h1 {
-          margin: 0 auto 18px;
-          font-size: clamp(42px, 6vw, 74px);
-          line-height: 0.93;
-          letter-spacing: -0.085em;
-          font-weight: 900;
-          color: #1d1d1f;
-          max-width: 560px;
-        }
-
-        .hero-card p {
-          margin: 0 auto;
-          max-width: 500px;
-          font-size: 15px;
-          line-height: 1.52;
-          color: #61656f;
-          font-weight: 500;
-        }
-
-        .hero-method-note {
-          width: fit-content;
-          max-width: 100%;
-          margin: 24px auto 0;
-          padding: 9px 13px;
-          border-radius: 999px;
-          background: rgba(241,240,236,0.82);
-          border: 1px solid rgba(29,29,31,0.06);
-          color: #61656f;
-          font-size: 11px;
-          line-height: 1.3;
-          font-weight: 650;
-        }
-
-        .hero-scroll-cue {
-          margin-top: 30px;
-          display: inline-flex;
-          align-items: center;
-          gap: 9px;
-          color: #8c9098;
-          font-size: 10px;
-          font-weight: 760;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-        }
-
-        .hero-scroll-cue span {
-          width: 6px;
-          height: 6px;
-          border-radius: 999px;
-          background: #8c9098;
-          opacity: 0.55;
-          animation: cuePulse 1.4s ease-in-out infinite;
-        }
-
-        @keyframes cuePulse {
-          0%, 100% {
-            transform: scale(0.85);
-            opacity: 0.35;
-          }
-
-          50% {
-            transform: scale(1.2);
-            opacity: 0.72;
-          }
-        }
-
-        .hero-visual-reveal {
-          position: absolute;
-          inset: 0;
-          z-index: 2;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          pointer-events: auto;
-          will-change: transform, opacity;
-          transition:
-            transform 70ms linear,
-            opacity 70ms linear;
-        }
-
-        .atlas-frame-section {
-          width: 100%;
-          background: #f1f0ec;
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          overflow: hidden;
-          position: relative;
-          margin-top: -8px;
-        }
-
-        .atlas-frame-outer {
-          width: 100%;
-          max-width: 1320px;
-          margin: 0 auto;
-          background: #f1f0ec;
-          position: relative;
-          overflow: hidden;
-        }
-
-        .atlas-frame-outer-handoff {
-          max-width: 1320px;
-          box-shadow: none;
-        }
-
-        .atlas-frame-crop {
-          width: 100%;
-          background: #f1f0ec;
-          position: relative;
-          overflow: hidden;
-          z-index: 2;
-        }
-
-        .atlas-frame {
-          width: 100%;
-          border: 0;
-          display: block;
-          background: #f1f0ec;
-          opacity: 0;
-          transform: translateY(4px);
-          transition:
-            opacity 520ms ease,
-            transform 520ms ease;
-        }
-
-        .atlas-frame.is-ready {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .atlas-frame-mask {
-          position: absolute;
-          inset: 0;
-          z-index: 5;
-          background: #f1f0ec;
-          transition:
-            opacity 420ms ease,
-            visibility 420ms ease;
-        }
-
-        .atlas-frame-mask.is-hidden {
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
         }
 
         .atlas-bridge-section {
@@ -617,29 +342,16 @@ function App() {
         }
 
         @media (max-width: 900px) {
-          .hero-handoff-section {
-            height: 172vh;
-          }
-
-          .hero-card {
-            padding: 42px 28px 34px;
-            border-radius: 26px;
-          }
-
-          .hero-card h1 {
-            font-size: clamp(38px, 12vw, 54px);
-          }
-
-          .hero-card p {
-            font-size: 13.5px;
-          }
-
-          .hero-method-note {
-            font-size: 10.5px;
-          }
-
           .atlas-frame-outer {
             max-width: 100%;
+          }
+
+          .atlas-frame-section-hero {
+            min-height: 770px;
+          }
+
+          .hero-ambient {
+            opacity: 0.32;
           }
 
           .atlas-bridge-section {
@@ -665,15 +377,11 @@ function App() {
       `}</style>
 
       <main className="atlas-page">
-        <ScrollProgressBar progress={pageProgress} />
-
-        <HeroHandoff />
-
+        <ObservableFrame {...frames[0]} />
+        <ObservableFrame {...frames[1]} />
         <BridgeCard />
-
-        <NormalObservableSection frame={frames.visual1b} />
-
-        <NormalObservableSection frame={frames.visual2intro} />
+        <ObservableFrame {...frames[2]} />
+        <ObservableFrame {...frames[3]} />
       </main>
     </>
   );
