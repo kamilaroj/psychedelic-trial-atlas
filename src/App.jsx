@@ -1,3 +1,6 @@
+Use the version with your API key:
+
+```jsx
 function App() {
   return (
     <>
@@ -53,7 +56,7 @@ function App() {
             height="1595.671875"
             frameBorder="0"
             scrolling="no"
-            src="https://observablehq.com/embed/e3028f2577c04f9a@1012?cells=heroAndVisual1A"
+            src="https://observablehq.com/embed/e3028f2577c04f9a@1012?cells=heroAndVisual1A&api_key=b445e0c80939463973325d8fd7fc9ac162f1f7ea"
           />
         </div>
       </main>
@@ -62,3 +65,4 @@ function App() {
 }
 
 export default App;
+```
