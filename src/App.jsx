@@ -7,32 +7,24 @@ const OBSERVABLE_FOOTER_CROP = 42;
 
 const frames = {
   hero: {
-    id: "hero",
     title: "Psychedelic Trial Atlas — Hero",
     cell: "heroSection",
     iframeHeight: 862,
-    type: "hero",
   },
   visual1a: {
-    id: "visual1a",
     title: "Psychedelic Trial Atlas — Ecosystem Overview",
     cell: "visual1EcosystemOverview",
     iframeHeight: 842,
-    type: "visual",
   },
   visual1b: {
-    id: "visual1b",
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
     iframeHeight: 870,
-    type: "visual",
   },
   visual2intro: {
-    id: "visual2intro",
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
     iframeHeight: 980,
-    type: "visual",
   },
 };
 
@@ -40,75 +32,57 @@ function clamp(value, min = 0, max = 1) {
   return Math.max(min, Math.min(max, value));
 }
 
-function easeOutCubic(t) {
-  const x = clamp(t);
-  return 1 - Math.pow(1 - x, 3);
+function easeOutCubic(value) {
+  const t = clamp(value);
+  return 1 - Math.pow(1 - t, 3);
 }
 
-function usePageScrollProgress() {
-  const [progress, setProgress] = useState(0);
+function observableSrc(cell) {
+  return `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
+}
+
+function ScrollProgressBar() {
+  const lineRef = useRef(null);
 
   useEffect(() => {
+    let raf = null;
+
     function update() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollable =
         document.documentElement.scrollHeight - window.innerHeight;
 
-      setProgress(scrollable > 0 ? clamp(scrollTop / scrollable) : 0);
+      const progress = scrollable > 0 ? clamp(scrollTop / scrollable) : 0;
+
+      if (lineRef.current) {
+        lineRef.current.style.transform = `scaleX(${progress})`;
+      }
+    }
+
+    function requestUpdate() {
+      if (raf) return;
+
+      raf = window.requestAnimationFrame(() => {
+        raf = null;
+        update();
+      });
     }
 
     update();
 
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
 
     return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
     };
   }, []);
 
-  return progress;
-}
-
-function useSectionProgress(ref) {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    function update() {
-      if (!ref.current) return;
-
-      const section = ref.current;
-      const rect = section.getBoundingClientRect();
-      const scrollDistance = section.offsetHeight - window.innerHeight;
-      const current = -rect.top;
-
-      setProgress(scrollDistance > 0 ? clamp(current / scrollDistance) : 0);
-    }
-
-    update();
-
-    window.addEventListener("scroll", update, { passive: true });
-    window.addEventListener("resize", update);
-
-    return () => {
-      window.removeEventListener("scroll", update);
-      window.removeEventListener("resize", update);
-    };
-  }, [ref]);
-
-  return progress;
-}
-
-function ScrollProgressBar({ progress }) {
   return (
     <div className="scroll-progress-track" aria-hidden="true">
-      <div
-        className="scroll-progress-line"
-        style={{
-          transform: `scaleX(${progress})`,
-        }}
-      />
+      <div ref={lineRef} className="scroll-progress-line" />
     </div>
   );
 }
@@ -142,25 +116,28 @@ function HeroAmbient() {
   );
 }
 
-function ObservableEmbed({
-  title,
-  cell,
-  iframeHeight,
-  type = "visual",
-  className = "",
-  quietMask = true,
-}) {
-  const [ready, setReady] = useState(type === "hero");
+function HeroIframeWindow() {
+  return (
+    <div className="hero-iframe-window">
+      <iframe
+        className="hero-iframe"
+        title={frames.hero.title}
+        width="100%"
+        height={frames.hero.iframeHeight}
+        frameBorder="0"
+        scrolling="no"
+        src={observableSrc(frames.hero.cell)}
+      />
+    </div>
+  );
+}
 
-  const visibleHeight = iframeHeight - OBSERVABLE_FOOTER_CROP;
-  const src = `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
+function ObservableEmbed({ frame, className = "", handoff = false }) {
+  const [ready, setReady] = useState(false);
+
+  const visibleHeight = frame.iframeHeight - OBSERVABLE_FOOTER_CROP;
 
   function handleLoad() {
-    if (type === "hero") {
-      setReady(true);
-      return;
-    }
-
     window.setTimeout(() => {
       setReady(true);
     }, 220);
@@ -168,27 +145,33 @@ function ObservableEmbed({
 
   return (
     <div
-      className={`atlas-frame-outer atlas-frame-outer-${type} ${className}`}
+      className={`atlas-frame-outer ${className}`}
       style={{ height: visibleHeight }}
     >
       <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
-        {quietMask && type !== "hero" && (
+        {!handoff && (
           <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`} />
         )}
 
+        {handoff && (
+          <div
+            className={`atlas-frame-mask atlas-frame-mask-handoff ${
+              ready ? "is-hidden" : ""
+            }`}
+          />
+        )}
+
         <iframe
-          className={`atlas-frame atlas-frame-${type} ${
-            ready ? "is-ready" : ""
-          }`}
-          title={title}
+          className={`atlas-frame ${ready ? "is-ready" : ""}`}
+          title={frame.title}
           width="100%"
-          height={iframeHeight}
+          height={frame.iframeHeight}
           frameBorder="0"
           scrolling="no"
-          src={src}
+          src={observableSrc(frame.cell)}
           onLoad={handleLoad}
           style={{
-            height: `${iframeHeight}px`,
+            height: `${frame.iframeHeight}px`,
           }}
         />
       </div>
@@ -198,56 +181,96 @@ function ObservableEmbed({
 
 function HeroToEcosystemHandoff() {
   const sectionRef = useRef(null);
-  const progress = useSectionProgress(sectionRef);
+  const heroRef = useRef(null);
+  const visualRef = useRef(null);
+  const ambientRef = useRef(null);
 
-  // Earlier and stronger hero movement.
-  const heroLiftProgress = easeOutCubic(clamp((progress - 0.02) / 0.66));
+  useEffect(() => {
+    let raf = null;
 
-  // Visual 1A enters faster and then stays locked.
-  const visualEnterProgress = easeOutCubic(clamp((progress - 0.06) / 0.42));
+    function update() {
+      if (!sectionRef.current || !heroRef.current || !visualRef.current) {
+        return;
+      }
 
-  // Do NOT fade the hero too early. The hero should slide away like a curtain.
-  const heroFadeProgress = clamp((progress - 0.78) / 0.16);
+      const section = sectionRef.current;
+      const rect = section.getBoundingClientRect();
+      const scrollDistance = section.offsetHeight - window.innerHeight;
+      const progress =
+        scrollDistance > 0 ? clamp(-rect.top / scrollDistance) : 0;
 
-  const heroTranslateY = -heroLiftProgress * 760;
-  const heroOpacity = 1 - heroFadeProgress * 0.92;
+      /*
+        Key idea:
+        - hero starts exactly centered
+        - hero moves up over a longer scroll range
+        - visual enters from below in pixels, not huge vh jumps
+        - visual ends centered, not top-aligned
+      */
 
-  const visualTranslateY = (1 - visualEnterProgress) * 46;
-  const visualOpacity = clamp((progress - 0.03) / 0.18);
-  const visualScale = 0.982 + visualEnterProgress * 0.018;
+      const heroMove = easeOutCubic(clamp((progress - 0.04) / 0.58));
+      const heroFade = clamp((progress - 0.68) / 0.22);
+
+      const visualMove = easeOutCubic(clamp((progress - 0.12) / 0.56));
+      const visualFade = clamp((progress - 0.10) / 0.26);
+
+      const heroY = -heroMove * 360;
+      const heroScale = 1 - heroMove * 0.025;
+      const heroOpacity = 1 - heroFade * 0.95;
+
+      const visualY = (1 - visualMove) * 185;
+      const visualScale = 0.965 + visualMove * 0.035;
+      const visualOpacity = visualFade;
+
+      heroRef.current.style.transform = `translate3d(0, ${heroY}px, 0) scale(${heroScale})`;
+      heroRef.current.style.opacity = heroOpacity;
+
+      visualRef.current.style.transform = `translate3d(0, ${visualY}px, 0) scale(${visualScale})`;
+      visualRef.current.style.opacity = visualOpacity;
+
+      if (ambientRef.current) {
+        ambientRef.current.style.transform = `translate3d(0, ${-heroMove * 34}px, 0)`;
+        ambientRef.current.style.opacity = 0.34 - heroMove * 0.16;
+      }
+    }
+
+    function requestUpdate() {
+      if (raf) return;
+
+      raf = window.requestAnimationFrame(() => {
+        raf = null;
+        update();
+      });
+    }
+
+    update();
+
+    window.addEventListener("scroll", requestUpdate, { passive: true });
+    window.addEventListener("resize", requestUpdate);
+
+    return () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", requestUpdate);
+      window.removeEventListener("resize", requestUpdate);
+    };
+  }, []);
 
   return (
     <section className="hero-handoff-section" ref={sectionRef}>
       <div className="hero-sticky-scene">
-        <HeroAmbient />
+        <div ref={ambientRef} className="hero-ambient-wrap">
+          <HeroAmbient />
+        </div>
 
-        <div
-          className="handoff-visual-layer"
-          style={{
-            opacity: visualOpacity,
-            transform: `translate3d(0, ${visualTranslateY}vh, 0) scale(${visualScale})`,
-          }}
-        >
+        <div ref={visualRef} className="handoff-visual-layer">
           <ObservableEmbed
-            {...frames.visual1a}
+            frame={frames.visual1a}
             className="handoff-visual-frame"
-            quietMask
+            handoff
           />
         </div>
 
-        <div
-          className="handoff-hero-layer"
-          style={{
-            opacity: heroOpacity,
-            transform: `translate3d(0, ${heroTranslateY}px, 0)`,
-            pointerEvents: heroOpacity < 0.08 ? "none" : "auto",
-          }}
-        >
-          <ObservableEmbed
-            {...frames.hero}
-            className="handoff-hero-frame"
-            quietMask={false}
-          />
+        <div ref={heroRef} className="handoff-hero-layer">
+          <HeroIframeWindow />
         </div>
       </div>
     </section>
@@ -257,7 +280,7 @@ function HeroToEcosystemHandoff() {
 function NormalObservableSection({ frame }) {
   return (
     <section className="atlas-frame-section">
-      <ObservableEmbed {...frame} quietMask />
+      <ObservableEmbed frame={frame} />
     </section>
   );
 }
@@ -278,8 +301,6 @@ function BridgeCard() {
 }
 
 function App() {
-  const pageProgress = usePageScrollProgress();
-
   return (
     <>
       <style>{`
@@ -331,14 +352,20 @@ function App() {
           width: 100%;
           height: 100%;
           transform-origin: left center;
+          transform: scaleX(0);
           background: rgba(97,101,111,0.72);
           box-shadow: 0 0 18px rgba(97,101,111,0.14);
-          transition: transform 70ms linear;
         }
+
+        /*
+          HERO HANDOFF
+          Long enough to make the movement visible.
+          Not too long to feel stuck.
+        */
 
         .hero-handoff-section {
           position: relative;
-          height: 178vh;
+          height: 230vh;
           background: #f1f0ec;
         }
 
@@ -350,17 +377,24 @@ function App() {
           overflow: hidden;
           background: #f1f0ec;
           display: flex;
-          align-items: flex-start;
+          align-items: center;
           justify-content: center;
+        }
+
+        .hero-ambient-wrap {
+          position: absolute;
+          inset: 0;
+          z-index: 1;
+          pointer-events: none;
+          opacity: 0.34;
+          will-change: transform, opacity;
         }
 
         .hero-ambient {
           position: absolute;
           inset: 0;
-          z-index: 1;
           pointer-events: none;
           overflow: hidden;
-          opacity: 0.28;
         }
 
         .hero-ambient-circle {
@@ -399,29 +433,61 @@ function App() {
           }
         }
 
-        .handoff-hero-layer,
-        .handoff-visual-layer {
+        .handoff-hero-layer {
           position: absolute;
-          inset: 0;
+          z-index: 4;
           width: 100%;
           height: 100%;
           display: flex;
+          align-items: center;
           justify-content: center;
-          align-items: flex-start;
-          overflow: hidden;
           will-change: transform, opacity;
-          transition:
-            transform 60ms linear,
-            opacity 60ms linear;
+          pointer-events: none;
         }
 
-        .handoff-hero-layer {
-          z-index: 4;
+        .hero-iframe-window {
+          width: 100%;
+          max-width: 1320px;
+          height: 560px;
+          overflow: hidden;
+          background: transparent;
+          position: relative;
+        }
+
+        .hero-iframe {
+          width: 100%;
+          height: 862px;
+          border: 0;
+          display: block;
+          background: #f1f0ec;
+          transform: translateY(-148px);
+          pointer-events: none;
         }
 
         .handoff-visual-layer {
+          position: absolute;
           z-index: 2;
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          opacity: 0;
+          transform: translate3d(0, 185px, 0) scale(0.965);
+          will-change: transform, opacity;
         }
+
+        .handoff-visual-frame {
+          max-width: 1320px;
+        }
+
+        .handoff-visual-frame iframe {
+          pointer-events: none;
+        }
+
+        /*
+          NORMAL OBSERVABLE SECTIONS
+        */
 
         .atlas-frame-section {
           width: 100%;
@@ -431,7 +497,8 @@ function App() {
           align-items: flex-start;
           overflow: hidden;
           position: relative;
-          margin-top: -10px;
+          margin: 0;
+          padding: 0;
         }
 
         .atlas-frame-outer {
@@ -441,14 +508,6 @@ function App() {
           background: #f1f0ec;
           position: relative;
           overflow: hidden;
-        }
-
-        .handoff-hero-frame {
-          max-width: 1320px;
-        }
-
-        .handoff-visual-frame {
-          max-width: 1320px;
         }
 
         .atlas-frame-crop {
@@ -465,16 +524,10 @@ function App() {
           display: block;
           background: #f1f0ec;
           opacity: 0;
-          transform: translateY(4px);
+          transform: translateY(3px);
           transition:
-            opacity 480ms ease,
-            transform 480ms ease;
-        }
-
-        .atlas-frame-hero {
-          opacity: 1;
-          transform: none;
-          transition: none;
+            opacity 420ms ease,
+            transform 420ms ease;
         }
 
         .atlas-frame.is-ready {
@@ -488,8 +541,12 @@ function App() {
           z-index: 5;
           background: #f1f0ec;
           transition:
-            opacity 360ms ease,
-            visibility 360ms ease;
+            opacity 320ms ease,
+            visibility 320ms ease;
+        }
+
+        .atlas-frame-mask-handoff {
+          z-index: 6;
         }
 
         .atlas-frame-mask.is-hidden {
@@ -498,16 +555,19 @@ function App() {
           pointer-events: none;
         }
 
+        /*
+          BRIDGE CARD
+        */
+
         .atlas-bridge-section {
           width: 100%;
-          min-height: 142px;
+          min-height: 160px;
           background: #f1f0ec;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 0 22px 10px;
-          margin-top: -30px;
-          margin-bottom: -36px;
+          padding: 22px 22px 28px;
+          margin: 0;
           position: relative;
           z-index: 8;
         }
@@ -554,22 +614,24 @@ function App() {
 
         @media (max-width: 900px) {
           .hero-handoff-section {
-            height: 170vh;
+            height: 220vh;
+          }
+
+          .hero-iframe-window {
+            height: 500px;
+          }
+
+          .hero-iframe {
+            transform: translateY(-170px);
           }
 
           .atlas-frame-outer {
             max-width: 100%;
           }
 
-          .hero-ambient {
-            opacity: 0.2;
-          }
-
           .atlas-bridge-section {
-            min-height: 138px;
-            padding: 0 18px 10px;
-            margin-top: -24px;
-            margin-bottom: -28px;
+            min-height: 150px;
+            padding: 18px 18px 24px;
           }
 
           .atlas-bridge-card {
@@ -588,7 +650,7 @@ function App() {
       `}</style>
 
       <main className="atlas-page">
-        <ScrollProgressBar progress={pageProgress} />
+        <ScrollProgressBar />
 
         <HeroToEcosystemHandoff />
 
