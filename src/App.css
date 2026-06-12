@@ -1,155 +1,38 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap");
+import "./App.css";
 
-html {
-  scroll-behavior: smooth;
-}
+export default function App() {
+  return (
+    <main className="site">
+      <section className="hero-section">
+        <div className="hero-inner">
+          <h1 className="atlas-hero-title">Psychedelic Trial Atlas</h1>
 
-html,
-body,
-#root {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-  background: #f1f0ec;
-}
+          <p className="atlas-hero-subtitle">
+            A visual data project mapping registered clinical-trial activity and visible pipeline context
+            <br />
+            across psychedelic and psychedelic-adjacent medicines.
+          </p>
+        </div>
 
-body {
-  color: #1d1d1f;
-  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-}
+        <a className="journey-cue" href="#journey">
+          <span className="journey-label">Start your journey</span>
+          <span className="journey-arrow" />
+        </a>
+      </section>
 
-.site {
-  width: 100%;
-  min-height: 100vh;
-  background: #f1f0ec;
-  overflow-x: hidden;
-}
+      <section id="journey" className="visual-section">
+        <iframe
+          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemOverview&ui=embed"
+          title="Ecosystem"
+        />
+      </section>
 
-.hero-section {
-  width: 100%;
-  height: 760px;
-  background: #f1f0ec;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 0 40px;
-  box-sizing: border-box;
-  overflow: hidden;
-  position: relative;
-}
-
-.hero-inner {
-  width: 100%;
-  max-width: 980px;
-  margin: 0 auto;
-  transform: translateY(-78px);
-  position: relative;
-  z-index: 5;
-}
-
-.atlas-hero-title {
-  margin: 0 auto;
-  font-family: "Inter Tight", "Helvetica Neue", Arial, system-ui, sans-serif;
-  font-size: 72px;
-  line-height: 0.94;
-  font-weight: 900;
-  letter-spacing: -0.07em;
-  color: #1d1d1f;
-  white-space: nowrap;
-}
-
-.atlas-hero-subtitle {
-  max-width: 760px;
-  margin: 30px auto 0;
-  font-size: 18px;
-  line-height: 1.45;
-  font-weight: 500;
-  letter-spacing: -0.018em;
-  color: #61656f;
-  text-align: center;
-}
-
-.journey-cue {
-  position: absolute;
-  left: 50%;
-  bottom: 182px;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none;
-}
-
-.journey-label {
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(29, 29, 31, 0.54);
-}
-
-.journey-arrow {
-  width: 34px;
-  height: 34px;
-  position: relative;
-  display: block;
-}
-
-.journey-arrow::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 1.05em;
-  height: 1.05em;
-  margin-left: -0.525em;
-  border-left: 1.6px solid rgba(29, 29, 31, 0.46);
-  border-bottom: 1.6px solid rgba(29, 29, 31, 0.46);
-  transform: rotate(-45deg);
-  animation: heroJourneyArrowDown 1.5s infinite;
-}
-
-.visual-section {
-  width: 100%;
-  max-width: 1600px;
-  height: 760px;
-  margin: 0 auto;
-  padding: 0;
-  background: #f1f0ec;
-  overflow: hidden;
-  line-height: 0;
-  position: relative;
-}
-
-.visual-section iframe {
-  display: block;
-  width: 100%;
-  height: 835px;
-  border: 0;
-  margin: -38px 0 0 0;
-  padding: 0;
-  background: #f1f0ec;
-}
-
-@keyframes heroJourneyArrowDown {
-  0% {
-    transform: translateY(-8px) rotate(-45deg);
-    opacity: 0;
-  }
-
-  35% {
-    opacity: 1;
-  }
-
-  65% {
-    transform: translateY(6px) rotate(-45deg);
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(14px) rotate(-45deg);
-    opacity: 0;
-  }
+      <section className="visual-section">
+        <iframe
+          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemToCompanyTransition&ui=embed"
+          title="Transition"
+        />
+      </section>
+    </main>
+  );
 }
