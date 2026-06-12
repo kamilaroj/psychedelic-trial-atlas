@@ -9,27 +9,28 @@ body {
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
 }
 
-.page {
-  background: #f1f0ec;
+.site {
+  width: 100%;
   min-height: 100vh;
+  background: #f1f0ec;
 }
 
-.hero {
+.hero-section {
   min-height: 100vh;
-  position: relative;
+  background: #f1f0ec;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 72px 24px;
+  padding: 48px 24px;
   box-sizing: border-box;
 }
 
-.hero-inner {
+.hero-content {
   max-width: 980px;
   text-align: center;
 }
 
-.eyebrow {
+.hero-kicker {
   margin: 0 0 22px;
   font-size: 12px;
   letter-spacing: 0.22em;
@@ -37,11 +38,11 @@ body {
   color: #61656f;
 }
 
-.hero h1 {
+.hero-content h1 {
   margin: 0;
   font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui,
     sans-serif;
-  font-size: clamp(64px, 10vw, 132px);
+  font-size: clamp(58px, 10vw, 132px);
   line-height: 0.92;
   letter-spacing: -0.07em;
   font-weight: 650;
@@ -55,88 +56,46 @@ body {
   color: #61656f;
 }
 
-.hero-scroll-arrow {
-  position: absolute;
-  left: 50%;
-  bottom: 42px;
-  transform: translateX(-50%);
-  width: 42px;
-  height: 74px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
+.hero-arrow {
+  display: inline-block;
+  margin-top: 56px;
+  color: #1d1d1f;
+  font-size: 34px;
+  line-height: 1;
   text-decoration: none;
+  opacity: 0.72;
+  animation: softBounce 1.8s ease-in-out infinite;
 }
 
-.hero-scroll-arrow span {
-  width: 24px;
-  height: 48px;
-  position: relative;
-  animation: arrowDrop 1.85s cubic-bezier(0.55, 0, 0.2, 1) infinite;
-}
-
-.hero-scroll-arrow span::before,
-.hero-scroll-arrow span::after {
-  content: "";
-  position: absolute;
-  bottom: 4px;
-  width: 2px;
-  height: 34px;
-  background: #1d1d1f;
-  border-radius: 999px;
-  transform-origin: bottom center;
-}
-
-.hero-scroll-arrow span::before {
-  left: 11px;
-  transform: rotate(15deg);
-}
-
-.hero-scroll-arrow span::after {
-  right: 11px;
-  transform: rotate(-15deg);
-}
-
-@keyframes arrowDrop {
+@keyframes softBounce {
   0% {
-    transform: translateY(-18px) scaleY(0.5);
-    opacity: 0;
+    transform: translateY(0);
+    opacity: 0.45;
   }
 
-  28% {
-    transform: translateY(-4px) scaleY(1);
-    opacity: 1;
-  }
-
-  55% {
-    transform: translateY(8px) scaleY(1);
-    opacity: 1;
-  }
-
-  82% {
-    transform: translateY(22px) scaleY(0.65);
-    opacity: 0;
+  50% {
+    transform: translateY(10px);
+    opacity: 0.9;
   }
 
   100% {
-    transform: translateY(26px) scaleY(0.5);
-    opacity: 0;
+    transform: translateY(0);
+    opacity: 0.45;
   }
 }
 
-.journey-section {
+.visual-section {
   width: 100%;
   max-width: 1180px;
   margin: 0 auto;
-  padding: 80px 24px 120px;
+  padding: 72px 24px;
   box-sizing: border-box;
+  background: #f1f0ec;
 }
 
-.journey-section iframe {
+.visual-section iframe {
   display: block;
   width: 100%;
   border: 0;
-  margin: 0 auto 72px;
   background: #f1f0ec;
 }
