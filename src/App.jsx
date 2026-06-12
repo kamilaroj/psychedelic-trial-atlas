@@ -12,12 +12,12 @@ export default function App() {
             <br />
             across psychedelic and psychedelic-adjacent medicines.
           </p>
-        </div>
 
-        <a className="journey-cue" href="#journey" aria-label="Start your journey">
-          <span className="journey-label">Start your journey</span>
-          <span className="journey-arrow" />
-        </a>
+          <a className="journey-cue" href="#journey" aria-label="Start your journey">
+            <span className="journey-label">Start your journey</span>
+            <span className="journey-arrow" />
+          </a>
+        </div>
       </section>
 
       <section id="journey" className="visual-section">
@@ -27,16 +27,6 @@ export default function App() {
           height="796"
           frameBorder="0"
           src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemOverview&api_key=b445e0c80939463973325d8fd7fc9ac162f1f7ea"
-        />
-      </section>
-
-      <section className="visual-section">
-        <iframe
-          title="Journey Transition"
-          width="100%"
-          height="796"
-          frameBorder="0"
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemToCompanyTransition&api_key=b445e0c80939463973325d8fd7fc9ac162f1f7ea"
         />
       </section>
     </main>
