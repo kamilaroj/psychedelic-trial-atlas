@@ -5,32 +5,32 @@ export default function App() {
     <main className="site">
       <section className="hero-section">
         <div className="hero-inner">
-          <h1 className="atlas-hero-title">Psychedelic Trial Atlas</h1>
+          <h1 className="title">Psychedelic Trial Atlas</h1>
 
-          <p className="atlas-hero-subtitle">
+          <p className="subtitle">
             A visual data project mapping registered clinical-trial activity and visible pipeline context
             <br />
             across psychedelic and psychedelic-adjacent medicines.
           </p>
         </div>
 
-        <a className="journey-cue" href="#journey" aria-label="Start your journey">
-          <span className="journey-label">Start your journey</span>
-          <span className="journey-arrow" />
+        <a href="#journey" className="journey">
+          <span>START YOUR JOURNEY</span>
+          <div className="arrow" />
         </a>
       </section>
 
-      <section id="journey" className="visual-section">
+      <section id="journey" className="section">
         <iframe
-          title="Psychedelic Ecosystem"
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemOverview&api_key=b445e0c80939463973325d8fd7fc9ac162f1f7ea"
+          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemOverview&ui=minimal"
+          title="Ecosystem"
         />
       </section>
 
-      <section className="visual-section">
+      <section className="section">
         <iframe
-          title="Company Transition"
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemToCompanyTransition&api_key=b445e0c80939463973325d8fd7fc9ac162f1f7ea"
+          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemToCompanyTransition&ui=minimal"
+          title="Transition"
         />
       </section>
     </main>
