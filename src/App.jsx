@@ -24,26 +24,26 @@ const frames = [
     id: "visual1b",
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
-    iframeHeight: 850,
+    iframeHeight: 870,
     type: "visual",
   },
   {
     id: "visual2intro",
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
-    iframeHeight: 940,
+    iframeHeight: 980,
     type: "visual",
   },
 ];
 
 function HeroAmbient() {
   const circles = [
-    { x: "12%", y: "18%", s: 120, d: "0s" },
-    { x: "23%", y: "64%", s: 72, d: "1.2s" },
-    { x: "72%", y: "18%", s: 96, d: "0.6s" },
-    { x: "83%", y: "58%", s: 140, d: "1.8s" },
-    { x: "47%", y: "78%", s: 62, d: "0.3s" },
-    { x: "63%", y: "72%", s: 48, d: "1.5s" },
+    { x: "13%", y: "18%", s: 108, d: "0s" },
+    { x: "22%", y: "64%", s: 66, d: "1.2s" },
+    { x: "73%", y: "20%", s: 86, d: "0.6s" },
+    { x: "84%", y: "58%", s: 122, d: "1.8s" },
+    { x: "47%", y: "78%", s: 58, d: "0.3s" },
+    { x: "63%", y: "72%", s: 44, d: "1.5s" },
   ];
 
   return (
@@ -66,15 +66,20 @@ function HeroAmbient() {
 }
 
 function ObservableFrame({ title, cell, iframeHeight, type }) {
-  const [ready, setReady] = useState(false);
+  const [ready, setReady] = useState(type === "hero");
 
   const visibleHeight = iframeHeight - OBSERVABLE_FOOTER_CROP;
   const src = `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
 
   function handleLoad() {
+    if (type === "hero") {
+      setReady(true);
+      return;
+    }
+
     window.setTimeout(() => {
       setReady(true);
-    }, type === "hero" ? 650 : 420);
+    }, 320);
   }
 
   return (
@@ -86,30 +91,14 @@ function ObservableFrame({ title, cell, iframeHeight, type }) {
         {type === "hero" && <HeroAmbient />}
 
         <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
-          <div
-            className={`atlas-frame-mask ${
-              ready ? "is-hidden" : ""
-            } ${type === "hero" ? "is-hero-mask" : "is-quiet-mask"}`}
-          >
-            {type === "hero" ? (
-              <div className="atlas-loading-card">
-                <div className="atlas-loading-title">
-                  Psychedelic Trial Atlas
-                </div>
-                <div className="atlas-loading-subtitle">
-                  Preparing the visible clinical-development ecosystem.
-                </div>
-                <div className="atlas-loading-dots">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-            ) : null}
-          </div>
+          {type !== "hero" && (
+            <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`} />
+          )}
 
           <iframe
-            className={`atlas-frame ${ready ? "is-ready" : ""}`}
+            className={`atlas-frame atlas-frame-${type} ${
+              ready ? "is-ready" : ""
+            }`}
             title={title}
             width="100%"
             height={iframeHeight}
@@ -135,7 +124,7 @@ function BridgeCard() {
         <h2>Who is building the visible landscape?</h2>
         <p>
           The first view summarizes ecosystem scale. The next layer shifts to
-          the organizations and development actors shaping psychedelic medicine.
+          the organizations shaping psychedelic medicine.
         </p>
       </div>
     </section>
@@ -190,11 +179,11 @@ function App() {
         }
 
         .atlas-frame-section-hero {
-          min-height: 810px;
+          min-height: 800px;
         }
 
         .atlas-frame-section-visual {
-          margin-top: -8px;
+          margin-top: -10px;
         }
 
         .atlas-frame-outer {
@@ -203,10 +192,6 @@ function App() {
           margin: 0 auto;
           background: #f1f0ec;
           position: relative;
-          overflow: hidden;
-        }
-
-        .atlas-frame-outer-hero {
           overflow: hidden;
         }
 
@@ -224,10 +209,16 @@ function App() {
           display: block;
           background: #f1f0ec;
           opacity: 0;
-          transform: translateY(5px);
+          transform: translateY(4px);
           transition:
-            opacity 720ms ease,
-            transform 720ms ease;
+            opacity 620ms ease,
+            transform 620ms ease;
+        }
+
+        .atlas-frame-hero {
+          opacity: 1;
+          transform: none;
+          transition: none;
         }
 
         .atlas-frame.is-ready {
@@ -240,12 +231,9 @@ function App() {
           inset: 0;
           z-index: 5;
           background: #f1f0ec;
-          display: flex;
-          align-items: center;
-          justify-content: center;
           transition:
-            opacity 620ms ease,
-            visibility 620ms ease;
+            opacity 520ms ease,
+            visibility 520ms ease;
         }
 
         .atlas-frame-mask.is-hidden {
@@ -254,89 +242,13 @@ function App() {
           pointer-events: none;
         }
 
-        .atlas-frame-mask.is-quiet-mask {
-          background: #f1f0ec;
-        }
-
-        .atlas-loading-card {
-          width: min(520px, calc(100vw - 48px));
-          padding: 34px 38px;
-          border-radius: 24px;
-          background: rgba(255,255,255,0.76);
-          border: 1px solid rgba(29,29,31,0.08);
-          box-shadow: 0 24px 70px rgba(29,29,31,0.08);
-          text-align: center;
-          backdrop-filter: blur(18px);
-          -webkit-backdrop-filter: blur(18px);
-        }
-
-        .atlas-loading-title {
-          font-size: 28px;
-          line-height: 1.05;
-          font-weight: 850;
-          letter-spacing: -0.065em;
-          color: #1d1d1f;
-          margin-bottom: 12px;
-        }
-
-        .atlas-loading-subtitle {
-          font-size: 13px;
-          line-height: 1.45;
-          font-weight: 500;
-          color: #61656f;
-          max-width: 360px;
-          margin: 0 auto;
-        }
-
-        .atlas-loading-dots {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          margin-top: 22px;
-        }
-
-        .atlas-loading-dots span {
-          width: 8px;
-          height: 8px;
-          border-radius: 999px;
-          background: #1d1d1f;
-          opacity: 0.22;
-          animation: atlasPulse 1.4s ease-in-out infinite;
-        }
-
-        .atlas-loading-dots span:nth-child(2) {
-          animation-delay: 160ms;
-        }
-
-        .atlas-loading-dots span:nth-child(3) {
-          animation-delay: 320ms;
-        }
-
-        @keyframes atlasPulse {
-          0% {
-            transform: translateY(0);
-            opacity: 0.18;
-          }
-
-          50% {
-            transform: translateY(-5px);
-            opacity: 0.42;
-          }
-
-          100% {
-            transform: translateY(0);
-            opacity: 0.18;
-          }
-        }
-
         .hero-ambient {
           position: absolute;
           inset: 0;
           z-index: 3;
           pointer-events: none;
           overflow: hidden;
-          opacity: 0.55;
-          mix-blend-mode: normal;
+          opacity: 0.42;
         }
 
         .hero-ambient-circle {
@@ -345,86 +257,86 @@ function App() {
           background:
             radial-gradient(
               circle at 35% 28%,
-              rgba(255,255,255,0.88),
-              rgba(255,255,255,0.38) 38%,
-              rgba(255,255,255,0.09) 72%
+              rgba(255,255,255,0.86),
+              rgba(255,255,255,0.36) 38%,
+              rgba(255,255,255,0.08) 72%
             );
-          border: 1px solid rgba(255,255,255,0.48);
+          border: 1px solid rgba(255,255,255,0.42);
           box-shadow:
-            0 22px 70px rgba(29,29,31,0.08),
-            inset 0 2px 18px rgba(255,255,255,0.8);
+            0 22px 70px rgba(29,29,31,0.075),
+            inset 0 2px 18px rgba(255,255,255,0.76);
           filter: blur(0.2px);
           transform: translate(-50%, -50%);
-          animation: heroAmbientFloat 7.5s ease-in-out infinite alternate;
+          animation: heroAmbientFloat 8s ease-in-out infinite alternate;
         }
 
         @keyframes heroAmbientFloat {
           0% {
-            transform: translate(-50%, -50%) translate3d(-8px, 5px, 0) scale(0.985);
-            opacity: 0.26;
+            transform: translate(-50%, -50%) translate3d(-7px, 5px, 0) scale(0.99);
+            opacity: 0.22;
           }
 
           50% {
-            transform: translate(-50%, -50%) translate3d(8px, -7px, 0) scale(1.025);
-            opacity: 0.44;
+            transform: translate(-50%, -50%) translate3d(7px, -6px, 0) scale(1.022);
+            opacity: 0.38;
           }
 
           100% {
-            transform: translate(-50%, -50%) translate3d(4px, 8px, 0) scale(1);
-            opacity: 0.32;
+            transform: translate(-50%, -50%) translate3d(4px, 7px, 0) scale(1);
+            opacity: 0.28;
           }
         }
 
         .atlas-bridge-section {
           width: 100%;
-          min-height: 174px;
+          min-height: 142px;
           background: #f1f0ec;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 6px 22px 20px;
-          margin-top: -18px;
-          margin-bottom: -24px;
+          padding: 0 22px 10px;
+          margin-top: -34px;
+          margin-bottom: -38px;
           position: relative;
           z-index: 8;
         }
 
         .atlas-bridge-card {
-          width: min(560px, 100%);
-          background: rgba(255,255,255,0.62);
-          border: 1px solid rgba(29,29,31,0.065);
-          border-radius: 24px;
-          box-shadow: 0 18px 50px rgba(29,29,31,0.055);
-          padding: 25px 34px 27px;
+          width: min(520px, 100%);
+          background: rgba(255,255,255,0.56);
+          border: 1px solid rgba(29,29,31,0.055);
+          border-radius: 22px;
+          box-shadow: 0 16px 44px rgba(29,29,31,0.045);
+          padding: 21px 30px 23px;
           text-align: center;
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
         }
 
         .atlas-kicker {
-          font-size: 9.5px;
+          font-size: 9px;
           font-weight: 820;
           letter-spacing: 0.11em;
           text-transform: uppercase;
           color: #8c9098;
-          margin-bottom: 10px;
+          margin-bottom: 8px;
         }
 
         .atlas-bridge-card h2 {
-          margin: 0 auto 10px;
-          max-width: 470px;
-          font-size: 24px;
+          margin: 0 auto 8px;
+          max-width: 440px;
+          font-size: 22px;
           line-height: 1.05;
-          letter-spacing: -0.06em;
+          letter-spacing: -0.058em;
           font-weight: 860;
           color: #1d1d1f;
         }
 
         .atlas-bridge-card p {
           margin: 0 auto;
-          max-width: 480px;
-          font-size: 12.4px;
-          line-height: 1.5;
+          max-width: 440px;
+          font-size: 12px;
+          line-height: 1.46;
           color: #61656f;
           font-weight: 500;
         }
@@ -435,39 +347,31 @@ function App() {
           }
 
           .atlas-frame-section-hero {
-            min-height: 780px;
+            min-height: 770px;
           }
 
           .hero-ambient {
-            opacity: 0.38;
+            opacity: 0.32;
           }
 
           .atlas-bridge-section {
-            min-height: 162px;
-            padding: 4px 18px 18px;
-            margin-top: -14px;
-            margin-bottom: -18px;
+            min-height: 138px;
+            padding: 0 18px 10px;
+            margin-top: -24px;
+            margin-bottom: -28px;
           }
 
           .atlas-bridge-card {
-            padding: 22px 24px 24px;
-            border-radius: 22px;
+            padding: 20px 23px 22px;
+            border-radius: 20px;
           }
 
           .atlas-bridge-card h2 {
-            font-size: 21px;
+            font-size: 20px;
           }
 
           .atlas-bridge-card p {
-            font-size: 12px;
-          }
-
-          .atlas-loading-card {
-            padding: 28px 26px;
-          }
-
-          .atlas-loading-title {
-            font-size: 23px;
+            font-size: 11.8px;
           }
         }
       `}</style>
