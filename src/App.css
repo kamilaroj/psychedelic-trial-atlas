@@ -27,17 +27,14 @@ body {
 
 .hero-section {
   width: 100%;
-  max-width: 1600px;
   height: 760px;
-  margin: 0 auto;
   background: #f1f0ec;
-  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  box-sizing: border-box;
   padding: 0 40px;
+  box-sizing: border-box;
   overflow: hidden;
   position: relative;
 }
@@ -49,7 +46,6 @@ body {
   transform: translateY(-78px);
   position: relative;
   z-index: 5;
-  animation: heroSoftReveal 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 .atlas-hero-title {
@@ -61,9 +57,6 @@ body {
   letter-spacing: -0.07em;
   color: #1d1d1f;
   white-space: nowrap;
-  max-width: 980px;
-  -webkit-font-smoothing: antialiased;
-  text-rendering: geometricPrecision;
 }
 
 .atlas-hero-subtitle {
@@ -75,8 +68,6 @@ body {
   letter-spacing: -0.018em;
   color: #61656f;
   text-align: center;
-  -webkit-font-smoothing: antialiased;
-  text-wrap: balance;
 }
 
 .journey-cue {
@@ -87,12 +78,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 10px;
-  z-index: 6;
-  text-align: center;
   text-decoration: none;
-  animation: journeyFadeIn 1.75s ease forwards;
 }
 
 .journey-label {
@@ -122,17 +109,16 @@ body {
   border-bottom: 1.6px solid rgba(29, 29, 31, 0.46);
   transform: rotate(-45deg);
   animation: heroJourneyArrowDown 1.5s infinite;
-  will-change: transform, opacity;
 }
 
 .visual-section {
   width: 100%;
   max-width: 1600px;
+  height: 796px;
   margin: 0 auto;
   padding: 0;
-  box-sizing: border-box;
   background: #f1f0ec;
-  line-height: 0;
+  overflow: hidden;
 }
 
 .visual-section iframe {
@@ -143,37 +129,6 @@ body {
   margin: 0;
   padding: 0;
   background: #f1f0ec;
-}
-
-@keyframes heroSoftReveal {
-  0% {
-    opacity: 0;
-    transform: translateY(18px) scale(0.985);
-    filter: blur(4px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    filter: blur(0);
-  }
-}
-
-@keyframes journeyFadeIn {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, 8px);
-  }
-
-  58% {
-    opacity: 0;
-    transform: translate(-50%, 8px);
-  }
-
-  100% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
 }
 
 @keyframes heroJourneyArrowDown {
@@ -194,25 +149,5 @@ body {
   100% {
     transform: translateY(14px) rotate(-45deg);
     opacity: 0;
-  }
-}
-
-@media (max-width: 900px) {
-  .hero-section {
-    height: 720px;
-    padding: 0 24px;
-  }
-
-  .atlas-hero-title {
-    font-size: 52px;
-    white-space: normal;
-  }
-
-  .atlas-hero-subtitle {
-    font-size: 17px;
-  }
-
-  .atlas-hero-subtitle br {
-    display: none;
   }
 }
