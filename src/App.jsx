@@ -83,9 +83,7 @@ function useSectionProgress(ref) {
       const scrollDistance = section.offsetHeight - window.innerHeight;
       const current = -rect.top;
 
-      setProgress(
-        scrollDistance > 0 ? clamp(current / scrollDistance) : 0
-      );
+      setProgress(scrollDistance > 0 ? clamp(current / scrollDistance) : 0);
     }
 
     update();
@@ -165,7 +163,7 @@ function ObservableEmbed({
 
     window.setTimeout(() => {
       setReady(true);
-    }, 280);
+    }, 220);
   }
 
   return (
@@ -202,17 +200,21 @@ function HeroToEcosystemHandoff() {
   const sectionRef = useRef(null);
   const progress = useSectionProgress(sectionRef);
 
-  const heroMoveProgress = easeOutCubic(clamp((progress - 0.03) / 0.58));
-  const visualMoveProgress = easeOutCubic(clamp((progress - 0.08) / 0.64));
+  // Earlier and stronger hero movement.
+  const heroLiftProgress = easeOutCubic(clamp((progress - 0.02) / 0.66));
 
-  const heroOpacity = clamp(1 - clamp((progress - 0.42) / 0.34));
-  const visualOpacity = clamp((progress - 0.05) / 0.28);
+  // Visual 1A enters faster and then stays locked.
+  const visualEnterProgress = easeOutCubic(clamp((progress - 0.06) / 0.42));
 
-  const heroTranslateY = -heroMoveProgress * 210;
-  const heroScale = 1 - heroMoveProgress * 0.035;
+  // Do NOT fade the hero too early. The hero should slide away like a curtain.
+  const heroFadeProgress = clamp((progress - 0.78) / 0.16);
 
-  const visualTranslateY = (1 - visualMoveProgress) * 88;
-  const visualScale = 0.965 + visualMoveProgress * 0.035;
+  const heroTranslateY = -heroLiftProgress * 760;
+  const heroOpacity = 1 - heroFadeProgress * 0.92;
+
+  const visualTranslateY = (1 - visualEnterProgress) * 46;
+  const visualOpacity = clamp((progress - 0.03) / 0.18);
+  const visualScale = 0.982 + visualEnterProgress * 0.018;
 
   return (
     <section className="hero-handoff-section" ref={sectionRef}>
@@ -237,7 +239,7 @@ function HeroToEcosystemHandoff() {
           className="handoff-hero-layer"
           style={{
             opacity: heroOpacity,
-            transform: `translate3d(0, ${heroTranslateY}px, 0) scale(${heroScale})`,
+            transform: `translate3d(0, ${heroTranslateY}px, 0)`,
             pointerEvents: heroOpacity < 0.08 ? "none" : "auto",
           }}
         >
@@ -336,7 +338,7 @@ function App() {
 
         .hero-handoff-section {
           position: relative;
-          height: 190vh;
+          height: 178vh;
           background: #f1f0ec;
         }
 
@@ -348,7 +350,7 @@ function App() {
           overflow: hidden;
           background: #f1f0ec;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
           justify-content: center;
         }
 
@@ -358,7 +360,7 @@ function App() {
           z-index: 1;
           pointer-events: none;
           overflow: hidden;
-          opacity: 0.32;
+          opacity: 0.28;
         }
 
         .hero-ambient-circle {
@@ -383,17 +385,17 @@ function App() {
         @keyframes heroAmbientFloat {
           0% {
             transform: translate(-50%, -50%) translate3d(-7px, 5px, 0) scale(0.99);
-            opacity: 0.2;
+            opacity: 0.18;
           }
 
           50% {
             transform: translate(-50%, -50%) translate3d(7px, -6px, 0) scale(1.022);
-            opacity: 0.34;
+            opacity: 0.3;
           }
 
           100% {
             transform: translate(-50%, -50%) translate3d(4px, 7px, 0) scale(1);
-            opacity: 0.25;
+            opacity: 0.23;
           }
         }
 
@@ -409,8 +411,8 @@ function App() {
           overflow: hidden;
           will-change: transform, opacity;
           transition:
-            transform 70ms linear,
-            opacity 70ms linear;
+            transform 60ms linear,
+            opacity 60ms linear;
         }
 
         .handoff-hero-layer {
@@ -441,6 +443,14 @@ function App() {
           overflow: hidden;
         }
 
+        .handoff-hero-frame {
+          max-width: 1320px;
+        }
+
+        .handoff-visual-frame {
+          max-width: 1320px;
+        }
+
         .atlas-frame-crop {
           width: 100%;
           background: #f1f0ec;
@@ -457,8 +467,8 @@ function App() {
           opacity: 0;
           transform: translateY(4px);
           transition:
-            opacity 520ms ease,
-            transform 520ms ease;
+            opacity 480ms ease,
+            transform 480ms ease;
         }
 
         .atlas-frame-hero {
@@ -478,8 +488,8 @@ function App() {
           z-index: 5;
           background: #f1f0ec;
           transition:
-            opacity 420ms ease,
-            visibility 420ms ease;
+            opacity 360ms ease,
+            visibility 360ms ease;
         }
 
         .atlas-frame-mask.is-hidden {
@@ -496,8 +506,8 @@ function App() {
           justify-content: center;
           align-items: center;
           padding: 0 22px 10px;
-          margin-top: -34px;
-          margin-bottom: -38px;
+          margin-top: -30px;
+          margin-bottom: -36px;
           position: relative;
           z-index: 8;
         }
@@ -544,7 +554,7 @@ function App() {
 
         @media (max-width: 900px) {
           .hero-handoff-section {
-            height: 178vh;
+            height: 170vh;
           }
 
           .atlas-frame-outer {
@@ -552,7 +562,7 @@ function App() {
           }
 
           .hero-ambient {
-            opacity: 0.22;
+            opacity: 0.2;
           }
 
           .atlas-bridge-section {
