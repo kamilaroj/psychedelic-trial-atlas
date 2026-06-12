@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap");
+
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body,
 #root {
@@ -7,26 +13,206 @@ body,
   background: #f1f0ec;
 }
 
+body {
+  color: #1d1d1f;
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+
 .site {
   width: 100%;
+  min-height: 100vh;
   background: #f1f0ec;
+  overflow-x: hidden;
 }
 
-.observable-frame {
+.hero-section {
+  width: 100%;
+  max-width: 1600px;
+  height: 760px;
+  margin: 0 auto;
+  background: #f1f0ec;
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 40px;
+  overflow: hidden;
+  position: relative;
+}
+
+.hero-inner {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  transform: translateY(-78px);
+  position: relative;
+  z-index: 5;
+  animation: heroSoftReveal 1.15s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.atlas-hero-title {
+  margin: 0 auto;
+  font-family: "Inter Tight", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: 72px;
+  line-height: 0.94;
+  font-weight: 900;
+  letter-spacing: -0.07em;
+  color: #1d1d1f;
+  white-space: nowrap;
+  max-width: 980px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+}
+
+.atlas-hero-subtitle {
+  max-width: 760px;
+  margin: 30px auto 0;
+  font-size: 18px;
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.018em;
+  color: #61656f;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  text-wrap: balance;
+}
+
+.journey-cue {
+  position: absolute;
+  left: 50%;
+  bottom: 182px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  z-index: 6;
+  text-align: center;
+  text-decoration: none;
+  animation: journeyFadeIn 1.75s ease forwards;
+}
+
+.journey-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(29, 29, 31, 0.54);
+}
+
+.journey-arrow {
+  width: 34px;
+  height: 34px;
+  position: relative;
+  display: block;
+}
+
+.journey-arrow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1.05em;
+  height: 1.05em;
+  margin-left: -0.525em;
+  border-left: 1.6px solid rgba(29, 29, 31, 0.46);
+  border-bottom: 1.6px solid rgba(29, 29, 31, 0.46);
+  transform: rotate(-45deg);
+  animation: heroJourneyArrowDown 1.5s infinite;
+  will-change: transform, opacity;
+}
+
+.visual-section {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  background: #f1f0ec;
+  line-height: 0;
+}
+
+.visual-section iframe {
   display: block;
   width: 100%;
+  height: 796px;
   border: 0;
+  margin: 0;
+  padding: 0;
   background: #f1f0ec;
 }
 
-.hero-frame {
-  height: 835.953125px;
+@keyframes heroSoftReveal {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+    filter: blur(4px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
 }
 
-#journey .observable-frame:first-child {
-  height: 795.9375px;
+@keyframes journeyFadeIn {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+
+  58% {
+    opacity: 0;
+    transform: translate(-50%, 8px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
 }
 
-#journey .observable-frame:last-child {
-  height: 795.859375px;
+@keyframes heroJourneyArrowDown {
+  0% {
+    transform: translateY(-8px) rotate(-45deg);
+    opacity: 0;
+  }
+
+  35% {
+    opacity: 1;
+  }
+
+  65% {
+    transform: translateY(6px) rotate(-45deg);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(14px) rotate(-45deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-section {
+    height: 720px;
+    padding: 0 24px;
+  }
+
+  .atlas-hero-title {
+    font-size: 52px;
+    white-space: normal;
+  }
+
+  .atlas-hero-subtitle {
+    font-size: 17px;
+  }
+
+  .atlas-hero-subtitle br {
+    display: none;
+  }
 }
