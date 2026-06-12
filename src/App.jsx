@@ -1,18 +1,85 @@
 import { useState } from "react";
 
-function App() {
-  const [frameReady, setFrameReady] = useState(false);
+const OBSERVABLE_API_KEY = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
+const NOTEBOOK = "e3028f2577c04f9a@1010";
 
-  const iframeSrc =
-    "https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=heroSection%2Cvisual1EcosystemOverview%2Cvisual1EcosystemToCompanyTransition&api_key=b445e0c80939463973325d8fd7fc9ac162f1f7ea";
+const frames = [
+  {
+    id: "hero",
+    title: "Psychedelic Trial Atlas — Hero",
+    cell: "heroSection",
+    height: 836,
+  },
+  {
+    id: "visual1a",
+    title: "Psychedelic Trial Atlas — Ecosystem Overview",
+    cell: "visual1EcosystemOverview",
+    height: 796,
+  },
+  {
+    id: "visual1b",
+    title: "Psychedelic Trial Atlas — Company Landscape",
+    cell: "visual1EcosystemToCompanyTransition",
+    height: 796,
+  },
+  {
+    id: "visual2intro",
+    title: "Psychedelic Trial Atlas — Visual 2 Intro",
+    cell: "visual2IntroTransition",
+    height: 808,
+  },
+];
 
-  function handleFrameLoad() {
-    // Small delay prevents the user seeing Observable's internal late rendering.
+function ObservableFrame({ title, cell, height }) {
+  const [ready, setReady] = useState(false);
+
+  const src = `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
+
+  function handleLoad() {
     window.setTimeout(() => {
-      setFrameReady(true);
-    }, 700);
+      setReady(true);
+    }, 650);
   }
 
+  return (
+    <section className="atlas-frame-section">
+      <div className="atlas-frame-wrap" style={{ height }}>
+        <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`}>
+          <div className="atlas-loading-orb" />
+        </div>
+
+        <iframe
+          className={`atlas-frame ${ready ? "is-ready" : ""}`}
+          title={title}
+          width="100%"
+          height={height}
+          frameBorder="0"
+          scrolling="no"
+          src={src}
+          onLoad={handleLoad}
+        />
+      </div>
+    </section>
+  );
+}
+
+function BridgeCard() {
+  return (
+    <section className="atlas-bridge-section">
+      <div className="atlas-bridge-card">
+        <div className="atlas-kicker">From scale to actors</div>
+        <h2>The next layer asks who is building the visible landscape.</h2>
+        <p>
+          The first view summarizes the ecosystem. The company landscape shifts
+          from high-level signals to the organizations and development actors
+          shaping psychedelic medicine.
+        </p>
+      </div>
+    </section>
+  );
+}
+
+function App() {
   return (
     <>
       <style>{`
@@ -34,10 +101,6 @@ function App() {
           background: #f1f0ec;
         }
 
-        iframe {
-          display: block;
-        }
-
         .atlas-page {
           width: 100%;
           min-height: 100vh;
@@ -53,15 +116,14 @@ function App() {
           overflow-x: hidden;
         }
 
-        .atlas-shell {
+        .atlas-frame-section {
           width: 100%;
-          min-height: 100vh;
           background: #f1f0ec;
           display: flex;
           justify-content: center;
           align-items: flex-start;
-          position: relative;
           overflow: hidden;
+          position: relative;
         }
 
         .atlas-frame-wrap {
@@ -69,21 +131,20 @@ function App() {
           max-width: 1320px;
           margin: 0 auto;
           background: #f1f0ec;
-          overflow: hidden;
           position: relative;
+          overflow: hidden;
         }
 
         .atlas-frame {
           width: 100%;
-          height: 2380px;
           border: 0;
           display: block;
           background: #f1f0ec;
           opacity: 0;
           transform: translateY(8px);
           transition:
-            opacity 900ms ease,
-            transform 900ms ease;
+            opacity 850ms ease,
+            transform 850ms ease;
         }
 
         .atlas-frame.is-ready {
@@ -91,148 +152,137 @@ function App() {
           transform: translateY(0);
         }
 
-        .atlas-loading-mask {
+        .atlas-frame-mask {
           position: absolute;
           inset: 0;
-          z-index: 2;
+          z-index: 4;
           background: #f1f0ec;
           display: flex;
           align-items: center;
           justify-content: center;
           transition:
-            opacity 700ms ease,
-            visibility 700ms ease;
+            opacity 650ms ease,
+            visibility 650ms ease;
         }
 
-        .atlas-loading-mask.is-hidden {
+        .atlas-frame-mask.is-hidden {
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
         }
 
-        .atlas-loading-card {
-          width: min(520px, calc(100vw - 48px));
-          padding: 34px 38px;
-          border-radius: 24px;
-          background: rgba(255,255,255,0.72);
+        .atlas-loading-orb {
+          width: 42px;
+          height: 42px;
+          border-radius: 999px;
+          background:
+            radial-gradient(circle at 34% 28%, rgba(255,255,255,0.95), rgba(255,255,255,0.55) 34%, rgba(255,255,255,0.12) 70%),
+            #ffffff;
           border: 1px solid rgba(29,29,31,0.08);
+          box-shadow:
+            0 18px 45px rgba(29,29,31,0.10),
+            inset 0 1px 10px rgba(255,255,255,0.9);
+          animation: atlasOrbPulse 1.45s ease-in-out infinite;
+        }
+
+        @keyframes atlasOrbPulse {
+          0% {
+            transform: scale(0.96);
+            opacity: 0.42;
+          }
+
+          50% {
+            transform: scale(1.06);
+            opacity: 0.82;
+          }
+
+          100% {
+            transform: scale(0.96);
+            opacity: 0.42;
+          }
+        }
+
+        .atlas-bridge-section {
+          width: 100%;
+          min-height: 260px;
+          background: #f1f0ec;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 40px 22px 54px;
+        }
+
+        .atlas-bridge-card {
+          width: min(620px, 100%);
+          background: rgba(255,255,255,0.78);
+          border: 1px solid rgba(29,29,31,0.08);
+          border-radius: 28px;
           box-shadow: 0 24px 70px rgba(29,29,31,0.08);
+          padding: 34px 40px 36px;
           text-align: center;
           backdrop-filter: blur(18px);
           -webkit-backdrop-filter: blur(18px);
         }
 
-        .atlas-loading-title {
-          font-size: 28px;
-          line-height: 1.05;
-          font-weight: 850;
+        .atlas-kicker {
+          font-size: 10px;
+          font-weight: 820;
+          letter-spacing: 0.11em;
+          text-transform: uppercase;
+          color: #8c9098;
+          margin-bottom: 13px;
+        }
+
+        .atlas-bridge-card h2 {
+          margin: 0 auto 13px;
+          max-width: 500px;
+          font-size: 30px;
+          line-height: 1.04;
           letter-spacing: -0.065em;
+          font-weight: 880;
           color: #1d1d1f;
-          margin-bottom: 12px;
         }
 
-        .atlas-loading-subtitle {
-          font-size: 13px;
-          line-height: 1.45;
-          font-weight: 500;
-          color: #61656f;
-          max-width: 360px;
+        .atlas-bridge-card p {
           margin: 0 auto;
-        }
-
-        .atlas-loading-dots {
-          display: flex;
-          justify-content: center;
-          gap: 8px;
-          margin-top: 22px;
-        }
-
-        .atlas-loading-dots span {
-          width: 8px;
-          height: 8px;
-          border-radius: 999px;
-          background: #1d1d1f;
-          opacity: 0.22;
-          animation: atlasPulse 1.4s ease-in-out infinite;
-        }
-
-        .atlas-loading-dots span:nth-child(2) {
-          animation-delay: 160ms;
-        }
-
-        .atlas-loading-dots span:nth-child(3) {
-          animation-delay: 320ms;
-        }
-
-        @keyframes atlasPulse {
-          0% {
-            transform: translateY(0);
-            opacity: 0.18;
-          }
-
-          50% {
-            transform: translateY(-5px);
-            opacity: 0.42;
-          }
-
-          100% {
-            transform: translateY(0);
-            opacity: 0.18;
-          }
+          max-width: 500px;
+          font-size: 13px;
+          line-height: 1.55;
+          color: #61656f;
+          font-weight: 500;
         }
 
         @media (max-width: 900px) {
-          .atlas-frame {
-            height: 2440px;
+          .atlas-frame-wrap {
+            max-width: 100%;
           }
 
-          .atlas-loading-card {
-            padding: 28px 26px;
+          .atlas-bridge-section {
+            min-height: 240px;
+            padding: 34px 18px 46px;
           }
 
-          .atlas-loading-title {
-            font-size: 23px;
+          .atlas-bridge-card {
+            padding: 28px 26px 30px;
+            border-radius: 24px;
+          }
+
+          .atlas-bridge-card h2 {
+            font-size: 24px;
+          }
+
+          .atlas-bridge-card p {
+            font-size: 12.5px;
           }
         }
       `}</style>
 
       <main className="atlas-page">
-        <section className="atlas-shell">
-          <div className="atlas-frame-wrap">
-            <div
-              className={`atlas-loading-mask ${
-                frameReady ? "is-hidden" : ""
-              }`}
-            >
-              <div className="atlas-loading-card">
-                <div className="atlas-loading-title">
-                  Psychedelic Trial Atlas
-                </div>
-
-                <div className="atlas-loading-subtitle">
-                  Preparing the visible clinical-development ecosystem.
-                </div>
-
-                <div className="atlas-loading-dots">
-                  <span />
-                  <span />
-                  <span />
-                </div>
-              </div>
-            </div>
-
-            <iframe
-              className={`atlas-frame ${frameReady ? "is-ready" : ""}`}
-              title="UNICORN1 Psychedelic Trial Atlas — Visual 1"
-              width="100%"
-              height="2380"
-              frameBorder="0"
-              scrolling="no"
-              src={iframeSrc}
-              onLoad={handleFrameLoad}
-            />
-          </div>
-        </section>
+        <ObservableFrame {...frames[0]} />
+        <ObservableFrame {...frames[1]} />
+        <BridgeCard />
+        <ObservableFrame {...frames[2]} />
+        <ObservableFrame {...frames[3]} />
       </main>
     </>
   );
