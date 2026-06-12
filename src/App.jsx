@@ -2,7 +2,8 @@ import { useRef, useEffect, useState } from "react";
 
 const OBSERVABLE_API_KEY = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
 const NOTEBOOK = "e3028f2577c04f9a@1010";
-const FOOTER_CROP = 44;
+
+const FOOTER_CROP = 64;
 
 const frames = [
   {
@@ -10,28 +11,28 @@ const frames = [
     title: "Psychedelic Trial Atlas — Hero",
     cell: "heroSection",
     iframeHeight: 836,
-    visibleHeight: 792,
+    visibleHeight: 772,
   },
   {
     key: "visual1a",
     title: "Psychedelic Trial Atlas — Ecosystem Overview",
     cell: "visual1EcosystemOverview",
     iframeHeight: 796,
-    visibleHeight: 752,
+    visibleHeight: 732,
   },
   {
     key: "visual1b",
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
     iframeHeight: 796,
-    visibleHeight: 752,
+    visibleHeight: 732,
   },
   {
     key: "visual2intro",
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
     iframeHeight: 747,
-    visibleHeight: 703,
+    visibleHeight: 683,
   },
 ];
 
@@ -85,12 +86,18 @@ function ProgressBar() {
   );
 }
 
-function ObservableFrame({ frame, targetRef }) {
+function ObservableFrame({ frame, targetRef, isHero = false }) {
   const [ready, setReady] = useState(false);
 
   return (
-    <section className="frame-section" ref={targetRef}>
-      <div className="frame-crop" style={{ height: frame.visibleHeight }}>
+    <section
+      className={isHero ? "hero-shell" : "frame-section"}
+      ref={targetRef}
+    >
+      <div
+        className={isHero ? "hero-crop" : "frame-crop"}
+        style={{ height: isHero ? "100vh" : frame.visibleHeight }}
+      >
         <div className={`frame-mask ${ready ? "is-hidden" : ""}`} />
 
         <iframe
@@ -102,56 +109,36 @@ function ObservableFrame({ frame, targetRef }) {
           scrolling="no"
           className={`observable-frame ${ready ? "is-ready" : ""}`}
           onLoad={() => setTimeout(() => setReady(true), 160)}
-        />
-      </div>
-    </section>
-  );
-}
-
-function HeroSection({ onStart }) {
-  const frame = frames[0];
-  const [ready, setReady] = useState(false);
-
-  return (
-    <section className="hero-shell">
-      <div className="hero-frame-crop">
-        <iframe
-          title={frame.title}
-          src={src(frame.cell)}
-          width="100%"
-          height={frame.iframeHeight}
-          frameBorder="0"
-          scrolling="no"
-          className={`hero-frame ${ready ? "is-ready" : ""}`}
-          onLoad={() => setTimeout(() => setReady(true), 120)}
+          style={{
+            height: `${frame.iframeHeight}px`,
+          }}
         />
       </div>
 
-      <button
-        type="button"
-        className="journey-arrow-button"
-        onClick={onStart}
-        aria-label="Start your journey"
-      >
-        <span className="journey-arrow-label">START YOUR JOURNEY</span>
-        <span className="journey-arrow">
-          <span className="journey-arrow-stem" />
-          <span className="journey-arrow-head" />
-        </span>
-      </button>
+      {isHero && (
+        <button
+          type="button"
+          className="journey-arrow-button"
+          onClick={() =>
+            document
+              .querySelector("#visual1a")
+              ?.scrollIntoView({ behavior: "smooth", block: "start" })
+          }
+          aria-label="Start your journey"
+        >
+          <span className="journey-arrow-label">START YOUR JOURNEY</span>
+          <span className="journey-arrow">
+            <span className="journey-arrow-stem" />
+            <span className="journey-arrow-head" />
+          </span>
+        </button>
+      )}
     </section>
   );
 }
 
 function App() {
   const visual1Ref = useRef(null);
-
-  function startJourney() {
-    visual1Ref.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  }
 
   return (
     <>
@@ -221,28 +208,65 @@ function App() {
           align-items: center;
         }
 
-        .hero-frame-crop {
+        .hero-crop {
           width: 100%;
           max-width: 1320px;
-          height: 100vh;
-          min-height: 760px;
           overflow: hidden;
           background: #f1f0ec;
           position: relative;
         }
 
-        .hero-frame {
+        .frame-section {
+          width: 100%;
+          background: #f1f0ec;
+          display: flex;
+          justify-content: center;
+          align-items: flex-start;
+          overflow: hidden;
+          padding: 0;
+          margin: 0;
+        }
+
+        .frame-crop {
+          width: 100%;
+          max-width: 1320px;
+          margin: 0 auto;
+          background: #f1f0ec;
+          overflow: hidden;
+          position: relative;
+        }
+
+        .observable-frame {
           display: block;
           width: 100%;
-          height: 836px;
           border: 0;
           background: #f1f0ec;
           opacity: 0;
-          transition: opacity 360ms ease;
+          transform: translateY(4px);
+          transition:
+            opacity 320ms ease,
+            transform 320ms ease;
         }
 
-        .hero-frame.is-ready {
+        .observable-frame.is-ready {
           opacity: 1;
+          transform: translateY(0);
+        }
+
+        .frame-mask {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #f1f0ec;
+          transition:
+            opacity 240ms ease,
+            visibility 240ms ease;
+        }
+
+        .frame-mask.is-hidden {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
         }
 
         .journey-arrow-button {
@@ -301,27 +325,17 @@ function App() {
           animation: arrowHead 1.75s ease-in-out infinite;
         }
 
-        .journey-arrow-button:hover .journey-arrow-label {
-          color: rgba(29,29,31,0.72);
-        }
-
-        .journey-arrow-button:hover .journey-arrow-stem {
-          background: rgba(29,29,31,0.68);
-        }
-
-        .journey-arrow-button:hover .journey-arrow-head {
-          border-color: rgba(29,29,31,0.68);
-        }
-
         @keyframes arrowFloat {
           0% {
             transform: translateY(0);
             opacity: 0.62;
           }
+
           42% {
             transform: translateY(12px);
             opacity: 1;
           }
+
           100% {
             transform: translateY(0);
             opacity: 0.62;
@@ -333,10 +347,12 @@ function App() {
             height: 18px;
             opacity: 0.2;
           }
+
           42% {
             height: 34px;
             opacity: 0.68;
           }
+
           100% {
             height: 18px;
             opacity: 0.2;
@@ -348,72 +364,20 @@ function App() {
             bottom: 18px;
             opacity: 0.14;
           }
+
           42% {
             bottom: 5px;
             opacity: 0.72;
           }
+
           100% {
             bottom: 18px;
             opacity: 0.14;
           }
         }
 
-        .frame-section {
-          width: 100%;
-          background: #f1f0ec;
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          overflow: hidden;
-          padding: 0;
-          margin: 0;
-        }
-
-        .frame-crop {
-          width: 100%;
-          max-width: 1320px;
-          margin: 0 auto;
-          background: #f1f0ec;
-          overflow: hidden;
-          position: relative;
-        }
-
-        .observable-frame {
-          display: block;
-          width: 100%;
-          border: 0;
-          background: #f1f0ec;
-          opacity: 0;
-          transform: translateY(4px);
-          transition:
-            opacity 320ms ease,
-            transform 320ms ease;
-        }
-
-        .observable-frame.is-ready {
-          opacity: 1;
-          transform: translateY(0);
-        }
-
-        .frame-mask {
-          position: absolute;
-          inset: 0;
-          z-index: 2;
-          background: #f1f0ec;
-          transition:
-            opacity 240ms ease,
-            visibility 240ms ease;
-        }
-
-        .frame-mask.is-hidden {
-          opacity: 0;
-          visibility: hidden;
-          pointer-events: none;
-        }
-
         @media (max-width: 900px) {
-          .hero-shell,
-          .hero-frame-crop {
+          .hero-shell {
             min-height: 720px;
           }
 
@@ -421,7 +385,8 @@ function App() {
             bottom: 70px;
           }
 
-          .frame-crop {
+          .frame-crop,
+          .hero-crop {
             max-width: 100%;
           }
         }
@@ -430,9 +395,11 @@ function App() {
       <main className="page">
         <ProgressBar />
 
-        <HeroSection onStart={startJourney} />
+        <ObservableFrame frame={frames[0]} isHero />
 
-        <ObservableFrame frame={frames[1]} targetRef={visual1Ref} />
+        <div id="visual1a" ref={visual1Ref}>
+          <ObservableFrame frame={frames[1]} />
+        </div>
 
         <ObservableFrame frame={frames[2]} />
 
