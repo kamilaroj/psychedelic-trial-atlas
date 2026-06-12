@@ -6,25 +6,20 @@ const NOTEBOOK = "e3028f2577c04f9a@1010";
 const OBSERVABLE_FOOTER_CROP = 42;
 
 const frames = {
-  hero: {
-    title: "Psychedelic Trial Atlas — Hero",
-    cell: "heroSection",
-    iframeHeight: 862,
-  },
   visual1a: {
     title: "Psychedelic Trial Atlas — Ecosystem Overview",
     cell: "visual1EcosystemOverview",
-    iframeHeight: 842,
+    iframeHeight: 872,
   },
   visual1b: {
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
-    iframeHeight: 870,
+    iframeHeight: 910,
   },
   visual2intro: {
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
-    iframeHeight: 980,
+    iframeHeight: 1030,
   },
 };
 
@@ -89,12 +84,12 @@ function ScrollProgressBar() {
 
 function HeroAmbient() {
   const circles = [
-    { x: "13%", y: "18%", s: 108, d: "0s" },
-    { x: "22%", y: "64%", s: 66, d: "1.2s" },
-    { x: "73%", y: "20%", s: 86, d: "0.6s" },
-    { x: "84%", y: "58%", s: 122, d: "1.8s" },
-    { x: "47%", y: "78%", s: 58, d: "0.3s" },
-    { x: "63%", y: "72%", s: 44, d: "1.5s" },
+    { x: "12%", y: "18%", s: 112, d: "0s" },
+    { x: "22%", y: "65%", s: 68, d: "1.2s" },
+    { x: "73%", y: "21%", s: 88, d: "0.6s" },
+    { x: "84%", y: "58%", s: 126, d: "1.8s" },
+    { x: "47%", y: "79%", s: 58, d: "0.3s" },
+    { x: "63%", y: "72%", s: 46, d: "1.5s" },
   ];
 
   return (
@@ -116,18 +111,27 @@ function HeroAmbient() {
   );
 }
 
-function HeroIframeWindow() {
+function NativeHero() {
   return (
-    <div className="hero-iframe-window">
-      <iframe
-        className="hero-iframe"
-        title={frames.hero.title}
-        width="100%"
-        height={frames.hero.iframeHeight}
-        frameBorder="0"
-        scrolling="no"
-        src={observableSrc(frames.hero.cell)}
-      />
+    <div className="native-hero">
+      <div className="native-hero-kicker">UNICORN1</div>
+
+      <h1>Psychedelic Trial Atlas</h1>
+
+      <p>
+        A data-driven map of visible clinical-trial and pipeline activity across
+        psychedelic and psychedelic-adjacent medicine.
+      </p>
+
+      <div className="native-hero-note">
+        Public trial records and selected pipeline context — separated, not
+        collapsed.
+      </div>
+
+      <div className="native-hero-cue">
+        <span />
+        Scroll to enter the atlas
+      </div>
     </div>
   );
 }
@@ -140,7 +144,7 @@ function ObservableEmbed({ frame, className = "", handoff = false }) {
   function handleLoad() {
     window.setTimeout(() => {
       setReady(true);
-    }, 220);
+    }, 180);
   }
 
   return (
@@ -149,17 +153,11 @@ function ObservableEmbed({ frame, className = "", handoff = false }) {
       style={{ height: visibleHeight }}
     >
       <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
-        {!handoff && (
-          <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`} />
-        )}
-
-        {handoff && (
-          <div
-            className={`atlas-frame-mask atlas-frame-mask-handoff ${
-              ready ? "is-hidden" : ""
-            }`}
-          />
-        )}
+        <div
+          className={`atlas-frame-mask ${handoff ? "handoff-mask" : ""} ${
+            ready ? "is-hidden" : ""
+          }`}
+        />
 
         <iframe
           className={`atlas-frame ${ready ? "is-ready" : ""}`}
@@ -168,6 +166,7 @@ function ObservableEmbed({ frame, className = "", handoff = false }) {
           height={frame.iframeHeight}
           frameBorder="0"
           scrolling="no"
+          loading={handoff ? "eager" : "lazy"}
           src={observableSrc(frame.cell)}
           onLoad={handleLoad}
           style={{
@@ -193,32 +192,31 @@ function HeroToEcosystemHandoff() {
         return;
       }
 
-      const section = sectionRef.current;
-      const rect = section.getBoundingClientRect();
-      const scrollDistance = section.offsetHeight - window.innerHeight;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const scrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
       const progress =
         scrollDistance > 0 ? clamp(-rect.top / scrollDistance) : 0;
 
       /*
-        Key idea:
-        - hero starts exactly centered
-        - hero moves up over a longer scroll range
-        - visual enters from below in pixels, not huge vh jumps
-        - visual ends centered, not top-aligned
+        Cinematic handoff:
+        0.00–0.15: hero stays centered
+        0.15–0.65: hero lifts clearly upward
+        0.20–0.78: Visual 1A glides from below into center
+        0.72–1.00: hero fades away, Visual 1A owns the screen
       */
 
-      const heroMove = easeOutCubic(clamp((progress - 0.04) / 0.58));
-      const heroFade = clamp((progress - 0.68) / 0.22);
+      const heroLift = easeOutCubic(clamp((progress - 0.08) / 0.58));
+      const heroFade = clamp((progress - 0.72) / 0.22);
 
-      const visualMove = easeOutCubic(clamp((progress - 0.12) / 0.56));
-      const visualFade = clamp((progress - 0.10) / 0.26);
+      const visualEnter = easeOutCubic(clamp((progress - 0.16) / 0.58));
+      const visualFade = clamp((progress - 0.12) / 0.24);
 
-      const heroY = -heroMove * 360;
-      const heroScale = 1 - heroMove * 0.025;
-      const heroOpacity = 1 - heroFade * 0.95;
+      const heroY = -heroLift * 430;
+      const heroScale = 1 - heroLift * 0.035;
+      const heroOpacity = 1 - heroFade * 0.96;
 
-      const visualY = (1 - visualMove) * 185;
-      const visualScale = 0.965 + visualMove * 0.035;
+      const visualY = (1 - visualEnter) * 265;
+      const visualScale = 0.945 + visualEnter * 0.055;
       const visualOpacity = visualFade;
 
       heroRef.current.style.transform = `translate3d(0, ${heroY}px, 0) scale(${heroScale})`;
@@ -228,8 +226,8 @@ function HeroToEcosystemHandoff() {
       visualRef.current.style.opacity = visualOpacity;
 
       if (ambientRef.current) {
-        ambientRef.current.style.transform = `translate3d(0, ${-heroMove * 34}px, 0)`;
-        ambientRef.current.style.opacity = 0.34 - heroMove * 0.16;
+        ambientRef.current.style.transform = `translate3d(0, ${-heroLift * 42}px, 0)`;
+        ambientRef.current.style.opacity = 0.34 - heroLift * 0.15;
       }
     }
 
@@ -257,11 +255,11 @@ function HeroToEcosystemHandoff() {
   return (
     <section className="hero-handoff-section" ref={sectionRef}>
       <div className="hero-sticky-scene">
-        <div ref={ambientRef} className="hero-ambient-wrap">
+        <div className="hero-ambient-wrap" ref={ambientRef}>
           <HeroAmbient />
         </div>
 
-        <div ref={visualRef} className="handoff-visual-layer">
+        <div className="handoff-visual-layer" ref={visualRef}>
           <ObservableEmbed
             frame={frames.visual1a}
             className="handoff-visual-frame"
@@ -269,18 +267,10 @@ function HeroToEcosystemHandoff() {
           />
         </div>
 
-        <div ref={heroRef} className="handoff-hero-layer">
-          <HeroIframeWindow />
+        <div className="handoff-hero-layer" ref={heroRef}>
+          <NativeHero />
         </div>
       </div>
-    </section>
-  );
-}
-
-function NormalObservableSection({ frame }) {
-  return (
-    <section className="atlas-frame-section">
-      <ObservableEmbed frame={frame} />
     </section>
   );
 }
@@ -296,6 +286,14 @@ function BridgeCard() {
           the organizations shaping psychedelic medicine.
         </p>
       </div>
+    </section>
+  );
+}
+
+function NormalObservableSection({ frame }) {
+  return (
+    <section className="atlas-frame-section">
+      <ObservableEmbed frame={frame} />
     </section>
   );
 }
@@ -357,15 +355,9 @@ function App() {
           box-shadow: 0 0 18px rgba(97,101,111,0.14);
         }
 
-        /*
-          HERO HANDOFF
-          Long enough to make the movement visible.
-          Not too long to feel stuck.
-        */
-
         .hero-handoff-section {
           position: relative;
-          height: 230vh;
+          height: 188vh;
           background: #f1f0ec;
         }
 
@@ -393,8 +385,8 @@ function App() {
         .hero-ambient {
           position: absolute;
           inset: 0;
-          pointer-events: none;
           overflow: hidden;
+          pointer-events: none;
         }
 
         .hero-ambient-circle {
@@ -437,57 +429,117 @@ function App() {
           position: absolute;
           z-index: 4;
           width: 100%;
-          height: 100%;
+          min-height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
+          pointer-events: none;
           will-change: transform, opacity;
-          pointer-events: none;
         }
 
-        .hero-iframe-window {
-          width: 100%;
-          max-width: 1320px;
-          height: 560px;
-          overflow: hidden;
-          background: transparent;
-          position: relative;
+        .native-hero {
+          width: min(740px, calc(100vw - 44px));
+          margin: 0 auto;
+          text-align: center;
+          color: #1d1d1f;
         }
 
-        .hero-iframe {
-          width: 100%;
-          height: 862px;
-          border: 0;
-          display: block;
-          background: #f1f0ec;
-          transform: translateY(-148px);
-          pointer-events: none;
+        .native-hero-kicker {
+          font-size: 9.5px;
+          font-weight: 820;
+          letter-spacing: 0.13em;
+          text-transform: uppercase;
+          color: #8c9098;
+          margin-bottom: 16px;
+        }
+
+        .native-hero h1 {
+          margin: 0 auto 14px;
+          font-size: clamp(42px, 5.2vw, 70px);
+          line-height: 0.94;
+          letter-spacing: -0.085em;
+          font-weight: 900;
+          color: #1d1d1f;
+          max-width: 680px;
+        }
+
+        .native-hero p {
+          margin: 0 auto;
+          max-width: 520px;
+          font-size: 14px;
+          line-height: 1.52;
+          color: #61656f;
+          font-weight: 500;
+        }
+
+        .native-hero-note {
+          width: fit-content;
+          max-width: 100%;
+          margin: 20px auto 0;
+          padding: 8px 12px;
+          border-radius: 999px;
+          background: rgba(255,255,255,0.58);
+          border: 1px solid rgba(29,29,31,0.055);
+          color: #61656f;
+          font-size: 10.8px;
+          line-height: 1.32;
+          font-weight: 650;
+          box-shadow: 0 10px 30px rgba(29,29,31,0.035);
+        }
+
+        .native-hero-cue {
+          margin-top: 27px;
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          color: #8c9098;
+          font-size: 9.5px;
+          font-weight: 760;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+        }
+
+        .native-hero-cue span {
+          width: 6px;
+          height: 6px;
+          border-radius: 999px;
+          background: #8c9098;
+          opacity: 0.55;
+          animation: cuePulse 1.4s ease-in-out infinite;
+        }
+
+        @keyframes cuePulse {
+          0%, 100% {
+            transform: scale(0.85);
+            opacity: 0.35;
+          }
+
+          50% {
+            transform: scale(1.2);
+            opacity: 0.72;
+          }
         }
 
         .handoff-visual-layer {
           position: absolute;
           z-index: 2;
           width: 100%;
-          height: 100%;
+          min-height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
           opacity: 0;
-          transform: translate3d(0, 185px, 0) scale(0.965);
+          transform: translate3d(0, 265px, 0) scale(0.945);
           will-change: transform, opacity;
         }
 
         .handoff-visual-frame {
-          max-width: 1320px;
+          max-width: 1180px;
         }
 
         .handoff-visual-frame iframe {
           pointer-events: none;
         }
-
-        /*
-          NORMAL OBSERVABLE SECTIONS
-        */
 
         .atlas-frame-section {
           width: 100%;
@@ -498,12 +550,12 @@ function App() {
           overflow: hidden;
           position: relative;
           margin: 0;
-          padding: 0;
+          padding: 18px 0 24px;
         }
 
         .atlas-frame-outer {
           width: 100%;
-          max-width: 1320px;
+          max-width: 1220px;
           margin: 0 auto;
           background: #f1f0ec;
           position: relative;
@@ -526,8 +578,8 @@ function App() {
           opacity: 0;
           transform: translateY(3px);
           transition:
-            opacity 420ms ease,
-            transform 420ms ease;
+            opacity 380ms ease,
+            transform 380ms ease;
         }
 
         .atlas-frame.is-ready {
@@ -541,12 +593,8 @@ function App() {
           z-index: 5;
           background: #f1f0ec;
           transition:
-            opacity 320ms ease,
-            visibility 320ms ease;
-        }
-
-        .atlas-frame-mask-handoff {
-          z-index: 6;
+            opacity 280ms ease,
+            visibility 280ms ease;
         }
 
         .atlas-frame-mask.is-hidden {
@@ -555,18 +603,20 @@ function App() {
           pointer-events: none;
         }
 
-        /*
-          BRIDGE CARD
-        */
+        .handoff-mask {
+          transition:
+            opacity 220ms ease,
+            visibility 220ms ease;
+        }
 
         .atlas-bridge-section {
           width: 100%;
-          min-height: 160px;
+          min-height: 154px;
           background: #f1f0ec;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 22px 22px 28px;
+          padding: 18px 22px 20px;
           margin: 0;
           position: relative;
           z-index: 8;
@@ -614,24 +664,40 @@ function App() {
 
         @media (max-width: 900px) {
           .hero-handoff-section {
-            height: 220vh;
+            height: 180vh;
           }
 
-          .hero-iframe-window {
-            height: 500px;
+          .native-hero {
+            width: min(680px, calc(100vw - 38px));
           }
 
-          .hero-iframe {
-            transform: translateY(-170px);
+          .native-hero h1 {
+            font-size: clamp(38px, 11vw, 56px);
+          }
+
+          .native-hero p {
+            font-size: 13px;
+          }
+
+          .native-hero-note {
+            font-size: 10.2px;
+          }
+
+          .handoff-visual-frame {
+            max-width: 100%;
           }
 
           .atlas-frame-outer {
             max-width: 100%;
           }
 
+          .atlas-frame-section {
+            padding: 14px 0 20px;
+          }
+
           .atlas-bridge-section {
-            min-height: 150px;
-            padding: 18px 18px 24px;
+            min-height: 148px;
+            padding: 16px 18px 18px;
           }
 
           .atlas-bridge-card {
