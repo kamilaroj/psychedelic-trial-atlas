@@ -4,20 +4,20 @@ export default function App() {
   return (
     <main className="site">
       <section className="hero-section">
-        <div className="hero-content">
-          <h1>Psychedelic Trial Atlas</h1>
+        <div className="hero-inner">
+          <h1 className="atlas-hero-title">Psychedelic Trial Atlas</h1>
 
-          <p className="hero-subtitle">
+          <p className="atlas-hero-subtitle">
             A visual data project mapping registered clinical-trial activity and visible pipeline context
             <br />
             across psychedelic and psychedelic-adjacent medicines.
           </p>
-
-          <a className="journey-cue" href="#journey" aria-label="Start your journey">
-            <span className="journey-label">Start your journey</span>
-            <span className="journey-arrow" />
-          </a>
         </div>
+
+        <a className="journey-cue" href="#journey" aria-label="Start your journey">
+          <span className="journey-label">Start your journey</span>
+          <span className="journey-arrow" />
+        </a>
       </section>
 
       <section id="journey" className="visual-section">
