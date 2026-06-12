@@ -2,24 +2,23 @@ import { useEffect, useRef, useState } from "react";
 
 const OBSERVABLE_API_KEY = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
 const NOTEBOOK = "e3028f2577c04f9a@1010";
-
 const OBSERVABLE_FOOTER_CROP = 42;
 
 const frames = {
   visual1a: {
     title: "Psychedelic Trial Atlas — Ecosystem Overview",
     cell: "visual1EcosystemOverview",
-    iframeHeight: 872,
+    iframeHeight: 796,
   },
   visual1b: {
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
-    iframeHeight: 910,
+    iframeHeight: 796,
   },
   visual2intro: {
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
-    iframeHeight: 1030,
+    iframeHeight: 808,
   },
 };
 
@@ -46,7 +45,6 @@ function ScrollProgressBar() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollable =
         document.documentElement.scrollHeight - window.innerHeight;
-
       const progress = scrollable > 0 ? clamp(scrollTop / scrollable) : 0;
 
       if (lineRef.current) {
@@ -56,7 +54,6 @@ function ScrollProgressBar() {
 
     function requestUpdate() {
       if (raf) return;
-
       raf = window.requestAnimationFrame(() => {
         raf = null;
         update();
@@ -64,7 +61,6 @@ function ScrollProgressBar() {
     }
 
     update();
-
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
 
@@ -78,6 +74,31 @@ function ScrollProgressBar() {
   return (
     <div className="scroll-progress-track" aria-hidden="true">
       <div ref={lineRef} className="scroll-progress-line" />
+    </div>
+  );
+}
+
+function NativeHero() {
+  return (
+    <div className="native-hero">
+      <div className="native-hero-kicker">UNICORN1</div>
+
+      <h1>Psychedelic Trial Atlas</h1>
+
+      <p>
+        A data-driven map of visible clinical-trial and pipeline activity across
+        psychedelic and psychedelic-adjacent medicine.
+      </p>
+
+      <div className="native-hero-note">
+        Public trial records and selected pipeline context — separated, not
+        collapsed.
+      </div>
+
+      <div className="native-hero-cue">
+        <span />
+        Scroll to enter the atlas
+      </div>
     </div>
   );
 }
@@ -111,40 +132,12 @@ function HeroAmbient() {
   );
 }
 
-function NativeHero() {
-  return (
-    <div className="native-hero">
-      <div className="native-hero-kicker">UNICORN1</div>
-
-      <h1>Psychedelic Trial Atlas</h1>
-
-      <p>
-        A data-driven map of visible clinical-trial and pipeline activity across
-        psychedelic and psychedelic-adjacent medicine.
-      </p>
-
-      <div className="native-hero-note">
-        Public trial records and selected pipeline context — separated, not
-        collapsed.
-      </div>
-
-      <div className="native-hero-cue">
-        <span />
-        Scroll to enter the atlas
-      </div>
-    </div>
-  );
-}
-
 function ObservableEmbed({ frame, className = "", handoff = false }) {
   const [ready, setReady] = useState(false);
-
   const visibleHeight = frame.iframeHeight - OBSERVABLE_FOOTER_CROP;
 
   function handleLoad() {
-    window.setTimeout(() => {
-      setReady(true);
-    }, 180);
+    window.setTimeout(() => setReady(true), handoff ? 120 : 220);
   }
 
   return (
@@ -154,9 +147,7 @@ function ObservableEmbed({ frame, className = "", handoff = false }) {
     >
       <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
         <div
-          className={`atlas-frame-mask ${handoff ? "handoff-mask" : ""} ${
-            ready ? "is-hidden" : ""
-          }`}
+          className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`}
         />
 
         <iframe
@@ -169,9 +160,7 @@ function ObservableEmbed({ frame, className = "", handoff = false }) {
           loading={handoff ? "eager" : "lazy"}
           src={observableSrc(frame.cell)}
           onLoad={handleLoad}
-          style={{
-            height: `${frame.iframeHeight}px`,
-          }}
+          style={{ height: `${frame.iframeHeight}px` }}
         />
       </div>
     </div>
@@ -188,52 +177,39 @@ function HeroToEcosystemHandoff() {
     let raf = null;
 
     function update() {
-      if (!sectionRef.current || !heroRef.current || !visualRef.current) {
-        return;
-      }
+      if (!sectionRef.current || !heroRef.current || !visualRef.current) return;
 
       const rect = sectionRef.current.getBoundingClientRect();
       const scrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
       const progress =
         scrollDistance > 0 ? clamp(-rect.top / scrollDistance) : 0;
 
-      /*
-        Cinematic handoff:
-        0.00–0.15: hero stays centered
-        0.15–0.65: hero lifts clearly upward
-        0.20–0.78: Visual 1A glides from below into center
-        0.72–1.00: hero fades away, Visual 1A owns the screen
-      */
-
-      const heroLift = easeOutCubic(clamp((progress - 0.08) / 0.58));
+      const heroLift = easeOutCubic(clamp((progress - 0.08) / 0.56));
       const heroFade = clamp((progress - 0.72) / 0.22);
 
-      const visualEnter = easeOutCubic(clamp((progress - 0.16) / 0.58));
-      const visualFade = clamp((progress - 0.12) / 0.24);
+      const visualEnter = easeOutCubic(clamp((progress - 0.14) / 0.58));
+      const visualFade = clamp((progress - 0.10) / 0.22);
 
-      const heroY = -heroLift * 430;
-      const heroScale = 1 - heroLift * 0.035;
-      const heroOpacity = 1 - heroFade * 0.96;
+      heroRef.current.style.transform = `translate3d(0, ${
+        -heroLift * 430
+      }px, 0) scale(${1 - heroLift * 0.035})`;
+      heroRef.current.style.opacity = 1 - heroFade * 0.96;
 
-      const visualY = (1 - visualEnter) * 265;
-      const visualScale = 0.945 + visualEnter * 0.055;
-      const visualOpacity = visualFade;
-
-      heroRef.current.style.transform = `translate3d(0, ${heroY}px, 0) scale(${heroScale})`;
-      heroRef.current.style.opacity = heroOpacity;
-
-      visualRef.current.style.transform = `translate3d(0, ${visualY}px, 0) scale(${visualScale})`;
-      visualRef.current.style.opacity = visualOpacity;
+      visualRef.current.style.transform = `translate3d(0, ${
+        (1 - visualEnter) * 255
+      }px, 0) scale(${0.955 + visualEnter * 0.045})`;
+      visualRef.current.style.opacity = visualFade;
 
       if (ambientRef.current) {
-        ambientRef.current.style.transform = `translate3d(0, ${-heroLift * 42}px, 0)`;
+        ambientRef.current.style.transform = `translate3d(0, ${
+          -heroLift * 42
+        }px, 0)`;
         ambientRef.current.style.opacity = 0.34 - heroLift * 0.15;
       }
     }
 
     function requestUpdate() {
       if (raf) return;
-
       raf = window.requestAnimationFrame(() => {
         raf = null;
         update();
@@ -241,7 +217,6 @@ function HeroToEcosystemHandoff() {
     }
 
     update();
-
     window.addEventListener("scroll", requestUpdate, { passive: true });
     window.addEventListener("resize", requestUpdate);
 
@@ -459,7 +434,6 @@ function App() {
           line-height: 0.94;
           letter-spacing: -0.085em;
           font-weight: 900;
-          color: #1d1d1f;
           max-width: 680px;
         }
 
@@ -529,7 +503,7 @@ function App() {
           align-items: center;
           justify-content: center;
           opacity: 0;
-          transform: translate3d(0, 265px, 0) scale(0.945);
+          transform: translate3d(0, 255px, 0) scale(0.955);
           will-change: transform, opacity;
         }
 
@@ -550,7 +524,7 @@ function App() {
           overflow: hidden;
           position: relative;
           margin: 0;
-          padding: 18px 0 24px;
+          padding: 12px 0 18px;
         }
 
         .atlas-frame-outer {
@@ -578,8 +552,8 @@ function App() {
           opacity: 0;
           transform: translateY(3px);
           transition:
-            opacity 380ms ease,
-            transform 380ms ease;
+            opacity 320ms ease,
+            transform 320ms ease;
         }
 
         .atlas-frame.is-ready {
@@ -593,8 +567,8 @@ function App() {
           z-index: 5;
           background: #f1f0ec;
           transition:
-            opacity 280ms ease,
-            visibility 280ms ease;
+            opacity 240ms ease,
+            visibility 240ms ease;
         }
 
         .atlas-frame-mask.is-hidden {
@@ -603,20 +577,14 @@ function App() {
           pointer-events: none;
         }
 
-        .handoff-mask {
-          transition:
-            opacity 220ms ease,
-            visibility 220ms ease;
-        }
-
         .atlas-bridge-section {
           width: 100%;
-          min-height: 154px;
+          min-height: 148px;
           background: #f1f0ec;
           display: flex;
           justify-content: center;
           align-items: center;
-          padding: 18px 22px 20px;
+          padding: 14px 22px 18px;
           margin: 0;
           position: relative;
           z-index: 8;
@@ -650,7 +618,6 @@ function App() {
           line-height: 1.05;
           letter-spacing: -0.058em;
           font-weight: 860;
-          color: #1d1d1f;
         }
 
         .atlas-bridge-card p {
@@ -692,12 +659,12 @@ function App() {
           }
 
           .atlas-frame-section {
-            padding: 14px 0 20px;
+            padding: 10px 0 16px;
           }
 
           .atlas-bridge-section {
-            min-height: 148px;
-            padding: 16px 18px 18px;
+            min-height: 142px;
+            padding: 14px 18px 16px;
           }
 
           .atlas-bridge-card {
