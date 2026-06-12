@@ -1,50 +1,158 @@
+import { useRef, useEffect, useState } from "react";
+
 const OBSERVABLE_API_KEY = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
 const NOTEBOOK = "e3028f2577c04f9a@1010";
+const FOOTER_CROP = 44;
 
 const frames = [
   {
+    key: "hero",
     title: "Psychedelic Trial Atlas — Hero",
     cell: "heroSection",
-    height: 836,
+    iframeHeight: 836,
+    visibleHeight: 792,
   },
   {
+    key: "visual1a",
     title: "Psychedelic Trial Atlas — Ecosystem Overview",
     cell: "visual1EcosystemOverview",
-    height: 796,
+    iframeHeight: 796,
+    visibleHeight: 752,
   },
   {
+    key: "visual1b",
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
-    height: 796,
+    iframeHeight: 796,
+    visibleHeight: 752,
   },
   {
+    key: "visual2intro",
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
-    height: 747,
+    iframeHeight: 747,
+    visibleHeight: 703,
   },
 ];
 
-function ObservableFrame({ title, cell, height }) {
-  const src = `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
+function src(cell) {
+  return `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
+}
+
+function ProgressBar() {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    let raf = null;
+
+    function update() {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const scrollable =
+        document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? scrollTop / scrollable : 0;
+
+      if (ref.current) {
+        ref.current.style.transform = `scaleX(${Math.max(
+          0,
+          Math.min(1, progress)
+        )})`;
+      }
+    }
+
+    function onScroll() {
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        raf = null;
+        update();
+      });
+    }
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+    };
+  }, []);
 
   return (
-    <section className="atlas-section">
-      <div className="atlas-frame-wrap" style={{ height }}>
+    <div className="progress-track">
+      <div ref={ref} className="progress-line" />
+    </div>
+  );
+}
+
+function ObservableFrame({ frame, targetRef }) {
+  const [ready, setReady] = useState(false);
+
+  return (
+    <section className="frame-section" ref={targetRef}>
+      <div className="frame-crop" style={{ height: frame.visibleHeight }}>
+        <div className={`frame-mask ${ready ? "is-hidden" : ""}`} />
+
         <iframe
-          title={title}
-          src={src}
+          title={frame.title}
+          src={src(frame.cell)}
           width="100%"
-          height={height}
+          height={frame.iframeHeight}
           frameBorder="0"
           scrolling="no"
-          className="atlas-frame"
+          className={`observable-frame ${ready ? "is-ready" : ""}`}
+          onLoad={() => setTimeout(() => setReady(true), 160)}
         />
       </div>
     </section>
   );
 }
 
+function HeroSection({ onStart }) {
+  const frame = frames[0];
+  const [ready, setReady] = useState(false);
+
+  return (
+    <section className="hero-shell">
+      <div className="hero-frame-crop">
+        <iframe
+          title={frame.title}
+          src={src(frame.cell)}
+          width="100%"
+          height={frame.iframeHeight}
+          frameBorder="0"
+          scrolling="no"
+          className={`hero-frame ${ready ? "is-ready" : ""}`}
+          onLoad={() => setTimeout(() => setReady(true), 120)}
+        />
+      </div>
+
+      <button
+        type="button"
+        className="journey-arrow-button"
+        onClick={onStart}
+        aria-label="Start your journey"
+      >
+        <span className="journey-arrow-label">START YOUR JOURNEY</span>
+        <span className="journey-arrow">
+          <span className="journey-arrow-stem" />
+          <span className="journey-arrow-head" />
+        </span>
+      </button>
+    </section>
+  );
+}
+
 function App() {
+  const visual1Ref = useRef(null);
+
+  function startJourney() {
+    visual1Ref.current?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
   return (
     <>
       <style>{`
@@ -55,6 +163,7 @@ function App() {
           width: 100%;
           min-height: 100%;
           background: #f1f0ec;
+          scroll-behavior: smooth;
         }
 
         * {
@@ -66,7 +175,7 @@ function App() {
           background: #f1f0ec;
         }
 
-        .atlas-page {
+        .page {
           width: 100%;
           min-height: 100vh;
           background: #f1f0ec;
@@ -81,37 +190,253 @@ function App() {
           overflow-x: hidden;
         }
 
-        .atlas-section {
+        .progress-track {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 3px;
+          z-index: 9999;
+          background: rgba(29,29,31,0.04);
+          pointer-events: none;
+        }
+
+        .progress-line {
+          width: 100%;
+          height: 100%;
+          transform: scaleX(0);
+          transform-origin: left center;
+          background: rgba(97,101,111,0.72);
+        }
+
+        .hero-shell {
+          position: relative;
+          width: 100%;
+          height: 100vh;
+          min-height: 760px;
+          background: #f1f0ec;
+          overflow: hidden;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .hero-frame-crop {
+          width: 100%;
+          max-width: 1320px;
+          height: 100vh;
+          min-height: 760px;
+          overflow: hidden;
+          background: #f1f0ec;
+          position: relative;
+        }
+
+        .hero-frame {
+          display: block;
+          width: 100%;
+          height: 836px;
+          border: 0;
+          background: #f1f0ec;
+          opacity: 0;
+          transition: opacity 360ms ease;
+        }
+
+        .hero-frame.is-ready {
+          opacity: 1;
+        }
+
+        .journey-arrow-button {
+          position: absolute;
+          left: 50%;
+          bottom: 92px;
+          transform: translateX(-50%);
+          z-index: 8;
+          border: 0;
+          background: transparent;
+          padding: 0;
+          cursor: pointer;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .journey-arrow-label {
+          font-size: 10px;
+          line-height: 1;
+          letter-spacing: 0.25em;
+          font-weight: 760;
+          color: rgba(29,29,31,0.48);
+        }
+
+        .journey-arrow {
+          position: relative;
+          width: 26px;
+          height: 48px;
+          display: block;
+          animation: arrowFloat 1.75s ease-in-out infinite;
+        }
+
+        .journey-arrow-stem {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          width: 1.5px;
+          height: 34px;
+          transform: translateX(-50%);
+          border-radius: 999px;
+          background: rgba(29,29,31,0.42);
+          animation: arrowStem 1.75s ease-in-out infinite;
+        }
+
+        .journey-arrow-head {
+          position: absolute;
+          left: 50%;
+          bottom: 5px;
+          width: 13px;
+          height: 13px;
+          border-right: 1.5px solid rgba(29,29,31,0.42);
+          border-bottom: 1.5px solid rgba(29,29,31,0.42);
+          transform: translateX(-50%) rotate(45deg);
+          animation: arrowHead 1.75s ease-in-out infinite;
+        }
+
+        .journey-arrow-button:hover .journey-arrow-label {
+          color: rgba(29,29,31,0.72);
+        }
+
+        .journey-arrow-button:hover .journey-arrow-stem {
+          background: rgba(29,29,31,0.68);
+        }
+
+        .journey-arrow-button:hover .journey-arrow-head {
+          border-color: rgba(29,29,31,0.68);
+        }
+
+        @keyframes arrowFloat {
+          0% {
+            transform: translateY(0);
+            opacity: 0.62;
+          }
+          42% {
+            transform: translateY(12px);
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(0);
+            opacity: 0.62;
+          }
+        }
+
+        @keyframes arrowStem {
+          0% {
+            height: 18px;
+            opacity: 0.2;
+          }
+          42% {
+            height: 34px;
+            opacity: 0.68;
+          }
+          100% {
+            height: 18px;
+            opacity: 0.2;
+          }
+        }
+
+        @keyframes arrowHead {
+          0% {
+            bottom: 18px;
+            opacity: 0.14;
+          }
+          42% {
+            bottom: 5px;
+            opacity: 0.72;
+          }
+          100% {
+            bottom: 18px;
+            opacity: 0.14;
+          }
+        }
+
+        .frame-section {
           width: 100%;
           background: #f1f0ec;
           display: flex;
           justify-content: center;
           align-items: flex-start;
           overflow: hidden;
-          margin: 0;
           padding: 0;
+          margin: 0;
         }
 
-        .atlas-frame-wrap {
+        .frame-crop {
           width: 100%;
           max-width: 1320px;
           margin: 0 auto;
           background: #f1f0ec;
           overflow: hidden;
+          position: relative;
         }
 
-        .atlas-frame {
+        .observable-frame {
           display: block;
           width: 100%;
           border: 0;
           background: #f1f0ec;
+          opacity: 0;
+          transform: translateY(4px);
+          transition:
+            opacity 320ms ease,
+            transform 320ms ease;
+        }
+
+        .observable-frame.is-ready {
+          opacity: 1;
+          transform: translateY(0);
+        }
+
+        .frame-mask {
+          position: absolute;
+          inset: 0;
+          z-index: 2;
+          background: #f1f0ec;
+          transition:
+            opacity 240ms ease,
+            visibility 240ms ease;
+        }
+
+        .frame-mask.is-hidden {
+          opacity: 0;
+          visibility: hidden;
+          pointer-events: none;
+        }
+
+        @media (max-width: 900px) {
+          .hero-shell,
+          .hero-frame-crop {
+            min-height: 720px;
+          }
+
+          .journey-arrow-button {
+            bottom: 70px;
+          }
+
+          .frame-crop {
+            max-width: 100%;
+          }
         }
       `}</style>
 
-      <main className="atlas-page">
-        {frames.map((frame) => (
-          <ObservableFrame key={frame.cell} {...frame} />
-        ))}
+      <main className="page">
+        <ProgressBar />
+
+        <HeroSection onStart={startJourney} />
+
+        <ObservableFrame frame={frames[1]} targetRef={visual1Ref} />
+
+        <ObservableFrame frame={frames[2]} />
+
+        <ObservableFrame frame={frames[3]} />
       </main>
     </>
   );
