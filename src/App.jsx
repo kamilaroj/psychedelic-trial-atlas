@@ -105,11 +105,11 @@ function App() {
           />
         </section>
 
-        {/* ECOSYSTEM TO COMPANY TRANSITION */}
+        {/* COMPANY LANDSCAPE — STATIC, WITHOUT FALLING COMPANY-COUNT TRANSITION */}
         <section style={sectionStyle}>
           <ObservableFrame
-            title="Psychedelic Ecosystem to Company Landscape"
-            src={`${notebook}?cells=visual1EcosystemToCompanyTransition&api_key=${apiKey}`}
+            title="Company Landscape"
+            src={`${notebook}?cells=visual1CompanyLandscapePremium&api_key=${apiKey}`}
             iframeHeight="920px"
             wrapperHeight="820px"
             scale={1.08}
