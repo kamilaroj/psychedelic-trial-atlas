@@ -30,7 +30,7 @@ function App() {
         .frame-wrap {
           width: 100%;
           max-width: 1320px;
-          height: 1595.671875px;
+          height: 1530px;
           margin: 0 auto;
           background: #f1f0ec;
           overflow: hidden;
