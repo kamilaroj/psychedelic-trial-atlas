@@ -3,35 +3,39 @@ import { useState } from "react";
 const OBSERVABLE_API_KEY = "b445e0c80939463973325d8fd7fc9ac162f1f7ea";
 const NOTEBOOK = "e3028f2577c04f9a@1010";
 
+const OBSERVABLE_FOOTER_CROP = 34;
+
 const frames = [
   {
     id: "hero",
     title: "Psychedelic Trial Atlas — Hero",
     cell: "heroSection",
-    height: 836,
+    iframeHeight: 836,
   },
   {
     id: "visual1a",
     title: "Psychedelic Trial Atlas — Ecosystem Overview",
     cell: "visual1EcosystemOverview",
-    height: 796,
+    iframeHeight: 796,
   },
   {
     id: "visual1b",
     title: "Psychedelic Trial Atlas — Company Landscape",
     cell: "visual1EcosystemToCompanyTransition",
-    height: 796,
+    iframeHeight: 796,
   },
   {
     id: "visual2intro",
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
-    height: 808,
+    iframeHeight: 808,
   },
 ];
 
-function ObservableFrame({ title, cell, height }) {
+function ObservableFrame({ title, cell, iframeHeight }) {
   const [ready, setReady] = useState(false);
+
+  const visibleHeight = iframeHeight - OBSERVABLE_FOOTER_CROP;
 
   const src = `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
 
@@ -43,21 +47,26 @@ function ObservableFrame({ title, cell, height }) {
 
   return (
     <section className="atlas-frame-section">
-      <div className="atlas-frame-wrap" style={{ height }}>
-        <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`}>
-          <div className="atlas-loading-orb" />
-        </div>
+      <div className="atlas-frame-outer" style={{ height: visibleHeight }}>
+        <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
+          <div className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`}>
+            <div className="atlas-loading-orb" />
+          </div>
 
-        <iframe
-          className={`atlas-frame ${ready ? "is-ready" : ""}`}
-          title={title}
-          width="100%"
-          height={height}
-          frameBorder="0"
-          scrolling="no"
-          src={src}
-          onLoad={handleLoad}
-        />
+          <iframe
+            className={`atlas-frame ${ready ? "is-ready" : ""}`}
+            title={title}
+            width="100%"
+            height={iframeHeight}
+            frameBorder="0"
+            scrolling="no"
+            src={src}
+            onLoad={handleLoad}
+            style={{
+              height: `${iframeHeight}px`,
+            }}
+          />
+        </div>
       </div>
     </section>
   );
@@ -126,10 +135,17 @@ function App() {
           position: relative;
         }
 
-        .atlas-frame-wrap {
+        .atlas-frame-outer {
           width: 100%;
           max-width: 1320px;
           margin: 0 auto;
+          background: #f1f0ec;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .atlas-frame-crop {
+          width: 100%;
           background: #f1f0ec;
           position: relative;
           overflow: hidden;
@@ -176,7 +192,12 @@ function App() {
           height: 42px;
           border-radius: 999px;
           background:
-            radial-gradient(circle at 34% 28%, rgba(255,255,255,0.95), rgba(255,255,255,0.55) 34%, rgba(255,255,255,0.12) 70%),
+            radial-gradient(
+              circle at 34% 28%,
+              rgba(255,255,255,0.95),
+              rgba(255,255,255,0.55) 34%,
+              rgba(255,255,255,0.12) 70%
+            ),
             #ffffff;
           border: 1px solid rgba(29,29,31,0.08);
           box-shadow:
@@ -253,7 +274,7 @@ function App() {
         }
 
         @media (max-width: 900px) {
-          .atlas-frame-wrap {
+          .atlas-frame-outer {
             max-width: 100%;
           }
 
