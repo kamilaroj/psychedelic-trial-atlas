@@ -18,18 +18,9 @@ const frames = {
   visual2intro: {
     title: "Psychedelic Trial Atlas — Visual 2 Intro",
     cell: "visual2IntroTransition",
-    iframeHeight: 808,
+    iframeHeight: 900,
   },
 };
-
-function clamp(value, min = 0, max = 1) {
-  return Math.max(min, Math.min(max, value));
-}
-
-function easeOutCubic(value) {
-  const t = clamp(value);
-  return 1 - Math.pow(1 - t, 3);
-}
 
 function observableSrc(cell) {
   return `https://observablehq.com/embed/${NOTEBOOK}?cells=${cell}&api_key=${OBSERVABLE_API_KEY}`;
@@ -45,10 +36,10 @@ function ScrollProgressBar() {
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollable =
         document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollable > 0 ? clamp(scrollTop / scrollable) : 0;
+      const progress = scrollable > 0 ? scrollTop / scrollable : 0;
 
       if (lineRef.current) {
-        lineRef.current.style.transform = `scaleX(${progress})`;
+        lineRef.current.style.transform = `scaleX(${Math.max(0, Math.min(1, progress))})`;
       }
     }
 
@@ -80,171 +71,46 @@ function ScrollProgressBar() {
 
 function NativeHero() {
   return (
-    <div className="native-hero">
-      <div className="native-hero-kicker">UNICORN1</div>
-
-      <h1>Psychedelic Trial Atlas</h1>
-
-      <p>
-        A data-driven map of visible clinical-trial and pipeline activity across
-        psychedelic and psychedelic-adjacent medicine.
-      </p>
-
-      <div className="native-hero-note">
-        Public trial records and selected pipeline context — separated, not
-        collapsed.
+    <section className="hero-section">
+      <div className="hero-card">
+        <div className="hero-kicker">UNICORN1</div>
+        <h1>Psychedelic Trial Atlas</h1>
+        <p>
+          A data-driven map of visible clinical-trial and pipeline activity across
+          psychedelic and psychedelic-adjacent medicine.
+        </p>
+        <div className="hero-note">
+          Public trial records and selected pipeline context — separated, not collapsed.
+        </div>
+        <div className="hero-cue">
+          <span />
+          Scroll to enter the atlas
+        </div>
       </div>
-
-      <div className="native-hero-cue">
-        <span />
-        Scroll to enter the atlas
-      </div>
-    </div>
+    </section>
   );
 }
 
-function HeroAmbient() {
-  const circles = [
-    { x: "12%", y: "18%", s: 112, d: "0s" },
-    { x: "22%", y: "65%", s: 68, d: "1.2s" },
-    { x: "73%", y: "21%", s: 88, d: "0.6s" },
-    { x: "84%", y: "58%", s: 126, d: "1.8s" },
-    { x: "47%", y: "79%", s: 58, d: "0.3s" },
-    { x: "63%", y: "72%", s: 46, d: "1.5s" },
-  ];
-
-  return (
-    <div className="hero-ambient" aria-hidden="true">
-      {circles.map((circle, index) => (
-        <span
-          key={index}
-          className="hero-ambient-circle"
-          style={{
-            left: circle.x,
-            top: circle.y,
-            width: circle.s,
-            height: circle.s,
-            animationDelay: circle.d,
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
-function ObservableEmbed({ frame, className = "", handoff = false }) {
+function ObservableFrame({ frame }) {
   const [ready, setReady] = useState(false);
   const visibleHeight = frame.iframeHeight - OBSERVABLE_FOOTER_CROP;
 
-  function handleLoad() {
-    window.setTimeout(() => setReady(true), handoff ? 120 : 220);
-  }
-
   return (
-    <div
-      className={`atlas-frame-outer ${className}`}
-      style={{ height: visibleHeight }}
-    >
-      <div className="atlas-frame-crop" style={{ height: visibleHeight }}>
-        <div
-          className={`atlas-frame-mask ${ready ? "is-hidden" : ""}`}
-        />
+    <section className="visual-section">
+      <div className="frame-wrap" style={{ height: visibleHeight }}>
+        <div className={`frame-mask ${ready ? "is-hidden" : ""}`} />
 
         <iframe
-          className={`atlas-frame ${ready ? "is-ready" : ""}`}
+          className={`observable-frame ${ready ? "is-ready" : ""}`}
           title={frame.title}
           width="100%"
           height={frame.iframeHeight}
           frameBorder="0"
           scrolling="no"
-          loading={handoff ? "eager" : "lazy"}
           src={observableSrc(frame.cell)}
-          onLoad={handleLoad}
+          onLoad={() => window.setTimeout(() => setReady(true), 160)}
           style={{ height: `${frame.iframeHeight}px` }}
         />
-      </div>
-    </div>
-  );
-}
-
-function HeroToEcosystemHandoff() {
-  const sectionRef = useRef(null);
-  const heroRef = useRef(null);
-  const visualRef = useRef(null);
-  const ambientRef = useRef(null);
-
-  useEffect(() => {
-    let raf = null;
-
-    function update() {
-      if (!sectionRef.current || !heroRef.current || !visualRef.current) return;
-
-      const rect = sectionRef.current.getBoundingClientRect();
-      const scrollDistance = sectionRef.current.offsetHeight - window.innerHeight;
-      const progress =
-        scrollDistance > 0 ? clamp(-rect.top / scrollDistance) : 0;
-
-      const heroLift = easeOutCubic(clamp((progress - 0.08) / 0.56));
-      const heroFade = clamp((progress - 0.72) / 0.22);
-
-      const visualEnter = easeOutCubic(clamp((progress - 0.14) / 0.58));
-      const visualFade = clamp((progress - 0.10) / 0.22);
-
-      heroRef.current.style.transform = `translate3d(0, ${
-        -heroLift * 430
-      }px, 0) scale(${1 - heroLift * 0.035})`;
-      heroRef.current.style.opacity = 1 - heroFade * 0.96;
-
-      visualRef.current.style.transform = `translate3d(0, ${
-        (1 - visualEnter) * 255
-      }px, 0) scale(${0.955 + visualEnter * 0.045})`;
-      visualRef.current.style.opacity = visualFade;
-
-      if (ambientRef.current) {
-        ambientRef.current.style.transform = `translate3d(0, ${
-          -heroLift * 42
-        }px, 0)`;
-        ambientRef.current.style.opacity = 0.34 - heroLift * 0.15;
-      }
-    }
-
-    function requestUpdate() {
-      if (raf) return;
-      raf = window.requestAnimationFrame(() => {
-        raf = null;
-        update();
-      });
-    }
-
-    update();
-    window.addEventListener("scroll", requestUpdate, { passive: true });
-    window.addEventListener("resize", requestUpdate);
-
-    return () => {
-      if (raf) window.cancelAnimationFrame(raf);
-      window.removeEventListener("scroll", requestUpdate);
-      window.removeEventListener("resize", requestUpdate);
-    };
-  }, []);
-
-  return (
-    <section className="hero-handoff-section" ref={sectionRef}>
-      <div className="hero-sticky-scene">
-        <div className="hero-ambient-wrap" ref={ambientRef}>
-          <HeroAmbient />
-        </div>
-
-        <div className="handoff-visual-layer" ref={visualRef}>
-          <ObservableEmbed
-            frame={frames.visual1a}
-            className="handoff-visual-frame"
-            handoff
-          />
-        </div>
-
-        <div className="handoff-hero-layer" ref={heroRef}>
-          <NativeHero />
-        </div>
       </div>
     </section>
   );
@@ -252,23 +118,15 @@ function HeroToEcosystemHandoff() {
 
 function BridgeCard() {
   return (
-    <section className="atlas-bridge-section">
-      <div className="atlas-bridge-card">
-        <div className="atlas-kicker">From scale to actors</div>
+    <section className="bridge-section">
+      <div className="bridge-card">
+        <div className="bridge-kicker">From scale to actors</div>
         <h2>Who is building the visible landscape?</h2>
         <p>
           The first view summarizes ecosystem scale. The next layer shifts to
           the organizations shaping psychedelic medicine.
         </p>
       </div>
-    </section>
-  );
-}
-
-function NormalObservableSection({ frame }) {
-  return (
-    <section className="atlas-frame-section">
-      <ObservableEmbed frame={frame} />
     </section>
   );
 }
@@ -327,99 +185,28 @@ function App() {
           transform-origin: left center;
           transform: scaleX(0);
           background: rgba(97,101,111,0.72);
-          box-shadow: 0 0 18px rgba(97,101,111,0.14);
         }
 
-        .hero-handoff-section {
-          position: relative;
-          height: 188vh;
-          background: #f1f0ec;
-        }
-
-        .hero-sticky-scene {
-          position: sticky;
-          top: 0;
-          width: 100%;
-          height: 100vh;
-          overflow: hidden;
-          background: #f1f0ec;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .hero-ambient-wrap {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          pointer-events: none;
-          opacity: 0.34;
-          will-change: transform, opacity;
-        }
-
-        .hero-ambient {
-          position: absolute;
-          inset: 0;
-          overflow: hidden;
-          pointer-events: none;
-        }
-
-        .hero-ambient-circle {
-          position: absolute;
-          border-radius: 999px;
-          background:
-            radial-gradient(
-              circle at 35% 28%,
-              rgba(255,255,255,0.86),
-              rgba(255,255,255,0.34) 38%,
-              rgba(255,255,255,0.08) 72%
-            );
-          border: 1px solid rgba(255,255,255,0.38);
-          box-shadow:
-            0 22px 70px rgba(29,29,31,0.065),
-            inset 0 2px 18px rgba(255,255,255,0.72);
-          filter: blur(0.2px);
-          transform: translate(-50%, -50%);
-          animation: heroAmbientFloat 8s ease-in-out infinite alternate;
-        }
-
-        @keyframes heroAmbientFloat {
-          0% {
-            transform: translate(-50%, -50%) translate3d(-7px, 5px, 0) scale(0.99);
-            opacity: 0.18;
-          }
-
-          50% {
-            transform: translate(-50%, -50%) translate3d(7px, -6px, 0) scale(1.022);
-            opacity: 0.3;
-          }
-
-          100% {
-            transform: translate(-50%, -50%) translate3d(4px, 7px, 0) scale(1);
-            opacity: 0.23;
-          }
-        }
-
-        .handoff-hero-layer {
-          position: absolute;
-          z-index: 4;
-          width: 100%;
+        .hero-section {
           min-height: 100vh;
+          background: #f1f0ec;
           display: flex;
           align-items: center;
           justify-content: center;
-          pointer-events: none;
-          will-change: transform, opacity;
+          padding: 80px 24px;
+          animation: heroLift linear both;
+          animation-timeline: scroll();
+          animation-range: 0 28vh;
         }
 
-        .native-hero {
+        .hero-card {
           width: min(740px, calc(100vw - 44px));
-          margin: 0 auto;
           text-align: center;
           color: #1d1d1f;
+          transform-origin: center;
         }
 
-        .native-hero-kicker {
+        .hero-kicker {
           font-size: 9.5px;
           font-weight: 820;
           letter-spacing: 0.13em;
@@ -428,7 +215,7 @@ function App() {
           margin-bottom: 16px;
         }
 
-        .native-hero h1 {
+        .hero-card h1 {
           margin: 0 auto 14px;
           font-size: clamp(42px, 5.2vw, 70px);
           line-height: 0.94;
@@ -437,7 +224,7 @@ function App() {
           max-width: 680px;
         }
 
-        .native-hero p {
+        .hero-card p {
           margin: 0 auto;
           max-width: 520px;
           font-size: 14px;
@@ -446,7 +233,7 @@ function App() {
           font-weight: 500;
         }
 
-        .native-hero-note {
+        .hero-note {
           width: fit-content;
           max-width: 100%;
           margin: 20px auto 0;
@@ -461,7 +248,7 @@ function App() {
           box-shadow: 0 10px 30px rgba(29,29,31,0.035);
         }
 
-        .native-hero-cue {
+        .hero-cue {
           margin-top: 27px;
           display: inline-flex;
           align-items: center;
@@ -473,61 +260,37 @@ function App() {
           text-transform: uppercase;
         }
 
-        .native-hero-cue span {
+        .hero-cue span {
           width: 6px;
           height: 6px;
           border-radius: 999px;
           background: #8c9098;
           opacity: 0.55;
-          animation: cuePulse 1.4s ease-in-out infinite;
         }
 
-        @keyframes cuePulse {
-          0%, 100% {
-            transform: scale(0.85);
+        @keyframes heroLift {
+          from {
+            transform: translateY(0);
+            opacity: 1;
+          }
+          to {
+            transform: translateY(-120px);
             opacity: 0.35;
           }
-
-          50% {
-            transform: scale(1.2);
-            opacity: 0.72;
-          }
         }
 
-        .handoff-visual-layer {
-          position: absolute;
-          z-index: 2;
-          width: 100%;
-          min-height: 100vh;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          opacity: 0;
-          transform: translate3d(0, 255px, 0) scale(0.955);
-          will-change: transform, opacity;
-        }
-
-        .handoff-visual-frame {
-          max-width: 1180px;
-        }
-
-        .handoff-visual-frame iframe {
-          pointer-events: none;
-        }
-
-        .atlas-frame-section {
+        .visual-section {
           width: 100%;
           background: #f1f0ec;
           display: flex;
           justify-content: center;
           align-items: flex-start;
-          overflow: hidden;
-          position: relative;
+          padding: 18px 0;
           margin: 0;
-          padding: 12px 0 18px;
+          overflow: hidden;
         }
 
-        .atlas-frame-outer {
+        .frame-wrap {
           width: 100%;
           max-width: 1220px;
           margin: 0 auto;
@@ -536,48 +299,40 @@ function App() {
           overflow: hidden;
         }
 
-        .atlas-frame-crop {
-          width: 100%;
-          background: #f1f0ec;
-          position: relative;
-          overflow: hidden;
-          z-index: 2;
-        }
-
-        .atlas-frame {
+        .observable-frame {
           width: 100%;
           border: 0;
           display: block;
           background: #f1f0ec;
           opacity: 0;
-          transform: translateY(3px);
+          transform: translateY(6px);
           transition:
-            opacity 320ms ease,
-            transform 320ms ease;
+            opacity 360ms ease,
+            transform 360ms ease;
         }
 
-        .atlas-frame.is-ready {
+        .observable-frame.is-ready {
           opacity: 1;
           transform: translateY(0);
         }
 
-        .atlas-frame-mask {
+        .frame-mask {
           position: absolute;
           inset: 0;
-          z-index: 5;
+          z-index: 2;
           background: #f1f0ec;
           transition:
-            opacity 240ms ease,
-            visibility 240ms ease;
+            opacity 260ms ease,
+            visibility 260ms ease;
         }
 
-        .atlas-frame-mask.is-hidden {
+        .frame-mask.is-hidden {
           opacity: 0;
           visibility: hidden;
           pointer-events: none;
         }
 
-        .atlas-bridge-section {
+        .bridge-section {
           width: 100%;
           min-height: 148px;
           background: #f1f0ec;
@@ -586,11 +341,9 @@ function App() {
           align-items: center;
           padding: 14px 22px 18px;
           margin: 0;
-          position: relative;
-          z-index: 8;
         }
 
-        .atlas-bridge-card {
+        .bridge-card {
           width: min(520px, 100%);
           background: rgba(255,255,255,0.56);
           border: 1px solid rgba(29,29,31,0.055);
@@ -602,7 +355,7 @@ function App() {
           -webkit-backdrop-filter: blur(18px);
         }
 
-        .atlas-kicker {
+        .bridge-kicker {
           font-size: 9px;
           font-weight: 820;
           letter-spacing: 0.11em;
@@ -611,7 +364,7 @@ function App() {
           margin-bottom: 8px;
         }
 
-        .atlas-bridge-card h2 {
+        .bridge-card h2 {
           margin: 0 auto 8px;
           max-width: 440px;
           font-size: 22px;
@@ -620,7 +373,7 @@ function App() {
           font-weight: 860;
         }
 
-        .atlas-bridge-card p {
+        .bridge-card p {
           margin: 0 auto;
           max-width: 440px;
           font-size: 12px;
@@ -629,69 +382,42 @@ function App() {
           font-weight: 500;
         }
 
+        @supports not (animation-timeline: scroll()) {
+          .hero-section {
+            animation: none;
+          }
+        }
+
         @media (max-width: 900px) {
-          .hero-handoff-section {
-            height: 180vh;
-          }
-
-          .native-hero {
-            width: min(680px, calc(100vw - 38px));
-          }
-
-          .native-hero h1 {
+          .hero-card h1 {
             font-size: clamp(38px, 11vw, 56px);
           }
 
-          .native-hero p {
+          .hero-card p {
             font-size: 13px;
           }
 
-          .native-hero-note {
+          .hero-note {
             font-size: 10.2px;
           }
 
-          .handoff-visual-frame {
+          .visual-section {
+            padding: 12px 0;
+          }
+
+          .frame-wrap {
             max-width: 100%;
-          }
-
-          .atlas-frame-outer {
-            max-width: 100%;
-          }
-
-          .atlas-frame-section {
-            padding: 10px 0 16px;
-          }
-
-          .atlas-bridge-section {
-            min-height: 142px;
-            padding: 14px 18px 16px;
-          }
-
-          .atlas-bridge-card {
-            padding: 20px 23px 22px;
-            border-radius: 20px;
-          }
-
-          .atlas-bridge-card h2 {
-            font-size: 20px;
-          }
-
-          .atlas-bridge-card p {
-            font-size: 11.8px;
           }
         }
       `}</style>
 
       <main className="atlas-page">
         <ScrollProgressBar />
-
-        <HeroToEcosystemHandoff />
-
+        <NativeHero />
+        <ObservableFrame frame={frames.visual1a} />
         <BridgeCard />
-
-        <NormalObservableSection frame={frames.visual1b} />
-
-        <NormalObservableSection frame={frames.visual2intro} />
+        <ObservableFrame frame={frames.visual1b} />
+        <ObservableFrame frame={frames.visual2intro} />
       </main>
     </>
   );
