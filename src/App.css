@@ -46,10 +46,75 @@ body {
   overflow: hidden;
 }
 
+.visual-story .iframe-shell {
+  max-width: 1320px;
+}
+
+/* =========================
+   OBSERVABLE IFRAMES
+========================= */
+
+.iframe-shell {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  background: #f1f0ec;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.atlas-iframe {
+  display: block;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: #f1f0ec;
+}
+
+/* HERO */
+.hero-story {
+  min-height: 860px;
+  padding: 0 0 42px;
+}
+
+.hero-shell,
+.hero-iframe {
+  height: 836px;
+}
+
+/* VISUAL 1A */
+.ecosystem-story {
+  min-height: 880px;
+  padding: 36px 0 120px;
+}
+
+.ecosystem-shell,
+.ecosystem-iframe {
+  height: 796px;
+}
+
+/* VISUAL 1B */
+.company-story {
+  min-height: 820px;
+  padding: 30px 0 150px;
+}
+
+.company-shell,
+.company-iframe {
+  height: 736px;
+}
+
+/* =========================
+   STORY BRIDGES
+========================= */
+
 .story-bridge {
   width: 100%;
   background: #f1f0ec;
-  padding: 110px 24px 86px;
+  padding: 96px 24px 72px;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -90,97 +155,14 @@ body {
 }
 
 /* =========================
-   OBSERVABLE CROPPING
-   This hides the Observable bars.
-========================= */
-
-.iframe-crop {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
-  background: #f1f0ec;
-  overflow: hidden;
-  line-height: 0;
-  position: relative;
-}
-
-.atlas-iframe {
-  display: block;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  background: #f1f0ec;
-}
-
-/* 
-  Observable top bar is about 38–42px.
-  We shift iframe up and make wrapper shorter.
-*/
-
-/* HERO */
-.hero-story {
-  min-height: 820px;
-  padding: 0 0 60px;
-}
-
-.hero-crop {
-  height: 800px;
-}
-
-.hero-iframe {
-  height: 900px;
-  transform: translateY(-42px);
-}
-
-/* VISUAL 1A */
-.ecosystem-story {
-  min-height: 780px;
-  padding: 20px 0 120px;
-}
-
-.ecosystem-crop {
-  height: 720px;
-  max-width: 1320px;
-}
-
-.ecosystem-iframe {
-  height: 860px;
-  transform: translateY(-42px);
-}
-
-/* VISUAL 1B */
-.company-story {
-  min-height: 760px;
-  padding: 20px 0 150px;
-}
-
-.company-crop {
-  height: 670px;
-  max-width: 1320px;
-}
-
-.company-iframe {
-  height: 800px;
-  transform: translateY(-42px);
-}
-
-/* Reduce overly large gap after bridge if needed */
-.bridge-ecosystem {
-  padding-bottom: 64px;
-}
-
-.bridge-company {
-  padding-bottom: 64px;
-}
-
-/* =========================
    RESPONSIVE
 ========================= */
 
 @media (max-width: 1200px) {
+  .iframe-shell {
+    max-width: 100%;
+  }
+
   .story-copy h2 {
     font-size: clamp(42px, 7vw, 72px);
   }
@@ -189,28 +171,31 @@ body {
     font-size: 17px;
   }
 
-  .hero-crop {
+  .hero-story {
+    min-height: 820px;
+  }
+
+  .hero-shell,
+  .hero-iframe {
+    height: 800px;
+  }
+
+  .ecosystem-story {
+    min-height: 820px;
+  }
+
+  .ecosystem-shell,
+  .ecosystem-iframe {
     height: 760px;
   }
 
-  .hero-iframe {
-    height: 860px;
+  .company-story {
+    min-height: 780px;
   }
 
-  .ecosystem-crop {
-    height: 700px;
-  }
-
-  .ecosystem-iframe {
-    height: 840px;
-  }
-
-  .company-crop {
-    height: 650px;
-  }
-
+  .company-shell,
   .company-iframe {
-    height: 780px;
+    height: 720px;
   }
 }
 
@@ -229,27 +214,32 @@ body {
     font-weight: 550;
   }
 
-  .hero-crop {
+  .hero-story {
+    min-height: 720px;
+  }
+
+  .hero-shell,
+  .hero-iframe {
+    height: 700px;
+  }
+
+  .ecosystem-story {
+    min-height: 720px;
+    padding-bottom: 90px;
+  }
+
+  .ecosystem-shell,
+  .ecosystem-iframe {
     height: 680px;
   }
 
-  .hero-iframe {
-    height: 780px;
+  .company-story {
+    min-height: 700px;
+    padding-bottom: 110px;
   }
 
-  .ecosystem-crop {
-    height: 640px;
-  }
-
-  .ecosystem-iframe {
-    height: 760px;
-  }
-
-  .company-crop {
-    height: 620px;
-  }
-
+  .company-shell,
   .company-iframe {
-    height: 740px;
+    height: 660px;
   }
 }
