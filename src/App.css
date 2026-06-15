@@ -1,10 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap");
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body,
 #root {
   margin: 0;
+  padding: 0;
   width: 100%;
+  min-width: 100%;
   min-height: 100%;
   background: #f1f0ec;
 }
@@ -21,14 +27,16 @@ body {
 
 .site {
   width: 100%;
+  min-width: 100%;
   min-height: 100vh;
   background: #f1f0ec;
   overflow-x: hidden;
 }
 
-/* Main wrapper for each Observable embed */
-.embed-section {
+/* Full-width section wrapper */
+.atlas-section {
   width: 100%;
+  min-width: 100%;
   margin: 0;
   padding: 0;
   background: #f1f0ec;
@@ -36,81 +44,57 @@ body {
   overflow: hidden;
 }
 
-/* Iframe reset */
-.observable-frame {
+/* Important: prevents iframe from collapsing to default 300px width */
+.atlas-iframe {
   display: block;
-  width: 100%;
+  width: 100% !important;
+  min-width: 100% !important;
+  max-width: 100% !important;
   border: 0;
   margin: 0;
   padding: 0;
   background: #f1f0ec;
 }
 
-/* Hero should be large, but not create an endless empty desert */
-.hero-section {
-  height: 720px;
+/* Keep original heights from Observable embed */
+.hero-section,
+.hero-iframe {
+  height: 836px;
 }
 
-.hero-frame {
-  height: 720px;
+.ecosystem-section,
+.ecosystem-iframe {
+  height: 796px;
 }
 
-/* Visual 1A: tighter than before so the bubbles are not cut and not too far away */
+.company-section,
+.company-iframe {
+  height: 736px;
+}
+
+/* Pull sections slightly closer, but not aggressively */
 .ecosystem-section {
-  height: 620px;
-  margin-top: -8px;
+  margin-top: -24px;
 }
 
-.ecosystem-frame {
-  height: 620px;
-}
-
-/* Visual 1B: company landscape premium, compact section */
 .company-section {
-  height: 620px;
-  margin-top: -10px;
+  margin-top: -18px;
 }
 
-.company-frame {
-  height: 620px;
-}
-
-/* Hide accidental horizontal overflow from Observable internals */
-iframe {
-  max-width: 100%;
-}
-
-/* Responsive tuning */
-@media (max-width: 1200px) {
-  .hero-section,
-  .hero-frame {
-    height: 680px;
-  }
-
-  .ecosystem-section,
-  .ecosystem-frame {
-    height: 600px;
-  }
-
-  .company-section,
-  .company-frame {
-    height: 600px;
-  }
-}
-
+/* Mobile fallback */
 @media (max-width: 900px) {
   .hero-section,
-  .hero-frame {
-    height: 620px;
+  .hero-iframe {
+    height: 760px;
   }
 
   .ecosystem-section,
-  .ecosystem-frame {
-    height: 560px;
+  .ecosystem-iframe {
+    height: 760px;
   }
 
   .company-section,
-  .company-frame {
-    height: 560px;
+  .company-iframe {
+    height: 720px;
   }
 }
