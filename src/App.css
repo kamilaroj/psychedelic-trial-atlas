@@ -33,7 +33,10 @@ body {
   overflow-x: hidden;
 }
 
-/* Each major part becomes a centered storytelling section */
+/* =========================
+   STORY SECTIONS
+========================= */
+
 .story-section {
   width: 100%;
   background: #f1f0ec;
@@ -43,17 +46,64 @@ body {
   overflow: hidden;
 }
 
-/* Centered iframe container */
-.iframe-shell {
+.story-bridge {
+  width: 100%;
+  background: #f1f0ec;
+  padding: 110px 24px 86px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.story-copy {
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.story-kicker {
+  margin: 0 0 22px;
+  color: #8c9098;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.story-copy h2 {
+  margin: 0 0 24px;
+  color: #1d1d1f;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui,
+    sans-serif;
+  font-size: clamp(46px, 5.5vw, 86px);
+  font-weight: 900;
+  letter-spacing: -0.075em;
+  line-height: 0.9;
+}
+
+.story-copy p:last-child {
+  margin: 0 auto;
+  max-width: 900px;
+  color: #61656f;
+  font-size: 19px;
+  font-weight: 650;
+  line-height: 1.45;
+}
+
+/* =========================
+   OBSERVABLE CROPPING
+   This hides the Observable bars.
+========================= */
+
+.iframe-crop {
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
   background: #f1f0ec;
   overflow: hidden;
   line-height: 0;
+  position: relative;
 }
 
-/* Important: prevents iframe collapse */
 .atlas-iframe {
   display: block;
   width: 100% !important;
@@ -65,161 +115,141 @@ body {
   background: #f1f0ec;
 }
 
+/* 
+  Observable top bar is about 38–42px.
+  We shift iframe up and make wrapper shorter.
+*/
+
 /* HERO */
 .hero-story {
-  min-height: 860px;
-  padding: 0 0 42px;
+  min-height: 820px;
+  padding: 0 0 60px;
 }
 
-.hero-shell,
+.hero-crop {
+  height: 800px;
+}
+
 .hero-iframe {
-  height: 836px;
-}
-
-/* Story bridge text between visuals */
-.story-bridge {
-  width: 100%;
-  background: #f1f0ec;
-  padding: 96px 24px 72px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
-}
-
-.story-copy {
-  max-width: 760px;
-  margin: 0 auto;
-}
-
-.story-kicker {
-  margin: 0 0 18px;
-  color: #8c9098;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.story-copy h2 {
-  margin: 0 0 18px;
-  color: #1d1d1f;
-  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui,
-    sans-serif;
-  font-size: clamp(34px, 4vw, 58px);
-  font-weight: 850;
-  letter-spacing: -0.055em;
-  line-height: 0.95;
-}
-
-.story-copy p:last-child {
-  margin: 0 auto;
-  max-width: 680px;
-  color: #61656f;
-  font-size: 16px;
-  font-weight: 450;
-  line-height: 1.55;
+  height: 900px;
+  transform: translateY(-42px);
 }
 
 /* VISUAL 1A */
 .ecosystem-story {
-  min-height: 880px;
-  padding: 36px 0 120px;
+  min-height: 780px;
+  padding: 20px 0 120px;
 }
 
-.ecosystem-shell,
+.ecosystem-crop {
+  height: 720px;
+  max-width: 1320px;
+}
+
 .ecosystem-iframe {
-  height: 796px;
+  height: 860px;
+  transform: translateY(-42px);
 }
 
 /* VISUAL 1B */
 .company-story {
-  min-height: 820px;
-  padding: 30px 0 150px;
+  min-height: 760px;
+  padding: 20px 0 150px;
 }
 
-.company-shell,
-.company-iframe {
-  height: 736px;
-}
-
-/* Make the Observable embeds feel like centered panels, not full browser leftovers */
-.visual-story .iframe-shell {
+.company-crop {
+  height: 670px;
   max-width: 1320px;
 }
 
-/* Responsive */
+.company-iframe {
+  height: 800px;
+  transform: translateY(-42px);
+}
+
+/* Reduce overly large gap after bridge if needed */
+.bridge-ecosystem {
+  padding-bottom: 64px;
+}
+
+.bridge-company {
+  padding-bottom: 64px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
 @media (max-width: 1200px) {
-  .iframe-shell {
-    max-width: 100%;
+  .story-copy h2 {
+    font-size: clamp(42px, 7vw, 72px);
   }
 
-  .hero-story {
-    min-height: 820px;
+  .story-copy p:last-child {
+    font-size: 17px;
   }
 
-  .hero-shell,
-  .hero-iframe {
-    height: 800px;
-  }
-
-  .ecosystem-story {
-    min-height: 820px;
-  }
-
-  .ecosystem-shell,
-  .ecosystem-iframe {
+  .hero-crop {
     height: 760px;
   }
 
-  .company-story {
-    min-height: 780px;
+  .hero-iframe {
+    height: 860px;
   }
 
-  .company-shell,
+  .ecosystem-crop {
+    height: 700px;
+  }
+
+  .ecosystem-iframe {
+    height: 840px;
+  }
+
+  .company-crop {
+    height: 650px;
+  }
+
   .company-iframe {
-    height: 720px;
+    height: 780px;
   }
 }
 
 @media (max-width: 900px) {
   .story-bridge {
-    padding: 76px 20px 58px;
+    padding: 80px 20px 60px;
   }
 
   .story-copy h2 {
-    font-size: 38px;
+    font-size: 42px;
+    letter-spacing: -0.055em;
   }
 
   .story-copy p:last-child {
-    font-size: 14.5px;
+    font-size: 15px;
+    font-weight: 550;
   }
 
-  .hero-story {
-    min-height: 720px;
-  }
-
-  .hero-shell,
-  .hero-iframe {
-    height: 700px;
-  }
-
-  .ecosystem-story {
-    min-height: 720px;
-    padding-bottom: 90px;
-  }
-
-  .ecosystem-shell,
-  .ecosystem-iframe {
+  .hero-crop {
     height: 680px;
   }
 
-  .company-story {
-    min-height: 700px;
-    padding-bottom: 110px;
+  .hero-iframe {
+    height: 780px;
   }
 
-  .company-shell,
+  .ecosystem-crop {
+    height: 640px;
+  }
+
+  .ecosystem-iframe {
+    height: 760px;
+  }
+
+  .company-crop {
+    height: 620px;
+  }
+
   .company-iframe {
-    height: 660px;
+    height: 740px;
   }
 }
