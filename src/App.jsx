@@ -7,40 +7,75 @@ export default function App() {
 
   return (
     <main className="site">
-      <section className="atlas-section hero-section">
-        <iframe
-          title="Psychedelic Trial Atlas Hero"
-          width="100%"
-          height="836"
-          frameBorder="0"
-          scrolling="no"
-          className="atlas-iframe hero-iframe"
-          src={`https://observablehq.com/embed/${notebook}?cells=heroSection1&api_key=${apiKey}`}
-        />
+      {/* HERO */}
+      <section className="story-section hero-story">
+        <div className="iframe-shell hero-shell">
+          <iframe
+            title="Psychedelic Trial Atlas Hero"
+            width="100%"
+            height="836"
+            frameBorder="0"
+            scrolling="no"
+            className="atlas-iframe hero-iframe"
+            src={`https://observablehq.com/embed/${notebook}?cells=heroSection1&api_key=${apiKey}`}
+          />
+        </div>
       </section>
 
-      <section className="atlas-section ecosystem-section">
-        <iframe
-          title="The Psychedelic Ecosystem"
-          width="100%"
-          height="796"
-          frameBorder="0"
-          scrolling="no"
-          className="atlas-iframe ecosystem-iframe"
-          src={`https://observablehq.com/embed/${notebook}?cells=visual1EcosystemOverviev&api_key=${apiKey}`}
-        />
+      {/* STORY BRIDGE 1 */}
+      <section className="story-bridge">
+        <div className="story-copy">
+          <p className="story-kicker">01 / Ecosystem scale</p>
+          <h2>The visible development footprint</h2>
+          <p>
+            Before looking at individual companies, the atlas first shows the
+            public signal: companies, assets, trial records, countries,
+            compound families, pipeline context and therapeutic areas.
+          </p>
+        </div>
       </section>
 
-      <section className="atlas-section company-section">
-        <iframe
-          title="Company Landscape Premium"
-          width="100%"
-          height="736"
-          frameBorder="0"
-          scrolling="no"
-          className="atlas-iframe company-iframe"
-          src={`https://observablehq.com/embed/${notebook}?cells=visual1CompanyLandscapePremium&api_key=${apiKey}`}
-        />
+      {/* VISUAL 1A */}
+      <section className="story-section visual-story ecosystem-story">
+        <div className="iframe-shell ecosystem-shell">
+          <iframe
+            title="The Psychedelic Ecosystem"
+            width="100%"
+            height="796"
+            frameBorder="0"
+            scrolling="no"
+            className="atlas-iframe ecosystem-iframe"
+            src={`https://observablehq.com/embed/${notebook}?cells=visual1EcosystemOverviev&api_key=${apiKey}`}
+          />
+        </div>
+      </section>
+
+      {/* STORY BRIDGE 2 */}
+      <section className="story-bridge">
+        <div className="story-copy">
+          <p className="story-kicker">02 / Company landscape</p>
+          <h2>From ecosystem scale to market builders</h2>
+          <p>
+            The next layer turns the ecosystem into a company map. Each circle
+            represents a development actor, sized by its visible public
+            footprint across registered activity and selected pipeline context.
+          </p>
+        </div>
+      </section>
+
+      {/* VISUAL 1B */}
+      <section className="story-section visual-story company-story">
+        <div className="iframe-shell company-shell">
+          <iframe
+            title="Company Landscape Premium"
+            width="100%"
+            height="736"
+            frameBorder="0"
+            scrolling="no"
+            className="atlas-iframe company-iframe"
+            src={`https://observablehq.com/embed/${notebook}?cells=visual1CompanyLandscapePremium&api_key=${apiKey}`}
+          />
+        </div>
       </section>
     </main>
   );
