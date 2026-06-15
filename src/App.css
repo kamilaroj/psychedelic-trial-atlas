@@ -16,6 +16,7 @@ html {
 body {
   color: #1d1d1f;
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 .site {
@@ -25,15 +26,18 @@ body {
   overflow-x: hidden;
 }
 
-.observable-section {
+/* Main wrapper for each Observable embed */
+.embed-section {
   width: 100%;
   margin: 0;
   padding: 0;
   background: #f1f0ec;
   line-height: 0;
+  overflow: hidden;
 }
 
-.observable-section iframe {
+/* Iframe reset */
+.observable-frame {
   display: block;
   width: 100%;
   border: 0;
@@ -42,28 +46,71 @@ body {
   background: #f1f0ec;
 }
 
-.hero-observable {
-  min-height: 836px;
+/* Hero should be large, but not create an endless empty desert */
+.hero-section {
+  height: 720px;
 }
 
-.visual-1a {
-  min-height: 796px;
+.hero-frame {
+  height: 720px;
 }
 
-.visual-1b {
-  min-height: 736px;
+/* Visual 1A: tighter than before so the bubbles are not cut and not too far away */
+.ecosystem-section {
+  height: 620px;
+  margin-top: -8px;
+}
+
+.ecosystem-frame {
+  height: 620px;
+}
+
+/* Visual 1B: company landscape premium, compact section */
+.company-section {
+  height: 620px;
+  margin-top: -10px;
+}
+
+.company-frame {
+  height: 620px;
+}
+
+/* Hide accidental horizontal overflow from Observable internals */
+iframe {
+  max-width: 100%;
+}
+
+/* Responsive tuning */
+@media (max-width: 1200px) {
+  .hero-section,
+  .hero-frame {
+    height: 680px;
+  }
+
+  .ecosystem-section,
+  .ecosystem-frame {
+    height: 600px;
+  }
+
+  .company-section,
+  .company-frame {
+    height: 600px;
+  }
 }
 
 @media (max-width: 900px) {
-  .hero-observable iframe {
-    height: 760px;
+  .hero-section,
+  .hero-frame {
+    height: 620px;
   }
 
-  .visual-1a iframe {
-    height: 760px;
+  .ecosystem-section,
+  .ecosystem-frame {
+    height: 560px;
   }
 
-  .visual-1b iframe {
-    height: 720px;
+  .company-section,
+  .company-frame {
+    height: 560px;
   }
 }
