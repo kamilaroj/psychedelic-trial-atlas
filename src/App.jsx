@@ -2,29 +2,44 @@ import React from "react";
 import "./App.css";
 
 export default function App() {
+  const apiKey = "34347d95d4d95a93375c693a2fbb5249853bf500";
+  const notebook = "e3028f2577c04f9a@1118";
+
   return (
     <main className="site">
-      <section className="embed-section hero-section">
+      <section className="atlas-section hero-section">
         <iframe
           title="Psychedelic Trial Atlas Hero"
-          className="observable-frame hero-frame"
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1118?cells=heroSection1&api_key=34347d95d4d95a93375c693a2fbb5249853bf500"
+          width="100%"
+          height="836"
+          frameBorder="0"
+          scrolling="no"
+          className="atlas-iframe hero-iframe"
+          src={`https://observablehq.com/embed/${notebook}?cells=heroSection1&api_key=${apiKey}`}
         />
       </section>
 
-      <section className="embed-section ecosystem-section">
+      <section className="atlas-section ecosystem-section">
         <iframe
           title="The Psychedelic Ecosystem"
-          className="observable-frame ecosystem-frame"
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1118?cells=visual1EcosystemOverviev&api_key=34347d95d4d95a93375c693a2fbb5249853bf500"
+          width="100%"
+          height="796"
+          frameBorder="0"
+          scrolling="no"
+          className="atlas-iframe ecosystem-iframe"
+          src={`https://observablehq.com/embed/${notebook}?cells=visual1EcosystemOverviev&api_key=${apiKey}`}
         />
       </section>
 
-      <section className="embed-section company-section">
+      <section className="atlas-section company-section">
         <iframe
           title="Company Landscape Premium"
-          className="observable-frame company-frame"
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1118?cells=visual1CompanyLandscapePremium&api_key=34347d95d4d95a93375c693a2fbb5249853bf500"
+          width="100%"
+          height="736"
+          frameBorder="0"
+          scrolling="no"
+          className="atlas-iframe company-iframe"
+          src={`https://observablehq.com/embed/${notebook}?cells=visual1CompanyLandscapePremium&api_key=${apiKey}`}
         />
       </section>
     </main>
