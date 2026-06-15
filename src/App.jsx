@@ -4,32 +4,26 @@ import "./App.css";
 export default function App() {
   return (
     <main className="site">
-      <section className="observable-section hero-observable">
+      <section className="embed-section hero-section">
         <iframe
-          title="UNICORN1 Hero"
-          width="100%"
-          height="836"
-          frameBorder="0"
+          title="Psychedelic Trial Atlas Hero"
+          className="observable-frame hero-frame"
           src="https://observablehq.com/embed/e3028f2577c04f9a@1118?cells=heroSection1&api_key=34347d95d4d95a93375c693a2fbb5249853bf500"
         />
       </section>
 
-      <section className="observable-section visual-section visual-1a">
+      <section className="embed-section ecosystem-section">
         <iframe
-          title="Visual 1A Ecosystem Overview"
-          width="100%"
-          height="796"
-          frameBorder="0"
+          title="The Psychedelic Ecosystem"
+          className="observable-frame ecosystem-frame"
           src="https://observablehq.com/embed/e3028f2577c04f9a@1118?cells=visual1EcosystemOverviev&api_key=34347d95d4d95a93375c693a2fbb5249853bf500"
         />
       </section>
 
-      <section className="observable-section visual-section visual-1b">
+      <section className="embed-section company-section">
         <iframe
-          title="Visual 1B Company Landscape Premium"
-          width="100%"
-          height="736"
-          frameBorder="0"
+          title="Company Landscape Premium"
+          className="observable-frame company-frame"
           src="https://observablehq.com/embed/e3028f2577c04f9a@1118?cells=visual1CompanyLandscapePremium&api_key=34347d95d4d95a93375c693a2fbb5249853bf500"
         />
       </section>
