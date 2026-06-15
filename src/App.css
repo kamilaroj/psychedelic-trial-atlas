@@ -1,9 +1,8 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap");
-
 html,
 body,
 #root {
   margin: 0;
+  padding: 0;
   width: 100%;
   min-height: 100%;
   background: #f1f0ec;
@@ -11,32 +10,13 @@ body,
 
 body {
   overflow-x: hidden;
-  color: #1d1d1f;
-  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
 }
 
 .site {
   width: 100%;
   min-height: 100vh;
   background: #f1f0ec;
-  overflow-x: hidden;
-}
-
-.embed-section {
-  width: 100%;
-  background: #f1f0ec;
-  margin: 0;
-  padding: 0;
   overflow: hidden;
-}
-
-.hero-embed-section {
-  height: 836px;
-}
-
-.visual1-embed-section {
-  height: 796px;
-  margin-top: -1px;
 }
 
 .atlas-iframe {
@@ -54,4 +34,5 @@ body {
 
 .visual1-iframe {
   height: 796px;
+  margin-top: -1px;
 }
