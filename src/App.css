@@ -1,25 +1,39 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap");
+
 html,
 body,
 #root {
   margin: 0;
-  padding: 0;
   width: 100%;
   min-height: 100%;
   background: #f1f0ec;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  overflow-x: hidden;
+  color: #1d1d1f;
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
 }
 
 .site {
   width: 100%;
   min-height: 100vh;
   background: #f1f0ec;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
-.atlas-iframe {
+.observable-section {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: #f1f0ec;
+  line-height: 0;
+}
+
+.observable-section iframe {
   display: block;
   width: 100%;
   border: 0;
@@ -28,11 +42,28 @@ body {
   background: #f1f0ec;
 }
 
-.hero-iframe {
-  height: 836px;
+.hero-observable {
+  min-height: 836px;
 }
 
-.visual1-iframe {
-  height: 796px;
-  margin-top: -1px;
+.visual-1a {
+  min-height: 796px;
+}
+
+.visual-1b {
+  min-height: 736px;
+}
+
+@media (max-width: 900px) {
+  .hero-observable iframe {
+    height: 760px;
+  }
+
+  .visual-1a iframe {
+    height: 760px;
+  }
+
+  .visual-1b iframe {
+    height: 720px;
+  }
 }
