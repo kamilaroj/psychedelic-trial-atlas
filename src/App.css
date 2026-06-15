@@ -1,38 +1,39 @@
-import "./App.css";
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: #f1f0ec;
+}
 
-export default function App() {
-  return (
-    <main className="site">
-      <section className="hero-section">
-        <div className="hero-inner">
-          <h1 className="atlas-hero-title">Psychedelic Trial Atlas</h1>
+body {
+  overflow-x: hidden;
+}
 
-          <p className="atlas-hero-subtitle">
-            A visual data project mapping registered clinical-trial activity and visible pipeline context
-            <br />
-            across psychedelic and psychedelic-adjacent medicines.
-          </p>
-        </div>
+.site {
+  width: 100%;
+  min-height: 100vh;
+  background: #f1f0ec;
+  overflow-x: hidden;
+}
 
-        <a className="journey-cue" href="#journey">
-          <span className="journey-label">Start your journey</span>
-          <span className="journey-arrow" />
-        </a>
-      </section>
+.atlas-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #f1f0ec;
+}
 
-      <section id="journey" className="visual-section">
-        <iframe
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemOverview&ui=embed"
-          title="Ecosystem"
-        />
-      </section>
+.atlas-frame {
+  display: block;
+  width: 100%;
+  height: 4200px;
+  border: 0;
+  background: #f1f0ec;
+  opacity: 0;
+}
 
-      <section className="visual-section">
-        <iframe
-          src="https://observablehq.com/embed/e3028f2577c04f9a@1010?cells=visual1EcosystemToCompanyTransition&ui=embed"
-          title="Transition"
-        />
-      </section>
-    </main>
-  );
+.atlas-frame.is-loaded {
+  opacity: 1;
 }
