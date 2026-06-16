@@ -39,14 +39,6 @@ body {
   padding: 36px 24px 18px;
 }
 
-.hero-shell {
-  width: 100%;
-  max-width: 1120px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
 .visual-story {
   padding-left: 24px;
   padding-right: 24px;
@@ -79,7 +71,6 @@ body {
 
 .iframe-crop {
   width: 100%;
-  max-width: 1120px;
   margin: 0 auto;
   overflow: hidden;
   background: #f1f0ec;
@@ -103,17 +94,13 @@ body {
   opacity: 0;
 }
 
-.hero-frame {
-  margin-top: 0;
-}
-
-.landscape-frame {
-  max-width: 1120px;
-}
-
+.hero-frame,
+.ecosystem-frame,
+.company-frame,
 .compound-frame,
 .indication-frame,
-.phase-frame {
+.phase-frame,
+.landscape-frame {
   max-width: 1120px;
 }
 
