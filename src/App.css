@@ -16,6 +16,7 @@ body,
 body {
   color: #1d1d1f;
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 .site {
@@ -62,22 +63,23 @@ body {
 }
 
 .compound-story {
-  padding-top: 54px;
-  padding-bottom: 84px;
+  padding-top: 64px;
+  padding-bottom: 96px;
 }
 
 .indication-story {
-  padding-top: 70px;
-  padding-bottom: 86px;
+  padding-top: 82px;
+  padding-bottom: 98px;
 }
 
 .phase-story {
-  padding-top: 72px;
-  padding-bottom: 96px;
+  padding-top: 84px;
+  padding-bottom: 110px;
 }
 
 .iframe-crop {
   width: 100%;
+  max-width: 1120px;
   margin: 0 auto;
   overflow: hidden;
   background: #f1f0ec;
@@ -109,13 +111,10 @@ body {
   max-width: 1120px;
 }
 
-.compound-frame iframe,
-.indication-frame iframe,
-.phase-frame iframe {
-  transform: scale(0.9);
-  transform-origin: top center;
-  width: 111.12%;
-  margin-left: -5.56%;
+.compound-frame,
+.indication-frame,
+.phase-frame {
+  max-width: 1120px;
 }
 
 .top-project-menu {
@@ -227,18 +226,10 @@ body {
     padding-right: 16px;
   }
 
-  .compound-frame iframe,
-  .indication-frame iframe,
-  .phase-frame iframe {
-    transform: scale(0.94);
-    width: 106.4%;
-    margin-left: -3.2%;
-  }
-
   .compound-story,
   .indication-story,
   .phase-story {
-    padding-top: 48px;
-    padding-bottom: 72px;
+    padding-top: 56px;
+    padding-bottom: 78px;
   }
 }
