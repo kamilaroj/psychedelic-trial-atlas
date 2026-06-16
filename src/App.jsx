@@ -49,17 +49,6 @@ export default function App() {
 
   return (
     <main className="site">
-      <div className="top-project-menu">
-        <button
-          className="about-project-button"
-          type="button"
-          onClick={() => setAboutOpen(true)}
-          aria-label="Open About project"
-        >
-          ✦ About project ▾
-        </button>
-      </div>
-
       {aboutOpen && (
         <div
           className="about-modal-overlay"
@@ -134,6 +123,17 @@ export default function App() {
       )}
 
       <section className="story-section hero-story">
+        <div className="top-project-menu">
+          <button
+            className="about-project-button"
+            type="button"
+            onClick={() => setAboutOpen(true)}
+            aria-label="Open About project"
+          >
+            ✦ About project ▾
+          </button>
+        </div>
+
         <ObservableFrame
           title="Psychedelic Trial Atlas Hero"
           cell="heroSection1"
