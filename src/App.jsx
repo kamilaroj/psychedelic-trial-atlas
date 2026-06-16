@@ -188,8 +188,8 @@ export default function App() {
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
           visibleHeight={763}
-          iframeHeight={763}
-          className="compound-frame"
+          iframeHeight={835}
+          className="compound-frame landscape-frame"
           srcType="landscape"
         />
       </section>
@@ -199,8 +199,8 @@ export default function App() {
           title="Indication Landscape"
           cell="visual3Chart"
           visibleHeight={724}
-          iframeHeight={724}
-          className="indication-frame"
+          iframeHeight={796}
+          className="indication-frame landscape-frame"
           srcType="landscape"
         />
       </section>
@@ -210,8 +210,8 @@ export default function App() {
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
           visibleHeight={659}
-          iframeHeight={659}
-          className="phase-frame"
+          iframeHeight={731}
+          className="phase-frame landscape-frame"
           srcType="landscape"
         />
       </section>
