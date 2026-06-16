@@ -193,7 +193,7 @@ body {
   padding-bottom: 120px;
 }
 
-/* NEW SECTIONS ONLY */
+/* NEW VISUALS ONLY: Visual 2, Visual 3, Visual 4 */
 .compound-story {
   padding-top: 90px;
   padding-bottom: 120px;
@@ -245,6 +245,10 @@ body {
 }
 
 .phase-frame {
+  max-width: 1560px;
+}
+
+.landscape-frame {
   max-width: 1560px;
 }
 
