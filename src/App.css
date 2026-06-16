@@ -43,7 +43,7 @@ body {
 
 .top-project-menu {
   position: absolute;
-  top: calc(50% - 165px);
+  top: calc(50% - 140px);
   left: 0;
   right: 0;
   z-index: 40;
@@ -222,7 +222,7 @@ body {
 
 @media (max-width: 900px) {
   .top-project-menu {
-    top: calc(50% - 155px);
+    top: calc(50% - 132px);
   }
 
   .about-project-button {
