@@ -26,9 +26,24 @@ body {
   position: relative;
 }
 
+.story-section {
+  width: 100%;
+  background: #f1f0ec;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.hero-story {
+  min-height: 100vh;
+  padding: 0 24px;
+  position: relative;
+}
+
 .top-project-menu {
   position: absolute;
-  top: 26px;
+  top: calc(50% - 48px);
   left: 0;
   right: 0;
   z-index: 40;
@@ -41,15 +56,15 @@ body {
   pointer-events: auto;
   appearance: none;
   border: 1px solid rgba(29, 29, 31, 0.1);
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.76);
   color: #1d1d1f;
   border-radius: 999px;
   padding: 9px 16px;
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
   font-size: 12px;
-  font-weight: 650;
+  font-weight: 700;
   letter-spacing: -0.01em;
-  box-shadow: 0 12px 34px rgba(29, 29, 31, 0.08);
+  box-shadow: 0 14px 38px rgba(29, 29, 31, 0.1);
   backdrop-filter: blur(14px);
   cursor: pointer;
   transition:
@@ -60,9 +75,9 @@ body {
 }
 
 .about-project-button:hover {
-  background: rgba(255, 255, 255, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   border-color: rgba(29, 29, 31, 0.16);
-  box-shadow: 0 16px 42px rgba(29, 29, 31, 0.12);
+  box-shadow: 0 18px 46px rgba(29, 29, 31, 0.14);
   transform: translateY(-1px);
 }
 
@@ -164,20 +179,6 @@ body {
   font-weight: 760;
 }
 
-.story-section {
-  width: 100%;
-  background: #f1f0ec;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
-
-.hero-story {
-  min-height: 100vh;
-  padding: 0 24px;
-}
-
 .visual-story {
   padding: 80px 24px;
 }
@@ -221,7 +222,7 @@ body {
 
 @media (max-width: 900px) {
   .top-project-menu {
-    top: 18px;
+    top: calc(50% - 58px);
   }
 
   .about-project-button {
