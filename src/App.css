@@ -1,41 +1,29 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Inter+Tight:wght@700;800;900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap");
 
-* {
-  box-sizing: border-box;
+html {
+  scroll-behavior: smooth;
 }
 
 html,
 body,
 #root {
   margin: 0;
-  padding: 0;
   width: 100%;
-  min-width: 100%;
   min-height: 100%;
   background: #f1f0ec;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
   color: #1d1d1f;
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  overflow-x: hidden;
 }
 
 .site {
   width: 100%;
-  min-width: 100%;
   min-height: 100vh;
   background: #f1f0ec;
   overflow-x: hidden;
 }
-
-/* =========================
-   STORY SECTIONS
-========================= */
 
 .story-section {
   width: 100%;
@@ -43,203 +31,67 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+}
+
+.hero-story {
+  min-height: 100vh;
+  padding: 0 24px;
+}
+
+.visual-story {
+  padding: 80px 24px;
+}
+
+.ecosystem-story {
+  padding-top: 70px;
+  padding-bottom: 90px;
+}
+
+.company-story {
+  padding-top: 90px;
+  padding-bottom: 120px;
+}
+
+.iframe-crop {
+  width: min(100%, 1560px);
   overflow: hidden;
-}
-
-.visual-story .iframe-shell {
-  max-width: 1320px;
-}
-
-/* =========================
-   OBSERVABLE IFRAMES
-========================= */
-
-.iframe-shell {
-  width: 100%;
-  max-width: 1440px;
-  margin: 0 auto;
   background: #f1f0ec;
-  overflow: hidden;
-  line-height: 0;
+  border: 0;
+  margin: 0 auto;
 }
 
 .atlas-iframe {
   display: block;
-  width: 100% !important;
-  min-width: 100% !important;
-  max-width: 100% !important;
-  border: 0;
-  margin: 0;
-  padding: 0;
-  background: #f1f0ec;
-}
-
-/* HERO */
-.hero-story {
-  min-height: 860px;
-  padding: 0 0 42px;
-}
-
-.hero-shell,
-.hero-iframe {
-  height: 836px;
-}
-
-/* VISUAL 1A */
-.ecosystem-story {
-  min-height: 880px;
-  padding: 36px 0 120px;
-}
-
-.ecosystem-shell,
-.ecosystem-iframe {
-  height: 796px;
-}
-
-/* VISUAL 1B */
-.company-story {
-  min-height: 820px;
-  padding: 30px 0 150px;
-}
-
-.company-shell,
-.company-iframe {
-  height: 736px;
-}
-
-/* =========================
-   STORY BRIDGES
-========================= */
-
-.story-bridge {
   width: 100%;
+  border: 0;
   background: #f1f0ec;
-  padding: 96px 24px 72px;
-  display: flex;
-  justify-content: center;
-  text-align: center;
 }
 
-.story-copy {
-  max-width: 980px;
-  margin: 0 auto;
+.hero-frame {
+  max-width: 1560px;
 }
 
-.story-kicker {
-  margin: 0 0 22px;
-  color: #8c9098;
-  font-size: 12px;
-  font-weight: 850;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+.ecosystem-frame {
+  max-width: 1560px;
 }
 
-.story-copy h2 {
-  margin: 0 0 24px;
-  color: #1d1d1f;
-  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui,
-    sans-serif;
-  font-size: clamp(46px, 5.5vw, 86px);
-  font-weight: 900;
-  letter-spacing: -0.075em;
-  line-height: 0.9;
-}
-
-.story-copy p:last-child {
-  margin: 0 auto;
-  max-width: 900px;
-  color: #61656f;
-  font-size: 19px;
-  font-weight: 650;
-  line-height: 1.45;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 1200px) {
-  .iframe-shell {
-    max-width: 100%;
-  }
-
-  .story-copy h2 {
-    font-size: clamp(42px, 7vw, 72px);
-  }
-
-  .story-copy p:last-child {
-    font-size: 17px;
-  }
-
-  .hero-story {
-    min-height: 820px;
-  }
-
-  .hero-shell,
-  .hero-iframe {
-    height: 800px;
-  }
-
-  .ecosystem-story {
-    min-height: 820px;
-  }
-
-  .ecosystem-shell,
-  .ecosystem-iframe {
-    height: 760px;
-  }
-
-  .company-story {
-    min-height: 780px;
-  }
-
-  .company-shell,
-  .company-iframe {
-    height: 720px;
-  }
+.company-frame {
+  max-width: 1560px;
 }
 
 @media (max-width: 900px) {
-  .story-bridge {
-    padding: 80px 20px 60px;
-  }
-
-  .story-copy h2 {
-    font-size: 42px;
-    letter-spacing: -0.055em;
-  }
-
-  .story-copy p:last-child {
-    font-size: 15px;
-    font-weight: 550;
-  }
-
   .hero-story {
-    min-height: 720px;
+    min-height: 820px;
+    padding: 0 16px;
   }
 
-  .hero-shell,
-  .hero-iframe {
-    height: 700px;
+  .visual-story {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 
-  .ecosystem-story {
-    min-height: 720px;
-    padding-bottom: 90px;
-  }
-
-  .ecosystem-shell,
-  .ecosystem-iframe {
-    height: 680px;
-  }
-
-  .company-story {
-    min-height: 700px;
-    padding-bottom: 110px;
-  }
-
-  .company-shell,
-  .company-iframe {
-    height: 660px;
+  .iframe-crop {
+    width: 100%;
   }
 }
