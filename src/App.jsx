@@ -10,6 +10,9 @@ export default function App() {
   const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
   const companyNotebook = "e3028f2577c04f9a@1121";
 
+  const compoundApiKey = "3e7b500eda572738a86923ecb43b20b902fed572";
+  const compoundNotebook = "e3028f2577c04f9a@1158";
+
   const landscapeApiKey = "3e7b500eda572738a86923ecb43b20b902fed572";
   const landscapeNotebook = "e3028f2577c04f9a@1157";
 
@@ -18,6 +21,9 @@ export default function App() {
 
   const companyObservableSrc = (cell) =>
     `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
+
+  const compoundObservableSrc = (cell) =>
+    `https://observablehq.com/embed/${compoundNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${compoundApiKey}`;
 
   const landscapeObservableSrc = (cell) =>
     `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
@@ -35,9 +41,11 @@ export default function App() {
     const src =
       srcType === "company"
         ? companyObservableSrc(cell)
-        : srcType === "landscape"
-          ? landscapeObservableSrc(cell)
-          : observableSrc(cell);
+        : srcType === "compound"
+          ? compoundObservableSrc(cell)
+          : srcType === "landscape"
+            ? landscapeObservableSrc(cell)
+            : observableSrc(cell);
 
     const handleLoad = () => {
       window.setTimeout(() => {
@@ -187,10 +195,10 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={850}
-          iframeHeight={922}
+          visibleHeight={652}
+          iframeHeight={652}
           className="compound-frame landscape-frame"
-          srcType="landscape"
+          srcType="compound"
         />
       </section>
 
