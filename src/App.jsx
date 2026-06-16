@@ -8,7 +8,7 @@ export default function App() {
   const mainNotebook = "e3028f2577c04f9a@1118";
 
   const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
-  const companyNotebook = "e3028f2577c04f9a@1121";
+  const companyNotebook = "e3028f2577c04f9a@1125";
 
   const observableSrc = (cell) =>
     `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
@@ -48,7 +48,9 @@ export default function App() {
           height={iframeHeight}
           frameBorder="0"
           scrolling="no"
-          className={`atlas-iframe ${isLoaded ? "iframe-loaded" : "iframe-loading"}`}
+          className={`atlas-iframe ${
+            isLoaded ? "iframe-loaded" : "iframe-loading"
+          }`}
           src={src}
           onLoad={handleLoad}
         />
