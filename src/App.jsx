@@ -146,27 +146,25 @@ export default function App() {
       )}
 
       <section className="story-section hero-story">
-        <div className="hero-shell">
-          <div className="top-project-menu">
-            <button
-              className="about-project-button"
-              type="button"
-              onClick={() => setAboutOpen(true)}
-              aria-label="Open About project"
-            >
-              ✦ About project ▾
-            </button>
-          </div>
-
-          <ObservableFrame
-            title="Psychedelic Trial Atlas Hero"
-            cell="heroSection1"
-            visibleHeight={790}
-            iframeHeight={836}
-            className="hero-frame"
-            maxWidth={1120}
-          />
+        <div className="top-project-menu">
+          <button
+            className="about-project-button"
+            type="button"
+            onClick={() => setAboutOpen(true)}
+            aria-label="Open About project"
+          >
+            ✦ About project ▾
+          </button>
         </div>
+
+        <ObservableFrame
+          title="Psychedelic Trial Atlas Hero"
+          cell="heroSection1"
+          visibleHeight={790}
+          iframeHeight={836}
+          className="hero-frame"
+          maxWidth={1120}
+        />
       </section>
 
       <section className="story-section visual-story ecosystem-story">
@@ -196,7 +194,7 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={630}
+          visibleHeight={718}
           iframeHeight={763}
           className="compound-frame landscape-frame"
           srcType="landscape"
@@ -208,7 +206,7 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={600}
+          visibleHeight={679}
           iframeHeight={724}
           className="indication-frame landscape-frame"
           srcType="landscape"
@@ -220,7 +218,7 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={555}
+          visibleHeight={614}
           iframeHeight={659}
           className="phase-frame landscape-frame"
           srcType="landscape"
