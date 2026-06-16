@@ -187,8 +187,8 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={763}
-          iframeHeight={835}
+          visibleHeight={850}
+          iframeHeight={922}
           className="compound-frame landscape-frame"
           srcType="landscape"
         />
@@ -198,8 +198,8 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={724}
-          iframeHeight={796}
+          visibleHeight={760}
+          iframeHeight={832}
           className="indication-frame landscape-frame"
           srcType="landscape"
         />
@@ -209,8 +209,8 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={659}
-          iframeHeight={731}
+          visibleHeight={730}
+          iframeHeight={802}
           className="phase-frame landscape-frame"
           srcType="landscape"
         />
