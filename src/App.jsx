@@ -24,10 +24,18 @@ export default function App() {
     className,
     srcType = "main"
   }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
     const src =
       srcType === "company"
         ? companyObservableSrc(cell)
         : observableSrc(cell);
+
+    const handleLoad = () => {
+      window.setTimeout(() => {
+        setIsLoaded(true);
+      }, 180);
+    };
 
     return (
       <div
@@ -40,8 +48,9 @@ export default function App() {
           height={iframeHeight}
           frameBorder="0"
           scrolling="no"
-          className="atlas-iframe"
+          className={`atlas-iframe ${isLoaded ? "iframe-loaded" : "iframe-loading"}`}
           src={src}
+          onLoad={handleLoad}
         />
       </div>
     );

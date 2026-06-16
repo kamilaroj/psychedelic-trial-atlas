@@ -271,3 +271,37 @@ body {
     width: 100%;
   }
 }
+
+/* IFRAME LOADING FIX */
+.iframe-crop {
+  position: relative;
+  background: #f1f0ec;
+  overflow: hidden;
+}
+
+.atlas-iframe {
+  opacity: 0;
+  outline: 0;
+  background: #f1f0ec;
+  transition: opacity 420ms ease;
+  will-change: opacity;
+}
+
+.atlas-iframe.iframe-loaded {
+  opacity: 1;
+}
+
+.atlas-iframe.iframe-loading {
+  opacity: 0;
+}
+
+/* OBSERVABLE LEFT GUTTER CROP FIX */
+.iframe-crop {
+  overflow: hidden !important;
+}
+
+.atlas-iframe {
+  width: calc(100% + 18px) !important;
+  max-width: none !important;
+  margin-left: -9px !important;
+}
