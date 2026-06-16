@@ -2,13 +2,31 @@ import React from "react";
 import "./App.css";
 
 export default function App() {
-  const apiKey = "34347d95d4d95a93375c693a2fbb5249853bf500";
-  const notebook = "e3028f2577c04f9a@1118";
+  const mainApiKey = "34347d95d4d95a93375c693a2fbb5249853bf500";
+  const mainNotebook = "e3028f2577c04f9a@1118";
+
+  const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
+  const companyNotebook = "e3028f2577c04f9a@1121";
 
   const observableSrc = (cell) =>
-    `https://observablehq.com/embed/${notebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${apiKey}`;
+    `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
 
-  const ObservableFrame = ({ title, cell, visibleHeight, iframeHeight, className }) => {
+  const companyObservableSrc = (cell) =>
+    `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
+
+  const ObservableFrame = ({
+    title,
+    cell,
+    visibleHeight,
+    iframeHeight,
+    className,
+    srcType = "main"
+  }) => {
+    const src =
+      srcType === "company"
+        ? companyObservableSrc(cell)
+        : observableSrc(cell);
+
     return (
       <div
         className={`iframe-crop ${className || ""}`}
@@ -21,7 +39,7 @@ export default function App() {
           frameBorder="0"
           scrolling="no"
           className="atlas-iframe"
-          src={observableSrc(cell)}
+          src={src}
         />
       </div>
     );
@@ -52,10 +70,11 @@ export default function App() {
       <section className="story-section visual-story company-story">
         <ObservableFrame
           title="Company Landscape Premium"
-          cell="visual1CompanyLandscapePremium"
+          cell="visual1CompanyLandscapePremium1"
           visibleHeight={690}
           iframeHeight={736}
           className="company-frame"
+          srcType="company"
         />
       </section>
     </main>
