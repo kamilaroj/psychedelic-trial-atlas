@@ -10,8 +10,8 @@ export default function App() {
   const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
   const companyNotebook = "e3028f2577c04f9a@1125";
 
-  const compoundApiKey = "23d2e163d260f5a27d96d6542cf8b94fd528a4a7";
-  const compoundNotebook = "e3028f2577c04f9a@1132";
+  const landscapeApiKey = "3e7b500eda572738a86923ecb43b20b902fed572";
+  const landscapeNotebook = "e3028f2577c04f9a@1154";
 
   const observableSrc = (cell) =>
     `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
@@ -19,8 +19,8 @@ export default function App() {
   const companyObservableSrc = (cell) =>
     `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
 
-  const compoundObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${compoundNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${compoundApiKey}`;
+  const landscapeObservableSrc = (cell) =>
+    `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
 
   const ObservableFrame = ({
     title,
@@ -35,8 +35,8 @@ export default function App() {
     const src =
       srcType === "company"
         ? companyObservableSrc(cell)
-        : srcType === "compound"
-          ? compoundObservableSrc(cell)
+        : srcType === "landscape"
+          ? landscapeObservableSrc(cell)
           : observableSrc(cell);
 
     const handleLoad = () => {
@@ -187,10 +187,32 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={710}
-          iframeHeight={755}
+          visibleHeight={718}
+          iframeHeight={763}
           className="compound-frame"
-          srcType="compound"
+          srcType="landscape"
+        />
+      </section>
+
+      <section className="story-section visual-story indication-story">
+        <ObservableFrame
+          title="Indication Landscape"
+          cell="visual3Chart"
+          visibleHeight={679}
+          iframeHeight={724}
+          className="indication-frame"
+          srcType="landscape"
+        />
+      </section>
+
+      <section className="story-section visual-story phase-story">
+        <ObservableFrame
+          title="Clinical Phase Landscape"
+          cell="visual4PhaseChart"
+          visibleHeight={614}
+          iframeHeight={659}
+          className="phase-frame"
+          srcType="landscape"
         />
       </section>
     </main>
