@@ -8,10 +8,7 @@ export default function App() {
   const mainNotebook = "e3028f2577c04f9a@1118";
 
   const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
-  const companyNotebook = "e3028f2577c04f9a@1125";
-
-  const landscapeApiKey = "3e7b500eda572738a86923ecb43b20b902fed572";
-  const landscapeNotebook = "e3028f2577c04f9a@1154";
+  const companyNotebook = "e3028f2577c04f9a@1121";
 
   const observableSrc = (cell) =>
     `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
@@ -19,26 +16,20 @@ export default function App() {
   const companyObservableSrc = (cell) =>
     `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
 
-  const landscapeObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
-
   const ObservableFrame = ({
     title,
     cell,
     visibleHeight,
     iframeHeight,
     className,
-    srcType = "main",
-    maxWidth = 1120
+    srcType = "main"
   }) => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     const src =
       srcType === "company"
         ? companyObservableSrc(cell)
-        : srcType === "landscape"
-          ? landscapeObservableSrc(cell)
-          : observableSrc(cell);
+        : observableSrc(cell);
 
     const handleLoad = () => {
       window.setTimeout(() => {
@@ -49,10 +40,7 @@ export default function App() {
     return (
       <div
         className={`iframe-crop ${className || ""}`}
-        style={{
-          height: `${visibleHeight}px`,
-          maxWidth: `${maxWidth}px`
-        }}
+        style={{ height: `${visibleHeight}px` }}
       >
         <iframe
           title={title}
@@ -60,9 +48,7 @@ export default function App() {
           height={iframeHeight}
           frameBorder="0"
           scrolling="no"
-          className={`atlas-iframe ${
-            isLoaded ? "iframe-loaded" : "iframe-loading"
-          }`}
+          className={`atlas-iframe ${isLoaded ? "iframe-loaded" : "iframe-loading"}`}
           src={src}
           onLoad={handleLoad}
         />
@@ -163,7 +149,6 @@ export default function App() {
           visibleHeight={790}
           iframeHeight={836}
           className="hero-frame"
-          maxWidth={1120}
         />
       </section>
 
@@ -174,7 +159,6 @@ export default function App() {
           visibleHeight={750}
           iframeHeight={796}
           className="ecosystem-frame"
-          maxWidth={1120}
         />
       </section>
 
@@ -186,43 +170,6 @@ export default function App() {
           iframeHeight={736}
           className="company-frame"
           srcType="company"
-          maxWidth={1120}
-        />
-      </section>
-
-      <section className="story-section visual-story compound-story">
-        <ObservableFrame
-          title="Compound Activity Landscape"
-          cell="visual2Chartminimalistic1"
-          visibleHeight={718}
-          iframeHeight={763}
-          className="compound-frame landscape-frame"
-          srcType="landscape"
-          maxWidth={1120}
-        />
-      </section>
-
-      <section className="story-section visual-story indication-story">
-        <ObservableFrame
-          title="Indication Landscape"
-          cell="visual3Chart"
-          visibleHeight={679}
-          iframeHeight={724}
-          className="indication-frame landscape-frame"
-          srcType="landscape"
-          maxWidth={1120}
-        />
-      </section>
-
-      <section className="story-section visual-story phase-story">
-        <ObservableFrame
-          title="Clinical Phase Landscape"
-          cell="visual4PhaseChart"
-          visibleHeight={614}
-          iframeHeight={659}
-          className="phase-frame landscape-frame"
-          srcType="landscape"
-          maxWidth={1120}
         />
       </section>
     </main>
