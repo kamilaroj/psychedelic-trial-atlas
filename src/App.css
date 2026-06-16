@@ -35,13 +35,12 @@ body {
 }
 
 .hero-story {
-  padding: 0 24px 18px;
+  padding: 36px 24px 18px;
 }
 
 .hero-shell {
   width: 100%;
   max-width: 1120px;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,7 +102,7 @@ body {
 }
 
 .hero-frame {
-  margin-top: -42px;
+  margin-top: 0;
 }
 
 .landscape-frame {
@@ -119,25 +118,16 @@ body {
   margin-left: -5.56%;
 }
 
-.compound-frame,
-.indication-frame,
-.phase-frame {
-  border-radius: 0;
-}
-
 .top-project-menu {
-  position: absolute;
-  top: 118px;
-  left: 0;
-  right: 0;
-  z-index: 4;
+  width: 100%;
   display: flex;
   justify-content: center;
-  pointer-events: none;
+  margin-bottom: -8px;
+  position: relative;
+  z-index: 4;
 }
 
 .about-project-button {
-  pointer-events: auto;
   appearance: none;
   border: 1px solid rgba(29, 29, 31, 0.14);
   background: rgba(255, 255, 255, 0.78);
@@ -235,10 +225,6 @@ body {
   .visual-story {
     padding-left: 16px;
     padding-right: 16px;
-  }
-
-  .top-project-menu {
-    top: 96px;
   }
 
   .compound-frame iframe,
