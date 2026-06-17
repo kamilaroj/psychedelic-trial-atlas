@@ -33,6 +33,7 @@ export default function App() {
     cell,
     visibleHeight,
     iframeHeight,
+    iframeOffsetY = 0,
     className,
     srcType = "main"
   }) => {
@@ -69,6 +70,9 @@ export default function App() {
           }`}
           src={src}
           onLoad={handleLoad}
+          style={{
+            transform: `translateY(${iframeOffsetY}px)`
+          }}
         />
       </div>
     );
@@ -195,9 +199,10 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={652}
-          iframeHeight={652}
-          className="compound-frame landscape-frame"
+          visibleHeight={646}
+          iframeHeight={760}
+          iframeOffsetY={-8}
+          className="compound-frame landscape-frame observable-footer-crop"
           srcType="compound"
         />
       </section>
@@ -206,9 +211,10 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={760}
-          iframeHeight={832}
-          className="indication-frame landscape-frame"
+          visibleHeight={740}
+          iframeHeight={870}
+          iframeOffsetY={-10}
+          className="indication-frame landscape-frame observable-footer-crop"
           srcType="landscape"
         />
       </section>
@@ -217,9 +223,10 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={730}
-          iframeHeight={802}
-          className="phase-frame landscape-frame"
+          visibleHeight={710}
+          iframeHeight={840}
+          iframeOffsetY={-10}
+          className="phase-frame landscape-frame observable-footer-crop"
           srcType="landscape"
         />
       </section>
