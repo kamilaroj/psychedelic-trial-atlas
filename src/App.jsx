@@ -28,7 +28,7 @@ export default function App() {
     "gh_research.png": 0.224,
 
     "solvonis_therapeutics.png": 3.35,
-    "gilgamesh_pharma.png": 2.35,
+    "gilgamesh_pharma.png": 2.8,
     "bright_minds.png": 6,
     "definium.png": 2.95,
     "otsuka_mindset_pharma.png": 3.55,
