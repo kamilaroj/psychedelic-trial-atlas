@@ -27,7 +27,6 @@ export default function App() {
     cell,
     visibleHeight,
     iframeHeight,
-    iframeOffsetY = 0,
     className,
     srcType = "main"
   }) => {
@@ -62,10 +61,6 @@ export default function App() {
           }`}
           src={src}
           onLoad={handleLoad}
-          style={{
-            position: "relative",
-            top: `${iframeOffsetY}px`
-          }}
         />
       </div>
     );
@@ -162,7 +157,7 @@ export default function App() {
           title="Psychedelic Trial Atlas Hero"
           cell="heroSection1"
           visibleHeight={790}
-          iframeHeight={836}
+          iframeHeight={860}
           className="hero-frame"
         />
       </section>
@@ -172,7 +167,7 @@ export default function App() {
           title="The Psychedelic Ecosystem"
           cell="visual1EcosystemOverviev"
           visibleHeight={750}
-          iframeHeight={796}
+          iframeHeight={820}
           className="ecosystem-frame"
         />
       </section>
@@ -182,7 +177,7 @@ export default function App() {
           title="Company Landscape Premium"
           cell="visual1CompanyLandscapePremium1"
           visibleHeight={690}
-          iframeHeight={736}
+          iframeHeight={780}
           className="company-frame"
           srcType="company"
         />
@@ -192,9 +187,8 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={608}
-          iframeHeight={690}
-          iframeOffsetY={0}
+          visibleHeight={650}
+          iframeHeight={880}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -204,9 +198,8 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={607}
-          iframeHeight={690}
-          iframeOffsetY={0}
+          visibleHeight={650}
+          iframeHeight={880}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -216,9 +209,8 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={608}
-          iframeHeight={690}
-          iframeOffsetY={0}
+          visibleHeight={650}
+          iframeHeight={880}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
