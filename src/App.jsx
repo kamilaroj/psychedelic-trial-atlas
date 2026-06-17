@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 
 export default function App() {
@@ -89,9 +89,12 @@ export default function App() {
     visibleHeight,
     iframeHeight,
     className,
-    srcType = "main"
+    srcType = "main",
+    lazyLoad = false
   }) => {
+    const wrapperRef = useRef(null);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [shouldLoad, setShouldLoad] = useState(!lazyLoad);
 
     const src =
       srcType === "company"
@@ -102,6 +105,39 @@ export default function App() {
             ? landscapeObservableSrc(cell)
             : observableSrc(cell);
 
+    useEffect(() => {
+      if (!lazyLoad) return;
+      if (shouldLoad) return;
+
+      const target = wrapperRef.current;
+      if (!target) return;
+
+      if (!("IntersectionObserver" in window)) {
+        setShouldLoad(true);
+        return;
+      }
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0];
+
+          if (entry && entry.isIntersecting) {
+            setShouldLoad(true);
+            observer.disconnect();
+          }
+        },
+        {
+          root: null,
+          threshold: 0.08,
+          rootMargin: "0px 0px -18% 0px"
+        }
+      );
+
+      observer.observe(target);
+
+      return () => observer.disconnect();
+    }, [lazyLoad, shouldLoad]);
+
     const handleLoad = () => {
       window.setTimeout(() => {
         setIsLoaded(true);
@@ -110,21 +146,28 @@ export default function App() {
 
     return (
       <div
+        ref={wrapperRef}
         className={`iframe-crop ${className || ""}`}
-        style={{ height: `${visibleHeight}px` }}
+        style={{
+          height: `${visibleHeight}px`,
+          background: "#f1f0ec",
+          overflow: "hidden"
+        }}
       >
-        <iframe
-          title={title}
-          width="100%"
-          height={iframeHeight}
-          frameBorder="0"
-          scrolling="no"
-          className={`atlas-iframe ${
-            isLoaded ? "iframe-loaded" : "iframe-loading"
-          }`}
-          src={src}
-          onLoad={handleLoad}
-        />
+        {shouldLoad && (
+          <iframe
+            title={title}
+            width="100%"
+            height={iframeHeight}
+            frameBorder="0"
+            scrolling="no"
+            className={`atlas-iframe ${
+              isLoaded ? "iframe-loaded" : "iframe-loading"
+            }`}
+            src={src}
+            onLoad={handleLoad}
+          />
+        )}
       </div>
     );
   };
@@ -254,6 +297,7 @@ export default function App() {
           iframeHeight={515}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
+          lazyLoad={true}
         />
       </section>
 
