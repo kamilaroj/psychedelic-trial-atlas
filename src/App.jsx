@@ -10,20 +10,14 @@ export default function App() {
   const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
   const companyNotebook = "e3028f2577c04f9a@1121";
 
-  const compoundApiKey = "3e7b500eda572738a86923ecb43b20b902fed572";
-  const compoundNotebook = "e3028f2577c04f9a@1158";
-
-  const landscapeApiKey = "3e7b500eda572738a86923ecb43b20b902fed572";
-  const landscapeNotebook = "e3028f2577c04f9a@1157";
+  const landscapeApiKey = "90ef2867b2f0431c7f52e1373ac9776ccc553e14";
+  const landscapeNotebook = "e3028f2577c04f9a@1164";
 
   const observableSrc = (cell) =>
     `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
 
   const companyObservableSrc = (cell) =>
     `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
-
-  const compoundObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${compoundNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${compoundApiKey}`;
 
   const landscapeObservableSrc = (cell) =>
     `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
@@ -34,7 +28,6 @@ export default function App() {
     visibleHeight,
     iframeHeight,
     iframeOffsetY = 0,
-    frameScale = 1,
     className,
     srcType = "main"
   }) => {
@@ -43,11 +36,9 @@ export default function App() {
     const src =
       srcType === "company"
         ? companyObservableSrc(cell)
-        : srcType === "compound"
-          ? compoundObservableSrc(cell)
-          : srcType === "landscape"
-            ? landscapeObservableSrc(cell)
-            : observableSrc(cell);
+        : srcType === "landscape"
+          ? landscapeObservableSrc(cell)
+          : observableSrc(cell);
 
     const handleLoad = () => {
       window.setTimeout(() => {
@@ -73,9 +64,7 @@ export default function App() {
           onLoad={handleLoad}
           style={{
             position: "relative",
-            top: `${iframeOffsetY}px`,
-            transform: `scale(${frameScale})`,
-            transformOrigin: "top center"
+            top: `${iframeOffsetY}px`
           }}
         />
       </div>
@@ -203,12 +192,11 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={760}
-          iframeHeight={900}
-          iframeOffsetY={-10}
-          frameScale={1}
+          visibleHeight={608}
+          iframeHeight={690}
+          iframeOffsetY={0}
           className="compound-frame landscape-frame observable-hard-crop"
-          srcType="compound"
+          srcType="landscape"
         />
       </section>
 
@@ -216,10 +204,9 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={520}
-          iframeHeight={960}
-          iframeOffsetY={-8}
-          frameScale={0.86}
+          visibleHeight={607}
+          iframeHeight={690}
+          iframeOffsetY={0}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -229,10 +216,9 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={748}
-          iframeHeight={930}
-          iframeOffsetY={-34}
-          frameScale={1}
+          visibleHeight={608}
+          iframeHeight={690}
+          iframeOffsetY={0}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
