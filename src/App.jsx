@@ -22,23 +22,23 @@ export default function App() {
   const visual1BLogoVisualScale = {
     "biomind_labs.png": 0.95,
 
-    "janssen_logo.png": 1.45,
+    "janssen_logo.png": 1.68,
     "gh_research.png": 0.38,
 
     "solvonis_therapeutics.png": 2.75,
-    "gilgamesh_pharma.png": 1.45,
-    "bright_minds.png": 2.95,
+    "gilgamesh_pharma.png": 1.82,
+    "bright_minds.png": 3.45,
     "definium.png": 2.55,
     "otsuka_mindset_pharma.png": 2.95,
-    "ataibeckley.png": 2.7,
+    "ataibeckley.png": 3.15,
     "delix_therapeutics.png": 2.9,
     "xylo.png": 1.85,
-    "tactogen.png": 2.95,
+    "tactogen.png": 3.55,
 
     "transcend_therapeutics_otsuka.png": 2.15,
     "reunion_neuroscience.png": 1.35,
-    "celon_pharma.png": 1.3,
-    "demerx.png": 1.2
+    "celon_pharma.png": 1.72,
+    "demerx.png": 1.55
   };
 
   const visual1BLogoHoverScale = {
