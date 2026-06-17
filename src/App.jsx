@@ -16,11 +16,16 @@ export default function App() {
   const landscapeApiKey = "90ef2867b2f0431c7f52e1373ac9776ccc553e14";
   const landscapeNotebook = "e3028f2577c04f9a@1164";
 
+  const githubLogoBase =
+    "https://psychedelic-trial-atlas.vercel.app/logos/";
+
   const observableSrc = (cell) =>
     `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
 
   const companyObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
+    `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&logoBase=${encodeURIComponent(
+      githubLogoBase
+    )}&api_key=${companyApiKey}`;
 
   const visual2ObservableSrc = (cell) =>
     `https://observablehq.com/embed/${visual2Notebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${visual2ApiKey}`;
