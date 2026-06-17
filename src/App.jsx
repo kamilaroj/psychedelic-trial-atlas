@@ -23,7 +23,7 @@ export default function App() {
     "biomind_labs.png": 0.95,
 
     "janssen_logo.png": 1.45,
-    "gh_research.png": 0.46,
+    "gh_research.png": 0.38,
 
     "solvonis_therapeutics.png": 2.75,
     "gilgamesh_pharma.png": 1.45,
@@ -43,7 +43,7 @@ export default function App() {
 
   const visual1BLogoHoverScale = {
     "biomind_labs.png": 0.7,
-    "gh_research.png": 0.52,
+    "gh_research.png": 0.46,
 
     "janssen_logo.png": 1.0,
     "solvonis_therapeutics.png": 1.0,
