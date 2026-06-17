@@ -35,7 +35,7 @@ export default function App() {
     "ataibeckley.png": 2.05,
     "delix_therapeutics.png": 2,
     "xylo.png": 1.85,
-    "tactogen.png": 2.45,
+    "tactogen.png": 2,
 
     "transcend_therapeutics_otsuka.png": 2.15,
     "reunion_neuroscience.png": 1.35,
