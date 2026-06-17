@@ -19,7 +19,7 @@ export default function App() {
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
 
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-2018";
+  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-2025";
 
   const visual1BLogoVisualScale = {
     "biomind_labs.png": 0.95,
@@ -27,15 +27,15 @@ export default function App() {
     "janssen_logo.png": 1.95,
     "gh_research.png": 0.224,
 
-    "solvonis_therapeutics.png": 4.25,
-    "gilgamesh_pharma.png": 2.8,
-    "bright_minds.png": 7.4,
-    "definium.png": 3.75,
-    "otsuka_mindset_pharma.png": 4.45,
-    "ataibeckley.png": 5.65,
-    "delix_therapeutics.png": 4.3,
+    "solvonis_therapeutics.png": 2.65,
+    "gilgamesh_pharma.png": 2.35,
+    "bright_minds.png": 4.15,
+    "definium.png": 2.45,
+    "otsuka_mindset_pharma.png": 2.85,
+    "ataibeckley.png": 3.05,
+    "delix_therapeutics.png": 2.55,
     "xylo.png": 1.85,
-    "tactogen.png": 6.6,
+    "tactogen.png": 3.45,
 
     "transcend_therapeutics_otsuka.png": 2.15,
     "reunion_neuroscience.png": 1.35,
