@@ -36,7 +36,7 @@ export default function App() {
     "tactogen.png": 3.55,
 
     "transcend_therapeutics_otsuka.png": 2.15,
-    "reunion_neuroscience.png": 1.35,
+    "reunion_neuroscience.png": 1.7,
     "celon_pharma.png": 1.72,
     "demerx.png": 1.55
   };
