@@ -196,29 +196,29 @@ body {
 /* VISUAL 1B */
 .company-story {
   padding-top: 90px;
-  padding-bottom: 130px;
+  padding-bottom: 150px;
 }
 
 /* VISUAL 2 */
 .compound-story {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 140px;
+  padding-bottom: 140px;
   overflow: hidden;
   background: #f1f0ec;
 }
 
 /* VISUAL 3 */
 .indication-story {
-  padding-top: 120px;
-  padding-bottom: 120px;
+  padding-top: 140px;
+  padding-bottom: 140px;
   overflow: hidden;
   background: #f1f0ec;
 }
 
 /* VISUAL 4 */
 .phase-story {
-  padding-top: 120px;
-  padding-bottom: 150px;
+  padding-top: 140px;
+  padding-bottom: 180px;
   overflow: hidden;
   background: #f1f0ec;
 }
@@ -238,9 +238,9 @@ body {
 
 .atlas-iframe {
   display: block;
-  width: calc(100% + 18px) !important;
-  max-width: none !important;
-  margin-left: -9px !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
   border: 0 !important;
   outline: 0;
   overflow: hidden !important;
@@ -276,29 +276,23 @@ body {
   background: #f1f0ec;
 }
 
-/* This permanently covers the white Observable footer/chrome panel */
+/* Bottom cover: hides Observable white footer/chrome without shifting the chart */
 .observable-hard-crop::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 82px;
+  height: 86px;
   background: #f1f0ec;
   z-index: 50;
   pointer-events: none;
 }
 
-.compound-frame.observable-hard-crop::after {
-  height: 82px;
-}
-
-.indication-frame.observable-hard-crop::after {
-  height: 82px;
-}
-
+.compound-frame.observable-hard-crop::after,
+.indication-frame.observable-hard-crop::after,
 .phase-frame.observable-hard-crop::after {
-  height: 82px;
+  height: 86px;
 }
 
 .compound-frame,
@@ -363,18 +357,18 @@ body {
   }
 
   .compound-story {
-    padding-top: 90px;
-    padding-bottom: 95px;
+    padding-top: 100px;
+    padding-bottom: 110px;
   }
 
   .indication-story {
-    padding-top: 95px;
-    padding-bottom: 95px;
+    padding-top: 110px;
+    padding-bottom: 110px;
   }
 
   .phase-story {
-    padding-top: 95px;
-    padding-bottom: 120px;
+    padding-top: 110px;
+    padding-bottom: 130px;
   }
 
   .iframe-crop {
@@ -382,13 +376,10 @@ body {
     max-width: 100%;
   }
 
-  .observable-hard-crop::after {
-    height: 76px;
-  }
-
+  .observable-hard-crop::after,
   .compound-frame.observable-hard-crop::after,
   .indication-frame.observable-hard-crop::after,
   .phase-frame.observable-hard-crop::after {
-    height: 76px;
+    height: 78px;
   }
 }
