@@ -22,7 +22,7 @@ export default function App() {
   const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-2025";
 
   const visual1BLogoVisualScale = {
-    "biomind_labs.png": 0.95,
+    "biomind_labs.png": 1.3,
 
     "janssen_logo.png": 1.6,
     "gh_research.png": 1,
@@ -47,9 +47,9 @@ export default function App() {
     "biomind_labs.png": 0.7,
     "gh_research.png": 0.288,
 
-    "janssen_logo.png": 1.0,
+    "janssen_logo.png": 0.8,
     "solvonis_therapeutics.png": 1.0,
-    "gilgamesh_pharma.png": 1.0,
+    "gilgamesh_pharma.png": 1.4,
     "bright_minds.png": 1.0,
     "definium.png": 1.0,
     "otsuka_mindset_pharma.png": 1.0,
