@@ -23,19 +23,19 @@ export default function App() {
     "biomind_labs.png": 0.95,
 
     "janssen_logo.png": 1.45,
-    "gh_research.png": 0.62,
+    "gh_research.png": 0.46,
 
-    "solvonis_therapeutics.png": 2.15,
+    "solvonis_therapeutics.png": 2.75,
     "gilgamesh_pharma.png": 1.45,
-    "bright_minds.png": 2.35,
-    "definium.png": 2.1,
-    "otsuka_mindset_pharma.png": 2.35,
-    "ataibeckley.png": 2.25,
-    "delix_therapeutics.png": 2.35,
-    "xylo.png": 1.62,
-    "tactogen.png": 2.45,
+    "bright_minds.png": 2.95,
+    "definium.png": 2.55,
+    "otsuka_mindset_pharma.png": 2.95,
+    "ataibeckley.png": 2.7,
+    "delix_therapeutics.png": 2.9,
+    "xylo.png": 1.85,
+    "tactogen.png": 2.95,
 
-    "transcend_therapeutics_otsuka.png": 1.75,
+    "transcend_therapeutics_otsuka.png": 2.15,
     "reunion_neuroscience.png": 1.35,
     "celon_pharma.png": 1.3,
     "demerx.png": 1.2
@@ -43,7 +43,7 @@ export default function App() {
 
   const visual1BLogoHoverScale = {
     "biomind_labs.png": 0.7,
-    "gh_research.png": 0.62,
+    "gh_research.png": 0.52,
 
     "janssen_logo.png": 1.0,
     "solvonis_therapeutics.png": 1.0,
