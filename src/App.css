@@ -2,6 +2,7 @@
 
 html {
   scroll-behavior: smooth;
+  background: #f1f0ec;
 }
 
 html,
@@ -16,6 +17,7 @@ body,
 body {
   color: #1d1d1f;
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  overflow-x: hidden;
 }
 
 .site {
@@ -229,22 +231,34 @@ body {
   max-width: 1560px;
   overflow: hidden !important;
   position: relative;
-  background: #f1f0ec;
+  background: #f1f0ec !important;
   border: 0;
   margin: 0 auto;
   display: block;
   isolation: isolate;
 }
 
+/* Removes grey Observable side gutters */
+.iframe-crop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #f1f0ec;
+  z-index: 0;
+  pointer-events: none;
+}
+
 .atlas-iframe {
   display: block;
+  position: relative;
+  z-index: 1;
   width: 100% !important;
   max-width: 100% !important;
   margin: 0 !important;
   border: 0 !important;
   outline: 0;
   overflow: hidden !important;
-  background: #f1f0ec;
+  background: #f1f0ec !important;
   opacity: 0;
   transition: opacity 420ms ease;
   will-change: opacity;
@@ -267,16 +281,39 @@ body {
 .phase-frame,
 .landscape-frame {
   max-width: 1560px;
+  background: #f1f0ec !important;
+}
+
+/* LANDSCAPE FRAMES: clean side panels permanently */
+.compound-frame,
+.indication-frame,
+.phase-frame {
+  overflow: hidden !important;
+  background: #f1f0ec !important;
+}
+
+.compound-frame iframe,
+.indication-frame iframe,
+.phase-frame iframe {
+  overflow: hidden !important;
+  background: #f1f0ec !important;
 }
 
 /* HARD OBSERVABLE FOOTER CROP */
 .observable-hard-crop {
   overflow: hidden !important;
   position: relative;
-  background: #f1f0ec;
+  background: #f1f0ec !important;
 }
 
-/* Bottom cover: hides Observable white footer/chrome without shifting the chart */
+/* Side masks: removes grey left/right Observable gutters */
+.observable-hard-crop .atlas-iframe {
+  width: calc(100% + 40px) !important;
+  max-width: none !important;
+  margin-left: -20px !important;
+}
+
+/* Bottom cover: hides Observable white footer/chrome */
 .observable-hard-crop::after {
   content: "";
   position: absolute;
@@ -293,19 +330,6 @@ body {
 .indication-frame.observable-hard-crop::after,
 .phase-frame.observable-hard-crop::after {
   height: 86px;
-}
-
-.compound-frame,
-.indication-frame,
-.phase-frame {
-  overflow: hidden !important;
-  background: #f1f0ec;
-}
-
-.compound-frame iframe,
-.indication-frame iframe,
-.phase-frame iframe {
-  overflow: hidden !important;
 }
 
 /* MOBILE */
@@ -374,6 +398,12 @@ body {
   .iframe-crop {
     width: 100%;
     max-width: 100%;
+  }
+
+  .observable-hard-crop .atlas-iframe {
+    width: calc(100% + 28px) !important;
+    max-width: none !important;
+    margin-left: -14px !important;
   }
 
   .observable-hard-crop::after,
