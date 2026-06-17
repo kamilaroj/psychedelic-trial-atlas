@@ -19,12 +19,46 @@ export default function App() {
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
 
+  const visual1BLogoVisualScale = {
+    "biomind_labs.png": 1.0,
+    "janssen_logo.png": 1.28,
+    "gh_research.png": 0.78,
+    "solvonis_therapeutics.png": 1.24,
+    "gilgamesh_pharma.png": 1.22,
+    "bright_minds.png": 1.24,
+    "definium.png": 1.24,
+    "otsuka_mindset_pharma.png": 1.24,
+    "ataibeckley.png": 1.24,
+    "delix_therapeutics.png": 1.24,
+    "xylo.png": 1.24,
+    "tactogen.png": 1.24
+  };
+
+  const visual1BLogoHoverScale = {
+    "biomind_labs.png": 0.82,
+    "gh_research.png": 0.74,
+    "janssen_logo.png": 1.0,
+    "solvonis_therapeutics.png": 1.0,
+    "gilgamesh_pharma.png": 1.0,
+    "bright_minds.png": 1.0,
+    "definium.png": 1.0,
+    "otsuka_mindset_pharma.png": 1.0,
+    "ataibeckley.png": 1.0,
+    "delix_therapeutics.png": 1.0,
+    "xylo.png": 1.0,
+    "tactogen.png": 1.0
+  };
+
   const observableSrc = (cell) =>
     `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
 
   const companyObservableSrc = (cell) =>
     `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&logoBase=${encodeURIComponent(
       githubLogoBase
+    )}&logoVisualScale=${encodeURIComponent(
+      JSON.stringify(visual1BLogoVisualScale)
+    )}&logoHoverScale=${encodeURIComponent(
+      JSON.stringify(visual1BLogoHoverScale)
     )}&api_key=${companyApiKey}`;
 
   const visual2ObservableSrc = (cell) =>
