@@ -20,23 +20,31 @@ export default function App() {
     "https://psychedelic-trial-atlas.vercel.app/logos/";
 
   const visual1BLogoVisualScale = {
-    "biomind_labs.png": 1.0,
-    "janssen_logo.png": 1.28,
-    "gh_research.png": 0.78,
-    "solvonis_therapeutics.png": 1.24,
-    "gilgamesh_pharma.png": 1.22,
-    "bright_minds.png": 1.24,
-    "definium.png": 1.24,
-    "otsuka_mindset_pharma.png": 1.24,
-    "ataibeckley.png": 1.24,
-    "delix_therapeutics.png": 1.24,
-    "xylo.png": 1.24,
-    "tactogen.png": 1.24
+    "biomind_labs.png": 0.95,
+
+    "janssen_logo.png": 1.45,
+    "gh_research.png": 0.62,
+
+    "solvonis_therapeutics.png": 1.75,
+    "gilgamesh_pharma.png": 1.45,
+    "bright_minds.png": 1.8,
+    "definium.png": 1.85,
+    "otsuka_mindset_pharma.png": 1.9,
+    "ataibeckley.png": 1.8,
+    "delix_therapeutics.png": 2.05,
+    "xylo.png": 1.45,
+    "tactogen.png": 2.05,
+
+    "transcend_therapeutics_otsuka.png": 1.65,
+    "reunion_neuroscience.png": 1.35,
+    "celon_pharma.png": 1.3,
+    "demerx.png": 1.2
   };
 
   const visual1BLogoHoverScale = {
-    "biomind_labs.png": 0.82,
-    "gh_research.png": 0.74,
+    "biomind_labs.png": 0.7,
+    "gh_research.png": 0.62,
+
     "janssen_logo.png": 1.0,
     "solvonis_therapeutics.png": 1.0,
     "gilgamesh_pharma.png": 1.0,
@@ -46,7 +54,11 @@ export default function App() {
     "ataibeckley.png": 1.0,
     "delix_therapeutics.png": 1.0,
     "xylo.png": 1.0,
-    "tactogen.png": 1.0
+    "tactogen.png": 1.0,
+    "transcend_therapeutics_otsuka.png": 1.0,
+    "reunion_neuroscience.png": 1.0,
+    "celon_pharma.png": 1.0,
+    "demerx.png": 1.0
   };
 
   const observableSrc = (cell) =>
