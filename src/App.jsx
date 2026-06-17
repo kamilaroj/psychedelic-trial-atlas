@@ -19,7 +19,7 @@ export default function App() {
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
 
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-1945";
+  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-2005";
 
   const visual1BLogoVisualScale = {
     "biomind_labs.png": 0.95,
