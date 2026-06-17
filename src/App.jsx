@@ -1,8 +1,174 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
+
+function PageRainOverlay({ active, onDone }) {
+  const particles = useMemo(() => {
+    const colors = [
+      "#6f4a2f",
+      "#b8944e",
+      "#d63384",
+      "#6f42c1",
+      "#f08a24",
+      "#0d6efd",
+      "#dc3545",
+      "#ffc107"
+    ];
+
+    function seededRandom(seed) {
+      const x = Math.sin(seed * 999.123) * 10000;
+      return x - Math.floor(x);
+    }
+
+    return Array.from({ length: 72 }, (_, index) => {
+      const seed = index + 17;
+      const x = 3 + seededRandom(seed) * 94;
+      const drift = (seededRandom(seed + 100) - 0.5) * 18;
+      const size = 22 + seededRandom(seed + 200) * 16;
+      const delay = seededRandom(seed + 300) * 0.55;
+      const duration = 2.7 + seededRandom(seed + 400) * 1.15;
+      const opacity = 0.78 + seededRandom(seed + 500) * 0.2;
+      const color = colors[index % colors.length];
+
+      return {
+        id: index,
+        x,
+        drift,
+        size,
+        delay,
+        duration,
+        opacity,
+        color
+      };
+    });
+  }, []);
+
+  useEffect(() => {
+    if (!active) return;
+
+    const timer = window.setTimeout(() => {
+      onDone?.();
+    }, 4700);
+
+    return () => window.clearTimeout(timer);
+  }, [active, onDone]);
+
+  if (!active) return null;
+
+  return (
+    <div className="page-rain-overlay" aria-hidden="true">
+      <style>
+        {`
+          @keyframes pageRainFall {
+            0% {
+              transform: translate3d(0, -90px, 0) scale(0.92);
+              opacity: 0;
+            }
+
+            10% {
+              opacity: var(--particle-opacity);
+            }
+
+            42% {
+              transform: translate3d(calc(var(--particle-drift) * 0.35), 34vh, 0) scale(1);
+              opacity: var(--particle-opacity);
+            }
+
+            72% {
+              transform: translate3d(calc(var(--particle-drift) * 0.82), 74vh, 0) scale(0.98);
+              opacity: calc(var(--particle-opacity) * 0.9);
+            }
+
+            100% {
+              transform: translate3d(var(--particle-drift), 108vh, 0) scale(0.92);
+              opacity: 0;
+            }
+          }
+
+          @keyframes pageRainFloat {
+            0% {
+              transform: translateX(-4px);
+            }
+
+            50% {
+              transform: translateX(5px);
+            }
+
+            100% {
+              transform: translateX(-4px);
+            }
+          }
+
+          .page-rain-overlay {
+            position: fixed;
+            inset: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 60;
+            pointer-events: none;
+            overflow: hidden;
+            background: transparent;
+          }
+
+          .page-rain-particle {
+            position: absolute;
+            top: 0;
+            left: var(--particle-left);
+            width: var(--particle-size);
+            height: var(--particle-size);
+            animation:
+              pageRainFall var(--particle-duration) cubic-bezier(0.22, 0.74, 0.28, 1) var(--particle-delay) forwards,
+              pageRainFloat 1.45s ease-in-out var(--particle-delay) infinite;
+            will-change: transform, opacity;
+          }
+
+          .page-rain-circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.96);
+            border: 1px solid rgba(217,214,207,0.95);
+            box-shadow: 0 8px 18px rgba(29,29,31,0.10);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+
+          .page-rain-dot {
+            width: 19%;
+            height: 19%;
+            border-radius: 999px;
+            background: var(--particle-color);
+          }
+        `}
+      </style>
+
+      {particles.map((particle) => (
+        <div
+          key={particle.id}
+          className="page-rain-particle"
+          style={{
+            "--particle-left": `${particle.x}vw`,
+            "--particle-drift": `${particle.drift}vw`,
+            "--particle-size": `${particle.size}px`,
+            "--particle-delay": `${particle.delay}s`,
+            "--particle-duration": `${particle.duration}s`,
+            "--particle-opacity": particle.opacity,
+            "--particle-color": particle.color
+          }}
+        >
+          <div className="page-rain-circle">
+            <div className="page-rain-dot" />
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 export default function App() {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [pageRainActive, setPageRainActive] = useState(false);
+  const pageRainStartedRef = useRef(false);
 
   const mainApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
   const mainNotebook = "e3028f2577c04f9a@1174";
@@ -63,6 +229,13 @@ export default function App() {
     "demerx.png": 1.0
   };
 
+  const startPageRain = () => {
+    if (pageRainStartedRef.current) return;
+
+    pageRainStartedRef.current = true;
+    setPageRainActive(true);
+  };
+
   const observableSrc = (cell) =>
     `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
 
@@ -90,7 +263,8 @@ export default function App() {
     iframeHeight,
     className,
     srcType = "main",
-    lazyLoad = false
+    lazyLoad = false,
+    onEnter
   }) => {
     const wrapperRef = useRef(null);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -113,6 +287,7 @@ export default function App() {
       if (!target) return;
 
       if (!("IntersectionObserver" in window)) {
+        onEnter?.();
         setShouldLoad(true);
         return;
       }
@@ -122,21 +297,26 @@ export default function App() {
           const entry = entries[0];
 
           if (entry && entry.isIntersecting) {
-            setShouldLoad(true);
+            onEnter?.();
+
+            window.setTimeout(() => {
+              setShouldLoad(true);
+            }, 700);
+
             observer.disconnect();
           }
         },
         {
           root: null,
-          threshold: 0.08,
-          rootMargin: "0px 0px -18% 0px"
+          threshold: 0.04,
+          rootMargin: "0px 0px -8% 0px"
         }
       );
 
       observer.observe(target);
 
       return () => observer.disconnect();
-    }, [lazyLoad, shouldLoad]);
+    }, [lazyLoad, onEnter, shouldLoad]);
 
     const handleLoad = () => {
       window.setTimeout(() => {
@@ -174,6 +354,11 @@ export default function App() {
 
   return (
     <main className="site">
+      <PageRainOverlay
+        active={pageRainActive}
+        onDone={() => setPageRainActive(false)}
+      />
+
       {aboutOpen && (
         <div
           className="about-modal-overlay"
@@ -298,6 +483,7 @@ export default function App() {
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
           lazyLoad={true}
+          onEnter={startPageRain}
         />
       </section>
 
