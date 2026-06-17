@@ -34,6 +34,7 @@ export default function App() {
     visibleHeight,
     iframeHeight,
     iframeOffsetY = 0,
+    frameScale = 1,
     className,
     srcType = "main"
   }) => {
@@ -71,7 +72,10 @@ export default function App() {
           src={src}
           onLoad={handleLoad}
           style={{
-            transform: `translateY(${iframeOffsetY}px)`
+            position: "relative",
+            top: `${iframeOffsetY}px`,
+            transform: `scale(${frameScale})`,
+            transformOrigin: "top center"
           }}
         />
       </div>
@@ -202,6 +206,7 @@ export default function App() {
           visibleHeight={708}
           iframeHeight={900}
           iframeOffsetY={-24}
+          frameScale={1}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="compound"
         />
@@ -211,9 +216,10 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={784}
+          visibleHeight={700}
           iframeHeight={960}
-          iframeOffsetY={-22}
+          iframeOffsetY={-8}
+          frameScale={0.86}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -226,6 +232,7 @@ export default function App() {
           visibleHeight={748}
           iframeHeight={930}
           iframeOffsetY={-34}
+          frameScale={1}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
