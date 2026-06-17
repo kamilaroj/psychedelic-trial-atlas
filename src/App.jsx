@@ -8,7 +8,7 @@ export default function App() {
   const mainNotebook = "e3028f2577c04f9a@1118";
 
   const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
-  const companyNotebook = "e3028f2577c04f9a@1121";
+  const companyNotebook = "e3028f2577c04f9a";
 
   const visual2ApiKey = "a3ecade87266cbaa03d8683d12b0c01c26f00304";
   const visual2Notebook = "e3028f2577c04f9a@1168";
@@ -19,7 +19,7 @@ export default function App() {
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
 
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-2005";
+  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-2010";
 
   const visual1BLogoVisualScale = {
     "biomind_labs.png": 0.95,
