@@ -4,17 +4,17 @@ import "./App.css";
 export default function App() {
   const [aboutOpen, setAboutOpen] = useState(false);
 
-  const mainApiKey = "34347d95d4d95a93375c693a2fbb5249853bf500";
-  const mainNotebook = "e3028f2577c04f9a@1118";
+  const mainApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
+  const mainNotebook = "e3028f2577c04f9a@1174";
 
-  const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
-  const companyNotebook = "e3028f2577c04f9a";
+  const companyApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
+  const companyNotebook = "e3028f2577c04f9a@1174";
 
-  const visual2ApiKey = "a3ecade87266cbaa03d8683d12b0c01c26f00304";
-  const visual2Notebook = "e3028f2577c04f9a@1168";
+  const visual2ApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
+  const visual2Notebook = "e3028f2577c04f9a@1174";
 
-  const landscapeApiKey = "90ef2867b2f0431c7f52e1373ac9776ccc553e14";
-  const landscapeNotebook = "e3028f2577c04f9a@1164";
+  const landscapeApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
+  const landscapeNotebook = "e3028f2577c04f9a@1174";
 
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
