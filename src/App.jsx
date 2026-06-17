@@ -25,7 +25,7 @@ export default function App() {
     "biomind_labs.png": 0.95,
 
     "janssen_logo.png": 1.6,
-    "gh_research.png": 0.224,
+    "gh_research.png": 1,
 
     "solvonis_therapeutics.png": 2,
     "gilgamesh_pharma.png": 2,
