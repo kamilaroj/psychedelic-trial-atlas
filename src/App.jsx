@@ -4,17 +4,8 @@ import "./App.css";
 export default function App() {
   const [aboutOpen, setAboutOpen] = useState(false);
 
-  const mainApiKey = "34347d95d4d95a93375c693a2fbb5249853bf500";
-  const mainNotebook = "e3028f2577c04f9a@1118";
-
-  const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
-  const companyNotebook = "e3028f2577c04f9a";
-
-  const visual2ApiKey = "a3ecade87266cbaa03d8683d12b0c01c26f00304";
-  const visual2Notebook = "e3028f2577c04f9a@1168";
-
-  const landscapeApiKey = "90ef2867b2f0431c7f52e1373ac9776ccc553e14";
-  const landscapeNotebook = "e3028f2577c04f9a@1164";
+  const atlasApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
+  const atlasNotebook = "e3028f2577c04f9a@1174";
 
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
@@ -64,10 +55,10 @@ export default function App() {
   };
 
   const observableSrc = (cell) =>
-    `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
+    `https://observablehq.com/embed/${atlasNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${atlasApiKey}`;
 
   const companyObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&logoBase=${encodeURIComponent(
+    `https://observablehq.com/embed/${atlasNotebook}?cells=${cell}&banner=false&hideFooter=true&logoBase=${encodeURIComponent(
       githubLogoBase
     )}&logoVisualScale=${encodeURIComponent(
       JSON.stringify(visual1BLogoVisualScale)
@@ -75,13 +66,7 @@ export default function App() {
       JSON.stringify(visual1BLogoHoverScale)
     )}&logoTuningVersion=${encodeURIComponent(
       logoTuningVersion
-    )}&api_key=${companyApiKey}`;
-
-  const visual2ObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${visual2Notebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${visual2ApiKey}`;
-
-  const landscapeObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
+    )}&api_key=${atlasApiKey}`;
 
   const ObservableFrame = ({
     title,
@@ -96,11 +81,7 @@ export default function App() {
     const src =
       srcType === "company"
         ? companyObservableSrc(cell)
-        : srcType === "visual2"
-          ? visual2ObservableSrc(cell)
-          : srcType === "landscape"
-            ? landscapeObservableSrc(cell)
-            : observableSrc(cell);
+        : observableSrc(cell);
 
     const handleLoad = () => {
       window.setTimeout(() => {
@@ -219,8 +200,8 @@ export default function App() {
         <ObservableFrame
           title="Psychedelic Trial Atlas Hero"
           cell="heroSection1"
-          visibleHeight={790}
-          iframeHeight={860}
+          visibleHeight={836}
+          iframeHeight={836}
           className="hero-frame"
         />
       </section>
@@ -229,8 +210,8 @@ export default function App() {
         <ObservableFrame
           title="The Psychedelic Ecosystem"
           cell="visual1EcosystemOverviev"
-          visibleHeight={750}
-          iframeHeight={820}
+          visibleHeight={796}
+          iframeHeight={796}
           className="ecosystem-frame"
         />
       </section>
@@ -239,8 +220,8 @@ export default function App() {
         <ObservableFrame
           title="Company Landscape Premium"
           cell="visual1CompanyLandscapePremium1"
-          visibleHeight={690}
-          iframeHeight={780}
+          visibleHeight={736}
+          iframeHeight={736}
           className="company-frame"
           srcType="company"
         />
@@ -250,10 +231,9 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={820}
-          iframeHeight={880}
+          visibleHeight={652}
+          iframeHeight={652}
           className="compound-frame landscape-frame observable-hard-crop"
-          srcType="visual2"
         />
       </section>
 
@@ -261,10 +241,9 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={790}
-          iframeHeight={880}
+          visibleHeight={608}
+          iframeHeight={608}
           className="indication-frame landscape-frame observable-hard-crop"
-          srcType="landscape"
         />
       </section>
 
@@ -272,10 +251,9 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={760}
-          iframeHeight={880}
+          visibleHeight={607}
+          iframeHeight={607}
           className="phase-frame landscape-frame observable-hard-crop"
-          srcType="landscape"
         />
       </section>
     </main>
