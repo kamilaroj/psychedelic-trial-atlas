@@ -42,14 +42,18 @@ export default function App() {
     const handleLoad = () => {
       window.setTimeout(() => {
         setIsLoaded(true);
-      }, 180);
+      }, 260);
     };
 
     return (
       <div
-        className={`iframe-crop ${className || ""}`}
+        className={`iframe-crop ${className || ""} ${
+          isLoaded ? "frame-is-loaded" : "frame-is-loading"
+        }`}
         style={{ height: `${visibleHeight}px` }}
       >
+        <div className="iframe-loading-cover" />
+
         <iframe
           title={title}
           width="100%"
