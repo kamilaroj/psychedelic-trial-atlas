@@ -19,31 +19,33 @@ export default function App() {
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
 
+  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-1935";
+
   const visual1BLogoVisualScale = {
     "biomind_labs.png": 0.95,
 
-    "janssen_logo.png": 1.68,
-    "gh_research.png": 0.38,
+    "janssen_logo.png": 1.95,
+    "gh_research.png": 0.28,
 
     "solvonis_therapeutics.png": 2.75,
-    "gilgamesh_pharma.png": 1.82,
-    "bright_minds.png": 3.45,
+    "gilgamesh_pharma.png": 2.35,
+    "bright_minds.png": 4.15,
     "definium.png": 2.55,
     "otsuka_mindset_pharma.png": 2.95,
-    "ataibeckley.png": 3.15,
+    "ataibeckley.png": 3.85,
     "delix_therapeutics.png": 2.9,
     "xylo.png": 1.85,
-    "tactogen.png": 3.55,
+    "tactogen.png": 4.25,
 
     "transcend_therapeutics_otsuka.png": 2.15,
-    "reunion_neuroscience.png": 1.7,
-    "celon_pharma.png": 1.72,
-    "demerx.png": 1.55
+    "reunion_neuroscience.png": 1.35,
+    "celon_pharma.png": 2.25,
+    "demerx.png": 2.15
   };
 
   const visual1BLogoHoverScale = {
     "biomind_labs.png": 0.7,
-    "gh_research.png": 0.46,
+    "gh_research.png": 0.36,
 
     "janssen_logo.png": 1.0,
     "solvonis_therapeutics.png": 1.0,
@@ -71,6 +73,8 @@ export default function App() {
       JSON.stringify(visual1BLogoVisualScale)
     )}&logoHoverScale=${encodeURIComponent(
       JSON.stringify(visual1BLogoHoverScale)
+    )}&logoTuningVersion=${encodeURIComponent(
+      logoTuningVersion
     )}&api_key=${companyApiKey}`;
 
   const visual2ObservableSrc = (cell) =>
