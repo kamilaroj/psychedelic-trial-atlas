@@ -183,7 +183,8 @@ body {
 
 /* GENERAL VISUAL SECTIONS */
 .visual-story {
-  padding: 80px 24px;
+  padding-left: 24px;
+  padding-right: 24px;
 }
 
 /* VISUAL 1A */
@@ -195,29 +196,29 @@ body {
 /* VISUAL 1B */
 .company-story {
   padding-top: 90px;
-  padding-bottom: 120px;
+  padding-bottom: 130px;
 }
 
 /* VISUAL 2 */
 .compound-story {
-  padding-top: 90px;
-  padding-bottom: 64px;
+  padding-top: 120px;
+  padding-bottom: 120px;
   overflow: hidden;
   background: #f1f0ec;
 }
 
 /* VISUAL 3 */
 .indication-story {
-  padding-top: 56px;
-  padding-bottom: 34px;
+  padding-top: 120px;
+  padding-bottom: 120px;
   overflow: hidden;
   background: #f1f0ec;
 }
 
 /* VISUAL 4 */
 .phase-story {
-  padding-top: 34px;
-  padding-bottom: 90px;
+  padding-top: 120px;
+  padding-bottom: 150px;
   overflow: hidden;
   background: #f1f0ec;
 }
@@ -246,8 +247,7 @@ body {
   background: #f1f0ec;
   opacity: 0;
   transition: opacity 420ms ease;
-  will-change: opacity, transform;
-  transform-origin: top center;
+  will-change: opacity;
 }
 
 .atlas-iframe.iframe-loaded {
@@ -259,30 +259,12 @@ body {
 }
 
 /* FRAME WIDTHS */
-.hero-frame {
-  max-width: 1560px;
-}
-
-.ecosystem-frame {
-  max-width: 1560px;
-}
-
-.company-frame {
-  max-width: 1560px;
-}
-
-.compound-frame {
-  max-width: 1560px;
-}
-
-.indication-frame {
-  max-width: 1560px;
-}
-
-.phase-frame {
-  max-width: 1560px;
-}
-
+.hero-frame,
+.ecosystem-frame,
+.company-frame,
+.compound-frame,
+.indication-frame,
+.phase-frame,
 .landscape-frame {
   max-width: 1560px;
 }
@@ -294,16 +276,29 @@ body {
   background: #f1f0ec;
 }
 
+/* This permanently covers the white Observable footer/chrome panel */
 .observable-hard-crop::after {
   content: "";
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 92px;
+  height: 82px;
   background: #f1f0ec;
-  z-index: 20;
+  z-index: 50;
   pointer-events: none;
+}
+
+.compound-frame.observable-hard-crop::after {
+  height: 82px;
+}
+
+.indication-frame.observable-hard-crop::after {
+  height: 82px;
+}
+
+.phase-frame.observable-hard-crop::after {
+  height: 82px;
 }
 
 .compound-frame,
@@ -317,19 +312,6 @@ body {
 .indication-frame iframe,
 .phase-frame iframe {
   overflow: hidden !important;
-}
-
-/* FINE-TUNED MASKS PER VISUAL */
-.compound-frame.observable-hard-crop::after {
-  height: 72px;
-}
-
-.indication-frame.observable-hard-crop::after {
-  height: 78px;
-}
-
-.phase-frame.observable-hard-crop::after {
-  height: 96px;
 }
 
 /* MOBILE */
@@ -381,18 +363,18 @@ body {
   }
 
   .compound-story {
-    padding-top: 80px;
-    padding-bottom: 60px;
+    padding-top: 90px;
+    padding-bottom: 95px;
   }
 
   .indication-story {
-    padding-top: 52px;
-    padding-bottom: 32px;
+    padding-top: 95px;
+    padding-bottom: 95px;
   }
 
   .phase-story {
-    padding-top: 34px;
-    padding-bottom: 84px;
+    padding-top: 95px;
+    padding-bottom: 120px;
   }
 
   .iframe-crop {
@@ -401,18 +383,12 @@ body {
   }
 
   .observable-hard-crop::after {
-    height: 86px;
+    height: 76px;
   }
 
-  .compound-frame.observable-hard-crop::after {
-    height: 70px;
-  }
-
-  .indication-frame.observable-hard-crop::after {
-    height: 74px;
-  }
-
+  .compound-frame.observable-hard-crop::after,
+  .indication-frame.observable-hard-crop::after,
   .phase-frame.observable-hard-crop::after {
-    height: 90px;
+    height: 76px;
   }
 }
