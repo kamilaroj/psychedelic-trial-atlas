@@ -35,6 +35,8 @@ body {
   box-sizing: border-box;
 }
 
+/* HERO SECTION */
+/* Do not change unless explicitly needed */
 .hero-story {
   min-height: 100vh;
   padding: 0 24px;
@@ -85,6 +87,7 @@ body {
   transform: translateY(0);
 }
 
+/* ABOUT MODAL */
 .about-modal-overlay {
   position: fixed;
   inset: 0;
@@ -179,51 +182,84 @@ body {
   font-weight: 760;
 }
 
+/* GENERAL VISUAL SECTIONS */
 .visual-story {
   padding: 80px 24px;
 }
 
+/* VISUAL 1A */
+/* Do not change unless explicitly needed */
 .ecosystem-story {
   padding-top: 70px;
   padding-bottom: 90px;
 }
 
+/* VISUAL 1B */
+/* Do not change unless explicitly needed */
 .company-story {
   padding-top: 90px;
   padding-bottom: 120px;
 }
 
-/* NEW VISUALS ONLY: Visual 2, Visual 3, Visual 4 */
+/* VISUAL 2, VISUAL 3, VISUAL 4 */
 .compound-story {
   padding-top: 90px;
-  padding-bottom: 120px;
+  padding-bottom: 72px;
+  overflow: hidden;
+  background: #f1f0ec;
 }
 
 .indication-story {
-  padding-top: 90px;
-  padding-bottom: 120px;
+  padding-top: 70px;
+  padding-bottom: 72px;
+  overflow: hidden;
+  background: #f1f0ec;
 }
 
 .phase-story {
-  padding-top: 90px;
-  padding-bottom: 120px;
+  padding-top: 70px;
+  padding-bottom: 90px;
+  overflow: hidden;
+  background: #f1f0ec;
 }
 
+/* IFRAME BASE */
 .iframe-crop {
   width: min(100%, 1560px);
-  overflow: hidden;
+  max-width: 1560px;
+  overflow: hidden !important;
+  position: relative;
   background: #f1f0ec;
   border: 0;
   margin: 0 auto;
+  display: block;
+  isolation: isolate;
 }
 
 .atlas-iframe {
   display: block;
-  width: 100%;
-  border: 0;
+  width: calc(100% + 18px) !important;
+  max-width: none !important;
+  margin-left: -9px !important;
+  border: 0 !important;
+  outline: 0;
+  overflow: hidden !important;
   background: #f1f0ec;
+  opacity: 0;
+  transition: opacity 420ms ease;
+  will-change: opacity, transform;
+  transform-origin: top center;
 }
 
+.atlas-iframe.iframe-loaded {
+  opacity: 1;
+}
+
+.atlas-iframe.iframe-loading {
+  opacity: 0;
+}
+
+/* FRAME WIDTHS */
 .hero-frame {
   max-width: 1560px;
 }
@@ -252,6 +288,53 @@ body {
   max-width: 1560px;
 }
 
+/* HARD OBSERVABLE FOOTER CROP */
+/* This hides Observable footer/chrome at the bottom of embeds */
+.observable-hard-crop {
+  overflow: hidden !important;
+  position: relative;
+  background: #f1f0ec;
+}
+
+.observable-hard-crop::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 92px;
+  background: #f1f0ec;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.compound-frame,
+.indication-frame,
+.phase-frame {
+  overflow: hidden !important;
+  background: #f1f0ec;
+}
+
+.compound-frame iframe,
+.indication-frame iframe,
+.phase-frame iframe {
+  overflow: hidden !important;
+}
+
+/* FINE-TUNED MASKS PER VISUAL */
+.compound-frame.observable-hard-crop::after {
+  height: 96px;
+}
+
+.indication-frame.observable-hard-crop::after {
+  height: 92px;
+}
+
+.phase-frame.observable-hard-crop::after {
+  height: 96px;
+}
+
+/* MOBILE */
 @media (max-width: 900px) {
   .top-project-menu {
     top: calc(50% - 132px);
@@ -299,50 +382,39 @@ body {
     padding-right: 16px;
   }
 
-  .compound-story,
-  .indication-story,
-  .phase-story {
-    padding-left: 16px;
-    padding-right: 16px;
+  .compound-story {
     padding-top: 80px;
-    padding-bottom: 100px;
+    padding-bottom: 70px;
+  }
+
+  .indication-story {
+    padding-top: 70px;
+    padding-bottom: 70px;
+  }
+
+  .phase-story {
+    padding-top: 70px;
+    padding-bottom: 84px;
   }
 
   .iframe-crop {
     width: 100%;
+    max-width: 100%;
   }
-}
 
-/* IFRAME LOADING FIX */
-.iframe-crop {
-  position: relative;
-  background: #f1f0ec;
-  overflow: hidden;
-}
+  .observable-hard-crop::after {
+    height: 86px;
+  }
 
-.atlas-iframe {
-  opacity: 0;
-  outline: 0;
-  background: #f1f0ec;
-  transition: opacity 420ms ease;
-  will-change: opacity;
-}
+  .compound-frame.observable-hard-crop::after {
+    height: 90px;
+  }
 
-.atlas-iframe.iframe-loaded {
-  opacity: 1;
-}
+  .indication-frame.observable-hard-crop::after {
+    height: 86px;
+  }
 
-.atlas-iframe.iframe-loading {
-  opacity: 0;
-}
-
-/* OBSERVABLE LEFT GUTTER CROP FIX */
-.iframe-crop {
-  overflow: hidden !important;
-}
-
-.atlas-iframe {
-  width: calc(100% + 18px) !important;
-  max-width: none !important;
-  margin-left: -9px !important;
+  .phase-frame.observable-hard-crop::after {
+    height: 90px;
+  }
 }
