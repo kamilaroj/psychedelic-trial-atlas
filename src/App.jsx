@@ -10,6 +10,9 @@ export default function App() {
   const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
   const companyNotebook = "e3028f2577c04f9a@1121";
 
+  const visual2ApiKey = "a3ecade87266cbaa03d8683d12b0c01c26f00304";
+  const visual2Notebook = "e3028f2577c04f9a@1168";
+
   const landscapeApiKey = "90ef2867b2f0431c7f52e1373ac9776ccc553e14";
   const landscapeNotebook = "e3028f2577c04f9a@1164";
 
@@ -18,6 +21,9 @@ export default function App() {
 
   const companyObservableSrc = (cell) =>
     `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
+
+  const visual2ObservableSrc = (cell) =>
+    `https://observablehq.com/embed/${visual2Notebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${visual2ApiKey}`;
 
   const landscapeObservableSrc = (cell) =>
     `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
@@ -35,9 +41,11 @@ export default function App() {
     const src =
       srcType === "company"
         ? companyObservableSrc(cell)
-        : srcType === "landscape"
-          ? landscapeObservableSrc(cell)
-          : observableSrc(cell);
+        : srcType === "visual2"
+          ? visual2ObservableSrc(cell)
+          : srcType === "landscape"
+            ? landscapeObservableSrc(cell)
+            : observableSrc(cell);
 
     const handleLoad = () => {
       window.setTimeout(() => {
@@ -190,7 +198,7 @@ export default function App() {
           visibleHeight={820}
           iframeHeight={880}
           className="compound-frame landscape-frame observable-hard-crop"
-          srcType="landscape"
+          srcType="visual2"
         />
       </section>
 
