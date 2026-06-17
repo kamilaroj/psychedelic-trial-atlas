@@ -203,9 +203,9 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={708}
+          visibleHeight={760}
           iframeHeight={900}
-          iframeOffsetY={-24}
+          iframeOffsetY={-10}
           frameScale={1}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="compound"
@@ -216,7 +216,7 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={700}
+          visibleHeight={520}
           iframeHeight={960}
           iframeOffsetY={-8}
           frameScale={0.86}
