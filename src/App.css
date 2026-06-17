@@ -238,7 +238,7 @@ body {
   isolation: isolate;
 }
 
-/* Removes grey Observable side gutters */
+/* Permanent neutral background below all iframe states */
 .iframe-crop::before {
   content: "";
   position: absolute;
@@ -246,6 +246,25 @@ body {
   background: #f1f0ec;
   z-index: 0;
   pointer-events: none;
+}
+
+/* Covers iframe while Observable/browser content is still loading */
+.iframe-loading-cover {
+  position: absolute;
+  inset: 0;
+  background: #f1f0ec;
+  z-index: 60;
+  opacity: 1;
+  pointer-events: none;
+  transition: opacity 160ms ease;
+}
+
+.frame-is-loaded .iframe-loading-cover {
+  opacity: 0;
+}
+
+.frame-is-loading .iframe-loading-cover {
+  opacity: 1;
 }
 
 .atlas-iframe {
@@ -259,17 +278,20 @@ body {
   outline: 0;
   overflow: hidden !important;
   background: #f1f0ec !important;
-  opacity: 0;
-  transition: opacity 420ms ease;
+  opacity: 1;
+  transition: opacity 180ms ease;
   will-change: opacity;
 }
 
-.atlas-iframe.iframe-loaded {
-  opacity: 1;
+/* Critical: iframe is invisible while loading, so grey panels never flash */
+.atlas-iframe.iframe-loading {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
-.atlas-iframe.iframe-loading {
-  opacity: 0;
+.atlas-iframe.iframe-loaded {
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 /* FRAME WIDTHS */
@@ -306,7 +328,7 @@ body {
   background: #f1f0ec !important;
 }
 
-/* Side masks: removes grey left/right Observable gutters */
+/* Side gutter crop: removes grey left/right Observable gutters after load */
 .observable-hard-crop .atlas-iframe {
   width: calc(100% + 40px) !important;
   max-width: none !important;
