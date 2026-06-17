@@ -36,7 +36,6 @@ body {
 }
 
 /* HERO SECTION */
-/* Do not change unless explicitly needed */
 .hero-story {
   min-height: 100vh;
   padding: 0 24px;
@@ -188,36 +187,36 @@ body {
 }
 
 /* VISUAL 1A */
-/* Do not change unless explicitly needed */
 .ecosystem-story {
   padding-top: 70px;
   padding-bottom: 90px;
 }
 
 /* VISUAL 1B */
-/* Do not change unless explicitly needed */
 .company-story {
   padding-top: 90px;
   padding-bottom: 120px;
 }
 
-/* VISUAL 2, VISUAL 3, VISUAL 4 */
+/* VISUAL 2 */
 .compound-story {
   padding-top: 90px;
-  padding-bottom: 72px;
+  padding-bottom: 64px;
   overflow: hidden;
   background: #f1f0ec;
 }
 
+/* VISUAL 3 */
 .indication-story {
-  padding-top: 70px;
-  padding-bottom: 72px;
+  padding-top: 56px;
+  padding-bottom: 34px;
   overflow: hidden;
   background: #f1f0ec;
 }
 
+/* VISUAL 4 */
 .phase-story {
-  padding-top: 70px;
+  padding-top: 34px;
   padding-bottom: 90px;
   overflow: hidden;
   background: #f1f0ec;
@@ -289,7 +288,6 @@ body {
 }
 
 /* HARD OBSERVABLE FOOTER CROP */
-/* This hides Observable footer/chrome at the bottom of embeds */
 .observable-hard-crop {
   overflow: hidden !important;
   position: relative;
@@ -323,11 +321,11 @@ body {
 
 /* FINE-TUNED MASKS PER VISUAL */
 .compound-frame.observable-hard-crop::after {
-  height: 96px;
+  height: 72px;
 }
 
 .indication-frame.observable-hard-crop::after {
-  height: 92px;
+  height: 78px;
 }
 
 .phase-frame.observable-hard-crop::after {
@@ -384,16 +382,16 @@ body {
 
   .compound-story {
     padding-top: 80px;
-    padding-bottom: 70px;
+    padding-bottom: 60px;
   }
 
   .indication-story {
-    padding-top: 70px;
-    padding-bottom: 70px;
+    padding-top: 52px;
+    padding-bottom: 32px;
   }
 
   .phase-story {
-    padding-top: 70px;
+    padding-top: 34px;
     padding-bottom: 84px;
   }
 
@@ -407,11 +405,11 @@ body {
   }
 
   .compound-frame.observable-hard-crop::after {
-    height: 90px;
+    height: 70px;
   }
 
   .indication-frame.observable-hard-crop::after {
-    height: 86px;
+    height: 74px;
   }
 
   .phase-frame.observable-hard-crop::after {
