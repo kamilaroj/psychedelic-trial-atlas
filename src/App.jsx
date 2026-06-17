@@ -1,385 +1,220 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap");
+import React, { useState } from "react";
+import "./App.css";
 
-html {
-  scroll-behavior: smooth;
-}
+export default function App() {
+  const [aboutOpen, setAboutOpen] = useState(false);
 
-html,
-body,
-#root {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-  background: #f1f0ec;
-}
+  const mainApiKey = "34347d95d4d95a93375c693a2fbb5249853bf500";
+  const mainNotebook = "e3028f2577c04f9a@1118";
 
-body {
-  color: #1d1d1f;
-  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-}
+  const companyApiKey = "a72bff43ffc59328945853c2111ccac244ce6882";
+  const companyNotebook = "e3028f2577c04f9a@1121";
 
-.site {
-  width: 100%;
-  min-height: 100vh;
-  background: #f1f0ec;
-  overflow-x: hidden;
-  position: relative;
-}
+  const landscapeApiKey = "90ef2867b2f0431c7f52e1373ac9776ccc553e14";
+  const landscapeNotebook = "e3028f2577c04f9a@1164";
 
-.story-section {
-  width: 100%;
-  background: #f1f0ec;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-}
+  const observableSrc = (cell) =>
+    `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
 
-/* HERO SECTION */
-.hero-story {
-  min-height: 100vh;
-  padding: 0 24px;
-  position: relative;
-}
+  const companyObservableSrc = (cell) =>
+    `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${companyApiKey}`;
 
-.top-project-menu {
-  position: absolute;
-  top: calc(50% - 140px);
-  left: 0;
-  right: 0;
-  z-index: 40;
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
+  const landscapeObservableSrc = (cell) =>
+    `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
 
-.about-project-button {
-  pointer-events: auto;
-  appearance: none;
-  border: 1px solid rgba(29, 29, 31, 0.1);
-  background: rgba(255, 255, 255, 0.76);
-  color: #1d1d1f;
-  border-radius: 999px;
-  padding: 9px 16px;
-  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  box-shadow: 0 14px 38px rgba(29, 29, 31, 0.1);
-  backdrop-filter: blur(14px);
-  cursor: pointer;
-  transition:
-    background 180ms ease,
-    transform 180ms ease,
-    box-shadow 180ms ease,
-    border-color 180ms ease;
-}
+  const ObservableFrame = ({
+    title,
+    cell,
+    visibleHeight,
+    iframeHeight,
+    className,
+    srcType = "main"
+  }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
 
-.about-project-button:hover {
-  background: rgba(255, 255, 255, 0.94);
-  border-color: rgba(29, 29, 31, 0.16);
-  box-shadow: 0 18px 46px rgba(29, 29, 31, 0.14);
-  transform: translateY(-1px);
-}
+    const src =
+      srcType === "company"
+        ? companyObservableSrc(cell)
+        : srcType === "landscape"
+          ? landscapeObservableSrc(cell)
+          : observableSrc(cell);
 
-.about-project-button:active {
-  transform: translateY(0);
-}
+    const handleLoad = () => {
+      window.setTimeout(() => {
+        setIsLoaded(true);
+      }, 180);
+    };
 
-/* ABOUT MODAL */
-.about-modal-overlay {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(29, 29, 31, 0.34);
-  backdrop-filter: blur(7px);
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 92px 24px 32px;
-  box-sizing: border-box;
-}
+    return (
+      <div
+        className={`iframe-crop ${className || ""}`}
+        style={{ height: `${visibleHeight}px` }}
+      >
+        <iframe
+          title={title}
+          width="100%"
+          height={iframeHeight}
+          frameBorder="0"
+          scrolling="no"
+          className={`atlas-iframe ${
+            isLoaded ? "iframe-loaded" : "iframe-loading"
+          }`}
+          src={src}
+          onLoad={handleLoad}
+        />
+      </div>
+    );
+  };
 
-.about-modal {
-  width: min(92vw, 640px);
-  max-height: calc(100vh - 124px);
-  overflow: auto;
-  background: rgba(255, 255, 255, 0.97);
-  border: 1px solid rgba(29, 29, 31, 0.1);
-  border-radius: 24px;
-  box-shadow: 0 28px 90px rgba(29, 29, 31, 0.22);
-  color: #1d1d1f;
-}
+  return (
+    <main className="site">
+      {aboutOpen && (
+        <div
+          className="about-modal-overlay"
+          role="presentation"
+          onClick={() => setAboutOpen(false)}
+        >
+          <section
+            className="about-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="about-project-title"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <div className="about-modal-header">
+              <h2 id="about-project-title">✦ About project</h2>
 
-.about-modal-header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-  background: rgba(255, 255, 255, 0.94);
-  backdrop-filter: blur(14px);
-  border-bottom: 1px solid rgba(29, 29, 31, 0.08);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 18px;
-  padding: 20px 22px 18px;
-}
+              <button
+                className="about-modal-close"
+                type="button"
+                onClick={() => setAboutOpen(false)}
+                aria-label="Close About project"
+              >
+                ×
+              </button>
+            </div>
 
-.about-modal-header h2 {
-  margin: 0;
-  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui,
-    sans-serif;
-  font-size: 22px;
-  font-weight: 850;
-  letter-spacing: -0.045em;
-  color: #1d1d1f;
-}
+            <div className="about-modal-body">
+              <p>
+                <strong>Psychedelic Trial Atlas</strong> is a visual intelligence
+                project focused on biotech and drug-development activity in
+                psychedelic and psychedelic-adjacent medicine.
+              </p>
 
-.about-modal-close {
-  appearance: none;
-  border: 0;
-  background: rgba(29, 29, 31, 0.06);
-  color: #1d1d1f;
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  font-size: 25px;
-  line-height: 30px;
-  font-weight: 400;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition:
-    background 160ms ease,
-    transform 160ms ease;
-}
+              <p>
+                The atlas maps what is publicly visible across registered
+                clinical-trial records and selected company pipeline context. It
+                looks at companies, development actors, compounds, assets,
+                therapeutic areas, recruitment status and public source
+                visibility.
+              </p>
 
-.about-modal-close:hover {
-  background: rgba(29, 29, 31, 0.1);
-  transform: scale(1.03);
-}
+              <p>
+                The focus is not wellness, retreats, underground use, personal
+                experience or treatment advice. The focus is the emerging biotech
+                landscape: who is developing assets, which compounds are visible,
+                which indications appear in public trial data, and where activity
+                is concentrated.
+              </p>
 
-.about-modal-body {
-  padding: 22px 24px 28px;
-}
+              <p>
+                The project separates registered clinical-trial activity from
+                pipeline context. A registered trial record means there is a
+                public trial source. Pipeline context means a company-reported or
+                tracker-visible program that may not yet have a public trial ID.
+              </p>
 
-.about-modal-body p {
-  margin: 0 0 15px;
-  color: #4f535b;
-  font-size: 13.2px;
-  line-height: 1.62;
-  letter-spacing: -0.005em;
-}
+              <p>
+                Visible activity does not mean that a drug is effective, safe,
+                approved or commercially successful. It only means that the
+                activity is publicly visible through trial registries, company
+                materials or selected pipeline sources.
+              </p>
 
-.about-modal-body p:last-child {
-  margin-bottom: 0;
-}
+              <p>
+                This project is designed as a market-intelligence and
+                data-visualization portfolio piece. It combines clinical-trial
+                data cleaning, biotech landscape mapping and visual storytelling.
+              </p>
+            </div>
+          </section>
+        </div>
+      )}
 
-.about-modal-body strong {
-  color: #1d1d1f;
-  font-weight: 760;
-}
+      <section className="story-section hero-story">
+        <div className="top-project-menu">
+          <button
+            className="about-project-button"
+            type="button"
+            onClick={() => setAboutOpen(true)}
+            aria-label="Open About project"
+          >
+            ✦ About project ▾
+          </button>
+        </div>
 
-/* GENERAL VISUAL SECTIONS */
-.visual-story {
-  padding-left: 24px;
-  padding-right: 24px;
-}
+        <ObservableFrame
+          title="Psychedelic Trial Atlas Hero"
+          cell="heroSection1"
+          visibleHeight={790}
+          iframeHeight={860}
+          className="hero-frame"
+        />
+      </section>
 
-/* VISUAL 1A */
-.ecosystem-story {
-  padding-top: 70px;
-  padding-bottom: 90px;
-}
+      <section className="story-section visual-story ecosystem-story">
+        <ObservableFrame
+          title="The Psychedelic Ecosystem"
+          cell="visual1EcosystemOverviev"
+          visibleHeight={750}
+          iframeHeight={820}
+          className="ecosystem-frame"
+        />
+      </section>
 
-/* VISUAL 1B */
-.company-story {
-  padding-top: 90px;
-  padding-bottom: 150px;
-}
+      <section className="story-section visual-story company-story">
+        <ObservableFrame
+          title="Company Landscape Premium"
+          cell="visual1CompanyLandscapePremium1"
+          visibleHeight={690}
+          iframeHeight={780}
+          className="company-frame"
+          srcType="company"
+        />
+      </section>
 
-/* VISUAL 2 */
-.compound-story {
-  padding-top: 140px;
-  padding-bottom: 140px;
-  overflow: hidden;
-  background: #f1f0ec;
-}
+      <section className="story-section visual-story compound-story">
+        <ObservableFrame
+          title="Compound Activity Landscape"
+          cell="visual2Chartminimalistic1"
+          visibleHeight={760}
+          iframeHeight={880}
+          className="compound-frame landscape-frame observable-hard-crop"
+          srcType="landscape"
+        />
+      </section>
 
-/* VISUAL 3 */
-.indication-story {
-  padding-top: 140px;
-  padding-bottom: 140px;
-  overflow: hidden;
-  background: #f1f0ec;
-}
+      <section className="story-section visual-story indication-story">
+        <ObservableFrame
+          title="Indication Landscape"
+          cell="visual3Chart"
+          visibleHeight={760}
+          iframeHeight={880}
+          className="indication-frame landscape-frame observable-hard-crop"
+          srcType="landscape"
+        />
+      </section>
 
-/* VISUAL 4 */
-.phase-story {
-  padding-top: 140px;
-  padding-bottom: 180px;
-  overflow: hidden;
-  background: #f1f0ec;
-}
-
-/* IFRAME BASE */
-.iframe-crop {
-  width: min(100%, 1560px);
-  max-width: 1560px;
-  overflow: hidden !important;
-  position: relative;
-  background: #f1f0ec;
-  border: 0;
-  margin: 0 auto;
-  display: block;
-  isolation: isolate;
-}
-
-.atlas-iframe {
-  display: block;
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  border: 0 !important;
-  outline: 0;
-  overflow: hidden !important;
-  background: #f1f0ec;
-  opacity: 0;
-  transition: opacity 420ms ease;
-  will-change: opacity;
-}
-
-.atlas-iframe.iframe-loaded {
-  opacity: 1;
-}
-
-.atlas-iframe.iframe-loading {
-  opacity: 0;
-}
-
-/* FRAME WIDTHS */
-.hero-frame,
-.ecosystem-frame,
-.company-frame,
-.compound-frame,
-.indication-frame,
-.phase-frame,
-.landscape-frame {
-  max-width: 1560px;
-}
-
-/* HARD OBSERVABLE FOOTER CROP */
-.observable-hard-crop {
-  overflow: hidden !important;
-  position: relative;
-  background: #f1f0ec;
-}
-
-/* Bottom cover: hides Observable white footer/chrome without shifting the chart */
-.observable-hard-crop::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 86px;
-  background: #f1f0ec;
-  z-index: 50;
-  pointer-events: none;
-}
-
-.compound-frame.observable-hard-crop::after,
-.indication-frame.observable-hard-crop::after,
-.phase-frame.observable-hard-crop::after {
-  height: 86px;
-}
-
-.compound-frame,
-.indication-frame,
-.phase-frame {
-  overflow: hidden !important;
-  background: #f1f0ec;
-}
-
-.compound-frame iframe,
-.indication-frame iframe,
-.phase-frame iframe {
-  overflow: hidden !important;
-}
-
-/* MOBILE */
-@media (max-width: 900px) {
-  .top-project-menu {
-    top: calc(50% - 132px);
-  }
-
-  .about-project-button {
-    font-size: 11.5px;
-    padding: 8px 14px;
-  }
-
-  .about-modal-overlay {
-    padding: 78px 16px 24px;
-  }
-
-  .about-modal {
-    width: 100%;
-    max-height: calc(100vh - 102px);
-    border-radius: 20px;
-  }
-
-  .about-modal-header {
-    padding: 18px 18px 16px;
-  }
-
-  .about-modal-header h2 {
-    font-size: 20px;
-  }
-
-  .about-modal-body {
-    padding: 20px 18px 24px;
-  }
-
-  .about-modal-body p {
-    font-size: 12.8px;
-    line-height: 1.58;
-  }
-
-  .hero-story {
-    min-height: 820px;
-    padding: 0 16px;
-  }
-
-  .visual-story {
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .compound-story {
-    padding-top: 100px;
-    padding-bottom: 110px;
-  }
-
-  .indication-story {
-    padding-top: 110px;
-    padding-bottom: 110px;
-  }
-
-  .phase-story {
-    padding-top: 110px;
-    padding-bottom: 130px;
-  }
-
-  .iframe-crop {
-    width: 100%;
-    max-width: 100%;
-  }
-
-  .observable-hard-crop::after,
-  .compound-frame.observable-hard-crop::after,
-  .indication-frame.observable-hard-crop::after,
-  .phase-frame.observable-hard-crop::after {
-    height: 78px;
-  }
+      <section className="story-section visual-story phase-story">
+        <ObservableFrame
+          title="Clinical Phase Landscape"
+          cell="visual4PhaseChart"
+          visibleHeight={760}
+          iframeHeight={880}
+          className="phase-frame landscape-frame observable-hard-crop"
+          srcType="landscape"
+        />
+      </section>
+    </main>
+  );
 }
