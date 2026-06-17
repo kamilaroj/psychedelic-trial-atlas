@@ -11,7 +11,7 @@ export default function App() {
   const companyNotebook = "e3028f2577c04f9a@1174";
 
   const visual2ApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
-  const visual2Notebook = "e3028f2577c04f9a@1174";
+  const visual2Notebook = "e3028f2577c04f9a@1176";
 
   const landscapeApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
   const landscapeNotebook = "e3028f2577c04f9a@1174";
@@ -249,9 +249,9 @@ export default function App() {
       <section className="story-section visual-story compound-story">
         <ObservableFrame
           title="Compound Activity Landscape"
-          cell="visual2Chartminimalistic1"
-          visibleHeight={820}
-          iframeHeight={880}
+          cell="visual2Chartminimalistic1a"
+          visibleHeight={515}
+          iframeHeight={515}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
         />
