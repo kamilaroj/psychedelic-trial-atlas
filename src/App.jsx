@@ -42,18 +42,14 @@ export default function App() {
     const handleLoad = () => {
       window.setTimeout(() => {
         setIsLoaded(true);
-      }, 260);
+      }, 180);
     };
 
     return (
       <div
-        className={`iframe-crop ${className || ""} ${
-          isLoaded ? "frame-is-loaded" : "frame-is-loading"
-        }`}
+        className={`iframe-crop ${className || ""}`}
         style={{ height: `${visibleHeight}px` }}
       >
-        <div className="iframe-loading-cover" />
-
         <iframe
           title={title}
           width="100%"
@@ -191,7 +187,7 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1"
-          visibleHeight={790}
+          visibleHeight={650}
           iframeHeight={880}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="landscape"
@@ -202,7 +198,7 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={760}
+          visibleHeight={650}
           iframeHeight={880}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
@@ -213,7 +209,7 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={760}
+          visibleHeight={650}
           iframeHeight={880}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
