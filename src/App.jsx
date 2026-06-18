@@ -470,6 +470,17 @@ export default function App() {
         />
       </section>
 
+      <section className="layout-preload-section" aria-hidden="true">
+        <ObservableFrame
+          title="Visual Landscape Layout"
+          cell="visualLandscapeLayout"
+          visibleHeight={0}
+          iframeHeight={105}
+          className="layout-preload-frame"
+          srcType="landscape"
+        />
+      </section>
+
       <section className="story-section visual-story compound-story">
         <ObservableFrame
           title="Compound Activity Landscape"
