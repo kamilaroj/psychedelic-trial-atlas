@@ -170,17 +170,17 @@ export default function App() {
   const [pageRainActive, setPageRainActive] = useState(false);
   const pageRainStartedRef = useRef(false);
 
-  const mainApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
-  const mainNotebook = "e3028f2577c04f9a@1174";
+  const mainApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
+  const mainNotebook = "e3028f2577c04f9a@1187";
 
-  const companyApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
-  const companyNotebook = "e3028f2577c04f9a@1174";
+  const companyApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
+  const companyNotebook = "e3028f2577c04f9a@1187";
 
-  const visual2ApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
-  const visual2Notebook = "e3028f2577c04f9a@1178";
+  const visual2ApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
+  const visual2Notebook = "e3028f2577c04f9a@1187";
 
-  const landscapeApiKey = "9adbc24a6ca900c2049e85d3efdc9583144e01ee";
-  const landscapeNotebook = "e3028f2577c04f9a@1174";
+  const landscapeApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
+  const landscapeNotebook = "e3028f2577c04f9a@1187";
 
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
@@ -447,8 +447,8 @@ export default function App() {
         <ObservableFrame
           title="Psychedelic Trial Atlas Hero"
           cell="heroSection1"
-          visibleHeight={790}
-          iframeHeight={860}
+          visibleHeight={836}
+          iframeHeight={836}
           className="hero-frame"
         />
       </section>
@@ -457,8 +457,8 @@ export default function App() {
         <ObservableFrame
           title="The Psychedelic Ecosystem"
           cell="visual1EcosystemOverviev"
-          visibleHeight={750}
-          iframeHeight={820}
+          visibleHeight={796}
+          iframeHeight={796}
           className="ecosystem-frame"
         />
       </section>
@@ -467,8 +467,8 @@ export default function App() {
         <ObservableFrame
           title="Company Landscape Premium"
           cell="visual1CompanyLandscapePremium1"
-          visibleHeight={690}
-          iframeHeight={780}
+          visibleHeight={736}
+          iframeHeight={736}
           className="company-frame"
           srcType="company"
         />
@@ -478,8 +478,8 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1a"
-          visibleHeight={515}
-          iframeHeight={515}
+          visibleHeight={652}
+          iframeHeight={652}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
           lazyLoad={true}
@@ -491,8 +491,8 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={790}
-          iframeHeight={880}
+          visibleHeight={608}
+          iframeHeight={608}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -502,8 +502,8 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={760}
-          iframeHeight={880}
+          visibleHeight={607}
+          iframeHeight={607}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
