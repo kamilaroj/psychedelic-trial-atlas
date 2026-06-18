@@ -485,8 +485,8 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1a"
-          visibleHeight={800}
-          iframeHeight={960}
+          visibleHeight={830}
+          iframeHeight={990}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
           lazyLoad={true}
