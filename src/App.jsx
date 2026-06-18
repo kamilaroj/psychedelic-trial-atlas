@@ -261,7 +261,6 @@ export default function App() {
     cell,
     visibleHeight,
     iframeHeight,
-    iframeShiftY = 0,
     className,
     srcType = "main",
     lazyLoad = false,
@@ -347,10 +346,6 @@ export default function App() {
             }`}
             src={src}
             onLoad={handleLoad}
-            style={{
-              transform: `translateY(${iframeShiftY}px)`,
-              transformOrigin: "top center"
-            }}
           />
         )}
       </div>
@@ -454,7 +449,6 @@ export default function App() {
           cell="heroSection1"
           visibleHeight={836}
           iframeHeight={930}
-          iframeShiftY={0}
           className="hero-frame"
         />
       </section>
@@ -465,7 +459,6 @@ export default function App() {
           cell="visual1EcosystemOverviev"
           visibleHeight={796}
           iframeHeight={900}
-          iframeShiftY={0}
           className="ecosystem-frame"
         />
       </section>
@@ -476,7 +469,6 @@ export default function App() {
           cell="visual1CompanyLandscapePremium1"
           visibleHeight={736}
           iframeHeight={850}
-          iframeShiftY={0}
           className="company-frame"
           srcType="company"
         />
@@ -486,9 +478,8 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1a"
-          visibleHeight={640}
-          iframeHeight={820}
-          iframeShiftY={-72}
+          visibleHeight={652}
+          iframeHeight={840}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
           lazyLoad={true}
@@ -500,9 +491,8 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={610}
-          iframeHeight={800}
-          iframeShiftY={-58}
+          visibleHeight={608}
+          iframeHeight={820}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -512,9 +502,8 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={620}
+          visibleHeight={607}
           iframeHeight={820}
-          iframeShiftY={-65}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
