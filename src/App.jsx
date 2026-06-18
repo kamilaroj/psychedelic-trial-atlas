@@ -189,10 +189,8 @@ export default function App() {
 
   const visual1BLogoVisualScale = {
     "biomind_labs.png": 1.3,
-
     "janssen_logo.png": 1.6,
     "gh_research.png": 1,
-
     "solvonis_therapeutics.png": 2,
     "gilgamesh_pharma.png": 2,
     "bright_minds.png": 2.15,
@@ -202,7 +200,6 @@ export default function App() {
     "delix_therapeutics.png": 2,
     "xylo.png": 1.85,
     "tactogen.png": 2,
-
     "transcend_therapeutics_otsuka.png": 2.15,
     "reunion_neuroscience.png": 1.35,
     "celon_pharma.png": 2,
@@ -212,7 +209,6 @@ export default function App() {
   const visual1BLogoHoverScale = {
     "biomind_labs.png": 0.7,
     "gh_research.png": 0.288,
-
     "janssen_logo.png": 0.8,
     "solvonis_therapeutics.png": 1.0,
     "gilgamesh_pharma.png": 1.4,
@@ -478,8 +474,8 @@ export default function App() {
         <ObservableFrame
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1a"
-          visibleHeight={652}
-          iframeHeight={840}
+          visibleHeight={740}
+          iframeHeight={900}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
           lazyLoad={true}
@@ -491,8 +487,8 @@ export default function App() {
         <ObservableFrame
           title="Indication Landscape"
           cell="visual3Chart"
-          visibleHeight={608}
-          iframeHeight={820}
+          visibleHeight={700}
+          iframeHeight={880}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -502,8 +498,8 @@ export default function App() {
         <ObservableFrame
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
-          visibleHeight={607}
-          iframeHeight={820}
+          visibleHeight={700}
+          iframeHeight={880}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
