@@ -448,7 +448,7 @@ export default function App() {
           title="Psychedelic Trial Atlas Hero"
           cell="heroSection1"
           visibleHeight={836}
-          iframeHeight={836}
+          iframeHeight={930}
           className="hero-frame"
         />
       </section>
@@ -458,7 +458,7 @@ export default function App() {
           title="The Psychedelic Ecosystem"
           cell="visual1EcosystemOverviev"
           visibleHeight={796}
-          iframeHeight={796}
+          iframeHeight={900}
           className="ecosystem-frame"
         />
       </section>
@@ -468,7 +468,7 @@ export default function App() {
           title="Company Landscape Premium"
           cell="visual1CompanyLandscapePremium1"
           visibleHeight={736}
-          iframeHeight={736}
+          iframeHeight={850}
           className="company-frame"
           srcType="company"
         />
@@ -479,7 +479,7 @@ export default function App() {
           title="Compound Activity Landscape"
           cell="visual2Chartminimalistic1a"
           visibleHeight={652}
-          iframeHeight={652}
+          iframeHeight={780}
           className="compound-frame landscape-frame observable-hard-crop"
           srcType="visual2"
           lazyLoad={true}
@@ -492,7 +492,7 @@ export default function App() {
           title="Indication Landscape"
           cell="visual3Chart"
           visibleHeight={608}
-          iframeHeight={608}
+          iframeHeight={760}
           className="indication-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
@@ -503,7 +503,7 @@ export default function App() {
           title="Clinical Phase Landscape"
           cell="visual4PhaseChart"
           visibleHeight={607}
-          iframeHeight={607}
+          iframeHeight={760}
           className="phase-frame landscape-frame observable-hard-crop"
           srcType="landscape"
         />
