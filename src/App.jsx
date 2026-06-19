@@ -168,8 +168,7 @@ function PageRainOverlay({ active, onDone }) {
 function AboutProjectIcon() {
   return (
     <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 2.8l1.7 6.1 6.1 1.7-6.1 1.7-1.7 6.9-1.7-6.9-6.1-1.7 6.1-1.7L12 2.8z" />
-      <path d="M18.4 15.6l.7 2.2 2.1.6-2.1.6-.7 2.2-.7-2.2-2.1-.6 2.1-.6.7-2.2z" />
+      <path d="M10.15 2.35h3.7l-.68 7.08 5.78-4.2 1.86 3.2-6.48 2.92 6.48 2.92-1.86 3.2-5.78-4.2.68 7.08h-3.7l.68-7.08-5.78 4.2-1.86-3.2 6.48-2.92-6.48-2.92 1.86-3.2 5.78 4.2-.68-7.08z" />
     </svg>
   );
 }
@@ -436,6 +435,30 @@ export default function App() {
     <main className="site">
       <style>
         {`
+          .about-project-button {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 8px !important;
+          }
+
+          .about-project-button-icon {
+            width: 22px !important;
+            height: 22px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex: 0 0 22px !important;
+          }
+
+          .about-project-button-icon svg {
+            width: 22px !important;
+            height: 22px !important;
+            display: block !important;
+            fill: #111111 !important;
+            stroke: none !important;
+          }
+
           .about-modal-overlay {
             position: fixed !important;
             inset: 0 !important;
@@ -458,8 +481,8 @@ export default function App() {
           }
 
           .about-modal {
-            width: min(92vw, 540px) !important;
-            max-width: 540px !important;
+            width: min(92vw, 570px) !important;
+            max-width: 570px !important;
             max-height: 86vh !important;
             overflow: hidden !important;
             background: #ffffff !important;
@@ -484,7 +507,7 @@ export default function App() {
           .about-modal-title-row {
             display: flex !important;
             align-items: center !important;
-            gap: 9px !important;
+            gap: 10px !important;
             min-width: 0 !important;
           }
 
@@ -527,7 +550,7 @@ export default function App() {
 
           .about-modal-lead {
             margin: 0 0 14px !important;
-            max-width: 420px !important;
+            max-width: none !important;
             color: #222222 !important;
             font-size: 12.4px !important;
             line-height: 1.45 !important;
@@ -581,14 +604,16 @@ export default function App() {
           }
 
           .about-modal-title-row .about-inline-icon {
-            width: 20px !important;
-            height: 20px !important;
-            flex-basis: 20px !important;
+            width: 28px !important;
+            height: 28px !important;
+            flex-basis: 28px !important;
           }
 
           .about-modal-title-row .about-inline-icon svg {
-            width: 20px !important;
-            height: 20px !important;
+            width: 28px !important;
+            height: 28px !important;
+            fill: #111111 !important;
+            stroke: none !important;
           }
 
           .about-modal-section p {
@@ -665,7 +690,8 @@ export default function App() {
             }
 
             .about-modal {
-              width: min(94vw, 520px) !important;
+              width: min(94vw, 540px) !important;
+              max-width: 540px !important;
               max-height: 88vh !important;
             }
 
@@ -845,7 +871,10 @@ export default function App() {
             onClick={() => setAboutOpen(true)}
             aria-label="Open About project"
           >
-            ✦ About project ▾
+            <span className="about-project-button-icon">
+              <AboutProjectIcon />
+            </span>
+            <span>About project ▾</span>
           </button>
         </div>
 
