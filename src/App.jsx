@@ -185,44 +185,64 @@ export default function App() {
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
 
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-17-2025";
+  const logoTuningVersion = "visual1b-logo-tuning-2026-06-19-added-logos";
 
   const visual1BLogoVisualScale = {
-    "biomind_labs.png": 1.3,
-    "janssen_logo.png": 1.6,
-    "gh_research.png": 1,
-    "solvonis_therapeutics.png": 2,
-    "gilgamesh_pharma.png": 2,
-    "bright_minds.png": 2.15,
-    "definium.png": 2,
-    "otsuka_mindset_pharma.png": 1.85,
+    "2A_biosciences.png": 2,
+    "algernon.png": 2,
+    "amandala_neuro.png": 2,
+    "asri.png": 2,
     "ataibeckley.png": 2.05,
+    "beond.png": 2,
+    "betterlife_pharma.png": 2,
+    "biocase_brasil.png": 2,
+    "biomind_labs.png": 1.3,
+    "bright_minds.png": 2.15,
+    "celon_pharma.png": 2,
+    "compass_pathways.png": 2,
+    "definium.png": 2,
     "delix_therapeutics.png": 2,
-    "xylo.png": 1.85,
+    "demerx.png": 2.15,
+    "gh_research.png": 1,
+    "gilgamesh_pharma.png": 2,
+    "helus.png": 2,
+    "janssen_logo.png": 1.6,
+    "otsuka_mindset_pharma.png": 1.85,
+    "resilient_pharmaceuticals.png": 2,
+    "reunion_neuroscience.png": 1.35,
+    "solvonis_therapeutics.png": 2,
     "tactogen.png": 2,
     "transcend_therapeutics_otsuka.png": 2.15,
-    "reunion_neuroscience.png": 1.35,
-    "celon_pharma.png": 2,
-    "demerx.png": 2.15
+    "xylo.png": 1.85
   };
 
   const visual1BLogoHoverScale = {
+    "2A_biosciences.png": 1,
+    "algernon.png": 1,
+    "amandala_neuro.png": 1,
+    "asri.png": 1,
+    "ataibeckley.png": 1,
+    "beond.png": 1,
+    "betterlife_pharma.png": 1,
+    "biocase_brasil.png": 1,
     "biomind_labs.png": 0.7,
+    "bright_minds.png": 1,
+    "celon_pharma.png": 1,
+    "compass_pathways.png": 1,
+    "definium.png": 1,
+    "delix_therapeutics.png": 1,
+    "demerx.png": 1,
     "gh_research.png": 0.288,
-    "janssen_logo.png": 0.8,
-    "solvonis_therapeutics.png": 1.0,
     "gilgamesh_pharma.png": 1.4,
-    "bright_minds.png": 1.0,
-    "definium.png": 1.0,
-    "otsuka_mindset_pharma.png": 1.0,
-    "ataibeckley.png": 1.0,
-    "delix_therapeutics.png": 1.0,
-    "xylo.png": 1.0,
-    "tactogen.png": 1.0,
-    "transcend_therapeutics_otsuka.png": 1.0,
-    "reunion_neuroscience.png": 1.0,
-    "celon_pharma.png": 1.0,
-    "demerx.png": 1.0
+    "helus.png": 1,
+    "janssen_logo.png": 0.8,
+    "otsuka_mindset_pharma.png": 1,
+    "resilient_pharmaceuticals.png": 1,
+    "reunion_neuroscience.png": 1,
+    "solvonis_therapeutics.png": 1,
+    "tactogen.png": 1,
+    "transcend_therapeutics_otsuka.png": 1,
+    "xylo.png": 1
   };
 
   const startPageRain = () => {
