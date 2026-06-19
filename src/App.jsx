@@ -439,21 +439,25 @@ export default function App() {
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            gap: 8px !important;
+            gap: 7px !important;
+            height: 30px !important;
+            min-height: 30px !important;
+            padding: 4px 12px 5px !important;
+            line-height: 1 !important;
           }
 
           .about-project-button-icon {
-            width: 22px !important;
-            height: 22px !important;
+            width: 20px !important;
+            height: 20px !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            flex: 0 0 22px !important;
+            flex: 0 0 20px !important;
           }
 
           .about-project-button-icon svg {
-            width: 22px !important;
-            height: 22px !important;
+            width: 20px !important;
+            height: 20px !important;
             display: block !important;
             fill: #111111 !important;
             stroke: none !important;
