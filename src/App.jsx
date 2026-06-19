@@ -219,7 +219,6 @@ function InlineIcon({ children }) {
 
 function ObservableFrame({
   title,
-  cell,
   visibleHeight,
   iframeHeight,
   className,
@@ -485,17 +484,17 @@ export default function App() {
           }
 
           .about-modal {
-            width: min(92vw, 570px) !important;
-            max-width: 570px !important;
-            max-height: 86vh !important;
+            width: min(92vw, 550px) !important;
+            max-width: 550px !important;
+            max-height: 82vh !important;
             overflow: hidden !important;
             background: #ffffff !important;
             color: #111111 !important;
             border: 1px solid rgba(0, 0, 0, 0.12) !important;
-            border-radius: 20px !important;
+            border-radius: 18px !important;
             box-shadow:
-              0 28px 80px rgba(0, 0, 0, 0.18),
-              0 8px 24px rgba(0, 0, 0, 0.10) !important;
+              0 24px 70px rgba(0, 0, 0, 0.18),
+              0 8px 22px rgba(0, 0, 0, 0.10) !important;
             font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
           }
 
@@ -503,9 +502,9 @@ export default function App() {
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            gap: 14px !important;
-            padding: 19px 23px 14px !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.10) !important;
+            gap: 13px !important;
+            padding: 16px 22px 12px !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.09) !important;
           }
 
           .about-modal-title-row {
@@ -518,21 +517,21 @@ export default function App() {
           .about-modal-header h2 {
             margin: 0 !important;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-            font-size: 23px !important;
-            line-height: 1.05 !important;
-            letter-spacing: -0.04em !important;
-            font-weight: 760 !important;
+            font-size: 22px !important;
+            line-height: 1.02 !important;
+            letter-spacing: -0.045em !important;
+            font-weight: 780 !important;
             color: #111111 !important;
           }
 
           .about-modal-close {
-            width: 28px !important;
-            height: 28px !important;
+            width: 26px !important;
+            height: 26px !important;
             border: 0 !important;
             border-radius: 999px !important;
             background: transparent !important;
             color: #111111 !important;
-            font-size: 23px !important;
+            font-size: 22px !important;
             line-height: 1 !important;
             cursor: pointer !important;
             display: flex !important;
@@ -549,81 +548,81 @@ export default function App() {
           }
 
           .about-modal-body {
-            padding: 16px 23px 18px !important;
+            padding: 13px 22px 15px !important;
           }
 
           .about-modal-lead {
-            margin: 0 0 14px !important;
+            margin: 0 0 11px !important;
             max-width: none !important;
             color: #222222 !important;
-            font-size: 12.4px !important;
-            line-height: 1.45 !important;
+            font-size: 12.2px !important;
+            line-height: 1.38 !important;
             letter-spacing: -0.01em !important;
             text-align: left !important;
           }
 
           .about-modal-section {
-            padding: 14px 0 !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.10) !important;
+            padding: 11px 0 !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.09) !important;
           }
 
           .about-modal-section:first-of-type {
-            padding-top: 13px !important;
+            padding-top: 11px !important;
           }
 
           .about-section-title {
             display: flex !important;
             align-items: center !important;
-            gap: 8px !important;
-            margin: 0 0 9px !important;
+            gap: 7px !important;
+            margin: 0 0 7px !important;
           }
 
           .about-section-title h3 {
             margin: 0 !important;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-            font-size: 17px !important;
-            line-height: 1.1 !important;
-            letter-spacing: -0.032em !important;
-            font-weight: 760 !important;
+            font-size: 16.5px !important;
+            line-height: 1.05 !important;
+            letter-spacing: -0.035em !important;
+            font-weight: 780 !important;
             color: #111111 !important;
           }
 
           .about-inline-icon {
-            width: 17px !important;
-            height: 17px !important;
+            width: 16px !important;
+            height: 16px !important;
             display: inline-flex !important;
             align-items: center !important;
             justify-content: center !important;
-            flex: 0 0 17px !important;
+            flex: 0 0 16px !important;
           }
 
           .about-inline-icon svg {
-            width: 17px !important;
-            height: 17px !important;
+            width: 16px !important;
+            height: 16px !important;
             fill: none !important;
             stroke: #111111 !important;
-            stroke-width: 1.7 !important;
+            stroke-width: 1.65 !important;
             stroke-linecap: round !important;
             stroke-linejoin: round !important;
           }
 
           .about-modal-title-row .about-inline-icon {
-            width: 28px !important;
-            height: 28px !important;
-            flex-basis: 28px !important;
+            width: 27px !important;
+            height: 27px !important;
+            flex-basis: 27px !important;
           }
 
           .about-modal-title-row .about-inline-icon svg {
-            width: 28px !important;
-            height: 28px !important;
+            width: 27px !important;
+            height: 27px !important;
             fill: #111111 !important;
             stroke: none !important;
           }
 
           .about-modal-section p {
-            margin: 0 0 7px !important;
-            font-size: 11.55px !important;
-            line-height: 1.39 !important;
+            margin: 0 0 6px !important;
+            font-size: 11.65px !important;
+            line-height: 1.34 !important;
             color: #1f1f1f !important;
             text-align: justify !important;
             text-justify: inter-word !important;
@@ -635,57 +634,57 @@ export default function App() {
           }
 
           .about-modal-section strong {
-            font-weight: 780 !important;
+            font-weight: 790 !important;
             color: #000000 !important;
           }
 
           .about-keyfacts {
             display: grid !important;
             gap: 0 !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.075) !important;
           }
 
           .about-keyfact-row {
             display: grid !important;
-            grid-template-columns: 84px 1fr !important;
+            grid-template-columns: 82px 1fr !important;
             gap: 12px !important;
-            padding: 6px 0 !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+            padding: 5.5px 0 !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.075) !important;
           }
 
           .about-keyfact-label {
-            font-size: 10.8px !important;
-            line-height: 1.3 !important;
+            font-size: 10.65px !important;
+            line-height: 1.25 !important;
             color: #111111 !important;
-            font-weight: 780 !important;
+            font-weight: 790 !important;
           }
 
           .about-keyfact-value {
-            font-size: 10.8px !important;
-            line-height: 1.3 !important;
+            font-size: 10.65px !important;
+            line-height: 1.25 !important;
             color: #222222 !important;
           }
 
           .about-modal-footer {
             display: flex !important;
             align-items: center !important;
-            gap: 8px !important;
-            padding-top: 13px !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.10) !important;
+            gap: 7px !important;
+            padding-top: 11px !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.09) !important;
             color: #3a3a3a !important;
-            font-size: 10.9px !important;
-            line-height: 1.35 !important;
+            font-size: 10.65px !important;
+            line-height: 1.28 !important;
           }
 
           .about-modal-footer .about-inline-icon {
-            width: 15px !important;
-            height: 15px !important;
-            flex-basis: 15px !important;
+            width: 14px !important;
+            height: 14px !important;
+            flex-basis: 14px !important;
           }
 
           .about-modal-footer .about-inline-icon svg {
-            width: 15px !important;
-            height: 15px !important;
+            width: 14px !important;
+            height: 14px !important;
           }
 
           @media (max-width: 620px) {
@@ -694,21 +693,21 @@ export default function App() {
             }
 
             .about-modal {
-              width: min(94vw, 540px) !important;
-              max-width: 540px !important;
-              max-height: 88vh !important;
+              width: min(94vw, 530px) !important;
+              max-width: 530px !important;
+              max-height: 86vh !important;
             }
 
             .about-modal-header {
-              padding: 18px 20px 13px !important;
+              padding: 15px 19px 11px !important;
             }
 
             .about-modal-body {
-              padding: 15px 20px 17px !important;
+              padding: 13px 19px 15px !important;
             }
 
             .about-keyfact-row {
-              grid-template-columns: 78px 1fr !important;
+              grid-template-columns: 76px 1fr !important;
               gap: 10px !important;
             }
           }
@@ -884,7 +883,6 @@ export default function App() {
 
         <ObservableFrame
           title="Psychedelic Trial Atlas Hero"
-          cell="heroSection1"
           visibleHeight={836}
           iframeHeight={930}
           className="hero-frame"
@@ -895,7 +893,6 @@ export default function App() {
       <section className="story-section visual-story ecosystem-story">
         <ObservableFrame
           title="The Psychedelic Ecosystem"
-          cell="visual1EcosystemOverviev"
           visibleHeight={796}
           iframeHeight={900}
           className="ecosystem-frame"
@@ -906,7 +903,6 @@ export default function App() {
       <section className="story-section visual-story company-story">
         <ObservableFrame
           title="Company Landscape Premium"
-          cell="visual1CompanyLandscapePremium1"
           visibleHeight={736}
           iframeHeight={850}
           className="company-frame"
@@ -917,7 +913,6 @@ export default function App() {
       <section className="layout-preload-section" aria-hidden="true">
         <ObservableFrame
           title="Visual Landscape Layout"
-          cell="visualLandscapeLayout"
           visibleHeight={0}
           iframeHeight={105}
           className="layout-preload-frame"
@@ -928,7 +923,6 @@ export default function App() {
       <section className="story-section visual-story compound-story">
         <ObservableFrame
           title="Compound Activity Landscape"
-          cell="visual2Chartminimalistic1a"
           visibleHeight={830}
           iframeHeight={990}
           className="compound-frame landscape-frame observable-hard-crop"
@@ -941,7 +935,6 @@ export default function App() {
       <section className="story-section visual-story indication-story">
         <ObservableFrame
           title="Indication Landscape"
-          cell="visual3Chart"
           visibleHeight={760}
           iframeHeight={940}
           className="indication-frame landscape-frame observable-hard-crop"
@@ -952,7 +945,6 @@ export default function App() {
       <section className="story-section visual-story phase-story">
         <ObservableFrame
           title="Clinical Phase Landscape"
-          cell="visual4PhaseChart"
           visibleHeight={700}
           iframeHeight={880}
           className="phase-frame landscape-frame observable-hard-crop"
