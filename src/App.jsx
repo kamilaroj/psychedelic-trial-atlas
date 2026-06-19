@@ -191,12 +191,12 @@ export default function App() {
     "2A_biosciences.png": 2,
     "algernon.png": 2,
     "amandala_neuro.png": 2,
-    "asri.png": 6,
-    "ataibeckley.png": 1.9,
-    "beond.png": 3,
+    "asri.png": 2,
+    "ataibeckley.png": 2.05,
+    "beond.png": 2,
     "betterlife_pharma.png": 2,
     "biocase_brasil.png": 2,
-    "biomind_labs.png": 1.5,
+    "biomind_labs.png": 1.3,
     "bright_minds.png": 2.15,
     "celon_pharma.png": 2,
     "compass_pathways.png": 2,
@@ -205,11 +205,11 @@ export default function App() {
     "demerx.png": 2.15,
     "gh_research.png": 1,
     "gilgamesh_pharma.png": 2,
-    "helus.png": 1.6,
+    "helus.png": 2,
     "janssen_logo.png": 1.6,
     "otsuka_mindset_pharma.png": 1.85,
     "resilient_pharmaceuticals.png": 2,
-    "reunion_neuroscience.png": 1.5,
+    "reunion_neuroscience.png": 1.35,
     "solvonis_therapeutics.png": 2,
     "tactogen.png": 2,
     "transcend_therapeutics_otsuka.png": 2.15,
@@ -234,7 +234,7 @@ export default function App() {
     "demerx.png": 1,
     "gh_research.png": 0.288,
     "gilgamesh_pharma.png": 1.4,
-    "helus.png": 0.8,
+    "helus.png": 1,
     "janssen_logo.png": 0.8,
     "otsuka_mindset_pharma.png": 1,
     "resilient_pharmaceuticals.png": 1,
@@ -370,6 +370,45 @@ export default function App() {
 
   return (
     <main className="site">
+      <style>
+        {`
+          .about-modal-overlay {
+            background: rgba(29, 29, 31, 0.36) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+          }
+
+          .about-modal-overlay::before,
+          .about-modal-overlay::after {
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            filter: none !important;
+          }
+
+          .about-modal {
+            width: min(92vw, 520px) !important;
+            max-width: 520px !important;
+            border-radius: 24px !important;
+          }
+
+          .about-modal-body {
+            text-align: justify !important;
+            text-justify: inter-word;
+          }
+
+          .about-modal-body p {
+            text-align: justify !important;
+            text-justify: inter-word;
+            hyphens: auto;
+          }
+
+          .about-modal-body strong {
+            font-weight: 780;
+            color: #1d1d1f;
+          }
+        `}
+      </style>
+
       <PageRainOverlay
         active={pageRainActive}
         onDone={() => setPageRainActive(false)}
@@ -403,45 +442,54 @@ export default function App() {
 
             <div className="about-modal-body">
               <p>
-                <strong>Psychedelic Trial Atlas</strong> is a visual intelligence
-                project focused on biotech and drug-development activity in
-                psychedelic and psychedelic-adjacent medicine.
+                <strong>Psychedelic Trial Atlas</strong> is a{" "}
+                <strong>visual intelligence project</strong> focused on{" "}
+                <strong>biotech</strong> and{" "}
+                <strong>drug-development activity</strong> in psychedelic and
+                psychedelic-adjacent medicine.
               </p>
 
               <p>
-                The atlas maps what is publicly visible across registered
-                clinical-trial records and selected company pipeline context. It
-                looks at companies, development actors, compounds, assets,
-                therapeutic areas, recruitment status and public source
-                visibility.
+                The atlas maps what is <strong>publicly visible</strong> across{" "}
+                <strong>registered clinical-trial records</strong> and selected{" "}
+                <strong>company pipeline context</strong>. It looks at{" "}
+                <strong>companies</strong>, <strong>development actors</strong>,{" "}
+                <strong>compounds</strong>, <strong>assets</strong>,{" "}
+                <strong>therapeutic areas</strong>,{" "}
+                <strong>recruitment status</strong> and{" "}
+                <strong>public source visibility</strong>.
               </p>
 
               <p>
                 The focus is not wellness, retreats, underground use, personal
-                experience or treatment advice. The focus is the emerging biotech
-                landscape: who is developing assets, which compounds are visible,
-                which indications appear in public trial data, and where activity
-                is concentrated.
+                experience or treatment advice. The focus is the{" "}
+                <strong>emerging biotech landscape</strong>: who is developing
+                assets, which compounds are visible, which indications appear in
+                public trial data, and where activity is concentrated.
               </p>
 
               <p>
-                The project separates registered clinical-trial activity from
-                pipeline context. A registered trial record means there is a
-                public trial source. Pipeline context means a company-reported or
-                tracker-visible program that may not yet have a public trial ID.
+                The project separates <strong>registered clinical-trial activity</strong>{" "}
+                from <strong>pipeline context</strong>. A registered trial record
+                means there is a public trial source. Pipeline context means a
+                company-reported or tracker-visible program that may not yet have
+                a public trial ID.
               </p>
 
               <p>
-                Visible activity does not mean that a drug is effective, safe,
-                approved or commercially successful. It only means that the
-                activity is publicly visible through trial registries, company
-                materials or selected pipeline sources.
+                <strong>Visible activity</strong> does not mean that a drug is
+                effective, safe, approved or commercially successful. It only
+                means that the activity is publicly visible through trial
+                registries, company materials or selected pipeline sources.
               </p>
 
               <p>
-                This project is designed as a market-intelligence and
-                data-visualization portfolio piece. It combines clinical-trial
-                data cleaning, biotech landscape mapping and visual storytelling.
+                This project is designed as a{" "}
+                <strong>market-intelligence</strong> and{" "}
+                <strong>data-visualization portfolio piece</strong>. It combines{" "}
+                <strong>clinical-trial data cleaning</strong>,{" "}
+                <strong>biotech landscape mapping</strong> and{" "}
+                <strong>visual storytelling</strong>.
               </p>
             </div>
           </section>
