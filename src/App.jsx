@@ -192,7 +192,7 @@ export default function App() {
     "algernon.png": 2,
     "amandala_neuro.png": 2,
     "asri.png": 6,
-    "ataibeckley.png": 2.05,
+    "ataibeckley.png": 1.9,
     "beond.png": 3,
     "betterlife_pharma.png": 2,
     "biocase_brasil.png": 2,
