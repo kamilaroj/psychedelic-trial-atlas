@@ -214,8 +214,95 @@ function CreatorIcon() {
   );
 }
 
-function ModalIcon({ children }) {
-  return <div className="about-modal-icon">{children}</div>;
+function InlineIcon({ children }) {
+  return <span className="about-inline-icon">{children}</span>;
+}
+
+function ObservableFrame({
+  title,
+  cell,
+  visibleHeight,
+  iframeHeight,
+  className,
+  src,
+  lazyLoad = false,
+  onEnter
+}) {
+  const wrapperRef = useRef(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [shouldLoad, setShouldLoad] = useState(!lazyLoad);
+
+  useEffect(() => {
+    if (!lazyLoad) return;
+    if (shouldLoad) return;
+
+    const target = wrapperRef.current;
+    if (!target) return;
+
+    if (!("IntersectionObserver" in window)) {
+      onEnter?.();
+      setShouldLoad(true);
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (entry && entry.isIntersecting) {
+          onEnter?.();
+
+          window.setTimeout(() => {
+            setShouldLoad(true);
+          }, 700);
+
+          observer.disconnect();
+        }
+      },
+      {
+        root: null,
+        threshold: 0.04,
+        rootMargin: "0px 0px -8% 0px"
+      }
+    );
+
+    observer.observe(target);
+
+    return () => observer.disconnect();
+  }, [lazyLoad, onEnter, shouldLoad]);
+
+  const handleLoad = () => {
+    window.setTimeout(() => {
+      setIsLoaded(true);
+    }, 180);
+  };
+
+  return (
+    <div
+      ref={wrapperRef}
+      className={`iframe-crop ${className || ""}`}
+      style={{
+        height: `${visibleHeight}px`,
+        background: "#f1f0ec",
+        overflow: "hidden"
+      }}
+    >
+      {shouldLoad && (
+        <iframe
+          title={title}
+          width="100%"
+          height={iframeHeight}
+          frameBorder="0"
+          scrolling="no"
+          className={`atlas-iframe ${
+            isLoaded ? "iframe-loaded" : "iframe-loading"
+          }`}
+          src={src}
+          onLoad={handleLoad}
+        />
+      )}
+    </div>
+  );
 }
 
 export default function App() {
@@ -240,63 +327,69 @@ export default function App() {
 
   const logoTuningVersion = "visual1b-logo-tuning-2026-06-19-added-logos";
 
-  const visual1BLogoVisualScale = {
-    "2A_biosciences.png": 2,
-    "algernon.png": 2,
-    "amandala_neuro.png": 2,
-    "asri.png": 2,
-    "ataibeckley.png": 2.05,
-    "beond.png": 2,
-    "betterlife_pharma.png": 2,
-    "biocase_brasil.png": 2,
-    "biomind_labs.png": 1.3,
-    "bright_minds.png": 2.15,
-    "celon_pharma.png": 2,
-    "compass_pathways.png": 2,
-    "definium.png": 2,
-    "delix_therapeutics.png": 2,
-    "demerx.png": 2.15,
-    "gh_research.png": 1,
-    "gilgamesh_pharma.png": 2,
-    "helus.png": 2,
-    "janssen_logo.png": 1.6,
-    "otsuka_mindset_pharma.png": 1.85,
-    "resilient_pharmaceuticals.png": 2,
-    "reunion_neuroscience.png": 1.35,
-    "solvonis_therapeutics.png": 2,
-    "tactogen.png": 2,
-    "transcend_therapeutics_otsuka.png": 2.15,
-    "xylo.png": 1.85
-  };
+  const visual1BLogoVisualScale = useMemo(
+    () => ({
+      "2A_biosciences.png": 2,
+      "algernon.png": 2,
+      "amandala_neuro.png": 2,
+      "asri.png": 2,
+      "ataibeckley.png": 2.05,
+      "beond.png": 2,
+      "betterlife_pharma.png": 2,
+      "biocase_brasil.png": 2,
+      "biomind_labs.png": 1.3,
+      "bright_minds.png": 2.15,
+      "celon_pharma.png": 2,
+      "compass_pathways.png": 2,
+      "definium.png": 2,
+      "delix_therapeutics.png": 2,
+      "demerx.png": 2.15,
+      "gh_research.png": 1,
+      "gilgamesh_pharma.png": 2,
+      "helus.png": 2,
+      "janssen_logo.png": 1.6,
+      "otsuka_mindset_pharma.png": 1.85,
+      "resilient_pharmaceuticals.png": 2,
+      "reunion_neuroscience.png": 1.35,
+      "solvonis_therapeutics.png": 2,
+      "tactogen.png": 2,
+      "transcend_therapeutics_otsuka.png": 2.15,
+      "xylo.png": 1.85
+    }),
+    []
+  );
 
-  const visual1BLogoHoverScale = {
-    "2A_biosciences.png": 1,
-    "algernon.png": 1,
-    "amandala_neuro.png": 1,
-    "asri.png": 1,
-    "ataibeckley.png": 1,
-    "beond.png": 1,
-    "betterlife_pharma.png": 1,
-    "biocase_brasil.png": 1,
-    "biomind_labs.png": 0.7,
-    "bright_minds.png": 1,
-    "celon_pharma.png": 1,
-    "compass_pathways.png": 1,
-    "definium.png": 1,
-    "delix_therapeutics.png": 1,
-    "demerx.png": 1,
-    "gh_research.png": 0.288,
-    "gilgamesh_pharma.png": 1.4,
-    "helus.png": 1,
-    "janssen_logo.png": 0.8,
-    "otsuka_mindset_pharma.png": 1,
-    "resilient_pharmaceuticals.png": 1,
-    "reunion_neuroscience.png": 1,
-    "solvonis_therapeutics.png": 1,
-    "tactogen.png": 1,
-    "transcend_therapeutics_otsuka.png": 1,
-    "xylo.png": 1
-  };
+  const visual1BLogoHoverScale = useMemo(
+    () => ({
+      "2A_biosciences.png": 1,
+      "algernon.png": 1,
+      "amandala_neuro.png": 1,
+      "asri.png": 1,
+      "ataibeckley.png": 1,
+      "beond.png": 1,
+      "betterlife_pharma.png": 1,
+      "biocase_brasil.png": 1,
+      "biomind_labs.png": 0.7,
+      "bright_minds.png": 1,
+      "celon_pharma.png": 1,
+      "compass_pathways.png": 1,
+      "definium.png": 1,
+      "delix_therapeutics.png": 1,
+      "demerx.png": 1,
+      "gh_research.png": 0.288,
+      "gilgamesh_pharma.png": 1.4,
+      "helus.png": 1,
+      "janssen_logo.png": 0.8,
+      "otsuka_mindset_pharma.png": 1,
+      "resilient_pharmaceuticals.png": 1,
+      "reunion_neuroscience.png": 1,
+      "solvonis_therapeutics.png": 1,
+      "tactogen.png": 1,
+      "transcend_therapeutics_otsuka.png": 1,
+      "xylo.png": 1
+    }),
+    []
+  );
 
   const startPageRain = () => {
     if (pageRainStartedRef.current) return;
@@ -305,121 +398,39 @@ export default function App() {
     setPageRainActive(true);
   };
 
-  const observableSrc = (cell) =>
-    `https://observablehq.com/embed/${mainNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${mainApiKey}`;
-
-  const companyObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${companyNotebook}?cells=${cell}&banner=false&hideFooter=true&logoBase=${encodeURIComponent(
-      githubLogoBase
-    )}&logoVisualScale=${encodeURIComponent(
-      JSON.stringify(visual1BLogoVisualScale)
-    )}&logoHoverScale=${encodeURIComponent(
-      JSON.stringify(visual1BLogoHoverScale)
-    )}&logoTuningVersion=${encodeURIComponent(
-      logoTuningVersion
-    )}&api_key=${companyApiKey}`;
-
-  const visual2ObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${visual2Notebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${visual2ApiKey}`;
-
-  const landscapeObservableSrc = (cell) =>
-    `https://observablehq.com/embed/${landscapeNotebook}?cells=${cell}&banner=false&hideFooter=true&api_key=${landscapeApiKey}`;
-
-  const ObservableFrame = ({
-    title,
-    cell,
-    visibleHeight,
-    iframeHeight,
-    className,
-    srcType = "main",
-    lazyLoad = false,
-    onEnter
-  }) => {
-    const wrapperRef = useRef(null);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [shouldLoad, setShouldLoad] = useState(!lazyLoad);
-
-    const src =
-      srcType === "company"
-        ? companyObservableSrc(cell)
-        : srcType === "visual2"
-          ? visual2ObservableSrc(cell)
-          : srcType === "landscape"
-            ? landscapeObservableSrc(cell)
-            : observableSrc(cell);
-
-    useEffect(() => {
-      if (!lazyLoad) return;
-      if (shouldLoad) return;
-
-      const target = wrapperRef.current;
-      if (!target) return;
-
-      if (!("IntersectionObserver" in window)) {
-        onEnter?.();
-        setShouldLoad(true);
-        return;
-      }
-
-      const observer = new IntersectionObserver(
-        (entries) => {
-          const entry = entries[0];
-
-          if (entry && entry.isIntersecting) {
-            onEnter?.();
-
-            window.setTimeout(() => {
-              setShouldLoad(true);
-            }, 700);
-
-            observer.disconnect();
-          }
-        },
-        {
-          root: null,
-          threshold: 0.04,
-          rootMargin: "0px 0px -8% 0px"
-        }
-      );
-
-      observer.observe(target);
-
-      return () => observer.disconnect();
-    }, [lazyLoad, onEnter, shouldLoad]);
-
-    const handleLoad = () => {
-      window.setTimeout(() => {
-        setIsLoaded(true);
-      }, 180);
-    };
-
-    return (
-      <div
-        ref={wrapperRef}
-        className={`iframe-crop ${className || ""}`}
-        style={{
-          height: `${visibleHeight}px`,
-          background: "#f1f0ec",
-          overflow: "hidden"
-        }}
-      >
-        {shouldLoad && (
-          <iframe
-            title={title}
-            width="100%"
-            height={iframeHeight}
-            frameBorder="0"
-            scrolling="no"
-            className={`atlas-iframe ${
-              isLoaded ? "iframe-loaded" : "iframe-loading"
-            }`}
-            src={src}
-            onLoad={handleLoad}
-          />
-        )}
-      </div>
-    );
-  };
+  const observableSrc = useMemo(
+    () => ({
+      heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&banner=false&hideFooter=true&api_key=${mainApiKey}`,
+      visual1EcosystemOverviev: `https://observablehq.com/embed/${mainNotebook}?cells=visual1EcosystemOverviev&banner=false&hideFooter=true&api_key=${mainApiKey}`,
+      visual2Chartminimalistic1a: `https://observablehq.com/embed/${visual2Notebook}?cells=visual2Chartminimalistic1a&banner=false&hideFooter=true&api_key=${visual2ApiKey}`,
+      visualLandscapeLayout: `https://observablehq.com/embed/${landscapeNotebook}?cells=visualLandscapeLayout&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
+      visual3Chart: `https://observablehq.com/embed/${landscapeNotebook}?cells=visual3Chart&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
+      visual4PhaseChart: `https://observablehq.com/embed/${landscapeNotebook}?cells=visual4PhaseChart&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/${companyNotebook}?cells=visual1CompanyLandscapePremium1&banner=false&hideFooter=true&logoBase=${encodeURIComponent(
+        githubLogoBase
+      )}&logoVisualScale=${encodeURIComponent(
+        JSON.stringify(visual1BLogoVisualScale)
+      )}&logoHoverScale=${encodeURIComponent(
+        JSON.stringify(visual1BLogoHoverScale)
+      )}&logoTuningVersion=${encodeURIComponent(
+        logoTuningVersion
+      )}&api_key=${companyApiKey}`
+    }),
+    [
+      mainNotebook,
+      mainApiKey,
+      visual2Notebook,
+      visual2ApiKey,
+      landscapeNotebook,
+      landscapeApiKey,
+      companyNotebook,
+      companyApiKey,
+      githubLogoBase,
+      logoTuningVersion,
+      visual1BLogoVisualScale,
+      visual1BLogoHoverScale
+    ]
+  );
 
   return (
     <main className="site">
@@ -432,7 +443,7 @@ export default function App() {
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
-            padding: 28px !important;
+            padding: 24px !important;
             background: rgba(0, 0, 0, 0.34) !important;
             backdrop-filter: none !important;
             -webkit-backdrop-filter: none !important;
@@ -449,8 +460,8 @@ export default function App() {
           .about-modal {
             width: min(92vw, 540px) !important;
             max-width: 540px !important;
-            max-height: min(88vh, 760px) !important;
-            overflow: auto !important;
+            max-height: 86vh !important;
+            overflow: hidden !important;
             background: #ffffff !important;
             color: #111111 !important;
             border: 1px solid rgba(0, 0, 0, 0.12) !important;
@@ -465,36 +476,36 @@ export default function App() {
             display: flex !important;
             align-items: center !important;
             justify-content: space-between !important;
-            gap: 16px !important;
-            padding: 24px 26px 16px !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.12) !important;
+            gap: 14px !important;
+            padding: 19px 23px 14px !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.10) !important;
           }
 
           .about-modal-title-row {
             display: flex !important;
             align-items: center !important;
-            gap: 13px !important;
+            gap: 9px !important;
             min-width: 0 !important;
           }
 
           .about-modal-header h2 {
             margin: 0 !important;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-            font-size: 25px !important;
+            font-size: 23px !important;
             line-height: 1.05 !important;
-            letter-spacing: -0.035em !important;
+            letter-spacing: -0.04em !important;
             font-weight: 760 !important;
             color: #111111 !important;
           }
 
           .about-modal-close {
-            width: 32px !important;
-            height: 32px !important;
+            width: 28px !important;
+            height: 28px !important;
             border: 0 !important;
             border-radius: 999px !important;
             background: transparent !important;
             color: #111111 !important;
-            font-size: 25px !important;
+            font-size: 23px !important;
             line-height: 1 !important;
             cursor: pointer !important;
             display: flex !important;
@@ -511,83 +522,79 @@ export default function App() {
           }
 
           .about-modal-body {
-            padding: 20px 26px 22px !important;
+            padding: 16px 23px 18px !important;
           }
 
           .about-modal-lead {
-            margin: 0 0 20px !important;
-            max-width: 430px !important;
+            margin: 0 0 14px !important;
+            max-width: 420px !important;
             color: #222222 !important;
-            font-size: 14px !important;
-            line-height: 1.55 !important;
+            font-size: 12.4px !important;
+            line-height: 1.45 !important;
             letter-spacing: -0.01em !important;
             text-align: left !important;
           }
 
           .about-modal-section {
-            display: grid !important;
-            grid-template-columns: 40px 1fr !important;
-            gap: 16px !important;
-            padding: 20px 0 !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.12) !important;
+            padding: 14px 0 !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.10) !important;
           }
 
           .about-modal-section:first-of-type {
-            border-top: 0 !important;
-            padding-top: 0 !important;
+            padding-top: 13px !important;
           }
 
-          .about-modal-icon {
-            width: 36px !important;
-            height: 36px !important;
-            border-radius: 999px !important;
-            border: 1px solid rgba(0, 0, 0, 0.22) !important;
-            background: #ffffff !important;
+          .about-section-title {
             display: flex !important;
             align-items: center !important;
-            justify-content: center !important;
-            flex: 0 0 auto !important;
+            gap: 8px !important;
+            margin: 0 0 9px !important;
           }
 
-          .about-modal-icon svg {
-            width: 18px !important;
-            height: 18px !important;
+          .about-section-title h3 {
+            margin: 0 !important;
+            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
+            font-size: 17px !important;
+            line-height: 1.1 !important;
+            letter-spacing: -0.032em !important;
+            font-weight: 760 !important;
+            color: #111111 !important;
+          }
+
+          .about-inline-icon {
+            width: 17px !important;
+            height: 17px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            flex: 0 0 17px !important;
+          }
+
+          .about-inline-icon svg {
+            width: 17px !important;
+            height: 17px !important;
             fill: none !important;
             stroke: #111111 !important;
-            stroke-width: 1.75 !important;
+            stroke-width: 1.7 !important;
             stroke-linecap: round !important;
             stroke-linejoin: round !important;
           }
 
-          .about-modal-icon svg path:first-child:last-child {
-            fill: #111111 !important;
-            stroke: none !important;
+          .about-modal-title-row .about-inline-icon {
+            width: 20px !important;
+            height: 20px !important;
+            flex-basis: 20px !important;
           }
 
-          .about-modal-header .about-modal-icon {
-            width: 38px !important;
-            height: 38px !important;
-          }
-
-          .about-modal-header .about-modal-icon svg {
+          .about-modal-title-row .about-inline-icon svg {
             width: 20px !important;
             height: 20px !important;
           }
 
-          .about-modal-section h3 {
-            margin: 0 0 12px !important;
-            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-            font-size: 18px !important;
-            line-height: 1.15 !important;
-            letter-spacing: -0.025em !important;
-            font-weight: 740 !important;
-            color: #111111 !important;
-          }
-
           .about-modal-section p {
-            margin: 0 0 10px !important;
-            font-size: 12.8px !important;
-            line-height: 1.52 !important;
+            margin: 0 0 7px !important;
+            font-size: 11.55px !important;
+            line-height: 1.39 !important;
             color: #1f1f1f !important;
             text-align: justify !important;
             text-justify: inter-word !important;
@@ -606,77 +613,72 @@ export default function App() {
           .about-keyfacts {
             display: grid !important;
             gap: 0 !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.10) !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
           }
 
           .about-keyfact-row {
             display: grid !important;
-            grid-template-columns: 96px 1fr !important;
-            gap: 14px !important;
-            padding: 8px 0 !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.10) !important;
+            grid-template-columns: 84px 1fr !important;
+            gap: 12px !important;
+            padding: 6px 0 !important;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
           }
 
           .about-keyfact-label {
-            font-size: 11.7px !important;
-            line-height: 1.35 !important;
+            font-size: 10.8px !important;
+            line-height: 1.3 !important;
             color: #111111 !important;
             font-weight: 780 !important;
           }
 
           .about-keyfact-value {
-            font-size: 11.7px !important;
-            line-height: 1.35 !important;
+            font-size: 10.8px !important;
+            line-height: 1.3 !important;
             color: #222222 !important;
           }
 
           .about-modal-footer {
-            display: grid !important;
-            grid-template-columns: 34px 1fr !important;
-            gap: 13px !important;
+            display: flex !important;
             align-items: center !important;
-            padding-top: 18px !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.12) !important;
+            gap: 8px !important;
+            padding-top: 13px !important;
+            border-top: 1px solid rgba(0, 0, 0, 0.10) !important;
             color: #3a3a3a !important;
-            font-size: 12px !important;
-            line-height: 1.45 !important;
+            font-size: 10.9px !important;
+            line-height: 1.35 !important;
           }
 
-          .about-modal-footer .about-modal-icon {
-            width: 30px !important;
-            height: 30px !important;
+          .about-modal-footer .about-inline-icon {
+            width: 15px !important;
+            height: 15px !important;
+            flex-basis: 15px !important;
           }
 
-          .about-modal-footer .about-modal-icon svg {
-            width: 16px !important;
-            height: 16px !important;
+          .about-modal-footer .about-inline-icon svg {
+            width: 15px !important;
+            height: 15px !important;
           }
 
           @media (max-width: 620px) {
             .about-modal-overlay {
-              padding: 18px !important;
+              padding: 16px !important;
             }
 
             .about-modal {
               width: min(94vw, 520px) !important;
-              max-height: 86vh !important;
+              max-height: 88vh !important;
             }
 
             .about-modal-header {
-              padding: 22px 21px 15px !important;
+              padding: 18px 20px 13px !important;
             }
 
             .about-modal-body {
-              padding: 18px 21px 20px !important;
-            }
-
-            .about-modal-section {
-              grid-template-columns: 34px 1fr !important;
-              gap: 13px !important;
+              padding: 15px 20px 17px !important;
             }
 
             .about-keyfact-row {
-              grid-template-columns: 86px 1fr !important;
+              grid-template-columns: 78px 1fr !important;
               gap: 10px !important;
             }
           }
@@ -703,9 +705,9 @@ export default function App() {
           >
             <div className="about-modal-header">
               <div className="about-modal-title-row">
-                <ModalIcon>
+                <InlineIcon>
                   <AboutProjectIcon />
-                </ModalIcon>
+                </InlineIcon>
 
                 <h2 id="about-project-title">About project</h2>
               </div>
@@ -727,107 +729,103 @@ export default function App() {
               </p>
 
               <section className="about-modal-section">
-                <ModalIcon>
-                  <KeyFactsIcon />
-                </ModalIcon>
-
-                <div>
+                <div className="about-section-title">
+                  <InlineIcon>
+                    <KeyFactsIcon />
+                  </InlineIcon>
                   <h3>Key facts</h3>
+                </div>
 
-                  <div className="about-keyfacts">
-                    <div className="about-keyfact-row">
-                      <div className="about-keyfact-label">Focus</div>
-                      <div className="about-keyfact-value">
-                        Biotech and drug-development actors
-                      </div>
+                <div className="about-keyfacts">
+                  <div className="about-keyfact-row">
+                    <div className="about-keyfact-label">Focus</div>
+                    <div className="about-keyfact-value">
+                      Biotech and drug-development actors
                     </div>
+                  </div>
 
-                    <div className="about-keyfact-row">
-                      <div className="about-keyfact-label">Data layer</div>
-                      <div className="about-keyfact-value">
-                        Registered clinical-trial records + selected company
-                        pipeline context
-                      </div>
+                  <div className="about-keyfact-row">
+                    <div className="about-keyfact-label">Data layer</div>
+                    <div className="about-keyfact-value">
+                      Registered clinical-trial records + selected company
+                      pipeline context
                     </div>
+                  </div>
 
-                    <div className="about-keyfact-row">
-                      <div className="about-keyfact-label">Scope</div>
-                      <div className="about-keyfact-value">
-                        Companies, compounds, indications, phases, recruitment
-                        status, source visibility
-                      </div>
+                  <div className="about-keyfact-row">
+                    <div className="about-keyfact-label">Scope</div>
+                    <div className="about-keyfact-value">
+                      Companies, compounds, indications, phases, recruitment
+                      status, source visibility
                     </div>
+                  </div>
 
-                    <div className="about-keyfact-row">
-                      <div className="about-keyfact-label">Not included</div>
-                      <div className="about-keyfact-value">
-                        Medical advice, treatment recommendations, efficacy
-                        claims, investment advice
-                      </div>
+                  <div className="about-keyfact-row">
+                    <div className="about-keyfact-label">Not included</div>
+                    <div className="about-keyfact-value">
+                      Medical advice, treatment recommendations, efficacy
+                      claims, investment advice
                     </div>
                   </div>
                 </div>
               </section>
 
               <section className="about-modal-section">
-                <ModalIcon>
-                  <MethodologyIcon />
-                </ModalIcon>
-
-                <div>
+                <div className="about-section-title">
+                  <InlineIcon>
+                    <MethodologyIcon />
+                  </InlineIcon>
                   <h3>Methodology</h3>
-
-                  <p>
-                    The atlas aggregates and structures information from{" "}
-                    <strong>registered clinical-trial activity</strong> and
-                    selected <strong>pipeline context</strong> from company
-                    materials and credible secondary sources.
-                  </p>
-
-                  <p>
-                    Trial data is sourced from <strong>public trial records</strong>{" "}
-                    and reflects what is publicly visible at the time of data
-                    collection. Pipeline context is treated as visibility context,
-                    not as clinical evidence.
-                  </p>
-
-                  <p>
-                    The visuals use <strong>different units of analysis</strong>.
-                    This allows each view to answer a different question while
-                    keeping registered trials separate from company-reported
-                    pipeline claims.
-                  </p>
                 </div>
+
+                <p>
+                  The atlas structures information from{" "}
+                  <strong>registered clinical-trial activity</strong> and
+                  selected <strong>pipeline context</strong> from company
+                  materials and credible secondary sources.
+                </p>
+
+                <p>
+                  Trial data is sourced from <strong>public trial records</strong>{" "}
+                  and reflects what is publicly visible at the time of data
+                  collection. Pipeline context is treated as visibility context,
+                  not as clinical evidence.
+                </p>
+
+                <p>
+                  The visuals use <strong>different units of analysis</strong>.
+                  This keeps registered trials separate from company-reported
+                  pipeline claims.
+                </p>
               </section>
 
               <section className="about-modal-section">
-                <ModalIcon>
-                  <LimitationsIcon />
-                </ModalIcon>
-
-                <div>
+                <div className="about-section-title">
+                  <InlineIcon>
+                    <LimitationsIcon />
+                  </InlineIcon>
                   <h3>Limitations</h3>
-
-                  <p>
-                    This atlas is based on <strong>public data</strong> and
-                    secondary sources that may be <strong>incomplete</strong>,{" "}
-                    <strong>delayed</strong>, duplicated or inconsistently
-                    structured.
-                  </p>
-
-                  <p>
-                    <strong>Recruitment status</strong> and other trial details
-                    can change and should always be checked at the original
-                    source. Visible activity does not imply efficacy, approval,
-                    safety or commercial success.
-                  </p>
                 </div>
+
+                <p>
+                  This atlas is based on <strong>public data</strong> and
+                  secondary sources that may be <strong>incomplete</strong>,{" "}
+                  <strong>delayed</strong>, duplicated or inconsistently
+                  structured.
+                </p>
+
+                <p>
+                  <strong>Recruitment status</strong> and other trial details can
+                  change and should be checked at the original source. Visible
+                  activity does not imply efficacy, approval, safety or
+                  commercial success.
+                </p>
               </section>
 
               <div className="about-modal-footer">
-                <ModalIcon>
+                <InlineIcon>
                   <CreatorIcon />
-                </ModalIcon>
+                </InlineIcon>
 
                 <div>
                   Created by Kamila Rojek — Data analysis · clinical-trial
@@ -857,6 +855,7 @@ export default function App() {
           visibleHeight={836}
           iframeHeight={930}
           className="hero-frame"
+          src={observableSrc.heroSection1}
         />
       </section>
 
@@ -867,6 +866,7 @@ export default function App() {
           visibleHeight={796}
           iframeHeight={900}
           className="ecosystem-frame"
+          src={observableSrc.visual1EcosystemOverviev}
         />
       </section>
 
@@ -877,7 +877,7 @@ export default function App() {
           visibleHeight={736}
           iframeHeight={850}
           className="company-frame"
-          srcType="company"
+          src={observableSrc.visual1CompanyLandscapePremium1}
         />
       </section>
 
@@ -888,7 +888,7 @@ export default function App() {
           visibleHeight={0}
           iframeHeight={105}
           className="layout-preload-frame"
-          srcType="landscape"
+          src={observableSrc.visualLandscapeLayout}
         />
       </section>
 
@@ -899,7 +899,7 @@ export default function App() {
           visibleHeight={830}
           iframeHeight={990}
           className="compound-frame landscape-frame observable-hard-crop"
-          srcType="visual2"
+          src={observableSrc.visual2Chartminimalistic1a}
           lazyLoad={true}
           onEnter={startPageRain}
         />
@@ -912,7 +912,7 @@ export default function App() {
           visibleHeight={760}
           iframeHeight={940}
           className="indication-frame landscape-frame observable-hard-crop"
-          srcType="landscape"
+          src={observableSrc.visual3Chart}
         />
       </section>
 
@@ -923,7 +923,7 @@ export default function App() {
           visibleHeight={700}
           iframeHeight={880}
           className="phase-frame landscape-frame observable-hard-crop"
-          srcType="landscape"
+          src={observableSrc.visual4PhaseChart}
         />
       </section>
     </main>
