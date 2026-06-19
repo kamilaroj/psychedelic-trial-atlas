@@ -305,8 +305,10 @@ function ObservableFrame({
 
 export default function App() {
   const [aboutOpen, setAboutOpen] = useState(false);
+  const [aboutPulse, setAboutPulse] = useState(false);
   const [pageRainActive, setPageRainActive] = useState(false);
   const pageRainStartedRef = useRef(false);
+  const aboutPulseTimerRef = useRef(null);
 
   const mainApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
   const mainNotebook = "e3028f2577c04f9a@1187";
@@ -396,6 +398,32 @@ export default function App() {
     setPageRainActive(true);
   };
 
+  const triggerAboutPulse = () => {
+    if (aboutPulseTimerRef.current) {
+      window.clearTimeout(aboutPulseTimerRef.current);
+    }
+
+    setAboutPulse(false);
+
+    window.requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
+        setAboutPulse(true);
+
+        aboutPulseTimerRef.current = window.setTimeout(() => {
+          setAboutPulse(false);
+        }, 360);
+      });
+    });
+  };
+
+  useEffect(() => {
+    return () => {
+      if (aboutPulseTimerRef.current) {
+        window.clearTimeout(aboutPulseTimerRef.current);
+      }
+    };
+  }, []);
+
   const observableSrc = useMemo(
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&banner=false&hideFooter=true&api_key=${mainApiKey}`,
@@ -434,6 +462,24 @@ export default function App() {
     <main className="site">
       <style>
         {`
+          @keyframes aboutModalAttentionPulse {
+            0% {
+              transform: scale(1);
+            }
+
+            38% {
+              transform: scale(1.028);
+            }
+
+            68% {
+              transform: scale(0.994);
+            }
+
+            100% {
+              transform: scale(1);
+            }
+          }
+
           .about-project-button {
             display: inline-flex !important;
             align-items: center !important;
@@ -496,6 +542,12 @@ export default function App() {
               0 24px 70px rgba(0, 0, 0, 0.18),
               0 8px 22px rgba(0, 0, 0, 0.10) !important;
             font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
+            transform-origin: center center !important;
+            will-change: transform !important;
+          }
+
+          .about-modal-attention {
+            animation: aboutModalAttentionPulse 360ms cubic-bezier(0.22, 0.78, 0.22, 1) both !important;
           }
 
           .about-modal-header {
@@ -723,10 +775,12 @@ export default function App() {
         <div
           className="about-modal-overlay"
           role="presentation"
-          onClick={() => setAboutOpen(false)}
+          onClick={triggerAboutPulse}
         >
           <section
-            className="about-modal"
+            className={`about-modal ${
+              aboutPulse ? "about-modal-attention" : ""
+            }`}
             role="dialog"
             aria-modal="true"
             aria-labelledby="about-project-title"
