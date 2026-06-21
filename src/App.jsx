@@ -649,83 +649,11 @@ export default function App() {
   const mainApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
   const mainNotebook = "e3028f2577c04f9a@1187";
 
-  const companyApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
-  const companyNotebook = "e3028f2577c04f9a@1187";
-
   const visual2ApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
   const visual2Notebook = "e3028f2577c04f9a@1187";
 
   const landscapeApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
   const landscapeNotebook = "e3028f2577c04f9a@1187";
-
-  const githubLogoBase =
-    "https://psychedelic-trial-atlas.vercel.app/logos/";
-
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-19-added-logos";
-
-  const visual1BLogoVisualScale = useMemo(
-    () => ({
-      "2A_biosciences.png": 2,
-      "algernon.png": 2,
-      "amandala_neuro.png": 2,
-      "asri.png": 2,
-      "ataibeckley.png": 2.05,
-      "beond.png": 2,
-      "betterlife_pharma.png": 2,
-      "biocase_brasil.png": 2,
-      "biomind_labs.png": 1.3,
-      "bright_minds.png": 2.15,
-      "celon_pharma.png": 2,
-      "compass_pathways.png": 2,
-      "definium.png": 2,
-      "delix_therapeutics.png": 2,
-      "demerx.png": 2.15,
-      "gh_research.png": 1,
-      "gilgamesh_pharma.png": 2,
-      "helus.png": 2,
-      "janssen_logo.png": 1.6,
-      "otsuka_mindset_pharma.png": 1.85,
-      "resilient_pharmaceuticals.png": 2,
-      "reunion_neuroscience.png": 1.35,
-      "solvonis_therapeutics.png": 2,
-      "tactogen.png": 2,
-      "transcend_therapeutics_otsuka.png": 2.15,
-      "xylo.png": 1.85
-    }),
-    []
-  );
-
-  const visual1BLogoHoverScale = useMemo(
-    () => ({
-      "2A_biosciences.png": 1,
-      "algernon.png": 1,
-      "amandala_neuro.png": 1,
-      "asri.png": 1,
-      "ataibeckley.png": 1,
-      "beond.png": 1,
-      "betterlife_pharma.png": 1,
-      "biocase_brasil.png": 1,
-      "biomind_labs.png": 0.7,
-      "bright_minds.png": 1,
-      "celon_pharma.png": 1,
-      "compass_pathways.png": 1,
-      "definium.png": 1,
-      "delix_therapeutics.png": 1,
-      "demerx.png": 1,
-      "gh_research.png": 0.288,
-      "gilgamesh_pharma.png": 1.4,
-      "helus.png": 1,
-      "janssen_logo.png": 0.8,
-      "otsuka_mindset_pharma.png": 1,
-      "resilient_pharmaceuticals.png": 1,
-      "reunion_neuroscience.png": 1,
-      "solvonis_therapeutics.png": 1,
-      "tactogen.png": 1,
-      "transcend_therapeutics_otsuka.png": 1,
-      "xylo.png": 1
-    }),
-    []
-  );
 
   const startPageRain = () => {
     if (pageRainStartedRef.current) return;
@@ -768,15 +696,7 @@ export default function App() {
       visualLandscapeLayout: `https://observablehq.com/embed/${landscapeNotebook}?cells=visualLandscapeLayout&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
       visual3Chart: `https://observablehq.com/embed/${landscapeNotebook}?cells=visual3Chart&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
       visual4PhaseChart: `https://observablehq.com/embed/${landscapeNotebook}?cells=visual4PhaseChart&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/${companyNotebook}?cells=visual1CompanyLandscapePremium1&banner=false&hideFooter=true&logoBase=${encodeURIComponent(
-        githubLogoBase
-      )}&logoVisualScale=${encodeURIComponent(
-        JSON.stringify(visual1BLogoVisualScale)
-      )}&logoHoverScale=${encodeURIComponent(
-        JSON.stringify(visual1BLogoHoverScale)
-      )}&logoTuningVersion=${encodeURIComponent(
-        logoTuningVersion
-      )}&api_key=${companyApiKey}`
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1200?cells=visual1CompanyLandscapePremium1&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`
     }),
     [
       mainNotebook,
@@ -784,13 +704,7 @@ export default function App() {
       visual2Notebook,
       visual2ApiKey,
       landscapeNotebook,
-      landscapeApiKey,
-      companyNotebook,
-      companyApiKey,
-      githubLogoBase,
-      logoTuningVersion,
-      visual1BLogoVisualScale,
-      visual1BLogoHoverScale
+      landscapeApiKey
     ]
   );
 
