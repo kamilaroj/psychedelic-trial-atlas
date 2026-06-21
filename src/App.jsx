@@ -649,12 +649,6 @@ export default function App() {
   const mainApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
   const mainNotebook = "e3028f2577c04f9a@1187";
 
-  const visual2ApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
-  const visual2Notebook = "e3028f2577c04f9a@1187";
-
-  const landscapeApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
-  const landscapeNotebook = "e3028f2577c04f9a@1187";
-
   const startPageRain = () => {
     if (pageRainStartedRef.current) return;
 
@@ -692,20 +686,12 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&banner=false&hideFooter=true&api_key=${mainApiKey}`,
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1199?cells=visual1EcosystemOverviev&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
-      visual2Chartminimalistic1a: `https://observablehq.com/embed/${visual2Notebook}?cells=visual2Chartminimalistic1a&banner=false&hideFooter=true&api_key=${visual2ApiKey}`,
-      visualLandscapeLayout: `https://observablehq.com/embed/${landscapeNotebook}?cells=visualLandscapeLayout&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
-      visual3Chart: `https://observablehq.com/embed/${landscapeNotebook}?cells=visual3Chart&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
-      visual4PhaseChart: `https://observablehq.com/embed/${landscapeNotebook}?cells=visual4PhaseChart&banner=false&hideFooter=true&api_key=${landscapeApiKey}`,
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1200?cells=visual1CompanyLandscapePremium1&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1201?cells=visual1CompanyLandscapePremium1&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
+      visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1201?cells=visual2Chartminimalistic1&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
+      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1201?cells=visual3Chart&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
+      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1201?cells=visual4PhaseChart&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`
     }),
-    [
-      mainNotebook,
-      mainApiKey,
-      visual2Notebook,
-      visual2ApiKey,
-      landscapeNotebook,
-      landscapeApiKey
-    ]
+    [mainNotebook, mainApiKey]
   );
 
   return (
@@ -1230,8 +1216,8 @@ export default function App() {
       <section className="story-section visual-story compound-story">
         <ObservableFrame
           title="Compound Activity Landscape"
-          visibleHeight={830}
-          iframeHeight={990}
+          visibleHeight={652}
+          iframeHeight={760}
           className="compound-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual2Chartminimalistic1a}
           lazyLoad={true}
@@ -1242,8 +1228,8 @@ export default function App() {
       <section className="story-section visual-story indication-story">
         <ObservableFrame
           title="Indication Landscape"
-          visibleHeight={760}
-          iframeHeight={940}
+          visibleHeight={608}
+          iframeHeight={720}
           className="indication-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual3Chart}
         />
@@ -1252,8 +1238,8 @@ export default function App() {
       <section className="story-section visual-story phase-story">
         <ObservableFrame
           title="Clinical Phase Landscape"
-          visibleHeight={700}
-          iframeHeight={880}
+          visibleHeight={607}
+          iframeHeight={720}
           className="phase-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual4PhaseChart}
         />
