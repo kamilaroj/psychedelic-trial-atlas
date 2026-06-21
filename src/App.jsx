@@ -361,18 +361,12 @@ function ScrollProgressBar() {
             right: 18px;
             z-index: 70;
             pointer-events: none;
-            font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-            font-size: 10px;
+            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+            font-size: 15px;
             line-height: 1;
-            letter-spacing: 0.04em;
-            font-weight: 650;
-            color: rgba(29, 29, 31, 0.54);
-            background: rgba(241, 240, 236, 0.78);
-            border: 1px solid rgba(29, 29, 31, 0.08);
-            border-radius: 999px;
-            padding: 5px 8px 5px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            letter-spacing: -0.035em;
+            font-weight: 780;
+            color: #1d1d1f;
           }
         `}
       </style>
