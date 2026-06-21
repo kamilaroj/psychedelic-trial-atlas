@@ -650,10 +650,10 @@ export default function App() {
   const mainNotebook = "e3028f2577c04f9a@1187";
 
   const companyApiKey = "c76bbf6056ba531c2ed8bc19951e858dc356a8fd";
-  const companyNotebook = "e3028f2577c04f9a@1201";
+  const companyNotebook = "e3028f2577c04f9a@1208";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-uploaded-logos-2026-06-21-v4";
+  const logoTuningVersion = "visual1b-observable-1208-2026-06-21-v1";
 
   const logoVisualScale = {
     "2A_biosciences.png": 1.25,
@@ -1325,8 +1325,8 @@ export default function App() {
       <section className="story-section visual-story company-story">
         <ObservableFrame
           title="Company Landscape Premium"
-          visibleHeight={736}
-          iframeHeight={850}
+          visibleHeight={776}
+          iframeHeight={900}
           className="company-frame"
           src={observableSrc.visual1CompanyLandscapePremium1}
         />
