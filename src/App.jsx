@@ -303,6 +303,71 @@ function ObservableFrame({
   );
 }
 
+function ScrollProgressBar() {
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const updateScrollProgress = () => {
+      const documentElement = document.documentElement;
+      const scrollTop = window.scrollY || documentElement.scrollTop || 0;
+      const scrollableHeight =
+        documentElement.scrollHeight - window.innerHeight;
+
+      const progress =
+        scrollableHeight > 0 ? scrollTop / scrollableHeight : 0;
+
+      setScrollProgress(Math.min(Math.max(progress, 0), 1));
+    };
+
+    updateScrollProgress();
+
+    window.addEventListener("scroll", updateScrollProgress, { passive: true });
+    window.addEventListener("resize", updateScrollProgress);
+
+    return () => {
+      window.removeEventListener("scroll", updateScrollProgress);
+      window.removeEventListener("resize", updateScrollProgress);
+    };
+  }, []);
+
+  return (
+    <>
+      <style>
+        {`
+          .page-scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            z-index: 70;
+            pointer-events: none;
+            background: rgba(29, 29, 31, 0.10);
+          }
+
+          .page-scroll-progress-bar {
+            width: 100%;
+            height: 100%;
+            transform-origin: left center;
+            transform: scaleX(var(--scroll-progress));
+            background: rgba(29, 29, 31, 0.58);
+            transition: transform 90ms linear;
+          }
+        `}
+      </style>
+
+      <div className="page-scroll-progress" aria-hidden="true">
+        <div
+          className="page-scroll-progress-bar"
+          style={{
+            "--scroll-progress": scrollProgress
+          }}
+        />
+      </div>
+    </>
+  );
+}
+
 export default function App() {
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutPulse, setAboutPulse] = useState(false);
@@ -460,6 +525,8 @@ export default function App() {
 
   return (
     <main className="site">
+      <ScrollProgressBar />
+
       <style>
         {`
           @keyframes aboutModalAttentionPulse {
