@@ -357,11 +357,10 @@ function ScrollProgressBar() {
 
           .page-scroll-progress-percent {
             position: fixed;
-            top: 10px;
-            left: clamp(26px, calc(var(--scroll-progress) * 100vw), calc(100vw - 26px));
+            top: 9px;
+            right: 18px;
             z-index: 70;
             pointer-events: none;
-            transform: translateX(-50%);
             font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
             font-size: 10px;
             line-height: 1;
@@ -374,7 +373,6 @@ function ScrollProgressBar() {
             padding: 5px 8px 5px;
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
-            transition: left 90ms linear;
           }
         `}
       </style>
@@ -388,13 +386,7 @@ function ScrollProgressBar() {
         />
       </div>
 
-      <div
-        className="page-scroll-progress-percent"
-        style={{
-          "--scroll-progress": scrollProgress
-        }}
-        aria-hidden="true"
-      >
+      <div className="page-scroll-progress-percent" aria-hidden="true">
         {scrollPercent}%
       </div>
     </>
