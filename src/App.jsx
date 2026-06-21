@@ -1203,21 +1203,11 @@ export default function App() {
         />
       </section>
 
-      <section className="layout-preload-section" aria-hidden="true">
-        <ObservableFrame
-          title="Visual Landscape Layout"
-          visibleHeight={0}
-          iframeHeight={105}
-          className="layout-preload-frame"
-          src={observableSrc.visualLandscapeLayout}
-        />
-      </section>
-
-            <section className="story-section visual-story compound-story">
+      <section className="story-section visual-story compound-story">
         <ObservableFrame
           title="Compound Activity Landscape"
-          visibleHeight={830}
-          iframeHeight={940}
+          visibleHeight={900}
+          iframeHeight={1040}
           className="compound-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual2Chartminimalistic1a}
           lazyLoad={true}
@@ -1228,8 +1218,8 @@ export default function App() {
       <section className="story-section visual-story indication-story">
         <ObservableFrame
           title="Indication Landscape"
-          visibleHeight={760}
-          iframeHeight={860}
+          visibleHeight={850}
+          iframeHeight={980}
           className="indication-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual3Chart}
         />
@@ -1238,11 +1228,12 @@ export default function App() {
       <section className="story-section visual-story phase-story">
         <ObservableFrame
           title="Clinical Phase Landscape"
-          visibleHeight={760}
-          iframeHeight={860}
+          visibleHeight={850}
+          iframeHeight={980}
           className="phase-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual4PhaseChart}
         />
       </section>
+    </main>
   );
 }
