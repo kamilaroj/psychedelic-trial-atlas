@@ -305,6 +305,7 @@ function ObservableFrame({
 
 function ScrollProgressBar() {
   const [scrollProgress, setScrollProgress] = useState(0);
+  const scrollPercent = Math.round(scrollProgress * 100);
 
   useEffect(() => {
     const updateScrollProgress = () => {
@@ -353,6 +354,26 @@ function ScrollProgressBar() {
             background: rgba(29, 29, 31, 0.58);
             transition: transform 90ms linear;
           }
+
+          .page-scroll-progress-percent {
+            position: fixed;
+            top: 9px;
+            right: 18px;
+            z-index: 70;
+            pointer-events: none;
+            font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+            font-size: 10px;
+            line-height: 1;
+            letter-spacing: 0.04em;
+            font-weight: 650;
+            color: rgba(29, 29, 31, 0.54);
+            background: rgba(241, 240, 236, 0.78);
+            border: 1px solid rgba(29, 29, 31, 0.08);
+            border-radius: 999px;
+            padding: 5px 8px 5px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+          }
         `}
       </style>
 
@@ -363,6 +384,10 @@ function ScrollProgressBar() {
             "--scroll-progress": scrollProgress
           }}
         />
+      </div>
+
+      <div className="page-scroll-progress-percent" aria-hidden="true">
+        {scrollPercent}%
       </div>
     </>
   );
