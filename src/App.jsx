@@ -860,6 +860,30 @@ export default function App() {
             background: transparent !important;
           }
 
+          .visual-story .iframe-crop {
+            border-radius: 34px !important;
+            background: rgba(248, 248, 245, 0.90) !important;
+            border: 1px solid rgba(255, 255, 255, 0.62) !important;
+            box-shadow:
+              0 28px 86px rgba(42, 70, 84, 0.14),
+              0 8px 24px rgba(29, 29, 31, 0.06),
+              inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+            overflow: hidden !important;
+            transform: translateZ(0);
+          }
+
+          .visual-story .atlas-iframe {
+            border-radius: 34px !important;
+            background: #f1f0ec !important;
+          }
+
+          .hero-frame {
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            border: 0 !important;
+            background: transparent !important;
+          }
+
           .hero-story {
             background:
               radial-gradient(circle at 50% 22%, rgba(255,255,255,0.38), transparent 36%),
