@@ -281,7 +281,7 @@ function ObservableFrame({
       className={`iframe-crop ${className || ""}`}
       style={{
         height: `${visibleHeight}px`,
-        background: "#f1f0ec",
+        background: "transparent",
         overflow: "hidden"
       }}
     >
@@ -830,6 +830,42 @@ export default function App() {
 
       <style>
         {`
+          html,
+          body,
+          #root {
+            min-height: 100%;
+            background:
+              radial-gradient(circle at 50% 10%, rgba(185, 212, 224, 0.72), transparent 34%),
+              radial-gradient(circle at 18% 22%, rgba(151, 181, 197, 0.34), transparent 31%),
+              radial-gradient(circle at 82% 18%, rgba(199, 215, 224, 0.38), transparent 28%),
+              linear-gradient(180deg, #8faebe 0%, #dbe8ed 42%, #f7f7f4 82%, #f1f0ec 100%);
+            background-attachment: fixed;
+          }
+
+          body {
+            margin: 0;
+          }
+
+          .site {
+            min-height: 100vh;
+            background:
+              linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(241,240,236,0.20) 100%);
+          }
+
+          .story-section {
+            background: transparent !important;
+          }
+
+          .iframe-crop {
+            background: transparent !important;
+          }
+
+          .hero-story {
+            background:
+              radial-gradient(circle at 50% 22%, rgba(255,255,255,0.38), transparent 36%),
+              linear-gradient(180deg, rgba(143,174,190,0.34) 0%, rgba(241,240,236,0.02) 78%) !important;
+          }
+
           @keyframes aboutModalAttentionPulse {
             0% {
               transform: scale(1);
