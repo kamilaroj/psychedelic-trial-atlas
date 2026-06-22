@@ -358,7 +358,7 @@ function ScrollProgressBar() {
           .page-scroll-progress-percent {
             position: fixed;
             top: 9px;
-            right: 18px;
+            left: 18px;
             z-index: 70;
             pointer-events: none;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
@@ -381,7 +381,7 @@ function ScrollProgressBar() {
       </div>
 
       <div className="page-scroll-progress-percent" aria-hidden="true">
-        {scrollPercent}%
+        {scrollPercent} %
       </div>
     </>
   );
