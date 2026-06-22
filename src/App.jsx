@@ -848,6 +848,24 @@ export default function App() {
             }
           }
 
+          .company-story {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+          }
+
+          .company-frame {
+            width: min(100vw, 1720px) !important;
+            max-width: none !important;
+            margin-left: calc(50% - min(50vw, 860px)) !important;
+            margin-right: auto !important;
+          }
+
+          .company-frame .atlas-iframe {
+            width: calc(100% + 18px) !important;
+            max-width: none !important;
+            margin-left: -9px !important;
+          }
+
           .about-project-button {
             display: inline-flex !important;
             align-items: center !important;
@@ -1325,8 +1343,8 @@ export default function App() {
       <section className="story-section visual-story company-story">
         <ObservableFrame
           title="Company Landscape Premium"
-          visibleHeight={776}
-          iframeHeight={900}
+          visibleHeight={836}
+          iframeHeight={960}
           className="company-frame"
           src={observableSrc.visual1CompanyLandscapePremium1}
         />
