@@ -1,6 +1,29 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 
+function useViewportWidth() {
+  const [viewportWidth, setViewportWidth] = useState(() => {
+    if (typeof window === "undefined") return 1600;
+    return window.innerWidth;
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setViewportWidth(window.innerWidth);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return viewportWidth;
+}
+
 function PageRainOverlay({ active, onDone }) {
   const particles = useMemo(() => {
     const colors = [
@@ -358,7 +381,7 @@ function ScrollProgressBar() {
           .page-scroll-progress-percent {
             position: fixed;
             top: 9px;
-            left: 18px;
+            left: calc(18px + ((100vw - 44px) * var(--scroll-progress)));
             z-index: 70;
             pointer-events: none;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
@@ -367,6 +390,8 @@ function ScrollProgressBar() {
             letter-spacing: -0.035em;
             font-weight: 780;
             color: #1d1d1f;
+            transform: translateX(-50%);
+            transition: left 90ms linear;
           }
         `}
       </style>
@@ -380,7 +405,13 @@ function ScrollProgressBar() {
         />
       </div>
 
-      <div className="page-scroll-progress-percent" aria-hidden="true">
+      <div
+        className="page-scroll-progress-percent"
+        aria-hidden="true"
+        style={{
+          "--scroll-progress": scrollProgress
+        }}
+      >
         {scrollPercent} %
       </div>
     </>
@@ -601,6 +632,30 @@ function SectionProgressNav() {
             width: 28px;
           }
 
+          @media (max-width: 1440px) {
+            .section-progress-nav {
+              left: 18px;
+              transform: translateY(-50%) scale(0.92);
+              transform-origin: left center;
+            }
+          }
+
+          @media (max-width: 1200px) {
+            .section-progress-nav {
+              left: 14px;
+              transform: translateY(-50%) scale(0.86);
+              transform-origin: left center;
+            }
+          }
+
+          @media (max-width: 1024px) {
+            .section-progress-nav {
+              left: 10px;
+              transform: translateY(-50%) scale(0.82);
+              transform-origin: left center;
+            }
+          }
+
           @media (max-width: 920px) {
             .section-progress-nav {
               display: none;
@@ -640,11 +695,98 @@ function SectionProgressNav() {
 }
 
 export default function App() {
+  const viewportWidth = useViewportWidth();
+
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutPulse, setAboutPulse] = useState(false);
   const [pageRainActive, setPageRainActive] = useState(false);
   const pageRainStartedRef = useRef(false);
   const aboutPulseTimerRef = useRef(null);
+
+  const frameHeights = useMemo(() => {
+    if (viewportWidth <= 900) {
+      return {
+        heroVisible: 820,
+        heroIframe: 930,
+        ecosystemVisible: 760,
+        ecosystemIframe: 870,
+        companyVisible: 790,
+        companyIframe: 910,
+        compoundVisible: 820,
+        compoundIframe: 960,
+        indicationVisible: 800,
+        indicationIframe: 930,
+        phaseVisible: 800,
+        phaseIframe: 930
+      };
+    }
+
+    if (viewportWidth <= 1024) {
+      return {
+        heroVisible: 690,
+        heroIframe: 810,
+        ecosystemVisible: 720,
+        ecosystemIframe: 835,
+        companyVisible: 740,
+        companyIframe: 870,
+        compoundVisible: 780,
+        compoundIframe: 930,
+        indicationVisible: 760,
+        indicationIframe: 900,
+        phaseVisible: 760,
+        phaseIframe: 900
+      };
+    }
+
+    if (viewportWidth <= 1200) {
+      return {
+        heroVisible: 720,
+        heroIframe: 840,
+        ecosystemVisible: 750,
+        ecosystemIframe: 860,
+        companyVisible: 770,
+        companyIframe: 900,
+        compoundVisible: 815,
+        compoundIframe: 960,
+        indicationVisible: 790,
+        indicationIframe: 930,
+        phaseVisible: 790,
+        phaseIframe: 930
+      };
+    }
+
+    if (viewportWidth <= 1440) {
+      return {
+        heroVisible: 760,
+        heroIframe: 880,
+        ecosystemVisible: 770,
+        ecosystemIframe: 880,
+        companyVisible: 800,
+        companyIframe: 930,
+        compoundVisible: 850,
+        compoundIframe: 1000,
+        indicationVisible: 820,
+        indicationIframe: 960,
+        phaseVisible: 820,
+        phaseIframe: 960
+      };
+    }
+
+    return {
+      heroVisible: 836,
+      heroIframe: 930,
+      ecosystemVisible: 796,
+      ecosystemIframe: 900,
+      companyVisible: 836,
+      companyIframe: 960,
+      compoundVisible: 900,
+      compoundIframe: 1040,
+      indicationVisible: 850,
+      indicationIframe: 980,
+      phaseVisible: 850,
+      phaseIframe: 980
+    };
+  }, [viewportWidth]);
 
   const mainApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
   const mainNotebook = "e3028f2577c04f9a@1187";
@@ -924,6 +1066,62 @@ export default function App() {
             width: calc(100% + 18px) !important;
             max-width: none !important;
             margin-left: -9px !important;
+          }
+
+          @media (max-width: 1440px) {
+            .company-story {
+              padding-left: 56px !important;
+              padding-right: 56px !important;
+            }
+
+            .company-frame {
+              width: min(100%, 1240px) !important;
+              max-width: 1240px !important;
+              margin-left: auto !important;
+              margin-right: auto !important;
+            }
+          }
+
+          @media (max-width: 1200px) {
+            .company-story {
+              padding-left: 44px !important;
+              padding-right: 44px !important;
+            }
+
+            .company-frame {
+              width: min(100%, 1060px) !important;
+              max-width: 1060px !important;
+              margin-left: auto !important;
+              margin-right: auto !important;
+            }
+          }
+
+          @media (max-width: 1024px) {
+            .company-story {
+              padding-left: 32px !important;
+              padding-right: 32px !important;
+            }
+
+            .company-frame {
+              width: min(100%, 940px) !important;
+              max-width: 940px !important;
+              margin-left: auto !important;
+              margin-right: auto !important;
+            }
+          }
+
+          @media (max-width: 900px) {
+            .company-story {
+              padding-left: 16px !important;
+              padding-right: 16px !important;
+            }
+
+            .company-frame {
+              width: 100% !important;
+              max-width: 100% !important;
+              margin-left: auto !important;
+              margin-right: auto !important;
+            }
           }
 
           .about-project-button {
@@ -1383,8 +1581,8 @@ export default function App() {
 
         <ObservableFrame
           title="Psychedelic Trial Atlas Hero"
-          visibleHeight={836}
-          iframeHeight={930}
+          visibleHeight={frameHeights.heroVisible}
+          iframeHeight={frameHeights.heroIframe}
           className="hero-frame"
           src={observableSrc.heroSection1}
         />
@@ -1393,8 +1591,8 @@ export default function App() {
       <section className="story-section visual-story ecosystem-story">
         <ObservableFrame
           title="The Psychedelic Ecosystem"
-          visibleHeight={796}
-          iframeHeight={900}
+          visibleHeight={frameHeights.ecosystemVisible}
+          iframeHeight={frameHeights.ecosystemIframe}
           className="ecosystem-frame"
           src={observableSrc.visual1EcosystemOverviev}
         />
@@ -1403,8 +1601,8 @@ export default function App() {
       <section className="story-section visual-story company-story">
         <ObservableFrame
           title="Company Landscape Premium"
-          visibleHeight={836}
-          iframeHeight={960}
+          visibleHeight={frameHeights.companyVisible}
+          iframeHeight={frameHeights.companyIframe}
           className="company-frame"
           src={observableSrc.visual1CompanyLandscapePremium1}
         />
@@ -1413,8 +1611,8 @@ export default function App() {
       <section className="story-section visual-story compound-story">
         <ObservableFrame
           title="Compound Activity Landscape"
-          visibleHeight={900}
-          iframeHeight={1040}
+          visibleHeight={frameHeights.compoundVisible}
+          iframeHeight={frameHeights.compoundIframe}
           className="compound-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual2Chartminimalistic1a}
           lazyLoad={true}
@@ -1425,8 +1623,8 @@ export default function App() {
       <section className="story-section visual-story indication-story">
         <ObservableFrame
           title="Indication Landscape"
-          visibleHeight={850}
-          iframeHeight={980}
+          visibleHeight={frameHeights.indicationVisible}
+          iframeHeight={frameHeights.indicationIframe}
           className="indication-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual3Chart}
         />
@@ -1435,8 +1633,8 @@ export default function App() {
       <section className="story-section visual-story phase-story">
         <ObservableFrame
           title="Clinical Phase Landscape"
-          visibleHeight={850}
-          iframeHeight={980}
+          visibleHeight={frameHeights.phaseVisible}
+          iframeHeight={frameHeights.phaseIframe}
           className="phase-frame landscape-frame observable-hard-crop"
           src={observableSrc.visual4PhaseChart}
         />
