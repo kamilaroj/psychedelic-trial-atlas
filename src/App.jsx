@@ -894,24 +894,15 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}`,
 
-      visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1199?cells=visual1EcosystemOverviev&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
+      visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual1EcosystemOverviev&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual1CompanyLandscapePremium1:
-        `https://observablehq.com/embed/${companyNotebook}` +
-        `?cells=visual1CompanyLandscapePremium1` +
-        `&banner=false` +
-        `&hideFooter=true` +
-        `&logoBase=${encodeURIComponent(githubLogoBase)}` +
-        `&logoVisualScale=${encodedLogoVisualScale}` +
-        `&logoHoverScale=${encodedLogoHoverScale}` +
-        `&logoTuningVersion=${encodeURIComponent(logoTuningVersion)}` +
-        `&api_key=${companyApiKey}`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual1CompanyLandscapePremium1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1201?cells=visual2Chartminimalistic1&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
+      visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1201?cells=visual3Chart&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
+      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual3Chart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1201?cells=visual4PhaseChart&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`
+      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual4PhaseChart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`
     }),
     [
       mainNotebook,
