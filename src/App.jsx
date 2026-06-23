@@ -722,6 +722,15 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
       className="company-external-panel"
       aria-label={`${selectedCompany.company || "Company"} details`}
     >
+      <button
+        className="company-external-panel-close company-external-panel-close-floating"
+        type="button"
+        onClick={onClose}
+        aria-label="Close company details"
+      >
+        ×
+      </button>
+
       <div className="company-external-panel-inner">
         {selectedCompany.logoUrl && (
           <div className="company-external-panel-logo">
@@ -765,15 +774,6 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
               </div>
             )}
           </div>
-
-          <button
-            className="company-external-panel-close"
-            type="button"
-            onClick={onClose}
-            aria-label="Close company details"
-          >
-            ×
-          </button>
         </div>
 
         <div className="company-external-panel-metrics">
@@ -1300,7 +1300,11 @@ export default function App() {
       </section>
 
       <section className="story-section visual-story company-story">
-        <div className="company-visual-shell">
+        <div
+          className={`company-visual-shell ${
+            selectedCompany ? "company-visual-shell-panel-open" : ""
+          }`}
+        >
           <ObservableFrame
             title="Company Landscape Premium"
             visibleHeight={frameHeights.companyVisible}
