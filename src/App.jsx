@@ -718,31 +718,31 @@ export default function App() {
       };
     }
 
-    const heroVisible = clampNumber(viewportHeight * 0.78, 620, 760);
-    const ecosystemVisible = clampNumber(viewportHeight * 0.8, 660, 800);
-    const companyVisible = clampNumber(viewportHeight * 0.82, 690, 820);
-    const compoundVisible = clampNumber(viewportHeight * 0.84, 700, 850);
-    const indicationVisible = clampNumber(viewportHeight * 0.82, 690, 820);
-    const phaseVisible = clampNumber(viewportHeight * 0.82, 690, 820);
+    const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
+    const ecosystemVisible = clampNumber(viewportHeight * 0.78, 640, 780);
+    const companyVisible = clampNumber(viewportHeight * 0.8, 660, 800);
+    const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
+    const indicationVisible = clampNumber(viewportHeight * 0.8, 660, 800);
+    const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
 
     return {
       heroVisible,
-      heroIframe: heroVisible + 110,
+      heroIframe: heroVisible + 105,
 
       ecosystemVisible,
-      ecosystemIframe: ecosystemVisible + 120,
+      ecosystemIframe: ecosystemVisible + 110,
 
       companyVisible,
-      companyIframe: companyVisible + 130,
+      companyIframe: companyVisible + 120,
 
       compoundVisible,
-      compoundIframe: compoundVisible + 145,
+      compoundIframe: compoundVisible + 120,
 
       indicationVisible,
-      indicationIframe: indicationVisible + 135,
+      indicationIframe: indicationVisible + 115,
 
       phaseVisible,
-      phaseIframe: phaseVisible + 135
+      phaseIframe: phaseVisible + 115
     };
   }, [viewportWidth, viewportHeight]);
 
@@ -1073,7 +1073,7 @@ export default function App() {
                 </InlineIcon>
 
                 <div>
-                  Created by Kamila Rojek — Data analysis · clinical-trial
+                  Created by Kamila Rojek · Data analysis · clinical-trial
                   intelligence · visual storytelling
                 </div>
               </div>
@@ -1131,7 +1131,7 @@ export default function App() {
           title="Compound Activity Landscape"
           visibleHeight={frameHeights.compoundVisible}
           iframeHeight={frameHeights.compoundIframe}
-          className="compound-frame landscape-frame observable-hard-crop"
+          className="compound-frame landscape-frame"
           src={observableSrc.visual2Chartminimalistic1a}
           lazyLoad={true}
           onEnter={startPageRain}
@@ -1143,7 +1143,7 @@ export default function App() {
           title="Indication Landscape"
           visibleHeight={frameHeights.indicationVisible}
           iframeHeight={frameHeights.indicationIframe}
-          className="indication-frame landscape-frame observable-hard-crop"
+          className="indication-frame landscape-frame"
           src={observableSrc.visual3Chart}
         />
       </section>
@@ -1153,7 +1153,7 @@ export default function App() {
           title="Clinical Phase Landscape"
           visibleHeight={frameHeights.phaseVisible}
           iframeHeight={frameHeights.phaseIframe}
-          className="phase-frame landscape-frame observable-hard-crop"
+          className="phase-frame landscape-frame"
           src={observableSrc.visual4PhaseChart}
         />
       </section>
