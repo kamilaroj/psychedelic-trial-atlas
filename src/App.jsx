@@ -691,12 +691,188 @@ function SectionProgressNav() {
   );
 }
 
+function normalizeUrlLabel(url) {
+  return String(url || "")
+    .replace(/^https?:\/\//i, "")
+    .replace(/^www\./i, "")
+    .replace(/\/$/g, "");
+}
+
+function CompanyExternalPanel({ selectedCompany, onClose }) {
+  if (!selectedCompany) return null;
+
+  const listToText = (value, fallback = "Insufficient data to verify") => {
+    if (!Array.isArray(value) || value.length === 0) return fallback;
+
+    return value.filter(Boolean).join(", ");
+  };
+
+  const websites = Array.isArray(selectedCompany.websites)
+    ? selectedCompany.websites
+    : Array.isArray(selectedCompany.website)
+      ? selectedCompany.website
+      : [];
+
+  const trials = Array.isArray(selectedCompany.trials)
+    ? selectedCompany.trials
+    : [];
+
+  return (
+    <aside
+      className="company-external-panel"
+      aria-label={`${selectedCompany.company || "Company"} details`}
+    >
+      <div className="company-external-panel-inner">
+        {selectedCompany.logoUrl && (
+          <div className="company-external-panel-logo">
+            <img
+              src={selectedCompany.logoUrl}
+              alt={`${selectedCompany.company || "Company"} logo`}
+            />
+          </div>
+        )}
+
+        <div className="company-external-panel-header">
+          <div>
+            <h3 className="company-external-panel-title">
+              {selectedCompany.company || "Company"}
+            </h3>
+
+            <div className="company-external-panel-subtitle">
+              {selectedCompany.hasRegistered
+                ? "Company with public registered trial activity"
+                : "Company visible through pipeline or context sources"}
+            </div>
+
+            {websites.length > 0 && (
+              <div className="company-external-panel-websites">
+                {websites.map((url) => (
+                  <a
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {normalizeUrlLabel(url)}
+                  </a>
+                ))}
+              </div>
+            )}
+
+            {websites.length === 0 && selectedCompany.noVerifiedWebsite && (
+              <div className="company-external-panel-subtitle">
+                No official website verified
+              </div>
+            )}
+          </div>
+
+          <button
+            className="company-external-panel-close"
+            type="button"
+            onClick={onClose}
+            aria-label="Close company details"
+          >
+            ×
+          </button>
+        </div>
+
+        <div className="company-external-panel-metrics">
+          <div className="company-external-panel-metric">
+            <div className="company-external-panel-metric-number">
+              {selectedCompany.activityUnits ?? 0}
+            </div>
+            <div className="company-external-panel-metric-label">
+              Visible activity
+            </div>
+          </div>
+
+          <div className="company-external-panel-metric">
+            <div className="company-external-panel-metric-number">
+              {selectedCompany.registeredUnits ?? 0}
+            </div>
+            <div className="company-external-panel-metric-label">
+              Registered trials
+            </div>
+          </div>
+
+          <div className="company-external-panel-metric">
+            <div className="company-external-panel-metric-number">
+              {selectedCompany.pipelineUnits ?? 0}
+            </div>
+            <div className="company-external-panel-metric-label">
+              Pipeline context
+            </div>
+          </div>
+        </div>
+
+        <div className="company-external-panel-section">
+          <div className="company-external-panel-kicker">Assets</div>
+          <div className="company-external-panel-value">
+            {listToText(selectedCompany.assets)}
+          </div>
+        </div>
+
+        <div className="company-external-panel-section">
+          <div className="company-external-panel-kicker">
+            Compound families
+          </div>
+          <div className="company-external-panel-value">
+            {listToText(selectedCompany.families)}
+          </div>
+        </div>
+
+        <div className="company-external-panel-section">
+          <div className="company-external-panel-kicker">
+            Therapeutic areas
+          </div>
+          <div className="company-external-panel-value">
+            {listToText(selectedCompany.indications)}
+          </div>
+        </div>
+
+        {selectedCompany.hasRegistered && (
+          <div className="company-external-panel-section">
+            <div className="company-external-panel-kicker">Countries</div>
+            <div className="company-external-panel-value">
+              {listToText(selectedCompany.countries)}
+            </div>
+          </div>
+        )}
+
+        {trials.length > 0 && (
+          <div className="company-external-panel-section">
+            <div className="company-external-panel-kicker">Trial IDs</div>
+            <div className="company-external-panel-value company-external-panel-trials">
+              {trials.map((trial) =>
+                trial.url ? (
+                  <a
+                    key={`${trial.id}-${trial.url}`}
+                    href={trial.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {trial.id}
+                  </a>
+                ) : (
+                  <span key={trial.id}>{trial.id}</span>
+                )
+              )}
+            </div>
+          </div>
+        )}
+      </div>
+    </aside>
+  );
+}
+
 export default function App() {
   const { width: viewportWidth, height: viewportHeight } = useViewportSize();
 
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutPulse, setAboutPulse] = useState(false);
   const [pageRainActive, setPageRainActive] = useState(false);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+
   const pageRainStartedRef = useRef(false);
   const aboutPulseTimerRef = useRef(null);
 
@@ -881,6 +1057,22 @@ export default function App() {
       });
     });
   };
+
+  useEffect(() => {
+    const handleCompanyMessage = (event) => {
+      const message = event.data;
+
+      if (!message || message.type !== "UNICORN_COMPANY_SELECTED") return;
+
+      setSelectedCompany(message.payload || null);
+    };
+
+    window.addEventListener("message", handleCompanyMessage);
+
+    return () => {
+      window.removeEventListener("message", handleCompanyMessage);
+    };
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -1108,13 +1300,20 @@ export default function App() {
       </section>
 
       <section className="story-section visual-story company-story">
-        <ObservableFrame
-          title="Company Landscape Premium"
-          visibleHeight={frameHeights.companyVisible}
-          iframeHeight={frameHeights.companyIframe}
-          className="company-frame"
-          src={observableSrc.visual1CompanyLandscapePremium1}
-        />
+        <div className="company-visual-shell">
+          <ObservableFrame
+            title="Company Landscape Premium"
+            visibleHeight={frameHeights.companyVisible}
+            iframeHeight={frameHeights.companyIframe}
+            className="company-frame"
+            src={observableSrc.visual1CompanyLandscapePremium1}
+          />
+
+          <CompanyExternalPanel
+            selectedCompany={selectedCompany}
+            onClose={() => setSelectedCompany(null)}
+          />
+        </div>
       </section>
 
       <section className="story-section visual-story compound-story">
