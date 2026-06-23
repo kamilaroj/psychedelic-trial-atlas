@@ -8,10 +8,7 @@ function clampNumber(value, min, max) {
 function useViewportSize() {
   const [viewportSize, setViewportSize] = useState(() => {
     if (typeof window === "undefined") {
-      return {
-        width: 1440,
-        height: 900
-      };
+      return { width: 1440, height: 900 };
     }
 
     return {
@@ -291,7 +288,7 @@ function ObservableFrame({
 
           window.setTimeout(() => {
             setShouldLoad(true);
-          }, 700);
+          }, 500);
 
           observer.disconnect();
         }
@@ -379,10 +376,10 @@ function ScrollProgressBar() {
             top: 0;
             left: 0;
             width: 100%;
-            height: 4px;
+            height: 3px;
             z-index: 70;
             pointer-events: none;
-            background: rgba(29, 29, 31, 0.10);
+            background: rgba(29, 29, 31, 0.08);
           }
 
           .page-scroll-progress-bar {
@@ -390,7 +387,7 @@ function ScrollProgressBar() {
             height: 100%;
             transform-origin: left center;
             transform: scaleX(var(--scroll-progress));
-            background: rgba(29, 29, 31, 0.58);
+            background: rgba(29, 29, 31, 0.50);
             transition: transform 90ms linear;
           }
 
@@ -401,13 +398,19 @@ function ScrollProgressBar() {
             z-index: 70;
             pointer-events: none;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-            font-size: 15px;
+            font-size: 12px;
             line-height: 1;
-            letter-spacing: -0.035em;
-            font-weight: 780;
-            color: #1d1d1f;
+            letter-spacing: -0.025em;
+            font-weight: 760;
+            color: rgba(29, 29, 31, 0.76);
             transform: translateX(-50%);
             transition: left 90ms linear;
+          }
+
+          @media (max-width: 900px) {
+            .page-scroll-progress-percent {
+              display: none;
+            }
           }
         `}
       </style>
@@ -428,7 +431,7 @@ function ScrollProgressBar() {
           "--scroll-progress": scrollProgress
         }}
       >
-        {scrollPercent} %
+        {scrollPercent}%
       </div>
     </>
   );
@@ -524,7 +527,7 @@ function SectionProgressNav() {
 
     element.scrollIntoView({
       behavior: "smooth",
-      block: "start"
+      block: "center"
     });
   };
 
@@ -534,10 +537,10 @@ function SectionProgressNav() {
         {`
           .section-progress-nav {
             position: fixed;
-            left: clamp(12px, 1.45vw, 28px);
+            left: clamp(12px, 1.75vw, 28px);
             top: 50%;
             z-index: 65;
-            transform: translateY(-50%) scale(clamp(0.84, 0.68 + 0.018vw, 1));
+            transform: translateY(-50%) scale(clamp(0.84, 0.92vw, 1));
             transform-origin: left center;
             pointer-events: auto;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
@@ -547,7 +550,7 @@ function SectionProgressNav() {
           .section-progress-nav-inner {
             position: relative;
             display: grid;
-            gap: clamp(14px, 1.15vw, 18px);
+            gap: clamp(13px, 1.28vw, 18px);
             padding: 12px 0;
           }
 
@@ -557,7 +560,7 @@ function SectionProgressNav() {
             bottom: 24px;
             left: 8px;
             width: 1px;
-            background: rgba(29, 29, 31, 0.14);
+            background: rgba(29, 29, 31, 0.11);
           }
 
           .section-progress-nav-item {
@@ -570,7 +573,7 @@ function SectionProgressNav() {
             border: 0;
             padding: 0;
             background: transparent;
-            color: rgba(29, 29, 31, 0.38);
+            color: rgba(29, 29, 31, 0.34);
             cursor: pointer;
             text-align: left;
             transition:
@@ -589,8 +592,8 @@ function SectionProgressNav() {
             height: 8px;
             margin-left: 4px;
             border-radius: 999px;
-            background: rgba(29, 29, 31, 0.24);
-            box-shadow: 0 0 0 6px rgba(241, 240, 236, 0.94);
+            background: rgba(29, 29, 31, 0.22);
+            box-shadow: 0 0 0 6px rgba(241, 240, 236, 0.88);
             transition:
               width 180ms ease,
               height 180ms ease,
@@ -635,7 +638,7 @@ function SectionProgressNav() {
             margin-left: 3px;
             background: #1d1d1f;
             box-shadow:
-              0 0 0 6px rgba(241, 240, 236, 0.96),
+              0 0 0 6px rgba(241, 240, 236, 0.94),
               0 6px 18px rgba(29, 29, 31, 0.18);
           }
 
@@ -697,54 +700,50 @@ export default function App() {
   const aboutPulseTimerRef = useRef(null);
 
   const frameHeights = useMemo(() => {
-    const isMobileOrTablet = viewportWidth <= 900;
+    const isMobileLike = viewportWidth <= 900;
 
-    if (isMobileOrTablet) {
+    if (isMobileLike) {
       return {
         heroVisible: 820,
         heroIframe: 930,
         ecosystemVisible: 760,
-        ecosystemIframe: 870,
-        companyVisible: 790,
-        companyIframe: 910,
+        ecosystemIframe: 890,
+        companyVisible: 780,
+        companyIframe: 920,
         compoundVisible: 820,
-        compoundIframe: 960,
+        compoundIframe: 980,
         indicationVisible: 800,
-        indicationIframe: 930,
+        indicationIframe: 950,
         phaseVisible: 800,
-        phaseIframe: 930
+        phaseIframe: 950
       };
     }
 
-    const heightFactor = clampNumber(viewportHeight / 900, 0.78, 1.08);
-    const widthFactor = clampNumber(viewportWidth / 1728, 0.82, 1.08);
-    const combinedFactor = clampNumber((heightFactor * 0.72) + (widthFactor * 0.28), 0.8, 1.06);
-
-    const heroVisible = Math.round(clampNumber(viewportHeight * 0.82, 650, 850));
-    const ecosystemVisible = Math.round(clampNumber(790 * combinedFactor, 700, 820));
-    const companyVisible = Math.round(clampNumber(825 * combinedFactor, 720, 850));
-    const compoundVisible = Math.round(clampNumber(890 * combinedFactor, 760, 900));
-    const indicationVisible = Math.round(clampNumber(845 * combinedFactor, 735, 860));
-    const phaseVisible = Math.round(clampNumber(845 * combinedFactor, 735, 860));
+    const heroVisible = clampNumber(viewportHeight * 0.78, 650, 820);
+    const ecosystemVisible = clampNumber(viewportHeight * 0.78, 690, 820);
+    const companyVisible = clampNumber(viewportHeight * 0.8, 700, 840);
+    const compoundVisible = clampNumber(viewportHeight * 0.82, 720, 880);
+    const indicationVisible = clampNumber(viewportHeight * 0.8, 700, 840);
+    const phaseVisible = clampNumber(viewportHeight * 0.8, 700, 840);
 
     return {
       heroVisible,
-      heroIframe: heroVisible + 105,
+      heroIframe: heroVisible + 110,
 
       ecosystemVisible,
-      ecosystemIframe: ecosystemVisible + 110,
+      ecosystemIframe: ecosystemVisible + 135,
 
       companyVisible,
-      companyIframe: companyVisible + 125,
+      companyIframe: companyVisible + 145,
 
       compoundVisible,
-      compoundIframe: compoundVisible + 145,
+      compoundIframe: compoundVisible + 165,
 
       indicationVisible,
-      indicationIframe: indicationVisible + 135,
+      indicationIframe: indicationVisible + 155,
 
       phaseVisible,
-      phaseIframe: phaseVisible + 135
+      phaseIframe: phaseVisible + 155
     };
   }, [viewportWidth, viewportHeight]);
 
@@ -755,7 +754,7 @@ export default function App() {
   const companyNotebook = "e3028f2577c04f9a@1208";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-observable-1208-2026-06-21-v2-fluid-desktop";
+  const logoTuningVersion = "visual1b-observable-1208-2026-06-23-fluid-desktop-v2";
 
   const logoVisualScale = {
     "2A_biosciences.png": 1.25,
@@ -929,427 +928,6 @@ export default function App() {
     <main className="site">
       <ScrollProgressBar />
       <SectionProgressNav />
-
-      <style>
-        {`
-          :root {
-            --fluid-page-pad: clamp(24px, 4vw, 72px);
-            --fluid-hero-max: clamp(820px, 68vw, 1180px);
-            --fluid-visual-max: clamp(1080px, 88vw, 1560px);
-            --fluid-company-max: clamp(1080px, 90vw, 1560px);
-            --fluid-radius: clamp(26px, 2.1vw, 38px);
-          }
-
-          html,
-          body,
-          #root {
-            min-height: 100%;
-            background:
-              radial-gradient(circle at 50% 10%, rgba(185, 212, 224, 0.72), transparent 34%),
-              radial-gradient(circle at 18% 22%, rgba(151, 181, 197, 0.34), transparent 31%),
-              radial-gradient(circle at 82% 18%, rgba(199, 215, 224, 0.38), transparent 28%),
-              linear-gradient(180deg, #8faebe 0%, #dbe8ed 42%, #f7f7f4 82%, #f1f0ec 100%);
-            background-attachment: fixed;
-          }
-
-          body {
-            margin: 0;
-          }
-
-          .site {
-            min-height: 100vh;
-            background:
-              linear-gradient(180deg, rgba(255,255,255,0.10) 0%, rgba(241,240,236,0.20) 100%);
-          }
-
-          .story-section {
-            background: transparent !important;
-          }
-
-          .iframe-crop {
-            background: transparent !important;
-          }
-
-          .visual-story {
-            padding-left: var(--fluid-page-pad) !important;
-            padding-right: var(--fluid-page-pad) !important;
-          }
-
-          .iframe-crop {
-            width: min(100%, var(--fluid-visual-max)) !important;
-            max-width: var(--fluid-visual-max) !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .visual-story .iframe-crop {
-            border-radius: var(--fluid-radius) !important;
-            background: rgba(248, 248, 245, 0.90) !important;
-            border: 1px solid rgba(255, 255, 255, 0.62) !important;
-            box-shadow:
-              0 28px 86px rgba(42, 70, 84, 0.14),
-              0 8px 24px rgba(29, 29, 31, 0.06),
-              inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
-            overflow: hidden !important;
-            transform: translateZ(0);
-          }
-
-          .visual-story .atlas-iframe {
-            border-radius: var(--fluid-radius) !important;
-            background: #f1f0ec !important;
-          }
-
-          .hero-frame {
-            width: min(100%, var(--fluid-hero-max)) !important;
-            max-width: var(--fluid-hero-max) !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            border: 0 !important;
-            background: transparent !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .hero-story {
-            min-height: 100dvh !important;
-            padding-left: var(--fluid-page-pad) !important;
-            padding-right: var(--fluid-page-pad) !important;
-            background:
-              radial-gradient(circle at 50% 22%, rgba(255,255,255,0.38), transparent 36%),
-              linear-gradient(180deg, rgba(143,174,190,0.34) 0%, rgba(241,240,236,0.02) 78%) !important;
-          }
-
-          @keyframes aboutModalAttentionPulse {
-            0% {
-              transform: scale(1);
-            }
-
-            38% {
-              transform: scale(1.028);
-            }
-
-            68% {
-              transform: scale(0.994);
-            }
-
-            100% {
-              transform: scale(1);
-            }
-          }
-
-          .company-story {
-            padding-left: var(--fluid-page-pad) !important;
-            padding-right: var(--fluid-page-pad) !important;
-          }
-
-          .company-frame {
-            width: min(100%, var(--fluid-company-max)) !important;
-            max-width: var(--fluid-company-max) !important;
-            margin-left: auto !important;
-            margin-right: auto !important;
-          }
-
-          .company-frame .atlas-iframe {
-            width: calc(100% + 18px) !important;
-            max-width: none !important;
-            margin-left: -9px !important;
-          }
-
-          .about-project-button {
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 7px !important;
-            height: 30px !important;
-            min-height: 30px !important;
-            padding: 4px 12px 5px !important;
-            line-height: 1 !important;
-          }
-
-          .about-project-button-icon {
-            width: 20px !important;
-            height: 20px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            flex: 0 0 20px !important;
-          }
-
-          .about-project-button-icon svg {
-            width: 20px !important;
-            height: 20px !important;
-            display: block !important;
-            fill: #111111 !important;
-            stroke: none !important;
-          }
-
-          .about-modal-overlay {
-            position: fixed !important;
-            inset: 0 !important;
-            z-index: 80 !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            padding: 24px !important;
-            background: rgba(0, 0, 0, 0.34) !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-          }
-
-          .about-modal-overlay::before,
-          .about-modal-overlay::after {
-            content: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            filter: none !important;
-          }
-
-          .about-modal {
-            width: min(92vw, 550px) !important;
-            max-width: 550px !important;
-            max-height: 82vh !important;
-            overflow: hidden !important;
-            background: #ffffff !important;
-            color: #111111 !important;
-            border: 1px solid rgba(0, 0, 0, 0.12) !important;
-            border-radius: 18px !important;
-            box-shadow:
-              0 24px 70px rgba(0, 0, 0, 0.18),
-              0 8px 22px rgba(0, 0, 0, 0.10) !important;
-            font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-            transform-origin: center center !important;
-            will-change: transform !important;
-          }
-
-          .about-modal-attention {
-            animation: aboutModalAttentionPulse 360ms cubic-bezier(0.22, 0.78, 0.22, 1) both !important;
-          }
-
-          .about-modal-header {
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            gap: 13px !important;
-            padding: 16px 22px 12px !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.09) !important;
-          }
-
-          .about-modal-title-row {
-            display: flex !important;
-            align-items: center !important;
-            gap: 10px !important;
-            min-width: 0 !important;
-          }
-
-          .about-modal-header h2 {
-            margin: 0 !important;
-            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-            font-size: 22px !important;
-            line-height: 1.02 !important;
-            letter-spacing: -0.045em !important;
-            font-weight: 780 !important;
-            color: #111111 !important;
-          }
-
-          .about-modal-close {
-            width: 26px !important;
-            height: 26px !important;
-            border: 0 !important;
-            border-radius: 999px !important;
-            background: transparent !important;
-            color: #111111 !important;
-            font-size: 22px !important;
-            line-height: 1 !important;
-            cursor: pointer !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            transition:
-              background 160ms ease,
-              transform 160ms ease !important;
-          }
-
-          .about-modal-close:hover {
-            background: rgba(0, 0, 0, 0.06) !important;
-            transform: scale(1.04) !important;
-          }
-
-          .about-modal-body {
-            padding: 13px 22px 15px !important;
-          }
-
-          .about-modal-lead {
-            margin: 0 0 11px !important;
-            max-width: none !important;
-            color: #222222 !important;
-            font-size: 12.2px !important;
-            line-height: 1.38 !important;
-            letter-spacing: -0.01em !important;
-            text-align: left !important;
-          }
-
-          .about-modal-section {
-            padding: 11px 0 !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.09) !important;
-          }
-
-          .about-modal-section:first-of-type {
-            padding-top: 11px !important;
-          }
-
-          .about-section-title {
-            display: flex !important;
-            align-items: center !important;
-            gap: 7px !important;
-            margin: 0 0 7px !important;
-          }
-
-          .about-section-title h3 {
-            margin: 0 !important;
-            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-            font-size: 16.5px !important;
-            line-height: 1.05 !important;
-            letter-spacing: -0.035em !important;
-            font-weight: 780 !important;
-            color: #111111 !important;
-          }
-
-          .about-inline-icon {
-            width: 16px !important;
-            height: 16px !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            flex: 0 0 16px !important;
-          }
-
-          .about-inline-icon svg {
-            width: 16px !important;
-            height: 16px !important;
-            fill: none !important;
-            stroke: #111111 !important;
-            stroke-width: 1.65 !important;
-            stroke-linecap: round !important;
-            stroke-linejoin: round !important;
-          }
-
-          .about-modal-title-row .about-inline-icon {
-            width: 27px !important;
-            height: 27px !important;
-            flex-basis: 27px !important;
-          }
-
-          .about-modal-title-row .about-inline-icon svg {
-            width: 27px !important;
-            height: 27px !important;
-            fill: #111111 !important;
-            stroke: none !important;
-          }
-
-          .about-modal-section p {
-            margin: 0 0 6px !important;
-            font-size: 11.65px !important;
-            line-height: 1.34 !important;
-            color: #1f1f1f !important;
-            text-align: justify !important;
-            text-justify: inter-word !important;
-            hyphens: auto !important;
-          }
-
-          .about-modal-section p:last-child {
-            margin-bottom: 0 !important;
-          }
-
-          .about-modal-section strong {
-            font-weight: 790 !important;
-            color: #000000 !important;
-          }
-
-          .about-keyfacts {
-            display: grid !important;
-            gap: 0 !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.075) !important;
-          }
-
-          .about-keyfact-row {
-            display: grid !important;
-            grid-template-columns: 82px 1fr !important;
-            gap: 12px !important;
-            padding: 5.5px 0 !important;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.075) !important;
-          }
-
-          .about-keyfact-label {
-            font-size: 10.65px !important;
-            line-height: 1.25 !important;
-            color: #111111 !important;
-            font-weight: 790 !important;
-          }
-
-          .about-keyfact-value {
-            font-size: 10.65px !important;
-            line-height: 1.25 !important;
-            color: #222222 !important;
-          }
-
-          .about-modal-footer {
-            display: flex !important;
-            align-items: center !important;
-            gap: 7px !important;
-            padding-top: 11px !important;
-            border-top: 1px solid rgba(0, 0, 0, 0.09) !important;
-            color: #3a3a3a !important;
-            font-size: 10.65px !important;
-            line-height: 1.28 !important;
-          }
-
-          .about-modal-footer .about-inline-icon {
-            width: 14px !important;
-            height: 14px !important;
-            flex-basis: 14px !important;
-          }
-
-          .about-modal-footer .about-inline-icon svg {
-            width: 14px !important;
-            height: 14px !important;
-          }
-
-          @media (max-width: 900px) {
-            :root {
-              --fluid-page-pad: 16px;
-              --fluid-hero-max: 100%;
-              --fluid-visual-max: 100%;
-              --fluid-company-max: 100%;
-              --fluid-radius: 22px;
-            }
-          }
-
-          @media (max-width: 620px) {
-            .about-modal-overlay {
-              padding: 16px !important;
-            }
-
-            .about-modal {
-              width: min(94vw, 530px) !important;
-              max-width: 530px !important;
-              max-height: 86vh !important;
-            }
-
-            .about-modal-header {
-              padding: 15px 19px 11px !important;
-            }
-
-            .about-modal-body {
-              padding: 13px 19px 15px !important;
-            }
-
-            .about-keyfact-row {
-              grid-template-columns: 76px 1fr !important;
-              gap: 10px !important;
-            }
-          }
-        `}
-      </style>
 
       <PageRainOverlay
         active={pageRainActive}
@@ -1534,7 +1112,7 @@ export default function App() {
           title="The Psychedelic Ecosystem"
           visibleHeight={frameHeights.ecosystemVisible}
           iframeHeight={frameHeights.ecosystemIframe}
-          className="ecosystem-frame"
+          className="ecosystem-frame landscape-frame"
           src={observableSrc.visual1EcosystemOverviev}
         />
       </section>
@@ -1544,7 +1122,7 @@ export default function App() {
           title="Company Landscape Premium"
           visibleHeight={frameHeights.companyVisible}
           iframeHeight={frameHeights.companyIframe}
-          className="company-frame"
+          className="company-frame landscape-frame"
           src={observableSrc.visual1CompanyLandscapePremium1}
         />
       </section>
