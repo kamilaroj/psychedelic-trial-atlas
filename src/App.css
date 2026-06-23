@@ -27,6 +27,8 @@
   --glass-border: rgba(255, 255, 255, 0.62);
   --glass-shadow-main: rgba(42, 70, 84, 0.14);
   --glass-shadow-soft: rgba(29, 29, 31, 0.055);
+
+  --company-panel-width: 292px;
 }
 
 html {
@@ -548,7 +550,7 @@ body {
   width: var(--frame-max);
   max-width: var(--frame-max);
   margin: 0 auto;
-  overflow: visible;
+  overflow: visible !important;
 }
 
 .company-visual-shell .company-frame {
@@ -556,24 +558,43 @@ body {
   max-width: 100%;
 }
 
+.company-visual-shell-panel-open .company-frame {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.company-visual-shell-panel-open .company-frame .atlas-iframe {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
 .company-external-panel {
-  position: absolute;
-  top: 0;
-  left: calc(100% + 22px);
-  width: 318px;
-  height: 100%;
-  max-height: 100%;
-  z-index: 45;
-  overflow: hidden;
-  border-radius: 30px;
-  border: 1px solid rgba(255, 255, 255, 0.68);
+  position: absolute !important;
+  top: 0 !important;
+  left: 100% !important;
+  right: auto !important;
+  bottom: auto !important;
+
+  width: var(--company-panel-width) !important;
+  height: 100% !important;
+  max-height: 100% !important;
+
+  z-index: 46 !important;
+  overflow: hidden !important;
+
+  border-radius: 0 var(--frame-radius) var(--frame-radius) 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.68) !important;
+  border-left: 0 !important;
+
   background: rgba(255, 255, 255, 0.42);
   box-shadow:
     0 24px 58px rgba(42, 70, 84, 0.16),
     0 8px 20px rgba(29, 29, 31, 0.07),
     inset 0 1px 0 rgba(255, 255, 255, 0.62);
+
   backdrop-filter: blur(26px) saturate(142%);
   -webkit-backdrop-filter: blur(26px) saturate(142%);
+
   color: var(--ink);
   animation: companyPanelIn 260ms cubic-bezier(0.22, 0.78, 0.22, 1) both;
 }
@@ -590,9 +611,61 @@ body {
   }
 }
 
+/* This is the X from App.jsx */
+.company-external-panel-floating-close {
+  position: absolute !important;
+  top: 18px !important;
+  left: calc(100% - 17px) !important;
+
+  width: 34px !important;
+  height: 34px !important;
+  min-width: 34px !important;
+  min-height: 34px !important;
+
+  z-index: 90 !important;
+
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+
+  padding: 0 !important;
+  margin: 0 !important;
+
+  appearance: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  border-radius: 999px !important;
+
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: #24272c !important;
+
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
+  font-size: 20px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+
+  cursor: pointer !important;
+
+  box-shadow:
+    0 10px 26px rgba(29, 29, 31, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+
+  backdrop-filter: blur(18px) saturate(142%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(142%) !important;
+}
+
+.company-external-panel-floating-close:hover {
+  background: rgba(255, 255, 255, 0.96) !important;
+  transform: scale(1.04) !important;
+}
+
+.company-external-panel-close {
+  display: none !important;
+}
+
 .company-external-panel-inner {
-  height: 100%;
-  overflow-y: auto;
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow-y: auto !important;
   padding: 24px 20px 24px;
   box-sizing: border-box;
 }
@@ -608,7 +681,7 @@ body {
 
 .company-external-panel-header {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-columns: minmax(0, 1fr);
   gap: 12px;
   align-items: start;
   margin-bottom: 16px;
@@ -617,7 +690,7 @@ body {
 .company-external-panel-title {
   margin: 0;
   font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  font-size: 25px;
+  font-size: 22px;
   line-height: 1.02;
   letter-spacing: -0.055em;
   font-weight: 850;
@@ -629,31 +702,6 @@ body {
   font-size: 11.5px;
   line-height: 1.36;
   color: var(--muted);
-}
-
-.company-external-panel-close {
-  appearance: none;
-  border: 1px solid rgba(255, 255, 255, 0.68);
-  width: 36px;
-  height: 36px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.62);
-  color: var(--ink);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  line-height: 1;
-  box-shadow: 0 10px 24px rgba(29, 29, 31, 0.09);
-  transition:
-    transform 160ms ease,
-    background 160ms ease;
-}
-
-.company-external-panel-close:hover {
-  background: rgba(255, 255, 255, 0.86);
-  transform: scale(1.04);
 }
 
 .company-external-panel-logo {
@@ -811,6 +859,7 @@ body {
       880px,
       calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
     );
+    --company-panel-width: 292px;
   }
 
   .top-project-menu {
@@ -839,9 +888,20 @@ body {
   }
 
   .company-external-panel {
-    left: auto;
-    right: 18px;
-    width: 300px;
+    position: absolute !important;
+    top: 0 !important;
+    left: 100% !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: var(--company-panel-width) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+  }
+
+  .company-external-panel-floating-close {
+    position: absolute !important;
+    top: 18px !important;
+    left: calc(100% - 17px) !important;
   }
 }
 
@@ -857,6 +917,7 @@ body {
       800px,
       calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
     );
+    --company-panel-width: 292px;
   }
 
   .top-project-menu {
@@ -892,14 +953,20 @@ body {
 
 @media (max-width: 1180px) {
   .company-external-panel {
-    position: fixed;
-    top: 76px;
-    right: 18px;
-    bottom: 22px;
-    height: auto;
-    max-height: calc(100vh - 98px);
-    width: min(320px, calc(100vw - 36px));
-    z-index: 80;
+    position: absolute !important;
+    top: 0 !important;
+    left: 100% !important;
+    right: auto !important;
+    bottom: auto !important;
+    width: var(--company-panel-width) !important;
+    height: 100% !important;
+    max-height: 100% !important;
+  }
+
+  .company-external-panel-floating-close {
+    position: absolute !important;
+    top: 18px !important;
+    left: calc(100% - 17px) !important;
   }
 }
 
@@ -911,6 +978,7 @@ body {
     --frame-max: calc(100vw - 32px);
     --hero-max: calc(100vw - 32px);
     --frame-radius: 22px;
+    --company-panel-width: auto;
   }
 
   .top-project-menu {
@@ -988,15 +1056,23 @@ body {
   }
 
   .company-external-panel {
-    position: fixed;
-    left: 16px;
-    right: 16px;
-    top: auto;
-    bottom: 16px;
-    width: auto;
-    height: min(64vh, 520px);
-    max-height: min(64vh, 520px);
-    border-radius: 24px;
+    position: fixed !important;
+    left: 16px !important;
+    right: 16px !important;
+    top: auto !important;
+    bottom: 16px !important;
+    width: auto !important;
+    height: min(64vh, 520px) !important;
+    max-height: min(64vh, 520px) !important;
+    border-radius: 24px !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.68) !important;
+  }
+
+  .company-external-panel-floating-close {
+    position: fixed !important;
+    top: auto !important;
+    left: 28px !important;
+    bottom: calc(16px + min(64vh, 520px) - 17px) !important;
   }
 
   .compound-story {
