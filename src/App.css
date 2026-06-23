@@ -314,6 +314,207 @@ body {
   overflow: hidden !important;
 }
 
+/* RESPONSIVE DESKTOP: LAPTOPS AND SMALLER DESKTOPS */
+@media (max-width: 1440px) {
+  .hero-story {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+
+  .top-project-menu {
+    top: calc(50% - 132px);
+  }
+
+  .about-project-button {
+    padding: 8px 15px;
+    font-size: 11.5px;
+  }
+
+  .visual-story {
+    padding-left: 56px;
+    padding-right: 56px;
+  }
+
+  .iframe-crop {
+    width: min(100%, 1240px);
+    max-width: 1240px;
+  }
+
+  .hero-frame {
+    width: min(100%, 1040px);
+    max-width: 1040px;
+  }
+
+  .ecosystem-frame,
+  .company-frame {
+    width: min(100%, 1240px);
+    max-width: 1240px;
+  }
+
+  .compound-frame,
+  .indication-frame,
+  .phase-frame,
+  .landscape-frame {
+    width: min(100%, 1200px);
+    max-width: 1200px;
+  }
+
+  .ecosystem-story {
+    padding-top: 60px;
+    padding-bottom: 80px;
+  }
+
+  .company-story {
+    padding-top: 80px;
+    padding-bottom: 110px;
+  }
+
+  .compound-story,
+  .indication-story {
+    padding-top: 105px;
+    padding-bottom: 105px;
+  }
+
+  .phase-story {
+    padding-top: 105px;
+    padding-bottom: 130px;
+  }
+}
+
+/* RESPONSIVE DESKTOP: COMPACT LAPTOPS */
+@media (max-width: 1200px) {
+  .hero-story {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+
+  .top-project-menu {
+    top: calc(50% - 122px);
+  }
+
+  .visual-story {
+    padding-left: 44px;
+    padding-right: 44px;
+  }
+
+  .iframe-crop {
+    width: min(100%, 1060px);
+    max-width: 1060px;
+  }
+
+  .hero-frame {
+    width: min(100%, 900px);
+    max-width: 900px;
+  }
+
+  .ecosystem-frame,
+  .company-frame {
+    width: min(100%, 1060px);
+    max-width: 1060px;
+  }
+
+  .compound-frame,
+  .indication-frame,
+  .phase-frame,
+  .landscape-frame {
+    width: min(100%, 1020px);
+    max-width: 1020px;
+  }
+
+  .ecosystem-story {
+    padding-top: 52px;
+    padding-bottom: 72px;
+  }
+
+  .company-story {
+    padding-top: 72px;
+    padding-bottom: 96px;
+  }
+
+  .compound-story,
+  .indication-story {
+    padding-top: 92px;
+    padding-bottom: 92px;
+  }
+
+  .phase-story {
+    padding-top: 92px;
+    padding-bottom: 115px;
+  }
+}
+
+/* RESPONSIVE DESKTOP: VERY COMPACT LAPTOPS */
+@media (max-width: 1024px) {
+  .hero-story {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .top-project-menu {
+    top: calc(50% - 112px);
+  }
+
+  .visual-story {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  .iframe-crop {
+    width: min(100%, 940px);
+    max-width: 940px;
+  }
+
+  .hero-frame {
+    width: min(100%, 820px);
+    max-width: 820px;
+  }
+
+  .ecosystem-frame,
+  .company-frame {
+    width: min(100%, 940px);
+    max-width: 940px;
+  }
+
+  .compound-frame,
+  .indication-frame,
+  .phase-frame,
+  .landscape-frame {
+    width: min(100%, 920px);
+    max-width: 920px;
+  }
+
+  .ecosystem-story {
+    padding-top: 46px;
+    padding-bottom: 66px;
+  }
+
+  .company-story {
+    padding-top: 66px;
+    padding-bottom: 88px;
+  }
+
+  .compound-story,
+  .indication-story {
+    padding-top: 84px;
+    padding-bottom: 84px;
+  }
+
+  .phase-story {
+    padding-top: 84px;
+    padding-bottom: 105px;
+  }
+
+  .observable-hard-crop::after {
+    height: 78px;
+  }
+
+  .compound-frame.observable-hard-crop::after,
+  .indication-frame.observable-hard-crop::after,
+  .phase-frame.observable-hard-crop::after {
+    height: 78px;
+  }
+}
+
 /* MOBILE */
 @media (max-width: 900px) {
   .top-project-menu {
@@ -362,6 +563,22 @@ body {
     padding-right: 16px;
   }
 
+  .iframe-crop {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-frame,
+  .ecosystem-frame,
+  .company-frame,
+  .compound-frame,
+  .indication-frame,
+  .phase-frame,
+  .landscape-frame {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .compound-story {
     padding-top: 90px;
     padding-bottom: 95px;
@@ -375,11 +592,6 @@ body {
   .phase-story {
     padding-top: 95px;
     padding-bottom: 120px;
-  }
-
-  .iframe-crop {
-    width: 100%;
-    max-width: 100%;
   }
 
   .observable-hard-crop::after {
