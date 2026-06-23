@@ -746,8 +746,8 @@ export default function App() {
     };
   }, [viewportWidth, viewportHeight]);
 
-  const mainApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
-  const mainNotebook = "e3028f2577c04f9a@1187";
+  const mainApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
+  const mainNotebook = "e3028f2577c04f9a@1210";
 
   const companyApiKey = "c76bbf6056ba531c2ed8bc19951e858dc356a8fd";
   const companyNotebook = "e3028f2577c04f9a@1208";
@@ -892,7 +892,7 @@ export default function App() {
 
   const observableSrc = useMemo(
     () => ({
-      heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&banner=false&hideFooter=true&api_key=${mainApiKey}`,
+      heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}`,
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1199?cells=visual1EcosystemOverviev&banner=false&hideFooter=true&api_key=c76bbf6056ba531c2ed8bc19951e858dc356a8fd`,
 
