@@ -1,10 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 
-function clampNumber(value, min, max) {
-  return Math.min(Math.max(value, min), max);
-}
-
 function useViewportSize() {
   const [viewportSize, setViewportSize] = useState(() => {
     if (typeof window === "undefined") {
@@ -35,6 +31,10 @@ function useViewportSize() {
   }, []);
 
   return viewportSize;
+}
+
+function clampNumber(value, min, max) {
+  return Math.min(Math.max(value, min), max);
 }
 
 function PageRainOverlay({ active, onDone }) {
@@ -288,7 +288,7 @@ function ObservableFrame({
 
           window.setTimeout(() => {
             setShouldLoad(true);
-          }, 500);
+          }, 700);
 
           observer.disconnect();
         }
@@ -376,10 +376,10 @@ function ScrollProgressBar() {
             top: 0;
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             z-index: 70;
             pointer-events: none;
-            background: rgba(29, 29, 31, 0.08);
+            background: rgba(29, 29, 31, 0.10);
           }
 
           .page-scroll-progress-bar {
@@ -387,30 +387,22 @@ function ScrollProgressBar() {
             height: 100%;
             transform-origin: left center;
             transform: scaleX(var(--scroll-progress));
-            background: rgba(29, 29, 31, 0.50);
+            background: rgba(29, 29, 31, 0.58);
             transition: transform 90ms linear;
           }
 
           .page-scroll-progress-percent {
             position: fixed;
             top: 9px;
-            left: calc(18px + ((100vw - 44px) * var(--scroll-progress)));
+            left: 18px;
             z-index: 70;
             pointer-events: none;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-            font-size: 12px;
+            font-size: 15px;
             line-height: 1;
-            letter-spacing: -0.025em;
-            font-weight: 760;
-            color: rgba(29, 29, 31, 0.76);
-            transform: translateX(-50%);
-            transition: left 90ms linear;
-          }
-
-          @media (max-width: 900px) {
-            .page-scroll-progress-percent {
-              display: none;
-            }
+            letter-spacing: -0.035em;
+            font-weight: 780;
+            color: #1d1d1f;
           }
         `}
       </style>
@@ -424,14 +416,8 @@ function ScrollProgressBar() {
         />
       </div>
 
-      <div
-        className="page-scroll-progress-percent"
-        aria-hidden="true"
-        style={{
-          "--scroll-progress": scrollProgress
-        }}
-      >
-        {scrollPercent}%
+      <div className="page-scroll-progress-percent" aria-hidden="true">
+        {scrollPercent} %
       </div>
     </>
   );
@@ -527,7 +513,7 @@ function SectionProgressNav() {
 
     element.scrollIntoView({
       behavior: "smooth",
-      block: "center"
+      block: "start"
     });
   };
 
@@ -537,11 +523,10 @@ function SectionProgressNav() {
         {`
           .section-progress-nav {
             position: fixed;
-            left: clamp(12px, 1.75vw, 28px);
+            left: 28px;
             top: 50%;
             z-index: 65;
-            transform: translateY(-50%) scale(clamp(0.84, 0.92vw, 1));
-            transform-origin: left center;
+            transform: translateY(-50%);
             pointer-events: auto;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
             color: #1d1d1f;
@@ -550,7 +535,7 @@ function SectionProgressNav() {
           .section-progress-nav-inner {
             position: relative;
             display: grid;
-            gap: clamp(13px, 1.28vw, 18px);
+            gap: 18px;
             padding: 12px 0;
           }
 
@@ -560,7 +545,7 @@ function SectionProgressNav() {
             bottom: 24px;
             left: 8px;
             width: 1px;
-            background: rgba(29, 29, 31, 0.11);
+            background: rgba(29, 29, 31, 0.14);
           }
 
           .section-progress-nav-item {
@@ -573,7 +558,7 @@ function SectionProgressNav() {
             border: 0;
             padding: 0;
             background: transparent;
-            color: rgba(29, 29, 31, 0.34);
+            color: rgba(29, 29, 31, 0.38);
             cursor: pointer;
             text-align: left;
             transition:
@@ -592,8 +577,8 @@ function SectionProgressNav() {
             height: 8px;
             margin-left: 4px;
             border-radius: 999px;
-            background: rgba(29, 29, 31, 0.22);
-            box-shadow: 0 0 0 6px rgba(241, 240, 236, 0.88);
+            background: rgba(29, 29, 31, 0.24);
+            box-shadow: 0 0 0 6px rgba(241, 240, 236, 0.94);
             transition:
               width 180ms ease,
               height 180ms ease,
@@ -638,7 +623,7 @@ function SectionProgressNav() {
             margin-left: 3px;
             background: #1d1d1f;
             box-shadow:
-              0 0 0 6px rgba(241, 240, 236, 0.94),
+              0 0 0 6px rgba(241, 240, 236, 0.96),
               0 6px 18px rgba(29, 29, 31, 0.18);
           }
 
@@ -650,6 +635,22 @@ function SectionProgressNav() {
 
           .section-progress-nav-item-active .section-progress-nav-label::before {
             width: 28px;
+          }
+
+          @media (max-width: 1500px) {
+            .section-progress-nav {
+              left: 12px;
+              transform: translateY(-50%) scale(0.9);
+              transform-origin: left center;
+            }
+          }
+
+          @media (max-width: 1250px) {
+            .section-progress-nav {
+              left: 10px;
+              transform: translateY(-50%) scale(0.84);
+              transform-origin: left center;
+            }
           }
 
           @media (max-width: 920px) {
@@ -700,50 +701,48 @@ export default function App() {
   const aboutPulseTimerRef = useRef(null);
 
   const frameHeights = useMemo(() => {
-    const isMobileLike = viewportWidth <= 900;
-
-    if (isMobileLike) {
+    if (viewportWidth <= 900) {
       return {
         heroVisible: 820,
         heroIframe: 930,
         ecosystemVisible: 760,
-        ecosystemIframe: 890,
-        companyVisible: 780,
-        companyIframe: 920,
+        ecosystemIframe: 870,
+        companyVisible: 790,
+        companyIframe: 910,
         compoundVisible: 820,
-        compoundIframe: 980,
+        compoundIframe: 960,
         indicationVisible: 800,
-        indicationIframe: 950,
+        indicationIframe: 930,
         phaseVisible: 800,
-        phaseIframe: 950
+        phaseIframe: 930
       };
     }
 
-    const heroVisible = clampNumber(viewportHeight * 0.78, 650, 820);
-    const ecosystemVisible = clampNumber(viewportHeight * 0.78, 690, 820);
-    const companyVisible = clampNumber(viewportHeight * 0.8, 700, 840);
-    const compoundVisible = clampNumber(viewportHeight * 0.82, 720, 880);
-    const indicationVisible = clampNumber(viewportHeight * 0.8, 700, 840);
-    const phaseVisible = clampNumber(viewportHeight * 0.8, 700, 840);
+    const heroVisible = clampNumber(viewportHeight * 0.78, 620, 760);
+    const ecosystemVisible = clampNumber(viewportHeight * 0.8, 660, 800);
+    const companyVisible = clampNumber(viewportHeight * 0.82, 690, 820);
+    const compoundVisible = clampNumber(viewportHeight * 0.84, 700, 850);
+    const indicationVisible = clampNumber(viewportHeight * 0.82, 690, 820);
+    const phaseVisible = clampNumber(viewportHeight * 0.82, 690, 820);
 
     return {
       heroVisible,
       heroIframe: heroVisible + 110,
 
       ecosystemVisible,
-      ecosystemIframe: ecosystemVisible + 135,
+      ecosystemIframe: ecosystemVisible + 120,
 
       companyVisible,
-      companyIframe: companyVisible + 145,
+      companyIframe: companyVisible + 130,
 
       compoundVisible,
-      compoundIframe: compoundVisible + 165,
+      compoundIframe: compoundVisible + 145,
 
       indicationVisible,
-      indicationIframe: indicationVisible + 155,
+      indicationIframe: indicationVisible + 135,
 
       phaseVisible,
-      phaseIframe: phaseVisible + 155
+      phaseIframe: phaseVisible + 135
     };
   }, [viewportWidth, viewportHeight]);
 
@@ -754,7 +753,7 @@ export default function App() {
   const companyNotebook = "e3028f2577c04f9a@1208";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-observable-1208-2026-06-23-fluid-desktop-v2";
+  const logoTuningVersion = "visual1b-observable-1208-2026-06-21-v1";
 
   const logoVisualScale = {
     "2A_biosciences.png": 1.25,
@@ -1112,7 +1111,7 @@ export default function App() {
           title="The Psychedelic Ecosystem"
           visibleHeight={frameHeights.ecosystemVisible}
           iframeHeight={frameHeights.ecosystemIframe}
-          className="ecosystem-frame landscape-frame"
+          className="ecosystem-frame"
           src={observableSrc.visual1EcosystemOverviev}
         />
       </section>
@@ -1122,7 +1121,7 @@ export default function App() {
           title="Company Landscape Premium"
           visibleHeight={frameHeights.companyVisible}
           iframeHeight={frameHeights.companyIframe}
-          className="company-frame landscape-frame"
+          className="company-frame"
           src={observableSrc.visual1CompanyLandscapePremium1}
         />
       </section>
