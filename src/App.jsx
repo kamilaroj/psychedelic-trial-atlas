@@ -883,8 +883,8 @@ export default function App() {
         heroIframe: 930,
         ecosystemVisible: 760,
         ecosystemIframe: 870,
-        companyVisible: 790,
-        companyIframe: 910,
+        companyVisible: 776,
+        companyIframe: 896,
         compoundVisible: 820,
         compoundIframe: 960,
         indicationVisible: 800,
@@ -896,7 +896,7 @@ export default function App() {
 
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
     const ecosystemVisible = clampNumber(viewportHeight * 0.78, 640, 780);
-    const companyVisible = clampNumber(viewportHeight * 0.8, 660, 800);
+    const companyVisible = 776;
     const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
     const indicationVisible = clampNumber(viewportHeight * 0.8, 660, 800);
     const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
@@ -909,7 +909,7 @@ export default function App() {
       ecosystemIframe: ecosystemVisible + 110,
 
       companyVisible,
-      companyIframe: companyVisible + 120,
+      companyIframe: 896,
 
       compoundVisible,
       compoundIframe: compoundVisible + 120,
@@ -926,10 +926,10 @@ export default function App() {
   const mainNotebook = "e3028f2577c04f9a@1210";
 
   const companyApiKey = "c76bbf6056ba531c2ed8bc19951e858dc356a8fd";
-  const companyNotebook = "e3028f2577c04f9a@1208";
+  const companyNotebook = "e3028f2577c04f9a@1217";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-observable-1208-2026-06-21-v1";
+  const logoTuningVersion = "visual1b-observable-1217-2026-06-23-v1";
 
   const logoVisualScale = {
     "2A_biosciences.png": 1.25,
@@ -1088,7 +1088,7 @@ export default function App() {
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual1EcosystemOverviev&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1217?cells=visual1CompanyLandscapePremium1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/${companyNotebook}?cells=visual1CompanyLandscapePremium1&api_key=${mainApiKey}`,
 
       visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
