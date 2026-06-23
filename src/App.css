@@ -11,10 +11,22 @@
   --page-pad-left: var(--left-nav-safe-space);
   --page-pad-right: var(--right-safe-space);
 
-  --frame-max: min(1180px, calc(100vw - var(--page-pad-left) - var(--page-pad-right)));
-  --hero-max: min(940px, calc(100vw - var(--page-pad-left) - var(--page-pad-right)));
+  --frame-max: min(
+    1180px,
+    calc(100vw - var(--page-pad-left) - var(--page-pad-right))
+  );
+  --hero-max: min(
+    940px,
+    calc(100vw - var(--page-pad-left) - var(--page-pad-right))
+  );
 
   --frame-radius: clamp(26px, 2.4vw, 38px);
+
+  --glass-bg: rgba(255, 255, 255, 0.46);
+  --glass-bg-strong: rgba(255, 255, 255, 0.58);
+  --glass-border: rgba(255, 255, 255, 0.72);
+  --glass-shadow-main: rgba(42, 70, 84, 0.14);
+  --glass-shadow-soft: rgba(29, 29, 31, 0.055);
 }
 
 html {
@@ -99,6 +111,7 @@ body {
   letter-spacing: -0.01em;
   box-shadow: 0 14px 38px rgba(29, 29, 31, 0.1);
   backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   cursor: pointer;
   transition:
     background 180ms ease,
@@ -140,6 +153,24 @@ body {
 }
 
 /* ABOUT MODAL */
+@keyframes aboutModalAttentionPulse {
+  0% {
+    transform: scale(1);
+  }
+
+  38% {
+    transform: scale(1.028);
+  }
+
+  68% {
+    transform: scale(0.994);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
 .about-modal-overlay {
   position: fixed;
   inset: 0;
@@ -164,6 +195,12 @@ body {
     0 24px 70px rgba(0, 0, 0, 0.18),
     0 8px 22px rgba(0, 0, 0, 0.1);
   color: #111111;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.about-modal-attention {
+  animation: aboutModalAttentionPulse 360ms cubic-bezier(0.22, 0.78, 0.22, 1) both;
 }
 
 .about-modal-header {
@@ -413,16 +450,32 @@ body {
   max-width: var(--frame-max);
   overflow: hidden !important;
   position: relative;
-  background: rgba(248, 248, 245, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
   border-radius: var(--frame-radius);
   box-shadow:
-    0 24px 58px rgba(42, 70, 84, 0.1),
-    0 8px 20px rgba(29, 29, 31, 0.045);
+    0 24px 58px var(--glass-shadow-main),
+    0 8px 20px var(--glass-shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.74),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.22);
   margin: 0 auto;
   display: block;
   isolation: isolate;
   box-sizing: border-box;
+  backdrop-filter: blur(24px) saturate(138%);
+  -webkit-backdrop-filter: blur(24px) saturate(138%);
+}
+
+.iframe-crop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.48) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 44%);
 }
 
 .atlas-iframe {
@@ -433,11 +486,13 @@ body {
   border: 0 !important;
   outline: 0;
   overflow: hidden !important;
-  background: #f1f0ec;
+  background: transparent;
   opacity: 0;
   transition: opacity 420ms ease;
   will-change: opacity;
   border-radius: var(--frame-radius);
+  position: relative;
+  z-index: 1;
 }
 
 .atlas-iframe.iframe-loaded {
@@ -453,11 +508,15 @@ body {
   width: var(--hero-max);
   max-width: var(--hero-max);
   border-radius: var(--frame-radius);
-  background: rgba(248, 248, 245, 0.9);
-  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
   box-shadow:
-    0 24px 58px rgba(42, 70, 84, 0.1),
-    0 8px 20px rgba(29, 29, 31, 0.045);
+    0 24px 58px var(--glass-shadow-main),
+    0 8px 20px var(--glass-shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.76),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(24px) saturate(138%);
+  -webkit-backdrop-filter: blur(24px) saturate(138%);
 }
 
 .ecosystem-frame,
@@ -483,7 +542,7 @@ body {
 .observable-hard-crop {
   overflow: hidden !important;
   position: relative;
-  background: rgba(248, 248, 245, 0.9);
+  background: transparent;
 }
 
 .compound-frame,
@@ -503,8 +562,14 @@ body {
   :root {
     --left-nav-safe-space: 132px;
     --right-safe-space: 42px;
-    --frame-max: min(1080px, calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space)));
-    --hero-max: min(880px, calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space)));
+    --frame-max: min(
+      1080px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+    --hero-max: min(
+      880px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
   }
 
   .top-project-menu {
@@ -537,8 +602,14 @@ body {
   :root {
     --left-nav-safe-space: 118px;
     --right-safe-space: 32px;
-    --frame-max: min(980px, calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space)));
-    --hero-max: min(800px, calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space)));
+    --frame-max: min(
+      980px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+    --hero-max: min(
+      800px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
   }
 
   .top-project-menu {
