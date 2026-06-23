@@ -181,7 +181,10 @@ body {
 
 .about-modal-overlay {
   position: fixed;
-  inset: 0;
+  top: 0;
+  right: var(--page-pad-right);
+  bottom: 0;
+  left: var(--page-pad-left);
   z-index: 1000;
   background: rgba(29, 29, 31, 0.34);
   display: flex;
@@ -673,6 +676,8 @@ body {
   }
 
   .about-modal-overlay {
+    left: 0;
+    right: 0;
     padding: 16px;
   }
 
