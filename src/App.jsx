@@ -926,10 +926,10 @@ export default function App() {
   const mainNotebook = "e3028f2577c04f9a@1210";
 
   const companyApiKey = "c76bbf6056ba531c2ed8bc19951e858dc356a8fd";
-  const companyNotebook = "e3028f2577c04f9a@1217";
+  const companyNotebook = "e3028f2577c04f9a@1218";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-observable-1217-2026-06-23-v1";
+  const logoTuningVersion = "visual1b-observable-1218-2026-06-23-v1";
 
   const logoVisualScale = {
     "2A_biosciences.png": 1.25,
