@@ -22,16 +22,15 @@
 
   --frame-radius: clamp(26px, 2.4vw, 38px);
 
-  --glass-bg: rgba(255, 255, 255, 0.46);
-  --glass-bg-strong: rgba(255, 255, 255, 0.58);
-  --glass-border: rgba(255, 255, 255, 0.72);
+  --glass-bg: rgba(255, 255, 255, 0.16);
+  --glass-bg-strong: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.62);
   --glass-shadow-main: rgba(42, 70, 84, 0.14);
   --glass-shadow-soft: rgba(29, 29, 31, 0.055);
 }
 
 html {
   scroll-behavior: smooth;
-  background: #bcd2dc;
 }
 
 html,
@@ -40,25 +39,28 @@ body,
   margin: 0;
   width: 100%;
   min-height: 100%;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(185, 212, 224, 0.72), transparent 34%),
+    radial-gradient(circle at 18% 22%, rgba(151, 181, 197, 0.34), transparent 31%),
+    radial-gradient(circle at 82% 18%, rgba(199, 215, 224, 0.38), transparent 28%),
+    linear-gradient(180deg, #8faebe 0%, #dbe8ed 42%, #f7f7f4 82%, #f1f0ec 100%);
+  background-attachment: fixed;
 }
 
 body {
   color: var(--ink);
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  background:
-    radial-gradient(circle at 50% 8%, rgba(190, 216, 226, 0.86), transparent 34%),
-    radial-gradient(circle at 15% 18%, rgba(138, 171, 188, 0.5), transparent 34%),
-    radial-gradient(circle at 85% 16%, rgba(210, 226, 232, 0.56), transparent 31%),
-    linear-gradient(180deg, #8faebe 0%, #dbe8ed 42%, #f7f7f4 82%, #f1f0ec 100%);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-attachment: scroll;
 }
 
 .site {
   width: 100%;
   min-height: 100vh;
-  background: transparent;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(241, 240, 236, 0.2) 100%
+    );
   overflow-x: hidden;
   position: relative;
 }
@@ -80,7 +82,13 @@ body {
   padding-top: clamp(42px, 6vh, 78px);
   padding-bottom: clamp(48px, 7vh, 86px);
   position: relative;
-  background: transparent;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0.38), transparent 36%),
+    linear-gradient(
+      180deg,
+      rgba(143, 174, 190, 0.34) 0%,
+      rgba(241, 240, 236, 0.02) 78%
+    );
 }
 
 .top-project-menu {
@@ -456,14 +464,14 @@ body {
   box-shadow:
     0 24px 58px var(--glass-shadow-main),
     0 8px 20px var(--glass-shadow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, 0.74),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.22);
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.16);
   margin: 0 auto;
   display: block;
   isolation: isolate;
   box-sizing: border-box;
-  backdrop-filter: blur(24px) saturate(138%);
-  -webkit-backdrop-filter: blur(24px) saturate(138%);
+  backdrop-filter: blur(26px) saturate(142%);
+  -webkit-backdrop-filter: blur(26px) saturate(142%);
 }
 
 .iframe-crop::before {
@@ -474,8 +482,8 @@ body {
   pointer-events: none;
   z-index: 2;
   background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.48) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.2) 0%, transparent 44%);
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 46%);
 }
 
 .atlas-iframe {
@@ -513,10 +521,10 @@ body {
   box-shadow:
     0 24px 58px var(--glass-shadow-main),
     0 8px 20px var(--glass-shadow-soft),
-    inset 0 1px 0 rgba(255, 255, 255, 0.76),
-    inset 0 -1px 0 rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(24px) saturate(138%);
-  -webkit-backdrop-filter: blur(24px) saturate(138%);
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(26px) saturate(142%);
+  -webkit-backdrop-filter: blur(26px) saturate(142%);
 }
 
 .ecosystem-frame,
