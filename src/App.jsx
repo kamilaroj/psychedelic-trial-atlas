@@ -703,7 +703,6 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
 
   const listToText = (value, fallback = "Insufficient data to verify") => {
     if (!Array.isArray(value) || value.length === 0) return fallback;
-
     return value.filter(Boolean).join(", ");
   };
 
@@ -718,12 +717,9 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
     : [];
 
   return (
-    <aside
-      className="company-external-panel"
-      aria-label={`${selectedCompany.company || "Company"} details`}
-    >
+    <>
       <button
-        className="company-external-panel-close company-external-panel-close-floating"
+        className="company-external-panel-floating-close"
         type="button"
         onClick={onClose}
         aria-label="Close company details"
@@ -731,137 +727,142 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
         ×
       </button>
 
-      <div className="company-external-panel-inner">
-        {selectedCompany.logoUrl && (
-          <div className="company-external-panel-logo">
-            <img
-              src={selectedCompany.logoUrl}
-              alt={`${selectedCompany.company || "Company"} logo`}
-            />
-          </div>
-        )}
-
-        <div className="company-external-panel-header">
-          <div>
-            <h3 className="company-external-panel-title">
-              {selectedCompany.company || "Company"}
-            </h3>
-
-            <div className="company-external-panel-subtitle">
-              {selectedCompany.hasRegistered
-                ? "Company with public registered trial activity"
-                : "Company visible through pipeline or context sources"}
+      <aside
+        className="company-external-panel"
+        aria-label={`${selectedCompany.company || "Company"} details`}
+      >
+        <div className="company-external-panel-inner">
+          {selectedCompany.logoUrl && (
+            <div className="company-external-panel-logo">
+              <img
+                src={selectedCompany.logoUrl}
+                alt={`${selectedCompany.company || "Company"} logo`}
+              />
             </div>
+          )}
 
-            {websites.length > 0 && (
-              <div className="company-external-panel-websites">
-                {websites.map((url) => (
-                  <a
-                    key={url}
-                    href={url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {normalizeUrlLabel(url)}
-                  </a>
-                ))}
-              </div>
-            )}
+          <div className="company-external-panel-header">
+            <div>
+              <h3 className="company-external-panel-title">
+                {selectedCompany.company || "Company"}
+              </h3>
 
-            {websites.length === 0 && selectedCompany.noVerifiedWebsite && (
               <div className="company-external-panel-subtitle">
-                No official website verified
+                {selectedCompany.hasRegistered
+                  ? "Company with public registered trial activity"
+                  : "Company visible through pipeline or context sources"}
               </div>
-            )}
-          </div>
-        </div>
 
-        <div className="company-external-panel-metrics">
-          <div className="company-external-panel-metric">
-            <div className="company-external-panel-metric-number">
-              {selectedCompany.activityUnits ?? 0}
-            </div>
-            <div className="company-external-panel-metric-label">
-              Visible activity
-            </div>
-          </div>
+              {websites.length > 0 && (
+                <div className="company-external-panel-websites">
+                  {websites.map((url) => (
+                    <a
+                      key={url}
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {normalizeUrlLabel(url)}
+                    </a>
+                  ))}
+                </div>
+              )}
 
-          <div className="company-external-panel-metric">
-            <div className="company-external-panel-metric-number">
-              {selectedCompany.registeredUnits ?? 0}
-            </div>
-            <div className="company-external-panel-metric-label">
-              Registered trials
-            </div>
-          </div>
-
-          <div className="company-external-panel-metric">
-            <div className="company-external-panel-metric-number">
-              {selectedCompany.pipelineUnits ?? 0}
-            </div>
-            <div className="company-external-panel-metric-label">
-              Pipeline context
-            </div>
-          </div>
-        </div>
-
-        <div className="company-external-panel-section">
-          <div className="company-external-panel-kicker">Assets</div>
-          <div className="company-external-panel-value">
-            {listToText(selectedCompany.assets)}
-          </div>
-        </div>
-
-        <div className="company-external-panel-section">
-          <div className="company-external-panel-kicker">
-            Compound families
-          </div>
-          <div className="company-external-panel-value">
-            {listToText(selectedCompany.families)}
-          </div>
-        </div>
-
-        <div className="company-external-panel-section">
-          <div className="company-external-panel-kicker">
-            Therapeutic areas
-          </div>
-          <div className="company-external-panel-value">
-            {listToText(selectedCompany.indications)}
-          </div>
-        </div>
-
-        {selectedCompany.hasRegistered && (
-          <div className="company-external-panel-section">
-            <div className="company-external-panel-kicker">Countries</div>
-            <div className="company-external-panel-value">
-              {listToText(selectedCompany.countries)}
-            </div>
-          </div>
-        )}
-
-        {trials.length > 0 && (
-          <div className="company-external-panel-section">
-            <div className="company-external-panel-kicker">Trial IDs</div>
-            <div className="company-external-panel-value company-external-panel-trials">
-              {trials.map((trial) =>
-                trial.url ? (
-                  <a
-                    key={`${trial.id}-${trial.url}`}
-                    href={trial.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {trial.id}
-                  </a>
-                ) : (
-                  <span key={trial.id}>{trial.id}</span>
-                )
+              {websites.length === 0 && selectedCompany.noVerifiedWebsite && (
+                <div className="company-external-panel-subtitle">
+                  No official website verified
+                </div>
               )}
             </div>
           </div>
-        )}
-      </div>
-    </aside>
+
+          <div className="company-external-panel-metrics">
+            <div className="company-external-panel-metric">
+              <div className="company-external-panel-metric-number">
+                {selectedCompany.activityUnits ?? 0}
+              </div>
+              <div className="company-external-panel-metric-label">
+                Visible activity
+              </div>
+            </div>
+
+            <div className="company-external-panel-metric">
+              <div className="company-external-panel-metric-number">
+                {selectedCompany.registeredUnits ?? 0}
+              </div>
+              <div className="company-external-panel-metric-label">
+                Registered trials
+              </div>
+            </div>
+
+            <div className="company-external-panel-metric">
+              <div className="company-external-panel-metric-number">
+                {selectedCompany.pipelineUnits ?? 0}
+              </div>
+              <div className="company-external-panel-metric-label">
+                Pipeline context
+              </div>
+            </div>
+          </div>
+
+          <div className="company-external-panel-section">
+            <div className="company-external-panel-kicker">Assets</div>
+            <div className="company-external-panel-value">
+              {listToText(selectedCompany.assets)}
+            </div>
+          </div>
+
+          <div className="company-external-panel-section">
+            <div className="company-external-panel-kicker">
+              Compound families
+            </div>
+            <div className="company-external-panel-value">
+              {listToText(selectedCompany.families)}
+            </div>
+          </div>
+
+          <div className="company-external-panel-section">
+            <div className="company-external-panel-kicker">
+              Therapeutic areas
+            </div>
+            <div className="company-external-panel-value">
+              {listToText(selectedCompany.indications)}
+            </div>
+          </div>
+
+          {selectedCompany.hasRegistered && (
+            <div className="company-external-panel-section">
+              <div className="company-external-panel-kicker">Countries</div>
+              <div className="company-external-panel-value">
+                {listToText(selectedCompany.countries)}
+              </div>
+            </div>
+          )}
+
+          {trials.length > 0 && (
+            <div className="company-external-panel-section">
+              <div className="company-external-panel-kicker">Trial IDs</div>
+              <div className="company-external-panel-value company-external-panel-trials">
+                {trials.map((trial) =>
+                  trial.url ? (
+                    <a
+                      key={`${trial.id}-${trial.url}`}
+                      href={trial.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {trial.id}
+                    </a>
+                  ) : (
+                    <span key={trial.id}>{trial.id}</span>
+                  )
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </aside>
+    </>
   );
 }
 
@@ -925,113 +926,8 @@ export default function App() {
   const mainApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
   const mainNotebook = "e3028f2577c04f9a@1210";
 
-  const companyApiKey = "c76bbf6056ba531c2ed8bc19951e858dc356a8fd";
+  const companyApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
   const companyNotebook = "e3028f2577c04f9a@1218";
-
-  const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-observable-1218-2026-06-23-v1";
-
-  const logoVisualScale = {
-    "2A_biosciences.png": 1.25,
-    "algernon.png": 1.25,
-    "amandala_neuro.png": 1.25,
-    "apex_labs.png": 1.28,
-    "asri.png": 1.25,
-    "ataibeckley.png": 2.05,
-    "beond.png": 1.28,
-    "betterlife_pharma.png": 1.25,
-    "biocase_brasil.png": 1.28,
-    "biomind_labs.png": 1.3,
-    "bright_minds.png": 2.15,
-    "celon_pharma.png": 2,
-    "ceruvia_lifesciences.png": 1.28,
-    "clearmind_medicine.png": 1.28,
-    "clexio_biosciences.png": 1.28,
-    "compass_pathways.png": 1.28,
-    "definium.png": 2,
-    "delix_therapeutics.png": 2,
-    "demerx.png": 2.15,
-    "diamond_therapeutics.png": 1.28,
-    "entheon_biomedical.png": 1.28,
-    "enveric_biosciences.png": 1.28,
-    "filament_health.png": 1.28,
-    "gh_research.png": 1,
-    "gilgamesh_pharma.png": 2,
-    "helus.png": 1.25,
-    "incannex.png": 1.28,
-    "janssen_logo.png": 1.6,
-    "johnson_johnson_innovative_medicine.png": 1.35,
-    "lophora.png": 1.28,
-    "nrx_pharmaceuticals.png": 1.28,
-    "otsuka_mindset_pharma.png": 1.85,
-    "pharmadrug.png": 1.28,
-    "pharmala_biotech.png": 1.28,
-    "psilera.png": 1.28,
-    "resilient_pharmaceuticals.png": 1.25,
-    "reunion_neuroscience.png": 1.35,
-    "seaport_therapeutics.png": 1.28,
-    "solvonis_therapeutics.png": 2,
-    "tactogen.png": 2,
-    "terran_biosciences.png": 1.28,
-    "transcend_therapeutics_otsuka.png": 2.15,
-    "universal_ibogaine.png": 1.28,
-    "xylo.png": 1.85
-  };
-
-  const logoHoverScale = {
-    "2A_biosciences.png": 1,
-    "algernon.png": 1,
-    "amandala_neuro.png": 1,
-    "apex_labs.png": 1,
-    "asri.png": 1,
-    "ataibeckley.png": 1,
-    "beond.png": 1,
-    "betterlife_pharma.png": 1,
-    "biocase_brasil.png": 1,
-    "biomind_labs.png": 0.7,
-    "bright_minds.png": 1,
-    "celon_pharma.png": 1,
-    "ceruvia_lifesciences.png": 1,
-    "clearmind_medicine.png": 1,
-    "clexio_biosciences.png": 1,
-    "compass_pathways.png": 1,
-    "definium.png": 1,
-    "delix_therapeutics.png": 1,
-    "demerx.png": 1,
-    "diamond_therapeutics.png": 1,
-    "entheon_biomedical.png": 1,
-    "enveric_biosciences.png": 1,
-    "filament_health.png": 1,
-    "gh_research.png": 0.288,
-    "gilgamesh_pharma.png": 1.4,
-    "helus.png": 1,
-    "incannex.png": 1,
-    "janssen_logo.png": 0.8,
-    "johnson_johnson_innovative_medicine.png": 1,
-    "lophora.png": 1,
-    "nrx_pharmaceuticals.png": 1,
-    "otsuka_mindset_pharma.png": 1,
-    "pharmadrug.png": 1,
-    "pharmala_biotech.png": 1,
-    "psilera.png": 1,
-    "resilient_pharmaceuticals.png": 1,
-    "reunion_neuroscience.png": 1,
-    "seaport_therapeutics.png": 1,
-    "solvonis_therapeutics.png": 1,
-    "tactogen.png": 1,
-    "terran_biosciences.png": 1,
-    "transcend_therapeutics_otsuka.png": 1,
-    "universal_ibogaine.png": 1,
-    "xylo.png": 1
-  };
-
-  const encodedLogoVisualScale = encodeURIComponent(
-    JSON.stringify(logoVisualScale)
-  );
-
-  const encodedLogoHoverScale = encodeURIComponent(
-    JSON.stringify(logoHoverScale)
-  );
 
   const startPageRain = () => {
     if (pageRainStartedRef.current) return;
@@ -1088,7 +984,7 @@ export default function App() {
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual1EcosystemOverviev&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/${companyNotebook}?cells=visual1CompanyLandscapePremium1&api_key=${mainApiKey}`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/${companyNotebook}?cells=visual1CompanyLandscapePremium1&api_key=${companyApiKey}`,
 
       visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
@@ -1096,14 +992,7 @@ export default function App() {
 
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual4PhaseChart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`
     }),
-    [
-      mainNotebook,
-      mainApiKey,
-      companyNotebook,
-      companyApiKey,
-      encodedLogoVisualScale,
-      encodedLogoHoverScale
-    ]
+    [mainNotebook, mainApiKey, companyNotebook, companyApiKey]
   );
 
   return (
