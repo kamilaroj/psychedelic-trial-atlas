@@ -427,8 +427,8 @@ function SectionProgressNav() {
   const sections = useMemo(
     () => [
       {
-        id: "hero",
-        label: "Hero",
+        id: "start",
+        label: "Start",
         selector: ".hero-story"
       },
       {
@@ -460,7 +460,7 @@ function SectionProgressNav() {
     []
   );
 
-  const [activeSection, setActiveSection] = useState("hero");
+  const [activeSection, setActiveSection] = useState("start");
 
   useEffect(() => {
     const updateActiveSection = () => {
