@@ -1,15 +1,31 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 
-function useViewportWidth() {
-  const [viewportWidth, setViewportWidth] = useState(() => {
-    if (typeof window === "undefined") return 1600;
-    return window.innerWidth;
+function clampNumber(value, min, max) {
+  return Math.min(Math.max(value, min), max);
+}
+
+function useViewportSize() {
+  const [viewportSize, setViewportSize] = useState(() => {
+    if (typeof window === "undefined") {
+      return {
+        width: 1440,
+        height: 900
+      };
+    }
+
+    return {
+      width: window.innerWidth,
+      height: window.innerHeight
+    };
   });
 
   useEffect(() => {
     const handleResize = () => {
-      setViewportWidth(window.innerWidth);
+      setViewportSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
     };
 
     handleResize();
@@ -21,7 +37,7 @@ function useViewportWidth() {
     };
   }, []);
 
-  return viewportWidth;
+  return viewportSize;
 }
 
 function PageRainOverlay({ active, onDone }) {
@@ -518,10 +534,11 @@ function SectionProgressNav() {
         {`
           .section-progress-nav {
             position: fixed;
-            left: 28px;
+            left: clamp(12px, 1.45vw, 28px);
             top: 50%;
             z-index: 65;
-            transform: translateY(-50%);
+            transform: translateY(-50%) scale(clamp(0.84, 0.68 + 0.018vw, 1));
+            transform-origin: left center;
             pointer-events: auto;
             font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
             color: #1d1d1f;
@@ -530,7 +547,7 @@ function SectionProgressNav() {
           .section-progress-nav-inner {
             position: relative;
             display: grid;
-            gap: 18px;
+            gap: clamp(14px, 1.15vw, 18px);
             padding: 12px 0;
           }
 
@@ -632,30 +649,6 @@ function SectionProgressNav() {
             width: 28px;
           }
 
-          @media (max-width: 1440px) {
-            .section-progress-nav {
-              left: 18px;
-              transform: translateY(-50%) scale(0.92);
-              transform-origin: left center;
-            }
-          }
-
-          @media (max-width: 1200px) {
-            .section-progress-nav {
-              left: 14px;
-              transform: translateY(-50%) scale(0.86);
-              transform-origin: left center;
-            }
-          }
-
-          @media (max-width: 1024px) {
-            .section-progress-nav {
-              left: 10px;
-              transform: translateY(-50%) scale(0.82);
-              transform-origin: left center;
-            }
-          }
-
           @media (max-width: 920px) {
             .section-progress-nav {
               display: none;
@@ -695,7 +688,7 @@ function SectionProgressNav() {
 }
 
 export default function App() {
-  const viewportWidth = useViewportWidth();
+  const { width: viewportWidth, height: viewportHeight } = useViewportSize();
 
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutPulse, setAboutPulse] = useState(false);
@@ -704,7 +697,9 @@ export default function App() {
   const aboutPulseTimerRef = useRef(null);
 
   const frameHeights = useMemo(() => {
-    if (viewportWidth <= 900) {
+    const isMobileOrTablet = viewportWidth <= 900;
+
+    if (isMobileOrTablet) {
       return {
         heroVisible: 820,
         heroIframe: 930,
@@ -721,72 +716,37 @@ export default function App() {
       };
     }
 
-    if (viewportWidth <= 1024) {
-      return {
-        heroVisible: 690,
-        heroIframe: 810,
-        ecosystemVisible: 720,
-        ecosystemIframe: 835,
-        companyVisible: 740,
-        companyIframe: 870,
-        compoundVisible: 780,
-        compoundIframe: 930,
-        indicationVisible: 760,
-        indicationIframe: 900,
-        phaseVisible: 760,
-        phaseIframe: 900
-      };
-    }
+    const heightFactor = clampNumber(viewportHeight / 900, 0.78, 1.08);
+    const widthFactor = clampNumber(viewportWidth / 1728, 0.82, 1.08);
+    const combinedFactor = clampNumber((heightFactor * 0.72) + (widthFactor * 0.28), 0.8, 1.06);
 
-    if (viewportWidth <= 1200) {
-      return {
-        heroVisible: 720,
-        heroIframe: 840,
-        ecosystemVisible: 750,
-        ecosystemIframe: 860,
-        companyVisible: 770,
-        companyIframe: 900,
-        compoundVisible: 815,
-        compoundIframe: 960,
-        indicationVisible: 790,
-        indicationIframe: 930,
-        phaseVisible: 790,
-        phaseIframe: 930
-      };
-    }
-
-    if (viewportWidth <= 1440) {
-      return {
-        heroVisible: 760,
-        heroIframe: 880,
-        ecosystemVisible: 770,
-        ecosystemIframe: 880,
-        companyVisible: 800,
-        companyIframe: 930,
-        compoundVisible: 850,
-        compoundIframe: 1000,
-        indicationVisible: 820,
-        indicationIframe: 960,
-        phaseVisible: 820,
-        phaseIframe: 960
-      };
-    }
+    const heroVisible = Math.round(clampNumber(viewportHeight * 0.82, 650, 850));
+    const ecosystemVisible = Math.round(clampNumber(790 * combinedFactor, 700, 820));
+    const companyVisible = Math.round(clampNumber(825 * combinedFactor, 720, 850));
+    const compoundVisible = Math.round(clampNumber(890 * combinedFactor, 760, 900));
+    const indicationVisible = Math.round(clampNumber(845 * combinedFactor, 735, 860));
+    const phaseVisible = Math.round(clampNumber(845 * combinedFactor, 735, 860));
 
     return {
-      heroVisible: 836,
-      heroIframe: 930,
-      ecosystemVisible: 796,
-      ecosystemIframe: 900,
-      companyVisible: 836,
-      companyIframe: 960,
-      compoundVisible: 900,
-      compoundIframe: 1040,
-      indicationVisible: 850,
-      indicationIframe: 980,
-      phaseVisible: 850,
-      phaseIframe: 980
+      heroVisible,
+      heroIframe: heroVisible + 105,
+
+      ecosystemVisible,
+      ecosystemIframe: ecosystemVisible + 110,
+
+      companyVisible,
+      companyIframe: companyVisible + 125,
+
+      compoundVisible,
+      compoundIframe: compoundVisible + 145,
+
+      indicationVisible,
+      indicationIframe: indicationVisible + 135,
+
+      phaseVisible,
+      phaseIframe: phaseVisible + 135
     };
-  }, [viewportWidth]);
+  }, [viewportWidth, viewportHeight]);
 
   const mainApiKey = "536c77a48fd52bf6b461dc588ccfed55fdfa58d2";
   const mainNotebook = "e3028f2577c04f9a@1187";
@@ -795,7 +755,7 @@ export default function App() {
   const companyNotebook = "e3028f2577c04f9a@1208";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-observable-1208-2026-06-21-v1";
+  const logoTuningVersion = "visual1b-observable-1208-2026-06-21-v2-fluid-desktop";
 
   const logoVisualScale = {
     "2A_biosciences.png": 1.25,
@@ -972,6 +932,14 @@ export default function App() {
 
       <style>
         {`
+          :root {
+            --fluid-page-pad: clamp(24px, 4vw, 72px);
+            --fluid-hero-max: clamp(820px, 68vw, 1180px);
+            --fluid-visual-max: clamp(1080px, 88vw, 1560px);
+            --fluid-company-max: clamp(1080px, 90vw, 1560px);
+            --fluid-radius: clamp(26px, 2.1vw, 38px);
+          }
+
           html,
           body,
           #root {
@@ -1002,8 +970,20 @@ export default function App() {
             background: transparent !important;
           }
 
+          .visual-story {
+            padding-left: var(--fluid-page-pad) !important;
+            padding-right: var(--fluid-page-pad) !important;
+          }
+
+          .iframe-crop {
+            width: min(100%, var(--fluid-visual-max)) !important;
+            max-width: var(--fluid-visual-max) !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+
           .visual-story .iframe-crop {
-            border-radius: 34px !important;
+            border-radius: var(--fluid-radius) !important;
             background: rgba(248, 248, 245, 0.90) !important;
             border: 1px solid rgba(255, 255, 255, 0.62) !important;
             box-shadow:
@@ -1015,18 +995,25 @@ export default function App() {
           }
 
           .visual-story .atlas-iframe {
-            border-radius: 34px !important;
+            border-radius: var(--fluid-radius) !important;
             background: #f1f0ec !important;
           }
 
           .hero-frame {
+            width: min(100%, var(--fluid-hero-max)) !important;
+            max-width: var(--fluid-hero-max) !important;
             border-radius: 0 !important;
             box-shadow: none !important;
             border: 0 !important;
             background: transparent !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
           }
 
           .hero-story {
+            min-height: 100dvh !important;
+            padding-left: var(--fluid-page-pad) !important;
+            padding-right: var(--fluid-page-pad) !important;
             background:
               radial-gradient(circle at 50% 22%, rgba(255,255,255,0.38), transparent 36%),
               linear-gradient(180deg, rgba(143,174,190,0.34) 0%, rgba(241,240,236,0.02) 78%) !important;
@@ -1051,14 +1038,14 @@ export default function App() {
           }
 
           .company-story {
-            padding-left: 0 !important;
-            padding-right: 0 !important;
+            padding-left: var(--fluid-page-pad) !important;
+            padding-right: var(--fluid-page-pad) !important;
           }
 
           .company-frame {
-            width: min(100vw, 1720px) !important;
-            max-width: none !important;
-            margin-left: calc(50% - min(50vw, 860px)) !important;
+            width: min(100%, var(--fluid-company-max)) !important;
+            max-width: var(--fluid-company-max) !important;
+            margin-left: auto !important;
             margin-right: auto !important;
           }
 
@@ -1066,62 +1053,6 @@ export default function App() {
             width: calc(100% + 18px) !important;
             max-width: none !important;
             margin-left: -9px !important;
-          }
-
-          @media (max-width: 1440px) {
-            .company-story {
-              padding-left: 56px !important;
-              padding-right: 56px !important;
-            }
-
-            .company-frame {
-              width: min(100%, 1240px) !important;
-              max-width: 1240px !important;
-              margin-left: auto !important;
-              margin-right: auto !important;
-            }
-          }
-
-          @media (max-width: 1200px) {
-            .company-story {
-              padding-left: 44px !important;
-              padding-right: 44px !important;
-            }
-
-            .company-frame {
-              width: min(100%, 1060px) !important;
-              max-width: 1060px !important;
-              margin-left: auto !important;
-              margin-right: auto !important;
-            }
-          }
-
-          @media (max-width: 1024px) {
-            .company-story {
-              padding-left: 32px !important;
-              padding-right: 32px !important;
-            }
-
-            .company-frame {
-              width: min(100%, 940px) !important;
-              max-width: 940px !important;
-              margin-left: auto !important;
-              margin-right: auto !important;
-            }
-          }
-
-          @media (max-width: 900px) {
-            .company-story {
-              padding-left: 16px !important;
-              padding-right: 16px !important;
-            }
-
-            .company-frame {
-              width: 100% !important;
-              max-width: 100% !important;
-              margin-left: auto !important;
-              margin-right: auto !important;
-            }
           }
 
           .about-project-button {
@@ -1381,6 +1312,16 @@ export default function App() {
           .about-modal-footer .about-inline-icon svg {
             width: 14px !important;
             height: 14px !important;
+          }
+
+          @media (max-width: 900px) {
+            :root {
+              --fluid-page-pad: 16px;
+              --fluid-hero-max: 100%;
+              --fluid-visual-max: 100%;
+              --fluid-company-max: 100%;
+              --fluid-radius: 22px;
+            }
           }
 
           @media (max-width: 620px) {
