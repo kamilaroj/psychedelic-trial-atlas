@@ -30,6 +30,7 @@
 
   --company-panel-width: 292px;
   --company-footer-crop: 58px;
+  --ecosystem-footer-crop: 70px;
 }
 
 html {
@@ -553,6 +554,15 @@ body {
   max-width: var(--frame-max);
 }
 
+/* REMOVE OBSERVABLE FOOTER / CHROME IN ECOSYSTEM IFRAME */
+.ecosystem-frame {
+  overflow: hidden !important;
+}
+
+.ecosystem-frame .atlas-iframe {
+  height: calc(100% + var(--ecosystem-footer-crop)) !important;
+}
+
 /* REMOVE OBSERVABLE FOOTER / CHROME IN COMPANY IFRAME */
 .company-frame {
   overflow: hidden !important;
@@ -924,6 +934,7 @@ body {
     );
     --company-panel-width: 292px;
     --company-footer-crop: 58px;
+    --ecosystem-footer-crop: 70px;
   }
 
   .top-project-menu {
@@ -983,6 +994,7 @@ body {
     );
     --company-panel-width: 292px;
     --company-footer-crop: 58px;
+    --ecosystem-footer-crop: 70px;
   }
 
   .top-project-menu {
@@ -1045,6 +1057,7 @@ body {
     --frame-radius: 22px;
     --company-panel-width: auto;
     --company-footer-crop: 58px;
+    --ecosystem-footer-crop: 70px;
   }
 
   .top-project-menu {
