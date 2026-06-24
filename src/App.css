@@ -29,6 +29,7 @@
   --glass-shadow-soft: rgba(29, 29, 31, 0.055);
 
   --company-panel-width: 292px;
+  --company-footer-crop: 58px;
 }
 
 html {
@@ -544,6 +545,19 @@ body {
   max-width: var(--frame-max);
 }
 
+/* REMOVE OBSERVABLE FOOTER / CHROME IN COMPANY IFRAME */
+.company-frame {
+  overflow: hidden !important;
+}
+
+.company-frame .atlas-iframe {
+  height: calc(100% + var(--company-footer-crop)) !important;
+}
+
+.company-visual-shell-panel-open .company-frame .atlas-iframe {
+  height: calc(100% + var(--company-footer-crop)) !important;
+}
+
 /* COMPANY EXTERNAL PANEL */
 .company-visual-shell {
   position: relative;
@@ -574,27 +588,21 @@ body {
   left: 100% !important;
   right: auto !important;
   bottom: auto !important;
-
   width: var(--company-panel-width) !important;
   height: 100% !important;
   max-height: 100% !important;
-
   z-index: 46 !important;
   overflow: hidden !important;
-
   border-radius: 0 var(--frame-radius) var(--frame-radius) 0 !important;
   border: 1px solid rgba(255, 255, 255, 0.68) !important;
   border-left: 0 !important;
-
   background: rgba(255, 255, 255, 0.42);
   box-shadow:
     0 24px 58px rgba(42, 70, 84, 0.16),
     0 8px 20px rgba(29, 29, 31, 0.07),
     inset 0 1px 0 rgba(255, 255, 255, 0.62);
-
   backdrop-filter: blur(26px) saturate(142%);
   -webkit-backdrop-filter: blur(26px) saturate(142%);
-
   color: var(--ink);
   animation: companyPanelIn 260ms cubic-bezier(0.22, 0.78, 0.22, 1) both;
 }
@@ -611,50 +619,39 @@ body {
   }
 }
 
-/* This is the X from App.jsx */
 .company-external-panel-floating-close {
   position: absolute !important;
-  top: 18px !important;
-  left: calc(100% - 17px) !important;
-
-  width: 34px !important;
-  height: 34px !important;
-  min-width: 34px !important;
-  min-height: 34px !important;
-
+  top: 14px !important;
+  left: calc(100% - 15px) !important;
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
   z-index: 90 !important;
-
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-
   padding: 0 !important;
   margin: 0 !important;
-
   appearance: none !important;
   border: 1px solid rgba(255, 255, 255, 0.72) !important;
   border-radius: 999px !important;
-
-  background: rgba(255, 255, 255, 0.86) !important;
+  background: rgba(255, 255, 255, 0.9) !important;
   color: #24272c !important;
-
   font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
-  font-size: 20px !important;
+  font-size: 18px !important;
   line-height: 1 !important;
   font-weight: 700 !important;
-
   cursor: pointer !important;
-
   box-shadow:
     0 10px 26px rgba(29, 29, 31, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
-
   backdrop-filter: blur(18px) saturate(142%) !important;
   -webkit-backdrop-filter: blur(18px) saturate(142%) !important;
 }
 
 .company-external-panel-floating-close:hover {
-  background: rgba(255, 255, 255, 0.96) !important;
+  background: rgba(255, 255, 255, 0.98) !important;
   transform: scale(1.04) !important;
 }
 
@@ -666,12 +663,12 @@ body {
   height: 100% !important;
   max-height: 100% !important;
   overflow-y: auto !important;
-  padding: 24px 20px 24px;
+  padding: 16px 14px 14px;
   box-sizing: border-box;
 }
 
 .company-external-panel-inner::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 
 .company-external-panel-inner::-webkit-scrollbar-thumb {
@@ -682,31 +679,31 @@ body {
 .company-external-panel-header {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 12px;
+  gap: 8px;
   align-items: start;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .company-external-panel-title {
   margin: 0;
   font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  font-size: 22px;
-  line-height: 1.02;
+  font-size: 18px;
+  line-height: 0.98;
   letter-spacing: -0.055em;
   font-weight: 850;
   color: var(--ink);
 }
 
 .company-external-panel-subtitle {
-  margin-top: 9px;
-  font-size: 11.5px;
-  line-height: 1.36;
+  margin-top: 6px;
+  font-size: 10px;
+  line-height: 1.22;
   color: var(--muted);
 }
 
 .company-external-panel-logo {
-  width: 62px;
-  height: 62px;
+  width: 46px;
+  height: 46px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.86);
   border: 1px solid rgba(29, 31, 34, 0.08);
@@ -715,61 +712,61 @@ body {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  margin-bottom: 13px;
+  margin-bottom: 8px;
 }
 
 .company-external-panel-logo img {
-  width: 86%;
-  height: 86%;
+  width: 84%;
+  height: 84%;
   object-fit: contain;
   display: block;
 }
 
 .company-external-panel-websites {
   display: grid;
-  gap: 4px;
-  margin-top: 10px;
+  gap: 2px;
+  margin-top: 8px;
 }
 
 .company-external-panel-websites a {
   color: #3f6f91;
   text-decoration: underline;
   text-underline-offset: 3px;
-  font-size: 11.6px;
-  line-height: 1.35;
+  font-size: 10.5px;
+  line-height: 1.22;
   font-weight: 700;
   word-break: break-word;
 }
 
-/* UPDATED COMPANY METRICS */
+/* COMPACT COMPANY METRICS */
 .company-external-panel-metrics {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
-  margin: 18px 0 18px;
+  gap: 7px;
+  margin: 10px 0 10px;
 }
 
 .company-external-panel-metrics-stacked {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 7px;
 }
 
 .company-external-panel-metric-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  gap: 7px;
 }
 
 .company-external-panel-metric {
-  border-radius: 18px;
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.38);
   border: 1px solid rgba(255, 255, 255, 0.48);
   box-shadow:
-    0 12px 26px rgba(29, 29, 31, 0.045),
+    0 10px 20px rgba(29, 29, 31, 0.04),
     inset 0 1px 0 rgba(255, 255, 255, 0.62);
-  padding: 14px 10px 13px;
-  min-height: 82px;
+  padding: 10px 8px 9px;
+  min-height: 64px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -779,19 +776,19 @@ body {
 
 .company-external-panel-metric-total {
   width: 100%;
-  min-height: 104px;
-  border-radius: 22px;
-  padding: 18px 12px 16px;
+  min-height: 82px;
+  border-radius: 18px;
+  padding: 12px 10px 11px;
 }
 
 .company-external-panel-metric-half {
-  min-height: 88px;
-  padding: 15px 8px 13px;
+  min-height: 64px;
+  padding: 10px 6px 9px;
 }
 
 .company-external-panel-metric-number {
   font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  font-size: 25px;
+  font-size: 18px;
   line-height: 0.92;
   font-weight: 900;
   letter-spacing: -0.06em;
@@ -800,77 +797,79 @@ body {
 }
 
 .company-external-panel-metric-total .company-external-panel-metric-number {
-  font-size: 43px;
-  line-height: 0.9;
+  font-size: 34px;
+  line-height: 0.88;
 }
 
 .company-external-panel-metric-label {
-  margin-top: 8px;
-  font-size: 9.2px;
-  line-height: 1.08;
+  margin-top: 5px;
+  font-size: 7.6px;
+  line-height: 1.05;
   color: #8c9098;
   font-weight: 830;
   text-transform: uppercase;
-  letter-spacing: 0.045em;
+  letter-spacing: 0.04em;
   text-align: center;
 }
 
 .company-external-panel-metric-total .company-external-panel-metric-label {
-  font-size: 10.2px;
-  margin-top: 10px;
+  font-size: 8.6px;
+  margin-top: 6px;
 }
 
 .company-external-panel-metric-note {
-  margin-top: 6px;
-  font-size: 7.8px;
-  line-height: 1.12;
+  margin-top: 3px;
+  font-size: 6.7px;
+  line-height: 1.05;
   color: #a0a5ad;
   font-weight: 760;
   text-transform: uppercase;
-  letter-spacing: 0.055em;
+  letter-spacing: 0.05em;
   text-align: center;
-  max-width: 190px;
+  max-width: 160px;
 }
 
 .company-external-panel-section {
   border-top: 1px solid rgba(29, 29, 31, 0.08);
-  padding-top: 11px;
-  margin-top: 11px;
+  padding-top: 7px;
+  margin-top: 7px;
 }
 
 .company-external-panel-kicker {
-  font-size: 9.8px;
-  line-height: 1.1;
+  font-size: 8.6px;
+  line-height: 1.05;
   color: #8c9098;
   font-weight: 820;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
+  letter-spacing: 0.07em;
+  margin-bottom: 4px;
 }
 
 .company-external-panel-value {
-  font-size: 11.35px;
-  line-height: 1.38;
+  font-size: 10px;
+  line-height: 1.26;
   color: var(--muted);
   overflow-wrap: anywhere;
 }
 
 .company-external-panel-trials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px 7px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 8px;
+  align-items: start;
 }
 
 .company-external-panel-trials a,
 .company-external-panel-trials span {
-  font-size: 11.2px;
-  line-height: 1.28;
+  display: block;
+  font-size: 10px;
+  line-height: 1.2;
 }
 
 .company-external-panel-trials a {
   color: #3f6f91;
   text-decoration: underline;
-  text-underline-offset: 3px;
+  text-underline-offset: 2px;
   font-weight: 700;
 }
 
@@ -916,6 +915,7 @@ body {
       calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
     );
     --company-panel-width: 292px;
+    --company-footer-crop: 58px;
   }
 
   .top-project-menu {
@@ -956,8 +956,8 @@ body {
 
   .company-external-panel-floating-close {
     position: absolute !important;
-    top: 18px !important;
-    left: calc(100% - 17px) !important;
+    top: 14px !important;
+    left: calc(100% - 15px) !important;
   }
 }
 
@@ -974,6 +974,7 @@ body {
       calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
     );
     --company-panel-width: 292px;
+    --company-footer-crop: 58px;
   }
 
   .top-project-menu {
@@ -1021,12 +1022,12 @@ body {
 
   .company-external-panel-floating-close {
     position: absolute !important;
-    top: 18px !important;
-    left: calc(100% - 17px) !important;
+    top: 14px !important;
+    left: calc(100% - 15px) !important;
   }
 }
 
-/* MOBILE / TABLET PLACEHOLDER */
+/* MOBILE / TABLET */
 @media (max-width: 900px) {
   :root {
     --left-nav-safe-space: 16px;
@@ -1035,6 +1036,7 @@ body {
     --hero-max: calc(100vw - 32px);
     --frame-radius: 22px;
     --company-panel-width: auto;
+    --company-footer-crop: 58px;
   }
 
   .top-project-menu {
@@ -1128,7 +1130,7 @@ body {
     position: fixed !important;
     top: auto !important;
     left: 28px !important;
-    bottom: calc(16px + min(64vh, 520px) - 17px) !important;
+    bottom: calc(16px + min(64vh, 520px) - 15px) !important;
   }
 
   .company-external-panel-metric-row {
@@ -1136,11 +1138,15 @@ body {
   }
 
   .company-external-panel-metric-total {
-    min-height: 96px;
+    min-height: 80px;
   }
 
   .company-external-panel-metric-total .company-external-panel-metric-number {
-    font-size: 39px;
+    font-size: 32px;
+  }
+
+  .company-external-panel-trials {
+    grid-template-columns: 1fr 1fr;
   }
 
   .compound-story {
