@@ -698,6 +698,10 @@ function normalizeUrlLabel(url) {
     .replace(/\/$/g, "");
 }
 
+function encodeJsonForUrl(value) {
+  return encodeURIComponent(JSON.stringify(value));
+}
+
 function CompanyExternalPanel({ selectedCompany, onClose }) {
   if (!selectedCompany) return null;
 
@@ -956,6 +960,55 @@ export default function App() {
   const mainApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
   const mainNotebook = "e3028f2577c04f9a@1210";
 
+  const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
+  const logoTuningVersion = "visual1b-logo-tuning-2026-06-24-github";
+
+  const logoVisualScale = {
+    "biomind_labs.png": 1.3,
+    "janssen_logo.png": 1.6,
+    "gh_research.png": 1,
+    "solvonis_therapeutics.png": 2,
+    "gilgamesh_pharma.png": 2,
+    "bright_minds.png": 2.15,
+    "definium.png": 2,
+    "otsuka_mindset_pharma.png": 1.85,
+    "ataibeckley.png": 2.05,
+    "delix_therapeutics.png": 2,
+    "xylo.png": 1.85,
+    "tactogen.png": 2,
+    "transcend_therapeutics_otsuka.png": 2.15,
+    "reunion_neuroscience.png": 1.35,
+    "celon_pharma.png": 2,
+    "demerx.png": 2.15
+  };
+
+  const logoHoverScale = {
+    "biomind_labs.png": 0.7,
+    "gh_research.png": 0.288,
+    "janssen_logo.png": 0.8,
+    "gilgamesh_pharma.png": 1.4,
+    "solvonis_therapeutics.png": 1,
+    "bright_minds.png": 1,
+    "definium.png": 1,
+    "otsuka_mindset_pharma.png": 1,
+    "ataibeckley.png": 1,
+    "delix_therapeutics.png": 1,
+    "xylo.png": 1,
+    "tactogen.png": 1,
+    "transcend_therapeutics_otsuka.png": 1,
+    "reunion_neuroscience.png": 1,
+    "celon_pharma.png": 1,
+    "demerx.png": 1
+  };
+
+  const visual1CompanyLandscapeParams = `&logoBase=${encodeURIComponent(
+    githubLogoBase
+  )}&logoTuningVersion=${encodeURIComponent(
+    logoTuningVersion
+  )}&logoVisualScale=${encodeJsonForUrl(
+    logoVisualScale
+  )}&logoHoverScale=${encodeJsonForUrl(logoHoverScale)}`;
+
   const startPageRain = () => {
     if (pageRainStartedRef.current) return;
 
@@ -1011,7 +1064,7 @@ export default function App() {
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1223?cells=visual1EcosystemOverviev&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29`,
 
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1224?cells=visual1CompanyLandscapePremium1&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1224?cells=visual1CompanyLandscapePremium1&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29${visual1CompanyLandscapeParams}`,
 
       visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
@@ -1019,7 +1072,7 @@ export default function App() {
 
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual4PhaseChart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`
     }),
-    [mainNotebook, mainApiKey]
+    [mainNotebook, mainApiKey, visual1CompanyLandscapeParams]
   );
 
   return (
