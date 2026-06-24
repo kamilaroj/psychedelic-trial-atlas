@@ -992,7 +992,7 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}`,
 
-      visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1221?cells=visual1EcosystemOverviev&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29`,
+      visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1222?cells=visual1EcosystemOverviev&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29`,
 
       visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1221?cells=visual1CompanyLandscapePremium1&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29`,
 
