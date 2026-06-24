@@ -918,8 +918,8 @@ export default function App() {
         heroIframe: 930,
         ecosystemVisible: 796.34375,
         ecosystemIframe: 796.34375,
-        companyVisible: 776.078125,
-        companyIframe: 776.078125,
+        companyVisible: 776.25,
+        companyIframe: 776.25,
         compoundVisible: 820,
         compoundIframe: 960,
         indicationVisible: 800,
@@ -931,7 +931,7 @@ export default function App() {
 
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
     const ecosystemVisible = 796.34375;
-    const companyVisible = 776.078125;
+    const companyVisible = 776.25;
     const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
     const indicationVisible = clampNumber(viewportHeight * 0.8, 660, 800);
     const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
@@ -944,7 +944,7 @@ export default function App() {
       ecosystemIframe: 796.34375,
 
       companyVisible,
-      companyIframe: 776.078125,
+      companyIframe: 776.25,
 
       compoundVisible,
       compoundIframe: compoundVisible + 120,
@@ -1064,7 +1064,7 @@ export default function App() {
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1223?cells=visual1EcosystemOverviev&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29`,
 
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1224?cells=visual1CompanyLandscapePremium1&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29${visual1CompanyLandscapeParams}`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1225?cells=visual1CompanyLandscapePremium1${visual1CompanyLandscapeParams}`,
 
       visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
