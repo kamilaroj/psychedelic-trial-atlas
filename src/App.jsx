@@ -743,13 +743,27 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
           <div
             className="company-external-panel-header"
             style={{
-              display: "flex",
-              alignItems: "flex-start",
-              justifyContent: "space-between",
-              gap: "14px"
+              position: "relative",
+              paddingRight: selectedCompany.logoUrl ? "44px" : "0"
             }}
           >
-            <div style={{ flex: "1 1 auto", minWidth: 0 }}>
+            {selectedCompany.logoUrl && (
+              <div
+                className="company-external-panel-logo"
+                style={{
+                  position: "absolute",
+                  top: "-2px",
+                  right: "0"
+                }}
+              >
+                <img
+                  src={selectedCompany.logoUrl}
+                  alt={`${selectedCompany.company || "Company"} logo`}
+                />
+              </div>
+            )}
+
+            <div>
               <h3 className="company-external-panel-title">
                 {selectedCompany.company || "Company"}
               </h3>
@@ -781,23 +795,6 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
                 </div>
               )}
             </div>
-
-            {selectedCompany.logoUrl && (
-              <div
-                className="company-external-panel-logo"
-                style={{
-                  flex: "0 0 auto",
-                  marginLeft: "auto",
-                  alignSelf: "flex-start",
-                  transform: "translateY(-4px)"
-                }}
-              >
-                <img
-                  src={selectedCompany.logoUrl}
-                  alt={`${selectedCompany.company || "Company"} logo`}
-                />
-              </div>
-            )}
           </div>
 
           <div className="company-external-panel-metrics company-external-panel-metrics-stacked">
