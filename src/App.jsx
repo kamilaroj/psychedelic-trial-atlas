@@ -740,20 +740,22 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
         aria-label={`${selectedCompany.company || "Company"} details`}
       >
         <div className="company-external-panel-inner">
-          <div
-            className="company-external-panel-header"
-            style={{
-              position: "relative",
-              paddingRight: selectedCompany.logoUrl ? "44px" : "0"
-            }}
-          >
-            {selectedCompany.logoUrl && (
+          {selectedCompany.logoUrl && (
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "flex-end",
+                alignItems: "center",
+                marginBottom: "8px"
+              }}
+            >
               <div
                 className="company-external-panel-logo"
                 style={{
-                  position: "absolute",
-                  top: "-2px",
-                  right: "0"
+                  width: "48px",
+                  height: "48px",
+                  margin: 0
                 }}
               >
                 <img
@@ -761,8 +763,10 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
                   alt={`${selectedCompany.company || "Company"} logo`}
                 />
               </div>
-            )}
+            </div>
+          )}
 
+          <div className="company-external-panel-header">
             <div>
               <h3 className="company-external-panel-title">
                 {selectedCompany.company || "Company"}
