@@ -716,6 +716,14 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
     ? selectedCompany.trials
     : [];
 
+  const visibleActivity =
+    selectedCompany.visibleActivity ??
+    selectedCompany.activityUnits ??
+    0;
+
+  const registeredTrials = selectedCompany.registeredUnits ?? 0;
+  const pipelineContext = selectedCompany.pipelineUnits ?? 0;
+
   return (
     <>
       <button
@@ -776,31 +784,36 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
             </div>
           </div>
 
-          <div className="company-external-panel-metrics">
-            <div className="company-external-panel-metric">
+          <div className="company-external-panel-metrics company-external-panel-metrics-stacked">
+            <div className="company-external-panel-metric company-external-panel-metric-total">
               <div className="company-external-panel-metric-number">
-                {selectedCompany.activityUnits ?? 0}
+                {visibleActivity}
               </div>
               <div className="company-external-panel-metric-label">
                 Visible activity
               </div>
-            </div>
-
-            <div className="company-external-panel-metric">
-              <div className="company-external-panel-metric-number">
-                {selectedCompany.registeredUnits ?? 0}
-              </div>
-              <div className="company-external-panel-metric-label">
-                Registered trials
+              <div className="company-external-panel-metric-note">
+                Registered trials + pipeline context
               </div>
             </div>
 
-            <div className="company-external-panel-metric">
-              <div className="company-external-panel-metric-number">
-                {selectedCompany.pipelineUnits ?? 0}
+            <div className="company-external-panel-metric-row">
+              <div className="company-external-panel-metric company-external-panel-metric-half">
+                <div className="company-external-panel-metric-number">
+                  {registeredTrials}
+                </div>
+                <div className="company-external-panel-metric-label">
+                  Registered trials
+                </div>
               </div>
-              <div className="company-external-panel-metric-label">
-                Pipeline context
+
+              <div className="company-external-panel-metric company-external-panel-metric-half">
+                <div className="company-external-panel-metric-number">
+                  {pipelineContext}
+                </div>
+                <div className="company-external-panel-metric-label">
+                  Pipeline context
+                </div>
               </div>
             </div>
           </div>
@@ -884,8 +897,8 @@ export default function App() {
         heroIframe: 930,
         ecosystemVisible: 760,
         ecosystemIframe: 870,
-        companyVisible: 776,
-        companyIframe: 896,
+        companyVisible: 776.015625,
+        companyIframe: 776.015625,
         compoundVisible: 820,
         compoundIframe: 960,
         indicationVisible: 800,
@@ -897,7 +910,7 @@ export default function App() {
 
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
     const ecosystemVisible = clampNumber(viewportHeight * 0.78, 640, 780);
-    const companyVisible = 776;
+    const companyVisible = 776.015625;
     const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
     const indicationVisible = clampNumber(viewportHeight * 0.8, 660, 800);
     const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
@@ -910,7 +923,7 @@ export default function App() {
       ecosystemIframe: ecosystemVisible + 110,
 
       companyVisible,
-      companyIframe: 896,
+      companyIframe: 776.015625,
 
       compoundVisible,
       compoundIframe: compoundVisible + 120,
@@ -925,9 +938,6 @@ export default function App() {
 
   const mainApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
   const mainNotebook = "e3028f2577c04f9a@1210";
-
-  const companyApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
-  const companyNotebook = "e3028f2577c04f9a@1218";
 
   const startPageRain = () => {
     if (pageRainStartedRef.current) return;
@@ -984,7 +994,7 @@ export default function App() {
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual1EcosystemOverviev&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/${companyNotebook}?cells=visual1CompanyLandscapePremium1&api_key=${companyApiKey}`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1219?cells=visual1CompanyLandscapePremium1`,
 
       visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
@@ -992,7 +1002,7 @@ export default function App() {
 
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual4PhaseChart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`
     }),
-    [mainNotebook, mainApiKey, companyNotebook, companyApiKey]
+    [mainNotebook, mainApiKey]
   );
 
   return (
