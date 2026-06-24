@@ -198,8 +198,8 @@ body {
 }
 
 .about-modal {
-  width: min(92vw, 550px);
-  max-width: 550px;
+  width: min(92vw, 590px);
+  max-width: 590px;
   max-height: 82vh;
   overflow: hidden;
   background: #ffffff;
@@ -328,6 +328,9 @@ body {
   line-height: 1.38;
   letter-spacing: -0.01em;
   text-align: left;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .about-modal-section {
@@ -363,7 +366,9 @@ body {
   color: #2b2f36;
   text-align: justify;
   text-justify: inter-word;
-  hyphens: auto;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .about-modal-section p:last-child {
@@ -400,6 +405,9 @@ body {
   font-size: 10.65px;
   line-height: 1.25;
   color: #2b2f36;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
 }
 
 .about-modal-footer {
@@ -1057,8 +1065,8 @@ body {
   }
 
   .about-modal {
-    width: min(94vw, 530px);
-    max-width: 530px;
+    width: min(94vw, 570px);
+    max-width: 570px;
     max-height: 86vh;
     border-radius: 20px;
   }
