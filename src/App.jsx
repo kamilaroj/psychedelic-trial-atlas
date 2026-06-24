@@ -946,7 +946,7 @@ export default function App() {
     "apex_labs.png": 2.5,
     "asri.png": 1,
     "ataibeckley.png": 1.95,
-    "beond.png": 2.5,
+    "beond.png": 1.8,
     "betterlife_pharma.png": 1.5,
     "biocase_brasil.png": 3,
     "biomind_labs.png": 1.6,
