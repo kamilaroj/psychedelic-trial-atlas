@@ -994,7 +994,7 @@ export default function App() {
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual1EcosystemOverviev&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1219?cells=visual1CompanyLandscapePremium1`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1219?cells=visual1CompanyLandscapePremium1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
       visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
