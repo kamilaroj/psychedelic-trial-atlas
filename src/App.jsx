@@ -426,36 +426,12 @@ function ScrollProgressBar() {
 function SectionProgressNav() {
   const sections = useMemo(
     () => [
-      {
-        id: "start",
-        label: "Start",
-        selector: ".hero-story"
-      },
-      {
-        id: "ecosystem",
-        label: "Ecosystem",
-        selector: ".ecosystem-story"
-      },
-      {
-        id: "companies",
-        label: "Companies",
-        selector: ".company-story"
-      },
-      {
-        id: "compounds",
-        label: "Compounds",
-        selector: ".compound-story"
-      },
-      {
-        id: "indications",
-        label: "Indications",
-        selector: ".indication-story"
-      },
-      {
-        id: "phases",
-        label: "Phases",
-        selector: ".phase-story"
-      }
+      { id: "start", label: "Start", selector: ".hero-story" },
+      { id: "ecosystem", label: "Ecosystem", selector: ".ecosystem-story" },
+      { id: "companies", label: "Companies", selector: ".company-story" },
+      { id: "compounds", label: "Compounds", selector: ".compound-story" },
+      { id: "indications", label: "Indications", selector: ".indication-story" },
+      { id: "phases", label: "Phases", selector: ".phase-story" }
     ],
     []
   );
@@ -961,44 +937,100 @@ export default function App() {
   const mainNotebook = "e3028f2577c04f9a@1210";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-24-github";
+  const logoTuningVersion = "visual1b-logo-tuning-2026-06-24-full-logo-list";
 
   const logoVisualScale = {
-    "biomind_labs.png": 1.3,
-    "janssen_logo.png": 1.6,
-    "gh_research.png": 1,
-    "solvonis_therapeutics.png": 2,
-    "gilgamesh_pharma.png": 2,
-    "bright_minds.png": 2.15,
-    "definium.png": 2,
-    "otsuka_mindset_pharma.png": 1.85,
+    "2A_biosciences.png": 1,
+    "algernon.png": 1,
+    "amandala_neuro.png": 1,
+    "apex_labs.png": 1,
+    "asri.png": 1,
     "ataibeckley.png": 2.05,
-    "delix_therapeutics.png": 2,
-    "xylo.png": 1.85,
-    "tactogen.png": 2,
-    "transcend_therapeutics_otsuka.png": 2.15,
-    "reunion_neuroscience.png": 1.35,
+    "beond.png": 1,
+    "betterlife_pharma.png": 1,
+    "biocase_brasil.png": 1,
+    "biomind_labs.png": 1.3,
+    "bright_minds.png": 2.15,
     "celon_pharma.png": 2,
-    "demerx.png": 2.15
+    "ceruvia_lifesciences.png": 1,
+    "clearmind_medicine.png": 1,
+    "clexio_biosciences.png": 1,
+    "compass_pathways.png": 1,
+    "definium.png": 2,
+    "delix_therapeutics.png": 2,
+    "demerx.png": 2.15,
+    "diamond_therapeutics.png": 1,
+    "entheon_biomedical.png": 1,
+    "enveric_biosciences.png": 1,
+    "filament_health.png": 1,
+    "gh_research.png": 1,
+    "gilgamesh_pharma.png": 2,
+    "helus.png": 1,
+    "incannex.png": 1,
+    "janssen_logo.png": 1.6,
+    "johnson_johnson_innovative_medicine.png": 1,
+    "lophora.png": 1,
+    "nrx_pharmaceuticals.png": 1,
+    "otsuka_mindset_pharma.png": 1.85,
+    "pharmadrug.png": 1,
+    "pharmala_biotech.png": 1,
+    "psilera.png": 1,
+    "resilient_pharmaceuticals.png": 1,
+    "reunion_neuroscience.png": 1.35,
+    "seaport_therapeutics.png": 1,
+    "solvonis_therapeutics.png": 2,
+    "tactogen.png": 2,
+    "terran_biosciences.png": 1,
+    "transcend_therapeutics_otsuka.png": 2.15,
+    "universal_ibogaine.png": 1,
+    "xylo.png": 1.85
   };
 
   const logoHoverScale = {
-    "biomind_labs.png": 0.7,
-    "gh_research.png": 0.288,
-    "janssen_logo.png": 0.8,
-    "gilgamesh_pharma.png": 1.4,
-    "solvonis_therapeutics.png": 1,
-    "bright_minds.png": 1,
-    "definium.png": 1,
-    "otsuka_mindset_pharma.png": 1,
+    "2A_biosciences.png": 1,
+    "algernon.png": 1,
+    "amandala_neuro.png": 1,
+    "apex_labs.png": 1,
+    "asri.png": 1,
     "ataibeckley.png": 1,
-    "delix_therapeutics.png": 1,
-    "xylo.png": 1,
-    "tactogen.png": 1,
-    "transcend_therapeutics_otsuka.png": 1,
-    "reunion_neuroscience.png": 1,
+    "beond.png": 1,
+    "betterlife_pharma.png": 1,
+    "biocase_brasil.png": 1,
+    "biomind_labs.png": 0.7,
+    "bright_minds.png": 1,
     "celon_pharma.png": 1,
-    "demerx.png": 1
+    "ceruvia_lifesciences.png": 1,
+    "clearmind_medicine.png": 1,
+    "clexio_biosciences.png": 1,
+    "compass_pathways.png": 1,
+    "definium.png": 1,
+    "delix_therapeutics.png": 1,
+    "demerx.png": 1,
+    "diamond_therapeutics.png": 1,
+    "entheon_biomedical.png": 1,
+    "enveric_biosciences.png": 1,
+    "filament_health.png": 1,
+    "gh_research.png": 0.288,
+    "gilgamesh_pharma.png": 1.4,
+    "helus.png": 1,
+    "incannex.png": 1,
+    "janssen_logo.png": 0.8,
+    "johnson_johnson_innovative_medicine.png": 1,
+    "lophora.png": 1,
+    "nrx_pharmaceuticals.png": 1,
+    "otsuka_mindset_pharma.png": 1,
+    "pharmadrug.png": 1,
+    "pharmala_biotech.png": 1,
+    "psilera.png": 1,
+    "resilient_pharmaceuticals.png": 1,
+    "reunion_neuroscience.png": 1,
+    "seaport_therapeutics.png": 1,
+    "solvonis_therapeutics.png": 1,
+    "tactogen.png": 1,
+    "terran_biosciences.png": 1,
+    "transcend_therapeutics_otsuka.png": 1,
+    "universal_ibogaine.png": 1,
+    "xylo.png": 1
   };
 
   const visual1CompanyLandscapeParams = `&logoBase=${encodeURIComponent(
