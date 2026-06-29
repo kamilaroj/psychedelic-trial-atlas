@@ -678,7 +678,14 @@ function encodeJsonForUrl(value) {
   return encodeURIComponent(JSON.stringify(value));
 }
 
-function CompanyExternalPanel({ selectedCompany, onClose }) {
+function CompanyExternalPanel({
+  selectedCompany,
+  onClose,
+  onCompare,
+  showCompareButton = false,
+  compareModeActive = false,
+  isComparePanel = false
+}) {
   if (!selectedCompany) return null;
 
   const listToText = (value, fallback = "Insufficient data to verify") => {
@@ -707,16 +714,24 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
   return (
     <>
       <button
-        className="company-external-panel-floating-close"
+        className={`company-external-panel-floating-close ${
+          isComparePanel ? "company-external-panel-floating-close-compare" : ""
+        }`}
         type="button"
         onClick={onClose}
-        aria-label="Close company details"
+        aria-label={
+          isComparePanel
+            ? "Close compared company details"
+            : "Close company details"
+        }
       >
         ×
       </button>
 
       <aside
-        className="company-external-panel"
+        className={`company-external-panel ${
+          isComparePanel ? "company-external-panel-compare" : ""
+        }`}
         aria-label={`${selectedCompany.company || "Company"} details`}
       >
         <div className="company-external-panel-inner">
@@ -744,6 +759,22 @@ function CompanyExternalPanel({ selectedCompany, onClose }) {
                 />
               </div>
             </div>
+          )}
+
+          {showCompareButton && (
+            <button
+              className={`company-external-panel-compare-button ${
+                compareModeActive
+                  ? "company-external-panel-compare-button-active"
+                  : ""
+              }`}
+              type="button"
+              onClick={onCompare}
+            >
+              {compareModeActive
+                ? "Select another company"
+                : "+ Compare company"}
+            </button>
           )}
 
           <div className="company-external-panel-header">
@@ -883,6 +914,8 @@ export default function App() {
   const [aboutPulse, setAboutPulse] = useState(false);
   const [pageRainActive, setPageRainActive] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState(null);
+  const [compareCompany, setCompareCompany] = useState(null);
+  const [compareMode, setCompareMode] = useState(false);
 
   const pageRainStartedRef = useRef(false);
   const aboutPulseTimerRef = useRef(null);
@@ -1066,13 +1099,109 @@ export default function App() {
     });
   };
 
+  const postCompareModeToObservable = (active) => {
+    const iframe = document.querySelector(
+      'iframe[title="Company Landscape Premium"]'
+    );
+
+    if (!iframe || !iframe.contentWindow) return;
+
+    iframe.contentWindow.postMessage(
+      {
+        type: "UNICORN_COMPARE_SELECTION_MODE",
+        active
+      },
+      "*"
+    );
+  };
+
+  const clearObservableCompanyState = () => {
+    const iframe = document.querySelector(
+      'iframe[title="Company Landscape Premium"]'
+    );
+
+    if (!iframe || !iframe.contentWindow) return;
+
+    iframe.contentWindow.postMessage(
+      {
+        type: "UNICORN_COMPANY_CLEAR"
+      },
+      "*"
+    );
+  };
+
+  const clearObservableCompareState = () => {
+    const iframe = document.querySelector(
+      'iframe[title="Company Landscape Premium"]'
+    );
+
+    if (!iframe || !iframe.contentWindow) return;
+
+    iframe.contentWindow.postMessage(
+      {
+        type: "UNICORN_COMPARE_CLEAR"
+      },
+      "*"
+    );
+  };
+
+  const handleCompareStart = () => {
+    if (!selectedCompany) return;
+
+    const nextMode = !compareMode;
+
+    setCompareMode(nextMode);
+    postCompareModeToObservable(nextMode);
+  };
+
+  const handlePrimaryClose = () => {
+    setSelectedCompany(null);
+    setCompareCompany(null);
+    setCompareMode(false);
+    clearObservableCompanyState();
+  };
+
+  const handleCompareClose = () => {
+    setCompareCompany(null);
+    setCompareMode(false);
+    clearObservableCompareState();
+  };
+
   useEffect(() => {
     const handleCompanyMessage = (event) => {
       const message = event.data;
 
-      if (!message || message.type !== "UNICORN_COMPANY_SELECTED") return;
+      if (!message || typeof message !== "object") return;
 
-      setSelectedCompany(message.payload || null);
+      if (message.type === "UNICORN_COMPANY_COMPARE_SELECTED") {
+        setCompareCompany(message.payload || null);
+        setCompareMode(false);
+        postCompareModeToObservable(false);
+        return;
+      }
+
+      if (message.type !== "UNICORN_COMPANY_SELECTED") return;
+
+      const payload = message.payload || null;
+
+      if (!payload) {
+        setSelectedCompany(null);
+        setCompareCompany(null);
+        setCompareMode(false);
+        return;
+      }
+
+      if (payload.compareSlot === "compare") {
+        setCompareCompany(payload);
+        setCompareMode(false);
+        postCompareModeToObservable(false);
+        return;
+      }
+
+      setSelectedCompany(payload);
+      setCompareCompany(null);
+      setCompareMode(false);
+      postCompareModeToObservable(false);
     };
 
     window.addEventListener("message", handleCompanyMessage);
@@ -1094,9 +1223,9 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}`,
 
-      visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1223?cells=visual1EcosystemOverviev&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29`,
+      visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1231?cells=visual1EcosystemOverviev&api_key=a2ee50a620f4d2aee4e95c1565c58282751ead58`,
 
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1225?cells=visual1CompanyLandscapePremium1&api_key=d7fef968784b35d048ae7ced9ccc3258c6778b29${visual1CompanyLandscapeParams}`,
+      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1231?cells=visual1CompanyLandscapePremium1&api_key=a2ee50a620f4d2aee4e95c1565c58282751ead58${visual1CompanyLandscapeParams}`,
 
       visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
@@ -1304,7 +1433,7 @@ export default function App() {
         <div
           className={`company-visual-shell ${
             selectedCompany ? "company-visual-shell-panel-open" : ""
-          }`}
+          } ${compareCompany ? "company-visual-shell-compare-open" : ""}`}
         >
           <ObservableFrame
             title="Company Landscape Premium"
@@ -1316,7 +1445,16 @@ export default function App() {
 
           <CompanyExternalPanel
             selectedCompany={selectedCompany}
-            onClose={() => setSelectedCompany(null)}
+            onClose={handlePrimaryClose}
+            onCompare={handleCompareStart}
+            showCompareButton={!!selectedCompany}
+            compareModeActive={compareMode}
+          />
+
+          <CompanyExternalPanel
+            selectedCompany={compareCompany}
+            onClose={handleCompareClose}
+            isComparePanel={true}
           />
         </div>
       </section>
