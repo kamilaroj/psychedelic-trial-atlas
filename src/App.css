@@ -13,8 +13,8 @@
 
   --company-panel-width: 286px;
   --company-panel-compare-width: 286px;
-  --company-compare-button-width: 154px;
-  --company-compare-button-gap: 12px;
+  --company-compare-button-width: 158px;
+  --company-compare-button-overlap: 22px;
 
   --frame-max: min(
     1180px,
@@ -30,8 +30,8 @@
     1180px,
     calc(
       100vw - var(--page-pad-left) - var(--page-pad-right) -
-      var(--company-panel-width) - var(--company-compare-button-width) -
-      var(--company-compare-button-gap)
+      var(--company-panel-width) - var(--company-compare-button-width) +
+      var(--company-compare-button-overlap)
     )
   );
 
@@ -826,19 +826,19 @@ body {
   word-break: break-word;
 }
 
-/* COMPARE BUTTON — FLOATING OUTSIDE PRIMARY PANEL */
+/* COMPARE BUTTON — CENTERED OUTSIDE PRIMARY PANEL */
 .company-external-panel-compare-button {
   position: absolute !important;
-  top: 70px !important;
-  left: calc(100% + var(--company-compare-button-gap)) !important;
+  top: 50% !important;
+  left: calc(100% - var(--company-compare-button-overlap)) !important;
   width: var(--company-compare-button-width) !important;
-  height: 34px !important;
-  min-height: 34px !important;
+  height: 36px !important;
+  min-height: 36px !important;
   z-index: 95 !important;
   appearance: none !important;
   border: 1px solid rgba(36, 39, 44, 0.1) !important;
   border-radius: 999px !important;
-  background: rgba(255, 255, 255, 0.82) !important;
+  background: rgba(255, 255, 255, 0.86) !important;
   color: var(--ink) !important;
   padding: 0 14px !important;
   margin: 0 !important;
@@ -854,6 +854,7 @@ body {
     inset 0 1px 0 rgba(255, 255, 255, 0.74) !important;
   backdrop-filter: blur(18px) saturate(142%) !important;
   -webkit-backdrop-filter: blur(18px) saturate(142%) !important;
+  transform: translateY(-50%) !important;
   transition:
     background 160ms ease,
     border-color 160ms ease,
@@ -864,7 +865,7 @@ body {
 .company-external-panel-compare-button:hover {
   background: rgba(255, 255, 255, 0.98) !important;
   border-color: rgba(36, 39, 44, 0.16) !important;
-  transform: translateY(-1px) !important;
+  transform: translateY(calc(-50% - 1px)) !important;
   box-shadow:
     0 14px 34px rgba(29, 29, 31, 0.14),
     inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
@@ -1051,8 +1052,8 @@ body {
 
     --company-panel-width: 270px;
     --company-panel-compare-width: 270px;
-    --company-compare-button-width: 148px;
-    --company-compare-button-gap: 10px;
+    --company-compare-button-width: 150px;
+    --company-compare-button-overlap: 20px;
 
     --frame-max: min(
       1080px,
@@ -1068,8 +1069,8 @@ body {
       1080px,
       calc(
         100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
-        var(--company-panel-width) - var(--company-compare-button-width) -
-        var(--company-compare-button-gap)
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
       )
     );
 
@@ -1132,12 +1133,6 @@ body {
   .company-external-panel-floating-close-compare {
     left: calc(100% + var(--company-panel-width) - 15px) !important;
   }
-
-  .company-external-panel-compare-button {
-    top: 68px !important;
-    left: calc(100% + var(--company-compare-button-gap)) !important;
-    width: var(--company-compare-button-width) !important;
-  }
 }
 
 @media (max-width: 1250px) {
@@ -1148,7 +1143,7 @@ body {
     --company-panel-width: 252px;
     --company-panel-compare-width: 252px;
     --company-compare-button-width: 142px;
-    --company-compare-button-gap: 10px;
+    --company-compare-button-overlap: 18px;
 
     --frame-max: min(
       980px,
@@ -1164,8 +1159,8 @@ body {
       980px,
       calc(
         100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
-        var(--company-panel-width) - var(--company-compare-button-width) -
-        var(--company-compare-button-gap)
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
       )
     );
 
@@ -1229,7 +1224,6 @@ body {
   }
 
   .company-external-panel-compare-button {
-    top: 66px !important;
     font-size: 10.5px !important;
   }
 }
@@ -1239,7 +1233,7 @@ body {
     --company-panel-width: 240px;
     --company-panel-compare-width: 240px;
     --company-compare-button-width: 136px;
-    --company-compare-button-gap: 9px;
+    --company-compare-button-overlap: 16px;
   }
 
   .company-external-panel-inner {
