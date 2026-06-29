@@ -25,7 +25,7 @@
   --glass-bg: rgba(255, 255, 255, 0.16);
   --glass-bg-strong: rgba(255, 255, 255, 0.22);
   --glass-border: rgba(255, 255, 255, 0.62);
-  --glass-shadow-main: rgba(42, 70, 84, 0.14);
+  --glass-shadow-main: rgba(58, 42, 84, 0.14);
   --glass-shadow-soft: rgba(29, 29, 31, 0.055);
 
   --company-panel-width: 292px;
@@ -44,10 +44,10 @@ body,
   width: 100%;
   min-height: 100%;
   background:
-    radial-gradient(circle at 50% 10%, rgba(209, 202, 231, 0.72), transparent 34%),
-    radial-gradient(circle at 18% 22%, rgba(178, 164, 207, 0.34), transparent 31%),
-    radial-gradient(circle at 82% 18%, rgba(224, 219, 238, 0.38), transparent 28%),
-    linear-gradient(180deg, #aa9bc8 0%, #e5e0ef 42%, #f8f7f4 82%, #f1f0ec 100%);
+    radial-gradient(circle at 50% 10%, rgba(214, 209, 232, 0.72), transparent 34%),
+    radial-gradient(circle at 18% 22%, rgba(173, 166, 205, 0.34), transparent 31%),
+    radial-gradient(circle at 82% 18%, rgba(225, 222, 239, 0.38), transparent 28%),
+    linear-gradient(180deg, #a7a0c8 0%, #e4e0ee 42%, #f8f7f4 82%, #f1f0ec 100%);
   background-attachment: fixed;
 }
 
@@ -90,7 +90,7 @@ body {
     radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0.38), transparent 36%),
     linear-gradient(
       180deg,
-      rgba(170, 155, 200, 0.34) 0%,
+      rgba(167, 160, 200, 0.34) 0%,
       rgba(241, 240, 236, 0.02) 78%
     );
 }
@@ -616,7 +616,7 @@ body {
   border-left: 0 !important;
   background: rgba(255, 255, 255, 0.42);
   box-shadow:
-    0 24px 58px rgba(42, 70, 84, 0.16),
+    0 24px 58px rgba(58, 42, 84, 0.16),
     0 8px 20px rgba(29, 29, 31, 0.07),
     inset 0 1px 0 rgba(255, 255, 255, 0.62);
   backdrop-filter: blur(26px) saturate(142%);
@@ -747,7 +747,7 @@ body {
 }
 
 .company-external-panel-websites a {
-  color: #3f6f91;
+  color: #665c91;
   text-decoration: underline;
   text-underline-offset: 3px;
   font-size: 10.5px;
@@ -885,7 +885,7 @@ body {
 }
 
 .company-external-panel-trials a {
-  color: #3f6f91;
+  color: #665c91;
   text-decoration: underline;
   text-underline-offset: 2px;
   font-weight: 700;
