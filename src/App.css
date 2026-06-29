@@ -44,10 +44,10 @@ body,
   width: 100%;
   min-height: 100%;
   background:
-    radial-gradient(circle at 50% 10%, rgba(232, 199, 214, 0.72), transparent 34%),
-    radial-gradient(circle at 18% 22%, rgba(210, 157, 184, 0.34), transparent 31%),
-    radial-gradient(circle at 82% 18%, rgba(238, 214, 226, 0.38), transparent 28%),
-    linear-gradient(180deg, #d7a7bd 0%, #efdde6 42%, #f8f7f4 82%, #f1f0ec 100%);
+    radial-gradient(circle at 50% 10%, rgba(209, 202, 231, 0.72), transparent 34%),
+    radial-gradient(circle at 18% 22%, rgba(178, 164, 207, 0.34), transparent 31%),
+    radial-gradient(circle at 82% 18%, rgba(224, 219, 238, 0.38), transparent 28%),
+    linear-gradient(180deg, #aa9bc8 0%, #e5e0ef 42%, #f8f7f4 82%, #f1f0ec 100%);
   background-attachment: fixed;
 }
 
@@ -90,7 +90,7 @@ body {
     radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0.38), transparent 36%),
     linear-gradient(
       180deg,
-      rgba(215, 167, 189, 0.34) 0%,
+      rgba(170, 155, 200, 0.34) 0%,
       rgba(241, 240, 236, 0.02) 78%
     );
 }
