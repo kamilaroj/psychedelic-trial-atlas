@@ -919,6 +919,7 @@ export default function App() {
 
   const pageRainStartedRef = useRef(false);
   const aboutPulseTimerRef = useRef(null);
+  const compareModeRef = useRef(false);
 
   const frameHeights = useMemo(() => {
     if (viewportWidth <= 900) {
@@ -1099,6 +1100,11 @@ export default function App() {
     });
   };
 
+  const setCompareModeStable = (active) => {
+    compareModeRef.current = !!active;
+    setCompareMode(!!active);
+  };
+
   const postCompareModeToObservable = (active) => {
     const iframe = document.querySelector(
       'iframe[title="Company Landscape Premium"]'
@@ -1147,23 +1153,24 @@ export default function App() {
 
   const handleCompareStart = () => {
     if (!selectedCompany) return;
+    if (compareCompany) return;
 
-    const nextMode = !compareMode;
+    const nextMode = !compareModeRef.current;
 
-    setCompareMode(nextMode);
+    setCompareModeStable(nextMode);
     postCompareModeToObservable(nextMode);
   };
 
   const handlePrimaryClose = () => {
     setSelectedCompany(null);
     setCompareCompany(null);
-    setCompareMode(false);
+    setCompareModeStable(false);
     clearObservableCompanyState();
   };
 
   const handleCompareClose = () => {
     setCompareCompany(null);
-    setCompareMode(false);
+    setCompareModeStable(false);
     clearObservableCompareState();
   };
 
@@ -1173,9 +1180,13 @@ export default function App() {
 
       if (!message || typeof message !== "object") return;
 
+      if (message.type === "UNICORN_COMPARE_SELECTION_MODE_ACK") {
+        return;
+      }
+
       if (message.type === "UNICORN_COMPANY_COMPARE_SELECTED") {
         setCompareCompany(message.payload || null);
-        setCompareMode(false);
+        setCompareModeStable(false);
         postCompareModeToObservable(false);
         return;
       }
@@ -1187,20 +1198,20 @@ export default function App() {
       if (!payload) {
         setSelectedCompany(null);
         setCompareCompany(null);
-        setCompareMode(false);
+        setCompareModeStable(false);
         return;
       }
 
-      if (payload.compareSlot === "compare") {
+      if (payload.compareSlot === "compare" || compareModeRef.current) {
         setCompareCompany(payload);
-        setCompareMode(false);
+        setCompareModeStable(false);
         postCompareModeToObservable(false);
         return;
       }
 
       setSelectedCompany(payload);
       setCompareCompany(null);
-      setCompareMode(false);
+      setCompareModeStable(false);
       postCompareModeToObservable(false);
     };
 
@@ -1447,7 +1458,7 @@ export default function App() {
             selectedCompany={selectedCompany}
             onClose={handlePrimaryClose}
             onCompare={handleCompareStart}
-            showCompareButton={!!selectedCompany}
+            showCompareButton={!!selectedCompany && !compareCompany}
             compareModeActive={compareMode}
           />
 
