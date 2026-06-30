@@ -22,12 +22,12 @@
   );
 
   --company-frame-max: min(
-    1180px,
+    1300px,
     calc(100vw - var(--page-pad-left) - var(--page-pad-right))
   );
 
   --company-frame-max-one-panel: min(
-    1180px,
+    1300px,
     calc(
       100vw - var(--page-pad-left) - var(--page-pad-right) -
       var(--company-panel-width) - var(--company-compare-button-width) +
@@ -36,7 +36,7 @@
   );
 
   --company-frame-max-two-panels: min(
-    1180px,
+    1300px,
     calc(
       100vw - var(--page-pad-left) - var(--page-pad-right) -
       var(--company-panel-width) - var(--company-panel-compare-width)
@@ -572,13 +572,17 @@ body {
 }
 
 .ecosystem-frame,
-.company-frame,
 .compound-frame,
 .indication-frame,
 .phase-frame,
 .landscape-frame {
   width: var(--frame-max);
   max-width: var(--frame-max);
+}
+
+.company-frame {
+  width: var(--company-frame-max);
+  max-width: var(--company-frame-max);
 }
 
 /* REMOVE OBSERVABLE FOOTER / CHROME IN ECOSYSTEM IFRAME */
@@ -1061,12 +1065,12 @@ body {
     );
 
     --company-frame-max: min(
-      1080px,
+      1160px,
       calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
     );
 
     --company-frame-max-one-panel: min(
-      1080px,
+      1160px,
       calc(
         100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
         var(--company-panel-width) - var(--company-compare-button-width) +
@@ -1075,7 +1079,7 @@ body {
     );
 
     --company-frame-max-two-panels: min(
-      1080px,
+      1160px,
       calc(
         100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
         var(--company-panel-width) - var(--company-panel-compare-width)
@@ -1151,12 +1155,12 @@ body {
     );
 
     --company-frame-max: min(
-      980px,
+      1060px,
       calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
     );
 
     --company-frame-max-one-panel: min(
-      980px,
+      1060px,
       calc(
         100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
         var(--company-panel-width) - var(--company-compare-button-width) +
@@ -1165,7 +1169,7 @@ body {
     );
 
     --company-frame-max-two-panels: min(
-      980px,
+      1060px,
       calc(
         100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
         var(--company-panel-width) - var(--company-panel-compare-width)
@@ -1242,6 +1246,28 @@ body {
     --company-panel-compare-width: 176px;
     --company-compare-button-width: 136px;
     --company-compare-button-overlap: 16px;
+
+    --company-frame-max: min(
+      1000px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
+    );
   }
 
   .company-external-panel-inner {
