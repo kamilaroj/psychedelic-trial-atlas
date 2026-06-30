@@ -684,7 +684,8 @@ function CompanyExternalPanel({
   onCompare,
   showCompareButton = false,
   compareModeActive = false,
-  isComparePanel = false
+  isComparePanel = false,
+  isComparisonActive = false
 }) {
   if (!selectedCompany) return null;
 
@@ -711,6 +712,14 @@ function CompanyExternalPanel({
   const registeredTrials = selectedCompany.registeredUnits ?? 0;
   const pipelineContext = selectedCompany.pipelineUnits ?? 0;
 
+  const panelClassName = [
+    "company-external-panel",
+    isComparePanel ? "company-external-panel-compare" : "",
+    isComparisonActive ? "company-external-panel-comparison-active" : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <>
       <button
@@ -729,178 +738,200 @@ function CompanyExternalPanel({
       </button>
 
       <aside
-        className={`company-external-panel ${
-          isComparePanel ? "company-external-panel-compare" : ""
-        }`}
+        className={panelClassName}
         aria-label={`${selectedCompany.company || "Company"} details`}
+        data-comparison-active={isComparisonActive ? "true" : "false"}
       >
         <div className="company-external-panel-inner">
-          {selectedCompany.logoUrl && (
-            <div
-              style={{
-                width: "100%",
-                display: "flex",
-                justifyContent: "flex-end",
-                alignItems: "center",
-                marginBottom: "8px"
-              }}
-            >
+          <div className="company-external-panel-top-lock">
+            <div className="company-external-panel-logo-row">
               <div
-                className="company-external-panel-logo"
-                style={{
-                  width: "48px",
-                  height: "48px",
-                  margin: 0
-                }}
+                className={`company-external-panel-logo-slot ${
+                  selectedCompany.logoUrl
+                    ? "company-external-panel-logo-slot-filled"
+                    : "company-external-panel-logo-slot-empty"
+                }`}
               >
-                <img
-                  src={selectedCompany.logoUrl}
-                  alt={`${selectedCompany.company || "Company"} logo`}
-                />
-              </div>
-            </div>
-          )}
-
-          {showCompareButton && (
-            <button
-              className={`company-external-panel-compare-button ${
-                compareModeActive
-                  ? "company-external-panel-compare-button-active"
-                  : ""
-              }`}
-              type="button"
-              onClick={onCompare}
-            >
-              {compareModeActive
-                ? "Select another company"
-                : "+ Compare company"}
-            </button>
-          )}
-
-          <div className="company-external-panel-header">
-            <div>
-              <h3 className="company-external-panel-title">
-                {selectedCompany.company || "Company"}
-              </h3>
-
-              <div className="company-external-panel-subtitle">
-                {selectedCompany.hasRegistered
-                  ? "Company with public registered trial activity"
-                  : "Company visible through pipeline or context sources"}
-              </div>
-
-              {websites.length > 0 && (
-                <div className="company-external-panel-websites">
-                  {websites.map((url) => (
-                    <a
-                      key={url}
-                      href={url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {normalizeUrlLabel(url)}
-                    </a>
-                  ))}
-                </div>
-              )}
-
-              {websites.length === 0 && selectedCompany.noVerifiedWebsite && (
-                <div className="company-external-panel-subtitle">
-                  No official website verified
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div className="company-external-panel-metrics company-external-panel-metrics-stacked">
-            <div className="company-external-panel-metric company-external-panel-metric-total">
-              <div className="company-external-panel-metric-number">
-                {visibleActivity}
-              </div>
-              <div className="company-external-panel-metric-label">
-                Visible activity
-              </div>
-              <div className="company-external-panel-metric-note">
-                Registered trials + pipeline context
-              </div>
-            </div>
-
-            <div className="company-external-panel-metric-row">
-              <div className="company-external-panel-metric company-external-panel-metric-half">
-                <div className="company-external-panel-metric-number">
-                  {registeredTrials}
-                </div>
-                <div className="company-external-panel-metric-label">
-                  Registered trials
-                </div>
-              </div>
-
-              <div className="company-external-panel-metric company-external-panel-metric-half">
-                <div className="company-external-panel-metric-number">
-                  {pipelineContext}
-                </div>
-                <div className="company-external-panel-metric-label">
-                  Pipeline context
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="company-external-panel-section">
-            <div className="company-external-panel-kicker">Assets</div>
-            <div className="company-external-panel-value">
-              {listToText(selectedCompany.assets)}
-            </div>
-          </div>
-
-          <div className="company-external-panel-section">
-            <div className="company-external-panel-kicker">
-              Compound families
-            </div>
-            <div className="company-external-panel-value">
-              {listToText(selectedCompany.families)}
-            </div>
-          </div>
-
-          <div className="company-external-panel-section">
-            <div className="company-external-panel-kicker">
-              Therapeutic areas
-            </div>
-            <div className="company-external-panel-value">
-              {listToText(selectedCompany.indications)}
-            </div>
-          </div>
-
-          {selectedCompany.hasRegistered && (
-            <div className="company-external-panel-section">
-              <div className="company-external-panel-kicker">Countries</div>
-              <div className="company-external-panel-value">
-                {listToText(selectedCompany.countries)}
-              </div>
-            </div>
-          )}
-
-          {trials.length > 0 && (
-            <div className="company-external-panel-section">
-              <div className="company-external-panel-kicker">Trial IDs</div>
-              <div className="company-external-panel-value company-external-panel-trials">
-                {trials.map((trial) =>
-                  trial.url ? (
-                    <a
-                      key={`${trial.id}-${trial.url}`}
-                      href={trial.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {trial.id}
-                    </a>
-                  ) : (
-                    <span key={trial.id}>{trial.id}</span>
-                  )
+                {selectedCompany.logoUrl && (
+                  <div className="company-external-panel-logo">
+                    <img
+                      src={selectedCompany.logoUrl}
+                      alt={`${selectedCompany.company || "Company"} logo`}
+                    />
+                  </div>
                 )}
               </div>
             </div>
-          )}
+
+            {showCompareButton && (
+              <button
+                className={`company-external-panel-compare-button ${
+                  compareModeActive
+                    ? "company-external-panel-compare-button-active"
+                    : ""
+                }`}
+                type="button"
+                onClick={onCompare}
+              >
+                {compareModeActive
+                  ? "Select another company"
+                  : "+ Compare company"}
+              </button>
+            )}
+
+            <div className="company-external-panel-header">
+              <div>
+                <h3
+                  className="company-external-panel-title"
+                  title={selectedCompany.company || "Company"}
+                >
+                  {selectedCompany.company || "Company"}
+                </h3>
+
+                <div className="company-external-panel-subtitle">
+                  {selectedCompany.hasRegistered
+                    ? "Company with public registered trial activity"
+                    : "Company visible through pipeline or context sources"}
+                </div>
+
+                {websites.length > 0 && (
+                  <div className="company-external-panel-websites">
+                    {websites.map((url) => (
+                      <a
+                        key={url}
+                        href={url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={normalizeUrlLabel(url)}
+                      >
+                        {normalizeUrlLabel(url)}
+                      </a>
+                    ))}
+                  </div>
+                )}
+
+                {websites.length === 0 && selectedCompany.noVerifiedWebsite && (
+                  <div className="company-external-panel-subtitle company-external-panel-website-fallback">
+                    No official website verified
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="company-external-panel-content-grid">
+            <div className="company-external-panel-metrics company-external-panel-metrics-stacked">
+              <div className="company-external-panel-metric company-external-panel-metric-total">
+                <div className="company-external-panel-metric-number">
+                  {visibleActivity}
+                </div>
+                <div className="company-external-panel-metric-label">
+                  Visible activity
+                </div>
+                <div className="company-external-panel-metric-note">
+                  Registered trials + pipeline context
+                </div>
+              </div>
+
+              <div className="company-external-panel-metric-row">
+                <div className="company-external-panel-metric company-external-panel-metric-half">
+                  <div className="company-external-panel-metric-number">
+                    {registeredTrials}
+                  </div>
+                  <div className="company-external-panel-metric-label">
+                    Registered trials
+                  </div>
+                </div>
+
+                <div className="company-external-panel-metric company-external-panel-metric-half">
+                  <div className="company-external-panel-metric-number">
+                    {pipelineContext}
+                  </div>
+                  <div className="company-external-panel-metric-label">
+                    Pipeline context
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div
+              className="company-external-panel-section company-external-panel-section-assets"
+              data-panel-section="assets"
+            >
+              <div className="company-external-panel-kicker">Assets</div>
+              <div className="company-external-panel-value">
+                {listToText(selectedCompany.assets)}
+              </div>
+            </div>
+
+            <div
+              className="company-external-panel-section company-external-panel-section-families"
+              data-panel-section="families"
+            >
+              <div className="company-external-panel-kicker">
+                Compound families
+              </div>
+              <div className="company-external-panel-value">
+                {listToText(selectedCompany.families)}
+              </div>
+            </div>
+
+            <div
+              className="company-external-panel-section company-external-panel-section-areas"
+              data-panel-section="areas"
+            >
+              <div className="company-external-panel-kicker">
+                Therapeutic areas
+              </div>
+              <div className="company-external-panel-value">
+                {listToText(selectedCompany.indications)}
+              </div>
+            </div>
+
+            <div
+              className="company-external-panel-section company-external-panel-section-countries"
+              data-panel-section="countries"
+            >
+              <div className="company-external-panel-kicker">Countries</div>
+              <div className="company-external-panel-value">
+                {selectedCompany.hasRegistered
+                  ? listToText(selectedCompany.countries)
+                  : "No registered trial countries"}
+              </div>
+            </div>
+
+            <div
+              className="company-external-panel-section company-external-panel-section-trials"
+              data-panel-section="trials"
+            >
+              <div className="company-external-panel-kicker">Trial IDs</div>
+              <div className="company-external-panel-value company-external-panel-trials company-external-panel-trials-scroll">
+                {trials.length > 0 ? (
+                  trials.map((trial) =>
+                    trial.url ? (
+                      <a
+                        key={`${trial.id}-${trial.url}`}
+                        href={trial.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title={trial.id}
+                      >
+                        {trial.id}
+                      </a>
+                    ) : (
+                      <span key={trial.id} title={trial.id}>
+                        {trial.id}
+                      </span>
+                    )
+                  )
+                ) : (
+                  <span className="company-external-panel-empty-value">
+                    No public registered trial IDs
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
         </div>
       </aside>
     </>
@@ -1321,6 +1352,8 @@ export default function App() {
     [mainNotebook, mainApiKey, visual1CompanyLandscapeParams]
   );
 
+  const hasComparePanels = !!selectedCompany && !!compareCompany;
+
   return (
     <main className="site">
       <ScrollProgressBar />
@@ -1534,12 +1567,14 @@ export default function App() {
             onCompare={handleCompareStart}
             showCompareButton={!!selectedCompany && !compareCompany}
             compareModeActive={compareMode}
+            isComparisonActive={hasComparePanels}
           />
 
           <CompanyExternalPanel
             selectedCompany={compareCompany}
             onClose={handleCompareClose}
             isComparePanel={true}
+            isComparisonActive={hasComparePanels}
           />
         </div>
       </section>
