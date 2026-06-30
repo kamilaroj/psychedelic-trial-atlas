@@ -1020,7 +1020,7 @@ export default function App() {
     "janssen_logo.png": 1.6,
     "johnson_johnson_innovative_medicine.png": 1.5,
     "ketabon.png": 1.6,
-    "kuleon.png": 1.55,
+    "kuleon.svg": 1.55,
     "lophora.png": 1.8,
     "marvel_biosciences.png": 1.45,
     "mindstate_design_labs.png": 1.55,
