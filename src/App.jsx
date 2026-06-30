@@ -720,6 +720,15 @@ function CompanyExternalPanel({
     .filter(Boolean)
     .join(" ");
 
+  const trialListClassName = [
+    "company-external-panel-value",
+    "company-external-panel-trials",
+    "company-external-panel-trials-scroll",
+    trials.length >= 12 ? "company-external-panel-trials-many" : ""
+  ]
+    .filter(Boolean)
+    .join(" ");
+
   return (
     <>
       <button
@@ -736,6 +745,20 @@ function CompanyExternalPanel({
       >
         ×
       </button>
+
+      {showCompareButton && !isComparePanel && (
+        <button
+          className={`company-external-panel-compare-button ${
+            compareModeActive
+              ? "company-external-panel-compare-button-active"
+              : ""
+          }`}
+          type="button"
+          onClick={onCompare}
+        >
+          {compareModeActive ? "Select another company" : "+ Compare company"}
+        </button>
+      )}
 
       <aside
         className={panelClassName}
@@ -762,22 +785,6 @@ function CompanyExternalPanel({
                 )}
               </div>
             </div>
-
-            {showCompareButton && (
-              <button
-                className={`company-external-panel-compare-button ${
-                  compareModeActive
-                    ? "company-external-panel-compare-button-active"
-                    : ""
-                }`}
-                type="button"
-                onClick={onCompare}
-              >
-                {compareModeActive
-                  ? "Select another company"
-                  : "+ Compare company"}
-              </button>
-            )}
 
             <div className="company-external-panel-header">
               <div>
@@ -903,9 +910,10 @@ function CompanyExternalPanel({
             <div
               className="company-external-panel-section company-external-panel-section-trials"
               data-panel-section="trials"
+              data-trial-count={trials.length}
             >
               <div className="company-external-panel-kicker">Trial IDs</div>
-              <div className="company-external-panel-value company-external-panel-trials company-external-panel-trials-scroll">
+              <div className={trialListClassName}>
                 {trials.length > 0 ? (
                   trials.map((trial) =>
                     trial.url ? (
