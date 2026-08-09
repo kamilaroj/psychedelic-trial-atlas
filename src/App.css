@@ -875,11 +875,11 @@ body {
   text-overflow: ellipsis;
 }
 
-/* COMPARE BUTTON — CENTERED OUTSIDE PRIMARY PANEL */
+/* COMPARE BUTTON â€” CENTERED OUTSIDE PRIMARY PANEL */
 .company-external-panel-compare-button {
   position: absolute !important;
   top: 50% !important;
-  left: calc(100% - var(--company-compare-button-overlap)) !important;
+  left: calc(100% + var(--company-panel-width) - var(--company-compare-button-overlap)) !important;
   width: var(--company-compare-button-width) !important;
   height: 36px !important;
   min-height: 36px !important;
@@ -1819,4 +1819,276 @@ body {
     padding-top: 95px;
     padding-bottom: 120px;
   }
+}
+
+/* =========================================================
+   STAGE 1 â€” DESKTOP / LAPTOP RESPONSIVE FIX
+   Goal: keep Company Landscape + 2 compare panels visible
+   on 1440 / 1366 / 1280 / 1180 laptop widths.
+   ========================================================= */
+
+/* Large laptops: 1366â€“1500px */
+@media (max-width: 1500px) and (min-width: 1321px) {
+  :root {
+    --left-nav-safe-space: 108px;
+    --right-safe-space: 30px;
+
+    --company-panel-width: 198px;
+    --company-panel-compare-width: 198px;
+    --company-compare-button-width: 144px;
+    --company-compare-button-overlap: 18px;
+
+    --company-frame-max: min(
+      1160px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1160px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1160px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
+    );
+  }
+}
+
+/* Standard laptops: 1280â€“1320px */
+@media (max-width: 1320px) and (min-width: 1181px) {
+  :root {
+    --left-nav-safe-space: 92px;
+    --right-safe-space: 24px;
+
+    --company-panel-width: 182px;
+    --company-panel-compare-width: 182px;
+    --company-compare-button-width: 136px;
+    --company-compare-button-overlap: 16px;
+
+    --frame-max: min(
+      980px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max: min(
+      1060px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1060px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1060px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
+    );
+  }
+
+  .section-progress-nav {
+    left: 8px !important;
+    transform: translateY(-50%) scale(0.78) !important;
+    transform-origin: left center !important;
+  }
+
+  .company-external-panel-inner {
+    padding: 9px 7px 8px;
+    grid-template-rows: 96px minmax(0, 1fr);
+  }
+
+  .company-external-panel-top-lock {
+    height: 96px;
+    min-height: 96px;
+    max-height: 96px;
+  }
+
+  .company-external-panel-content-grid {
+    grid-template-rows:
+      116px
+      48px
+      38px
+      48px
+      40px
+      minmax(0, 1fr);
+  }
+
+  .company-external-panel-title {
+    font-size: 11.8px;
+  }
+
+  .company-external-panel-subtitle {
+    font-size: 6.8px;
+  }
+
+  .company-external-panel-value {
+    font-size: 7px;
+  }
+
+  .company-external-panel-kicker {
+    font-size: 6px;
+  }
+
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 21px;
+  }
+
+  .company-external-panel-metric-number {
+    font-size: 13px;
+  }
+}
+
+/* Small laptops: 901â€“1180px */
+@media (max-width: 1180px) and (min-width: 901px) {
+  :root {
+    --left-nav-safe-space: 82px;
+    --right-safe-space: 18px;
+
+    --company-panel-width: 168px;
+    --company-panel-compare-width: 168px;
+    --company-compare-button-width: 128px;
+    --company-compare-button-overlap: 14px;
+
+    --frame-max: min(
+      900px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max: min(
+      1000px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
+    );
+  }
+
+  .section-progress-nav {
+    left: 6px !important;
+    transform: translateY(-50%) scale(0.72) !important;
+    transform-origin: left center !important;
+  }
+
+  .company-external-panel-inner {
+    padding: 8px 6px 7px;
+    grid-template-rows: 90px minmax(0, 1fr);
+  }
+
+  .company-external-panel-top-lock {
+    height: 90px;
+    min-height: 90px;
+    max-height: 90px;
+  }
+
+  .company-external-panel-logo-slot,
+  .company-external-panel-logo {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .company-external-panel-content-grid {
+    grid-template-rows:
+      110px
+      44px
+      36px
+      44px
+      38px
+      minmax(0, 1fr);
+  }
+
+  .company-external-panel-title {
+    font-size: 10.8px;
+  }
+
+  .company-external-panel-subtitle {
+    font-size: 6.4px;
+  }
+
+  .company-external-panel-websites a {
+    font-size: 6.8px;
+  }
+
+  .company-external-panel-value {
+    font-size: 6.7px;
+    line-height: 1.12;
+  }
+
+  .company-external-panel-kicker {
+    font-size: 5.8px;
+  }
+
+  .company-external-panel-metric-total {
+    min-height: 56px;
+  }
+
+  .company-external-panel-metric-half {
+    min-height: 42px;
+  }
+
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 20px;
+  }
+
+  .company-external-panel-metric-number {
+    font-size: 12px;
+  }
+
+  .company-external-panel-metric-label {
+    font-size: 5.4px;
+  }
+
+  .company-external-panel-metric-note {
+    font-size: 5px;
+  }
+
+  .company-external-panel-compare-button {
+    width: var(--company-compare-button-width) !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    font-size: 9.2px !important;
+    padding: 0 9px !important;
+  }
+}
+
+/* Trial IDs: use 2 columns when many IDs exist */
+.company-external-panel-trials-many {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: 6px !important;
+  row-gap: 2px !important;
+}
+
+.company-external-panel-trials-many a,
+.company-external-panel-trials-many span {
+  font-size: 7px;
+  line-height: 1.08;
 }
