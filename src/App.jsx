@@ -1180,6 +1180,19 @@ export default function App() {
     "xylo.png": 1
   };
 
+  const heroResponsiveMode =
+    viewportWidth <= 767
+      ? "mobile"
+      : viewportWidth <= 1024
+        ? "tablet"
+        : viewportWidth <= 1400 || viewportHeight <= 820
+          ? "laptop"
+          : "desktop";
+
+  const heroResponsiveParams = `&heroMode=${encodeURIComponent(
+    heroResponsiveMode
+  )}&hostWidth=${viewportWidth}&hostHeight=${viewportHeight}`;
+
   const visual1CompanyLandscapeParams = `&logoBase=${encodeURIComponent(
     githubLogoBase
   )}&logoTuningVersion=${encodeURIComponent(
@@ -1345,7 +1358,7 @@ export default function App() {
 
   const observableSrc = useMemo(
     () => ({
-      heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}`,
+      heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1231?cells=visual1EcosystemOverviev&api_key=a2ee50a620f4d2aee4e95c1565c58282751ead58`,
 
@@ -1357,7 +1370,7 @@ export default function App() {
 
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual4PhaseChart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`
     }),
-    [mainNotebook, mainApiKey, visual1CompanyLandscapeParams]
+    [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
   );
 
   const hasComparePanels = !!selectedCompany && !!compareCompany;
