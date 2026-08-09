@@ -1007,7 +1007,7 @@ export default function App() {
   }, [viewportWidth, viewportHeight]);
 
   const mainApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
-  const mainNotebook = "e3028f2577c04f9a@1210";
+  const mainNotebook = "e3028f2577c04f9a@1251";
 
   const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
   const logoTuningVersion = "visual1b-logo-tuning-2026-06-24-full-logo-list";
