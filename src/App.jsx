@@ -978,48 +978,22 @@ export default function App() {
       };
     }
 
-    const isLaptopHeight = viewportHeight <= 820;
-    const isSmallLaptopWidth = viewportWidth <= 1400;
-
-    const heroVisible =
-      isLaptopHeight || isSmallLaptopWidth
-        ? clampNumber(viewportHeight * 0.68, 560, 660)
-        : clampNumber(viewportHeight * 0.76, 600, 740);
-
-    const ecosystemVisible =
-      isLaptopHeight || isSmallLaptopWidth
-        ? clampNumber(viewportHeight * 0.72, 600, 700)
-        : 796.34375;
-
-    const companyVisible =
-      isLaptopHeight || isSmallLaptopWidth
-        ? clampNumber(viewportHeight * 0.72, 600, 690)
-        : 736;
-
-    const compoundVisible =
-      isLaptopHeight || isSmallLaptopWidth
-        ? clampNumber(viewportHeight * 0.72, 600, 700)
-        : clampNumber(viewportHeight * 0.8, 660, 820);
-
-    const indicationVisible =
-      isLaptopHeight || isSmallLaptopWidth
-        ? clampNumber(viewportHeight * 0.72, 600, 700)
-        : clampNumber(viewportHeight * 0.8, 660, 800);
-
-    const phaseVisible =
-      isLaptopHeight || isSmallLaptopWidth
-        ? clampNumber(viewportHeight * 0.72, 600, 700)
-        : clampNumber(viewportHeight * 0.8, 660, 800);
+    const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
+    const ecosystemVisible = 796.34375;
+    const companyVisible = 736;
+    const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
+    const indicationVisible = clampNumber(viewportHeight * 0.8, 660, 800);
+    const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
 
     return {
       heroVisible,
       heroIframe: heroVisible + 105,
 
       ecosystemVisible,
-      ecosystemIframe: ecosystemVisible,
+      ecosystemIframe: 796.34375,
 
       companyVisible,
-      companyIframe: companyVisible,
+      companyIframe: 736,
 
       compoundVisible,
       compoundIframe: compoundVisible + 120,
