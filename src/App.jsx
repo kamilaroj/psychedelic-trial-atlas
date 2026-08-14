@@ -743,7 +743,7 @@ function CompanyExternalPanel({
             : "Close company details"
         }
       >
-        ×
+        Ã—
       </button>
 
       {showCompareButton && !isComparePanel && (
@@ -971,8 +971,8 @@ export default function App() {
         companyIframe: 736,
         compoundVisible: 820,
         compoundIframe: 960,
-        indicationVisible: 800,
-        indicationIframe: 930,
+        indicationVisible: 660.234375,
+        indicationIframe: 660.234375,
         phaseVisible: 800,
         phaseIframe: 930
       };
@@ -982,7 +982,7 @@ export default function App() {
     const ecosystemVisible = 796.34375;
     const companyVisible = 736;
     const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
-    const indicationVisible = clampNumber(viewportHeight * 0.8, 660, 800);
+    const indicationVisible = 660.234375;
     const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
 
     return {
@@ -999,7 +999,7 @@ export default function App() {
       compoundIframe: compoundVisible + 120,
 
       indicationVisible,
-      indicationIframe: indicationVisible + 115,
+      indicationIframe: indicationVisible,
 
       phaseVisible,
       phaseIframe: phaseVisible + 115
@@ -1366,7 +1366,7 @@ export default function App() {
       
       visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1267?cells=visual2ChartUnitColumns1&api_key=24fcb6d848289ba5ca24f14771b09231fbe9b06b`,
 
-      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual3Chart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
+      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1273?cells=visual3Chart&api_key=24fcb6d848289ba5ca24f14771b09231fbe9b06b`,
 
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual4PhaseChart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`
     }),
@@ -1415,7 +1415,7 @@ export default function App() {
                 onClick={() => setAboutOpen(false)}
                 aria-label="Close About project"
               >
-                ×
+                Ã—
               </button>
             </div>
 
@@ -1525,8 +1525,8 @@ export default function App() {
                 </InlineIcon>
 
                 <div>
-                  Created by Kamila Rojek · Data analysis · clinical-trial
-                  intelligence · visual storytelling
+                  Created by Kamila Rojek Â· Data analysis Â· clinical-trial
+                  intelligence Â· visual storytelling
                 </div>
               </div>
             </div>
@@ -1545,7 +1545,7 @@ export default function App() {
             <span className="about-project-button-icon">
               <AboutProjectIcon />
             </span>
-            <span>About project ▾</span>
+            <span>About project â–¾</span>
           </button>
         </div>
 
