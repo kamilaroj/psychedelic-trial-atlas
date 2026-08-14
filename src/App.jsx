@@ -1364,7 +1364,7 @@ export default function App() {
 
       visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1250?cells=visual1CompanyLandscapePremium1&api_key=d5f6bd4e354ba0480077a99f20e82ed5d186ad8e${visual1CompanyLandscapeParams}`,
       
-      visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual2Chartminimalistic1&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
+      visual2Chartminimalistic1a: `https://observablehq.com/embed/e3028f2577c04f9a@1255?cells=visual2Chartminimalistic1&api_key=06c89d2076e5e433a883a9522f523b612c58cab9`,
 
       visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual3Chart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`,
 
