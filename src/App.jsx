@@ -1606,7 +1606,7 @@ export default function App() {
           visibleHeight={frameHeights.compoundVisible}
           iframeHeight={frameHeights.compoundIframe}
           className="compound-frame landscape-frame"
-          src={observableSrc.visual2Chartminimalistic1a}
+          src={observableSrc.visual2ChartUnitColumns1}
           lazyLoad={true}
           onEnter={startPageRain}
         />
