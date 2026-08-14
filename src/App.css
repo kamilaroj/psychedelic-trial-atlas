@@ -580,16 +580,19 @@ body {
 }
 
 .company-frame,
-.compound-frame {
+.compound-frame,
+.indication-frame {
   width: var(--company-frame-max);
   max-width: var(--company-frame-max);
 }
 
-.compound-frame {
+.compound-frame,
+.indication-frame {
   min-height: min(820px, calc(100vh - 170px));
 }
 
-.compound-frame .atlas-iframe {
+.compound-frame .atlas-iframe,
+.indication-frame .atlas-iframe {
   width: 100% !important;
   margin-left: 0 !important;
 }
