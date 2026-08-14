@@ -572,7 +572,6 @@ body {
 }
 
 .ecosystem-frame,
-.compound-frame,
 .indication-frame,
 .phase-frame,
 .landscape-frame {
@@ -580,9 +579,19 @@ body {
   max-width: var(--frame-max);
 }
 
-.company-frame {
+.company-frame,
+.compound-frame {
   width: var(--company-frame-max);
   max-width: var(--company-frame-max);
+}
+
+.compound-frame {
+  min-height: min(820px, calc(100vh - 170px));
+}
+
+.compound-frame .atlas-iframe {
+  width: 100% !important;
+  margin-left: 0 !important;
 }
 
 /* REMOVE OBSERVABLE FOOTER / CHROME IN ECOSYSTEM IFRAME */
