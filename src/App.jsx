@@ -317,8 +317,6 @@ function ObservableFrame({
       className={`iframe-crop ${className || ""}`}
       style={{
         height: `${visibleHeight}px`,
-        minHeight: `${visibleHeight}px`,
-        maxHeight: `${visibleHeight}px`,
         background: "transparent",
         overflow: "hidden"
       }}
@@ -967,32 +965,32 @@ export default function App() {
       return {
         heroVisible: 820,
         heroIframe: 930,
-        ecosystemVisible: 736,
-        ecosystemIframe: 806,
+        ecosystemVisible: 796.34375,
+        ecosystemIframe: 796.34375,
         companyVisible: 736,
         companyIframe: 736,
-        compoundVisible: 736,
-        compoundIframe: 856,
-        indicationVisible: 736,
-        indicationIframe: 950,
-        phaseVisible: 736,
-        phaseIframe: 851
+        compoundVisible: 820,
+        compoundIframe: 960,
+        indicationVisible: 660.234375,
+        indicationIframe: 720,
+        phaseVisible: 800,
+        phaseIframe: 930
       };
     }
 
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
-    const ecosystemVisible = 736;
+    const ecosystemVisible = 796.34375;
     const companyVisible = 736;
-    const compoundVisible = 736;
-    const indicationVisible = 736;
-    const phaseVisible = 736;
+    const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
+    const indicationVisible = 660.234375;
+    const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
 
     return {
       heroVisible,
       heroIframe: heroVisible + 105,
 
       ecosystemVisible,
-      ecosystemIframe: 806,
+      ecosystemIframe: 796.34375,
 
       companyVisible,
       companyIframe: 736,
@@ -1001,7 +999,7 @@ export default function App() {
       compoundIframe: compoundVisible + 120,
 
       indicationVisible,
-      indicationIframe: 950,
+      indicationIframe: indicationVisible + 60,
 
       phaseVisible,
       phaseIframe: phaseVisible + 115
