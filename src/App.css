@@ -2130,14 +2130,24 @@ body {
 }
 
 .ecosystem-frame,
-.company-frame,
-.compound-frame,
-.indication-frame {
+.company-frame {
   width: var(--company-frame-max) !important;
   max-width: var(--company-frame-max) !important;
   height: 736px !important;
   min-height: 736px !important;
   max-height: 736px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden !important;
+}
+
+.compound-frame,
+.indication-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+  height: 820px !important;
+  min-height: 820px !important;
+  max-height: 820px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   overflow: hidden !important;
@@ -2156,9 +2166,9 @@ body {
 .compound-frame > iframe.atlas-iframe {
   width: 172.413793% !important;
   max-width: none !important;
-  height: 1250px !important;
-  min-height: 1250px !important;
-  max-height: 1250px !important;
+  height: 1410px !important;
+  min-height: 1410px !important;
+  max-height: 1410px !important;
   margin: 0 0 0 -36.206897% !important;
   transform: scale(0.58) !important;
   transform-origin: top center !important;
@@ -2166,19 +2176,14 @@ body {
 
 .indication-frame > iframe.atlas-iframe {
   display: block !important;
-
   width: 117.647059% !important;
   max-width: none !important;
-
-  height: 864px !important;
-  min-height: 864px !important;
-  max-height: 864px !important;
-
+  height: 962px !important;
+  min-height: 962px !important;
+  max-height: 962px !important;
   margin: 0 0 0 -8.823529% !important;
-
   transform: scale(0.85) !important;
   transform-origin: top center !important;
-
   border: 0 !important;
   overflow: hidden !important;
 }
