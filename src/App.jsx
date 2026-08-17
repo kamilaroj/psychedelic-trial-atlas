@@ -753,7 +753,7 @@ function CompanyExternalPanel({
             : "Close company details"
         }
       >
-        Ã—
+        ×
       </button>
 
       {showCompareButton && !isComparePanel && (
@@ -978,9 +978,9 @@ export default function App() {
         companyVisible: 736,
         companyIframe: 736,
         compoundVisible: 736,
-        compoundIframe: 980,
+        compoundIframe: 1250,
         indicationVisible: 736,
-        indicationIframe: 1400,
+        indicationIframe: 1330,
         phaseVisible: 800,
         phaseIframe: 930
       };
@@ -1004,10 +1004,10 @@ export default function App() {
       companyIframe: 736,
 
       compoundVisible,
-      compoundIframe: 980,
+      compoundIframe: 1250,
 
       indicationVisible,
-      indicationIframe: 1400,
+      indicationIframe: 1330,
 
       phaseVisible,
       phaseIframe: phaseVisible + 115
@@ -1521,8 +1521,8 @@ export default function App() {
                 </InlineIcon>
 
                 <div>
-                  Created by Kamila Rojek Â· Data analysis Â· clinical-trial
-                  intelligence Â· visual storytelling
+                  Created by Kamila Rojek · Data analysis · clinical-trial
+                  intelligence · visual storytelling
                 </div>
               </div>
             </div>
