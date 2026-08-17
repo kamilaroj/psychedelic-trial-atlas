@@ -267,6 +267,16 @@ function ObservableFrame({
   const [shouldLoad, setShouldLoad] = useState(!lazyLoad);
 
   useEffect(() => {
+    const frame = wrapperRef.current;
+    if (!frame) return;
+
+    const exactHeight = `${visibleHeight}px`;
+    frame.style.setProperty("height", exactHeight, "important");
+    frame.style.setProperty("min-height", exactHeight, "important");
+    frame.style.setProperty("max-height", exactHeight, "important");
+  }, [visibleHeight]);
+
+  useEffect(() => {
     if (!lazyLoad) return;
     if (shouldLoad) return;
 
@@ -951,12 +961,10 @@ export default function App() {
 
   const [aboutOpen, setAboutOpen] = useState(false);
   const [aboutPulse, setAboutPulse] = useState(false);
-  const [pageRainActive, setPageRainActive] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [compareCompany, setCompareCompany] = useState(null);
   const [compareMode, setCompareMode] = useState(false);
 
-  const pageRainStartedRef = useRef(false);
   const aboutPulseTimerRef = useRef(null);
   const compareModeRef = useRef(false);
 
@@ -965,24 +973,24 @@ export default function App() {
       return {
         heroVisible: 820,
         heroIframe: 930,
-        ecosystemVisible: 796.34375,
-        ecosystemIframe: 796.34375,
+        ecosystemVisible: 736,
+        ecosystemIframe: 806,
         companyVisible: 736,
         companyIframe: 736,
-        compoundVisible: 820,
-        compoundIframe: 960,
-        indicationVisible: 660.234375,
-        indicationIframe: 720,
+        compoundVisible: 736,
+        compoundIframe: 980,
+        indicationVisible: 736,
+        indicationIframe: 1400,
         phaseVisible: 800,
         phaseIframe: 930
       };
     }
 
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
-    const ecosystemVisible = 796.34375;
+    const ecosystemVisible = 736;
     const companyVisible = 736;
-    const compoundVisible = clampNumber(viewportHeight * 0.8, 660, 820);
-    const indicationVisible = 660.234375;
+    const compoundVisible = 736;
+    const indicationVisible = 736;
     const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
 
     return {
@@ -990,16 +998,16 @@ export default function App() {
       heroIframe: heroVisible + 105,
 
       ecosystemVisible,
-      ecosystemIframe: 796.34375,
+      ecosystemIframe: 806,
 
       companyVisible,
       companyIframe: 736,
 
       compoundVisible,
-      compoundIframe: compoundVisible + 120,
+      compoundIframe: 980,
 
       indicationVisible,
-      indicationIframe: indicationVisible + 60,
+      indicationIframe: 1400,
 
       phaseVisible,
       phaseIframe: phaseVisible + 115
@@ -1201,13 +1209,6 @@ export default function App() {
     logoVisualScale
   )}&logoHoverScale=${encodeJsonForUrl(logoHoverScale)}`;
 
-  const startPageRain = () => {
-    if (pageRainStartedRef.current) return;
-
-    pageRainStartedRef.current = true;
-    setPageRainActive(true);
-  };
-
   const triggerAboutPulse = () => {
     if (aboutPulseTimerRef.current) {
       window.clearTimeout(aboutPulseTimerRef.current);
@@ -1380,11 +1381,6 @@ export default function App() {
       <ScrollProgressBar />
       <SectionProgressNav />
 
-      <PageRainOverlay
-        active={pageRainActive}
-        onDone={() => setPageRainActive(false)}
-      />
-
       {aboutOpen && (
         <div
           className="about-modal-overlay"
@@ -1545,7 +1541,7 @@ export default function App() {
             <span className="about-project-button-icon">
               <AboutProjectIcon />
             </span>
-            <span>About project â–¾</span>
+            <span>About project ▾</span>
           </button>
         </div>
 
@@ -1608,7 +1604,6 @@ export default function App() {
           className="compound-frame landscape-frame"
           src={observableSrc.visual2ChartUnitColumns1}
           lazyLoad={true}
-          onEnter={startPageRain}
         />
       </section>
 
