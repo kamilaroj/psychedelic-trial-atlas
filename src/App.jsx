@@ -977,10 +977,10 @@ export default function App() {
         ecosystemIframe: 806,
         companyVisible: 736,
         companyIframe: 736,
-        compoundVisible: 736,
-        compoundIframe: 1250,
-        indicationVisible: 736,
-        indicationIframe: 864,
+        compoundVisible: 880,
+        compoundIframe: 1514,
+        indicationVisible: 880,
+        indicationIframe: 1033,
         phaseVisible: 800,
         phaseIframe: 930
       };
