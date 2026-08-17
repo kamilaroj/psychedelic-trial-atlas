@@ -2130,24 +2130,14 @@ body {
 }
 
 .ecosystem-frame,
-.company-frame {
+.company-frame,
+.compound-frame,
+.indication-frame {
   width: var(--company-frame-max) !important;
   max-width: var(--company-frame-max) !important;
   height: 736px !important;
   min-height: 736px !important;
   max-height: 736px !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-  overflow: hidden !important;
-}
-
-.compound-frame,
-.indication-frame {
-  width: var(--company-frame-max) !important;
-  max-width: var(--company-frame-max) !important;
-  height: 880px !important;
-  min-height: 880px !important;
-  max-height: 880px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   overflow: hidden !important;
@@ -2166,28 +2156,40 @@ body {
 .compound-frame > iframe.atlas-iframe {
   width: 172.413793% !important;
   max-width: none !important;
-  height: 1514px !important;
-  min-height: 1514px !important;
-  max-height: 1514px !important;
+  height: 1250px !important;
+  min-height: 1250px !important;
+  max-height: 1250px !important;
   margin: 0 0 0 -36.206897% !important;
   transform: scale(0.58) !important;
   transform-origin: top center !important;
-  clip-path: inset(0 0 72px 0) !important;
 }
 
 .indication-frame > iframe.atlas-iframe {
   display: block !important;
-  width: 117.647059% !important;
+  width: 108.855586% !important;
   max-width: none !important;
-  height: 1033px !important;
-  min-height: 1033px !important;
-  max-height: 1033px !important;
-  margin: 0 0 0 -8.823529% !important;
-  transform: scale(0.85) !important;
+  height: 799px !important;
+  min-height: 799px !important;
+  max-height: 799px !important;
+  margin: 0 0 0 -4.427793% !important;
+  transform: scale(0.918648) !important;
   transform-origin: top center !important;
-  clip-path: inset(0 0 49px 0) !important;
   border: 0 !important;
   overflow: hidden !important;
+}
+
+.compound-frame::after,
+.indication-frame::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 24px;
+  z-index: 10;
+  pointer-events: none;
+  background: rgba(246, 245, 248, 0.98);
+  border-radius: 0 0 var(--frame-radius) var(--frame-radius);
 }
 
 @media (max-width: 900px) {
