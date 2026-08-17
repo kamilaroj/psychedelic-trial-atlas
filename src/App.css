@@ -2142,15 +2142,26 @@ body {
 }
 
 .compound-frame,
-.indication-frame {
+.indication-frame,
+.phase-frame {
   width: var(--company-frame-max) !important;
   max-width: var(--company-frame-max) !important;
-  height: 880px !important;
-  min-height: 880px !important;
-  max-height: 880px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   overflow: hidden !important;
+}
+
+.compound-frame,
+.indication-frame {
+  height: 820px !important;
+  min-height: 820px !important;
+  max-height: 820px !important;
+}
+
+.phase-frame {
+  height: 741px !important;
+  min-height: 741px !important;
+  max-height: 741px !important;
 }
 
 .company-visual-shell {
@@ -2190,11 +2201,27 @@ body {
   overflow: hidden !important;
 }
 
+.phase-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 741px !important;
+  min-height: 741px !important;
+  max-height: 741px !important;
+  margin: 0 !important;
+  transform: none !important;
+  transform-origin: top center !important;
+  clip-path: inset(0 0 34px 0) !important;
+  border: 0 !important;
+  overflow: hidden !important;
+}
+
 @media (max-width: 900px) {
   .visual-story.ecosystem-story,
   .visual-story.company-story,
   .visual-story.compound-story,
-  .visual-story.indication-story {
+  .visual-story.indication-story,
+  .visual-story.phase-story {
     padding-left: 16px !important;
     padding-right: 16px !important;
     padding-top: 48px !important;
@@ -2204,7 +2231,8 @@ body {
   .ecosystem-frame,
   .company-frame,
   .compound-frame,
-  .indication-frame {
+  .indication-frame,
+  .phase-frame {
     width: 100% !important;
     max-width: 100% !important;
   }
