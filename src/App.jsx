@@ -267,16 +267,6 @@ function ObservableFrame({
   const [shouldLoad, setShouldLoad] = useState(!lazyLoad);
 
   useEffect(() => {
-    const frame = wrapperRef.current;
-    if (!frame) return;
-
-    const exactHeight = `${visibleHeight}px`;
-    frame.style.setProperty("height", exactHeight, "important");
-    frame.style.setProperty("min-height", exactHeight, "important");
-    frame.style.setProperty("max-height", exactHeight, "important");
-  }, [visibleHeight]);
-
-  useEffect(() => {
     if (!lazyLoad) return;
     if (shouldLoad) return;
 
@@ -989,8 +979,8 @@ export default function App() {
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
     const ecosystemVisible = 736;
     const companyVisible = 736;
-    const compoundVisible = 736;
-    const indicationVisible = 736;
+    const compoundVisible = 880;
+    const indicationVisible = 880;
     const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
 
     return {
@@ -1004,10 +994,10 @@ export default function App() {
       companyIframe: 736,
 
       compoundVisible,
-      compoundIframe: 1250,
+      compoundIframe: 1514,
 
       indicationVisible,
-      indicationIframe: 799,
+      indicationIframe: 1033,
 
       phaseVisible,
       phaseIframe: phaseVisible + 115
