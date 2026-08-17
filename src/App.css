@@ -1844,6 +1844,38 @@ body {
   }
 }
 
+/* FINAL INDICATION LAYOUT OVERRIDES */
+.story-section.visual-story.indication-story {
+  min-height: 100dvh;
+  padding-left: var(--page-pad-left) !important;
+  padding-right: var(--page-pad-right) !important;
+}
+
+.iframe-crop.indication-frame.landscape-frame {
+  min-height: 0 !important;
+  max-height: 736px !important;
+  overflow: hidden !important;
+}
+
+.iframe-crop.indication-frame.landscape-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: 104.166667% !important;
+  max-width: none !important;
+  height: 950px !important;
+  min-height: 950px !important;
+  margin: 0 0 0 -2.083333% !important;
+  overflow: hidden !important;
+  transform: scale(0.96);
+  transform-origin: top center;
+}
+
+@media (max-width: 900px) {
+  .story-section.visual-story.indication-story {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+  }
+}
+
 /* =========================================================
    STAGE 1 â€” DESKTOP / LAPTOP RESPONSIVE FIX
    Goal: keep Company Landscape + 2 compare panels visible
@@ -2114,4 +2146,76 @@ body {
 .company-external-panel-trials-many span {
   font-size: 7px;
   line-height: 1.08;
+}
+
+/* UNIFIED VISUAL GRID */
+.visual-story.ecosystem-story,
+.visual-story.company-story,
+.visual-story.compound-story,
+.visual-story.indication-story,
+.visual-story.phase-story {
+  min-height: auto !important;
+  padding-left: var(--page-pad-left) !important;
+  padding-right: var(--page-pad-right) !important;
+  padding-top: clamp(54px, 7vh, 72px) !important;
+  padding-bottom: clamp(54px, 7vh, 72px) !important;
+  box-sizing: border-box;
+}
+
+.ecosystem-frame,
+.company-frame,
+.compound-frame,
+.indication-frame,
+.phase-frame,
+.landscape-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+  height: 736px !important;
+  min-height: 736px !important;
+  max-height: 736px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.company-visual-shell {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+}
+
+.company-visual-shell .company-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.company-visual-shell-panel-open {
+  width: var(--company-frame-max-one-panel) !important;
+  max-width: var(--company-frame-max-one-panel) !important;
+}
+
+.company-visual-shell-compare-open {
+  width: var(--company-frame-max-two-panels) !important;
+  max-width: var(--company-frame-max-two-panels) !important;
+}
+
+@media (max-width: 900px) {
+  .visual-story.ecosystem-story,
+  .visual-story.company-story,
+  .visual-story.compound-story,
+  .visual-story.indication-story,
+  .visual-story.phase-story {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .ecosystem-frame,
+  .company-frame,
+  .compound-frame,
+  .indication-frame,
+  .phase-frame,
+  .landscape-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
