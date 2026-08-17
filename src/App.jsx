@@ -971,8 +971,8 @@ export default function App() {
         compoundIframe: 1514,
         indicationVisible: 880,
         indicationIframe: 1033,
-        phaseVisible: 800,
-        phaseIframe: 930
+        phaseVisible: 741,
+        phaseIframe: 741
       };
     }
 
@@ -981,7 +981,7 @@ export default function App() {
     const companyVisible = 736;
     const compoundVisible = 880;
     const indicationVisible = 880;
-    const phaseVisible = clampNumber(viewportHeight * 0.8, 660, 800);
+    const phaseVisible = 741;
 
     return {
       heroVisible,
@@ -1000,7 +1000,7 @@ export default function App() {
       indicationIframe: 1033,
 
       phaseVisible,
-      phaseIframe: phaseVisible + 115
+      phaseIframe: 741
     };
   }, [viewportWidth, viewportHeight]);
 
@@ -1359,7 +1359,7 @@ export default function App() {
 
       visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1273?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
-      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1216?cells=visual4PhaseChart&api_key=515f6c33729f1bf487d1dbfd16abac4e81acfbd2`
+      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1278?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
     [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
   );
