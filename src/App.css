@@ -2166,14 +2166,19 @@ body {
 
 .indication-frame > iframe.atlas-iframe {
   display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
+
+  width: 108.559783% !important;
+  max-width: none !important;
+
   height: 799px !important;
   min-height: 799px !important;
   max-height: 799px !important;
-  margin: 0 !important;
-  transform: none !important;
-  transform-origin: initial !important;
+
+  margin: 0 0 0 -4.279891% !important;
+
+  transform: scale(0.921151) !important;
+  transform-origin: top center !important;
+
   border: 0 !important;
   overflow: hidden !important;
 }
