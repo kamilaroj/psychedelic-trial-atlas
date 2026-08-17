@@ -1411,7 +1411,7 @@ export default function App() {
                 onClick={() => setAboutOpen(false)}
                 aria-label="Close About project"
               >
-                Ã—
+                ×
               </button>
             </div>
 
