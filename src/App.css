@@ -2165,14 +2165,17 @@ body {
 }
 
 .indication-frame > iframe.atlas-iframe {
-  width: 181.818182% !important;
-  max-width: none !important;
-  height: 1330px !important;
-  min-height: 1330px !important;
-  max-height: 1330px !important;
-  margin: 0 0 0 -40.909091% !important;
-  transform: scale(0.55) !important;
-  transform-origin: top center !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 799px !important;
+  min-height: 799px !important;
+  max-height: 799px !important;
+  margin: 0 !important;
+  transform: none !important;
+  transform-origin: initial !important;
+  border: 0 !important;
+  overflow: hidden !important;
 }
 
 .compound-frame::after,
