@@ -2115,3 +2115,80 @@ body {
   font-size: 7px;
   line-height: 1.08;
 }
+
+/* FINAL UNIFIED VISUAL LAYOUT */
+.visual-story.ecosystem-story,
+.visual-story.company-story,
+.visual-story.compound-story,
+.visual-story.indication-story {
+  min-height: auto !important;
+  padding-left: var(--page-pad-left) !important;
+  padding-right: var(--page-pad-right) !important;
+  padding-top: clamp(54px, 7vh, 72px) !important;
+  padding-bottom: clamp(54px, 7vh, 72px) !important;
+  box-sizing: border-box;
+}
+
+.ecosystem-frame,
+.company-frame,
+.compound-frame,
+.indication-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+  height: 736px !important;
+  min-height: 736px !important;
+  max-height: 736px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden !important;
+}
+
+.company-visual-shell {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+}
+
+.company-visual-shell .company-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.compound-frame > iframe.atlas-iframe {
+  width: 113.636364% !important;
+  max-width: none !important;
+  height: 980px !important;
+  min-height: 980px !important;
+  margin: 0 0 0 -6.818182% !important;
+  transform: scale(0.88) !important;
+  transform-origin: top center !important;
+}
+
+.indication-frame > iframe.atlas-iframe {
+  width: 147.058824% !important;
+  max-width: none !important;
+  height: 1400px !important;
+  min-height: 1400px !important;
+  margin: 0 0 0 -23.529412% !important;
+  transform: scale(0.68) !important;
+  transform-origin: top center !important;
+}
+
+@media (max-width: 900px) {
+  .visual-story.ecosystem-story,
+  .visual-story.company-story,
+  .visual-story.compound-story,
+  .visual-story.indication-story {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .ecosystem-frame,
+  .company-frame,
+  .compound-frame,
+  .indication-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
