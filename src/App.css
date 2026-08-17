@@ -2117,6 +2117,7 @@ body {
 }
 
 /* FINAL UNIFIED VISUAL LAYOUT */
+
 .visual-story.ecosystem-story,
 .visual-story.company-story,
 .visual-story.compound-story,
@@ -2129,23 +2130,32 @@ body {
   box-sizing: border-box;
 }
 
+/* Wszystkie cztery karty mają identyczny rozmiar */
 .ecosystem-frame,
 .company-frame,
 .compound-frame,
 .indication-frame {
   width: var(--company-frame-max) !important;
   max-width: var(--company-frame-max) !important;
+
   height: 736px !important;
   min-height: 736px !important;
   max-height: 736px !important;
+
   margin-left: auto !important;
   margin-right: auto !important;
+
+  position: relative !important;
   overflow: hidden !important;
+  box-sizing: border-box !important;
 }
 
+/* Company Landscape */
 .company-visual-shell {
   width: var(--company-frame-max) !important;
   max-width: var(--company-frame-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
 .company-visual-shell .company-frame {
@@ -2153,26 +2163,76 @@ body {
   max-width: 100% !important;
 }
 
-.compound-frame > iframe.atlas-iframe {
-  width: 113.636364% !important;
-  max-width: none !important;
-  height: 980px !important;
-  min-height: 980px !important;
-  margin: 0 0 0 -6.818182% !important;
-  transform: scale(0.88) !important;
-  transform-origin: top center !important;
-}
+/*
+  COMPOUND ACTIVITY LANDSCAPE
 
-.indication-frame > iframe.atlas-iframe {
+  Zawartość iframe jest pomniejszona do 68%.
+  Szerokość 147.058824% kompensuje skalę 68%,
+  dlatego wykres nadal wypełnia szerokość karty.
+*/
+.compound-frame > iframe.atlas-iframe {
+  display: block !important;
+
   width: 147.058824% !important;
   max-width: none !important;
-  height: 1400px !important;
-  min-height: 1400px !important;
-  margin: 0 0 0 -23.529412% !important;
+
+  height: 1080px !important;
+  min-height: 1080px !important;
+  max-height: none !important;
+
+  margin-top: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: -23.529412% !important;
+
   transform: scale(0.68) !important;
   transform-origin: top center !important;
+
+  border: 0 !important;
+  overflow: hidden !important;
 }
 
+/*
+  INDICATION LANDSCAPE
+
+  Zawartość iframe jest pomniejszona do 62%.
+  Szerokość 161.290323% kompensuje skalę 62%.
+  Dzięki temu powinny być widoczne wszystkie kategorie.
+*/
+.indication-frame > iframe.atlas-iframe {
+  display: block !important;
+
+  width: 161.290323% !important;
+  max-width: none !important;
+
+  height: 1180px !important;
+  min-height: 1180px !important;
+  max-height: none !important;
+
+  margin-top: 0 !important;
+  margin-right: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: -30.645161% !important;
+
+  transform: scale(0.62) !important;
+  transform-origin: top center !important;
+
+  border: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Ukrycie elementów wychodzących poza karty */
+.compound-story,
+.indication-story {
+  overflow: hidden !important;
+}
+
+.compound-frame,
+.indication-frame {
+  isolation: isolate !important;
+}
+
+/* Mobile */
 @media (max-width: 900px) {
   .visual-story.ecosystem-story,
   .visual-story.company-story,
