@@ -980,7 +980,7 @@ export default function App() {
         compoundVisible: 736,
         compoundIframe: 1250,
         indicationVisible: 736,
-        indicationIframe: 799,
+        indicationIframe: 864,
         phaseVisible: 800,
         phaseIframe: 930
       };
