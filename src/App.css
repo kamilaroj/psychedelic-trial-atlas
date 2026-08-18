@@ -1844,6 +1844,52 @@ body {
   }
 }
 
+/* COMPOUND INTRO: 50% OF THE DIAGRAM SIZE */
+.visual-story.compound-intro-story {
+  width: 50% !important;
+  max-width: calc(var(--company-frame-max) * 0.5) !important;
+  min-height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(27px, 3.5vh, 36px) 0 !important;
+  box-sizing: border-box !important;
+  overflow: hidden !important;
+}
+
+.compound-intro-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 410px !important;
+  min-height: 410px !important;
+  max-height: 410px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.compound-intro-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: 200% !important;
+  max-width: none !important;
+  height: 820px !important;
+  min-height: 820px !important;
+  max-height: 820px !important;
+  margin: 0 0 0 -50% !important;
+  transform: scale(0.5) !important;
+  transform-origin: top center !important;
+  border: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .visual-story.compound-intro-story {
+    width: 50% !important;
+    max-width: 50% !important;
+    padding: 24px 0 !important;
+  }
+}
+
 /* =========================================================
    STAGE 1 â€” DESKTOP / LAPTOP RESPONSIVE FIX
    Goal: keep Company Landscape + 2 compare panels visible
