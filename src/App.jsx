@@ -743,7 +743,7 @@ function CompanyExternalPanel({
             : "Close company details"
         }
       >
-        ×
+        Ã—
       </button>
 
       {showCompareButton && !isComparePanel && (
@@ -971,6 +971,8 @@ export default function App() {
         compoundIntroIframe: 820,
         compoundVisible: 880,
         compoundIframe: 1514,
+        indicationIntroVisible: 945,
+        indicationIntroIframe: 945,
         indicationVisible: 880,
         indicationIframe: 1033,
         phaseVisible: 741,
@@ -983,6 +985,7 @@ export default function App() {
     const companyVisible = 736;
     const compoundIntroVisible = 820;
     const compoundVisible = 880;
+    const indicationIntroVisible = 945;
     const indicationVisible = 880;
     const phaseVisible = 741;
 
@@ -1001,6 +1004,9 @@ export default function App() {
 
       compoundVisible,
       compoundIframe: 1514,
+
+      indicationIntroVisible,
+      indicationIntroIframe: 945,
 
       indicationVisible,
       indicationIframe: 1033,
@@ -1365,6 +1371,8 @@ export default function App() {
       
       visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1285?cells=visual2ChartUnitColumns1&api_key=24fcb6d848289ba5ca24f14771b09231fbe9b06b`,
 
+      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1294?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+
       visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1291?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1292?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
@@ -1409,7 +1417,7 @@ export default function App() {
                 onClick={() => setAboutOpen(false)}
                 aria-label="Close About project"
               >
-                ×
+                Ã—
               </button>
             </div>
 
@@ -1519,8 +1527,8 @@ export default function App() {
                 </InlineIcon>
 
                 <div>
-                  Created by Kamila Rojek · Data analysis · clinical-trial
-                  intelligence · visual storytelling
+                  Created by Kamila Rojek Â· Data analysis Â· clinical-trial
+                  intelligence Â· visual storytelling
                 </div>
               </div>
             </div>
@@ -1539,7 +1547,7 @@ export default function App() {
             <span className="about-project-button-icon">
               <AboutProjectIcon />
             </span>
-            <span>About project ▾</span>
+            <span>About project â–¾</span>
           </button>
         </div>
 
@@ -1612,6 +1620,17 @@ export default function App() {
           iframeHeight={frameHeights.compoundIframe}
           className="compound-frame landscape-frame"
           src={observableSrc.visual2ChartUnitColumns1}
+          lazyLoad={true}
+        />
+      </section>
+
+      <section className="story-section visual-story indication-intro-story">
+        <ObservableFrame
+          title="Indication Landscape Introduction"
+          visibleHeight={frameHeights.indicationIntroVisible}
+          iframeHeight={frameHeights.indicationIntroIframe}
+          className="indication-intro-frame"
+          src={observableSrc.visual3IntroTransition}
           lazyLoad={true}
         />
       </section>
