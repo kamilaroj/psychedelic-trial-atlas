@@ -1381,7 +1381,7 @@ export default function App() {
 
       visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1291?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
-      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1296?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1297?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1292?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
