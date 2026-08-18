@@ -898,7 +898,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* COMPARE BUTTON ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â CENTERED OUTSIDE PRIMARY PANEL */
+/* COMPARE BUTTON ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CENTERED OUTSIDE PRIMARY PANEL */
 .company-external-panel-compare-button {
   position: absolute !important;
   top: 50% !important;
@@ -2038,12 +2038,12 @@ body {
 }
 
 /* =========================================================
-   STAGE 1 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â DESKTOP / LAPTOP RESPONSIVE FIX
+   STAGE 1 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â DESKTOP / LAPTOP RESPONSIVE FIX
    Goal: keep Company Landscape + 2 compare panels visible
    on 1440 / 1366 / 1280 / 1180 laptop widths.
    ========================================================= */
 
-/* Large laptops: 1366ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ1500px */
+/* Large laptops: 1366ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1500px */
 @media (max-width: 1500px) and (min-width: 1321px) {
   :root {
     --left-nav-safe-space: 108px;
@@ -2078,7 +2078,7 @@ body {
   }
 }
 
-/* Standard laptops: 1280ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ1320px */
+/* Standard laptops: 1280ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1320px */
 @media (max-width: 1320px) and (min-width: 1181px) {
   :root {
     --left-nav-safe-space: 92px;
@@ -2169,7 +2169,7 @@ body {
   }
 }
 
-/* Small laptops: 901ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ1180px */
+/* Small laptops: 901ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1180px */
 @media (max-width: 1180px) and (min-width: 901px) {
   :root {
     --left-nav-safe-space: 82px;
