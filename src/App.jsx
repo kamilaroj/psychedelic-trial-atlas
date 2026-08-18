@@ -1,6 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 
+const OBSERVABLE_ORIGIN = "https://observablehq.com";
+const ATLAS_VERSION = "August 2026";
+const CONTACT_EMAIL = "kamila.rojek@gmail.com";
+
 function useViewportSize() {
   const [viewportSize, setViewportSize] = useState(() => {
     if (typeof window === "undefined") {
@@ -253,6 +257,15 @@ function InlineIcon({ children }) {
   return <span className="about-inline-icon">{children}</span>;
 }
 
+function AtlasSectionIntro({ id, title, children }) {
+  return (
+    <div className="atlas-section-intro" id={id}>
+      <h2>{title}</h2>
+      <p>{children}</p>
+    </div>
+  );
+}
+
 function ObservableFrame({
   title,
   visibleHeight,
@@ -321,6 +334,15 @@ function ObservableFrame({
         overflow: "hidden"
       }}
     >
+      <div
+        className={`iframe-status ${isLoaded ? "iframe-status-hidden" : ""}`}
+        role="status"
+        aria-live="polite"
+      >
+        <span className="iframe-status-spinner" aria-hidden="true" />
+        <span>Loading visualization…</span>
+      </div>
+
       {shouldLoad && (
         <iframe
           title={title}
@@ -743,7 +765,7 @@ function CompanyExternalPanel({
             : "Close company details"
         }
       >
-        Ã—
+        ×
       </button>
 
       {showCompareButton && !isComparePanel && (
@@ -957,6 +979,8 @@ export default function App() {
 
   const aboutPulseTimerRef = useRef(null);
   const compareModeRef = useRef(false);
+  const aboutButtonRef = useRef(null);
+  const aboutDialogRef = useRef(null);
 
   const frameHeights = useMemo(() => {
     if (viewportWidth <= 900) {
@@ -1252,7 +1276,7 @@ export default function App() {
         type: "UNICORN_COMPARE_SELECTION_MODE",
         active
       },
-      "*"
+      OBSERVABLE_ORIGIN
     );
   };
 
@@ -1267,7 +1291,7 @@ export default function App() {
       {
         type: "UNICORN_COMPANY_CLEAR"
       },
-      "*"
+      OBSERVABLE_ORIGIN
     );
   };
 
@@ -1282,7 +1306,7 @@ export default function App() {
       {
         type: "UNICORN_COMPARE_CLEAR"
       },
-      "*"
+      OBSERVABLE_ORIGIN
     );
   };
 
@@ -1311,6 +1335,8 @@ export default function App() {
 
   useEffect(() => {
     const handleCompanyMessage = (event) => {
+      if (event.origin !== OBSERVABLE_ORIGIN) return;
+
       const message = event.data;
 
       if (!message || typeof message !== "object") return;
@@ -1365,6 +1391,28 @@ export default function App() {
     };
   }, []);
 
+  useEffect(() => {
+    if (!aboutOpen) return undefined;
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setAboutOpen(false);
+      }
+    };
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    window.setTimeout(() => aboutDialogRef.current?.focus(), 0);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+      aboutButtonRef.current?.focus();
+    };
+  }, [aboutOpen]);
+
   const observableSrc = useMemo(
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
@@ -1408,6 +1456,8 @@ export default function App() {
             role="dialog"
             aria-modal="true"
             aria-labelledby="about-project-title"
+            tabIndex="-1"
+            ref={aboutDialogRef}
             onClick={(event) => event.stopPropagation()}
           >
             <div className="about-modal-header">
@@ -1425,7 +1475,7 @@ export default function App() {
                 onClick={() => setAboutOpen(false)}
                 aria-label="Close About project"
               >
-                Ã—
+                ×
               </button>
             </div>
 
@@ -1535,8 +1585,8 @@ export default function App() {
                 </InlineIcon>
 
                 <div>
-                  Created by Kamila Rojek Â· Data analysis Â· clinical-trial
-                  intelligence Â· visual storytelling
+                  Created by Kamila Rojek · Data analysis · clinical-trial
+                  intelligence · visual storytelling
                 </div>
               </div>
             </div>
@@ -1545,8 +1595,29 @@ export default function App() {
       )}
 
       <section className="story-section hero-story">
+        <header className="atlas-html-hero" aria-labelledby="atlas-title">
+          <p className="atlas-eyebrow">Independent public-source data analysis</p>
+          <h1 id="atlas-title">Psychedelic Trial Atlas</h1>
+          <p className="atlas-html-hero-summary">
+            An interactive view of publicly visible psychedelic drug-development
+            activity across companies, compounds, indications and clinical phases.
+          </p>
+          <div className="atlas-html-hero-meta">
+            <span>Created by Kamila Rojek</span>
+            <span aria-hidden="true">·</span>
+            <span>Site version: {ATLAS_VERSION}</span>
+          </div>
+          <nav className="atlas-primary-nav" aria-label="Atlas information">
+            <a href="#methodology">Methodology</a>
+            <a href="#cite">Cite</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+          </nav>
+        </header>
+
         <div className="top-project-menu">
           <button
+            ref={aboutButtonRef}
             className="about-project-button"
             type="button"
             onClick={() => setAboutOpen(true)}
@@ -1555,7 +1626,7 @@ export default function App() {
             <span className="about-project-button-icon">
               <AboutProjectIcon />
             </span>
-            <span>About project â–¾</span>
+            <span>About project ▾</span>
           </button>
         </div>
 
@@ -1569,6 +1640,11 @@ export default function App() {
       </section>
 
       <section className="story-section visual-story ecosystem-story">
+        <AtlasSectionIntro id="ecosystem-overview" title="The Psychedelic Ecosystem">
+          Begin with the wider ecosystem of organisations and public sources
+          connected to psychedelic drug development.
+        </AtlasSectionIntro>
+
         <ObservableFrame
           title="The Psychedelic Ecosystem"
           visibleHeight={frameHeights.ecosystemVisible}
@@ -1579,6 +1655,11 @@ export default function App() {
       </section>
 
       <section className="story-section visual-story company-story">
+        <AtlasSectionIntro id="companies-overview" title="Company Landscape">
+          Explore visible activity by organisation. Each company profile keeps
+          registered trial records separate from pipeline context.
+        </AtlasSectionIntro>
+
         <div
           className={`company-visual-shell ${
             selectedCompany ? "company-visual-shell-panel-open" : ""
@@ -1622,6 +1703,11 @@ export default function App() {
       </section>
 
       <section className="story-section visual-story compound-story">
+        <AtlasSectionIntro id="compounds-overview" title="Compound Activity Landscape">
+          Compare included activity across compound families. Filled and hollow
+          circles distinguish registered trials from contextual pipeline activity.
+        </AtlasSectionIntro>
+
         <ObservableFrame
           title="Compound Activity Landscape"
           visibleHeight={frameHeights.compoundVisible}
@@ -1644,6 +1730,11 @@ export default function App() {
       </section>
 
       <section className="story-section visual-story indication-story">
+        <AtlasSectionIntro id="indications-overview" title="Indication Landscape">
+          See how included trials are distributed across therapeutic indications
+          and compound families.
+        </AtlasSectionIntro>
+
         <ObservableFrame
           title="Indication Landscape"
           visibleHeight={frameHeights.indicationVisible}
@@ -1665,6 +1756,11 @@ export default function App() {
       </section>
 
       <section className="story-section visual-story phase-story">
+        <AtlasSectionIntro id="phases-overview" title="Clinical Phase Landscape">
+          Review where visible registered trial activity appears across the
+          clinical development pathway.
+        </AtlasSectionIntro>
+
         <ObservableFrame
           title="Clinical Phase Landscape"
           visibleHeight={frameHeights.phaseVisible}
@@ -1672,6 +1768,60 @@ export default function App() {
           className="phase-frame landscape-frame"
           src={observableSrc.visual4PhaseChart}
         />
+      </section>
+
+      <section className="atlas-information-section" id="methodology" aria-labelledby="methodology-title">
+        <p className="atlas-eyebrow">Methodology</p>
+        <h2 id="methodology-title">How the Atlas is built</h2>
+        <p>
+          The Atlas structures public registered clinical-trial records and
+          selected company pipeline context. Trial records show what is
+          publicly registered. Pipeline context provides visibility context and
+          is not clinical evidence.
+        </p>
+        <p>
+          Public data can be incomplete, delayed, duplicated or structured
+          inconsistently. Recruitment status and trial details may change and
+          should be checked against the original record.
+        </p>
+      </section>
+
+      <section className="atlas-information-section" id="cite" aria-labelledby="cite-title">
+        <p className="atlas-eyebrow">Citation</p>
+        <h2 id="cite-title">Cite this project</h2>
+        <p className="atlas-citation">
+          Rojek, Kamila. <em>Psychedelic Trial Atlas</em>. Interactive
+          public-source data analysis. Site version {ATLAS_VERSION}.
+        </p>
+        <p>
+          When referring to a specific view, include its URL and the date you
+          accessed it.
+        </p>
+      </section>
+
+      <section className="atlas-information-section" id="about" aria-labelledby="about-title">
+        <p className="atlas-eyebrow">About</p>
+        <h2 id="about-title">Data analysis for complex public-source healthcare data</h2>
+        <p>
+          The project combines data cleaning, data modelling, methodology
+          design, data quality review, clinical-trial data analysis and
+          interactive visualization.
+        </p>
+        <p className="atlas-skills">
+          Observable · React · SQL · Python · Power BI
+        </p>
+      </section>
+
+      <section className="atlas-information-section atlas-contact-section" id="contact" aria-labelledby="contact-title">
+        <p className="atlas-eyebrow">Contact</p>
+        <h2 id="contact-title">Work with me</h2>
+        <p>
+          Available for data analytics, research intelligence and visualization
+          opportunities.
+        </p>
+        <a className="atlas-contact-link" href={`mailto:${CONTACT_EMAIL}`}>
+          {CONTACT_EMAIL}
+        </a>
       </section>
     </main>
   );
