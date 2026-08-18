@@ -967,6 +967,8 @@ export default function App() {
         ecosystemIframe: 806,
         companyVisible: 736,
         companyIframe: 736,
+        compoundIntroVisible: 820,
+        compoundIntroIframe: 820,
         compoundVisible: 880,
         compoundIframe: 1514,
         indicationVisible: 880,
@@ -979,6 +981,7 @@ export default function App() {
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
     const ecosystemVisible = 736;
     const companyVisible = 736;
+    const compoundIntroVisible = 820;
     const compoundVisible = 880;
     const indicationVisible = 880;
     const phaseVisible = 741;
@@ -992,6 +995,9 @@ export default function App() {
 
       companyVisible,
       companyIframe: 736,
+
+      compoundIntroVisible,
+      compoundIntroIframe: 820,
 
       compoundVisible,
       compoundIframe: 1514,
@@ -1354,6 +1360,8 @@ export default function App() {
       visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1284?cells=visual1EcosystemOverviev&api_key=a2ee50a620f4d2aee4e95c1565c58282751ead58`,
 
       visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1250?cells=visual1CompanyLandscapePremium1&api_key=d5f6bd4e354ba0480077a99f20e82ed5d186ad8e${visual1CompanyLandscapeParams}`,
+
+      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1286?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
       visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1285?cells=visual2ChartUnitColumns1&api_key=24fcb6d848289ba5ca24f14771b09231fbe9b06b`,
 
@@ -1584,6 +1592,17 @@ export default function App() {
             isComparisonActive={hasComparePanels}
           />
         </div>
+      </section>
+
+      <section className="story-section visual-story compound-intro-story">
+        <ObservableFrame
+          title="Compound Activity Landscape Introduction"
+          visibleHeight={frameHeights.compoundIntroVisible}
+          iframeHeight={frameHeights.compoundIntroIframe}
+          className="compound-intro-frame"
+          src={observableSrc.visual2IntroTransition}
+          lazyLoad={true}
+        />
       </section>
 
       <section className="story-section visual-story compound-story">
