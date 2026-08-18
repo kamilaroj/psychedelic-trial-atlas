@@ -898,7 +898,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* COMPARE BUTTON ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CENTERED OUTSIDE PRIMARY PANEL */
+/* COMPARE BUTTON ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â CENTERED OUTSIDE PRIMARY PANEL */
 .company-external-panel-compare-button {
   position: absolute !important;
   top: 50% !important;
@@ -1967,13 +1967,83 @@ body {
   }
 }
 
+/* CLINICAL PHASE INTRO: FINAL ANALYTICAL TRANSITION */
+.visual-story.phase-intro-story {
+  width: min(68%, 1060px) !important;
+  max-width: 1060px !important;
+  min-height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(34px, 4.5vh, 48px) 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.phase-intro-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 906.15625px !important;
+  min-height: 906.15625px !important;
+  max-height: 906.15625px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.phase-intro-frame::before {
+  content: none !important;
+  display: none !important;
+}
+
+.phase-intro-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 1006.15625px !important;
+  min-height: 1006.15625px !important;
+  max-height: 1006.15625px !important;
+  margin: 0 !important;
+  transform: none !important;
+  transform-origin: top center !important;
+  clip-path: inset(0 0 100px 0) !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  overflow: hidden !important;
+}
+
+@media (max-width: 900px) {
+  .visual-story.phase-intro-story {
+    width: calc(100% - 32px) !important;
+    max-width: calc(100% - 32px) !important;
+    padding: 28px 0 34px !important;
+  }
+
+  .phase-intro-frame {
+    height: 1120px !important;
+    min-height: 1120px !important;
+    max-height: 1120px !important;
+  }
+
+  .phase-intro-frame > iframe.atlas-iframe {
+    height: 1220px !important;
+    min-height: 1220px !important;
+    max-height: 1220px !important;
+    clip-path: inset(0 0 100px 0) !important;
+  }
+}
+
 /* =========================================================
-   STAGE 1 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â DESKTOP / LAPTOP RESPONSIVE FIX
+   STAGE 1 ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã‚Â DESKTOP / LAPTOP RESPONSIVE FIX
    Goal: keep Company Landscape + 2 compare panels visible
    on 1440 / 1366 / 1280 / 1180 laptop widths.
    ========================================================= */
 
-/* Large laptops: 1366ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1500px */
+/* Large laptops: 1366ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ1500px */
 @media (max-width: 1500px) and (min-width: 1321px) {
   :root {
     --left-nav-safe-space: 108px;
@@ -2008,7 +2078,7 @@ body {
   }
 }
 
-/* Standard laptops: 1280ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1320px */
+/* Standard laptops: 1280ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ1320px */
 @media (max-width: 1320px) and (min-width: 1181px) {
   :root {
     --left-nav-safe-space: 92px;
@@ -2099,7 +2169,7 @@ body {
   }
 }
 
-/* Small laptops: 901ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1180px */
+/* Small laptops: 901ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬ÃƒÂ¢Ã¢â€šÂ¬Ã…â€œ1180px */
 @media (max-width: 1180px) and (min-width: 901px) {
   :root {
     --left-nav-safe-space: 82px;
