@@ -898,7 +898,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* COMPARE BUTTON ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CENTERED OUTSIDE PRIMARY PANEL */
+/* COMPARE BUTTON — CENTERED OUTSIDE PRIMARY PANEL */
 .company-external-panel-compare-button {
   position: absolute !important;
   top: 50% !important;
@@ -1844,6 +1844,288 @@ body {
   }
 }
 
+/* =========================================================
+   STATIC ATLAS CONTENT, LOADING STATES AND INFORMATION PAGES
+   ========================================================= */
+
+.hero-story {
+  isolation: isolate;
+}
+
+.atlas-html-hero {
+  position: absolute;
+  top: clamp(18px, 3vh, 34px);
+  left: var(--page-pad-left);
+  z-index: 8;
+  width: min(500px, calc(100% - var(--page-pad-left) - var(--page-pad-right)));
+  color: var(--ink);
+}
+
+.atlas-eyebrow {
+  margin: 0 0 7px;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(36, 39, 44, 0.56);
+}
+
+.atlas-html-hero h1 {
+  margin: 0;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: clamp(17px, 1.45vw, 22px);
+  line-height: 1;
+  letter-spacing: -0.05em;
+  font-weight: 850;
+}
+
+.atlas-html-hero-summary {
+  max-width: 430px;
+  margin: 7px 0 0;
+  font-size: 11px;
+  line-height: 1.42;
+  color: var(--muted);
+}
+
+.atlas-html-hero-meta,
+.atlas-primary-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px 8px;
+}
+
+.atlas-html-hero-meta {
+  margin-top: 8px;
+  font-size: 10px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: rgba(36, 39, 44, 0.62);
+}
+
+.atlas-primary-nav {
+  margin-top: 10px;
+}
+
+.atlas-primary-nav a {
+  color: var(--ink);
+  font-size: 10.5px;
+  line-height: 1;
+  font-weight: 760;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(36, 39, 44, 0.28);
+  padding-bottom: 2px;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+
+.atlas-primary-nav a:hover,
+.atlas-primary-nav a:focus-visible {
+  color: #665c91;
+  border-color: #665c91;
+}
+
+.iframe-status {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: rgba(241, 240, 236, 0.48);
+  color: rgba(36, 39, 44, 0.68);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: opacity 240ms ease, visibility 240ms ease;
+  pointer-events: none;
+}
+
+.iframe-status-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.iframe-status-spinner {
+  width: 14px;
+  height: 14px;
+  box-sizing: border-box;
+  border: 2px solid rgba(36, 39, 44, 0.16);
+  border-top-color: rgba(36, 39, 44, 0.7);
+  border-radius: 999px;
+  animation: atlasLoaderSpin 700ms linear infinite;
+}
+
+@keyframes atlasLoaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.visual-story {
+  flex-direction: column;
+}
+
+.atlas-section-intro {
+  width: var(--company-frame-max);
+  max-width: var(--company-frame-max);
+  box-sizing: border-box;
+  margin: 0 auto 17px;
+  padding: 0 4px;
+}
+
+.atlas-section-intro h2 {
+  margin: 0 0 5px;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  letter-spacing: 0.07em;
+  font-weight: 830;
+  text-transform: uppercase;
+  color: rgba(36, 39, 44, 0.58);
+}
+
+.atlas-section-intro p {
+  max-width: 650px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.42;
+  letter-spacing: -0.01em;
+  color: var(--muted);
+}
+
+.compound-intro-story + .compound-story .atlas-section-intro,
+.indication-intro-story + .indication-story .atlas-section-intro,
+.phase-intro-story + .phase-story .atlas-section-intro {
+  margin-top: 0;
+}
+
+.atlas-information-section {
+  width: min(860px, calc(100vw - var(--page-pad-left) - var(--page-pad-right)));
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: clamp(42px, 6vw, 72px) clamp(24px, 4vw, 54px);
+  border-top: 1px solid rgba(36, 39, 44, 0.14);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.atlas-information-section:first-of-type {
+  margin-top: clamp(20px, 4vh, 54px);
+  border-radius: var(--frame-radius) var(--frame-radius) 0 0;
+}
+
+.atlas-contact-section {
+  margin-bottom: clamp(64px, 9vh, 112px);
+  border-radius: 0 0 var(--frame-radius) var(--frame-radius);
+}
+
+.atlas-information-section h2 {
+  max-width: 660px;
+  margin: 0 0 17px;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: clamp(30px, 4vw, 48px);
+  line-height: 0.98;
+  letter-spacing: -0.058em;
+  font-weight: 860;
+  color: var(--ink);
+}
+
+.atlas-information-section > p:not(.atlas-eyebrow) {
+  max-width: 660px;
+  margin: 0 0 13px;
+  font-size: 14px;
+  line-height: 1.58;
+  letter-spacing: -0.012em;
+  color: var(--muted);
+}
+
+.atlas-information-section > p:last-child {
+  margin-bottom: 0;
+}
+
+.atlas-citation {
+  padding: 16px 18px;
+  border-left: 2px solid rgba(102, 92, 145, 0.66);
+  background: rgba(255, 255, 255, 0.36);
+  color: var(--ink) !important;
+}
+
+.atlas-skills {
+  color: var(--ink) !important;
+  font-weight: 760;
+}
+
+.atlas-contact-link {
+  display: inline-flex;
+  margin-top: 5px;
+  color: var(--ink);
+  font-size: clamp(17px, 2.2vw, 23px);
+  line-height: 1.2;
+  font-weight: 780;
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(36, 39, 44, 0.45);
+  padding-bottom: 3px;
+}
+
+.atlas-contact-link:hover,
+.atlas-contact-link:focus-visible {
+  color: #665c91;
+  border-color: #665c91;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 3px solid rgba(102, 92, 145, 0.42);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .atlas-html-hero {
+    top: 18px;
+    left: 16px;
+    width: calc(100% - 32px);
+  }
+
+  .atlas-html-hero h1 {
+    font-size: 17px;
+  }
+
+  .atlas-html-hero-summary {
+    max-width: 350px;
+    font-size: 10.5px;
+  }
+
+  .atlas-primary-nav {
+    display: none;
+  }
+
+  .atlas-section-intro {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 13px;
+    padding: 0;
+  }
+
+  .atlas-section-intro p {
+    font-size: 12.5px;
+  }
+
+  .atlas-information-section {
+    width: calc(100% - 32px);
+    padding: 38px 22px;
+  }
+
+  .atlas-information-section h2 {
+    font-size: 31px;
+  }
+
+  .atlas-information-section > p:not(.atlas-eyebrow) {
+    font-size: 13.5px;
+  }
+}
+
 /* COMPOUND INTRO: COMPACT, READABLE TRANSITION */
 .visual-story.compound-intro-story {
   width: min(68%, 1060px) !important;
@@ -1982,9 +2264,9 @@ body {
 .phase-intro-frame {
   width: 100% !important;
   max-width: 100% !important;
-  height: 906.15625px !important;
-  min-height: 906.15625px !important;
-  max-height: 906.15625px !important;
+  height: 845px !important;
+  min-height: 845px !important;
+  max-height: 845px !important;
   margin: 0 auto !important;
   overflow: hidden !important;
   background: transparent !important;
@@ -2002,15 +2284,15 @@ body {
 
 .phase-intro-frame > iframe.atlas-iframe {
   display: block !important;
-  width: 100% !important;
-  max-width: 100% !important;
+  width: 106.472081% !important;
+  max-width: none !important;
   height: 1006.15625px !important;
   min-height: 1006.15625px !important;
   max-height: 1006.15625px !important;
-  margin: 0 !important;
-  transform: none !important;
+  margin: 0 0 0 -3.23604% !important;
+  transform: scale(0.939218) !important;
   transform-origin: top center !important;
-  clip-path: inset(0 0 100px 0) !important;
+  clip-path: none !important;
   border: 0 !important;
   border-radius: 0 !important;
   overflow: hidden !important;
@@ -2024,26 +2306,29 @@ body {
   }
 
   .phase-intro-frame {
-    height: 1120px !important;
-    min-height: 1120px !important;
-    max-height: 1120px !important;
+    height: 1080px !important;
+    min-height: 1080px !important;
+    max-height: 1080px !important;
   }
 
   .phase-intro-frame > iframe.atlas-iframe {
+    width: 100% !important;
     height: 1220px !important;
     min-height: 1220px !important;
     max-height: 1220px !important;
+    margin: 0 !important;
+    transform: none !important;
     clip-path: inset(0 0 100px 0) !important;
   }
 }
 
 /* =========================================================
-   STAGE 1 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â DESKTOP / LAPTOP RESPONSIVE FIX
+   STAGE 1 — DESKTOP / LAPTOP RESPONSIVE FIX
    Goal: keep Company Landscape + 2 compare panels visible
    on 1440 / 1366 / 1280 / 1180 laptop widths.
    ========================================================= */
 
-/* Large laptops: 1366ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1500px */
+/* Large laptops: 1366–1500px */
 @media (max-width: 1500px) and (min-width: 1321px) {
   :root {
     --left-nav-safe-space: 108px;
@@ -2078,7 +2363,7 @@ body {
   }
 }
 
-/* Standard laptops: 1280ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1320px */
+/* Standard laptops: 1280–1320px */
 @media (max-width: 1320px) and (min-width: 1181px) {
   :root {
     --left-nav-safe-space: 92px;
@@ -2169,7 +2454,7 @@ body {
   }
 }
 
-/* Small laptops: 901ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1180px */
+/* Small laptops: 901–1180px */
 @media (max-width: 1180px) and (min-width: 901px) {
   :root {
     --left-nav-safe-space: 82px;
