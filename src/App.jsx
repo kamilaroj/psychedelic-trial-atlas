@@ -1,2645 +1,2301 @@
-gestern 10:55
-remove this unicorn untitled thig and position diagramm more central
-Eingefügter Text(20260817-085656).txt
-Dokument
-Eingefügter Text (2)(2).txt
-Dokument
-yes, adjust code jsx and css 
-keine änderungem
-Bildschirmaufnahme 2026-08-17 um 11.06.12.mov
-Datei
-Zauważ, ostatnia chyba jedna albo dwie kategorie się nie mieszczą i te kółka gdzieś tam na dole uciekają w jakąś dziwną przestrzeń. Wydaje mi się, że jednak troszeczkę za duże to teraz jest.
- Przeztami dałać 15 tysięcy kodów linii. Proszę cię, wejdź, zobacz ten screenshot. Jakieś kółka na dole znikają, brakuje wszystkich kategorii. Proszę cię, zmniejsz to, zrób to w końcu poprawnie, bo robisz błędy i się kręcimy w kółko.
-szlag mnie zaraz trafi
-Bildschirmaufnahme 2026-08-17 um 11.15.08.mov
-Datei
-Zrób proszę tak, przede wszystkim odległości między wizualizacjami są różne, położenie jest różne. Proszę cię, zrób wszystko, ma być takie samo położenie, takie same odstępy między wizualizacjami. Zrób to w ten sposób. Wszystko ma mieć taką szerokość i wysokość jak company landscape. I odległości między wizualizacjami powinny być takie, jakie między ecosystemem i company landscape.
-Bildschirmaufnahme 2026-08-17 um 11.22.24.mov
-Datei
-Jakie problemy widzisz techniczne i wizualne, tylko nie zajmuj się ostatnią wizualizacją, bo do niej jeszcze nie doszliśmy. Ale brakuje mi stand przed ostatnim visualu i teraz też brakuje mi stanie widać na stance i w trzecim visualu.
-nadal zle
-Eingefügter Text(20260817-093415).txt
-Dokument
-Eingefügter Text (2)(3).txt
-Dokument
-obecny css: i jsx 
-Eingefügter Text(20260817-093817).txt
-Dokument
-jsx 
-Eingefügter Text(20260817-094056).txt
-Dokument
-aktualny css 
-Bildschirmaufnahme 2026-08-17 um 11.43.06.mov
-Datei
-immer noch nixhtas
-w observable wyglada wszytsko ok
-mach kleiner damit wir alles sehen
-Eingefügter Text(20260817-095846).txt
-Dokument
-css 
-Będziesz wszystko tak, żeby się zmieściła ostatnia kategoria Neurology and Brain Disorder. Powiedz mi tylko, w którym kodzie co mam zmienić. Od dwóch godzin robisz błędy i doprowadzasz mnie do siekłości. Tracę czas, straciłam dzisiaj już dwie godziny na twoje gówno. Rozumiesz? W piątek tak super mi pomogłeś, a dzisiaj po prostu robisz ciągle błędy. Błagam cię, zrób w końcu, pomniejsz to tak, żeby ta ostatnia kategoria, czyli Eating Disorders, jeszcze jest Neurology and Brain Disorders tam była. I przede wszystkim to przełącznik, który jest u góry po prawej stronie All Trials i Recruiting Now, ma być większe. No to wyglądać jak obserwable. Wyślę ci jeszcze raz też zdjęcie z obserwable.
-Czy widzisz, jak to wygląda w OBSy? Świetnie. Czy teraz możesz mi powiedzieć, dlaczego na mojej stronie internetowej ten konkretna wizualizacja wygląda tak chujowo cały czas i nie możesz w końcu naprawić tego błędu?
-Eingefügter Text(20260817-101451).txt
-Dokument
-kod z observable: 
-Eingefügter Text(20260817-101649).txt
-Dokument
-poprosze o caly plik z jsx code adjusted tak zeby naprawic wsuzytskie bledy 
-Eingefügter Text(20260817-101847).txt
-Dokument
-popraw caly kod, daj plik css 
-nadal nie ma zmian zara oszaleje
-Eingefügter Text(20260817-102207).txt
-Dokument
-Eingefügter Text (2)(4).txt
-Dokument
-to sa obecne kody, zaraz oszaleje
-nadal nie ma zmiany ostatnia kategoria nie jest pokazana
-Zrobiłam listę, co powiedziałaś, łatwoaniłam, ale. Powiny to inaczej. Proszę cię, zrób wysokość tych wizualizacji troszeczkę większa, w sensie tą ramkę, tak żeby się wszystko zmieściło.
-taj k wyglada po znianach
-Eingefügter Text(20260817-104218).txt
-Dokument
-daj mi caly adjusted code css w pliku 
-Eingefügter Text(20260817-104658).txt
-Dokument
-Eingefügter Text (2)(5).txt
-Dokument
-Eingefügter Text (3).txt
-Dokument
-Eingefügter Text (4).txt
-Dokument
-Masz tutaj wszystkie kody z observery i JSX, i screenshotsy, aktora. Proszę o identyfikację problemu.
-usun te mini paseczki na dole i powieksz przelaczniki i ulepsz ich polozenie i w obu wizualizacjach przelacznik ma miec ta sama wielkosc i pozycje
-zlikwiduje te paski pod obydwiema wizualizacjami
-Bildschirmaufnahme 2026-08-17 um 13.03.44.mov
-Datei
-jakie problym widzis jako swietowej klasy designer danych wizualizacji
-Dobra, teraz potrzebuję pomysłu na tą ostatnią wizualizację, tam chodzi o fazy. Zrób mi, daj mi pomysł, jak można by przedstawić wizualizację i z jakim przełącznikiem. Myślę, że możemy zrobić, już wcześniej robiłeś mi taki pomysł, że po prostu fazy są po lewej stronie jako oś X, a y, to są po prostu kółka, oś Y to są kółka i przełącznik można zrobić by compound i wtedy będzie na przykład widoczne, że nie wiem, że te same siloty winy to są na przykład w większości w fazie trzeciej, tak? Daj mi jakieś trzy pomysły, zrób prostą wizualizację dla nich.
-Eingefügter Text(20260817-113653).txt
-Dokument
-dokladnie, poperosze kod do observable 
-Bildschirmaufnahme 2026-08-17 um 13.43.30.mov
-Datei
-Dajesz, co myślisz? Na pewno to, co mi się nie podoba, to są te linie szare takie długie, nie? przy tych chyba. Wydaje mi się, że minimalistycznie by było, gdyby tych szarych linii nie było. Nie potrzebujemy tych osi szarych. daj znac co jesccze zauwazasz
-Eingefügter Text(20260817-115733).txt
-Dokument
-<iframe width="100%" height="741" frameborder="0"
-  src="https://observablehq.com/embed/e3028f2577c04f9a@1278?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e"></iframe>, update jsx 
-Bildschirmaufnahme 2026-08-17 um 14.00.30.mov
-Datei
-zrob prtelkaczniki w tej samej pozycji i wielkosci we wszytskich 3 wizualizacjach i zrob ranke ostatniej wizualizacji jak dwie poprzednie
-Bildschirmaufnahme 2026-08-17 um 14.07.40.mov
-Datei
-zrob przelaczniki w wizualizacjach wielkosc i polozenie tak jak w ostatniej wizualizacji
-Bildschirmaufnahme 2026-08-17 um 14.14.42.mov
-Datei
-delete lines na ktorych sa kolka te szare linie
-Eingefügter Text(20260817-121803).txt
-Dokument
-adjust 
-what problems do u see i am only takjing about napisy, meü, kolory, czcionka
-Eingefügter Text(20260817-122751).txt
-Dokument
-gestern 19:04
-markdown(3).md eingefügt
-Datei
-Co ten artykuł mówi i oznacza dla mnie i dla mojego projektu?
-heute 11:17
-zrob napisy pod spodem wieksze visual1EcosystemOverviev = {
-  const width = 980;
-  const height = 720;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap");
 
-  const bg = "transparent";
-  const ink = "#000000";
-  const muted = "#1d1d1f";
-  const tiny = "#1d1d1f";
-  const white = "#ffffff";
+:root {
+  --bg: #f1f0ec;
+  --ink: #24272c;
+  --muted: #68717a;
 
-  const titleFont = "Inter Tight", "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", Arial, system-ui, sans-serif;
-  const bodyFont = "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --left-nav-safe-space: clamp(132px, 11vw, 178px);
+  --right-safe-space: clamp(24px, 4vw, 72px);
 
-  const titleX = -48;
-  const titleY = 78;
+  --page-pad-left: var(--left-nav-safe-space);
+  --page-pad-right: var(--right-safe-space);
 
-  const sectionTitleSize = 42;
-  const sectionSubtitleSize = 13.6;
-  const sectionMicroSize = 12.4;
+  --company-panel-width: 224px;
+  --company-panel-compare-width: 224px;
+  --company-compare-button-width: 158px;
+  --company-compare-button-overlap: 22px;
 
-  const sectionTitleWeight = 900;
-  const sectionSubtitleWeight = 650;
-  const sectionMicroWeight = 620;
+  --frame-max: min(
+    1180px,
+    calc(100vw - var(--page-pad-left) - var(--page-pad-right))
+  );
 
-  const titleLetterSpacing = "-0.075em";
-  const subtitleLetterSpacing = "-0.025em";
-  const microLetterSpacing = "-0.015em";
+  --company-frame-max: min(
+    1300px,
+    calc(100vw - var(--page-pad-left) - var(--page-pad-right))
+  );
 
-  const subtitleY = 44;
-  const microY = 69;
+  --company-frame-max-one-panel: min(
+    1300px,
+    calc(
+      100vw - var(--page-pad-left) - var(--page-pad-right) -
+      var(--company-panel-width) - var(--company-compare-button-width) +
+      var(--company-compare-button-overlap)
+    )
+  );
 
-  function text(value) {
-    return String(value ?? "").trim();
-  }
+  --company-frame-max-two-panels: min(
+    1300px,
+    calc(
+      100vw - var(--page-pad-left) - var(--page-pad-right) -
+      var(--company-panel-width) - var(--company-panel-compare-width)
+    )
+  );
 
-  function lower(value) {
-    return text(value).toLowerCase();
-  }
+  --hero-max: min(
+    940px,
+    calc(100vw - var(--page-pad-left) - var(--page-pad-right))
+  );
 
-  function isYes(value) {
-    const v = lower(value);
+  --frame-radius: clamp(26px, 2.4vw, 38px);
 
-    return (
-      value === true ||
-      value === 1 ||
-      v === "yes" ||
-      v === "true" ||
-      v === "1" ||
-      v === "y"
+  --glass-bg: rgba(255, 255, 255, 0.16);
+  --glass-bg-strong: rgba(255, 255, 255, 0.22);
+  --glass-border: rgba(255, 255, 255, 0.62);
+  --glass-shadow-main: rgba(58, 42, 84, 0.14);
+  --glass-shadow-soft: rgba(29, 29, 31, 0.055);
+
+  --company-footer-crop: 58px;
+  --ecosystem-footer-crop: 70px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background:
+    radial-gradient(circle at 50% 10%, rgba(214, 209, 232, 0.72), transparent 34%),
+    radial-gradient(circle at 18% 22%, rgba(173, 166, 205, 0.34), transparent 31%),
+    radial-gradient(circle at 82% 18%, rgba(225, 222, 239, 0.38), transparent 28%),
+    linear-gradient(180deg, #a7a0c8 0%, #e4e0ee 42%, #f8f7f4 82%, #f1f0ec 100%);
+  background-attachment: fixed;
+}
+
+body {
+  color: var(--ink);
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+}
+
+.site {
+  width: 100%;
+  min-height: 100vh;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.1) 0%,
+      rgba(241, 240, 236, 0.2) 100%
     );
-  }
+  overflow-x: hidden;
+  position: relative;
+}
 
-  function isNo(value) {
-    const v = lower(value);
+.story-section {
+  width: 100%;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
 
-    return (
-      value === false ||
-      value === 0 ||
-      v === "no" ||
-      v === "false" ||
-      v === "0" ||
-      v === "n"
+/* HERO SECTION */
+.hero-story {
+  min-height: 100dvh;
+  padding-left: var(--page-pad-left);
+  padding-right: var(--page-pad-right);
+  padding-top: clamp(42px, 6vh, 78px);
+  padding-bottom: clamp(48px, 7vh, 86px);
+  position: relative;
+  background:
+    radial-gradient(circle at 50% 22%, rgba(255, 255, 255, 0.38), transparent 36%),
+    linear-gradient(
+      180deg,
+      rgba(167, 160, 200, 0.34) 0%,
+      rgba(241, 240, 236, 0.02) 78%
     );
+}
+
+.top-project-menu {
+  position: absolute;
+  top: calc(50% - 142px);
+  left: var(--page-pad-left);
+  right: var(--page-pad-right);
+  z-index: 40;
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.about-project-button {
+  pointer-events: auto;
+  appearance: none;
+  border: 1px solid rgba(36, 39, 44, 0.1);
+  background: rgba(255, 255, 255, 0.8);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 4px 12px 5px;
+  height: 30px;
+  min-height: 30px;
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  box-shadow: 0 14px 38px rgba(29, 29, 31, 0.1);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+}
+
+.about-project-button:hover {
+  background: rgba(255, 255, 255, 0.96);
+  border-color: rgba(36, 39, 44, 0.16);
+  box-shadow: 0 18px 46px rgba(29, 29, 31, 0.14);
+  transform: translateY(-1px);
+}
+
+.about-project-button:active {
+  transform: translateY(0);
+}
+
+.about-project-button-icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 20px;
+}
+
+.about-project-button-icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: var(--ink);
+  stroke: none;
+}
+
+/* ABOUT MODAL */
+@keyframes aboutModalAttentionPulse {
+  0% {
+    transform: scale(1);
   }
 
-  function splitList(value) {
-    return text(value)
-      .split(/[,;|]/)
-      .map(d => d.trim())
-      .filter(Boolean);
+  38% {
+    transform: scale(1.028);
   }
 
-  function uniq(values) {
-    return Array.from(
-      new Set(
-        values
-          .flat()
-          .map(d => text(d))
-          .filter(Boolean)
+  68% {
+    transform: scale(0.994);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.about-modal-overlay {
+  position: fixed;
+  top: 0;
+  right: var(--page-pad-right);
+  bottom: 0;
+  left: var(--page-pad-left);
+  z-index: 1000;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.about-modal {
+  width: min(92vw, 590px);
+  max-width: 590px;
+  max-height: 82vh;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid rgba(36, 39, 44, 0.1);
+  border-radius: 18px;
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.18),
+    0 8px 22px rgba(0, 0, 0, 0.1);
+  color: var(--ink);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.about-modal-attention {
+  animation: aboutModalAttentionPulse 360ms cubic-bezier(0.22, 0.78, 0.22, 1) both;
+}
+
+.about-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 13px;
+  padding: 16px 22px 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.about-modal-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.about-modal-header h2 {
+  margin: 0;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: 22px;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  font-weight: 780;
+  color: var(--ink);
+}
+
+.about-modal-close {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.about-modal-close:hover {
+  background: rgba(0, 0, 0, 0.06);
+  transform: scale(1.04);
+}
+
+.about-modal-body {
+  padding: 13px 22px 15px;
+}
+
+.about-modal-body p {
+  margin: 0 0 15px;
+  color: var(--muted);
+  font-size: 13.2px;
+  line-height: 1.62;
+  letter-spacing: -0.005em;
+}
+
+.about-modal-body p:last-child {
+  margin-bottom: 0;
+}
+
+.about-modal-body strong {
+  color: var(--ink);
+  font-weight: 760;
+}
+
+.about-inline-icon {
+  width: 16px;
+  height: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 16px;
+}
+
+.about-inline-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.65;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.about-modal-title-row .about-inline-icon {
+  width: 27px;
+  height: 27px;
+  flex-basis: 27px;
+}
+
+.about-modal-title-row .about-inline-icon svg {
+  width: 27px;
+  height: 27px;
+  fill: var(--ink);
+  stroke: none;
+}
+
+.about-modal-lead {
+  margin: 0 0 11px;
+  max-width: none;
+  color: var(--ink);
+  font-size: 12.2px;
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+  text-align: left;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.about-modal-section {
+  padding: 11px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+}
+
+.about-modal-section:first-of-type {
+  padding-top: 11px;
+}
+
+.about-section-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0 0 7px;
+}
+
+.about-section-title h3 {
+  margin: 0;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: 16.5px;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  font-weight: 780;
+  color: var(--ink);
+}
+
+.about-modal-section p {
+  margin: 0 0 6px;
+  font-size: 11.65px;
+  line-height: 1.34;
+  color: #2b2f36;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.about-modal-section p:last-child {
+  margin-bottom: 0;
+}
+
+.about-modal-section strong {
+  font-weight: 790;
+  color: var(--ink);
+}
+
+.about-keyfacts {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+.about-keyfact-row {
+  display: grid;
+  grid-template-columns: 82px 1fr;
+  gap: 12px;
+  padding: 5.5px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.075);
+}
+
+.about-keyfact-label {
+  font-size: 10.65px;
+  line-height: 1.25;
+  color: var(--ink);
+  font-weight: 790;
+}
+
+.about-keyfact-value {
+  font-size: 10.65px;
+  line-height: 1.25;
+  color: #2b2f36;
+  hyphens: none;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+
+.about-modal-footer {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-top: 11px;
+  border-top: 1px solid rgba(0, 0, 0, 0.09);
+  color: #3a4048;
+  font-size: 10.65px;
+  line-height: 1.28;
+}
+
+.about-modal-footer .about-inline-icon {
+  width: 14px;
+  height: 14px;
+  flex-basis: 14px;
+}
+
+.about-modal-footer .about-inline-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* VISUAL SECTIONS */
+.visual-story {
+  padding-left: var(--page-pad-left);
+  padding-right: var(--page-pad-right);
+}
+
+.ecosystem-story {
+  padding-top: clamp(48px, 6vh, 76px);
+  padding-bottom: clamp(48px, 6vh, 76px);
+}
+
+.company-story {
+  padding-top: clamp(54px, 7vh, 86px);
+  padding-bottom: clamp(54px, 7vh, 86px);
+  overflow: visible;
+  position: relative;
+}
+
+.compound-story {
+  padding-top: clamp(58px, 8vh, 96px);
+  padding-bottom: clamp(58px, 8vh, 96px);
+  overflow: hidden;
+}
+
+.indication-story {
+  min-height: 100dvh;
+  padding-left: var(--right-safe-space);
+  padding-right: var(--right-safe-space);
+  padding-top: clamp(58px, 8vh, 96px);
+  padding-bottom: clamp(58px, 8vh, 96px);
+  overflow: hidden;
+}
+
+.phase-story {
+  padding-top: clamp(58px, 8vh, 96px);
+  padding-bottom: clamp(70px, 9vh, 112px);
+  overflow: hidden;
+}
+
+/* IFRAME BASE */
+.iframe-crop {
+  width: var(--frame-max);
+  max-width: var(--frame-max);
+  overflow: hidden !important;
+  position: relative;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--frame-radius);
+  box-shadow:
+    0 24px 58px var(--glass-shadow-main),
+    0 8px 20px var(--glass-shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.58),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+  margin: 0 auto;
+  display: block;
+  isolation: isolate;
+  box-sizing: border-box;
+  backdrop-filter: blur(26px) saturate(142%);
+  -webkit-backdrop-filter: blur(26px) saturate(142%);
+}
+
+.iframe-crop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.34) 0%, transparent 34%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 46%);
+}
+
+.atlas-iframe {
+  display: block;
+  width: calc(100% + 18px) !important;
+  max-width: none !important;
+  margin-left: -9px !important;
+  border: 0 !important;
+  outline: 0;
+  overflow: hidden !important;
+  background: transparent;
+  opacity: 0;
+  transition: opacity 420ms ease;
+  will-change: opacity;
+  border-radius: var(--frame-radius);
+  position: relative;
+  z-index: 1;
+}
+
+.atlas-iframe.iframe-loaded {
+  opacity: 1;
+}
+
+.atlas-iframe.iframe-loading {
+  opacity: 0;
+}
+
+/* FRAME WIDTHS */
+.hero-frame {
+  width: var(--hero-max);
+  max-width: var(--hero-max);
+  border-radius: var(--frame-radius);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--glass-border);
+  box-shadow:
+    0 24px 58px var(--glass-shadow-main),
+    0 8px 20px var(--glass-shadow-soft),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(26px) saturate(142%);
+  -webkit-backdrop-filter: blur(26px) saturate(142%);
+}
+
+.ecosystem-frame,
+.indication-frame,
+.phase-frame,
+.landscape-frame {
+  width: var(--frame-max);
+  max-width: var(--frame-max);
+}
+
+.company-frame,
+.compound-frame,
+.indication-frame {
+  width: var(--company-frame-max);
+  max-width: var(--company-frame-max);
+}
+
+.compound-frame {
+  min-height: min(820px, calc(100vh - 170px));
+}
+
+.indication-frame {
+  min-height: 0;
+}
+
+.compound-frame .atlas-iframe,
+.indication-frame .atlas-iframe {
+  width: 100% !important;
+  margin-left: 0 !important;
+}
+
+/* Keep the Observable banner below the visible indication frame. */
+.indication-frame .atlas-iframe {
+  min-height: calc(100% + 60px);
+}
+
+/* REMOVE OBSERVABLE FOOTER / CHROME IN ECOSYSTEM IFRAME */
+.ecosystem-frame {
+  overflow: hidden !important;
+}
+
+.ecosystem-frame .atlas-iframe {
+  height: calc(100% + var(--ecosystem-footer-crop)) !important;
+}
+
+/* REMOVE OBSERVABLE FOOTER / CHROME IN COMPANY IFRAME */
+.company-frame {
+  overflow: hidden !important;
+}
+
+.company-frame .atlas-iframe {
+  height: calc(100% + var(--company-footer-crop)) !important;
+}
+
+.company-visual-shell-panel-open .company-frame .atlas-iframe,
+.company-visual-shell-compare-open .company-frame .atlas-iframe {
+  height: calc(100% + var(--company-footer-crop)) !important;
+}
+
+/* COMPANY EXTERNAL PANEL */
+.company-visual-shell {
+  position: relative;
+  width: var(--company-frame-max);
+  max-width: var(--company-frame-max);
+  margin: 0 auto;
+  overflow: visible !important;
+  transition:
+    width 260ms cubic-bezier(0.22, 0.78, 0.22, 1),
+    max-width 260ms cubic-bezier(0.22, 0.78, 0.22, 1);
+}
+
+.company-visual-shell-panel-open {
+  width: var(--company-frame-max-one-panel);
+  max-width: var(--company-frame-max-one-panel);
+}
+
+.company-visual-shell-compare-open {
+  width: var(--company-frame-max-two-panels);
+  max-width: var(--company-frame-max-two-panels);
+}
+
+.company-visual-shell .company-frame {
+  width: 100%;
+  max-width: 100%;
+  transition:
+    border-radius 220ms ease,
+    width 260ms cubic-bezier(0.22, 0.78, 0.22, 1),
+    max-width 260ms cubic-bezier(0.22, 0.78, 0.22, 1);
+}
+
+.company-visual-shell-panel-open .company-frame,
+.company-visual-shell-compare-open .company-frame {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.company-visual-shell-panel-open .company-frame .atlas-iframe,
+.company-visual-shell-compare-open .company-frame .atlas-iframe {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.company-external-panel {
+  position: absolute !important;
+  top: 0 !important;
+  left: 100% !important;
+  right: auto !important;
+  bottom: auto !important;
+  width: var(--company-panel-width) !important;
+  height: 100% !important;
+  max-height: 100% !important;
+  z-index: 46 !important;
+  overflow: hidden !important;
+  border-radius: 0 var(--frame-radius) var(--frame-radius) 0 !important;
+  border: 1px solid rgba(255, 255, 255, 0.68) !important;
+  border-left: 0 !important;
+  background: rgba(255, 255, 255, 0.42);
+  box-shadow:
+    0 24px 58px rgba(58, 42, 84, 0.16),
+    0 8px 20px rgba(29, 29, 31, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(26px) saturate(142%);
+  -webkit-backdrop-filter: blur(26px) saturate(142%);
+  color: var(--ink);
+  animation: companyPanelIn 260ms cubic-bezier(0.22, 0.78, 0.22, 1) both;
+}
+
+.company-visual-shell-compare-open .company-external-panel:not(.company-external-panel-compare) {
+  border-radius: 0 !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.46) !important;
+  box-shadow:
+    0 24px 46px rgba(58, 42, 84, 0.11),
+    0 8px 16px rgba(29, 29, 31, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+}
+
+.company-external-panel-compare {
+  left: calc(100% + var(--company-panel-width)) !important;
+  width: var(--company-panel-compare-width) !important;
+  z-index: 45 !important;
+  border-radius: 0 var(--frame-radius) var(--frame-radius) 0 !important;
+  border-left: 0 !important;
+  background: rgba(255, 255, 255, 0.36);
+}
+
+@keyframes companyPanelIn {
+  0% {
+    opacity: 0;
+    transform: translateX(18px) scale(0.985);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+.company-external-panel-floating-close {
+  position: absolute !important;
+  top: 14px !important;
+  left: calc(100% - 15px) !important;
+  width: 30px !important;
+  height: 30px !important;
+  min-width: 30px !important;
+  min-height: 30px !important;
+  z-index: 90 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  appearance: none !important;
+  border: 1px solid rgba(255, 255, 255, 0.72) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #24272c !important;
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
+  font-size: 18px !important;
+  line-height: 1 !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  box-shadow:
+    0 10px 26px rgba(29, 29, 31, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(18px) saturate(142%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(142%) !important;
+}
+
+.company-external-panel-floating-close-compare {
+  left: calc(100% + var(--company-panel-width) - 15px) !important;
+}
+
+.company-external-panel-floating-close:hover {
+  background: rgba(255, 255, 255, 0.98) !important;
+  transform: scale(1.04) !important;
+}
+
+.company-external-panel-close {
+  display: none !important;
+}
+
+.company-external-panel-inner {
+  height: 100% !important;
+  max-height: 100% !important;
+  overflow: hidden !important;
+  padding: 12px 10px 10px;
+  box-sizing: border-box;
+  position: relative;
+  display: grid;
+  grid-template-rows: 108px minmax(0, 1fr);
+  gap: 7px;
+}
+
+.company-external-panel-top-lock {
+  height: 108px;
+  min-height: 108px;
+  max-height: 108px;
+  display: grid;
+  grid-template-rows: 34px minmax(0, 1fr);
+  gap: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.company-external-panel-logo-row {
+  height: 34px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.company-external-panel-logo-slot {
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 38px;
+}
+
+.company-external-panel-logo-slot-empty {
+  opacity: 0;
+}
+
+.company-external-panel-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  border: 1px solid rgba(29, 31, 34, 0.08);
+  box-shadow: 0 8px 20px rgba(29, 29, 31, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin: 0;
+}
+
+.company-external-panel-logo img {
+  width: 84%;
+  height: 84%;
+  object-fit: contain;
+  display: block;
+}
+
+.company-external-panel-header {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.company-external-panel-title {
+  margin: 0;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: 14.2px;
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 850;
+  color: var(--ink);
+  max-width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.company-external-panel-subtitle {
+  margin-top: 4px;
+  font-size: 7.8px;
+  line-height: 1.15;
+  color: var(--muted);
+  max-width: 100%;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.company-external-panel-website-fallback {
+  -webkit-line-clamp: 1;
+}
+
+.company-external-panel-websites {
+  display: grid;
+  gap: 1px;
+  margin-top: 5px;
+  max-height: 21px;
+  overflow: hidden;
+}
+
+.company-external-panel-websites a {
+  color: #665c91;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-size: 8.2px;
+  line-height: 1.12;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* COMPARE BUTTON Ã¢â‚¬â€ CENTERED OUTSIDE PRIMARY PANEL */
+.company-external-panel-compare-button {
+  position: absolute !important;
+  top: 50% !important;
+  left: calc(100% + var(--company-panel-width) - var(--company-compare-button-overlap)) !important;
+  width: var(--company-compare-button-width) !important;
+  height: 36px !important;
+  min-height: 36px !important;
+  z-index: 95 !important;
+  appearance: none !important;
+  border: 1px solid rgba(36, 39, 44, 0.1) !important;
+  border-radius: 999px !important;
+  background: rgba(255, 255, 255, 0.86) !important;
+  color: var(--ink) !important;
+  padding: 0 14px !important;
+  margin: 0 !important;
+  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif !important;
+  font-size: 11px !important;
+  line-height: 1 !important;
+  font-weight: 820 !important;
+  letter-spacing: -0.02em !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+  box-shadow:
+    0 12px 30px rgba(29, 29, 31, 0.11),
+    inset 0 1px 0 rgba(255, 255, 255, 0.74) !important;
+  backdrop-filter: blur(18px) saturate(142%) !important;
+  -webkit-backdrop-filter: blur(18px) saturate(142%) !important;
+  transform: translateY(-50%) !important;
+  transition:
+    background 160ms ease,
+    border-color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.company-external-panel-compare-button:hover {
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(36, 39, 44, 0.16) !important;
+  transform: translateY(calc(-50% - 1px)) !important;
+  box-shadow:
+    0 14px 34px rgba(29, 29, 31, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.82) !important;
+}
+
+.company-external-panel-compare-button-active {
+  background: rgba(36, 39, 44, 0.9) !important;
+  color: #ffffff !important;
+  border-color: rgba(36, 39, 44, 0.22) !important;
+}
+
+.company-visual-shell-compare-open .company-external-panel-compare-button {
+  display: none !important;
+}
+
+/* FIXED COMPARISON GRID */
+.company-external-panel-content-grid {
+  height: 100%;
+  min-height: 0;
+  display: grid;
+  grid-template-rows:
+    130px
+    54px
+    44px
+    54px
+    46px
+    minmax(0, 1fr);
+  gap: 0;
+  overflow: hidden;
+}
+
+.company-external-panel-metrics {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+  margin: 0;
+  min-height: 0;
+}
+
+.company-external-panel-metrics-stacked {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 5px;
+}
+
+.company-external-panel-metric-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.company-external-panel-metric {
+  border-radius: 13px;
+  background: rgba(255, 255, 255, 0.38);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  box-shadow:
+    0 10px 20px rgba(29, 29, 31, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.62);
+  padding: 6px 4px 5px;
+  min-height: 48px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.company-external-panel-metric-total {
+  width: 100%;
+  min-height: 68px;
+  border-radius: 15px;
+  padding: 8px 7px 7px;
+}
+
+.company-external-panel-metric-half {
+  min-height: 50px;
+  padding: 7px 3px 6px;
+}
+
+.company-external-panel-metric-number {
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: 15px;
+  line-height: 0.92;
+  font-weight: 900;
+  letter-spacing: -0.06em;
+  color: var(--ink);
+  text-align: center;
+}
+
+.company-external-panel-metric-total .company-external-panel-metric-number {
+  font-size: 27px;
+  line-height: 0.88;
+}
+
+.company-external-panel-metric-label {
+  margin-top: 4px;
+  font-size: 6.1px;
+  line-height: 1.02;
+  color: #8c9098;
+  font-weight: 830;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.company-external-panel-metric-total .company-external-panel-metric-label {
+  font-size: 6.9px;
+  margin-top: 5px;
+}
+
+.company-external-panel-metric-note {
+  margin-top: 3px;
+  font-size: 5.5px;
+  line-height: 1.05;
+  color: #a0a5ad;
+  font-weight: 760;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  text-align: center;
+  max-width: 132px;
+}
+
+.company-external-panel-section {
+  border-top: 1px solid rgba(29, 29, 31, 0.08);
+  padding-top: 5px;
+  margin-top: 0;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.company-external-panel-kicker {
+  font-size: 6.8px;
+  line-height: 1.05;
+  color: #8c9098;
+  font-weight: 820;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin-bottom: 3px;
+  white-space: nowrap;
+}
+
+.company-external-panel-value {
+  font-size: 8.1px;
+  line-height: 1.18;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+
+.company-external-panel-section-assets .company-external-panel-value,
+.company-external-panel-section-families .company-external-panel-value,
+.company-external-panel-section-areas .company-external-panel-value,
+.company-external-panel-section-countries .company-external-panel-value {
+  max-height: calc(100% - 12px);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.company-external-panel-section-assets .company-external-panel-value {
+  -webkit-line-clamp: 3;
+}
+
+.company-external-panel-section-families .company-external-panel-value {
+  -webkit-line-clamp: 2;
+}
+
+.company-external-panel-section-areas .company-external-panel-value {
+  -webkit-line-clamp: 3;
+}
+
+.company-external-panel-section-countries .company-external-panel-value {
+  -webkit-line-clamp: 2;
+}
+
+.company-external-panel-section-trials {
+  min-height: 0;
+  overflow: hidden;
+  padding-bottom: 0;
+}
+
+.company-external-panel-trials {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  align-items: start;
+  min-height: 0;
+}
+
+.company-external-panel-trials-scroll {
+  max-height: calc(100% - 13px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 4px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(29, 29, 31, 0.2) transparent;
+}
+
+.company-external-panel-trials-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.company-external-panel-trials-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.company-external-panel-trials-scroll::-webkit-scrollbar-thumb {
+  background: rgba(29, 29, 31, 0.18);
+  border-radius: 999px;
+}
+
+.company-external-panel-trials a,
+.company-external-panel-trials span {
+  display: block;
+  font-size: 7.8px;
+  line-height: 1.12;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.company-external-panel-trials a {
+  color: #665c91;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  font-weight: 700;
+}
+
+.company-external-panel-empty-value {
+  color: #9aa0a8;
+  font-weight: 600;
+  white-space: normal !important;
+}
+
+/* COMPARE MODE COMPACTION */
+.company-external-panel-comparison-active .company-external-panel-inner {
+  padding: 11px 9px 9px;
+  grid-template-rows: 104px minmax(0, 1fr);
+  gap: 6px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-top-lock {
+  height: 104px;
+  min-height: 104px;
+  max-height: 104px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-title {
+  font-size: 13.2px;
+  line-height: 0.98;
+}
+
+.company-external-panel-comparison-active .company-external-panel-subtitle {
+  font-size: 7.4px;
+  line-height: 1.12;
+}
+
+.company-external-panel-comparison-active .company-external-panel-websites a {
+  font-size: 7.8px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-content-grid {
+  grid-template-rows:
+    124px
+    52px
+    42px
+    52px
+    44px
+    minmax(0, 1fr);
+}
+
+.company-external-panel-comparison-active .company-external-panel-metric-total {
+  min-height: 64px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-metric-half {
+  min-height: 48px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-metric-total .company-external-panel-metric-number {
+  font-size: 25px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-metric-number {
+  font-size: 14px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-value {
+  font-size: 7.8px;
+  line-height: 1.15;
+}
+
+.company-external-panel-comparison-active .company-external-panel-kicker {
+  font-size: 6.5px;
+}
+
+.company-external-panel-comparison-active .company-external-panel-trials a,
+.company-external-panel-comparison-active .company-external-panel-trials span {
+  font-size: 7.4px;
+  line-height: 1.1;
+}
+
+/* REMOVE WHITE FOOTER STRIPS */
+.observable-hard-crop::after,
+.compound-frame.observable-hard-crop::after,
+.indication-frame.observable-hard-crop::after,
+.phase-frame.observable-hard-crop::after {
+  content: none !important;
+  display: none !important;
+  height: 0 !important;
+}
+
+.observable-hard-crop {
+  overflow: hidden !important;
+  position: relative;
+  background: transparent;
+}
+
+.compound-frame,
+.indication-frame,
+.phase-frame {
+  overflow: hidden !important;
+}
+
+.compound-frame iframe,
+.indication-frame iframe,
+.phase-frame iframe {
+  overflow: hidden !important;
+}
+
+/* RESPONSIVE DESKTOP */
+@media (max-width: 1500px) {
+  :root {
+    --left-nav-safe-space: 132px;
+    --right-safe-space: 42px;
+
+    --company-panel-width: 210px;
+    --company-panel-compare-width: 210px;
+    --company-compare-button-width: 150px;
+    --company-compare-button-overlap: 20px;
+
+    --frame-max: min(
+      1080px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max: min(
+      1160px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1160px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1160px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
+    );
+
+    --hero-max: min(
+      880px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-footer-crop: 58px;
+    --ecosystem-footer-crop: 70px;
+  }
+
+  .top-project-menu {
+    top: calc(50% - 126px);
+  }
+
+  .ecosystem-story {
+    padding-top: 42px;
+    padding-bottom: 52px;
+  }
+
+  .company-story {
+    padding-top: 48px;
+    padding-bottom: 60px;
+  }
+
+  .compound-story,
+  .indication-story {
+    padding-top: 52px;
+    padding-bottom: 60px;
+  }
+
+  .phase-story {
+    padding-top: 52px;
+    padding-bottom: 72px;
+  }
+
+  .company-external-panel {
+    width: var(--company-panel-width) !important;
+  }
+
+  .company-external-panel-compare {
+    left: calc(100% + var(--company-panel-width)) !important;
+    width: var(--company-panel-compare-width) !important;
+  }
+
+  .company-external-panel-floating-close {
+    top: 14px !important;
+    left: calc(100% - 15px) !important;
+  }
+
+  .company-external-panel-floating-close-compare {
+    left: calc(100% + var(--company-panel-width) - 15px) !important;
+  }
+
+  .company-external-panel-inner {
+    padding: 11px 9px 9px;
+    grid-template-rows: 104px minmax(0, 1fr);
+  }
+
+  .company-external-panel-top-lock {
+    height: 104px;
+    min-height: 104px;
+    max-height: 104px;
+  }
+
+  .company-external-panel-content-grid {
+    grid-template-rows:
+      124px
+      52px
+      42px
+      52px
+      44px
+      minmax(0, 1fr);
+  }
+
+  .company-external-panel-title {
+    font-size: 13.2px;
+  }
+
+  .company-external-panel-value {
+    font-size: 7.8px;
+  }
+}
+
+@media (max-width: 1250px) {
+  :root {
+    --left-nav-safe-space: 118px;
+    --right-safe-space: 32px;
+
+    --company-panel-width: 194px;
+    --company-panel-compare-width: 194px;
+    --company-compare-button-width: 142px;
+    --company-compare-button-overlap: 18px;
+
+    --frame-max: min(
+      980px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max: min(
+      1060px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1060px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1060px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
+    );
+
+    --hero-max: min(
+      800px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-footer-crop: 58px;
+    --ecosystem-footer-crop: 70px;
+  }
+
+  .top-project-menu {
+    top: calc(50% - 118px);
+  }
+
+  .hero-story {
+    padding-top: 34px;
+    padding-bottom: 46px;
+  }
+
+  .ecosystem-story {
+    padding-top: 38px;
+    padding-bottom: 48px;
+  }
+
+  .company-story {
+    padding-top: 44px;
+    padding-bottom: 54px;
+  }
+
+  .compound-story,
+  .indication-story {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .phase-story {
+    padding-top: 48px;
+    padding-bottom: 68px;
+  }
+
+  .company-external-panel-inner {
+    padding: 10px 8px 8px;
+    grid-template-rows: 100px minmax(0, 1fr);
+  }
+
+  .company-external-panel-top-lock {
+    height: 100px;
+    min-height: 100px;
+    max-height: 100px;
+  }
+
+  .company-external-panel-content-grid {
+    grid-template-rows:
+      120px
+      50px
+      40px
+      50px
+      42px
+      minmax(0, 1fr);
+  }
+
+  .company-external-panel-title {
+    font-size: 12.6px;
+  }
+
+  .company-external-panel-subtitle {
+    font-size: 7.1px;
+  }
+
+  .company-external-panel-value {
+    font-size: 7.4px;
+  }
+
+  .company-external-panel-kicker {
+    font-size: 6.3px;
+  }
+
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 23px;
+  }
+
+  .company-external-panel-compare-button {
+    font-size: 10.5px !important;
+  }
+}
+
+@media (max-width: 1180px) {
+  :root {
+    --company-panel-width: 184px;
+    --company-panel-compare-width: 184px;
+    --company-compare-button-width: 136px;
+    --company-compare-button-overlap: 16px;
+
+    --company-frame-max: min(
+      1000px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
       )
     );
   }
 
-  function seededRandom(seed) {
-    const x = Math.sin(seed * 999.123) * 10000;
-    return x - Math.floor(x);
+  .company-external-panel-inner {
+    padding: 9px 7px 8px;
+    grid-template-rows: 96px minmax(0, 1fr);
   }
 
-  function seededJitter(seed, amount = 6) {
-    return (seededRandom(seed) - 0.5) * amount;
+  .company-external-panel-top-lock {
+    height: 96px;
+    min-height: 96px;
+    max-height: 96px;
   }
 
-  function normalizeSourceType(row) {
-    return lower(
-      row.source_visibility_type ||
-      row.source_type_clean ||
-      row.visual_layer ||
-      row.visual_include_status_all_visuals ||
-      row.public_visual_decision ||
-      ""
+  .company-external-panel-title {
+    font-size: 12px;
+  }
+
+  .company-external-panel-subtitle {
+    font-size: 6.9px;
+  }
+
+  .company-external-panel-value {
+    font-size: 7.1px;
+  }
+
+  .company-external-panel-kicker {
+    font-size: 6.1px;
+  }
+
+  .company-external-panel-metric-total {
+    min-height: 60px;
+  }
+
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 22px;
+  }
+
+  .company-external-panel-compare-button {
+    width: var(--company-compare-button-width) !important;
+    font-size: 10px !important;
+    padding: 0 10px !important;
+  }
+}
+
+/* MOBILE / TABLET */
+@media (max-width: 900px) {
+  :root {
+    --left-nav-safe-space: 16px;
+    --right-safe-space: 16px;
+    --frame-max: calc(100vw - 32px);
+    --company-frame-max: calc(100vw - 32px);
+    --company-frame-max-one-panel: calc(100vw - 32px);
+    --company-frame-max-two-panels: calc(100vw - 32px);
+    --hero-max: calc(100vw - 32px);
+    --frame-radius: 22px;
+    --company-panel-width: auto;
+    --company-panel-compare-width: auto;
+    --company-compare-button-width: auto;
+    --company-footer-crop: 58px;
+    --ecosystem-footer-crop: 70px;
+  }
+
+  .top-project-menu {
+    top: calc(50% - 132px);
+    left: 16px;
+    right: 16px;
+  }
+
+  .about-project-button {
+    font-size: 11.5px;
+    padding: 8px 14px;
+  }
+
+  .about-modal-overlay {
+    left: 0;
+    right: 0;
+    padding: 16px;
+  }
+
+  .about-modal {
+    width: min(94vw, 570px);
+    max-width: 570px;
+    max-height: 86vh;
+    border-radius: 20px;
+  }
+
+  .about-modal-header {
+    padding: 15px 19px 11px;
+  }
+
+  .about-modal-header h2 {
+    font-size: 20px;
+  }
+
+  .about-modal-body {
+    padding: 13px 19px 15px;
+  }
+
+  .about-modal-body p {
+    font-size: 12.8px;
+    line-height: 1.58;
+  }
+
+  .about-keyfact-row {
+    grid-template-columns: 76px 1fr;
+    gap: 10px;
+  }
+
+  .hero-story {
+    min-height: 820px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .visual-story {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .iframe-crop,
+  .hero-frame,
+  .ecosystem-frame,
+  .company-frame,
+  .compound-frame,
+  .indication-frame,
+  .phase-frame,
+  .landscape-frame {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .company-visual-shell,
+  .company-visual-shell-panel-open,
+  .company-visual-shell-compare-open {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .company-visual-shell-panel-open .company-frame,
+  .company-visual-shell-compare-open .company-frame {
+    border-top-right-radius: var(--frame-radius) !important;
+    border-bottom-right-radius: var(--frame-radius) !important;
+  }
+
+  .company-visual-shell-panel-open .company-frame .atlas-iframe,
+  .company-visual-shell-compare-open .company-frame .atlas-iframe {
+    border-top-right-radius: var(--frame-radius) !important;
+    border-bottom-right-radius: var(--frame-radius) !important;
+  }
+
+  .company-external-panel {
+    position: fixed !important;
+    left: 16px !important;
+    right: 16px !important;
+    top: auto !important;
+    bottom: 16px !important;
+    width: auto !important;
+    height: min(64vh, 520px) !important;
+    max-height: min(64vh, 520px) !important;
+    border-radius: 24px !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.68) !important;
+    z-index: 86 !important;
+    overflow: hidden !important;
+  }
+
+  .company-external-panel-compare {
+    left: 16px !important;
+    right: 16px !important;
+    bottom: 16px !important;
+    width: auto !important;
+    height: min(64vh, 520px) !important;
+    max-height: min(64vh, 520px) !important;
+    border-radius: 24px !important;
+    z-index: 88 !important;
+  }
+
+  .company-external-panel-floating-close {
+    position: fixed !important;
+    top: auto !important;
+    left: 28px !important;
+    bottom: calc(16px + min(64vh, 520px) - 15px) !important;
+    z-index: 92 !important;
+  }
+
+  .company-external-panel-floating-close-compare {
+    left: 28px !important;
+    bottom: calc(16px + min(64vh, 520px) - 15px) !important;
+    z-index: 94 !important;
+  }
+
+  .company-external-panel-compare-button {
+    position: fixed !important;
+    left: 50% !important;
+    top: auto !important;
+    bottom: calc(16px + min(64vh, 520px) + 12px) !important;
+    width: auto !important;
+    min-width: 162px !important;
+    transform: translateX(-50%) !important;
+    z-index: 96 !important;
+  }
+
+  .company-external-panel-compare-button:hover {
+    transform: translateX(-50%) translateY(-1px) !important;
+  }
+
+  .company-external-panel-inner {
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    display: block;
+    padding: 14px 13px 13px;
+  }
+
+  .company-external-panel-top-lock {
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    display: block;
+    overflow: visible;
+  }
+
+  .company-external-panel-logo-row {
+    height: auto;
+    margin-bottom: 6px;
+  }
+
+  .company-external-panel-content-grid {
+    display: grid;
+    grid-template-rows: none;
+    gap: 0;
+    height: auto;
+    overflow: visible;
+  }
+
+  .company-external-panel-header {
+    overflow: visible;
+  }
+
+  .company-external-panel-title,
+  .company-external-panel-subtitle {
+    display: block;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+
+  .company-external-panel-websites {
+    max-height: none;
+  }
+
+  .company-external-panel-websites a {
+    white-space: normal;
+    overflow: visible;
+    text-overflow: unset;
+  }
+
+  .company-external-panel-metric-row {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .company-external-panel-metric-total {
+    min-height: 80px;
+  }
+
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 32px;
+  }
+
+  .company-external-panel-section {
+    margin-top: 6px;
+  }
+
+  .company-external-panel-section-assets .company-external-panel-value,
+  .company-external-panel-section-families .company-external-panel-value,
+  .company-external-panel-section-areas .company-external-panel-value,
+  .company-external-panel-section-countries .company-external-panel-value {
+    max-height: none;
+    overflow: visible;
+    display: block;
+    -webkit-line-clamp: unset;
+  }
+
+  .company-external-panel-trials {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .company-external-panel-trials-scroll {
+    max-height: 180px;
+  }
+
+  .compound-story {
+    padding-top: 90px;
+    padding-bottom: 95px;
+  }
+
+  .indication-story {
+    padding-top: 95px;
+    padding-bottom: 95px;
+  }
+
+  .phase-story {
+    padding-top: 95px;
+    padding-bottom: 120px;
+  }
+}
+
+/* COMPOUND INTRO: COMPACT, READABLE TRANSITION */
+.visual-story.compound-intro-story {
+  width: min(68%, 1060px) !important;
+  max-width: 1060px !important;
+  min-height: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding: clamp(34px, 4.5vh, 48px) 0 !important;
+  box-sizing: border-box !important;
+  overflow: visible !important;
+}
+
+.compound-intro-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 720px !important;
+  min-height: 720px !important;
+  max-height: 720px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+.compound-intro-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  height: 820px !important;
+  min-height: 820px !important;
+  max-height: 820px !important;
+  margin: 0 !important;
+  transform: none !important;
+  transform-origin: top center !important;
+  clip-path: inset(0 0 100px 0) !important;
+  border: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .visual-story.compound-intro-story {
+    width: calc(100% - 32px) !important;
+    max-width: calc(100% - 32px) !important;
+    padding: 28px 0 34px !important;
+  }
+
+  .compound-intro-frame {
+    height: 700px !important;
+    min-height: 700px !important;
+    max-height: 700px !important;
+  }
+}
+
+/* =========================================================
+   STAGE 1 Ã¢â‚¬â€ DESKTOP / LAPTOP RESPONSIVE FIX
+   Goal: keep Company Landscape + 2 compare panels visible
+   on 1440 / 1366 / 1280 / 1180 laptop widths.
+   ========================================================= */
+
+/* Large laptops: 1366Ã¢â‚¬â€œ1500px */
+@media (max-width: 1500px) and (min-width: 1321px) {
+  :root {
+    --left-nav-safe-space: 108px;
+    --right-safe-space: 30px;
+
+    --company-panel-width: 198px;
+    --company-panel-compare-width: 198px;
+    --company-compare-button-width: 144px;
+    --company-compare-button-overlap: 18px;
+
+    --company-frame-max: min(
+      1160px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1160px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1160px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
+    );
+  }
+}
+
+/* Standard laptops: 1280Ã¢â‚¬â€œ1320px */
+@media (max-width: 1320px) and (min-width: 1181px) {
+  :root {
+    --left-nav-safe-space: 92px;
+    --right-safe-space: 24px;
+
+    --company-panel-width: 182px;
+    --company-panel-compare-width: 182px;
+    --company-compare-button-width: 136px;
+    --company-compare-button-overlap: 16px;
+
+    --frame-max: min(
+      980px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max: min(
+      1060px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1060px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1060px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
     );
   }
 
-  function isExcludedActor(row) {
-    const sponsorType = lower(row.sponsor_type_verified_v1);
-    const actorType = lower(row.development_actor_type_v1);
-    const visual1Reason = lower(row.visual1_exclusion_reason);
-    const visual2Reason = lower(row.visual2_exclusion_reason);
-    const visual3Reason = lower(row.visual3_exclusion_reason);
-    const visual4Reason = lower(row.visual_4_review_flag);
-    const publicDecision = lower(row.public_visual_decision);
-    const visualStatus = lower(row.visual_include_status_all_visuals);
+  .section-progress-nav {
+    left: 8px !important;
+    transform: translateY(-50%) scale(0.78) !important;
+    transform-origin: left center !important;
+  }
 
-    return (
-      sponsorType.includes("clinical service provider") ||
-      sponsorType.includes("trial operator") ||
-      sponsorType.includes("manufacturer") ||
-      sponsorType.includes("supply") ||
-      sponsorType.includes("clinic") ||
+  .company-external-panel-inner {
+    padding: 9px 7px 8px;
+    grid-template-rows: 96px minmax(0, 1fr);
+  }
 
-      actorType.includes("clinical service provider") ||
-      actorType.includes("trial operator") ||
-      actorType.includes("manufacturer") ||
-      actorType.includes("supply") ||
-      actorType.includes("clinic") ||
+  .company-external-panel-top-lock {
+    height: 96px;
+    min-height: 96px;
+    max-height: 96px;
+  }
 
-      visual1Reason.includes("clinical service provider") ||
-      visual1Reason.includes("trial operator") ||
-      visual1Reason.includes("manufacturer") ||
-      visual1Reason.includes("supply") ||
-      visual1Reason.includes("clinic") ||
+  .company-external-panel-content-grid {
+    grid-template-rows:
+      116px
+      48px
+      38px
+      48px
+      40px
+      minmax(0, 1fr);
+  }
 
-      visual2Reason.includes("clinical service provider") ||
-      visual2Reason.includes("trial operator") ||
-      visual2Reason.includes("manufacturer") ||
-      visual2Reason.includes("supply") ||
-      visual2Reason.includes("clinic") ||
+  .company-external-panel-title {
+    font-size: 11.8px;
+  }
 
-      visual3Reason.includes("clinical service provider") ||
-      visual3Reason.includes("trial operator") ||
-      visual3Reason.includes("manufacturer") ||
-      visual3Reason.includes("supply") ||
-      visual3Reason.includes("clinic") ||
+  .company-external-panel-subtitle {
+    font-size: 6.8px;
+  }
 
-      visual4Reason.includes("clinical service provider") ||
-      visual4Reason.includes("trial operator") ||
-      visual4Reason.includes("manufacturer") ||
-      visual4Reason.includes("supply") ||
-      visual4Reason.includes("clinic") ||
+  .company-external-panel-value {
+    font-size: 7px;
+  }
 
-      publicDecision.includes("clinical service provider") ||
-      publicDecision.includes("trial operator") ||
-      publicDecision.includes("manufacturer") ||
-      publicDecision.includes("supply") ||
-      publicDecision.includes("clinic") ||
+  .company-external-panel-kicker {
+    font-size: 6px;
+  }
 
-      visualStatus.includes("clinical service provider") ||
-      visualStatus.includes("trial operator") ||
-      visualStatus.includes("manufacturer") ||
-      visualStatus.includes("supply") ||
-      visualStatus.includes("clinic")
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 21px;
+  }
+
+  .company-external-panel-metric-number {
+    font-size: 13px;
+  }
+}
+
+/* Small laptops: 901Ã¢â‚¬â€œ1180px */
+@media (max-width: 1180px) and (min-width: 901px) {
+  :root {
+    --left-nav-safe-space: 82px;
+    --right-safe-space: 18px;
+
+    --company-panel-width: 168px;
+    --company-panel-compare-width: 168px;
+    --company-compare-button-width: 128px;
+    --company-compare-button-overlap: 14px;
+
+    --frame-max: min(
+      900px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max: min(
+      1000px,
+      calc(100vw - var(--left-nav-safe-space) - var(--right-safe-space))
+    );
+
+    --company-frame-max-one-panel: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-compare-button-width) +
+        var(--company-compare-button-overlap)
+      )
+    );
+
+    --company-frame-max-two-panels: min(
+      1000px,
+      calc(
+        100vw - var(--left-nav-safe-space) - var(--right-safe-space) -
+        var(--company-panel-width) - var(--company-panel-compare-width)
+      )
     );
   }
 
-  function isPublicExcluded(row) {
-    const publicDecision = lower(row.public_visual_decision);
-    const visualStatus = lower(row.visual_include_status_all_visuals);
-
-    return (
-      publicDecision === "exclude" ||
-      publicDecision === "excluded" ||
-      publicDecision.includes("do not include") ||
-      publicDecision.includes("not for public visual") ||
-      visualStatus === "exclude" ||
-      visualStatus === "excluded" ||
-      visualStatus.includes("do not include") ||
-      visualStatus.includes("not for public visual")
-    );
+  .section-progress-nav {
+    left: 6px !important;
+    transform: translateY(-50%) scale(0.72) !important;
+    transform-origin: left center !important;
   }
 
-  function getAsset(row) {
-    return text(
-      row.asset_program_display_v1 ||
-      row.asset_program_clean_v1 ||
-      row.asset_program_clean_v1_original ||
-      row.substance_name_raw_hover_v1_v2 ||
-      row.compound_raw_v2_context ||
-      ""
-    );
+  .company-external-panel-inner {
+    padding: 8px 6px 7px;
+    grid-template-rows: 90px minmax(0, 1fr);
   }
 
-  function getCompany(row) {
-    return text(
-      row.company_visual_label ||
-      row.company_name_final_v1 ||
-      row.commercial_actor_clean_v1 ||
-      row.primary_sponsor_clean_v1 ||
-      row.official_sponsor_clean_v1 ||
-      row.primary_sponsor ||
-      ""
-    );
+  .company-external-panel-top-lock {
+    height: 90px;
+    min-height: 90px;
+    max-height: 90px;
   }
 
-  function getCompoundFamily(row) {
-    return text(
-      row.compound_family_v2 ||
-      row.compound_color_group_all_visuals ||
-      row.compound ||
-      row["Name of substance"] ||
-      ""
-    );
+  .company-external-panel-logo-slot,
+  .company-external-panel-logo {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
   }
 
-  function getIndication(row) {
-    return text(
-      row.indication_area_public ||
-      row.indication_group_display_v3 ||
-      row.indication_group_v3 ||
-      row.indication_raw_v3_context ||
-      row.condition_raw_hover_v3 ||
-      row.Indication ||
-      row.condition ||
-      ""
-    );
+  .company-external-panel-content-grid {
+    grid-template-rows:
+      110px
+      44px
+      36px
+      44px
+      38px
+      minmax(0, 1fr);
   }
 
-  function getCountries(row) {
-    return splitList(
-      row.countries_public_clean ||
-      row.countries_clean_v3 ||
-      row.countries_raw_hover_v3 ||
-      row.countries_clean ||
-      row.countries ||
-      ""
-    ).filter(d => !lower(d).includes("no location"));
+  .company-external-panel-title {
+    font-size: 10.8px;
   }
 
-  function looksLikeRegisteredTrialId(value) {
-    const id = text(value);
-
-    return (
-      /^NCT\d{8}$/i.test(id) ||
-      /^CTIS/i.test(id) ||
-      /^EUCTR/i.test(id) ||
-      /^ISRCTN/i.test(id) ||
-      /^ACTRN/i.test(id) ||
-      /^DRKS/i.test(id) ||
-      /^UMIN/i.test(id) ||
-      /^JPRN/i.test(id) ||
-      /^ChiCTR/i.test(id) ||
-      /^NL-/i.test(id)
-    );
+  .company-external-panel-subtitle {
+    font-size: 6.4px;
   }
 
-  function getTrialId(row) {
-    return text(
-      row.trial_id_all_visuals ||
-      row.trial_id ||
-      row.trial_id_source ||
-      ""
-    );
+  .company-external-panel-websites a {
+    font-size: 6.8px;
   }
 
-  function isRegisteredTrialRow(row) {
-    const source = normalizeSourceType(row);
-    const id = getTrialId(row);
-
-    if (
-      source === "registered_trial" ||
-      source === "registered trial" ||
-      source.includes("registered_trial") ||
-      source.includes("registered trial")
-    ) {
-      return true;
-    }
-
-    if (source.includes("pipeline")) return false;
-    if (source.includes("context")) return false;
-    if (source.includes("duplicate")) return false;
-
-    return looksLikeRegisteredTrialId(id);
+  .company-external-panel-value {
+    font-size: 6.7px;
+    line-height: 1.12;
   }
 
-  const rows = allData.filter(d => {
-    if (isExcludedActor(d)) return false;
-    if (isPublicExcluded(d)) return false;
-    if (isNo(d.visual1_include)) return false;
-
-    if ("visual1_include" in d) return isYes(d.visual1_include);
-
-    if ("visual_include_status_all_visuals" in d) {
-      return lower(d.visual_include_status_all_visuals) !== "exclude";
-    }
-
-    return true;
-  });
-
-  const registeredRows = rows.filter(isRegisteredTrialRow);
-
-  const pipelineRows = rows.filter(d => {
-    const source = normalizeSourceType(d);
-    const id = getTrialId(d);
-
-    if (looksLikeRegisteredTrialId(id)) return false;
-
-    return (
-      source.includes("pipeline") ||
-      source.includes("context") ||
-      !isRegisteredTrialRow(d)
-    );
-  });
-
-  const metrics = [
-    {
-      key: "trials",
-      value: registeredRows.length,
-      label: ["Trial", "Records"],
-      description:
-        "Public clinical-trial registry records linked to company or developer activity.",
-      r: 124,
-      targetX: 505,
-      targetY: 405,
-      primary: true
-    },
-    {
-      key: "assets",
-      value: uniq(rows.map(getAsset)).length,
-      label: ["Assets /", "Programs"],
-      description:
-        "Distinct assets, compounds, programs, or named development candidates represented in the company-linked dataset.",
-      r: 86,
-      targetX: 260,
-      targetY: 407
-    },
-    {
-      key: "companies",
-      value: uniq(rows.map(getCompany)).length,
-      label: ["Companies &", "Developers"],
-      description:
-        "Organizations visibly connected to company-linked clinical or pipeline activity.",
-      r: 80,
-      targetX: 345,
-      targetY: 268
-    },
-    {
-      key: "countries",
-      value: uniq(rows.flatMap(getCountries)).length,
-      label: ["Countries"],
-      description:
-        "Countries appearing across company-linked public clinical-trial activity.",
-      r: 76,
-      targetX: 710,
-      targetY: 278
-    },
-    {
-      key: "pipeline",
-      value: pipelineRows.length,
-      label: ["Pipeline", "Items"],
-      description:
-        "Selected company pipeline signals included where they add development context beyond public trial records.",
-      r: 82,
-      targetX: 760,
-      targetY: 472
-    },
-    {
-      key: "families",
-      value: uniq(rows.map(getCompoundFamily)).length,
-      label: ["Compound", "Families"],
-      description:
-        "Compound families represented across the company-linked psychedelic medicine landscape.",
-      r: 67,
-      targetX: 360,
-      targetY: 580
-    },
-    {
-      key: "areas",
-      value: uniq(rows.map(getIndication)).length,
-      label: ["Therapeutic", "Areas"],
-      description:
-        "Therapeutic areas or indication groups represented across the visual dataset.",
-      r: 69,
-      targetX: 575,
-      targetY: 580
-    }
-  ];
-
-  metrics.forEach((d, i) => {
-    const angle = i * 2.399963;
-    const push = d.primary ? 44 : 78;
-
-    d.x =
-      d.targetX +
-      Math.cos(angle) * push +
-      seededJitter(i + 21, 36);
-
-    d.y =
-      d.targetY +
-      Math.sin(angle) * push * 0.72 +
-      seededJitter(i + 41, 30);
-
-    d.startX = d.x;
-    d.startY = d.y;
-
-    d.vx = seededJitter(i + 61, 0.45);
-    d.vy = seededJitter(i + 81, 0.45);
-
-    d.breatheSeed = i * 83 + 17;
-    d.microSeed = i * 57 + 9;
-  });
-
-  const container = d3.create("div")
-    .style("position", "relative")
-    .style("width", "100%")
-    .style("max-width", ${width}px)
-    .style("margin", "0 auto")
-    .style("background", "transparent")
-    .style("font-family", bodyFont)
-    .node();
-
-  const style = document.createElement("style");
-
-  style.textContent = 
-    html,
-    body,
-    body > div,
-    .observablehq,
-    .observablehq-root {
-      background: transparent !important;
-    }
-
-    @keyframes visual1OverviewSoftPulse {
-      0% { stroke-opacity: 0.18; stroke-width: 1.2px; transform: scale(1); }
-      50% { stroke-opacity: 0.72; stroke-width: 2px; transform: scale(1.045); }
-      100% { stroke-opacity: 0.18; stroke-width: 1.2px; transform: scale(1); }
-    }
-
-    .visual1-overview-halo-active {
-      animation: visual1OverviewSoftPulse 1.2s ease-in-out infinite;
-      transform-box: fill-box;
-      transform-origin: center;
-    }
-  ;
-
-  container.appendChild(style);
-
-  const tooltip = d3.select(container)
-    .append("div")
-    .style("position", "absolute")
-    .style("pointer-events", "none")
-    .style("display", "none")
-    .style("z-index", 20)
-    .style("max-width", "310px")
-    .style("padding", "12px 14px")
-    .style("border-radius", "14px")
-    .style("background", "rgba(255,255,255,0.985)")
-    .style("border", "1px solid rgba(29,29,31,0.10)")
-    .style("box-shadow", "0 18px 34px rgba(29,29,31,0.14)")
-    .style("backdrop-filter", "blur(12px)")
-    .style("color", ink)
-    .style("font-size", "10.8px")
-    .style("line-height", "1.34");
-
-  const svg = d3.select(container)
-    .append("svg")
-    .attr("viewBox", 0 0 ${width} ${height})
-    .attr("width", "100%")
-    .attr("height", height)
-    .style("display", "block")
-    .style("background", "transparent")
-    .style("overflow", "visible");
-
-  const defs = svg.append("defs");
-
-  const shadow = defs.append("filter")
-    .attr("id", "visual1OverviewSoftShadow")
-    .attr("x", "-50%")
-    .attr("y", "-50%")
-    .attr("width", "200%")
-    .attr("height", "200%");
-
-  shadow.append("feDropShadow")
-    .attr("dx", 0)
-    .attr("dy", 8)
-    .attr("stdDeviation", 10)
-    .attr("flood-color", "#1d1d1f")
-    .attr("flood-opacity", 0.11);
-
-  const glow = defs.append("filter")
-    .attr("id", "visual1OverviewGlow")
-    .attr("x", "-70%")
-    .attr("y", "-70%")
-    .attr("width", "240%")
-    .attr("height", "240%");
-
-  glow.append("feDropShadow")
-    .attr("dx", 0)
-    .attr("dy", 10)
-    .attr("stdDeviation", 15)
-    .attr("flood-color", "#c7c2b7")
-    .attr("flood-opacity", 0.22);
-
-  const titleBlock = svg.append("g")
-    .attr("transform", translate(${titleX}, ${titleY}));
-
-  titleBlock.append("text")
-    .attr("fill", ink)
-    .attr("font-family", titleFont)
-    .attr("font-size", sectionTitleSize)
-    .attr("font-weight", sectionTitleWeight)
-    .attr("letter-spacing", titleLetterSpacing)
-    .text("The Psychedelic Ecosystem");
-
-  titleBlock.append("text")
-    .attr("x", 0)
-    .attr("y", subtitleY)
-    .attr("fill", muted)
-    .attr("font-family", bodyFont)
-    .attr("font-size", sectionSubtitleSize)
-    .attr("font-weight", sectionSubtitleWeight)
-    .attr("letter-spacing", subtitleLetterSpacing)
-    .text("A company-focused overview of the clinical and pipeline signals shaping the psychedelic medicine landscape.");
-
-  titleBlock.append("text")
-    .attr("x", 0)
-    .attr("y", microY)
-    .attr("fill", tiny)
-    .attr("font-family", bodyFont)
-    .attr("font-size", sectionMicroSize)
-    .attr("font-weight", sectionMicroWeight)
-    .attr("letter-spacing", microLetterSpacing)
-    .text("The public development footprint, summarized as visible ecosystem signals.");
-
-  const metricLayer = svg.append("g")
-    .attr("class", "ecosystem-metrics");
-
-  const metricNode = metricLayer
-    .selectAll("g.metric")
-    .data(metrics)
-    .join("g")
-    .attr("class", "metric")
-    .attr("transform", d => translate(${d.x},${d.y}) scale(0.985))
-    .style("opacity", 0.92)
-    .style("cursor", "default");
-
-  metricNode.append("circle")
-    .attr("class", "hover-halo")
-    .attr("r", d => d.r + 5)
-    .attr("fill", "none")
-    .attr("stroke", "rgba(255,255,255,0.96)")
-    .attr("stroke-width", 1.4)
-    .attr("opacity", 0)
-    .style("pointer-events", "none");
-
-  metricNode.append("circle")
-    .attr("class", "main-circle")
-    .attr("r", d => d.r)
-    .attr("fill", white)
-    .attr("stroke", "rgba(255,255,255,0.95)")
-    .attr("stroke-width", 1.1)
-    .attr("filter", "url(#visual1OverviewSoftShadow)");
-
-  metricNode.append("circle")
-    .attr("class", "inner-light")
-    .attr("r", d => d.r * 0.72)
-    .attr("fill", "rgba(255,255,255,0.36)")
-    .attr("stroke", "rgba(255,255,255,0.55)")
-    .attr("stroke-width", 0.8)
-    .style("pointer-events", "none");
-
-  metricNode.append("path")
-    .attr("class", "soft-highlight")
-    .attr("d", d => {
-      const r = d.r;
-      return 
-        M ${-r * 0.46} ${-r * 0.45}
-        C ${-r * 0.15} ${-r * 0.62}, ${r * 0.34} ${-r * 0.58}, ${r * 0.48} ${-r * 0.27}
-      ;
-    })
-    .attr("fill", "none")
-    .attr("stroke", "#ffffff")
-    .attr("stroke-width", 1.1)
-    .attr("stroke-linecap", "round")
-    .attr("opacity", 0.32)
-    .style("pointer-events", "none");
-
-  const valueText = metricNode.append("text")
-    .attr("class", "value-text")
-    .attr("text-anchor", "middle")
-    .attr("dy", d => d.primary ? "-0.13em" : "-0.08em")
-    .attr("fill", ink)
-    .attr("font-size", d => d.primary ? 52 : 32)
-    .attr("font-weight", 850)
-    .attr("letter-spacing", "-0.055em")
-    .style("opacity", 0)
-    .text(d => d.value);
-
-  const labelText = metricNode.append("text")
-    .attr("class", "label-text")
-    .attr("text-anchor", "middle")
-    .attr("y", d => d.primary ? 38 : 29)
-    .attr("fill", muted)
-    .attr("font-size", d => d.primary ? 10 : 8.6)
-    .attr("font-weight", 800)
-    .attr("letter-spacing", "0.075em")
-    .style("opacity", 0);
-
-  labelText
-    .selectAll("tspan")
-    .data(d => d.label.map(line => ({ line, primary: d.primary })))
-    .join("tspan")
-    .attr("x", 0)
-    .attr("dy", (d, i) => i === 0 ? 0 : 11)
-    .text(d => d.line.toUpperCase());
-
-  metricNode
-    .transition()
-    .delay((d, i) => 30 + i * 20)
-    .duration(420)
-    .ease(d3.easeCubicOut)
-    .style("opacity", 1)
-    .attr("transform", d => translate(${d.x},${d.y}) scale(1));
-
-  valueText
-    .transition()
-    .delay((d, i) => 160 + i * 22)
-    .duration(420)
-    .ease(d3.easeCubicOut)
-    .style("opacity", 1);
-
-  labelText
-    .transition()
-    .delay((d, i) => 230 + i * 22)
-    .duration(420)
-    .ease(d3.easeCubicOut)
-    .style("opacity", 1);
-
-  function showTooltip(event, d) {
-    tooltip
-      .style("display", "block")
-      .html(
-        <div style="font-size:14px;font-weight:850;letter-spacing:-0.035em;margin-bottom:4px;">
-          ${d.value} ${d.label.join(" ").toLowerCase()}
-        </div>
-        <div style="color:${muted};">
-          ${d.description}
-        </div>
-      );
-
-    moveTooltip(event);
+  .company-external-panel-kicker {
+    font-size: 5.8px;
   }
 
-  function moveTooltip(event) {
-    const bounds = container.getBoundingClientRect();
-    const tooltipNode = tooltip.node();
-
-    const tw = tooltipNode.offsetWidth || 310;
-    const th = tooltipNode.offsetHeight || 100;
-
-    let x = event.clientX - bounds.left + 18;
-    let y = event.clientY - bounds.top + 18;
-
-    if (x + tw > bounds.width - 12) {
-      x = event.clientX - bounds.left - tw - 18;
-    }
-
-    if (y + th > height - 18) {
-      y = event.clientY - bounds.top - th - 18;
-    }
-
-    x = Math.max(8, x);
-    y = Math.max(8, y);
-
-    tooltip
-      .style("left", ${x}px)
-      .style("top", ${y}px);
+  .company-external-panel-metric-total {
+    min-height: 56px;
   }
 
-  function hideTooltip() {
-    tooltip.style("display", "none");
+  .company-external-panel-metric-half {
+    min-height: 42px;
   }
 
-  metricNode
-    .on("mouseenter", function(event, d) {
-      d3.select(this).raise();
-
-      d3.select(this)
-        .select("circle.hover-halo")
-        .classed("visual1-overview-halo-active", true)
-        .attr("opacity", 1);
-
-      d3.select(this)
-        .select("circle.main-circle")
-        .transition()
-        .duration(120)
-        .attr("stroke", "rgba(255,255,255,1)")
-        .attr("stroke-width", 1.7)
-        .attr("filter", "url(#visual1OverviewGlow)");
-
-      showTooltip(event, d);
-    })
-    .on("mousemove", moveTooltip)
-    .on("mouseleave", function() {
-      d3.select(this)
-        .select("circle.hover-halo")
-        .classed("visual1-overview-halo-active", false)
-        .attr("opacity", 0);
-
-      d3.select(this)
-        .select("circle.main-circle")
-        .transition()
-        .duration(120)
-        .attr("stroke", "rgba(255,255,255,0.95)")
-        .attr("stroke-width", 1.1)
-        .attr("filter", "url(#visual1OverviewSoftShadow)");
-
-      hideTooltip();
-    });
-
-  function constrainMetrics() {
-    metrics.forEach(d => {
-      d.x = Math.max(d.r + 16, Math.min(width - d.r - 16, d.x));
-      d.y = Math.max(182 + d.r, Math.min(height - d.r - 48, d.y));
-    });
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 20px;
   }
 
-  const simulation = d3.forceSimulation(metrics)
-    .force("x", d3.forceX(d => d.targetX).strength(d => d.primary ? 0.105 : 0.075))
-    .force("y", d3.forceY(d => d.targetY).strength(d => d.primary ? 0.105 : 0.075))
-    .force("collide", d3.forceCollide(d => d.r + 14).iterations(10))
-    .force("charge", d3.forceManyBody().strength(d => d.primary ? -14 : -9))
-    .alpha(0.78)
-    .alphaDecay(0.024)
-    .on("tick", constrainMetrics);
-
-  setTimeout(() => {
-    simulation
-      .force("x", d3.forceX(d => d.targetX).strength(d => d.primary ? 0.07 : 0.052))
-      .force("y", d3.forceY(d => d.targetY).strength(d => d.primary ? 0.07 : 0.052))
-      .force("collide", d3.forceCollide(d => d.r + 13).iterations(7))
-      .force("charge", d3.forceManyBody().strength(d => d.primary ? -8 : -5))
-      .alphaTarget(0.012);
-  }, 1500);
-
-  setTimeout(() => {
-    simulation
-      .alphaTarget(0)
-      .alphaDecay(0.09);
-
-    setTimeout(() => {
-      simulation.stop();
-    }, 1400);
-  }, 3200);
-
-  function displayPos(d, elapsed) {
-    const t = elapsed * 0.001;
-
-    const localX =
-      Math.sin(t * 0.54 + d.breatheSeed) * 2.15 +
-      Math.sin(t * 0.92 + d.breatheSeed * 0.37) * 0.48;
-
-    const localY =
-      Math.cos(t * 0.50 + d.breatheSeed) * 1.75 +
-      Math.sin(t * 0.86 + d.breatheSeed * 0.29) * 0.42;
-
-    const scale =
-      1 +
-      Math.sin(t * 0.64 + d.microSeed) * 0.0016;
-
-    return {
-      x: d.x + localX,
-      y: d.y + localY,
-      scale
-    };
+  .company-external-panel-metric-number {
+    font-size: 12px;
   }
 
-  d3.timer(elapsed => {
-    metricNode.attr("transform", d => {
-      const p = displayPos(d, elapsed);
-      return translate(${p.x},${p.y}) scale(${p.scale});
-    });
+  .company-external-panel-metric-label {
+    font-size: 5.4px;
+  }
 
-    metricNode.select(".soft-highlight")
-      .attr("opacity", d => {
-        const t = elapsed * 0.001;
-        return 0.27 + 0.08 * (0.5 + 0.5 * Math.sin(t * 0.82 + d.microSeed));
-      });
-  });
+  .company-external-panel-metric-note {
+    font-size: 5px;
+  }
 
-  return container;
-}
-Eingefügter Text(20260818-093031).txt
-Dokument
-Chcę tylko zmienić tam jedną rzecz, że wewnątrz kółek, jak na przykład jest pod LSD, to to małe kółko, w sensie to fioletowe kółko, powinno być w kształcie litery L. I te, które są zarejestrowanymi badaniami, to powinno być wypełnione fioletową farbą, literka L, a te, które są tylko w pipeline, to powinny być tylko kontur, nie? Fioletowy, a puste w środku. Daj mi znać, czy zrozumiałaś. W sensie chodzi o pierwszą literę każdej substancji, na przykład przez 5 DMO, no to piątka na przykład, nie? Przy ketamina, no to K, nie? Zanim mi napiszesz nowy kod, powiedz mi, czy zrozumiałaś mnie.
-Eingefügter Text(20260818-094930).txt
-Dokument
-adjust ksx code <iframe width="100%" height="820" frameborder="0"
-  src="https://observablehq.com/embed/e3028f2577c04f9a@1286?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6"></iframe> give me entire new code as a file txt 
-Eingefügter Text(20260818-095243).txt
-Dokument
-adjust css code 
-as a world class deesigner what problems do u see
-It groups visible registered clinical-trial activity and selected pipeline context by compound family. Filled letters represent registered trial activity, while outlined letters represent selected pipeline context. Each letter and colour identifies the corresponding compound family.kazdeb zdania w swojej osoben linijce, bedzie lepiej wygldac
-Eingefügter Text(20260818-100753).txt
-Dokument
- adjust code so its like compund landspace i mean the first letter of the sibstance
-Eingefügter Text(20260818-100916).txt
-Dokument
- adjust code so its like compund landspace i mean the first letter of the sibstance, nie zielonego obrysu juz nie ma, mamy switch przeciez
-chyba kloka za blsko nazw?
-welche problem siehst du als designer? vor allem efekt czcionek i ich kolory
-Eingefügter Text(20260818-101553).txt
-Dokument
-adjust entire code
-
-Gesamten angepassten Code herunterladen
-
-Geändert:
-
-klarere typografische Hierarchie,
-höherer Textkontrast,
-leichtere Kategorien,
-größere und dunklere Substanzbuchstaben,
-einzeilige Switch-Beschriftungen,
-korrigierte ·-Trennzeichen,
-verbesserte Schriftglättung,
-Datenlogik und Animation unverändert.
-Eingefügter Text(20260818-101553).txt
-Dokument
-Bildschirmaufnahme 2026-08-18 um 12.18.51.mov
-Datei
-nie chce zeby w ostatnim diagrami byl ten panel po prawej stronie jak sie scrolluje !
-
-Rozumiem. Chodzi o pionowy pasek przewijania wewnątrz ostatniego diagramu Clinical Phase Landscape, widoczny po prawej stronie białej karty.
-
-Powstaje dlatego, że iframe ma mniejszą wysokość niż zawartość Observable. Ostatni diagram nie powinien mieć własnego scrollowania. Powinna przewijać się wyłącznie cała strona.
-
-W JSX iframe ostatniego diagramu dodaj:
-
-scrolling="no"
-
-i zwiększ jego wysokość do pełnej wysokości wizualizacji:
-
-<iframe
-  src="TWÓJ_LINK_DO_VISUAL4"
-  title="Clinical Phase Landscape"
-  width="100%"
-  height="980"
-  scrolling="no"
-  frameBorder="0"
-  style={{
-    display: "block",
-    width: "100%",
-    height: "980px",
-    border: "none",
-    overflow: "hidden"
-  }}
-/>
-
-W CSS ustaw:
-
-.phase-visual-wrapper {
-  height: 980px;
-  overflow: hidden;
+  .company-external-panel-compare-button {
+    width: var(--company-compare-button-width) !important;
+    height: 32px !important;
+    min-height: 32px !important;
+    font-size: 9.2px !important;
+    padding: 0 9px !important;
+  }
 }
 
-
-.phase-visual-wrapper iframe {
-  display: block;
-  width: 100%;
-  height: 980px;
-  border: 0;
-  overflow: hidden;
+/* Trial IDs: use 2 columns when many IDs exist */
+.company-external-panel-trials-many {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  column-gap: 6px !important;
+  row-gap: 2px !important;
 }
 
-Nie używaj przy tym diagramie:
-
-overflow-y: auto;
-overflow-y: scroll;
-
-To usunie prawy pasek i pozostawi normalne przewijanie całej strony.
-
-Eingefügter Text(20260818-102158).txt
-Dokument
-adjust jsx a entire write 
-
- Pobierz cały poprawiony JSX
-
-Zmiana:
-
-phaseVisible: 741,
-phaseIframe: 980
-
-Ostatni diagram zachowuje dotychczasową wysokość karty. Wewnętrzny pasek przewijania po prawej stronie został usunięty.
-
-Eingefügter Text(20260818-102158).txt
-Dokument
-
-Eingefügter Text(20260818-102158).txt
-import React, { useEffect, useMemo, useRef, useState } from "react";
-import "./App.css";
-
-function useViewportSize() {
-  const [viewportSize, setViewportSize] = useState(() => {
-    if (typeof window === "undefined") {
-      return { width: 1440, height: 900 };
-    }
-
-    return {
-      width: window.innerWidth,
-      height: window.innerHeight
-    };
-  });
-
-  useEffect(() => {
-    const handleResize = () => {
-      setViewportSize({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  return viewportSize;
+.company-external-panel-trials-many a,
+.company-external-panel-trials-many span {
+  font-size: 7px;
+  line-height: 1.08;
 }
 
-function clampNumber(value, min, max) {
-  return Math.min(Math.max(value, min), max);
+/* FINAL UNIFIED VISUAL LAYOUT */
+.visual-story.ecosystem-story,
+.visual-story.company-story,
+.visual-story.compound-story,
+.visual-story.indication-story {
+  min-height: auto !important;
+  padding-left: var(--page-pad-left) !important;
+  padding-right: var(--page-pad-right) !important;
+  padding-top: clamp(54px, 7vh, 72px) !important;
+  padding-bottom: clamp(54px, 7vh, 72px) !important;
+  box-sizing: border-box;
 }
 
-function PageRainOverlay({ active, onDone }) {
-  const particles = useMemo(() => {
-    const colors = [
-      "#6f4a2f",
-      "#b8944e",
-      "#d63384",
-      "#6f42c1",
-      "#f08a24",
-      "#0d6efd",
-      "#dc3545",
-      "#ffc107"
-    ];
-
-    function seededRandom(seed) {
-      const x = Math.sin(seed * 999.123) * 10000;
-      return x - Math.floor(x);
-    }
-
-    return Array.from({ length: 72 }, (_, index) => {
-      const seed = index + 17;
-      const x = 3 + seededRandom(seed) * 94;
-      const drift = (seededRandom(seed + 100) - 0.5) * 18;
-      const size = 22 + seededRandom(seed + 200) * 16;
-      const delay = seededRandom(seed + 300) * 0.55;
-      const duration = 2.7 + seededRandom(seed + 400) * 1.15;
-      const opacity = 0.78 + seededRandom(seed + 500) * 0.2;
-      const color = colors[index % colors.length];
-
-      return {
-        id: index,
-        x,
-        drift,
-        size,
-        delay,
-        duration,
-        opacity,
-        color
-      };
-    });
-  }, []);
-
-  useEffect(() => {
-    if (!active) return;
-
-    const timer = window.setTimeout(() => {
-      onDone?.();
-    }, 4700);
-
-    return () => window.clearTimeout(timer);
-  }, [active, onDone]);
-
-  if (!active) return null;
-
-  return (
-    <div className="page-rain-overlay" aria-hidden="true">
-      <style>
-        {`
-          @keyframes pageRainFall {
-            0% {
-              transform: translate3d(0, -90px, 0) scale(0.92);
-              opacity: 0;
-            }
-
-            10% {
-              opacity: var(--particle-opacity);
-            }
-
-            42% {
-              transform: translate3d(calc(var(--particle-drift) * 0.35), 34vh, 0) scale(1);
-              opacity: var(--particle-opacity);
-            }
-
-            72% {
-              transform: translate3d(calc(var(--particle-drift) * 0.82), 74vh, 0) scale(0.98);
-              opacity: calc(var(--particle-opacity) * 0.9);
-            }
-
-            100% {
-              transform: translate3d(var(--particle-drift), 108vh, 0) scale(0.92);
-              opacity: 0;
-            }
-          }
-
-          @keyframes pageRainFloat {
-            0% {
-              transform: translateX(-4px);
-            }
-
-            50% {
-              transform: translateX(5px);
-            }
-
-            100% {
-              transform: translateX(-4px);
-            }
-          }
-
-          .page-rain-overlay {
-            position: fixed;
-            inset: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 60;
-            pointer-events: none;
-            overflow: hidden;
-            background: transparent;
-          }
-
-          .page-rain-particle {
-            position: absolute;
-            top: 0;
-            left: var(--particle-left);
-            width: var(--particle-size);
-            height: var(--particle-size);
-            animation:
-              pageRainFall var(--particle-duration) cubic-bezier(0.22, 0.74, 0.28, 1) var(--particle-delay) forwards,
-              pageRainFloat 1.45s ease-in-out var(--particle-delay) infinite;
-            will-change: transform, opacity;
-          }
-
-          .page-rain-circle {
-            width: 100%;
-            height: 100%;
-            border-radius: 999px;
-            background: rgba(255,255,255,0.96);
-            border: 1px solid rgba(217,214,207,0.95);
-            box-shadow: 0 8px 18px rgba(29,29,31,0.10);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-          }
-
-          .page-rain-dot {
-            width: 19%;
-            height: 19%;
-            border-radius: 999px;
-            background: var(--particle-color);
-          }
-        `}
-      </style>
-
-      {particles.map((particle) => (
-        <div
-          key={particle.id}
-          className="page-rain-particle"
-          style={{
-            "--particle-left": `${particle.x}vw`,
-            "--particle-drift": `${particle.drift}vw`,
-            "--particle-size": `${particle.size}px`,
-            "--particle-delay": `${particle.delay}s`,
-            "--particle-duration": `${particle.duration}s`,
-            "--particle-opacity": particle.opacity,
-            "--particle-color": particle.color
-          }}
-        >
-          <div className="page-rain-circle">
-            <div className="page-rain-dot" />
-          </div>
-        </div>
-      ))}
-    </div>
-  );
+.ecosystem-frame,
+.company-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+  height: 736px !important;
+  min-height: 736px !important;
+  max-height: 736px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden !important;
 }
 
-function AboutProjectIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M10.15 2.35h3.7l-.68 7.08 5.78-4.2 1.86 3.2-6.48 2.92 6.48 2.92-1.86 3.2-5.78-4.2.68 7.08h-3.7l.68-7.08-5.78 4.2-1.86-3.2 6.48-2.92-6.48-2.92 1.86-3.2 5.78 4.2-.68-7.08z" />
-    </svg>
-  );
+.compound-frame,
+.indication-frame,
+.phase-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden !important;
 }
 
-function KeyFactsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <rect x="6.5" y="4.5" width="11" height="15" rx="1.8" />
-      <path d="M9.5 8.2h5" />
-      <path d="M9.5 11.6h5" />
-      <path d="M9.5 15h3.6" />
-    </svg>
-  );
+.compound-frame,
+.indication-frame {
+  height: 820px !important;
+  min-height: 820px !important;
+  max-height: 820px !important;
 }
 
-function MethodologyIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M9.5 3.8h5" />
-      <path d="M10.7 3.8v5.1l-4.2 8.2c-.8 1.6.3 3.4 2.1 3.4h6.8c1.8 0 2.9-1.8 2.1-3.4l-4.2-8.2V3.8" />
-      <path d="M8.4 16h7.2" />
-    </svg>
-  );
+.phase-frame {
+  height: 741px !important;
+  min-height: 741px !important;
+  max-height: 741px !important;
+  overflow: hidden !important;
+  contain: paint;
 }
 
-function LimitationsIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 4.2l8.2 15.1H3.8L12 4.2z" />
-      <path d="M12 9.2v4.7" />
-      <path d="M12 17.2h.01" />
-    </svg>
-  );
+.company-visual-shell {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
 }
 
-function CreatorIcon() {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="8.2" r="3" />
-      <path d="M5.8 19.5c1.1-3.2 3.3-4.8 6.2-4.8s5.1 1.6 6.2 4.8" />
-    </svg>
-  );
+.company-visual-shell .company-frame {
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
-function InlineIcon({ children }) {
-  return <span className="about-inline-icon">{children}</span>;
+.compound-frame > iframe.atlas-iframe {
+  width: 172.413793% !important;
+  max-width: none !important;
+  height: 1514px !important;
+  min-height: 1514px !important;
+  max-height: 1514px !important;
+  margin: 0 0 0 -36.206897% !important;
+  transform: scale(0.58) !important;
+  transform-origin: top center !important;
+  clip-path: inset(0 0 72px 0) !important;
 }
 
-function ObservableFrame({
-  title,
-  visibleHeight,
-  iframeHeight,
-  className,
-  src,
-  lazyLoad = false,
-  onEnter
-}) {
-  const wrapperRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(!lazyLoad);
-
-  useEffect(() => {
-    if (!lazyLoad) return;
-    if (shouldLoad) return;
-
-    const target = wrapperRef.current;
-    if (!target) return;
-
-    if (!("IntersectionObserver" in window)) {
-      onEnter?.();
-      setShouldLoad(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        if (entry && entry.isIntersecting) {
-          onEnter?.();
-
-          window.setTimeout(() => {
-            setShouldLoad(true);
-          }, 700);
-
-          observer.disconnect();
-        }
-      },
-      {
-        root: null,
-        threshold: 0.04,
-        rootMargin: "0px 0px -8% 0px"
-      }
-    );
-
-    observer.observe(target);
-
-    return () => observer.disconnect();
-  }, [lazyLoad, onEnter, shouldLoad]);
-
-  const handleLoad = () => {
-    window.setTimeout(() => {
-      setIsLoaded(true);
-    }, 180);
-  };
-
-  return (
-    <div
-      ref={wrapperRef}
-      className={`iframe-crop ${className || ""}`}
-      style={{
-        height: `${visibleHeight}px`,
-        background: "transparent",
-        overflow: "hidden"
-      }}
-    >
-      {shouldLoad && (
-        <iframe
-          title={title}
-          width="100%"
-          height={iframeHeight}
-          frameBorder="0"
-          scrolling="no"
-          className={`atlas-iframe ${
-            isLoaded ? "iframe-loaded" : "iframe-loading"
-          }`}
-          src={src}
-          onLoad={handleLoad}
-        />
-      )}
-    </div>
-  );
+.indication-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: 117.647059% !important;
+  max-width: none !important;
+  height: 1033px !important;
+  min-height: 1033px !important;
+  max-height: 1033px !important;
+  margin: 0 0 0 -8.823529% !important;
+  transform: scale(0.85) !important;
+  transform-origin: top center !important;
+  clip-path: inset(0 0 49px 0) !important;
+  border: 0 !important;
+  overflow: hidden !important;
 }
 
-function ScrollProgressBar() {
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const scrollPercent = Math.round(scrollProgress * 100);
-
-  useEffect(() => {
-    const updateScrollProgress = () => {
-      const documentElement = document.documentElement;
-      const scrollTop = window.scrollY || documentElement.scrollTop || 0;
-      const scrollableHeight =
-        documentElement.scrollHeight - window.innerHeight;
-
-      const progress =
-        scrollableHeight > 0 ? scrollTop / scrollableHeight : 0;
-
-      setScrollProgress(Math.min(Math.max(progress, 0), 1));
-    };
-
-    updateScrollProgress();
-
-    window.addEventListener("scroll", updateScrollProgress, { passive: true });
-    window.addEventListener("resize", updateScrollProgress);
-
-    return () => {
-      window.removeEventListener("scroll", updateScrollProgress);
-      window.removeEventListener("resize", updateScrollProgress);
-    };
-  }, []);
-
-  return (
-    <>
-      <style>
-        {`
-          .page-scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            z-index: 70;
-            pointer-events: none;
-            background: rgba(29, 29, 31, 0.10);
-          }
-
-          .page-scroll-progress-bar {
-            width: 100%;
-            height: 100%;
-            transform-origin: left center;
-            transform: scaleX(var(--scroll-progress));
-            background: rgba(29, 29, 31, 0.58);
-            transition: transform 90ms linear;
-          }
-
-          .page-scroll-progress-percent {
-            position: fixed;
-            top: 9px;
-            left: 18px;
-            z-index: 70;
-            pointer-events: none;
-            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-            font-size: 15px;
-            line-height: 1;
-            letter-spacing: -0.035em;
-            font-weight: 780;
-            color: #1d1d1f;
-          }
-        `}
-      </style>
-
-      <div className="page-scroll-progress" aria-hidden="true">
-        <div
-          className="page-scroll-progress-bar"
-          style={{
-            "--scroll-progress": scrollProgress
-          }}
-        />
-      </div>
-
-      <div className="page-scroll-progress-percent" aria-hidden="true">
-        {scrollPercent} %
-      </div>
-    </>
-  );
+.phase-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: calc(100% + 20px) !important;
+  max-width: none !important;
+  height: 980px !important;
+  min-height: 980px !important;
+  max-height: 980px !important;
+  margin: 0 -20px 0 0 !important;
+  transform: none !important;
+  transform-origin: top center !important;
+  clip-path: none !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
 }
 
-function SectionProgressNav() {
-  const sections = useMemo(
-    () => [
-      { id: "start", label: "Start", selector: ".hero-story" },
-      { id: "ecosystem", label: "Ecosystem", selector: ".ecosystem-story" },
-      { id: "companies", label: "Companies", selector: ".company-story" },
-      { id: "compounds", label: "Compounds", selector: ".compound-story" },
-      { id: "indications", label: "Indications", selector: ".indication-story" },
-      { id: "phases", label: "Phases", selector: ".phase-story" }
-    ],
-    []
-  );
-
-  const [activeSection, setActiveSection] = useState("start");
-
-  useEffect(() => {
-    const updateActiveSection = () => {
-      const viewportAnchor = window.innerHeight * 0.42;
-
-      let currentSection = sections[0].id;
-      let closestDistance = Number.POSITIVE_INFINITY;
-
-      sections.forEach((section) => {
-        const element = document.querySelector(section.selector);
-        if (!element) return;
-
-        const rect = element.getBoundingClientRect();
-        const distance = Math.abs(rect.top - viewportAnchor);
-
-        if (rect.top <= viewportAnchor && distance < closestDistance) {
-          closestDistance = distance;
-          currentSection = section.id;
-        }
-      });
-
-      const lastSection = sections[sections.length - 1];
-      const lastElement = document.querySelector(lastSection.selector);
-
-      if (lastElement) {
-        const lastRect = lastElement.getBoundingClientRect();
-
-        if (lastRect.top <= window.innerHeight * 0.68) {
-          currentSection = lastSection.id;
-        }
-      }
-
-      setActiveSection(currentSection);
-    };
-
-    updateActiveSection();
-
-    window.addEventListener("scroll", updateActiveSection, { passive: true });
-    window.addEventListener("resize", updateActiveSection);
-
-    return () => {
-      window.removeEventListener("scroll", updateActiveSection);
-      window.removeEventListener("resize", updateActiveSection);
-    };
-  }, [sections]);
-
-  const handleSectionClick = (selector) => {
-    const element = document.querySelector(selector);
-    if (!element) return;
-
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
-    });
-  };
-
-  return (
-    <>
-      <style>
-        {`
-          .section-progress-nav {
-            position: fixed;
-            left: 28px;
-            top: 50%;
-            z-index: 65;
-            transform: translateY(-50%);
-            pointer-events: auto;
-            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-            color: #1d1d1f;
-          }
-
-          .section-progress-nav-inner {
-            position: relative;
-            display: grid;
-            gap: 18px;
-            padding: 12px 0;
-          }
-
-          .section-progress-nav-line {
-            position: absolute;
-            top: 24px;
-            bottom: 24px;
-            left: 8px;
-            width: 1px;
-            background: rgba(29, 29, 31, 0.14);
-          }
-
-          .section-progress-nav-item {
-            position: relative;
-            display: grid;
-            grid-template-columns: 18px auto;
-            align-items: center;
-            gap: 12px;
-            min-height: 22px;
-            border: 0;
-            padding: 0;
-            background: transparent;
-            color: rgba(29, 29, 31, 0.38);
-            cursor: pointer;
-            text-align: left;
-            transition:
-              color 180ms ease,
-              transform 180ms ease;
-          }
-
-          .section-progress-nav-item:hover {
-            color: rgba(29, 29, 31, 0.72);
-          }
-
-          .section-progress-nav-dot {
-            position: relative;
-            z-index: 1;
-            width: 8px;
-            height: 8px;
-            margin-left: 4px;
-            border-radius: 999px;
-            background: rgba(29, 29, 31, 0.24);
-            box-shadow: 0 0 0 6px rgba(241, 240, 236, 0.94);
-            transition:
-              width 180ms ease,
-              height 180ms ease,
-              margin-left 180ms ease,
-              background 180ms ease,
-              box-shadow 180ms ease;
-          }
-
-          .section-progress-nav-label {
-            position: relative;
-            font-size: 13px;
-            line-height: 1;
-            letter-spacing: -0.02em;
-            font-weight: 560;
-            white-space: nowrap;
-            transition:
-              opacity 180ms ease,
-              font-weight 180ms ease,
-              transform 180ms ease;
-          }
-
-          .section-progress-nav-label::before {
-            content: "";
-            position: absolute;
-            left: -48px;
-            top: 50%;
-            width: 0;
-            height: 1px;
-            background: rgba(29, 29, 31, 0.82);
-            transform: translateY(-50%);
-            transition: width 180ms ease;
-          }
-
-          .section-progress-nav-item-active {
-            color: #1d1d1f;
-            transform: translateX(2px);
-          }
-
-          .section-progress-nav-item-active .section-progress-nav-dot {
-            width: 10px;
-            height: 10px;
-            margin-left: 3px;
-            background: #1d1d1f;
-            box-shadow:
-              0 0 0 6px rgba(241, 240, 236, 0.96),
-              0 6px 18px rgba(29, 29, 31, 0.18);
-          }
-
-          .section-progress-nav-item-active .section-progress-nav-label {
-            font-size: 14px;
-            font-weight: 780;
-            letter-spacing: -0.035em;
-          }
-
-          .section-progress-nav-item-active .section-progress-nav-label::before {
-            width: 28px;
-          }
-
-          @media (max-width: 1500px) {
-            .section-progress-nav {
-              left: 12px;
-              transform: translateY(-50%) scale(0.9);
-              transform-origin: left center;
-            }
-          }
-
-          @media (max-width: 1250px) {
-            .section-progress-nav {
-              left: 10px;
-              transform: translateY(-50%) scale(0.84);
-              transform-origin: left center;
-            }
-          }
-
-          @media (max-width: 920px) {
-            .section-progress-nav {
-              display: none;
-            }
-          }
-        `}
-      </style>
-
-      <nav className="section-progress-nav" aria-label="Page sections">
-        <div className="section-progress-nav-inner">
-          <div className="section-progress-nav-line" aria-hidden="true" />
-
-          {sections.map((section) => {
-            const isActive = activeSection === section.id;
-
-            return (
-              <button
-                key={section.id}
-                type="button"
-                className={`section-progress-nav-item ${
-                  isActive ? "section-progress-nav-item-active" : ""
-                }`}
-                onClick={() => handleSectionClick(section.selector)}
-                aria-current={isActive ? "true" : undefined}
-              >
-                <span className="section-progress-nav-dot" aria-hidden="true" />
-                <span className="section-progress-nav-label">
-                  {section.label}
-                </span>
-              </button>
-            );
-          })}
-        </div>
-      </nav>
-    </>
-  );
+.phase-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
-function normalizeUrlLabel(url) {
-  return String(url || "")
-    .replace(/^https?:\/\//i, "")
-    .replace(/^www\./i, "")
-    .replace(/\/$/g, "");
-}
-
-function encodeJsonForUrl(value) {
-  return encodeURIComponent(JSON.stringify(value));
-}
-
-function CompanyExternalPanel({
-  selectedCompany,
-  onClose,
-  onCompare,
-  showCompareButton = false,
-  compareModeActive = false,
-  isComparePanel = false,
-  isComparisonActive = false
-}) {
-  if (!selectedCompany) return null;
-
-  const listToText = (value, fallback = "Insufficient data to verify") => {
-    if (!Array.isArray(value) || value.length === 0) return fallback;
-    return value.filter(Boolean).join(", ");
-  };
-
-  const websites = Array.isArray(selectedCompany.websites)
-    ? selectedCompany.websites
-    : Array.isArray(selectedCompany.website)
-      ? selectedCompany.website
-      : [];
-
-  const trials = Array.isArray(selectedCompany.trials)
-    ? selectedCompany.trials
-    : [];
-
-  const visibleActivity =
-    selectedCompany.visibleActivity ??
-    selectedCompany.activityUnits ??
-    0;
-
-  const registeredTrials = selectedCompany.registeredUnits ?? 0;
-  const pipelineContext = selectedCompany.pipelineUnits ?? 0;
-
-  const panelClassName = [
-    "company-external-panel",
-    isComparePanel ? "company-external-panel-compare" : "",
-    isComparisonActive ? "company-external-panel-comparison-active" : ""
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  const trialListClassName = [
-    "company-external-panel-value",
-    "company-external-panel-trials",
-    "company-external-panel-trials-scroll",
-    trials.length >= 12 ? "company-external-panel-trials-many" : ""
-  ]
-    .filter(Boolean)
-    .join(" ");
-
-  return (
-    <>
-      <button
-        className={`company-external-panel-floating-close ${
-          isComparePanel ? "company-external-panel-floating-close-compare" : ""
-        }`}
-        type="button"
-        onClick={onClose}
-        aria-label={
-          isComparePanel
-            ? "Close compared company details"
-            : "Close company details"
-        }
-      >
-        ×
-      </button>
-
-      {showCompareButton && !isComparePanel && (
-        <button
-          className={`company-external-panel-compare-button ${
-            compareModeActive
-              ? "company-external-panel-compare-button-active"
-              : ""
-          }`}
-          type="button"
-          onClick={onCompare}
-        >
-          {compareModeActive ? "Select another company" : "+ Compare company"}
-        </button>
-      )}
-
-      <aside
-        className={panelClassName}
-        aria-label={`${selectedCompany.company || "Company"} details`}
-        data-comparison-active={isComparisonActive ? "true" : "false"}
-      >
-        <div className="company-external-panel-inner">
-          <div className="company-external-panel-top-lock">
-            <div className="company-external-panel-logo-row">
-              <div
-                className={`company-external-panel-logo-slot ${
-                  selectedCompany.logoUrl
-                    ? "company-external-panel-logo-slot-filled"
-                    : "company-external-panel-logo-slot-empty"
-                }`}
-              >
-                {selectedCompany.logoUrl && (
-                  <div className="company-external-panel-logo">
-                    <img
-                      src={selectedCompany.logoUrl}
-                      alt={`${selectedCompany.company || "Company"} logo`}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-
-            <div className="company-external-panel-header">
-              <div>
-                <h3
-                  className="company-external-panel-title"
-                  title={selectedCompany.company || "Company"}
-                >
-                  {selectedCompany.company || "Company"}
-                </h3>
-
-                <div className="company-external-panel-subtitle">
-                  {selectedCompany.hasRegistered
-                    ? "Company with public registered trial activity"
-                    : "Company visible through pipeline or context sources"}
-                </div>
-
-                {websites.length > 0 && (
-                  <div className="company-external-panel-websites">
-                    {websites.map((url) => (
-                      <a
-                        key={url}
-                        href={url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={normalizeUrlLabel(url)}
-                      >
-                        {normalizeUrlLabel(url)}
-                      </a>
-                    ))}
-                  </div>
-                )}
-
-                {websites.length === 0 && selectedCompany.noVerifiedWebsite && (
-                  <div className="company-external-panel-subtitle company-external-panel-website-fallback">
-                    No official website verified
-                  </div>
-                )}
-              </div>
-            </div>
-          </div>
-
-          <div className="company-external-panel-content-grid">
-            <div className="company-external-panel-metrics company-external-panel-metrics-stacked">
-              <div className="company-external-panel-metric company-external-panel-metric-total">
-                <div className="company-external-panel-metric-number">
-                  {visibleActivity}
-                </div>
-                <div className="company-external-panel-metric-label">
-                  Visible activity
-                </div>
-                <div className="company-external-panel-metric-note">
-                  Registered trials + pipeline context
-                </div>
-              </div>
-
-              <div className="company-external-panel-metric-row">
-                <div className="company-external-panel-metric company-external-panel-metric-half">
-                  <div className="company-external-panel-metric-number">
-                    {registeredTrials}
-                  </div>
-                  <div className="company-external-panel-metric-label">
-                    Registered trials
-                  </div>
-                </div>
-
-                <div className="company-external-panel-metric company-external-panel-metric-half">
-                  <div className="company-external-panel-metric-number">
-                    {pipelineContext}
-                  </div>
-                  <div className="company-external-panel-metric-label">
-                    Pipeline context
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div
-              className="company-external-panel-section company-external-panel-section-assets"
-              data-panel-section="assets"
-            >
-              <div className="company-external-panel-kicker">Assets</div>
-              <div className="company-external-panel-value">
-                {listToText(selectedCompany.assets)}
-              </div>
-            </div>
-
-            <div
-              className="company-external-panel-section company-external-panel-section-families"
-              data-panel-section="families"
-            >
-              <div className="company-external-panel-kicker">
-                Compound families
-              </div>
-              <div className="company-external-panel-value">
-                {listToText(selectedCompany.families)}
-              </div>
-            </div>
-
-            <div
-              className="company-external-panel-section company-external-panel-section-areas"
-              data-panel-section="areas"
-            >
-              <div className="company-external-panel-kicker">
-                Therapeutic areas
-              </div>
-              <div className="company-external-panel-value">
-                {listToText(selectedCompany.indications)}
-              </div>
-            </div>
-
-            <div
-              className="company-external-panel-section company-external-panel-section-countries"
-              data-panel-section="countries"
-            >
-              <div className="company-external-panel-kicker">Countries</div>
-              <div className="company-external-panel-value">
-                {selectedCompany.hasRegistered
-                  ? listToText(selectedCompany.countries)
-                  : "No registered trial countries"}
-              </div>
-            </div>
-
-            <div
-              className="company-external-panel-section company-external-panel-section-trials"
-              data-panel-section="trials"
-              data-trial-count={trials.length}
-            >
-              <div className="company-external-panel-kicker">Trial IDs</div>
-              <div className={trialListClassName}>
-                {trials.length > 0 ? (
-                  trials.map((trial) =>
-                    trial.url ? (
-                      <a
-                        key={`${trial.id}-${trial.url}`}
-                        href={trial.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        title={trial.id}
-                      >
-                        {trial.id}
-                      </a>
-                    ) : (
-                      <span key={trial.id} title={trial.id}>
-                        {trial.id}
-                      </span>
-                    )
-                  )
-                ) : (
-                  <span className="company-external-panel-empty-value">
-                    No public registered trial IDs
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
-    </>
-  );
-}
-
-export default function App() {
-  const { width: viewportWidth, height: viewportHeight } = useViewportSize();
-
-  const [aboutOpen, setAboutOpen] = useState(false);
-  const [aboutPulse, setAboutPulse] = useState(false);
-  const [selectedCompany, setSelectedCompany] = useState(null);
-  const [compareCompany, setCompareCompany] = useState(null);
-  const [compareMode, setCompareMode] = useState(false);
-
-  const aboutPulseTimerRef = useRef(null);
-  const compareModeRef = useRef(false);
-
-  const frameHeights = useMemo(() => {
-    if (viewportWidth <= 900) {
-      return {
-        heroVisible: 820,
-        heroIframe: 930,
-        ecosystemVisible: 736,
-        ecosystemIframe: 806,
-        companyVisible: 736,
-        companyIframe: 736,
-        compoundIntroVisible: 820,
-        compoundIntroIframe: 820,
-        compoundVisible: 880,
-        compoundIframe: 1514,
-        indicationVisible: 880,
-        indicationIframe: 1033,
-        phaseVisible: 741,
-        phaseIframe: 980
-      };
-    }
-
-    const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
-    const ecosystemVisible = 736;
-    const companyVisible = 736;
-    const compoundIntroVisible = 820;
-    const compoundVisible = 880;
-    const indicationVisible = 880;
-    const phaseVisible = 741;
-
-    return {
-      heroVisible,
-      heroIframe: heroVisible + 105,
-
-      ecosystemVisible,
-      ecosystemIframe: 806,
-
-      companyVisible,
-      companyIframe: 736,
-
-      compoundIntroVisible,
-      compoundIntroIframe: 820,
-
-      compoundVisible,
-      compoundIframe: 1514,
-
-      indicationVisible,
-      indicationIframe: 1033,
-
-      phaseVisible,
-      phaseIframe: 980
-    };
-  }, [viewportWidth, viewportHeight]);
-
-  const mainApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
-  const mainNotebook = "e3028f2577c04f9a@1251";
-
-  const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-24-full-logo-list";
-
-  const logoVisualScale = {
-    "2A_biosciences.png": 2,
-    "algernon.png": 2,
-    "amandala_neuro.png": 2,
-    "apex_labs.png": 2.5,
-    "arcadia_medicine.png": 1.7,
-    "arcadiamedicine.png": 1.7,
-    "asri.png": 2,
-    "ataibeckley.png": 1.95,
-    "beond.png": 1.4,
-    "betterlife_pharma.png": 1.5,
-    "biocase_brasil.png": 2,
-    "biomia.png": 1.6,
-    "biomind_labs.png": 1.6,
-    "bright_minds.png": 2.15,
-    "celon_pharma.png": 2,
-    "ceruvia_lifesciences.png": 1,
-    "chiral_biotech_pharma.png": 1.6,
-    "clearmind_medicine.png": 1.8,
-    "clexio_biosciences.png": 2.1,
-    "collaborations_pharmaceuticals.png": 1.55,
-    "compass_pathways.png": 1.6,
-    "definium.png": 2.2,
-    "delix_therapeutics.png": 2,
-    "demerx.png": 2.15,
-    "diamond_therapeutics.png": 1.5,
-    "eleusis_therapeutics.png": 1.7,
-    "elkedonia.png": 1.6,
-    "empower_research.png": 1.7,
-    "entheon_biomedical.png": 1,
-    "entheon_biomedical.svg": 1,
-    "entropy_neurodynamics.png": 1.55,
-    "enveric_biosciences.png": 1,
-    "equulus_therapeutics.png": 1.55,
-    "filament_health.png": 1.8,
-    "freedom_biosciences.png": 1.65,
-    "gh_research.png": 1.3,
-    "gilgamesh_pharma.png": 2,
-    "goodmind_therapeutics.png": 1.55,
-    "halucenex_life_sciences.png": 1.5,
-    "helus.png": 1.3,
-    "helus_pharma.png": 1.3,
-    "igc_pharma.png": 1.55,
-    "incannex.png": 2.2,
-    "janssen_logo.png": 1.6,
-    "johnson_johnson_innovative_medicine.png": 1.5,
-    "ketabon.png": 1.6,
-    "kuleon.svg": 1.55,
-    "lophora.png": 1.8,
-    "marvel_biosciences.png": 1.45,
-    "mindstate_design_labs.png": 1.55,
-    "negev_labs.png": 1.55,
-    "neurala_biosciences.png": 1.55,
-    "neurala_biosciences.svg": 1.55,
-    "neurocentrx.png": 1.55,
-    "nrx_pharmaceuticals.png": 1.2,
-    "ocellaris.png": 1.55,
-    "otsuka_mindset_pharma.png": 2,
-    "perception_neuroscience.png": 1.55,
-    "pharmadrug.png": 1,
-    "pharmala_biotech.png": 2.5,
-    "psilera.png": 1.5,
-    "psy_therapeutics.png": 1.55,
-    "psyence_biomed_psyence_australia.png": 1.45,
-    "reconnect.png": 1.55,
-    "remedi_therapeutics.png": 1.55,
-    "reset_mind_science.png": 1.55,
-    "resilient_pharmaceuticals.png": 2,
-    "reunion_neuroscience.png": 2,
-    "seaport_therapeutics.png": 1.5,
-    "solvonis_therapeutics.png": 2,
-    "soneira.png": 1.55,
-    "tactogen.png": 2,
-    "tasman_therapeutics.png": 1.45,
-    "terran_biosciences.png": 2,
-    "transcend_therapeutics_otsuka.png": 2.15,
-    "transneural_therapeutics.png": 1.55,
-    "tryp_therapeutics_tryptamine_therapeutics.png": 1.45,
-    "universal_ibogaine.png": 2,
-    "usona_institute.png": 1.55,
-    "va_office_of_research_and_development.png": 1.35,
-    "veracruz_brasil_instituto_veracruz.png": 1.35,
-    "xylo.png": 1.85
-  };
-
-  const logoHoverScale = {
-    "2A_biosciences.png": 1,
-    "algernon.png": 1,
-    "amandala_neuro.png": 1,
-    "apex_labs.png": 1,
-    "arcadia_medicine.png": 1,
-    "arcadiamedicine.png": 1,
-    "asri.png": 3,
-    "ataibeckley.png": 1,
-    "beond.png": 1,
-    "betterlife_pharma.png": 1,
-    "biocase_brasil.png": 1,
-    "biomia.png": 1,
-    "biomind_labs.png": 0.7,
-    "bright_minds.png": 1,
-    "celon_pharma.png": 1,
-    "ceruvia_lifesciences.png": 1,
-    "chiral_biotech_pharma.png": 1,
-    "clearmind_medicine.png": 1,
-    "clexio_biosciences.png": 1,
-    "collaborations_pharmaceuticals.png": 1,
-    "compass_pathways.png": 1,
-    "definium.png": 1,
-    "delix_therapeutics.png": 1,
-    "demerx.png": 1,
-    "diamond_therapeutics.png": 1,
-    "eleusis_therapeutics.png": 1,
-    "elkedonia.png": 1,
-    "empower_research.png": 1,
-    "entheon_biomedical.svg": 1,
-    "entropy_neurodynamics.png": 1,
-    "enveric_biosciences.png": 1,
-    "equulus_therapeutics.png": 1,
-    "filament_health.png": 1,
-    "freedom_biosciences.png": 1,
-    "gh_research.png": 0.288,
-    "gilgamesh_pharma.png": 1.4,
-    "goodmind_therapeutics.png": 1,
-    "halucenex_life_sciences.png": 1,
-    "helus.png": 1,
-    "igc_pharma.png": 1,
-    "incannex.png": 1,
-    "janssen_logo.png": 0.8,
-    "johnson_johnson_innovative_medicine.png": 1,
-    "ketabon.png": 1,
-    "kuleon.png": 1,
-    "lophora.png": 1,
-    "marvel_biosciences.png": 1,
-    "mindstate_design_labs.png": 1,
-    "negev_labs.png": 1,
-    "neurala_biosciences.png": 1,
-    "neurala_biosciences.svg": 1,
-    "neurocentrx.png": 1,
-    "nrx_pharmaceuticals.png": 1,
-    "ocellaris.png": 1,
-    "otsuka_mindset_pharma.png": 1,
-    "perception_neuroscience.png": 1,
-    "pharmadrug.png": 1,
-    "pharmala_biotech.png": 1,
-    "psilera.png": 1,
-    "psy_therapeutics.png": 1,
-    "psyence_biomed_psyence_australia.png": 1,
-    "reconnect.png": 1,
-    "remedi_therapeutics.png": 1,
-    "reset_mind_science.png": 1,
-    "resilient_pharmaceuticals.png": 1,
-    "reunion_neuroscience.png": 1,
-    "seaport_therapeutics.png": 1,
-    "solvonis_therapeutics.png": 1,
-    "soneira.png": 1,
-    "tactogen.png": 1,
-    "tasman_therapeutics.png": 1,
-    "terran_biosciences.png": 1,
-    "transcend_therapeutics_otsuka.png": 1,
-    "transneural_therapeutics.png": 1,
-    "tryp_therapeutics_tryptamine_therapeutics.png": 1,
-    "universal_ibogaine.png": 1,
-    "usona_institute.png": 1,
-    "va_office_of_research_and_development.png": 1,
-    "veracruz_brasil_instituto_veracruz.png": 1,
-    "xylo.png": 1
-  };
-
-  const heroResponsiveMode =
-    viewportWidth <= 767
-      ? "mobile"
-      : viewportWidth <= 1024
-        ? "tablet"
-        : viewportWidth <= 1400 || viewportHeight <= 820
-          ? "laptop"
-          : "desktop";
-
-  const heroResponsiveParams = `&heroMode=${encodeURIComponent(
-    heroResponsiveMode
-  )}&hostWidth=${viewportWidth}&hostHeight=${viewportHeight}`;
-
-  const visual1CompanyLandscapeParams = `&logoBase=${encodeURIComponent(
-    githubLogoBase
-  )}&logoTuningVersion=${encodeURIComponent(
-    logoTuningVersion
-  )}&logoVisualScale=${encodeJsonForUrl(
-    logoVisualScale
-  )}&logoHoverScale=${encodeJsonForUrl(logoHoverScale)}`;
-
-  const triggerAboutPulse = () => {
-    if (aboutPulseTimerRef.current) {
-      window.clearTimeout(aboutPulseTimerRef.current);
-    }
-
-    setAboutPulse(false);
-
-    window.requestAnimationFrame(() => {
-      window.requestAnimationFrame(() => {
-        setAboutPulse(true);
-
-        aboutPulseTimerRef.current = window.setTimeout(() => {
-          setAboutPulse(false);
-        }, 360);
-      });
-    });
-  };
-
-  const setCompareModeStable = (active) => {
-    compareModeRef.current = !!active;
-    setCompareMode(!!active);
-  };
-
-  const postCompareModeToObservable = (active) => {
-    const iframe = document.querySelector(
-      'iframe[title="Company Landscape Premium"]'
-    );
-
-    if (!iframe || !iframe.contentWindow) return;
-
-    iframe.contentWindow.postMessage(
-      {
-        type: "UNICORN_COMPARE_SELECTION_MODE",
-        active
-      },
-      "*"
-    );
-  };
-
-  const clearObservableCompanyState = () => {
-    const iframe = document.querySelector(
-      'iframe[title="Company Landscape Premium"]'
-    );
-
-    if (!iframe || !iframe.contentWindow) return;
-
-    iframe.contentWindow.postMessage(
-      {
-        type: "UNICORN_COMPANY_CLEAR"
-      },
-      "*"
-    );
-  };
-
-  const clearObservableCompareState = () => {
-    const iframe = document.querySelector(
-      'iframe[title="Company Landscape Premium"]'
-    );
-
-    if (!iframe || !iframe.contentWindow) return;
-
-    iframe.contentWindow.postMessage(
-      {
-        type: "UNICORN_COMPARE_CLEAR"
-      },
-      "*"
-    );
-  };
-
-  const handleCompareStart = () => {
-    if (!selectedCompany) return;
-    if (compareCompany) return;
-
-    const nextMode = !compareModeRef.current;
-
-    setCompareModeStable(nextMode);
-    postCompareModeToObservable(nextMode);
-  };
-
-  const handlePrimaryClose = () => {
-    setSelectedCompany(null);
-    setCompareCompany(null);
-    setCompareModeStable(false);
-    clearObservableCompanyState();
-  };
-
-  const handleCompareClose = () => {
-    setCompareCompany(null);
-    setCompareModeStable(false);
-    clearObservableCompareState();
-  };
-
-  useEffect(() => {
-    const handleCompanyMessage = (event) => {
-      const message = event.data;
-
-      if (!message || typeof message !== "object") return;
-
-      if (message.type === "UNICORN_COMPARE_SELECTION_MODE_ACK") {
-        return;
-      }
-
-      if (message.type === "UNICORN_COMPANY_COMPARE_SELECTED") {
-        setCompareCompany(message.payload || null);
-        setCompareModeStable(false);
-        postCompareModeToObservable(false);
-        return;
-      }
-
-      if (message.type !== "UNICORN_COMPANY_SELECTED") return;
-
-      const payload = message.payload || null;
-
-      if (!payload) {
-        setSelectedCompany(null);
-        setCompareCompany(null);
-        setCompareModeStable(false);
-        return;
-      }
-
-      if (payload.compareSlot === "compare" || compareModeRef.current) {
-        setCompareCompany(payload);
-        setCompareModeStable(false);
-        postCompareModeToObservable(false);
-        return;
-      }
-
-      setSelectedCompany(payload);
-      setCompareCompany(null);
-      setCompareModeStable(false);
-      postCompareModeToObservable(false);
-    };
-
-    window.addEventListener("message", handleCompanyMessage);
-
-    return () => {
-      window.removeEventListener("message", handleCompanyMessage);
-    };
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (aboutPulseTimerRef.current) {
-        window.clearTimeout(aboutPulseTimerRef.current);
-      }
-    };
-  }, []);
-
-  const observableSrc = useMemo(
-    () => ({
-      heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
-
-      visual1EcosystemOverviev: `https://observablehq.com/embed/e3028f2577c04f9a@1284?cells=visual1EcosystemOverviev&api_key=a2ee50a620f4d2aee4e95c1565c58282751ead58`,
-
-      visual1CompanyLandscapePremium1: `https://observablehq.com/embed/e3028f2577c04f9a@1250?cells=visual1CompanyLandscapePremium1&api_key=d5f6bd4e354ba0480077a99f20e82ed5d186ad8e${visual1CompanyLandscapeParams}`,
-
-      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1287?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
-      
-      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1285?cells=visual2ChartUnitColumns1&api_key=24fcb6d848289ba5ca24f14771b09231fbe9b06b`,
-
-      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1291?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
-
-      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1283?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
-    }),
-    [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
-  );
-
-  const hasComparePanels = !!selectedCompany && !!compareCompany;
-
-  return (
-    <main className="site">
-      <ScrollProgressBar />
-      <SectionProgressNav />
-
-      {aboutOpen && (
-        <div
-          className="about-modal-overlay"
-          role="presentation"
-          onClick={triggerAboutPulse}
-        >
-          <section
-            className={`about-modal ${
-              aboutPulse ? "about-modal-attention" : ""
-            }`}
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="about-project-title"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <div className="about-modal-header">
-              <div className="about-modal-title-row">
-                <InlineIcon>
-                  <AboutProjectIcon />
-                </InlineIcon>
-
-                <h2 id="about-project-title">About project</h2>
-              </div>
-
-              <button
-                className="about-modal-close"
-                type="button"
-                onClick={() => setAboutOpen(false)}
-                aria-label="Close About project"
-              >
-                ×
-              </button>
-            </div>
-
-            <div className="about-modal-body">
-              <p className="about-modal-lead">
-                A visual intelligence project mapping publicly visible
-                psychedelic drug-development activity.
-              </p>
-
-              <section className="about-modal-section">
-                <div className="about-section-title">
-                  <InlineIcon>
-                    <KeyFactsIcon />
-                  </InlineIcon>
-                  <h3>Key facts</h3>
-                </div>
-
-                <div className="about-keyfacts">
-                  <div className="about-keyfact-row">
-                    <div className="about-keyfact-label">Focus</div>
-                    <div className="about-keyfact-value">
-                      Biotech and drug-development actors
-                    </div>
-                  </div>
-
-                  <div className="about-keyfact-row">
-                    <div className="about-keyfact-label">Data layer</div>
-                    <div className="about-keyfact-value">
-                      Registered clinical-trial records + selected company
-                      pipeline context
-                    </div>
-                  </div>
-
-                  <div className="about-keyfact-row">
-                    <div className="about-keyfact-label">Scope</div>
-                    <div className="about-keyfact-value">
-                      Companies, compounds, indications, phases, recruitment
-                      status, source visibility
-                    </div>
-                  </div>
-
-                  <div className="about-keyfact-row">
-                    <div className="about-keyfact-label">Not included</div>
-                    <div className="about-keyfact-value">
-                      Medical advice, treatment recommendations, efficacy
-                      claims, investment advice
-                    </div>
-                  </div>
-                </div>
-              </section>
-
-              <section className="about-modal-section">
-                <div className="about-section-title">
-                  <InlineIcon>
-                    <MethodologyIcon />
-                  </InlineIcon>
-                  <h3>Methodology</h3>
-                </div>
-
-                <p>
-                  The atlas structures information from{" "}
-                  <strong>registered clinical-trial activity</strong> and
-                  selected <strong>pipeline context</strong> from company
-                  materials and credible secondary sources.
-                </p>
-
-                <p>
-                  Trial data is sourced from <strong>public trial records</strong>{" "}
-                  and reflects what is publicly visible at the time of data
-                  collection. Pipeline context is treated as visibility context,
-                  not as clinical evidence.
-                </p>
-
-                <p>
-                  The visuals use <strong>different units of analysis</strong>.
-                  This keeps registered trials separate from company-reported
-                  pipeline claims.
-                </p>
-              </section>
-
-              <section className="about-modal-section">
-                <div className="about-section-title">
-                  <InlineIcon>
-                    <LimitationsIcon />
-                  </InlineIcon>
-                  <h3>Limitations</h3>
-                </div>
-
-                <p>
-                  This atlas is based on <strong>public data</strong> and
-                  secondary sources that may be <strong>incomplete</strong>,{" "}
-                  <strong>delayed</strong>, duplicated or inconsistently
-                  structured.
-                </p>
-
-                <p>
-                  <strong>Recruitment status</strong> and other trial details can
-                  change and should be checked at the original source. Visible
-                  activity does not imply efficacy, approval, safety or
-                  commercial success.
-                </p>
-              </section>
-
-              <div className="about-modal-footer">
-                <InlineIcon>
-                  <CreatorIcon />
-                </InlineIcon>
-
-                <div>
-                  Created by Kamila Rojek · Data analysis · clinical-trial
-                  intelligence · visual storytelling
-                </div>
-              </div>
-            </div>
-          </section>
-        </div>
-      )}
-
-      <section className="story-section hero-story">
-        <div className="top-project-menu">
-          <button
-            className="about-project-button"
-            type="button"
-            onClick={() => setAboutOpen(true)}
-            aria-label="Open About project"
-          >
-            <span className="about-project-button-icon">
-              <AboutProjectIcon />
-            </span>
-            <span>About project ▾</span>
-          </button>
-        </div>
-
-        <ObservableFrame
-          title="Psychedelic Trial Atlas Hero"
-          visibleHeight={frameHeights.heroVisible}
-          iframeHeight={frameHeights.heroIframe}
-          className="hero-frame"
-          src={observableSrc.heroSection1}
-        />
-      </section>
-
-      <section className="story-section visual-story ecosystem-story">
-        <ObservableFrame
-          title="The Psychedelic Ecosystem"
-          visibleHeight={frameHeights.ecosystemVisible}
-          iframeHeight={frameHeights.ecosystemIframe}
-          className="ecosystem-frame"
-          src={observableSrc.visual1EcosystemOverviev}
-        />
-      </section>
-
-      <section className="story-section visual-story company-story">
-        <div
-          className={`company-visual-shell ${
-            selectedCompany ? "company-visual-shell-panel-open" : ""
-          } ${compareCompany ? "company-visual-shell-compare-open" : ""}`}
-        >
-          <ObservableFrame
-            title="Company Landscape Premium"
-            visibleHeight={frameHeights.companyVisible}
-            iframeHeight={frameHeights.companyIframe}
-            className="company-frame"
-            src={observableSrc.visual1CompanyLandscapePremium1}
-          />
-
-          <CompanyExternalPanel
-            selectedCompany={selectedCompany}
-            onClose={handlePrimaryClose}
-            onCompare={handleCompareStart}
-            showCompareButton={!!selectedCompany && !compareCompany}
-            compareModeActive={compareMode}
-            isComparisonActive={hasComparePanels}
-          />
-
-          <CompanyExternalPanel
-            selectedCompany={compareCompany}
-            onClose={handleCompareClose}
-            isComparePanel={true}
-            isComparisonActive={hasComparePanels}
-          />
-        </div>
-      </section>
-
-      <section className="story-section visual-story compound-intro-story">
-        <ObservableFrame
-          title="Compound Activity Landscape Introduction"
-          visibleHeight={frameHeights.compoundIntroVisible}
-          iframeHeight={frameHeights.compoundIntroIframe}
-          className="compound-intro-frame"
-          src={observableSrc.visual2IntroTransition}
-          lazyLoad={true}
-        />
-      </section>
-
-      <section className="story-section visual-story compound-story">
-        <ObservableFrame
-          title="Compound Activity Landscape"
-          visibleHeight={frameHeights.compoundVisible}
-          iframeHeight={frameHeights.compoundIframe}
-          className="compound-frame landscape-frame"
-          src={observableSrc.visual2ChartUnitColumns1}
-          lazyLoad={true}
-        />
-      </section>
-
-      <section className="story-section visual-story indication-story">
-        <ObservableFrame
-          title="Indication Landscape"
-          visibleHeight={frameHeights.indicationVisible}
-          iframeHeight={frameHeights.indicationIframe}
-          className="indication-frame landscape-frame"
-          src={observableSrc.visual3Chart}
-        />
-      </section>
-
-      <section className="story-section visual-story phase-story">
-        <ObservableFrame
-          title="Clinical Phase Landscape"
-          visibleHeight={frameHeights.phaseVisible}
-          iframeHeight={frameHeights.phaseIframe}
-          className="phase-frame landscape-frame"
-          src={observableSrc.visual4PhaseChart}
-        />
-      </section>
-    </main>
-  );
+@media (max-width: 900px) {
+  .visual-story.ecosystem-story,
+  .visual-story.company-story,
+  .visual-story.compound-story,
+  .visual-story.indication-story,
+  .visual-story.phase-story {
+    padding-left: 16px !important;
+    padding-right: 16px !important;
+    padding-top: 48px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .ecosystem-frame,
+  .company-frame,
+  .compound-frame,
+  .indication-frame,
+  .phase-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
