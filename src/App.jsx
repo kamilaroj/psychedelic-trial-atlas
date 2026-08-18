@@ -975,6 +975,8 @@ export default function App() {
         indicationIntroIframe: 945,
         indicationVisible: 880,
         indicationIframe: 1033,
+        phaseIntroVisible: 1006.15625,
+        phaseIntroIframe: 1006.15625,
         phaseVisible: 741,
         phaseIframe: 980
       };
@@ -987,6 +989,7 @@ export default function App() {
     const compoundVisible = 880;
     const indicationIntroVisible = 945;
     const indicationVisible = 880;
+    const phaseIntroVisible = 1006.15625;
     const phaseVisible = 741;
 
     return {
@@ -1010,6 +1013,9 @@ export default function App() {
 
       indicationVisible,
       indicationIframe: 1033,
+
+      phaseIntroVisible,
+      phaseIntroIframe: 1006.15625,
 
       phaseVisible,
       phaseIframe: 980
@@ -1375,6 +1381,8 @@ export default function App() {
 
       visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1291?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
+      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1296?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+
       visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1292?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
     [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
@@ -1642,6 +1650,17 @@ export default function App() {
           iframeHeight={frameHeights.indicationIframe}
           className="indication-frame landscape-frame"
           src={observableSrc.visual3Chart}
+        />
+      </section>
+
+      <section className="story-section visual-story phase-intro-story">
+        <ObservableFrame
+          title="Clinical Phase Landscape Introduction"
+          visibleHeight={frameHeights.phaseIntroVisible}
+          iframeHeight={frameHeights.phaseIntroIframe}
+          className="phase-intro-frame"
+          src={observableSrc.visual4IntroTransition}
+          lazyLoad={true}
         />
       </section>
 
