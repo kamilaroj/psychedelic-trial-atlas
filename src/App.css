@@ -921,56 +921,6 @@ adjust entire code
 Bildschirmaufnahme 2026-08-18 um 12.18.51.mov
 Datei
 nie chce zeby w ostatnim diagrami byl ten panel po prawej stronie jak sie scrolluje !
-
-Rozumiem. Chodzi o pionowy pasek przewijania wewnątrz ostatniego diagramu Clinical Phase Landscape, widoczny po prawej stronie białej karty.
-
-Powstaje dlatego, że iframe ma mniejszą wysokość niż zawartość Observable. Ostatni diagram nie powinien mieć własnego scrollowania. Powinna przewijać się wyłącznie cała strona.
-
-W JSX iframe ostatniego diagramu dodaj:
-
-scrolling="no"
-
-i zwiększ jego wysokość do pełnej wysokości wizualizacji:
-
-<iframe
-  src="TWÓJ_LINK_DO_VISUAL4"
-  title="Clinical Phase Landscape"
-  width="100%"
-  height="980"
-  scrolling="no"
-  frameBorder="0"
-  style={{
-    display: "block",
-    width: "100%",
-    height: "980px",
-    border: "none",
-    overflow: "hidden"
-  }}
-/>
-
-W CSS ustaw:
-
-.phase-visual-wrapper {
-  height: 980px;
-  overflow: hidden;
-}
-
-
-.phase-visual-wrapper iframe {
-  display: block;
-  width: 100%;
-  height: 980px;
-  border: 0;
-  overflow: hidden;
-}
-
-Nie używaj przy tym diagramie:
-
-overflow-y: auto;
-overflow-y: scroll;
-
-To usunie prawy pasek i pozostawi normalne przewijanie całej strony.
-
 Eingefügter Text(20260818-102158).txt
 Dokument
 adjust jsx a entire write 
@@ -1000,6 +950,16 @@ nadmiar zawartości jest przycięty,
 wyłączone wewnętrzne przewijanie,
 usunięty pionowy pasek po prawej stronie,
 pozostałe diagramy pozostają bez zmian.
+Eingefügter Text(20260818-102421).txt
+Dokument
+Bildschirmaufnahme 2026-08-18 um 12.26.33.mov
+Datei
+pasek nadal jest
+
+Pobierz poprawiony cały CSS
+
+Pasek pochodził z wnętrza Observable. Iframe został poszerzony o 20 px, więc pasek znajduje się teraz poza przyciętą prawą krawędzią karty. Rozmiar karty pozostaje bez zmian.
+
 Eingefügter Text(20260818-102421).txt
 Dokument
 
