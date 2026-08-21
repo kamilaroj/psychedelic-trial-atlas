@@ -1844,6 +1844,60 @@ body {
   }
 }
 
+/* VISUAL 1: COMBINED ECOSYSTEM + COMPANY LANDSCAPE */
+.ecosystem-company-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+  height: 938px !important;
+  min-height: 938px !important;
+  max-height: 938px !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  overflow: hidden !important;
+}
+
+.ecosystem-company-frame > .atlas-iframe {
+  width: calc(100% + 18px) !important;
+  max-width: none !important;
+  height: 970.984375px !important;
+  min-height: 970.984375px !important;
+  max-height: 970.984375px !important;
+  margin-left: -9px !important;
+  border: 0 !important;
+  border-radius: var(--frame-radius) !important;
+}
+
+.company-visual-shell .ecosystem-company-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+  transition:
+    border-radius 220ms ease,
+    width 260ms cubic-bezier(0.22, 0.78, 0.22, 1),
+    max-width 260ms cubic-bezier(0.22, 0.78, 0.22, 1);
+}
+
+.company-visual-shell-panel-open .ecosystem-company-frame,
+.company-visual-shell-compare-open .ecosystem-company-frame {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.company-visual-shell-panel-open .ecosystem-company-frame .atlas-iframe,
+.company-visual-shell-compare-open .ecosystem-company-frame .atlas-iframe {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .ecosystem-company-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 938px !important;
+    min-height: 938px !important;
+    max-height: 938px !important;
+  }
+}
+
 /* =========================================================
    STATIC ATLAS CONTENT, LOADING STATES AND INFORMATION PAGES
    ========================================================= */
