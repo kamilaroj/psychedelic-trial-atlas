@@ -1423,7 +1423,7 @@ export default function App() {
 
       visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1287?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
-      `https://observablehq.com/embed/e3028f2577c04f9a@1301?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1301?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
       visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1294?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
