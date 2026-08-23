@@ -1592,30 +1592,6 @@ export default function App() {
       )}
 
       <section className="story-section hero-story">
-        <header className="atlas-html-hero" aria-labelledby="atlas-title">
-          <h1 id="atlas-title">Psychedelic Trial Atlas</h1>
-          <p className="atlas-html-hero-summary">
-            An interactive view of publicly visible psychedelic drug-development
-            activity across companies, compounds, indications and clinical phases.
-          </p>
-          <div className="atlas-html-hero-meta">
-            <span>
-              Created by{" "}
-              <a href={LINKEDIN_PROFILE} target="_blank" rel="noreferrer">
-                Kamila Rojek
-              </a>
-            </span>
-            <span aria-hidden="true">·</span>
-            <span>Site version: {ATLAS_VERSION}</span>
-          </div>
-          <nav className="atlas-primary-nav" aria-label="Atlas information">
-            <a href="#methodology">Methodology</a>
-            <a href="#cite">Cite</a>
-            <a href="#about">About</a>
-            <a href="#contact">Contact</a>
-          </nav>
-        </header>
-
         <div className="top-project-menu">
           <button
             ref={aboutButtonRef}
