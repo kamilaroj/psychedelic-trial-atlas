@@ -4,6 +4,7 @@ import "./App.css";
 const OBSERVABLE_ORIGIN = "https://observablehq.com";
 const ATLAS_VERSION = "August 2026";
 const CONTACT_EMAIL = "kamila.rojek@gmail.com";
+const LINKEDIN_PROFILE = "https://www.linkedin.com/in/kamilarojek/";
 
 function useViewportSize() {
   const [viewportSize, setViewportSize] = useState(() => {
@@ -1576,7 +1577,11 @@ export default function App() {
                 </InlineIcon>
 
                 <div>
-                  Created by Kamila Rojek · Data analysis · clinical-trial
+                  Created by{" "}
+                  <a href={LINKEDIN_PROFILE} target="_blank" rel="noreferrer">
+                    Kamila Rojek
+                  </a>{" "}
+                  · Data analysis · clinical-trial
                   intelligence · visual storytelling
                 </div>
               </div>
@@ -1594,7 +1599,12 @@ export default function App() {
             activity across companies, compounds, indications and clinical phases.
           </p>
           <div className="atlas-html-hero-meta">
-            <span>Created by Kamila Rojek</span>
+            <span>
+              Created by{" "}
+              <a href={LINKEDIN_PROFILE} target="_blank" rel="noreferrer">
+                Kamila Rojek
+              </a>
+            </span>
             <span aria-hidden="true">·</span>
             <span>Site version: {ATLAS_VERSION}</span>
           </div>
