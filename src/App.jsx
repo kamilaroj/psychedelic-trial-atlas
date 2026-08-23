@@ -1473,8 +1473,9 @@ export default function App() {
 
             <div className="about-modal-body">
               <p className="about-modal-lead">
-                A visual intelligence project mapping publicly visible
-                psychedelic drug-development activity.
+                Psychedelic Trial Atlas is an interactive view of publicly
+                visible psychedelic drug-development activity across companies,
+                compounds, indications and clinical phases.
               </p>
 
               <section className="about-modal-section">
@@ -1592,7 +1593,6 @@ export default function App() {
 
       <section className="story-section hero-story">
         <header className="atlas-html-hero" aria-labelledby="atlas-title">
-          <p className="atlas-eyebrow">Independent public-source data analysis</p>
           <h1 id="atlas-title">Psychedelic Trial Atlas</h1>
           <p className="atlas-html-hero-summary">
             An interactive view of publicly visible psychedelic drug-development
