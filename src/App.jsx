@@ -272,62 +272,10 @@ function ObservableFrame({
   visibleHeight,
   iframeHeight,
   className,
-  src,
-  lazyLoad = false,
-  onEnter
+  src
 }) {
-  const wrapperRef = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [shouldLoad, setShouldLoad] = useState(!lazyLoad);
-
-  useEffect(() => {
-    if (!lazyLoad) return;
-    if (shouldLoad) return;
-
-    const target = wrapperRef.current;
-    if (!target) return;
-
-    if (!("IntersectionObserver" in window)) {
-      onEnter?.();
-      setShouldLoad(true);
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const entry = entries[0];
-
-        if (entry && entry.isIntersecting) {
-          onEnter?.();
-
-          window.setTimeout(() => {
-            setShouldLoad(true);
-          }, 700);
-
-          observer.disconnect();
-        }
-      },
-      {
-        root: null,
-        threshold: 0.04,
-        rootMargin: "0px 0px -8% 0px"
-      }
-    );
-
-    observer.observe(target);
-
-    return () => observer.disconnect();
-  }, [lazyLoad, onEnter, shouldLoad]);
-
-  const handleLoad = () => {
-    window.setTimeout(() => {
-      setIsLoaded(true);
-    }, 180);
-  };
-
   return (
     <div
-      ref={wrapperRef}
       className={`iframe-crop ${className || ""}`}
       style={{
         height: `${visibleHeight}px`,
@@ -335,29 +283,15 @@ function ObservableFrame({
         overflow: "hidden"
       }}
     >
-      <div
-        className={`iframe-status ${isLoaded ? "iframe-status-hidden" : ""}`}
-        role="status"
-        aria-live="polite"
-      >
-        <span className="iframe-status-spinner" aria-hidden="true" />
-        <span>Loading visualization…</span>
-      </div>
-
-      {shouldLoad && (
-        <iframe
-          title={title}
-          width="100%"
-          height={iframeHeight}
-          frameBorder="0"
-          scrolling="no"
-          className={`atlas-iframe ${
-            isLoaded ? "iframe-loaded" : "iframe-loading"
-          }`}
-          src={src}
-          onLoad={handleLoad}
-        />
-      )}
+      <iframe
+        title={title}
+        width="100%"
+        height={iframeHeight}
+        frameBorder="0"
+        scrolling="no"
+        className="atlas-iframe"
+        src={src}
+      />
     </div>
   );
 }
@@ -1655,7 +1589,6 @@ export default function App() {
           iframeHeight={frameHeights.compoundIntroIframe}
           className="compound-intro-frame"
           src={observableSrc.visual2IntroTransition}
-          lazyLoad={true}
         />
       </section>
 
@@ -1671,7 +1604,6 @@ export default function App() {
           iframeHeight={frameHeights.compoundIframe}
           className="compound-frame landscape-frame"
           src={observableSrc.visual2ChartUnitColumns1}
-          lazyLoad={true}
         />
       </section>
 
@@ -1682,7 +1614,6 @@ export default function App() {
           iframeHeight={frameHeights.indicationIntroIframe}
           className="indication-intro-frame"
           src={observableSrc.visual3IntroTransition}
-          lazyLoad={true}
         />
       </section>
 
@@ -1708,7 +1639,6 @@ export default function App() {
           iframeHeight={frameHeights.phaseIntroIframe}
           className="phase-intro-frame"
           src={observableSrc.visual4IntroTransition}
-          lazyLoad={true}
         />
       </section>
 
