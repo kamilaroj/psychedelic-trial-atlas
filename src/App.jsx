@@ -1192,26 +1192,28 @@ export default function App() {
     setCompareMode(!!active);
   };
 
-  const postCompareModeToObservable = (active) => {
-    const iframe = document.querySelector(
+  const getCompanyIframe = () => {
+    return document.querySelector(
       'iframe[title="Company Landscape Premium"]'
     );
+  };
+
+  const postCompareModeToObservable = (active) => {
+    const iframe = getCompanyIframe();
 
     if (!iframe || !iframe.contentWindow) return;
 
     iframe.contentWindow.postMessage(
       {
         type: "UNICORN_COMPARE_SELECTION_MODE",
-        active
+        active: !!active
       },
-      OBSERVABLE_ORIGIN
+      "*"
     );
   };
 
   const clearObservableCompanyState = () => {
-    const iframe = document.querySelector(
-      'iframe[title="Company Landscape Premium"]'
-    );
+    const iframe = getCompanyIframe();
 
     if (!iframe || !iframe.contentWindow) return;
 
@@ -1219,14 +1221,12 @@ export default function App() {
       {
         type: "UNICORN_COMPANY_CLEAR"
       },
-      OBSERVABLE_ORIGIN
+      "*"
     );
   };
 
   const clearObservableCompareState = () => {
-    const iframe = document.querySelector(
-      'iframe[title="Company Landscape Premium"]'
-    );
+    const iframe = getCompanyIframe();
 
     if (!iframe || !iframe.contentWindow) return;
 
@@ -1234,7 +1234,7 @@ export default function App() {
       {
         type: "UNICORN_COMPARE_CLEAR"
       },
-      OBSERVABLE_ORIGIN
+      "*"
     );
   };
 
@@ -1263,7 +1263,15 @@ export default function App() {
 
   useEffect(() => {
     const handleCompanyMessage = (event) => {
-      if (event.origin !== OBSERVABLE_ORIGIN) return;
+      const iframe = getCompanyIframe();
+
+      if (
+        !iframe ||
+        !iframe.contentWindow ||
+        event.source !== iframe.contentWindow
+      ) {
+        return;
+      }
 
       const message = event.data;
 
@@ -1345,19 +1353,19 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
-      visual1EcosystemAndCompanyLandscape: "https://observablehq.com/embed/e3028f2577c04f9a@1311?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5",
+      visual1EcosystemAndCompanyLandscape: "https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5",
 
-      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1309?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
-      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1309?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1309?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1309?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
+      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
-      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1309?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1309?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
+      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
     [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
   );
