@@ -2962,3 +2962,18 @@ a:focus-visible {
   width: 0 !important;
   height: 0 !important;
 }
+
+/* =========================================
+   HIDE OBSERVABLE EMBED FOOTER
+   ========================================= */
+
+.ecosystem-company-frame {
+  overflow: hidden !important;
+}
+
+.ecosystem-company-frame > .atlas-iframe {
+  display: block !important;
+  height: calc(100% + 32px) !important;
+  margin-bottom: -32px !important;
+  border: 0 !important;
+}
