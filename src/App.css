@@ -522,15 +522,8 @@ body {
 }
 
 .iframe-crop::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  pointer-events: none;
-  z-index: 2;
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.34) 0%, transparent 34%),
-    linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0%, transparent 46%);
+  content: none !important;
+  display: none !important;
 }
 
 .atlas-iframe {
@@ -1839,9 +1832,9 @@ body {
 .ecosystem-company-frame {
   width: var(--company-frame-max) !important;
   max-width: var(--company-frame-max) !important;
-  height: 938px !important;
-  min-height: 938px !important;
-  max-height: 938px !important;
+  height: 860px !important;
+  min-height: 860px !important;
+  max-height: 860px !important;
   margin-left: auto !important;
   margin-right: auto !important;
   overflow: hidden !important;
@@ -1850,9 +1843,9 @@ body {
 .ecosystem-company-frame > .atlas-iframe {
   width: calc(100% + 18px) !important;
   max-width: none !important;
-  height: 970.984375px !important;
-  min-height: 970.984375px !important;
-  max-height: 970.984375px !important;
+  height: 860px !important;
+  min-height: 860px !important;
+  max-height: 860px !important;
   margin-left: -9px !important;
   border: 0 !important;
   border-radius: var(--frame-radius) !important;
@@ -2944,3 +2937,28 @@ a:focus-visible {
   }
 }
 
+
+
+/* FINAL VISUAL 1 FIXES */
+.ecosystem-company-frame {
+  height: 860px !important;
+  min-height: 860px !important;
+  max-height: 860px !important;
+  overflow: hidden !important;
+}
+
+.ecosystem-company-frame > .atlas-iframe {
+  width: 100% !important;
+  height: 860px !important;
+  min-height: 860px !important;
+  max-height: 860px !important;
+  margin: 0 !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+}
+
+.ecosystem-company-frame > .atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
