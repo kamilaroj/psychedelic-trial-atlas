@@ -2732,3 +2732,215 @@ a:focus-visible {
     max-width: 100% !important;
   }
 }
+
+/* =========================================================
+   FINAL DESIGN REFINEMENT — AUGUST 24, 2026
+   User-requested visual cleanup:
+   - stronger dark-plum editorial typography
+   - Compound intro integrated like Indication intro
+   - one visible Compound visualization surface
+   - slightly larger Company Landscape footprint
+   - compact bottom information layer
+   ========================================================= */
+
+:root {
+  --atlas-plum: #38243d;
+  --atlas-plum-soft: #514052;
+  --atlas-plum-muted: #6c5d6c;
+  --atlas-copy: #4f4b53;
+  --atlas-compound-surface: rgba(104, 82, 128, 0.17);
+  --atlas-compound-border: rgba(255, 255, 255, 0.50);
+}
+
+/* Stronger editorial hierarchy across HTML-owned text */
+.atlas-section-intro h2,
+.atlas-information-section h2,
+.atlas-contact-link,
+.atlas-skills {
+  color: var(--atlas-plum) !important;
+}
+
+.atlas-section-intro h2 {
+  font-size: 13px;
+  font-weight: 860;
+  letter-spacing: 0.075em;
+}
+
+.atlas-section-intro p {
+  color: var(--atlas-copy);
+  font-weight: 540;
+}
+
+.atlas-eyebrow {
+  color: var(--atlas-plum-muted);
+}
+
+/* ---------------------------------------------------------
+   COMPANY / ECOSYSTEM
+   Give the combined landscape more room on desktop while
+   preserving the existing comparison-panel geometry.
+   --------------------------------------------------------- */
+@media (min-width: 1501px) {
+  .company-visual-shell:not(.company-visual-shell-panel-open):not(.company-visual-shell-compare-open) {
+    width: min(1380px, calc(100vw - var(--page-pad-left) - 28px)) !important;
+    max-width: min(1380px, calc(100vw - var(--page-pad-left) - 28px)) !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1500px) {
+  .company-visual-shell:not(.company-visual-shell-panel-open):not(.company-visual-shell-compare-open) {
+    width: min(1260px, calc(100vw - var(--page-pad-left) - 22px)) !important;
+    max-width: min(1260px, calc(100vw - var(--page-pad-left) - 22px)) !important;
+  }
+}
+
+.company-visual-shell:not(.company-visual-shell-panel-open):not(.company-visual-shell-compare-open)
+.ecosystem-company-frame {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* ---------------------------------------------------------
+   COMPOUND INTRO
+   Make it use the same open-background logic as Indications.
+   No glass card around the transition text.
+   --------------------------------------------------------- */
+.compound-intro-frame {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+.compound-intro-frame::before {
+  content: none !important;
+  display: none !important;
+}
+
+.visual-story.compound-intro-story {
+  background: transparent !important;
+}
+
+/* Match transition typography footprint and alignment with Indication */
+@media (min-width: 901px) {
+  .visual-story.compound-intro-story,
+  .visual-story.indication-intro-story {
+    width: min(72%, 1100px) !important;
+    max-width: 1100px !important;
+  }
+}
+
+/* ---------------------------------------------------------
+   COMPOUND VISUAL
+   Keep one soft plum-tinted surface. The Observable cell
+   itself must remain transparent for the single-surface effect.
+   --------------------------------------------------------- */
+.compound-frame {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(255, 255, 255, 0.23), transparent 34%),
+    linear-gradient(
+      145deg,
+      rgba(116, 91, 142, 0.21) 0%,
+      rgba(102, 79, 128, 0.15) 48%,
+      rgba(255, 255, 255, 0.11) 100%
+    ) !important;
+  border: 1px solid var(--atlas-compound-border) !important;
+  box-shadow:
+    0 24px 58px rgba(58, 42, 84, 0.12),
+    0 8px 20px rgba(29, 29, 31, 0.045),
+    inset 0 1px 0 rgba(255, 255, 255, 0.48) !important;
+  backdrop-filter: blur(22px) saturate(132%) !important;
+  -webkit-backdrop-filter: blur(22px) saturate(132%) !important;
+}
+
+.compound-frame::before {
+  content: none !important;
+  display: none !important;
+}
+
+/* Keep the other visual cards neutral so Compound has one
+   deliberate tinted surface rather than nested cards. */
+.indication-frame,
+.phase-frame {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/* ---------------------------------------------------------
+   COMPACT INFORMATION / FOOTER LAYER
+   Same typography family and color logic, much less visual weight.
+   --------------------------------------------------------- */
+.atlas-information-section.atlas-information-compact {
+  width: min(
+    760px,
+    calc(100vw - var(--page-pad-left) - var(--page-pad-right))
+  );
+  margin: 0 auto;
+  padding: 27px 4px 29px;
+  background: transparent;
+  border-top: 1px solid rgba(56, 36, 61, 0.14);
+  border-radius: 0;
+}
+
+.atlas-information-section.atlas-information-compact:first-of-type {
+  margin-top: 26px;
+  border-radius: 0;
+}
+
+.atlas-information-section.atlas-information-compact h2 {
+  max-width: 620px;
+  margin: 0 0 10px;
+  font-size: clamp(22px, 2.5vw, 31px);
+  line-height: 1.01;
+  letter-spacing: -0.05em;
+  font-weight: 850;
+}
+
+.atlas-information-section.atlas-information-compact > p:not(.atlas-eyebrow) {
+  max-width: 620px;
+  margin: 0 0 8px;
+  font-size: 12.5px;
+  line-height: 1.5;
+  letter-spacing: -0.008em;
+  color: var(--atlas-copy);
+}
+
+.atlas-information-section.atlas-information-compact .atlas-eyebrow {
+  margin-bottom: 5px;
+  font-size: 9px;
+  letter-spacing: 0.115em;
+}
+
+.atlas-information-section.atlas-information-compact .atlas-citation {
+  padding: 11px 14px;
+  margin-top: 10px;
+  border-left: 2px solid rgba(56, 36, 61, 0.54);
+  background: rgba(255, 255, 255, 0.20);
+}
+
+.atlas-information-section.atlas-information-compact .atlas-contact-link {
+  margin-top: 2px;
+  font-size: clamp(15px, 1.8vw, 19px);
+}
+
+.atlas-information-section.atlas-contact-section {
+  margin-bottom: clamp(44px, 6vh, 72px);
+  border-radius: 0;
+}
+
+@media (max-width: 900px) {
+  .atlas-information-section.atlas-information-compact {
+    width: calc(100% - 32px);
+    padding: 24px 0 25px;
+  }
+
+  .atlas-information-section.atlas-information-compact h2 {
+    font-size: 24px;
+  }
+
+  .atlas-information-section.atlas-information-compact > p:not(.atlas-eyebrow) {
+    font-size: 12.25px;
+  }
+}
+
