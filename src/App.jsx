@@ -1198,44 +1198,31 @@ export default function App() {
     );
   };
 
-  const postCompareModeToObservable = (active) => {
+  const postToCompanyIframe = (message) => {
     const iframe = getCompanyIframe();
 
     if (!iframe || !iframe.contentWindow) return;
 
-    iframe.contentWindow.postMessage(
-      {
-        type: "UNICORN_COMPARE_SELECTION_MODE",
-        active: !!active
-      },
-      "*"
-    );
+    iframe.contentWindow.postMessage(message, "*");
+  };
+
+  const postCompareModeToObservable = (active) => {
+    postToCompanyIframe({
+      type: "UNICORN_COMPARE_SELECTION_MODE",
+      active: !!active
+    });
   };
 
   const clearObservableCompanyState = () => {
-    const iframe = getCompanyIframe();
-
-    if (!iframe || !iframe.contentWindow) return;
-
-    iframe.contentWindow.postMessage(
-      {
-        type: "UNICORN_COMPANY_CLEAR"
-      },
-      "*"
-    );
+    postToCompanyIframe({
+      type: "UNICORN_COMPANY_CLEAR"
+    });
   };
 
   const clearObservableCompareState = () => {
-    const iframe = getCompanyIframe();
-
-    if (!iframe || !iframe.contentWindow) return;
-
-    iframe.contentWindow.postMessage(
-      {
-        type: "UNICORN_COMPARE_CLEAR"
-      },
-      "*"
-    );
+    postToCompanyIframe({
+      type: "UNICORN_COMPARE_CLEAR"
+    });
   };
 
   const handleCompareStart = () => {
@@ -1267,20 +1254,28 @@ export default function App() {
 
       if (!message || typeof message !== "object") return;
 
-      const allowedTypes = new Set([
-        "UNICORN_COMPANY_SELECTED",
-        "UNICORN_COMPANY_COMPARE_SELECTED",
-        "UNICORN_COMPARE_SELECTION_MODE_ACK"
-      ]);
-
-      if (!allowedTypes.has(message.type)) return;
+      if (
+        message.type !== "UNICORN_COMPANY_SELECTED" &&
+        message.type !== "UNICORN_COMPANY_COMPARE_SELECTED" &&
+        message.type !== "UNICORN_COMPARE_SELECTION_MODE_ACK"
+      ) {
+        return;
+      }
 
       if (message.type === "UNICORN_COMPARE_SELECTION_MODE_ACK") {
         return;
       }
 
       if (message.type === "UNICORN_COMPANY_COMPARE_SELECTED") {
-        setCompareCompany(message.payload || null);
+        const payload = message.payload || null;
+
+        if (!payload) {
+          setCompareCompany(null);
+          setCompareModeStable(false);
+          return;
+        }
+
+        setCompareCompany(payload);
         setCompareModeStable(false);
         postCompareModeToObservable(false);
         return;
@@ -1295,7 +1290,10 @@ export default function App() {
         return;
       }
 
-      if (payload.compareSlot === "compare" || compareModeRef.current) {
+      if (
+        payload.compareSlot === "compare" ||
+        compareModeRef.current
+      ) {
         setCompareCompany(payload);
         setCompareModeStable(false);
         postCompareModeToObservable(false);
@@ -1303,7 +1301,11 @@ export default function App() {
       }
 
       setSelectedCompany(payload);
-      setCompareCompany(null);
+
+      if (!compareCompany) {
+        setCompareCompany(null);
+      }
+
       setCompareModeStable(false);
       postCompareModeToObservable(false);
     };
@@ -1313,7 +1315,7 @@ export default function App() {
     return () => {
       window.removeEventListener("message", handleCompanyMessage);
     };
-  }, []);
+  }, [compareCompany]);
 
   useEffect(() => {
     return () => {
@@ -1349,7 +1351,7 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
-      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1320?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5${visual1CompanyLandscapeParams}`,
+      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1318?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5${visual1CompanyLandscapeParams}`,
 
       visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
