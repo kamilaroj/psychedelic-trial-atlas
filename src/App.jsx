@@ -1657,7 +1657,7 @@ export default function App() {
         />
       </section>
 
-      <section className="atlas-information-section" id="methodology" aria-labelledby="methodology-title">
+      <section className="atlas-information-section atlas-information-compact" id="methodology" aria-labelledby="methodology-title">
         <p className="atlas-eyebrow">Methodology</p>
         <h2 id="methodology-title">How the Atlas is built</h2>
         <p>
@@ -1673,7 +1673,7 @@ export default function App() {
         </p>
       </section>
 
-      <section className="atlas-information-section" id="cite" aria-labelledby="cite-title">
+      <section className="atlas-information-section atlas-information-compact" id="cite" aria-labelledby="cite-title">
         <p className="atlas-eyebrow">Citation</p>
         <h2 id="cite-title">Cite this project</h2>
         <p className="atlas-citation">
@@ -1686,7 +1686,7 @@ export default function App() {
         </p>
       </section>
 
-      <section className="atlas-information-section" id="about" aria-labelledby="about-title">
+      <section className="atlas-information-section atlas-information-compact" id="about" aria-labelledby="about-title">
         <p className="atlas-eyebrow">About</p>
         <h2 id="about-title">Data analysis for complex public-source healthcare data</h2>
         <p>
@@ -1699,7 +1699,7 @@ export default function App() {
         </p>
       </section>
 
-      <section className="atlas-information-section atlas-contact-section" id="contact" aria-labelledby="contact-title">
+      <section className="atlas-information-section atlas-information-compact atlas-contact-section" id="contact" aria-labelledby="contact-title">
         <p className="atlas-eyebrow">Contact</p>
         <h2 id="contact-title">Work with me</h2>
         <p>
