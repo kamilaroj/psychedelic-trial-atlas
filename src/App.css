@@ -542,21 +542,12 @@ body {
   outline: 0;
   overflow: hidden !important;
   background: transparent;
-  opacity: 0;
-  transition: opacity 420ms ease;
-  will-change: opacity;
+  opacity: 1;
   border-radius: var(--frame-radius);
   position: relative;
   z-index: 1;
 }
 
-.atlas-iframe.iframe-loaded {
-  opacity: 1;
-}
-
-.atlas-iframe.iframe-loading {
-  opacity: 0;
-}
 
 /* FRAME WIDTHS */
 .hero-frame {
@@ -1979,43 +1970,6 @@ body {
   border-color: #665c91;
 }
 
-.iframe-status {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 9px;
-  background: rgba(241, 240, 236, 0.48);
-  color: rgba(36, 39, 44, 0.68);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  transition: opacity 240ms ease, visibility 240ms ease;
-  pointer-events: none;
-}
-
-.iframe-status-hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-
-.iframe-status-spinner {
-  width: 14px;
-  height: 14px;
-  box-sizing: border-box;
-  border: 2px solid rgba(36, 39, 44, 0.16);
-  border-top-color: rgba(36, 39, 44, 0.7);
-  border-radius: 999px;
-  animation: atlasLoaderSpin 700ms linear infinite;
-}
-
-@keyframes atlasLoaderSpin {
-  to {
-    transform: rotate(360deg);
-  }
-}
 
 .visual-story {
   flex-direction: column;
