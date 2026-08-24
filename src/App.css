@@ -2937,40 +2937,14 @@ a:focus-visible {
   }
 }
 
-
-
-/* FINAL VISUAL 1 FIXES */
-.ecosystem-company-frame {
-  height: 860px !important;
-  min-height: 860px !important;
-  max-height: 860px !important;
-  overflow: hidden !important;
-}
-
-.ecosystem-company-frame > .atlas-iframe {
-  width: 100% !important;
-  height: 860px !important;
-  min-height: 860px !important;
-  max-height: 860px !important;
-  margin: 0 !important;
-  overflow: hidden !important;
-  scrollbar-width: none !important;
-}
-
-.ecosystem-company-frame > .atlas-iframe::-webkit-scrollbar {
-  display: none !important;
-  width: 0 !important;
-  height: 0 !important;
-}
-
 /* =========================================
-   FINAL: HIDE OBSERVABLE EMBED FOOTER
+   FINAL VISUAL 1 HEIGHT / NO INNER SCROLL
    ========================================= */
 
 .ecosystem-company-frame {
-  height: 860px !important;
-  min-height: 860px !important;
-  max-height: 860px !important;
+  height: 820px !important;
+  min-height: 820px !important;
+  max-height: 820px !important;
   overflow: hidden !important;
 }
 
@@ -2978,12 +2952,17 @@ a:focus-visible {
   display: block !important;
   width: 100% !important;
   max-width: 100% !important;
-  height: 930px !important;
-  min-height: 930px !important;
-  max-height: 930px !important;
+
+  /* Slightly taller than the visible frame so
+     Observable footer chrome remains below the crop. */
+  height: 890px !important;
+  min-height: 890px !important;
+  max-height: 890px !important;
+
   margin: 0 !important;
   border: 0 !important;
   border-radius: var(--frame-radius) !important;
+
   overflow: hidden !important;
   scrollbar-width: none !important;
 }
@@ -2992,5 +2971,66 @@ a:focus-visible {
   display: none !important;
   width: 0 !important;
   height: 0 !important;
+}
+
+/* =========================================================
+   COMPOUND ACTIVITY LANDSCAPE — OPTION A
+   OPEN LAYOUT / NO OUTER CARD
+   ========================================================= */
+
+.compound-story {
+  overflow: visible !important;
+}
+
+.compound-frame,
+.compound-frame.landscape-frame,
+.iframe-crop.compound-frame,
+.iframe-crop.compound-frame.landscape-frame {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  isolation: auto !important;
+  overflow: hidden !important;
+}
+
+.compound-frame::before,
+.compound-frame::after,
+.compound-frame.landscape-frame::before,
+.compound-frame.landscape-frame::after {
+  content: none !important;
+  display: none !important;
+}
+
+.compound-frame > iframe.atlas-iframe,
+.compound-frame.landscape-frame > iframe.atlas-iframe {
+  display: block !important;
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* The Compound title now lives only inside Observable.
+   Keep the section itself free of duplicated HTML heading space. */
+.compound-story > .atlas-section-intro {
+  display: none !important;
+}
+
+/* Keep Option A aligned with the main visual width. */
+.compound-story .compound-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+@media (max-width: 900px) {
+  .compound-story .compound-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
 }
 
