@@ -921,8 +921,8 @@ export default function App() {
       return {
         heroVisible: 820,
         heroIframe: 930,
-        ecosystemCompanyVisible: 970.984375,
-        ecosystemCompanyIframe: 970.984375,
+        ecosystemCompanyVisible: 860,
+        ecosystemCompanyIframe: 860,
         compoundIntroVisible: 820,
         compoundIntroIframe: 820,
         compoundVisible: 598,
@@ -939,7 +939,7 @@ export default function App() {
     }
 
     const heroVisible = clampNumber(viewportHeight * 0.76, 600, 740);
-    const ecosystemCompanyVisible = 970.984375;
+    const ecosystemCompanyVisible = 860;
     const compoundIntroVisible = 820;
     const compoundVisible = 880;
     const indicationIntroVisible = 945;
@@ -952,7 +952,7 @@ export default function App() {
       heroIframe: heroVisible + 105,
 
       ecosystemCompanyVisible,
-      ecosystemCompanyIframe: 970.984375,
+      ecosystemCompanyIframe: 860,
 
       compoundIntroVisible,
       compoundIntroIframe: 820,
@@ -1263,19 +1263,17 @@ export default function App() {
 
   useEffect(() => {
     const handleCompanyMessage = (event) => {
-      const iframe = getCompanyIframe();
-
-      if (
-        !iframe ||
-        !iframe.contentWindow ||
-        event.source !== iframe.contentWindow
-      ) {
-        return;
-      }
-
       const message = event.data;
 
       if (!message || typeof message !== "object") return;
+
+      const allowedTypes = new Set([
+        "UNICORN_COMPANY_SELECTED",
+        "UNICORN_COMPANY_COMPARE_SELECTED",
+        "UNICORN_COMPARE_SELECTION_MODE_ACK"
+      ]);
+
+      if (!allowedTypes.has(message.type)) return;
 
       if (message.type === "UNICORN_COMPARE_SELECTION_MODE_ACK") {
         return;
@@ -1287,8 +1285,6 @@ export default function App() {
         postCompareModeToObservable(false);
         return;
       }
-
-      if (message.type !== "UNICORN_COMPANY_SELECTED") return;
 
       const payload = message.payload || null;
 
@@ -1353,7 +1349,7 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
-      visual1EcosystemAndCompanyLandscape: "https://observablehq.com/embed/e3028f2577c04f9a@1318?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5",
+      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1318?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5${visual1CompanyLandscapeParams}`,
 
       visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
