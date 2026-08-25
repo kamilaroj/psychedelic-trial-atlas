@@ -1351,15 +1351,15 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
-      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1350?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5${visual1CompanyLandscapeParams}`,
+      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1351?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5${visual1CompanyLandscapeParams}`,
 
-      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1350?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1351?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
-      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1350?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1351?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1338?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1351?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1338?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
+      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1351?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
       visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1338?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
