@@ -3035,16 +3035,23 @@ a:focus-visible {
 }
 
 /* =========================================================
-   ECOSYSTEM + COMPANY LANDSCAPE
-   OPEN LAYOUT / NO OUTER CARD
+   VISUAL 1 — NO INNER SCROLL / FULL CONTENT HEIGHT
+   FINAL OVERRIDE
    ========================================================= */
 
 .ecosystem-company-frame,
 .iframe-crop.ecosystem-company-frame {
+  height: 930px !important;
+  min-height: 930px !important;
+  max-height: 930px !important;
+
+  overflow: hidden !important;
+
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   isolation: auto !important;
@@ -3059,9 +3066,44 @@ a:focus-visible {
 }
 
 .ecosystem-company-frame > iframe.atlas-iframe {
+  display: block !important;
+
+  width: 100% !important;
+  max-width: 100% !important;
+
+  height: 1000px !important;
+  min-height: 1000px !important;
+  max-height: 1000px !important;
+
+  margin: 0 !important;
+
   background: transparent !important;
   border: 0 !important;
   border-radius: 0 !important;
   box-shadow: none !important;
+
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+}
+
+.ecosystem-company-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .ecosystem-company-frame,
+  .iframe-crop.ecosystem-company-frame {
+    height: 1040px !important;
+    min-height: 1040px !important;
+    max-height: 1040px !important;
+  }
+
+  .ecosystem-company-frame > iframe.atlas-iframe {
+    height: 1110px !important;
+    min-height: 1110px !important;
+    max-height: 1110px !important;
+  }
 }
 
