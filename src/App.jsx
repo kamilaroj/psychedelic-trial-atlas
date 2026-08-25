@@ -1357,7 +1357,7 @@ export default function App() {
       
       visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1353?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1353?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1354?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
       visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1353?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
