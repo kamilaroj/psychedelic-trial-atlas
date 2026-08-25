@@ -380,14 +380,103 @@ function ScrollProgressBar() {
   );
 }
 
+function SectionNavGlyph({ type, active }) {
+  const color = active ? "#1d1d1f" : "rgba(29, 29, 31, 0.43)";
+  const soft = active ? "rgba(29, 29, 31, 0.34)" : "rgba(29, 29, 31, 0.18)";
+
+  if (type === "start") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="6.2" fill="none" stroke={color} strokeWidth="1.5" />
+        <circle cx="12" cy="12" r="1.7" fill={active ? color : "rgba(29, 29, 31, 0.28)"} />
+      </svg>
+    );
+  }
+
+  if (type === "ecosystem") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M7 12L15.5 7.2M7 12l8.5 4.8" fill="none" stroke={soft} strokeWidth="1.25" />
+        <circle cx="6.3" cy="12" r="2.3" fill={color} />
+        <circle cx="16.7" cy="6.6" r="2.3" fill={color} />
+        <circle cx="16.7" cy="17.4" r="2.3" fill={color} />
+      </svg>
+    );
+  }
+
+  if (type === "compounds") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M6.1 12L16.2 6.8M6.1 12l10.1 5.2" fill="none" stroke={soft} strokeWidth="1.2" />
+        <circle cx="5.5" cy="12" r="2.5" fill={color} />
+        <circle cx="17.1" cy="6.4" r="2.5" fill={color} />
+        <circle cx="17.1" cy="17.6" r="2.5" fill={color} />
+      </svg>
+    );
+  }
+
+  if (type === "indications") {
+    return (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="12" cy="12" r="7" fill="none" stroke={color} strokeWidth="1.35" />
+        <circle cx="12" cy="12" r="3.4" fill="none" stroke={soft} strokeWidth="1.15" />
+        <circle cx="12" cy="12" r="1.65" fill={color} />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 30 24" aria-hidden="true">
+      <text
+        x="15"
+        y="14.2"
+        textAnchor="middle"
+        fontFamily='"Inter Tight", "Inter", Arial, sans-serif'
+        fontSize="8.2"
+        fontWeight="850"
+        letterSpacing="0.02em"
+        fill={color}
+      >
+        I·IV
+      </text>
+      <path d="M5.2 18.2h19.6" stroke={soft} strokeWidth="1" />
+    </svg>
+  );
+}
+
 function SectionProgressNav() {
   const sections = useMemo(
     () => [
-      { id: "start", label: "Start", selector: ".hero-story" },
-      { id: "ecosystem", label: "Ecosystem & Companies", selector: ".ecosystem-story" },
-      { id: "compounds", label: "Compounds", selector: ".compound-story" },
-      { id: "indications", label: "Indications", selector: ".indication-story" },
-      { id: "phases", label: "Phases", selector: ".phase-story" }
+      {
+        id: "start",
+        label: "Start",
+        selector: ".hero-story",
+        glyph: "start"
+      },
+      {
+        id: "ecosystem",
+        label: "Ecosystem & Companies",
+        selector: ".ecosystem-story",
+        glyph: "ecosystem"
+      },
+      {
+        id: "compounds",
+        label: "Compounds",
+        selector: ".compound-intro-story",
+        glyph: "compounds"
+      },
+      {
+        id: "indications",
+        label: "Indications",
+        selector: ".indication-intro-story",
+        glyph: "indications"
+      },
+      {
+        id: "phases",
+        label: "Phases",
+        selector: ".phase-intro-story",
+        glyph: "phases"
+      }
     ],
     []
   );
@@ -399,31 +488,17 @@ function SectionProgressNav() {
       const viewportAnchor = window.innerHeight * 0.42;
 
       let currentSection = sections[0].id;
-      let closestDistance = Number.POSITIVE_INFINITY;
 
       sections.forEach((section) => {
         const element = document.querySelector(section.selector);
         if (!element) return;
 
         const rect = element.getBoundingClientRect();
-        const distance = Math.abs(rect.top - viewportAnchor);
 
-        if (rect.top <= viewportAnchor && distance < closestDistance) {
-          closestDistance = distance;
+        if (rect.top <= viewportAnchor) {
           currentSection = section.id;
         }
       });
-
-      const lastSection = sections[sections.length - 1];
-      const lastElement = document.querySelector(lastSection.selector);
-
-      if (lastElement) {
-        const lastRect = lastElement.getBoundingClientRect();
-
-        if (lastRect.top <= window.innerHeight * 0.68) {
-          currentSection = lastSection.id;
-        }
-      }
 
       setActiveSection(currentSection);
     };
@@ -443,9 +518,13 @@ function SectionProgressNav() {
     const element = document.querySelector(selector);
     if (!element) return;
 
-    element.scrollIntoView({
-      behavior: "smooth",
-      block: "start"
+    const rect = element.getBoundingClientRect();
+    const scrollOffset = 20;
+    const targetTop = window.scrollY + rect.top - scrollOffset;
+
+    window.scrollTo({
+      top: Math.max(0, targetTop),
+      behavior: "smooth"
     });
   };
 
@@ -455,7 +534,7 @@ function SectionProgressNav() {
         {`
           .section-progress-nav {
             position: fixed;
-            left: 28px;
+            left: 26px;
             top: 50%;
             z-index: 65;
             transform: translateY(-50%);
@@ -467,68 +546,81 @@ function SectionProgressNav() {
           .section-progress-nav-inner {
             position: relative;
             display: grid;
-            gap: 18px;
-            padding: 12px 0;
+            gap: 11px;
+            padding: 11px 0;
           }
 
           .section-progress-nav-line {
             position: absolute;
-            top: 24px;
-            bottom: 24px;
-            left: 8px;
+            top: 29px;
+            bottom: 29px;
+            left: 14px;
             width: 1px;
-            background: rgba(29, 29, 31, 0.14);
+            background: rgba(29, 29, 31, 0.11);
+            pointer-events: none;
           }
 
           .section-progress-nav-item {
             position: relative;
             display: grid;
-            grid-template-columns: 18px auto;
+            grid-template-columns: 29px auto;
             align-items: center;
-            gap: 12px;
-            min-height: 22px;
+            gap: 10px;
+            min-height: 36px;
             border: 0;
-            padding: 0;
+            padding: 0 8px 0 0;
             background: transparent;
-            color: rgba(29, 29, 31, 0.38);
+            color: rgba(29, 29, 31, 0.40);
             cursor: pointer;
             text-align: left;
+            font: inherit;
             transition:
               color 180ms ease,
-              transform 180ms ease;
+              transform 180ms ease,
+              opacity 180ms ease;
           }
 
           .section-progress-nav-item:hover {
-            color: rgba(29, 29, 31, 0.72);
+            color: rgba(29, 29, 31, 0.76);
           }
 
-          .section-progress-nav-dot {
+          .section-progress-nav-glyph {
             position: relative;
-            z-index: 1;
-            width: 8px;
-            height: 8px;
-            margin-left: 4px;
+            z-index: 2;
+            width: 29px;
+            height: 29px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             border-radius: 999px;
-            background: rgba(29, 29, 31, 0.24);
-            box-shadow: 0 0 0 6px rgba(241, 240, 236, 0.94);
+            background: rgba(241, 240, 236, 0.82);
             transition:
-              width 180ms ease,
-              height 180ms ease,
-              margin-left 180ms ease,
               background 180ms ease,
+              transform 180ms ease,
               box-shadow 180ms ease;
+          }
+
+          .section-progress-nav-glyph svg {
+            width: 22px;
+            height: 22px;
+            display: block;
+            overflow: visible;
+          }
+
+          .section-progress-nav-item[data-section="phases"] .section-progress-nav-glyph svg {
+            width: 26px;
           }
 
           .section-progress-nav-label {
             position: relative;
-            font-size: 13px;
-            line-height: 1;
-            letter-spacing: -0.02em;
+            font-size: 12.5px;
+            line-height: 1.05;
+            letter-spacing: -0.018em;
             font-weight: 560;
             white-space: nowrap;
             transition:
-              opacity 180ms ease,
               font-weight 180ms ease,
+              letter-spacing 180ms ease,
               transform 180ms ease;
           }
 
@@ -539,7 +631,7 @@ function SectionProgressNav() {
             top: 50%;
             width: 0;
             height: 1px;
-            background: rgba(29, 29, 31, 0.82);
+            background: rgba(29, 29, 31, 0.80);
             transform: translateY(-50%);
             transition: width 180ms ease;
           }
@@ -549,29 +641,25 @@ function SectionProgressNav() {
             transform: translateX(2px);
           }
 
-          .section-progress-nav-item-active .section-progress-nav-dot {
-            width: 10px;
-            height: 10px;
-            margin-left: 3px;
-            background: #1d1d1f;
-            box-shadow:
-              0 0 0 6px rgba(241, 240, 236, 0.96),
-              0 6px 18px rgba(29, 29, 31, 0.18);
+          .section-progress-nav-item-active .section-progress-nav-glyph {
+            background: rgba(241, 240, 236, 0.97);
+            transform: scale(1.05);
+            box-shadow: 0 6px 18px rgba(29, 29, 31, 0.10);
           }
 
           .section-progress-nav-item-active .section-progress-nav-label {
-            font-size: 14px;
-            font-weight: 780;
-            letter-spacing: -0.035em;
+            font-size: 13px;
+            font-weight: 790;
+            letter-spacing: -0.028em;
           }
 
           .section-progress-nav-item-active .section-progress-nav-label::before {
-            width: 28px;
+            width: 26px;
           }
 
           @media (max-width: 1500px) {
             .section-progress-nav {
-              left: 12px;
+              left: 10px;
               transform: translateY(-50%) scale(0.9);
               transform-origin: left center;
             }
@@ -579,8 +667,8 @@ function SectionProgressNav() {
 
           @media (max-width: 1250px) {
             .section-progress-nav {
-              left: 10px;
-              transform: translateY(-50%) scale(0.84);
+              left: 8px;
+              transform: translateY(-50%) scale(0.82);
               transform-origin: left center;
             }
           }
@@ -588,6 +676,15 @@ function SectionProgressNav() {
           @media (max-width: 920px) {
             .section-progress-nav {
               display: none;
+            }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .section-progress-nav-item,
+            .section-progress-nav-glyph,
+            .section-progress-nav-label,
+            .section-progress-nav-label::before {
+              transition: none !important;
             }
           }
         `}
@@ -604,13 +701,18 @@ function SectionProgressNav() {
               <button
                 key={section.id}
                 type="button"
+                data-section={section.id}
                 className={`section-progress-nav-item ${
                   isActive ? "section-progress-nav-item-active" : ""
                 }`}
                 onClick={() => handleSectionClick(section.selector)}
                 aria-current={isActive ? "true" : undefined}
+                aria-label={`Go to ${section.label}`}
               >
-                <span className="section-progress-nav-dot" aria-hidden="true" />
+                <span className="section-progress-nav-glyph" aria-hidden="true">
+                  <SectionNavGlyph type={section.glyph} active={isActive} />
+                </span>
+
                 <span className="section-progress-nav-label">
                   {section.label}
                 </span>
@@ -1351,19 +1453,19 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
-      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1353?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5${visual1CompanyLandscapeParams}`,
+      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1318?cells=visual1EcosystemAndCompanyLandscape&api_key=c2ed9200f4ef0822a182827583e1886ad995b7b5${visual1CompanyLandscapeParams}`,
 
-      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1353?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
-      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1353?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1336?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1357?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1353?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
+      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
-      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1338?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1368?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
+      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1307?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
     [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
   );
@@ -1588,7 +1690,7 @@ export default function App() {
         </div>
       </section>
 
-      <section className="story-section visual-story compound-intro-story">
+      <section className="story-section visual-story compound-intro-story" id="compounds-intro">
         <ObservableFrame
           title="Compound Activity Landscape Introduction"
           visibleHeight={frameHeights.compoundIntroVisible}
@@ -1611,7 +1713,7 @@ export default function App() {
         />
       </section>
 
-      <section className="story-section visual-story indication-intro-story">
+      <section className="story-section visual-story indication-intro-story" id="indications-intro">
         <ObservableFrame
           title="Indication Landscape Introduction"
           visibleHeight={frameHeights.indicationIntroVisible}
@@ -1636,7 +1738,7 @@ export default function App() {
         />
       </section>
 
-      <section className="story-section visual-story phase-intro-story">
+      <section className="story-section visual-story phase-intro-story" id="phases-intro">
         <ObservableFrame
           title="Clinical Phase Landscape Introduction"
           visibleHeight={frameHeights.phaseIntroVisible}
