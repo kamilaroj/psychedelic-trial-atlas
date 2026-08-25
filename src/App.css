@@ -3107,3 +3107,55 @@ a:focus-visible {
   }
 }
 
+/* =========================================================
+   COMPOUND TRANSITION → CHART
+   TIGHTER VERTICAL RHYTHM
+   Keeps the intro intact and brings the chart directly below it.
+   ========================================================= */
+
+@media (min-width: 901px) {
+  .visual-story.compound-intro-story {
+    padding-top: clamp(34px, 4.5vh, 48px) !important;
+    padding-bottom: 0 !important;
+  }
+
+  .compound-intro-frame {
+    height: 575px !important;
+    min-height: 575px !important;
+    max-height: 575px !important;
+  }
+
+  .compound-intro-frame > iframe.atlas-iframe {
+    height: 675px !important;
+    min-height: 675px !important;
+    max-height: 675px !important;
+    clip-path: inset(0 0 100px 0) !important;
+  }
+
+  .visual-story.compound-story {
+    padding-top: 14px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-story.compound-intro-story {
+    padding-bottom: 8px !important;
+  }
+
+  .compound-intro-frame {
+    height: 640px !important;
+    min-height: 640px !important;
+    max-height: 640px !important;
+  }
+
+  .compound-intro-frame > iframe.atlas-iframe {
+    height: 740px !important;
+    min-height: 740px !important;
+    max-height: 740px !important;
+  }
+
+  .visual-story.compound-story {
+    padding-top: 18px !important;
+  }
+}
+
