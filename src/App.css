@@ -3364,3 +3364,123 @@ body::-webkit-scrollbar,
   }
 }
 
+/* =========================================================
+   INDICATION LANDSCAPE — FINAL OPEN / COMPACT LAYOUT
+   Matches Compound visualization:
+   - no duplicated HTML title/subtitle
+   - no outer card/frame
+   - compact height for the smaller dataset
+   - transparent Observable surface
+   ========================================================= */
+
+.indication-story > .atlas-section-intro {
+  display: none !important;
+}
+
+.indication-story {
+  overflow: visible !important;
+}
+
+.indication-frame,
+.indication-frame.landscape-frame,
+.iframe-crop.indication-frame,
+.iframe-crop.indication-frame.landscape-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+
+  height: 610px !important;
+  min-height: 610px !important;
+  max-height: 610px !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  isolation: auto !important;
+  overflow: hidden !important;
+}
+
+.indication-frame::before,
+.indication-frame::after,
+.indication-frame.landscape-frame::before,
+.indication-frame.landscape-frame::after {
+  content: none !important;
+  display: none !important;
+}
+
+.indication-frame > iframe.atlas-iframe,
+.indication-frame.landscape-frame > iframe.atlas-iframe {
+  display: block !important;
+
+  width: 117.647059% !important;
+  max-width: none !important;
+
+  height: 824px !important;
+  min-height: 824px !important;
+  max-height: 824px !important;
+
+  margin: 0 0 0 -8.823529% !important;
+
+  transform: scale(0.85) !important;
+  transform-origin: top center !important;
+
+  clip-path: none !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.indication-frame > iframe.atlas-iframe::-webkit-scrollbar,
+.indication-frame.landscape-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+@media (min-width: 901px) {
+  .visual-story.indication-story {
+    padding-top: 14px !important;
+    padding-bottom: 34px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-story.indication-story {
+    padding-top: 18px !important;
+    padding-bottom: 36px !important;
+  }
+
+  .indication-frame,
+  .indication-frame.landscape-frame,
+  .iframe-crop.indication-frame,
+  .iframe-crop.indication-frame.landscape-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 640px !important;
+    min-height: 640px !important;
+    max-height: 640px !important;
+  }
+
+  .indication-frame > iframe.atlas-iframe,
+  .indication-frame.landscape-frame > iframe.atlas-iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 760px !important;
+    min-height: 760px !important;
+    max-height: 760px !important;
+    margin: 0 !important;
+    transform: none !important;
+  }
+}
+
