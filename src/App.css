@@ -3484,30 +3484,350 @@ body::-webkit-scrollbar,
   }
 }
 
+
 /* =========================================================
-   LEFT NAV — OPTION A / SCIENTIFIC NOTATION
-   The visual styling itself is owned by SectionProgressNav
-   in App.jsx. These rules reserve space and make intro anchors
-   land cleanly at the beginning of each analytical layer.
+   CLINICAL PHASE LANDSCAPE — FINAL OPEN LAYOUT
+   Matches Compound + Indication:
+   - no duplicated HTML title/subtitle
+   - no outer glass card
+   - no border
+   - no rounded corners
+   - no shadow
+   - transparent background
+   - no visible scrollbars
    ========================================================= */
 
-#compounds-intro,
-#indications-intro,
-#phases-intro,
-.compound-intro-story,
-.indication-intro-story,
-.phase-intro-story {
-  scroll-margin-top: 20px;
+.phase-story > .atlas-section-intro {
+  display: none !important;
 }
 
-@media (min-width: 1501px) {
-  :root {
-    --left-nav-safe-space: clamp(150px, 11.5vw, 188px);
+.phase-story {
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.phase-frame,
+.phase-frame.landscape-frame,
+.iframe-crop.phase-frame,
+.iframe-crop.phase-frame.landscape-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  isolation: auto !important;
+
+  overflow: hidden !important;
+
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.phase-frame::before,
+.phase-frame::after,
+.phase-frame.landscape-frame::before,
+.phase-frame.landscape-frame::after,
+.iframe-crop.phase-frame::before,
+.iframe-crop.phase-frame::after,
+.iframe-crop.phase-frame.landscape-frame::before,
+.iframe-crop.phase-frame.landscape-frame::after {
+  content: none !important;
+  display: none !important;
+}
+
+.phase-frame > iframe.atlas-iframe,
+.phase-frame.landscape-frame > iframe.atlas-iframe {
+  display: block !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  overflow: hidden !important;
+
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.phase-frame > iframe.atlas-iframe::-webkit-scrollbar,
+.phase-frame.landscape-frame > iframe.atlas-iframe::-webkit-scrollbar,
+.phase-frame::-webkit-scrollbar,
+.phase-frame.landscape-frame::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Keep the phase chart visually close to its intro,
+   like Compound and Indication. */
+@media (min-width: 901px) {
+  .visual-story.phase-story {
+    padding-top: 14px !important;
+    padding-bottom: 42px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-story.phase-story {
+    padding-top: 18px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .phase-frame,
+  .phase-frame.landscape-frame,
+  .iframe-crop.phase-frame,
+  .iframe-crop.phase-frame.landscape-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
+/* =========================================================
+   SECTION PROGRESS NAV — OPTION A
+   New left-side scientific navigation only.
+   ========================================================= */
+
+.section-progress-nav {
+  position: fixed;
+  left: 28px;
+  top: 50%;
+  z-index: 65;
+  transform: translateY(-50%);
+  pointer-events: auto;
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  color: #1d1d1f;
+}
+
+.section-progress-nav-inner {
+  position: relative;
+  display: grid;
+  gap: 14px;
+  padding: 12px 0;
+}
+
+.section-progress-nav-line {
+  position: absolute;
+  top: 25px;
+  bottom: 25px;
+  left: 13px;
+  width: 1px;
+  background: rgba(29, 29, 31, 0.12);
+}
+
+.section-progress-nav-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 28px auto;
+  align-items: center;
+  gap: 11px;
+  min-height: 34px;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: rgba(29, 29, 31, 0.38);
+  cursor: pointer;
+  text-align: left;
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.section-progress-nav-item:hover {
+  color: rgba(29, 29, 31, 0.72);
+}
+
+.section-progress-nav-item::before {
+  content: "";
+  position: absolute;
+  left: -28px;
+  top: 50%;
+  width: 0;
+  height: 1px;
+  background: rgba(29, 29, 31, 0.82);
+  transform: translateY(-50%);
+  transition: width 180ms ease;
+}
+
+.section-progress-nav-symbol {
+  position: relative;
+  z-index: 2;
+  width: 26px;
+  height: 26px;
+  display: block;
+  flex: 0 0 26px;
+  background: #f1f0ec;
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.section-progress-nav-symbol-start {
+  width: 18px;
+  height: 18px;
+  margin-left: 4px;
+  border-radius: 999px;
+  border: 1.4px solid currentColor;
+  background: #f1f0ec;
+}
+
+.section-progress-nav-node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.section-progress-nav-symbol-ecosystem,
+.section-progress-nav-symbol-compounds,
+.section-progress-nav-symbol-indications,
+.section-progress-nav-symbol-phases {
+  background: transparent;
+}
+
+.section-progress-nav-symbol-ecosystem .section-progress-nav-node-a {
+  left: 1px;
+  top: 10px;
+}
+
+.section-progress-nav-symbol-ecosystem .section-progress-nav-node-b {
+  left: 17px;
+  top: 3px;
+}
+
+.section-progress-nav-symbol-ecosystem .section-progress-nav-node-c {
+  left: 17px;
+  top: 17px;
+}
+
+.section-progress-nav-link {
+  position: absolute;
+  left: 6px;
+  width: 13px;
+  height: 1px;
+  background: currentColor;
+  transform-origin: left center;
+  opacity: 0.72;
+}
+
+.section-progress-nav-link-a {
+  top: 12px;
+  transform: rotate(-26deg);
+}
+
+.section-progress-nav-link-b {
+  top: 14px;
+  transform: rotate(26deg);
+}
+
+.section-progress-nav-symbol-compounds .section-progress-nav-node-a {
+  left: 1px;
+  top: 10px;
+}
+
+.section-progress-nav-symbol-compounds .section-progress-nav-node-b {
+  left: 10px;
+  top: 3px;
+}
+
+.section-progress-nav-symbol-compounds .section-progress-nav-node-c {
+  left: 18px;
+  top: 16px;
+}
+
+.section-progress-nav-indication-ring {
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1.4px solid currentColor;
+}
+
+.section-progress-nav-indication-core {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: currentColor;
+}
+
+.section-progress-nav-symbol-phases {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8.5px;
+  line-height: 1;
+  font-weight: 850;
+  letter-spacing: -0.02em;
+  color: currentColor;
+}
+
+.section-progress-nav-label {
+  position: relative;
+  font-size: 13px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-weight: 560;
+  white-space: nowrap;
+  transition:
+    opacity 180ms ease,
+    font-weight 180ms ease,
+    transform 180ms ease;
+}
+
+.section-progress-nav-item-active {
+  color: #1d1d1f;
+  transform: translateX(2px);
+}
+
+.section-progress-nav-item-active::before {
+  width: 20px;
+}
+
+.section-progress-nav-item-active .section-progress-nav-symbol {
+  transform: scale(1.04);
+}
+
+.section-progress-nav-item-active .section-progress-nav-label {
+  font-size: 14px;
+  font-weight: 780;
+  letter-spacing: -0.035em;
+}
+
+@media (max-width: 1500px) {
+  .section-progress-nav {
+    left: 12px;
+    transform: translateY(-50%) scale(0.9);
+    transform-origin: left center;
+  }
+}
+
+@media (max-width: 1250px) {
+  .section-progress-nav {
+    left: 10px;
+    transform: translateY(-50%) scale(0.84);
+    transform-origin: left center;
   }
 }
 
 @media (max-width: 920px) {
-  :root {
-    --left-nav-safe-space: 0px;
+  .section-progress-nav {
+    display: none;
   }
 }
+
