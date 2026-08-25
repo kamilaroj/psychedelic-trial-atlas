@@ -3034,3 +3034,34 @@ a:focus-visible {
   }
 }
 
+/* =========================================================
+   ECOSYSTEM + COMPANY LANDSCAPE
+   OPEN LAYOUT / NO OUTER CARD
+   ========================================================= */
+
+.ecosystem-company-frame,
+.iframe-crop.ecosystem-company-frame {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  isolation: auto !important;
+}
+
+.ecosystem-company-frame::before,
+.ecosystem-company-frame::after,
+.iframe-crop.ecosystem-company-frame::before,
+.iframe-crop.ecosystem-company-frame::after {
+  content: none !important;
+  display: none !important;
+}
+
+.ecosystem-company-frame > iframe.atlas-iframe {
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
