@@ -3159,3 +3159,208 @@ a:focus-visible {
   }
 }
 
+/* =========================================================
+   FINAL — HIDE ALL VISIBLE SCROLLBARS
+   Scrolling still works with mouse wheel / trackpad.
+   Inner Observable frames are made tall enough so they do not
+   generate their own visible vertical bars.
+   ========================================================= */
+
+/* Main page: keep scrolling, hide the scrollbar track/thumb */
+html,
+body,
+#root,
+.site {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar,
+.site::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Generic wrappers */
+.iframe-crop,
+.atlas-iframe,
+.visual-story,
+.story-section {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.iframe-crop::-webkit-scrollbar,
+.atlas-iframe::-webkit-scrollbar,
+.visual-story::-webkit-scrollbar,
+.story-section::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Compound intro:
+   wrapper stays compact, iframe gets a much taller viewport.
+   The wrapper crops the unused lower part, so no inner scrollbar
+   is needed or visible. */
+.compound-intro-frame {
+  height: 575px !important;
+  min-height: 575px !important;
+  max-height: 575px !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.compound-intro-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: 100% !important;
+  max-width: 100% !important;
+
+  height: 980px !important;
+  min-height: 980px !important;
+  max-height: 980px !important;
+
+  margin: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+
+  /* Crop is handled by the outer wrapper, not by the iframe. */
+  clip-path: none !important;
+}
+
+.compound-intro-frame::-webkit-scrollbar,
+.compound-intro-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Main Compound chart */
+.compound-frame,
+.compound-frame.landscape-frame,
+.iframe-crop.compound-frame,
+.iframe-crop.compound-frame.landscape-frame {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.compound-frame > iframe.atlas-iframe,
+.compound-frame.landscape-frame > iframe.atlas-iframe {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.compound-frame::-webkit-scrollbar,
+.compound-frame.landscape-frame::-webkit-scrollbar,
+.compound-frame > iframe.atlas-iframe::-webkit-scrollbar,
+.compound-frame.landscape-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Indication intro */
+.indication-intro-frame {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.indication-intro-frame > iframe.atlas-iframe {
+  height: 1280px !important;
+  min-height: 1280px !important;
+  max-height: 1280px !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+  clip-path: none !important;
+}
+
+.indication-intro-frame::-webkit-scrollbar,
+.indication-intro-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Phase intro */
+.phase-intro-frame {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.phase-intro-frame > iframe.atlas-iframe {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.phase-intro-frame::-webkit-scrollbar,
+.phase-intro-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Remaining chart frames */
+.ecosystem-company-frame,
+.company-frame,
+.indication-frame,
+.phase-frame,
+.landscape-frame {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.ecosystem-company-frame::-webkit-scrollbar,
+.company-frame::-webkit-scrollbar,
+.indication-frame::-webkit-scrollbar,
+.phase-frame::-webkit-scrollbar,
+.landscape-frame::-webkit-scrollbar,
+.ecosystem-company-frame iframe::-webkit-scrollbar,
+.company-frame iframe::-webkit-scrollbar,
+.indication-frame iframe::-webkit-scrollbar,
+.phase-frame iframe::-webkit-scrollbar,
+.landscape-frame iframe::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .compound-intro-frame {
+    height: 640px !important;
+    min-height: 640px !important;
+    max-height: 640px !important;
+  }
+
+  .compound-intro-frame > iframe.atlas-iframe {
+    height: 1120px !important;
+    min-height: 1120px !important;
+    max-height: 1120px !important;
+    clip-path: none !important;
+  }
+
+  .indication-intro-frame > iframe.atlas-iframe {
+    height: 1380px !important;
+    min-height: 1380px !important;
+    max-height: 1380px !important;
+    clip-path: none !important;
+  }
+
+  .phase-intro-frame > iframe.atlas-iframe {
+    overflow: hidden !important;
+    scrollbar-width: none !important;
+  }
+}
+
