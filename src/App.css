@@ -3484,3 +3484,111 @@ body::-webkit-scrollbar,
   }
 }
 
+
+/* =========================================================
+   CLINICAL PHASE LANDSCAPE — FINAL OPEN LAYOUT
+   Matches Compound + Indication:
+   - no duplicated HTML title/subtitle
+   - no outer glass card
+   - no border
+   - no rounded corners
+   - no shadow
+   - transparent background
+   - no visible scrollbars
+   ========================================================= */
+
+.phase-story > .atlas-section-intro {
+  display: none !important;
+}
+
+.phase-story {
+  overflow: visible !important;
+  background: transparent !important;
+}
+
+.phase-frame,
+.phase-frame.landscape-frame,
+.iframe-crop.phase-frame,
+.iframe-crop.phase-frame.landscape-frame {
+  width: var(--company-frame-max) !important;
+  max-width: var(--company-frame-max) !important;
+
+  margin-left: auto !important;
+  margin-right: auto !important;
+
+  background: transparent !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+
+  isolation: auto !important;
+
+  overflow: hidden !important;
+
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.phase-frame::before,
+.phase-frame::after,
+.phase-frame.landscape-frame::before,
+.phase-frame.landscape-frame::after,
+.iframe-crop.phase-frame::before,
+.iframe-crop.phase-frame::after,
+.iframe-crop.phase-frame.landscape-frame::before,
+.iframe-crop.phase-frame.landscape-frame::after {
+  content: none !important;
+  display: none !important;
+}
+
+.phase-frame > iframe.atlas-iframe,
+.phase-frame.landscape-frame > iframe.atlas-iframe {
+  display: block !important;
+
+  background: transparent !important;
+
+  border: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+
+  overflow: hidden !important;
+
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.phase-frame > iframe.atlas-iframe::-webkit-scrollbar,
+.phase-frame.landscape-frame > iframe.atlas-iframe::-webkit-scrollbar,
+.phase-frame::-webkit-scrollbar,
+.phase-frame.landscape-frame::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+/* Keep the phase chart visually close to its intro,
+   like Compound and Indication. */
+@media (min-width: 901px) {
+  .visual-story.phase-story {
+    padding-top: 14px !important;
+    padding-bottom: 42px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-story.phase-story {
+    padding-top: 18px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .phase-frame,
+  .phase-frame.landscape-frame,
+  .iframe-crop.phase-frame,
+  .iframe-crop.phase-frame.landscape-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
