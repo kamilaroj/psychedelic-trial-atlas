@@ -1363,7 +1363,7 @@ export default function App() {
 
       visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1338?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1361?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
+      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1365?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
     [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
   );
