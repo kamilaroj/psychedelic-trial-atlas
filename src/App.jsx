@@ -1539,9 +1539,9 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
-      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1402?cells=visual1EcosystemAndCompanyLandscape&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18${visual1CompanyLandscapeParams}`,
+      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1403?cells=visual1EcosystemAndCompanyLandscape&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18${visual1CompanyLandscapeParams}`,
 
-      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1379?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1403?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
       visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1379?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
