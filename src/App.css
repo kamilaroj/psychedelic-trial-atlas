@@ -3900,3 +3900,46 @@ body::-webkit-scrollbar,
     margin-top: 8px !important;
   }
 }
+
+
+/* =========================================================
+   PHASE INTRO â†’ PHASE CHART â€” EXACT GAP FIX
+   The large gap was caused by the fixed 845px intro wrapper,
+   not by the Phase chart margin itself.
+   Desktop only. Compound and Indication remain unchanged.
+   ========================================================= */
+
+@media (min-width: 901px) {
+  .visual-story.phase-intro-story {
+    padding-bottom: 0 !important;
+  }
+
+  .phase-intro-frame {
+    height: 700px !important;
+    min-height: 700px !important;
+    max-height: 700px !important;
+    overflow: hidden !important;
+  }
+
+  .phase-intro-frame > iframe.atlas-iframe {
+    /* Keep the existing Observable scale and geometry.
+       Only the visible wrapper is shortened. */
+    width: 106.472081% !important;
+    max-width: none !important;
+    height: 1006.15625px !important;
+    min-height: 1006.15625px !important;
+    max-height: 1006.15625px !important;
+    margin: 0 0 0 -3.23604% !important;
+    transform: scale(0.939218) !important;
+    transform-origin: top center !important;
+    clip-path: none !important;
+    border: 0 !important;
+    overflow: hidden !important;
+  }
+
+  .visual-story.phase-story {
+    margin-top: 0 !important;
+    padding-top: 12px !important;
+    padding-bottom: 40px !important;
+  }
+}
