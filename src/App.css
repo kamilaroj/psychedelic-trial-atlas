@@ -4236,54 +4236,110 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   VISUAL 1 — TRUE VIEWPORT CENTERING
-   Final override.
-   Centers Ecosystem + Company Landscape in the browser viewport,
-   not inside the asymmetric left-nav safe-area box.
-   Does not change other visual sections.
+   COMPANY DETAILS PANELS — FINAL POSITION POLISH
+   - closer to the company constellation
+   - slightly lower
+   - compare mode fits the viewport better
    ========================================================= */
 
 @media (min-width: 901px) {
-  .visual-story.ecosystem-story {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+
+  :root {
+    --company-panel-overlap-visual: 82px;
+    --company-panel-top-offset: 22px;
   }
 
-  .visual-story.ecosystem-story > .company-visual-shell,
-  .visual-story.ecosystem-story .company-visual-shell:not(.company-visual-shell-panel-open):not(.company-visual-shell-compare-open) {
-    width: min(1260px, calc(100vw - 72px)) !important;
-    max-width: min(1260px, calc(100vw - 72px)) !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  /* PRIMARY PANEL */
+  .company-external-panel {
+    top: var(--company-panel-top-offset) !important;
+
+    left:
+      calc(
+        100% - var(--company-panel-overlap-visual)
+      ) !important;
+
+    height:
+      calc(
+        100% - (var(--company-panel-top-offset) * 2)
+      ) !important;
+
+    max-height:
+      calc(
+        100% - (var(--company-panel-top-offset) * 2)
+      ) !important;
   }
 
-  .visual-story.ecosystem-story .ecosystem-company-frame,
-  .visual-story.ecosystem-story .iframe-crop.ecosystem-company-frame {
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+  /* SECOND / COMPARE PANEL */
+  .company-external-panel-compare {
+    top: var(--company-panel-top-offset) !important;
+
+    left:
+      calc(
+        100%
+        + var(--company-panel-width)
+        - var(--company-panel-overlap-visual)
+      ) !important;
+
+    height:
+      calc(
+        100% - (var(--company-panel-top-offset) * 2)
+      ) !important;
+
+    max-height:
+      calc(
+        100% - (var(--company-panel-top-offset) * 2)
+      ) !important;
   }
 
-  .visual-story.ecosystem-story .ecosystem-company-frame > iframe.atlas-iframe {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+  /* PRIMARY CLOSE BUTTON */
+  .company-external-panel-floating-close {
+    top:
+      calc(
+        var(--company-panel-top-offset) + 14px
+      ) !important;
+
+    left:
+      calc(
+        100%
+        - var(--company-panel-overlap-visual)
+        - 15px
+      ) !important;
+  }
+
+  /* COMPARE CLOSE BUTTON */
+  .company-external-panel-floating-close-compare {
+    left:
+      calc(
+        100%
+        + var(--company-panel-width)
+        - var(--company-panel-overlap-visual)
+        - 15px
+      ) !important;
+  }
+
+  /* COMPARE BUTTON */
+  .company-external-panel-compare-button {
+    left:
+      calc(
+        100%
+        + var(--company-panel-width)
+        - var(--company-panel-overlap-visual)
+        - var(--company-compare-button-overlap)
+      ) !important;
   }
 }
 
-/* Keep the existing panel geometry when a company detail panel opens. */
-@media (min-width: 901px) {
-  .visual-story.ecosystem-story .company-visual-shell-panel-open {
-    width: var(--company-frame-max-one-panel) !important;
-    max-width: var(--company-frame-max-one-panel) !important;
-  }
 
-  .visual-story.ecosystem-story .company-visual-shell-compare-open {
-    width: var(--company-frame-max-two-panels) !important;
-    max-width: var(--company-frame-max-two-panels) !important;
+/* =========================================================
+   LARGE DESKTOP
+   Slightly slimmer panels so two-panel comparison remains elegant.
+   ========================================================= */
+
+@media (min-width: 1501px) {
+  :root {
+    --company-panel-width: 205px;
+    --company-panel-compare-width: 205px;
+    --company-compare-button-width: 148px;
   }
 }
 
