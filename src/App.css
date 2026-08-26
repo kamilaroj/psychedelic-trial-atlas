@@ -4343,3 +4343,118 @@ body::-webkit-scrollbar,
   }
 }
 
+/* =========================================================
+   VISUAL 1 — FINAL IFRAME HEIGHT / NO INNER SCROLL / NO CUT EDGE
+   August 26, 2026
+   ========================================================= */
+
+@media (min-width: 901px) {
+  /* Keep the section open so the page background stays continuous. */
+  .visual-story.ecosystem-story {
+    background: transparent !important;
+    background-image: none !important;
+    overflow: visible !important;
+  }
+
+  /* Visible crop is now tall enough for:
+     Overview + guide + 570px Company Landscape.
+     No internal scrolling is required. */
+  .ecosystem-company-frame,
+  .iframe-crop.ecosystem-company-frame {
+    width: 100% !important;
+    max-width: 100% !important;
+
+    height: 1035px !important;
+    min-height: 1035px !important;
+    max-height: 1035px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    overflow: hidden !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    isolation: auto !important;
+
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  /* Give Observable a taller viewport than its actual content.
+     The extra space lives below the visible crop, so Observable
+     never needs its own vertical scrollbar. */
+  .ecosystem-company-frame > iframe.atlas-iframe,
+  .iframe-crop.ecosystem-company-frame > iframe.atlas-iframe {
+    display: block !important;
+
+    width: 100% !important;
+    max-width: 100% !important;
+
+    height: 1125px !important;
+    min-height: 1125px !important;
+    max-height: 1125px !important;
+
+    margin: 0 !important;
+
+    background: transparent !important;
+    background-color: transparent !important;
+
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+
+    overflow: hidden !important;
+
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+  }
+
+  .ecosystem-company-frame::-webkit-scrollbar,
+  .iframe-crop.ecosystem-company-frame::-webkit-scrollbar,
+  .ecosystem-company-frame > iframe.atlas-iframe::-webkit-scrollbar,
+  .iframe-crop.ecosystem-company-frame > iframe.atlas-iframe::-webkit-scrollbar {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+  }
+
+  /* Prevent a hard visual seam at the end of Visual 1. */
+  .company-visual-shell,
+  .company-visual-shell .ecosystem-company-frame {
+    background: transparent !important;
+    background-color: transparent !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .ecosystem-company-frame,
+  .iframe-crop.ecosystem-company-frame {
+    height: 1120px !important;
+    min-height: 1120px !important;
+    max-height: 1120px !important;
+    overflow: hidden !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .ecosystem-company-frame > iframe.atlas-iframe,
+  .iframe-crop.ecosystem-company-frame > iframe.atlas-iframe {
+    height: 1210px !important;
+    min-height: 1210px !important;
+    max-height: 1210px !important;
+    width: 100% !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    overflow: hidden !important;
+  }
+}
+
