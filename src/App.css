@@ -4134,3 +4134,56 @@ body::-webkit-scrollbar,
     padding-bottom: 25px !important;
   }
 }
+
+
+/* =========================================================
+   INTRO LEGEND VISIBILITY FIX
+   Prevents the bottom of Observable intro legends / scroll cue
+   from being cropped by the external iframe frame.
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+  /* Compound: the previous 560px crop cuts the scroll cue. */
+  .compound-intro-frame {
+    height: 625px !important;
+    min-height: 625px !important;
+    max-height: 625px !important;
+    overflow: hidden !important;
+  }
+
+  /* Indications: keep the full legend + filter explanation visible. */
+  .indication-intro-frame {
+    height: 850px !important;
+    min-height: 850px !important;
+    max-height: 850px !important;
+    overflow: hidden !important;
+  }
+
+  /* Phases: keep the full legend / coloured-dot explanation visible. */
+  .phase-intro-frame {
+    height: 705px !important;
+    min-height: 705px !important;
+    max-height: 705px !important;
+    overflow: hidden !important;
+  }
+
+  /* Restore a clean handoff after the taller intro frames. */
+  .visual-story.compound-story,
+  .visual-story.indication-story {
+    padding-top: 0 !important;
+  }
+
+  .visual-story.phase-story {
+    margin-top: -10px !important;
+    padding-top: 0 !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .compound-intro-frame,
+  .indication-intro-frame,
+  .phase-intro-frame {
+    overflow: visible !important;
+  }
+}
