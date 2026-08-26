@@ -387,31 +387,57 @@ function SectionProgressNav() {
         id: "start",
         label: "Start",
         selector: ".hero-story",
-        symbol: "start"
+        symbol: "start",
+        group: "primary"
       },
       {
         id: "ecosystem",
         label: "Ecosystem & Companies",
         selector: ".ecosystem-story",
-        symbol: "ecosystem"
+        symbol: "ecosystem",
+        group: "primary"
       },
       {
         id: "compounds",
         label: "Compounds",
         selector: ".compound-intro-story",
-        symbol: "compounds"
+        symbol: "compounds",
+        group: "primary"
       },
       {
         id: "indications",
         label: "Indications",
         selector: ".indication-intro-story",
-        symbol: "indications"
+        symbol: "indications",
+        group: "primary"
       },
       {
         id: "phases",
         label: "Phases",
         selector: ".phase-intro-story",
-        symbol: "phases"
+        symbol: "phases",
+        group: "primary"
+      },
+      {
+        id: "methodology",
+        label: "Methodology",
+        selector: "#methodology",
+        symbol: "secondary",
+        group: "secondary"
+      },
+      {
+        id: "cite",
+        label: "Cite",
+        selector: "#cite",
+        symbol: "secondary",
+        group: "secondary"
+      },
+      {
+        id: "about",
+        label: "About",
+        selector: "#about",
+        symbol: "secondary",
+        group: "secondary"
       }
     ],
     []
@@ -422,33 +448,20 @@ function SectionProgressNav() {
   useEffect(() => {
     const updateActiveSection = () => {
       const viewportAnchor = window.innerHeight * 0.42;
-
       let currentSection = sections[0].id;
-      let closestDistance = Number.POSITIVE_INFINITY;
+      let bestTop = Number.NEGATIVE_INFINITY;
 
       sections.forEach((section) => {
         const element = document.querySelector(section.selector);
         if (!element) return;
 
         const rect = element.getBoundingClientRect();
-        const distance = Math.abs(rect.top - viewportAnchor);
 
-        if (rect.top <= viewportAnchor && distance < closestDistance) {
-          closestDistance = distance;
+        if (rect.top <= viewportAnchor && rect.top > bestTop) {
+          bestTop = rect.top;
           currentSection = section.id;
         }
       });
-
-      const lastSection = sections[sections.length - 1];
-      const lastElement = document.querySelector(lastSection.selector);
-
-      if (lastElement) {
-        const lastRect = lastElement.getBoundingClientRect();
-
-        if (lastRect.top <= window.innerHeight * 0.68) {
-          currentSection = lastSection.id;
-        }
-      }
 
       setActiveSection(currentSection);
     };
@@ -524,290 +537,63 @@ function SectionProgressNav() {
       );
     }
 
+    if (symbol === "phases") {
+      return (
+        <span
+          className="section-progress-nav-symbol section-progress-nav-symbol-phases"
+          aria-hidden="true"
+        >
+          I·IV
+        </span>
+      );
+    }
+
     return (
       <span
-        className="section-progress-nav-symbol section-progress-nav-symbol-phases"
+        className="section-progress-nav-symbol section-progress-nav-symbol-secondary"
         aria-hidden="true"
-      >
-        I·IV
-      </span>
+      />
     );
   };
 
+  const renderSection = (section) => {
+    const isActive = activeSection === section.id;
+
+    return (
+      <button
+        key={section.id}
+        type="button"
+        className={`section-progress-nav-item ${
+          isActive ? "section-progress-nav-item-active" : ""
+        }`}
+        onClick={() => handleSectionClick(section.selector)}
+        aria-current={isActive ? "true" : undefined}
+      >
+        {renderScientificSymbol(section.symbol)}
+        <span className="section-progress-nav-label">{section.label}</span>
+      </button>
+    );
+  };
+
+  const primarySections = sections.filter(
+    (section) => section.group === "primary"
+  );
+  const secondarySections = sections.filter(
+    (section) => section.group === "secondary"
+  );
+
   return (
-    <>
-      <style>
-        {`
-          .section-progress-nav {
-            position: fixed;
-            left: 28px;
-            top: 50%;
-            z-index: 65;
-            transform: translateY(-50%);
-            pointer-events: auto;
-            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-            color: #1d1d1f;
-          }
-
-          .section-progress-nav-inner {
-            position: relative;
-            display: grid;
-            gap: 14px;
-            padding: 12px 0;
-          }
-
-          .section-progress-nav-line {
-            position: absolute;
-            top: 25px;
-            bottom: 25px;
-            left: 13px;
-            width: 1px;
-            background: rgba(29, 29, 31, 0.12);
-          }
-
-          .section-progress-nav-item {
-            position: relative;
-            display: grid;
-            grid-template-columns: 28px auto;
-            align-items: center;
-            gap: 11px;
-            min-height: 34px;
-            border: 0;
-            padding: 0;
-            background: transparent;
-            color: rgba(29, 29, 31, 0.38);
-            cursor: pointer;
-            text-align: left;
-            transition:
-              color 180ms ease,
-              transform 180ms ease;
-          }
-
-          .section-progress-nav-item:hover {
-            color: rgba(29, 29, 31, 0.72);
-          }
-
-          .section-progress-nav-item::before {
-            content: "";
-            position: absolute;
-            left: -28px;
-            top: 50%;
-            width: 0;
-            height: 1px;
-            background: rgba(29, 29, 31, 0.82);
-            transform: translateY(-50%);
-            transition: width 180ms ease;
-          }
-
-          .section-progress-nav-symbol {
-            position: relative;
-            z-index: 2;
-            width: 26px;
-            height: 26px;
-            display: block;
-            flex: 0 0 26px;
-            background: #f1f0ec;
-            transition:
-              opacity 180ms ease,
-              transform 180ms ease;
-          }
-
-          .section-progress-nav-symbol-start {
-            width: 18px;
-            height: 18px;
-            margin-left: 4px;
-            border-radius: 999px;
-            border: 1.4px solid currentColor;
-            background: #f1f0ec;
-          }
-
-          .section-progress-nav-node {
-            position: absolute;
-            width: 6px;
-            height: 6px;
-            border-radius: 999px;
-            background: currentColor;
-          }
-
-          .section-progress-nav-symbol-ecosystem {
-            background: transparent;
-          }
-
-          .section-progress-nav-symbol-ecosystem .section-progress-nav-node-a {
-            left: 1px;
-            top: 10px;
-          }
-
-          .section-progress-nav-symbol-ecosystem .section-progress-nav-node-b {
-            left: 17px;
-            top: 3px;
-          }
-
-          .section-progress-nav-symbol-ecosystem .section-progress-nav-node-c {
-            left: 17px;
-            top: 17px;
-          }
-
-          .section-progress-nav-link {
-            position: absolute;
-            left: 6px;
-            width: 13px;
-            height: 1px;
-            background: currentColor;
-            transform-origin: left center;
-            opacity: 0.72;
-          }
-
-          .section-progress-nav-link-a {
-            top: 12px;
-            transform: rotate(-26deg);
-          }
-
-          .section-progress-nav-link-b {
-            top: 14px;
-            transform: rotate(26deg);
-          }
-
-          .section-progress-nav-symbol-compounds {
-            background: transparent;
-          }
-
-          .section-progress-nav-symbol-compounds .section-progress-nav-node-a {
-            left: 1px;
-            top: 10px;
-          }
-
-          .section-progress-nav-symbol-compounds .section-progress-nav-node-b {
-            left: 10px;
-            top: 3px;
-          }
-
-          .section-progress-nav-symbol-compounds .section-progress-nav-node-c {
-            left: 18px;
-            top: 16px;
-          }
-
-          .section-progress-nav-symbol-indications {
-            background: transparent;
-          }
-
-          .section-progress-nav-indication-ring {
-            position: absolute;
-            left: 4px;
-            top: 4px;
-            width: 18px;
-            height: 18px;
-            border-radius: 999px;
-            border: 1.4px solid currentColor;
-          }
-
-          .section-progress-nav-indication-core {
-            position: absolute;
-            left: 10px;
-            top: 10px;
-            width: 6px;
-            height: 6px;
-            border-radius: 999px;
-            background: currentColor;
-          }
-
-          .section-progress-nav-symbol-phases {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-            font-size: 8.5px;
-            line-height: 1;
-            font-weight: 850;
-            letter-spacing: -0.02em;
-            color: currentColor;
-          }
-
-          .section-progress-nav-label {
-            position: relative;
-            font-size: 13px;
-            line-height: 1;
-            letter-spacing: -0.02em;
-            font-weight: 560;
-            white-space: nowrap;
-            transition:
-              opacity 180ms ease,
-              font-weight 180ms ease,
-              transform 180ms ease;
-          }
-
-          .section-progress-nav-item-active {
-            color: #1d1d1f;
-            transform: translateX(2px);
-          }
-
-          .section-progress-nav-item-active::before {
-            width: 20px;
-          }
-
-          .section-progress-nav-item-active .section-progress-nav-symbol {
-            transform: scale(1.04);
-          }
-
-          .section-progress-nav-item-active .section-progress-nav-label {
-            font-size: 14px;
-            font-weight: 780;
-            letter-spacing: -0.035em;
-          }
-
-          @media (max-width: 1500px) {
-            .section-progress-nav {
-              left: 12px;
-              transform: translateY(-50%) scale(0.9);
-              transform-origin: left center;
-            }
-          }
-
-          @media (max-width: 1250px) {
-            .section-progress-nav {
-              left: 10px;
-              transform: translateY(-50%) scale(0.84);
-              transform-origin: left center;
-            }
-          }
-
-          @media (max-width: 920px) {
-            .section-progress-nav {
-              display: none;
-            }
-          }
-        `}
-      </style>
-
-      <nav className="section-progress-nav" aria-label="Page sections">
-        <div className="section-progress-nav-inner">
-          <div className="section-progress-nav-line" aria-hidden="true" />
-
-          {sections.map((section) => {
-            const isActive = activeSection === section.id;
-
-            return (
-              <button
-                key={section.id}
-                type="button"
-                className={`section-progress-nav-item ${
-                  isActive ? "section-progress-nav-item-active" : ""
-                }`}
-                onClick={() => handleSectionClick(section.selector)}
-                aria-current={isActive ? "true" : undefined}
-              >
-                {renderScientificSymbol(section.symbol)}
-
-                <span className="section-progress-nav-label">
-                  {section.label}
-                </span>
-              </button>
-            );
-          })}
+    <nav className="section-progress-nav" aria-label="Page sections">
+      <div className="section-progress-nav-inner">
+        <div className="section-progress-nav-primary">
+          {primarySections.map(renderSection)}
         </div>
-      </nav>
-    </>
+
+        <div className="section-progress-nav-secondary">
+          {secondarySections.map(renderSection)}
+        </div>
+      </div>
+    </nav>
   );
 }
 
