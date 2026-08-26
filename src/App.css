@@ -4189,39 +4189,31 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   CONTINUOUS PAGE BACKGROUND FIX — AUGUST 26, 2026
-   Removes the white middle band between the hero and Visual 1.
-   The page gradient remains owned by html/body/#root.
+   ECOSYSTEM / COMPANY BACKGROUND FIX — REFINED
+   Keep the global page gradient continuous.
+   Preserve the intended glass/card treatment elsewhere.
+   Only remove the local white fill that creates the middle band.
    ========================================================= */
 
-.site,
-.story-section,
-.visual-story,
-.ecosystem-story,
-.company-story,
-.compound-story,
-.indication-story,
-.phase-story,
-.visual-story.ecosystem-story,
-.visual-story.company-story,
-.visual-story.compound-story,
-.visual-story.indication-story,
-.visual-story.phase-story {
+/* Keep the story section itself transparent so the global page gradient shows through. */
+.visual-story.ecosystem-story {
   background: transparent !important;
+  background-image: none !important;
 }
 
-/* Visual 1 is an open layout. Do not add a second white/glass surface. */
+/* The combined Visual 1 frame should be open, not a separate white/glass card. */
 .ecosystem-company-frame,
-.iframe-crop.ecosystem-company-frame,
-.company-visual-shell .ecosystem-company-frame {
+.iframe-crop.ecosystem-company-frame {
   background: transparent !important;
   border: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
   backdrop-filter: none !important;
   -webkit-backdrop-filter: none !important;
   isolation: auto !important;
 }
 
+/* Remove pseudo-layers that can create a pale panel over the page gradient. */
 .ecosystem-company-frame::before,
 .ecosystem-company-frame::after,
 .iframe-crop.ecosystem-company-frame::before,
@@ -4230,15 +4222,16 @@ body::-webkit-scrollbar,
   display: none !important;
 }
 
+/* Keep the embedded Observable surface transparent. */
 .ecosystem-company-frame > iframe.atlas-iframe {
   background: transparent !important;
   border: 0 !important;
+  border-radius: 0 !important;
   box-shadow: none !important;
 }
 
-/* Prevent a local section fill from covering the global gradient. */
-.visual-story.ecosystem-story {
-  background-color: transparent !important;
-  background-image: none !important;
+/* Preserve spacing and geometry. Do not alter widths, heights or positioning here. */
+.company-visual-shell .ecosystem-company-frame {
+  background: transparent !important;
 }
 
