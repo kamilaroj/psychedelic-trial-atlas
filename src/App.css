@@ -882,7 +882,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* COMPARE BUTTON â€” CENTERED OUTSIDE PRIMARY PANEL */
+/* COMPARE BUTTON Ã¢â‚¬â€ CENTERED OUTSIDE PRIMARY PANEL */
 .company-external-panel-compare-button {
   position: absolute !important;
   top: 50% !important;
@@ -2324,12 +2324,12 @@ a:focus-visible {
 }
 
 /* =========================================================
-   STAGE 1 â€” DESKTOP / LAPTOP RESPONSIVE FIX
+   STAGE 1 Ã¢â‚¬â€ DESKTOP / LAPTOP RESPONSIVE FIX
    Goal: keep Company Landscape + 2 compare panels visible
    on 1440 / 1366 / 1280 / 1180 laptop widths.
    ========================================================= */
 
-/* Large laptops: 1366â€“1500px */
+/* Large laptops: 1366Ã¢â‚¬â€œ1500px */
 @media (max-width: 1500px) and (min-width: 1321px) {
   :root {
     --left-nav-safe-space: 108px;
@@ -2364,7 +2364,7 @@ a:focus-visible {
   }
 }
 
-/* Standard laptops: 1280â€“1320px */
+/* Standard laptops: 1280Ã¢â‚¬â€œ1320px */
 @media (max-width: 1320px) and (min-width: 1181px) {
   :root {
     --left-nav-safe-space: 92px;
@@ -2455,7 +2455,7 @@ a:focus-visible {
   }
 }
 
-/* Small laptops: 901â€“1180px */
+/* Small laptops: 901Ã¢â‚¬â€œ1180px */
 @media (max-width: 1180px) and (min-width: 901px) {
   :root {
     --left-nav-safe-space: 82px;
@@ -2727,7 +2727,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   FINAL DESIGN REFINEMENT â€” AUGUST 24, 2026
+   FINAL DESIGN REFINEMENT Ã¢â‚¬â€ AUGUST 24, 2026
    User-requested visual cleanup:
    - stronger dark-plum editorial typography
    - Compound intro integrated like Indication intro
@@ -2974,7 +2974,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   COMPOUND ACTIVITY LANDSCAPE â€” OPTION A
+   COMPOUND ACTIVITY LANDSCAPE Ã¢â‚¬â€ OPTION A
    OPEN LAYOUT / NO OUTER CARD
    ========================================================= */
 
@@ -3035,7 +3035,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   VISUAL 1 â€” NO INNER SCROLL / FULL CONTENT HEIGHT
+   VISUAL 1 Ã¢â‚¬â€ NO INNER SCROLL / FULL CONTENT HEIGHT
    FINAL OVERRIDE
    ========================================================= */
 
@@ -3108,7 +3108,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   COMPOUND TRANSITION â†’ CHART
+   COMPOUND TRANSITION Ã¢â€ â€™ CHART
    TIGHTER VERTICAL RHYTHM
    Keeps the intro intact and brings the chart directly below it.
    ========================================================= */
@@ -3160,7 +3160,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   FINAL â€” HIDE ALL VISIBLE SCROLLBARS
+   FINAL Ã¢â‚¬â€ HIDE ALL VISIBLE SCROLLBARS
    Scrolling still works with mouse wheel / trackpad.
    Inner Observable frames are made tall enough so they do not
    generate their own visible vertical bars.
@@ -3365,7 +3365,7 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   INDICATION LANDSCAPE â€” FINAL OPEN / COMPACT LAYOUT
+   INDICATION LANDSCAPE Ã¢â‚¬â€ FINAL OPEN / COMPACT LAYOUT
    Matches Compound visualization:
    - no duplicated HTML title/subtitle
    - no outer card/frame
@@ -3486,7 +3486,7 @@ body::-webkit-scrollbar,
 
 
 /* =========================================================
-   CLINICAL PHASE LANDSCAPE â€” FINAL OPEN LAYOUT
+   CLINICAL PHASE LANDSCAPE Ã¢â‚¬â€ FINAL OPEN LAYOUT
    Matches Compound + Indication:
    - no duplicated HTML title/subtitle
    - no outer glass card
@@ -3594,7 +3594,7 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   SECTION PROGRESS NAV â€” OPTION A
+   SECTION PROGRESS NAV Ã¢â‚¬â€ OPTION A
    New left-side scientific navigation only.
    ========================================================= */
 
@@ -3833,7 +3833,7 @@ body::-webkit-scrollbar,
 
 
 /* =========================================================
-   FINAL SPACING POLISH â€” AUGUST 26, 2026
+   FINAL SPACING POLISH Ã¢â‚¬â€ AUGUST 26, 2026
    Scope: spacing only.
    Keeps all existing visual, menu, typography and iframe rules.
    ========================================================= */
@@ -3903,7 +3903,7 @@ body::-webkit-scrollbar,
 
 
 /* =========================================================
-   PHASE INTRO â†’ PHASE CHART â€” EXACT GAP FIX
+   PHASE INTRO Ã¢â€ â€™ PHASE CHART Ã¢â‚¬â€ EXACT GAP FIX
    The large gap was caused by the fixed 845px intro wrapper,
    not by the Phase chart margin itself.
    Desktop only. Compound and Indication remain unchanged.
@@ -3970,5 +3970,167 @@ body::-webkit-scrollbar,
   .visual-story.phase-story {
     margin-top: -8px !important;
     padding-top: 8px !important;
+  }
+}
+
+
+/* =========================================================
+   FINAL GLOBAL VERTICAL RHYTHM POLISH â€” AUGUST 26, 2026
+   Scope:
+   - page-level spacing only
+   - keeps all Observable geometry, typography, colors, menu,
+     chart logic and iframe scaling intact
+   ========================================================= */
+
+@media (min-width: 901px) {
+
+  /* -------------------------------------------------------
+     1. TOP ANALYTICAL AREA
+     Keep Ecosystem / Company substantial, but slightly tighter.
+     ------------------------------------------------------- */
+
+  .visual-story.ecosystem-story {
+    padding-top: 36px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .visual-story.company-story {
+    padding-top: 42px !important;
+    padding-bottom: 48px !important;
+  }
+
+  /* -------------------------------------------------------
+     2. INTRO SECTIONS
+     All three analytical intros use one consistent rhythm.
+     ------------------------------------------------------- */
+
+  .visual-story.compound-intro-story,
+  .visual-story.indication-intro-story,
+  .visual-story.phase-intro-story {
+    padding-top: 30px !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* -------------------------------------------------------
+     3. INTRO â†’ VISUAL HANDOFF
+     Same visual relationship for Compound / Indication / Phase.
+     ------------------------------------------------------- */
+
+  .visual-story.compound-story,
+  .visual-story.indication-story {
+    padding-top: 10px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .visual-story.phase-story {
+    padding-top: 0 !important;
+    padding-bottom: 38px !important;
+    margin-top: -26px !important;
+  }
+
+  /* -------------------------------------------------------
+     4. INTRO FRAME HEIGHTS
+     Crop only unused whitespace below Observable intros.
+     ------------------------------------------------------- */
+
+  .compound-intro-frame {
+    height: 560px !important;
+    min-height: 560px !important;
+    max-height: 560px !important;
+  }
+
+  .indication-intro-frame {
+    height: 790px !important;
+    min-height: 790px !important;
+    max-height: 790px !important;
+  }
+
+  .phase-intro-frame {
+    height: 640px !important;
+    min-height: 640px !important;
+    max-height: 640px !important;
+  }
+
+  /* Keep the existing embedded Observable documents tall.
+     Only the external visible crop changes. */
+
+  .compound-intro-frame > iframe.atlas-iframe {
+    height: 980px !important;
+    min-height: 980px !important;
+    max-height: 980px !important;
+  }
+
+  .indication-intro-frame > iframe.atlas-iframe {
+    height: 1280px !important;
+    min-height: 1280px !important;
+    max-height: 1280px !important;
+  }
+
+  .phase-intro-frame > iframe.atlas-iframe {
+    width: 106.472081% !important;
+    max-width: none !important;
+    height: 1006.15625px !important;
+    min-height: 1006.15625px !important;
+    max-height: 1006.15625px !important;
+    margin: 0 0 0 -3.23604% !important;
+    transform: scale(0.939218) !important;
+    transform-origin: top center !important;
+  }
+
+  /* -------------------------------------------------------
+     5. END OF ANALYTICAL STORY
+     Tighten transition into Methodology / Cite / About.
+     ------------------------------------------------------- */
+
+  .visual-story.phase-story + .atlas-information-section,
+  .atlas-information-section.atlas-information-compact:first-of-type {
+    margin-top: 4px !important;
+  }
+
+  .atlas-information-section.atlas-information-compact {
+    padding-top: 25px !important;
+    padding-bottom: 27px !important;
+  }
+}
+
+/* =========================================================
+   TABLET / MOBILE RHYTHM
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .visual-story.ecosystem-story,
+  .visual-story.company-story {
+    padding-top: 38px !important;
+    padding-bottom: 42px !important;
+  }
+
+  .visual-story.compound-intro-story,
+  .visual-story.indication-intro-story,
+  .visual-story.phase-intro-story {
+    padding-top: 26px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-story.compound-story,
+  .visual-story.indication-story {
+    padding-top: 12px !important;
+    padding-bottom: 38px !important;
+  }
+
+  .visual-story.phase-story {
+    padding-top: 4px !important;
+    padding-bottom: 38px !important;
+    margin-top: -8px !important;
+  }
+
+  .visual-story.phase-story + .atlas-information-section,
+  .atlas-information-section.atlas-information-compact:first-of-type {
+    margin-top: 4px !important;
+  }
+
+  .atlas-information-section.atlas-information-compact {
+    padding-top: 23px !important;
+    padding-bottom: 25px !important;
   }
 }
