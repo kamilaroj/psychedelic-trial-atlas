@@ -3943,3 +3943,32 @@ body::-webkit-scrollbar,
     padding-bottom: 40px !important;
   }
 }
+
+
+/* =========================================================
+   FINAL PHASE SPACING POLISH
+   Keeps all previous styling intact.
+   Only tightens the handoff from Final Layer intro to Phase chart.
+   ========================================================= */
+
+@media (min-width: 901px) {
+  .phase-intro-frame {
+    height: 650px !important;
+    min-height: 650px !important;
+    max-height: 650px !important;
+    overflow: hidden !important;
+  }
+
+  .visual-story.phase-story {
+    margin-top: -35px !important;
+    padding-top: 0 !important;
+    padding-bottom: 40px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-story.phase-story {
+    margin-top: -8px !important;
+    padding-top: 8px !important;
+  }
+}
