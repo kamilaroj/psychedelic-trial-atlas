@@ -882,7 +882,7 @@ body {
   text-overflow: ellipsis;
 }
 
-/* COMPARE BUTTON Ã¢â‚¬â€ CENTERED OUTSIDE PRIMARY PANEL */
+/* COMPARE BUTTON ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â CENTERED OUTSIDE PRIMARY PANEL */
 .company-external-panel-compare-button {
   position: absolute !important;
   top: 50% !important;
@@ -2324,12 +2324,12 @@ a:focus-visible {
 }
 
 /* =========================================================
-   STAGE 1 Ã¢â‚¬â€ DESKTOP / LAPTOP RESPONSIVE FIX
+   STAGE 1 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â DESKTOP / LAPTOP RESPONSIVE FIX
    Goal: keep Company Landscape + 2 compare panels visible
    on 1440 / 1366 / 1280 / 1180 laptop widths.
    ========================================================= */
 
-/* Large laptops: 1366Ã¢â‚¬â€œ1500px */
+/* Large laptops: 1366ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1500px */
 @media (max-width: 1500px) and (min-width: 1321px) {
   :root {
     --left-nav-safe-space: 108px;
@@ -2364,7 +2364,7 @@ a:focus-visible {
   }
 }
 
-/* Standard laptops: 1280Ã¢â‚¬â€œ1320px */
+/* Standard laptops: 1280ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1320px */
 @media (max-width: 1320px) and (min-width: 1181px) {
   :root {
     --left-nav-safe-space: 92px;
@@ -2455,7 +2455,7 @@ a:focus-visible {
   }
 }
 
-/* Small laptops: 901Ã¢â‚¬â€œ1180px */
+/* Small laptops: 901ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Å“1180px */
 @media (max-width: 1180px) and (min-width: 901px) {
   :root {
     --left-nav-safe-space: 82px;
@@ -2727,7 +2727,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   FINAL DESIGN REFINEMENT Ã¢â‚¬â€ AUGUST 24, 2026
+   FINAL DESIGN REFINEMENT ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â AUGUST 24, 2026
    User-requested visual cleanup:
    - stronger dark-plum editorial typography
    - Compound intro integrated like Indication intro
@@ -2974,7 +2974,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   COMPOUND ACTIVITY LANDSCAPE Ã¢â‚¬â€ OPTION A
+   COMPOUND ACTIVITY LANDSCAPE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â OPTION A
    OPEN LAYOUT / NO OUTER CARD
    ========================================================= */
 
@@ -3035,7 +3035,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   VISUAL 1 Ã¢â‚¬â€ NO INNER SCROLL / FULL CONTENT HEIGHT
+   VISUAL 1 ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â NO INNER SCROLL / FULL CONTENT HEIGHT
    FINAL OVERRIDE
    ========================================================= */
 
@@ -3108,7 +3108,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   COMPOUND TRANSITION Ã¢â€ â€™ CHART
+   COMPOUND TRANSITION ÃƒÂ¢Ã¢â‚¬ Ã¢â‚¬â„¢ CHART
    TIGHTER VERTICAL RHYTHM
    Keeps the intro intact and brings the chart directly below it.
    ========================================================= */
@@ -3160,7 +3160,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   FINAL Ã¢â‚¬â€ HIDE ALL VISIBLE SCROLLBARS
+   FINAL ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â HIDE ALL VISIBLE SCROLLBARS
    Scrolling still works with mouse wheel / trackpad.
    Inner Observable frames are made tall enough so they do not
    generate their own visible vertical bars.
@@ -3365,7 +3365,7 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   INDICATION LANDSCAPE Ã¢â‚¬â€ FINAL OPEN / COMPACT LAYOUT
+   INDICATION LANDSCAPE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FINAL OPEN / COMPACT LAYOUT
    Matches Compound visualization:
    - no duplicated HTML title/subtitle
    - no outer card/frame
@@ -3486,7 +3486,7 @@ body::-webkit-scrollbar,
 
 
 /* =========================================================
-   CLINICAL PHASE LANDSCAPE Ã¢â‚¬â€ FINAL OPEN LAYOUT
+   CLINICAL PHASE LANDSCAPE ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â FINAL OPEN LAYOUT
    Matches Compound + Indication:
    - no duplicated HTML title/subtitle
    - no outer glass card
@@ -3594,7 +3594,7 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   SECTION PROGRESS NAV Ã¢â‚¬â€ OPTION A
+   SECTION PROGRESS NAV ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â OPTION A
    New left-side scientific navigation only.
    ========================================================= */
 
@@ -3833,7 +3833,7 @@ body::-webkit-scrollbar,
 
 
 /* =========================================================
-   FINAL SPACING POLISH Ã¢â‚¬â€ AUGUST 26, 2026
+   FINAL SPACING POLISH ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â AUGUST 26, 2026
    Scope: spacing only.
    Keeps all existing visual, menu, typography and iframe rules.
    ========================================================= */
@@ -3903,7 +3903,7 @@ body::-webkit-scrollbar,
 
 
 /* =========================================================
-   PHASE INTRO Ã¢â€ â€™ PHASE CHART Ã¢â‚¬â€ EXACT GAP FIX
+   PHASE INTRO ÃƒÂ¢Ã¢â‚¬ Ã¢â‚¬â„¢ PHASE CHART ÃƒÂ¢Ã¢â€šÂ¬Ã¢â‚¬Â EXACT GAP FIX
    The large gap was caused by the fixed 845px intro wrapper,
    not by the Phase chart margin itself.
    Desktop only. Compound and Indication remain unchanged.
@@ -3975,7 +3975,7 @@ body::-webkit-scrollbar,
 
 
 /* =========================================================
-   FINAL GLOBAL VERTICAL RHYTHM POLISH â€” AUGUST 26, 2026
+   FINAL GLOBAL VERTICAL RHYTHM POLISH Ã¢â‚¬â€ AUGUST 26, 2026
    Scope:
    - page-level spacing only
    - keeps all Observable geometry, typography, colors, menu,
@@ -4012,7 +4012,7 @@ body::-webkit-scrollbar,
   }
 
   /* -------------------------------------------------------
-     3. INTRO â†’ VISUAL HANDOFF
+     3. INTRO Ã¢â€ â€™ VISUAL HANDOFF
      Same visual relationship for Compound / Indication / Phase.
      ------------------------------------------------------- */
 
@@ -4189,7 +4189,7 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   ECOSYSTEM / COMPANY BACKGROUND FIX — REFINED
+   ECOSYSTEM / COMPANY BACKGROUND FIX â€” REFINED
    Keep the global page gradient continuous.
    Preserve the intended glass/card treatment elsewhere.
    Only remove the local white fill that creates the middle band.
@@ -4236,7 +4236,7 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   COMPANY DETAILS PANELS — FINAL POSITION POLISH
+   COMPANY DETAILS PANELS â€” FINAL POSITION POLISH
    - closer to the company constellation
    - slightly lower
    - compare mode fits the viewport better
@@ -4344,7 +4344,7 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
-   VISUAL 1 — FINAL IFRAME HEIGHT / NO INNER SCROLL / NO CUT EDGE
+   VISUAL 1 â€” FINAL IFRAME HEIGHT / NO INNER SCROLL / NO CUT EDGE
    August 26, 2026
    ========================================================= */
 
@@ -4458,3 +4458,137 @@ body::-webkit-scrollbar,
   }
 }
 
+/* =========================================================
+   FINAL GLOBAL VERTICAL RHYTHM â€” 2026-08-26
+   One authoritative spacing layer.
+   Does not change typography, legends, animation or visual logic.
+   ========================================================= */
+
+@media (min-width: 901px) {
+  /* Remove generic section spacing from the visual sequence. */
+  .visual-story {
+    box-sizing: border-box !important;
+  }
+
+  /* HERO -> ECOSYSTEM */
+  .visual-story.ecosystem-story {
+    padding-top: 54px !important;
+    padding-bottom: 42px !important;
+  }
+
+  /* ECOSYSTEM -> COMPOUND INTRO */
+  .visual-story.compound-intro-story {
+    padding-top: 34px !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* COMPOUND INTRO -> COMPOUND CHART */
+  .visual-story.compound-story {
+    padding-top: 10px !important;
+    padding-bottom: 72px !important;
+  }
+
+  /* COMPOUND -> INDICATION INTRO */
+  .visual-story.indication-intro-story {
+    padding-top: 44px !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* INDICATION INTRO -> INDICATION CHART */
+  .visual-story.indication-story {
+    min-height: 0 !important;
+    padding-top: 12px !important;
+    padding-bottom: 72px !important;
+  }
+
+  /* INDICATION -> PHASE INTRO */
+  .visual-story.phase-intro-story {
+    padding-top: 44px !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* PHASE INTRO -> PHASE CHART */
+  .visual-story.phase-story {
+    padding-top: 12px !important;
+    padding-bottom: 86px !important;
+  }
+
+  /* Keep the HTML chart headings close to their charts. */
+  .indication-story > .atlas-section-intro,
+  .phase-story > .atlas-section-intro {
+    margin-top: 0 !important;
+    margin-bottom: 22px !important;
+  }
+
+  /* No accidental margins around iframe wrappers. */
+  .ecosystem-company-frame,
+  .compound-intro-frame,
+  .compound-frame,
+  .indication-intro-frame,
+  .indication-frame,
+  .phase-intro-frame,
+  .phase-frame {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  /* Information/footer area becomes one calm editorial block. */
+  .phase-story + .atlas-information-section {
+    margin-top: 0 !important;
+    padding-top: 76px !important;
+  }
+
+  .atlas-information-section {
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .atlas-information-section + .atlas-information-section {
+    padding-top: 54px !important;
+  }
+
+  .atlas-contact-section {
+    padding-bottom: 92px !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .visual-story.ecosystem-story {
+    padding-top: 34px !important;
+    padding-bottom: 30px !important;
+  }
+
+  .visual-story.compound-intro-story,
+  .visual-story.indication-intro-story,
+  .visual-story.phase-intro-story {
+    padding-top: 30px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-story.compound-story,
+  .visual-story.indication-story,
+  .visual-story.phase-story {
+    min-height: 0 !important;
+    padding-top: 10px !important;
+    padding-bottom: 48px !important;
+  }
+
+  .indication-story > .atlas-section-intro,
+  .phase-story > .atlas-section-intro {
+    margin-top: 0 !important;
+    margin-bottom: 18px !important;
+  }
+
+  .phase-story + .atlas-information-section {
+    margin-top: 0 !important;
+    padding-top: 54px !important;
+  }
+
+  .atlas-information-section + .atlas-information-section {
+    padding-top: 42px !important;
+  }
+
+  .atlas-contact-section {
+    padding-bottom: 64px !important;
+  }
+}
