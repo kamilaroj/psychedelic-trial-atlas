@@ -3831,3 +3831,92 @@ body::-webkit-scrollbar,
   }
 }
 
+
+/* =========================================================
+   FINAL SPACING POLISH — AUGUST 26, 2026
+   Scope: spacing only.
+   No typography, menu, Observable logic, colors or chart geometry changed.
+   ========================================================= */
+
+/* Global rhythm for analytical sections */
+@media (min-width: 901px) {
+
+  /* Ecosystem: slightly lighter vertical footprint */
+  .visual-story.ecosystem-story {
+    padding-top: 40px !important;
+    padding-bottom: 46px !important;
+  }
+
+  /* Compound: keep the strongest current rhythm */
+  .visual-story.compound-intro-story {
+    padding-top: 34px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-story.compound-story {
+    padding-top: 12px !important;
+    padding-bottom: 46px !important;
+  }
+
+  /* Indications: tighten intro → chart connection */
+  .visual-story.indication-intro-story {
+    padding-top: 34px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-story.indication-story {
+    padding-top: 12px !important;
+    padding-bottom: 46px !important;
+  }
+
+  /* Phases: same rhythm as Compound + Indications */
+  .visual-story.phase-intro-story {
+    padding-top: 34px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-story.phase-story {
+    padding-top: 12px !important;
+    padding-bottom: 46px !important;
+  }
+
+  /* Reduce dead space before methodology */
+  .visual-story.phase-story + .atlas-information-section {
+    margin-top: 10px !important;
+  }
+
+  .atlas-information-section.atlas-information-compact:first-of-type {
+    margin-top: 10px !important;
+  }
+}
+
+/* Keep mobile comfortable but still tighter and consistent */
+@media (max-width: 900px) {
+
+  .visual-story.ecosystem-story {
+    padding-top: 36px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .visual-story.compound-intro-story,
+  .visual-story.indication-intro-story,
+  .visual-story.phase-intro-story {
+    padding-top: 28px !important;
+    padding-bottom: 0 !important;
+  }
+
+  .visual-story.compound-story,
+  .visual-story.indication-story,
+  .visual-story.phase-story {
+    padding-top: 14px !important;
+    padding-bottom: 40px !important;
+  }
+
+  .visual-story.phase-story + .atlas-information-section {
+    margin-top: 8px !important;
+  }
+
+  .atlas-information-section.atlas-information-compact:first-of-type {
+    margin-top: 8px !important;
+  }
+}
