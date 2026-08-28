@@ -61,6 +61,55 @@
 }
 
 /* ---------------------------------------------------------
+   FINAL SCROLLBAR CONTAINMENT
+   Keep normal page scrolling, but never expose frame scrollbars.
+   --------------------------------------------------------- */
+html,
+body,
+#root {
+  overflow-x: clip !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+html::-webkit-scrollbar,
+body::-webkit-scrollbar,
+#root::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.iframe-crop,
+.compound-intro-frame,
+.indication-intro-frame,
+.phase-intro-frame,
+.iframe-crop.compound-intro-frame,
+.iframe-crop.indication-intro-frame,
+.iframe-crop.phase-intro-frame {
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.iframe-crop::-webkit-scrollbar,
+.iframe-crop > iframe.atlas-iframe::-webkit-scrollbar,
+.compound-intro-frame::-webkit-scrollbar,
+.indication-intro-frame::-webkit-scrollbar,
+.phase-intro-frame::-webkit-scrollbar {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+.iframe-crop > iframe.atlas-iframe {
+  display: block !important;
+  overflow: hidden !important;
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+/* ---------------------------------------------------------
    ATLAS CLOSING
    Clear ending hierarchy: method, citation, portfolio, contact.
    --------------------------------------------------------- */
