@@ -60,6 +60,198 @@
   --ecosystem-footer-crop: 70px;
 }
 
+/* ---------------------------------------------------------
+   ATLAS CLOSING
+   Clear ending hierarchy: method, citation, portfolio, contact.
+   --------------------------------------------------------- */
+.atlas-closing {
+  width: min(760px, calc(100vw - var(--page-pad-left) - var(--page-pad-right)));
+  margin: 4px auto clamp(72px, 9vh, 116px);
+  color: var(--atlas-plum);
+}
+
+.atlas-closing > section {
+  padding: clamp(34px, 4.5vw, 52px) 0;
+  border-top: 1px solid rgba(97, 78, 119, 0.22);
+}
+
+.atlas-closing .atlas-eyebrow {
+  margin: 0 0 7px;
+  color: rgba(56, 36, 61, 0.66);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.atlas-closing h2 {
+  max-width: 650px;
+  margin: 0 0 14px;
+  color: var(--atlas-plum);
+  font-family: "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
+  font-size: clamp(28px, 3vw, 39px);
+  font-weight: 850;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+}
+
+.atlas-closing p {
+  max-width: 650px;
+  margin: 0;
+  color: var(--atlas-copy);
+  font-size: 13px;
+  line-height: 1.48;
+}
+
+.atlas-method-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(220px, 0.8fr);
+  gap: clamp(32px, 6vw, 74px);
+  align-items: start;
+}
+
+.atlas-method-copy {
+  display: grid;
+  gap: 12px;
+}
+
+.atlas-method-principles {
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid rgba(97, 78, 119, 0.28);
+  list-style: none;
+}
+
+.atlas-method-principles li {
+  position: relative;
+  padding: 11px 0 11px 21px;
+  border-bottom: 1px solid rgba(97, 78, 119, 0.20);
+  color: var(--atlas-copy);
+  font-size: 12.5px;
+  font-weight: 640;
+  line-height: 1.2;
+}
+
+.atlas-method-principles li::before {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border: 1px solid rgba(56, 36, 61, 0.6);
+  border-radius: 50%;
+  content: "";
+  transform: translateY(-50%);
+}
+
+.atlas-citation-panel {
+  display: flex;
+  align-items: center;
+  min-height: 56px;
+  box-sizing: border-box;
+  padding: 15px 18px;
+  background: var(--atlas-plum);
+}
+
+.atlas-citation-panel p {
+  max-width: none;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: 12.5px;
+  font-weight: 560;
+  line-height: 1.35;
+}
+
+.atlas-citation-note {
+  margin-top: 10px !important;
+  color: rgba(56, 36, 61, 0.68) !important;
+  font-size: 12px !important;
+}
+
+.atlas-closing-about .atlas-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 10px;
+  margin-top: 15px;
+  color: var(--atlas-plum);
+  font-size: 12px;
+  font-weight: 760;
+}
+
+.atlas-closing-about .atlas-skills span {
+  color: #a99ac7;
+}
+
+.atlas-closing-contact {
+  margin-top: 6px;
+  padding: clamp(30px, 4vw, 42px) !important;
+  border: 0 !important;
+  background: var(--atlas-plum);
+}
+
+.atlas-closing-contact .atlas-eyebrow,
+.atlas-closing-contact h2,
+.atlas-closing-contact p {
+  color: rgba(255, 255, 255, 0.96);
+}
+
+.atlas-closing-contact .atlas-eyebrow {
+  color: rgba(255, 255, 255, 0.66);
+}
+
+.atlas-closing-contact .atlas-contact-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  box-sizing: border-box;
+  margin-top: 17px;
+  padding: 0 13px;
+  border: 1px solid rgba(255, 255, 255, 0.82);
+  color: #ffffff !important;
+  font-size: 14px;
+  font-weight: 740;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.atlas-closing-contact .atlas-contact-link:hover,
+.atlas-closing-contact .atlas-contact-link:focus-visible {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--atlas-plum) !important;
+}
+
+@media (max-width: 700px) {
+  .atlas-closing {
+    width: calc(100% - 32px);
+    margin-top: 0;
+  }
+
+  .atlas-closing > section {
+    padding: 31px 0;
+  }
+
+  .atlas-closing h2 {
+    font-size: 28px;
+  }
+
+  .atlas-method-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .atlas-method-principles {
+    border-left: 0;
+  }
+
+  .atlas-closing-contact {
+    margin-top: 4px;
+    padding: 28px !important;
+  }
+}
+
 html {
   scroll-behavior: smooth;
 }
