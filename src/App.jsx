@@ -1635,58 +1635,59 @@ export default function App() {
         />
       </section>
 
-      <section className="atlas-information-section atlas-information-compact" id="methodology" aria-labelledby="methodology-title">
-        <p className="atlas-eyebrow">Methodology</p>
-        <h2 id="methodology-title">How the Atlas is built</h2>
-        <p>
-          The Atlas structures public registered clinical-trial records and
-          selected company pipeline context. Trial records show what is
-          publicly registered. Pipeline context provides visibility context and
-          is not clinical evidence.
-        </p>
-        <p>
-          Public data can be incomplete, delayed, duplicated or structured
-          inconsistently. Recruitment status and trial details may change and
-          should be checked against the original record.
-        </p>
-      </section>
+      <section className="atlas-closing" aria-label="Atlas information">
+        <section className="atlas-closing-method" id="methodology" aria-labelledby="methodology-title">
+          <div className="atlas-closing-heading">
+            <p className="atlas-eyebrow">Method / data basis</p>
+            <h2 id="methodology-title">How the Atlas is built</h2>
+          </div>
+          <div className="atlas-method-grid">
+            <div className="atlas-method-copy">
+              <p>
+                The Atlas structures public registered clinical-trial records and selected company pipeline context. Trial records show what is publicly registered. Pipeline context provides visibility context and is not clinical evidence.
+              </p>
+              <p>
+                Public data can be incomplete, delayed, duplicated or structured inconsistently. Recruitment status and trial details may change and should be checked against the original record.
+              </p>
+            </div>
+            <ul className="atlas-method-principles" aria-label="Data principles">
+              <li>Public records</li>
+              <li>Selected pipeline context</li>
+              <li>Versioned dataset</li>
+            </ul>
+          </div>
+        </section>
 
-      <section className="atlas-information-section atlas-information-compact" id="cite" aria-labelledby="cite-title">
-        <p className="atlas-eyebrow">Citation</p>
-        <h2 id="cite-title">Cite this project</h2>
-        <p className="atlas-citation">
-          Rojek, Kamila. <em>Psychedelic Trial Atlas</em>. Interactive
-          public-source data analysis. Site version {ATLAS_VERSION}.
-        </p>
-        <p>
-          When referring to a specific view, include its URL and the date you
-          accessed it.
-        </p>
-      </section>
+        <section className="atlas-closing-citation" id="cite" aria-labelledby="cite-title">
+          <p className="atlas-eyebrow">Citation</p>
+          <h2 id="cite-title">Cite this project</h2>
+          <div className="atlas-citation-panel">
+            <p>
+              Rojek, Kamila. <em>Psychedelic Trial Atlas</em>. Interactive public-source data analysis. Site version {ATLAS_VERSION}.
+            </p>
+          </div>
+          <p className="atlas-citation-note">
+            When referring to a specific view, include its URL and the date you accessed it.
+          </p>
+        </section>
 
-      <section className="atlas-information-section atlas-information-compact" id="about" aria-labelledby="about-title">
-        <p className="atlas-eyebrow">About</p>
-        <h2 id="about-title">Data analysis for complex public-source healthcare data</h2>
-        <p>
-          The project combines data cleaning, data modelling, methodology
-          design, data quality review, clinical-trial data analysis and
-          interactive visualization.
-        </p>
-        <p className="atlas-skills">
-          Observable · React · SQL · Python · Power BI
-        </p>
-      </section>
+        <section className="atlas-closing-about" id="about" aria-labelledby="about-title">
+          <p className="atlas-eyebrow">About the maker</p>
+          <h2 id="about-title">Built as a data-intelligence portfolio</h2>
+          <p>
+            The project combines data cleaning, data modelling, methodology design, data quality review, clinical-trial data analysis and interactive visualization.
+          </p>
+          <p className="atlas-skills">Observable <span>•</span> React <span>•</span> SQL <span>•</span> Python <span>•</span> Power BI</p>
+        </section>
 
-      <section className="atlas-information-section atlas-information-compact atlas-contact-section" id="contact" aria-labelledby="contact-title">
-        <p className="atlas-eyebrow">Contact</p>
-        <h2 id="contact-title">Work with me</h2>
-        <p>
-          Available for data analytics, research intelligence and visualization
-          opportunities.
-        </p>
-        <a className="atlas-contact-link" href={`mailto:${CONTACT_EMAIL}`}>
-          {CONTACT_EMAIL}
-        </a>
+        <section className="atlas-closing-contact" id="contact" aria-labelledby="contact-title">
+          <p className="atlas-eyebrow">Contact</p>
+          <h2 id="contact-title">Work with me</h2>
+          <p>Available for data analytics, research intelligence and visualization opportunities.</p>
+          <a className="atlas-contact-link" href={`mailto:${CONTACT_EMAIL}`}>
+            {CONTACT_EMAIL}
+          </a>
+        </section>
       </section>
     </main>
   );
