@@ -4500,6 +4500,140 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
+   COMPANY PANEL
+   Align it with the Company Landscape heading and make the
+   content readable at normal desktop zoom.
+   ========================================================= */
+@media (min-width: 901px) {
+  :root {
+    --company-panel-top-offset: 180px;
+  }
+
+  .company-external-panel,
+  .company-external-panel-compare {
+    top: var(--company-panel-top-offset) !important;
+    height: calc(100% - var(--company-panel-top-offset)) !important;
+    max-height: calc(100% - var(--company-panel-top-offset)) !important;
+  }
+
+  .company-external-panel-floating-close {
+    top: calc(var(--company-panel-top-offset) + 14px) !important;
+  }
+
+  .company-external-panel-inner {
+    padding: 15px 13px 12px !important;
+    grid-template-rows: 126px minmax(0, 1fr) !important;
+    gap: 9px !important;
+  }
+
+  .company-external-panel-top-lock {
+    height: 126px !important;
+    min-height: 126px !important;
+    max-height: 126px !important;
+    grid-template-rows: 48px minmax(0, 1fr) !important;
+    gap: 6px !important;
+  }
+
+  .company-external-panel-logo-row {
+    height: 48px !important;
+  }
+
+  .company-external-panel-logo-slot,
+  .company-external-panel-logo {
+    width: 48px !important;
+    height: 48px !important;
+    flex-basis: 48px !important;
+  }
+
+  .company-external-panel-title {
+    font-size: 17px !important;
+    line-height: 1 !important;
+  }
+
+  .company-external-panel-subtitle {
+    margin-top: 5px !important;
+    font-size: 9.5px !important;
+    line-height: 1.25 !important;
+  }
+
+  .company-external-panel-websites {
+    margin-top: 7px !important;
+    max-height: 26px !important;
+  }
+
+  .company-external-panel-websites a {
+    font-size: 9.5px !important;
+    line-height: 1.2 !important;
+  }
+
+  .company-external-panel-content-grid {
+    grid-template-rows: 152px 62px 54px 62px 54px minmax(0, 1fr) !important;
+  }
+
+  .company-external-panel-metrics,
+  .company-external-panel-metrics-stacked,
+  .company-external-panel-metric-row {
+    gap: 7px !important;
+  }
+
+  .company-external-panel-metric-total {
+    min-height: 78px !important;
+    padding: 10px 8px 8px !important;
+  }
+
+  .company-external-panel-metric-half {
+    min-height: 58px !important;
+    padding: 8px 4px 7px !important;
+  }
+
+  .company-external-panel-metric-total .company-external-panel-metric-number {
+    font-size: 32px !important;
+  }
+
+  .company-external-panel-metric-number {
+    font-size: 17px !important;
+  }
+
+  .company-external-panel-metric-label {
+    font-size: 7.4px !important;
+    line-height: 1.1 !important;
+  }
+
+  .company-external-panel-metric-total .company-external-panel-metric-label {
+    font-size: 8.2px !important;
+  }
+
+  .company-external-panel-metric-note {
+    font-size: 6.5px !important;
+  }
+
+  .company-external-panel-section {
+    padding-top: 7px !important;
+  }
+
+  .company-external-panel-kicker {
+    margin-bottom: 4px !important;
+    font-size: 8.2px !important;
+    line-height: 1.1 !important;
+  }
+
+  .company-external-panel-value,
+  .company-external-panel-trials a,
+  .company-external-panel-trials span {
+    font-size: 9.7px !important;
+    line-height: 1.25 !important;
+  }
+
+  .company-external-panel-compare-button {
+    top: calc(var(--company-panel-top-offset) + ((100% - var(--company-panel-top-offset)) / 2)) !important;
+    height: 42px !important;
+    min-height: 42px !important;
+    padding: 0 17px !important;
+    font-size: 12.5px !important;
+  }
+}
+
+/* =========================================================
    ECOSYSTEM / COMPANY BACKGROUND FIX â€” REFINED
    Keep the global page gradient continuous.
    Preserve the intended glass/card treatment elsewhere.
@@ -4901,5 +5035,28 @@ body::-webkit-scrollbar,
 
   .atlas-contact-section {
     padding-bottom: 64px !important;
+  }
+}
+
+/* Final company-panel geometry override. Kept last to supersede
+   earlier responsive positioning rules. */
+@media (min-width: 901px) {
+  :root {
+    --company-panel-top-offset: 180px;
+  }
+
+  .company-external-panel,
+  .company-external-panel-compare {
+    top: var(--company-panel-top-offset) !important;
+    height: calc(100% - var(--company-panel-top-offset)) !important;
+    max-height: calc(100% - var(--company-panel-top-offset)) !important;
+  }
+
+  .company-external-panel-floating-close {
+    top: calc(var(--company-panel-top-offset) + 14px) !important;
+  }
+
+  .company-external-panel-compare-button {
+    top: calc(var(--company-panel-top-offset) + ((100% - var(--company-panel-top-offset)) / 2)) !important;
   }
 }
