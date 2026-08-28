@@ -1325,19 +1325,19 @@ export default function App() {
     () => ({
       heroSection1: `https://observablehq.com/embed/${mainNotebook}?cells=heroSection1&api_key=${mainApiKey}${heroResponsiveParams}`,
 
-      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1416?cells=visual1EcosystemAndCompanyLandscape&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18${visual1CompanyLandscapeParams}`,
+      visual1EcosystemAndCompanyLandscape: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual1EcosystemAndCompanyLandscape&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18${visual1CompanyLandscapeParams}`,
 
-      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1416?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual2IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
       
-      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1416?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual2ChartUnitColumns1: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1416?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual3IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual3IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1416?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
+      visual3Chart: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual3Chart&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
-      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1416?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+      visual4IntroTransition: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual4IntroTransition&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1416?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
+      visual4PhaseChart: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual4PhaseChart&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
     [mainNotebook, mainApiKey, visual1CompanyLandscapeParams, heroResponsiveParams]
   );
