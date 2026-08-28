@@ -4474,6 +4474,32 @@ body::-webkit-scrollbar,
 }
 
 /* =========================================================
+   INTRO TO VISUAL HANDOFF
+   Each intro ends with the same restrained visual pause.
+   The individual values account for the different copy lengths,
+   so the space below each scroll cue stays visually consistent.
+   ========================================================= */
+@media (min-width: 901px) {
+  .compound-intro-frame {
+    height: 500px !important;
+    min-height: 500px !important;
+    max-height: 500px !important;
+  }
+
+  .indication-intro-frame {
+    height: 520px !important;
+    min-height: 520px !important;
+    max-height: 520px !important;
+  }
+
+  .phase-intro-frame {
+    height: 470px !important;
+    min-height: 470px !important;
+    max-height: 470px !important;
+  }
+}
+
+/* =========================================================
    ECOSYSTEM / COMPANY BACKGROUND FIX â€” REFINED
    Keep the global page gradient continuous.
    Preserve the intended glass/card treatment elsewhere.
