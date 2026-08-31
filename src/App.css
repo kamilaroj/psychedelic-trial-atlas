@@ -78,7 +78,7 @@ a:focus-visible {
   height: 100%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr) 155px;
+  grid-template-columns: 285px minmax(0, 1fr) 155px;
   align-items: center;
   gap: 24px;
 }
@@ -97,43 +97,40 @@ a:focus-visible {
 }
 
 .atlas-brand-mark {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   display: inline-flex;
+  color: #32173f;
 }
 
 .atlas-brand-mark svg {
-  width: 30px;
-  height: 30px;
+  width: 34px;
+  height: 34px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.65;
+  stroke-width: 1.75;
   stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .atlas-brand-mark circle {
-  fill: currentColor;
+  fill: #32173f;
   stroke: none;
 }
 
 .atlas-brand-copy {
-  display: grid;
-  gap: 2px;
+  display: flex;
+  align-items: center;
 }
 
 .atlas-brand-copy strong {
   font-family: "Inter Tight", "Inter", sans-serif;
-  font-size: 17px;
-  line-height: 1;
-  font-weight: 800;
-  letter-spacing: -0.045em;
-}
-
-.atlas-brand-copy small {
-  color: #302833;
-  font-size: 9.5px;
-  line-height: 1.1;
-  font-weight: 550;
+  font-size: 21px;
+  line-height: 0.95;
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  color: #2d1837;
+  white-space: nowrap;
 }
 
 .atlas-tabs {
@@ -1034,7 +1031,7 @@ a:focus-visible {
 
 @media (max-width: 1260px) {
   .atlas-topbar-inner {
-    grid-template-columns: 205px minmax(0, 1fr) 120px;
+    grid-template-columns: 265px minmax(0, 1fr) 120px;
   }
 
   .atlas-tabs {
@@ -1199,5 +1196,206 @@ a:focus-visible {
 
   .methodology-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+
+/* =========================================================
+   LOAD FLASH PROTECTION
+   Keeps Observable's temporary grey/loading surface invisible.
+   ========================================================= */
+
+.observable-shell {
+  position: relative;
+  background: #f8f6f5;
+  isolation: isolate;
+}
+
+.observable-loading-cover,
+.preview-loading-cover {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background:
+    linear-gradient(180deg, rgba(251, 250, 249, 1), rgba(248, 246, 245, 1));
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 180ms ease;
+}
+
+.observable-shell .atlas-iframe,
+.real-preview-window .real-preview-iframe {
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.observable-loaded .observable-loading-cover,
+.preview-loaded .preview-loading-cover {
+  opacity: 0;
+}
+
+.observable-loaded .atlas-iframe,
+.preview-loaded .real-preview-iframe {
+  opacity: 1;
+}
+
+/* Overview no longer needs a CTA button; keep ecosystem closer to intro. */
+.overview-real-metrics {
+  margin-top: 22px;
+}
+
+/* =========================================================
+   REAL COMPANY LANDSCAPE CROPS
+   The direct company cell is detached in embed mode.
+   These crops use the existing working combined cell.
+   ========================================================= */
+
+.overview-company-hook-window {
+  background: #f8f6f5;
+}
+
+.overview-company-hook-window iframe {
+  /*
+    Combined cell structure:
+    ecosystem overview first, Company Landscape below.
+    Move the real combined Observable output upward until the
+    Company Landscape occupies the Overview hero.
+  */
+  top: -215px;
+  left: 50%;
+  width: 150%;
+  height: 1125px;
+  transform: translateX(-50%) scale(0.67);
+  transform-origin: top center;
+}
+
+.full-company-visual {
+  position: relative;
+  height: min(790px, calc(100dvh - 115px));
+  overflow: hidden;
+  background: #f8f6f5;
+}
+
+.full-company-visual .atlas-iframe {
+  width: 100%;
+  height: 1125px !important;
+  transform: translateY(-205px);
+  transform-origin: top center;
+}
+
+/* =========================================================
+   REAL OVERVIEW THUMBNAILS
+   Each card shows a crop of the actual Observable visualization.
+   ========================================================= */
+
+.real-preview-window {
+  background: #f8f6f5;
+}
+
+.real-preview-window .real-preview-iframe {
+  position: absolute;
+  margin: 0;
+}
+
+/* Company: combined cell cropped down to Company Landscape */
+.preview-companies .real-preview-iframe {
+  top: -92px;
+  left: 0;
+  width: 300%;
+  height: 1125px;
+  transform: scale(0.33);
+  transform-origin: top left;
+}
+
+/* Compounds: real visual */
+.preview-compounds .real-preview-iframe {
+  top: -50px;
+  left: 0;
+  width: 320%;
+  height: 1514px;
+  transform: scale(0.3125);
+  transform-origin: top left;
+}
+
+/* Indications: real visual */
+.preview-indications .real-preview-iframe {
+  top: -12px;
+  left: 0;
+  width: 260%;
+  height: 824px;
+  transform: scale(0.3846);
+  transform-origin: top left;
+}
+
+/* Phases: real visual */
+.preview-phases .real-preview-iframe {
+  top: -28px;
+  left: 0;
+  width: 280%;
+  height: 980px;
+  transform: scale(0.3571);
+  transform-origin: top left;
+}
+
+/* =========================================================
+   OBSERVABLE FOOTER / NOTEBOOK CHROME MASK
+   Removes "UNICORN1 Untitled / Observable" from Indications.
+   ========================================================= */
+
+.full-indication-visual {
+  position: relative;
+  overflow: hidden;
+  background: #f8f6f5;
+}
+
+.full-indication-visual::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 34px;
+  z-index: 10;
+  background: #f8f6f5;
+  pointer-events: none;
+}
+
+/* Prevent any transient left-edge strip in scaled visual wrappers. */
+.full-compound-visual,
+.full-phase-visual {
+  position: relative;
+  background: #f8f6f5;
+  overflow: hidden;
+}
+
+.full-compound-visual::before,
+.full-phase-visual::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 4px;
+  z-index: 12;
+  background: #f8f6f5;
+  pointer-events: none;
+}
+
+
+@media (max-width: 1020px) {
+  .atlas-brand-copy strong {
+    font-size: 19px;
+  }
+}
+
+@media (max-width: 560px) {
+  .atlas-brand-copy strong {
+    font-size: 17px;
+  }
+
+  .atlas-brand-mark,
+  .atlas-brand-mark svg {
+    width: 30px;
+    height: 30px;
   }
 }
