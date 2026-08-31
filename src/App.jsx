@@ -911,8 +911,8 @@ export default function App() {
               <ObservableFrame
                 title="Company Landscape Premium"
                 src={observableSrc.visual1Company}
-                className="full-visual full-company-visual"
-                height={1125}
+                className="full-visual full-company-visual company-real-working-frame"
+                height={1000}
               />
 
               <CompanyExternalPanel
