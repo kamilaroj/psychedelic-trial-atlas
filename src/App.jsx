@@ -54,9 +54,14 @@ function normalizeUrlLabel(url) {
 
 function AtlasMark() {
   return (
-    <svg viewBox="0 0 32 32" aria-hidden="true">
-      <path d="M16 2v28M2 16h28M6.1 6.1l19.8 19.8M25.9 6.1 6.1 25.9" />
-      <circle cx="16" cy="16" r="3.1" />
+    <svg viewBox="0 0 36 36" aria-hidden="true">
+      <circle cx="18" cy="18" r="4.2" />
+      <circle cx="7.4" cy="11.1" r="2.35" />
+      <circle cx="28.8" cy="9.1" r="2.35" />
+      <circle cx="29.2" cy="26.7" r="2.35" />
+      <circle cx="8.2" cy="27.2" r="2.35" />
+      <path d="M10 12.6 14.7 16M21.4 15.2 26.7 10.8M21.5 20.6 27 25M14.7 20.4 10.2 25.3" />
+      <path d="M18 7.3v6.2M18 22.4v6.3" />
     </svg>
   );
 }
@@ -69,8 +74,15 @@ function ObservableFrame({
   height = 700,
   ariaHidden = false
 }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
-    <div className={`observable-shell ${className}`}>
+    <div
+      className={`observable-shell ${className} ${
+        loaded ? "observable-loaded" : "observable-loading"
+      }`}
+    >
+      <div className="observable-loading-cover" aria-hidden="true" />
       <iframe
         title={title}
         src={src}
@@ -81,6 +93,7 @@ function ObservableFrame({
         className={`atlas-iframe ${iframeClassName}`}
         aria-hidden={ariaHidden ? "true" : undefined}
         tabIndex={ariaHidden ? -1 : undefined}
+        onLoad={() => setLoaded(true)}
       />
     </div>
   );
@@ -94,19 +107,27 @@ function RealPreviewCard({
   src,
   previewClass
 }) {
+  const [loaded, setLoaded] = useState(false);
+
   return (
     <button className="overview-route-card" type="button" onClick={onClick}>
-      <div className={`real-preview-window ${previewClass || ""}`}>
+      <div
+        className={`real-preview-window ${previewClass || ""} ${
+          loaded ? "preview-loaded" : "preview-loading"
+        }`}
+      >
+        <div className="preview-loading-cover" aria-hidden="true" />
         <iframe
           title={`${title} preview`}
           src={src}
           width="100%"
-          height="900"
+          height="1514"
           frameBorder="0"
           scrolling="no"
           tabIndex="-1"
           aria-hidden="true"
           className="real-preview-iframe"
+          onLoad={() => setLoaded(true)}
         />
       </div>
 
@@ -499,10 +520,12 @@ export default function App() {
       visual1Combined: `https://observablehq.com/embed/e3028f2577c04f9a@1420?cells=visual1EcosystemAndCompanyLandscape&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18${visual1CompanyLandscapeParams}`,
 
       /*
-        REAL current Company Landscape cell.
-        This is the interactive Companies view.
+        IMPORTANT:
+        The direct Company Landscape cell returned a detached/empty embed.
+        We therefore use the existing WORKING combined Observable cell and
+        crop it in CSS to the real Company Landscape section.
       */
-      visual1Company: `https://observablehq.com/embed/e3028f2577c04f9a@1420?cells=visual1CompanyLandscapePremium1&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18${visual1CompanyLandscapeParams}`,
+      visual1Company: `https://observablehq.com/embed/e3028f2577c04f9a@1420?cells=visual1EcosystemAndCompanyLandscape&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18${visual1CompanyLandscapeParams}`,
 
       visual2: `https://observablehq.com/embed/e3028f2577c04f9a@1419?cells=visual2ChartUnitColumns1&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
@@ -669,8 +692,7 @@ export default function App() {
             </span>
 
             <span className="atlas-brand-copy">
-              <strong>UNICORN1</strong>
-              <small>Psychedelic Trial Atlas</small>
+              <strong>Psychedelic Trial Atlas</strong>
             </span>
           </button>
 
@@ -713,20 +735,12 @@ export default function App() {
                   context shaping the visible development landscape.
                 </p>
 
-                <button
-                  className="hero-cta"
-                  type="button"
-                  onClick={() => activateView("companies")}
-                >
-                  Explore the Atlas <span>→</span>
-                </button>
-
                 <div className="overview-real-metrics">
                   <iframe
                     title="Real ecosystem metrics"
                     src={observableSrc.visual1Combined}
                     width="100%"
-                    height="1035"
+                    height="1125"
                     frameBorder="0"
                     scrolling="no"
                     tabIndex="-1"
@@ -898,7 +912,7 @@ export default function App() {
                 title="Company Landscape Premium"
                 src={observableSrc.visual1Company}
                 className="full-visual full-company-visual"
-                height={920}
+                height={1125}
               />
 
               <CompanyExternalPanel
