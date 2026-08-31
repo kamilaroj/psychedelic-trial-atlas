@@ -1399,3 +1399,261 @@ a:focus-visible {
     height: 30px;
   }
 }
+
+
+/* =========================================================
+   FINAL AUTHORITATIVE FIX — 2026-08-31
+   Uses the exact Observable embeds that worked in the original site.
+   No recreated circles, no fake data.
+   ========================================================= */
+
+/* ---------- Header ---------- */
+
+.atlas-topbar-inner {
+  grid-template-columns: 320px minmax(0, 1fr) 155px !important;
+}
+
+.atlas-brand {
+  gap: 12px !important;
+}
+
+.atlas-brand-mark {
+  width: 36px !important;
+  height: 36px !important;
+  color: #2e1739 !important;
+}
+
+.atlas-brand-mark svg {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.atlas-brand-copy strong {
+  font-family: "Inter Tight", "Inter", sans-serif !important;
+  font-size: 23px !important;
+  line-height: 0.95 !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.06em !important;
+  color: #2b1834 !important;
+}
+
+/* ---------- Overview hero ---------- */
+
+/* The button was removed in JSX. */
+.hero-cta {
+  display: none !important;
+}
+
+/*
+  REAL company visual on Overview.
+  Instead of guessing a crop inside a cross-origin iframe,
+  show the complete working combined Observable cell scaled down.
+  This guarantees the real Company Landscape is present.
+*/
+.overview-company-hook-window {
+  position: relative !important;
+  min-height: 455px !important;
+  height: 455px !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  pointer-events: none !important;
+}
+
+.overview-company-hook-window iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  width: 200% !important;
+  height: 1000px !important;
+  margin: 0 !important;
+  transform: translateX(-50%) scale(0.5) !important;
+  transform-origin: top center !important;
+  border: 0 !important;
+  opacity: 1 !important;
+}
+
+/* ---------- Companies full view ---------- */
+
+/*
+  The original site rendered this exact combined cell successfully
+  with a ~930px wrapper / 1000px iframe.
+  Do not translate it vertically.
+*/
+.company-real-working-frame,
+.full-company-visual.company-real-working-frame {
+  position: relative !important;
+  width: min(1320px, 100%) !important;
+  max-width: min(1320px, 100%) !important;
+  height: 930px !important;
+  min-height: 930px !important;
+  max-height: 930px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+.company-real-working-frame > iframe.atlas-iframe,
+.full-company-visual.company-real-working-frame > iframe.atlas-iframe {
+  display: block !important;
+  width: calc(100% + 18px) !important;
+  max-width: none !important;
+  height: 1000px !important;
+  min-height: 1000px !important;
+  max-height: 1000px !important;
+  margin: 0 0 0 -9px !important;
+  transform: none !important;
+  border: 0 !important;
+  background: transparent !important;
+  opacity: 1 !important;
+}
+
+/* ---------- Overview real thumbnails ---------- */
+
+.real-preview-window {
+  position: relative !important;
+  height: 150px !important;
+  overflow: hidden !important;
+  background: #f8f6f5 !important;
+}
+
+/* Show the full REAL visuals, scaled from the top.
+   No arbitrary negative top crop that can land on blank space. */
+.preview-companies .real-preview-iframe {
+  top: 0 !important;
+  left: 0 !important;
+  width: 400% !important;
+  height: 1000px !important;
+  transform: scale(0.25) !important;
+  transform-origin: top left !important;
+}
+
+.preview-compounds .real-preview-iframe {
+  top: 0 !important;
+  left: 0 !important;
+  width: 400% !important;
+  height: 1514px !important;
+  transform: scale(0.25) !important;
+  transform-origin: top left !important;
+}
+
+.preview-indications .real-preview-iframe {
+  top: 0 !important;
+  left: 0 !important;
+  width: 320% !important;
+  height: 824px !important;
+  transform: scale(0.3125) !important;
+  transform-origin: top left !important;
+}
+
+.preview-phases .real-preview-iframe {
+  top: 0 !important;
+  left: 0 !important;
+  width: 360% !important;
+  height: 980px !important;
+  transform: scale(0.2777778) !important;
+  transform-origin: top left !important;
+}
+
+/* Preview loading covers disappear completely once loaded. */
+.preview-loaded .preview-loading-cover,
+.observable-loaded .observable-loading-cover {
+  display: none !important;
+}
+
+.preview-loaded .real-preview-iframe,
+.observable-loaded .atlas-iframe {
+  opacity: 1 !important;
+}
+
+/* ---------- Compounds / Phases grey loading flash ---------- */
+
+.full-compound-visual,
+.full-phase-visual {
+  background: #f8f6f5 !important;
+}
+
+.full-compound-visual .observable-loading-cover,
+.full-phase-visual .observable-loading-cover {
+  background: #f8f6f5 !important;
+}
+
+/* Extra edge mask: prevents the transient grey strip on the far left. */
+.full-compound-visual::before,
+.full-phase-visual::before {
+  content: "" !important;
+  position: absolute !important;
+  z-index: 30 !important;
+  top: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 12px !important;
+  display: block !important;
+  background: #f8f6f5 !important;
+  pointer-events: none !important;
+}
+
+/* ---------- Indications footer ---------- */
+
+/*
+  Hide Observable notebook chrome ("UNICORN1 Untitled" / Observable)
+  by reducing the visible wrapper and masking the final footer strip.
+*/
+.full-indication-visual {
+  position: relative !important;
+  height: 610px !important;
+  min-height: 610px !important;
+  max-height: 610px !important;
+  overflow: hidden !important;
+  background: #f8f6f5 !important;
+}
+
+.full-indication-visual .atlas-iframe {
+  height: 824px !important;
+}
+
+.full-indication-visual::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  z-index: 40 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 44px !important;
+  background: #f8f6f5 !important;
+  pointer-events: none !important;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1180px) {
+  .atlas-topbar-inner {
+    grid-template-columns: 280px minmax(0, 1fr) 115px !important;
+  }
+
+  .atlas-brand-copy strong {
+    font-size: 20px !important;
+  }
+}
+
+@media (max-width: 1020px) {
+  .atlas-topbar-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .atlas-brand-copy strong {
+    font-size: 19px !important;
+  }
+
+  .company-real-working-frame,
+  .full-company-visual.company-real-working-frame {
+    height: 1040px !important;
+    max-height: 1040px !important;
+  }
+
+  .company-real-working-frame > iframe.atlas-iframe,
+  .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
+    height: 1110px !important;
+    max-height: 1110px !important;
+  }
+}
