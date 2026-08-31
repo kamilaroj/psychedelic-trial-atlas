@@ -71,7 +71,6 @@ function AtlasMark() {
       <circle cx="8.2" cy="27.2" r="2.35" />
 
       <path d="M10 12.6 14.7 16M21.4 15.2 26.7 10.8M21.5 20.6 27 25M14.7 20.4 10.2 25.3" />
-
       <path d="M18 7.3v6.2M18 22.4v6.3" />
     </svg>
   );
@@ -93,10 +92,7 @@ function ObservableFrame({
         loaded ? "observable-loaded" : "observable-loading"
       }`}
     >
-      <div
-        className="observable-loading-cover"
-        aria-hidden="true"
-      />
+      <div className="observable-loading-cover" aria-hidden="true" />
 
       <iframe
         title={title}
@@ -125,26 +121,19 @@ function RealPreviewCard({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <button
-      className="overview-route-card"
-      type="button"
-      onClick={onClick}
-    >
+    <button className="overview-route-card" type="button" onClick={onClick}>
       <div
         className={`real-preview-window ${previewClass || ""} ${
           loaded ? "preview-loaded" : "preview-loading"
         }`}
       >
-        <div
-          className="preview-loading-cover"
-          aria-hidden="true"
-        />
+        <div className="preview-loading-cover" aria-hidden="true" />
 
         <iframe
           title={`${title} preview`}
           src={src}
           width="100%"
-          height="1514"
+          height="1600"
           frameBorder="0"
           scrolling="no"
           tabIndex="-1"
@@ -176,9 +165,7 @@ function CompanyExternalPanel({
   compareModeActive = false,
   isComparePanel = false
 }) {
-  if (!selectedCompany) {
-    return null;
-  }
+  if (!selectedCompany) return null;
 
   const listToText = (
     value,
@@ -188,9 +175,7 @@ function CompanyExternalPanel({
       return fallback;
     }
 
-    return value
-      .filter(Boolean)
-      .join(", ");
+    return value.filter(Boolean).join(", ");
   };
 
   const websites = Array.isArray(selectedCompany.websites)
@@ -218,9 +203,7 @@ function CompanyExternalPanel({
     <>
       <button
         className={`company-panel-close ${
-          isComparePanel
-            ? "company-panel-close-compare"
-            : ""
+          isComparePanel ? "company-panel-close-compare" : ""
         }`}
         type="button"
         onClick={onClose}
@@ -251,13 +234,9 @@ function CompanyExternalPanel({
 
       <aside
         className={`company-panel ${
-          isComparePanel
-            ? "company-panel-compare"
-            : ""
+          isComparePanel ? "company-panel-compare" : ""
         }`}
-        aria-label={`${
-          selectedCompany.company || "Company"
-        } details`}
+        aria-label={`${selectedCompany.company || "Company"} details`}
       >
         <div className="company-panel-inner">
           <div className="company-panel-header">
@@ -266,17 +245,13 @@ function CompanyExternalPanel({
                 <div className="company-panel-logo">
                   <img
                     src={selectedCompany.logoUrl}
-                    alt={`${
-                      selectedCompany.company || "Company"
-                    } logo`}
+                    alt={`${selectedCompany.company || "Company"} logo`}
                   />
                 </div>
               ) : null}
             </div>
 
-            <h3>
-              {selectedCompany.company || "Company"}
-            </h3>
+            <h3>{selectedCompany.company || "Company"}</h3>
 
             <p className="company-panel-subtitle">
               {selectedCompany.hasRegistered
@@ -310,9 +285,7 @@ function CompanyExternalPanel({
             <div className="company-panel-metric company-panel-metric-main">
               <strong>{visibleActivity}</strong>
               <span>Visible activity</span>
-              <small>
-                Registered trials + pipeline context
-              </small>
+              <small>Registered trials + pipeline context</small>
             </div>
 
             <div className="company-panel-metric">
@@ -329,29 +302,17 @@ function CompanyExternalPanel({
           <div className="company-panel-details">
             <section>
               <span>Assets</span>
-              <p>
-                {listToText(
-                  selectedCompany.assets
-                )}
-              </p>
+              <p>{listToText(selectedCompany.assets)}</p>
             </section>
 
             <section>
               <span>Compound families</span>
-              <p>
-                {listToText(
-                  selectedCompany.families
-                )}
-              </p>
+              <p>{listToText(selectedCompany.families)}</p>
             </section>
 
             <section>
               <span>Therapeutic areas</span>
-              <p>
-                {listToText(
-                  selectedCompany.indications
-                )}
-              </p>
+              <p>{listToText(selectedCompany.indications)}</p>
             </section>
 
             <section>
@@ -359,9 +320,7 @@ function CompanyExternalPanel({
 
               <p>
                 {selectedCompany.hasRegistered
-                  ? listToText(
-                      selectedCompany.countries
-                    )
+                  ? listToText(selectedCompany.countries)
                   : "No registered trial countries"}
               </p>
             </section>
@@ -388,15 +347,11 @@ function CompanyExternalPanel({
                         {trial.id}
                       </a>
                     ) : (
-                      <span key={trial.id}>
-                        {trial.id}
-                      </span>
+                      <span key={trial.id}>{trial.id}</span>
                     )
                   )
                 ) : (
-                  <p>
-                    No public registered trial IDs
-                  </p>
+                  <p>No public registered trial IDs</p>
                 )}
               </div>
             </section>
@@ -411,84 +366,53 @@ function MethodologyView() {
   return (
     <section className="content-page">
       <div className="content-page-heading">
-        <p className="page-eyebrow">
-          Method / data basis
-        </p>
+        <p className="page-eyebrow">Method / data basis</p>
 
-        <h1>
-          How the Atlas is built
-        </h1>
+        <h1>How the Atlas is built</h1>
 
         <p>
-          The Atlas separates registered
-          clinical-trial activity from selected
-          pipeline context so different forms of
-          public visibility are not treated as the
-          same type of evidence.
+          The Atlas separates registered clinical-trial activity from selected
+          pipeline context so different forms of public visibility are not
+          treated as the same type of evidence.
         </p>
       </div>
 
       <div className="methodology-grid">
         <article className="content-card">
-          <p className="page-eyebrow">
-            Registered trials
-          </p>
-
+          <p className="page-eyebrow">Registered trials</p>
           <h2>Evidence units</h2>
-
           <p>
-            Public registry records are treated as
-            registered evidence-generation
-            activity.
+            Public registry records are treated as registered
+            evidence-generation activity.
           </p>
         </article>
 
         <article className="content-card">
-          <p className="page-eyebrow">
-            Pipeline context
-          </p>
-
+          <p className="page-eyebrow">Pipeline context</p>
           <h2>Context units</h2>
-
           <p>
-            Company-reported or secondary-source
-            pipeline programs without a public
-            trial ID are treated as context, not
-            clinical-trial evidence.
+            Company-reported or secondary-source pipeline programs without a
+            public trial ID are treated as context, not clinical-trial evidence.
           </p>
         </article>
 
         <article className="content-card">
-          <p className="page-eyebrow">
-            Different views
-          </p>
-
-          <h2>
-            Different analytical questions
-          </h2>
-
+          <p className="page-eyebrow">Different views</p>
+          <h2>Different analytical questions</h2>
           <p>
-            Company, compound, indication and
-            phase views use different units of
-            analysis. Their circle counts are
-            therefore not directly comparable.
+            Company, compound, indication and phase views use different units
+            of analysis. Their circle counts are therefore not directly
+            comparable.
           </p>
         </article>
 
         <article className="content-card">
-          <p className="page-eyebrow">
-            Limitations
-          </p>
-
-          <h2>
-            Public data can change
-          </h2>
-
+          <p className="page-eyebrow">Limitations</p>
+          <h2>Public data can change</h2>
           <p>
-            Trial records may be incomplete,
-            delayed, duplicated or inconsistently
-            structured. Recruitment status should
-            be checked at the original source.
+            Trial records may be incomplete, delayed, duplicated or
+            inconsistently structured. Recruitment status should be checked at
+            the original source.
           </p>
         </article>
       </div>
@@ -500,90 +424,52 @@ function AboutView() {
   return (
     <section className="content-page">
       <div className="content-page-heading">
-        <p className="page-eyebrow">
-          About the project
-        </p>
+        <p className="page-eyebrow">About the project</p>
 
-        <h1>
-          Psychedelic Trial Atlas
-        </h1>
+        <h1>Psychedelic Trial Atlas</h1>
 
         <p>
-          A visual intelligence project mapping
-          what is publicly visible in psychedelic
-          drug development by company, compound,
-          indication, phase, recruitment status
-          and source visibility.
+          A visual intelligence project mapping what is publicly visible in
+          psychedelic drug development by company, compound, indication, phase,
+          recruitment status and source visibility.
         </p>
       </div>
 
       <div className="methodology-grid">
         <article className="content-card">
-          <p className="page-eyebrow">
-            Positioning
-          </p>
-
-          <h2>
-            Public development intelligence
-          </h2>
-
+          <p className="page-eyebrow">Positioning</p>
+          <h2>Public development intelligence</h2>
           <p>
-            The Atlas maps visible
-            clinical-development activity and
-            selected pipeline context. It does not
-            predict which company or therapy will
+            The Atlas maps visible clinical-development activity and selected
+            pipeline context. It does not predict which company or therapy will
             succeed.
           </p>
         </article>
 
         <article className="content-card">
-          <p className="page-eyebrow">
-            Portfolio
-          </p>
-
-          <h2>
-            Data + research + visualization
-          </h2>
-
+          <p className="page-eyebrow">Portfolio</p>
+          <h2>Data + research + visualization</h2>
           <p>
-            The project combines data cleaning,
-            data analysis, clinical-trial
-            intelligence, pharma / biotech market
-            research and interactive
+            The project combines data cleaning, data analysis, clinical-trial
+            intelligence, pharma / biotech market research and interactive
             visualization.
           </p>
         </article>
 
         <article className="content-card">
-          <p className="page-eyebrow">
-            Citation
-          </p>
-
-          <h2>
-            Cite this project
-          </h2>
-
+          <p className="page-eyebrow">Citation</p>
+          <h2>Cite this project</h2>
           <p>
-            Rojek, Kamila.{" "}
-            <em>Psychedelic Trial Atlas</em>.
-            Interactive public-source data
-            analysis. Site version{" "}
-            {ATLAS_VERSION}.
+            Rojek, Kamila. <em>Psychedelic Trial Atlas</em>. Interactive
+            public-source data analysis. Site version {ATLAS_VERSION}.
           </p>
         </article>
 
         <article className="content-card contact-card">
-          <p className="page-eyebrow">
-            Contact
-          </p>
+          <p className="page-eyebrow">Contact</p>
+          <h2>Work with me</h2>
 
-          <h2>
-            Work with me
-          </h2>
-
-          <a
-            href={`mailto:${CONTACT_EMAIL}`}
-          >
+          <a href={`mailto:${CONTACT_EMAIL}`}>
             {CONTACT_EMAIL}
           </a>
 
@@ -598,10 +484,9 @@ function AboutView() {
       </div>
 
       <p className="about-disclaimer">
-        This project maps visible clinical-trial
-        and pipeline activity. It does not assess
-        efficacy, safety, approval status,
-        treatment suitability or investment value.
+        This project maps visible clinical-trial and pipeline activity. It does
+        not assess efficacy, safety, approval status, treatment suitability or
+        investment value.
       </p>
     </section>
   );
@@ -619,34 +504,16 @@ export default function App() {
       : "overview";
 
   const [activeView, setActiveView] = useState(
-    NAV_ITEMS.some(
-      item => item.id === initialHash
-    )
+    NAV_ITEMS.some((item) => item.id === initialHash)
       ? initialHash
       : "overview"
   );
 
-  const [
-    selectedCompany,
-    setSelectedCompany
-  ] = useState(null);
-
-  const [
-    compareCompany,
-    setCompareCompany
-  ] = useState(null);
-
-  const [
-    compareMode,
-    setCompareMode
-  ] = useState(false);
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [compareCompany, setCompareCompany] = useState(null);
+  const [compareMode, setCompareMode] = useState(false);
 
   const compareModeRef = useRef(false);
-
-  /*
-    OBSERVABLE
-    Revision 1443
-  */
 
   const mainApiKey =
     "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
@@ -660,11 +527,6 @@ export default function App() {
   const logoTuningVersion =
     "visual1b-logo-tuning-2026-06-24-full-logo-list";
 
-  /*
-    Keep existing company logo tuning here.
-    Empty objects preserve current default behavior.
-  */
-
   const logoVisualScale = {};
   const logoHoverScale = {};
 
@@ -673,59 +535,33 @@ export default function App() {
       ? "mobile"
       : viewportWidth <= 1024
         ? "tablet"
-        : viewportWidth <= 1400 ||
-            viewportHeight <= 820
+        : viewportWidth <= 1400 || viewportHeight <= 820
           ? "laptop"
           : "desktop";
 
   const heroResponsiveParams =
-    `&heroMode=${encodeURIComponent(
-      heroResponsiveMode
-    )}` +
+    `&heroMode=${encodeURIComponent(heroResponsiveMode)}` +
     `&hostWidth=${viewportWidth}` +
     `&hostHeight=${viewportHeight}`;
 
   const visual1CompanyLandscapeParams =
-    `&logoBase=${encodeURIComponent(
-      githubLogoBase
-    )}` +
-    `&logoTuningVersion=${encodeURIComponent(
-      logoTuningVersion
-    )}` +
-    `&logoVisualScale=${encodeJsonForUrl(
-      logoVisualScale
-    )}` +
-    `&logoHoverScale=${encodeJsonForUrl(
-      logoHoverScale
-    )}`;
+    `&logoBase=${encodeURIComponent(githubLogoBase)}` +
+    `&logoTuningVersion=${encodeURIComponent(logoTuningVersion)}` +
+    `&logoVisualScale=${encodeJsonForUrl(logoVisualScale)}` +
+    `&logoHoverScale=${encodeJsonForUrl(logoHoverScale)}`;
 
   const observableSrc = useMemo(
     () => ({
-      /*
-        HERO
-        Observable revision 1443
-      */
-
       heroSection1:
         `https://observablehq.com/embed/${mainNotebook}` +
         `?cells=heroSection1` +
         `&api_key=${mainApiKey}` +
         `${heroResponsiveParams}`,
 
-      /*
-        ECOSYSTEM OVERVIEW
-        Separate Observable cell
-      */
-
       visual1Overview:
         `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
         `?cells=visual1EcosystemOverviev` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
-
-      /*
-        COMPANY LANDSCAPE
-        Separate Observable cell
-      */
 
       visual1Company:
         `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
@@ -733,27 +569,15 @@ export default function App() {
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
         `${visual1CompanyLandscapeParams}`,
 
-      /*
-        COMPOUNDS
-      */
-
       visual2:
         `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
         `?cells=visual2ChartUnitColumns1` +
         `&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
-      /*
-        INDICATIONS
-      */
-
       visual3:
         `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
         `?cells=visual3Chart` +
         `&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
-
-      /*
-        PHASES
-      */
 
       visual4:
         `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
@@ -768,7 +592,7 @@ export default function App() {
     ]
   );
 
-  const setCompareModeStable = active => {
+  const setCompareModeStable = (active) => {
     compareModeRef.current = !!active;
     setCompareMode(!!active);
   };
@@ -778,18 +602,12 @@ export default function App() {
       'iframe[title="Company Landscape Premium"]'
     );
 
-  const postToCompanyIframe = message => {
-    const iframe =
-      getCompanyIframe();
+  const postToCompanyIframe = (message) => {
+    const iframe = getCompanyIframe();
 
-    if (!iframe?.contentWindow) {
-      return;
-    }
+    if (!iframe?.contentWindow) return;
 
-    iframe.contentWindow.postMessage(
-      message,
-      "*"
-    );
+    iframe.contentWindow.postMessage(message, "*");
   };
 
   const clearObservableCompanyState = () => {
@@ -804,32 +622,20 @@ export default function App() {
     });
   };
 
-  const postCompareModeToObservable = active => {
+  const postCompareModeToObservable = (active) => {
     postToCompanyIframe({
-      type:
-        "UNICORN_COMPARE_SELECTION_MODE",
+      type: "UNICORN_COMPARE_SELECTION_MODE",
       active: !!active
     });
   };
 
   const handleCompareStart = () => {
-    if (
-      !selectedCompany ||
-      compareCompany
-    ) {
-      return;
-    }
+    if (!selectedCompany || compareCompany) return;
 
-    const nextMode =
-      !compareModeRef.current;
+    const nextMode = !compareModeRef.current;
 
-    setCompareModeStable(
-      nextMode
-    );
-
-    postCompareModeToObservable(
-      nextMode
-    );
+    setCompareModeStable(nextMode);
+    postCompareModeToObservable(nextMode);
   };
 
   const handlePrimaryClose = () => {
@@ -847,12 +653,8 @@ export default function App() {
     clearObservableCompareState();
   };
 
-  const activateView = viewId => {
-    if (
-      !NAV_ITEMS.some(
-        item => item.id === viewId
-      )
-    ) {
+  const activateView = (viewId) => {
+    if (!NAV_ITEMS.some((item) => item.id === viewId)) {
       return;
     }
 
@@ -861,7 +663,6 @@ export default function App() {
       viewId !== "companies"
     ) {
       clearObservableCompanyState();
-
       setSelectedCompany(null);
       setCompareCompany(null);
       setCompareModeStable(false);
@@ -869,9 +670,7 @@ export default function App() {
 
     setActiveView(viewId);
 
-    if (
-      typeof window !== "undefined"
-    ) {
+    if (typeof window !== "undefined") {
       window.history.replaceState(
         null,
         "",
@@ -888,14 +687,11 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash =
-        window.location.hash.replace(
-          "#",
-          ""
-        );
+        window.location.hash.replace("#", "");
 
       if (
         NAV_ITEMS.some(
-          item => item.id === hash
+          (item) => item.id === hash
         )
       ) {
         setActiveView(hash);
@@ -921,9 +717,8 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    const handleCompanyMessage = event => {
-      const message =
-        event.data;
+    const handleCompanyMessage = (event) => {
+      const message = event.data;
 
       if (
         !message ||
@@ -933,26 +728,21 @@ export default function App() {
       }
 
       if (
-        message.type !==
-          "UNICORN_COMPANY_SELECTED" &&
-        message.type !==
-          "UNICORN_COMPANY_COMPARE_SELECTED" &&
-        message.type !==
-          "UNICORN_COMPARE_SELECTION_MODE_ACK"
+        message.type !== "UNICORN_COMPANY_SELECTED" &&
+        message.type !== "UNICORN_COMPANY_COMPARE_SELECTED" &&
+        message.type !== "UNICORN_COMPARE_SELECTION_MODE_ACK"
       ) {
         return;
       }
 
       if (
-        message.type ===
-        "UNICORN_COMPARE_SELECTION_MODE_ACK"
+        message.type === "UNICORN_COMPARE_SELECTION_MODE_ACK"
       ) {
         return;
       }
 
       if (
-        message.type ===
-        "UNICORN_COMPANY_COMPARE_SELECTED"
+        message.type === "UNICORN_COMPANY_COMPARE_SELECTED"
       ) {
         const payload =
           message.payload || null;
@@ -967,9 +757,7 @@ export default function App() {
         setCompareCompany(payload);
         setCompareModeStable(false);
 
-        postCompareModeToObservable(
-          false
-        );
+        postCompareModeToObservable(false);
 
         return;
       }
@@ -986,16 +774,13 @@ export default function App() {
       }
 
       if (
-        payload.compareSlot ===
-          "compare" ||
+        payload.compareSlot === "compare" ||
         compareModeRef.current
       ) {
         setCompareCompany(payload);
         setCompareModeStable(false);
 
-        postCompareModeToObservable(
-          false
-        );
+        postCompareModeToObservable(false);
 
         return;
       }
@@ -1003,9 +788,7 @@ export default function App() {
       setSelectedCompany(payload);
       setCompareModeStable(false);
 
-      postCompareModeToObservable(
-        false
-      );
+      postCompareModeToObservable(false);
     };
 
     window.addEventListener(
@@ -1038,7 +821,8 @@ export default function App() {
 
             <span className="atlas-brand-copy">
               <strong>
-                Psychedelic Trial Atlas
+                <span>Psychedelic</span>
+                <span>Trial Atlas</span>
               </strong>
             </span>
           </button>
@@ -1047,7 +831,7 @@ export default function App() {
             className="atlas-tabs"
             aria-label="Atlas views"
           >
-            {NAV_ITEMS.map(item => (
+            {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 type="button"
@@ -1094,21 +878,17 @@ export default function App() {
                 </h1>
 
                 <p className="hero-description">
-                  An interactive view of
-                  companies, compounds,
-                  indications and registered
-                  clinical-trial activity,
-                  together with the pipeline
-                  context shaping the visible
+                  An interactive view of companies,
+                  compounds, indications and registered
+                  clinical-trial activity, together with
+                  the pipeline context shaping the visible
                   development landscape.
                 </p>
 
                 <div className="overview-real-metrics">
                   <iframe
                     title="Real ecosystem metrics"
-                    src={
-                      observableSrc.visual1Overview
-                    }
+                    src={observableSrc.visual1Overview}
                     width="100%"
                     height="1125"
                     frameBorder="0"
@@ -1121,16 +901,12 @@ export default function App() {
 
               <div className="overview-company-hook">
                 <div className="overview-company-hook-label">
-                  <span>
-                    COMPANY LANDSCAPE
-                  </span>
+                  <span>COMPANY LANDSCAPE</span>
 
                   <button
                     type="button"
                     onClick={() =>
-                      activateView(
-                        "companies"
-                      )
+                      activateView("companies")
                     }
                   >
                     View full landscape →
@@ -1140,11 +916,9 @@ export default function App() {
                 <div className="overview-company-hook-window">
                   <iframe
                     title="Company Landscape overview preview"
-                    src={
-                      observableSrc.visual1Company
-                    }
+                    src={observableSrc.visual1Company}
                     width="100%"
-                    height="900"
+                    height="1000"
                     frameBorder="0"
                     scrolling="no"
                     tabIndex="-1"
@@ -1159,61 +933,44 @@ export default function App() {
                 </p>
 
                 <h2>
-                  One market. Four analytical
-                  views.
+                  One market. Four analytical views.
                 </h2>
 
                 <div className="reading-row">
-                  <strong>
-                    Companies
-                  </strong>
-
+                  <strong>Companies</strong>
                   <span>
-                    Who is building the visible
-                    ecosystem.
+                    Who is building the visible ecosystem.
                   </span>
                 </div>
 
                 <div className="reading-row">
-                  <strong>
-                    Compounds
-                  </strong>
-
+                  <strong>Compounds</strong>
                   <span>
-                    Which compound families show
-                    visible activity.
+                    Which compound families show visible
+                    activity.
                   </span>
                 </div>
 
                 <div className="reading-row">
-                  <strong>
-                    Indications
-                  </strong>
-
+                  <strong>Indications</strong>
                   <span>
-                    Where registered
-                    patient-indication activity
-                    appears.
+                    Where registered patient-indication
+                    activity appears.
                   </span>
                 </div>
 
                 <div className="reading-row">
-                  <strong>
-                    Phases
-                  </strong>
-
+                  <strong>Phases</strong>
                   <span>
-                    Where registered activity sits
-                    in development.
+                    Where registered activity sits in
+                    development.
                   </span>
                 </div>
 
                 <button
                   type="button"
                   onClick={() =>
-                    activateView(
-                      "methodology"
-                    )
+                    activateView("methodology")
                   }
                   className="reading-method-link"
                 >
@@ -1233,13 +990,9 @@ export default function App() {
                   description="Explore who is building the visible psychedelic development landscape."
                   cta="Explore companies"
                   onClick={() =>
-                    activateView(
-                      "companies"
-                    )
+                    activateView("companies")
                   }
-                  src={
-                    observableSrc.visual1Company
-                  }
+                  src={observableSrc.visual1Company}
                   previewClass="preview-companies"
                 />
 
@@ -1248,13 +1001,9 @@ export default function App() {
                   description="See registered clinical activity and selected pipeline context by compound."
                   cta="Explore compounds"
                   onClick={() =>
-                    activateView(
-                      "compounds"
-                    )
+                    activateView("compounds")
                   }
-                  src={
-                    observableSrc.visual2
-                  }
+                  src={observableSrc.visual2}
                   previewClass="preview-compounds"
                 />
 
@@ -1263,13 +1012,9 @@ export default function App() {
                   description="See included registered patient-indication trials by therapeutic area."
                   cta="Explore indications"
                   onClick={() =>
-                    activateView(
-                      "indications"
-                    )
+                    activateView("indications")
                   }
-                  src={
-                    observableSrc.visual3
-                  }
+                  src={observableSrc.visual3}
                   previewClass="preview-indications"
                 />
 
@@ -1278,13 +1023,9 @@ export default function App() {
                   description="Review where visible registered activity appears across development phases."
                   cta="Explore phases"
                   onClick={() =>
-                    activateView(
-                      "phases"
-                    )
+                    activateView("phases")
                   }
-                  src={
-                    observableSrc.visual4
-                  }
+                  src={observableSrc.visual4}
                   previewClass="preview-phases"
                 />
               </div>
@@ -1298,8 +1039,7 @@ export default function App() {
 
                 <div>
                   <strong>
-                    Different views. Different
-                    units.
+                    Different views. Different units.
                   </strong>
 
                   <span>
@@ -1320,8 +1060,7 @@ export default function App() {
                   </strong>
 
                   <span>
-                    Public registry records with a
-                    trial ID.
+                    Public registry records with a trial ID.
                   </span>
                 </div>
               </div>
@@ -1330,13 +1069,11 @@ export default function App() {
                 <span className="insight-dot insight-dot-dashed" />
 
                 <div>
-                  <strong>
-                    Pipeline context
-                  </strong>
+                  <strong>Pipeline context</strong>
 
                   <span>
-                    Selected visible programs
-                    without a public trial ID.
+                    Selected visible programs without a
+                    public trial ID.
                   </span>
                 </div>
               </div>
@@ -1352,8 +1089,8 @@ export default function App() {
                   </strong>
 
                   <span>
-                    Registry and selected company
-                    / secondary-source context.
+                    Registry and selected company /
+                    secondary-source context.
                   </span>
                 </div>
               </div>
@@ -1369,8 +1106,8 @@ export default function App() {
                   </strong>
 
                   <span>
-                    Activity does not imply
-                    safety, approval or success.
+                    Activity does not imply safety,
+                    approval or success.
                   </span>
                 </div>
               </div>
@@ -1393,39 +1130,25 @@ export default function App() {
             >
               <ObservableFrame
                 title="Company Landscape Premium"
-                src={
-                  observableSrc.visual1Company
-                }
+                src={observableSrc.visual1Company}
                 className="full-visual full-company-visual company-real-working-frame"
                 height={1000}
               />
 
               <CompanyExternalPanel
-                selectedCompany={
-                  selectedCompany
-                }
-                onClose={
-                  handlePrimaryClose
-                }
-                onCompare={
-                  handleCompareStart
-                }
+                selectedCompany={selectedCompany}
+                onClose={handlePrimaryClose}
+                onCompare={handleCompareStart}
                 showCompareButton={
                   !!selectedCompany &&
                   !compareCompany
                 }
-                compareModeActive={
-                  compareMode
-                }
+                compareModeActive={compareMode}
               />
 
               <CompanyExternalPanel
-                selectedCompany={
-                  compareCompany
-                }
-                onClose={
-                  handleCompareClose
-                }
+                selectedCompany={compareCompany}
+                onClose={handleCompareClose}
                 isComparePanel={true}
               />
             </div>
@@ -1433,34 +1156,34 @@ export default function App() {
         )}
 
         {activeView === "compounds" && (
-          <section className="visual-page">
+          <section className="visual-page standard-analysis-page">
             <ObservableFrame
               title="Compound Activity Landscape"
               src={observableSrc.visual2}
-              className="full-visual full-compound-visual"
+              className="full-visual standard-analysis-visual full-compound-visual"
               height={1514}
             />
           </section>
         )}
 
         {activeView === "indications" && (
-          <section className="visual-page">
+          <section className="visual-page standard-analysis-page">
             <ObservableFrame
               title="Indication Landscape"
               src={observableSrc.visual3}
-              className="full-visual full-indication-visual"
+              className="full-visual standard-analysis-visual full-indication-visual"
               height={824}
             />
           </section>
         )}
 
         {activeView === "phases" && (
-          <section className="visual-page">
+          <section className="visual-page standard-analysis-page">
             <ObservableFrame
               title="Clinical Phase Landscape"
               src={observableSrc.visual4}
-              className="full-visual full-phase-visual"
-              height={980}
+              className="full-visual standard-analysis-visual full-phase-visual"
+              height={1180}
             />
           </section>
         )}
