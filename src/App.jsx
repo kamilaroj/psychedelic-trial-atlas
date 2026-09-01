@@ -61,34 +61,120 @@ function AtlasMark() {
         display: "block"
       }}
     >
-      <g fill="none" stroke="none">
-        <circle cx="32" cy="32" r="8.5" fill="#3A1E48" />
+      <g
+        fill="none"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Outer segmented atlas orbit */}
+        <path
+          d="M32 6
+             A26 26 0 0 1 58 32"
+          stroke="#4A245F"
+          strokeWidth="2.2"
+        />
+        <path
+          d="M58 32
+             A26 26 0 0 1 32 58"
+          stroke="#7A4A9B"
+          strokeWidth="2.2"
+        />
+        <path
+          d="M32 58
+             A26 26 0 0 1 6 32"
+          stroke="#6D3F8A"
+          strokeWidth="2.2"
+        />
+        <path
+          d="M6 32
+             A26 26 0 0 1 32 6"
+          stroke="#3E204F"
+          strokeWidth="2.2"
+        />
 
-        <circle cx="32" cy="14" r="4.4" fill="#7F6AA1" />
-        <circle cx="32" cy="50" r="4.4" fill="#B59AD8" />
+        {/* Four outer anchor points */}
+        <circle cx="32" cy="6" r="3.8" fill="#6F3F8D" stroke="none" />
+        <circle cx="58" cy="32" r="3.8" fill="#8F62B3" stroke="none" />
+        <circle cx="32" cy="58" r="3.8" fill="#8F62B3" stroke="none" />
+        <circle cx="6" cy="32" r="3.8" fill="#3A1E48" stroke="none" />
 
-        <circle cx="14" cy="32" r="4.4" fill="#B59AD8" />
-        <circle cx="50" cy="32" r="4.4" fill="#7F6AA1" />
+        {/* Middle dotted orbit */}
+        <circle
+          cx="32"
+          cy="32"
+          r="18.5"
+          stroke="#70428A"
+          strokeWidth="1.5"
+          strokeDasharray="0.1 3.6"
+        />
 
-        <circle cx="20" cy="20" r="3.7" fill="#9D83C2" />
-        <circle cx="44" cy="20" r="3.7" fill="#9D83C2" />
-        <circle cx="20" cy="44" r="3.7" fill="#9D83C2" />
-        <circle cx="44" cy="44" r="3.7" fill="#9D83C2" />
+        {/* Middle anchor points */}
+        <circle cx="32" cy="13.5" r="2.8" fill="#70428A" stroke="none" />
+        <circle cx="50.5" cy="32" r="2.8" fill="#9B73BE" stroke="none" />
+        <circle cx="32" cy="50.5" r="2.8" fill="#5D2D75" stroke="none" />
+        <circle cx="13.5" cy="32" r="2.8" fill="#A27BC4" stroke="none" />
 
-        <circle cx="9.5" cy="23" r="2.7" fill="#D0BEE7" />
-        <circle cx="54.5" cy="23" r="2.7" fill="#D0BEE7" />
-        <circle cx="9.5" cy="41" r="2.7" fill="#D0BEE7" />
-        <circle cx="54.5" cy="41" r="2.7" fill="#D0BEE7" />
+        <circle cx="18.9" cy="18.9" r="2.4" fill="#A27BC4" stroke="none" />
+        <circle cx="45.1" cy="18.9" r="2.4" fill="#8D63AF" stroke="none" />
+        <circle cx="18.9" cy="45.1" r="2.4" fill="#7B4C99" stroke="none" />
+        <circle cx="45.1" cy="45.1" r="2.4" fill="#5A2B72" stroke="none" />
 
-        <circle cx="23" cy="9.5" r="2.7" fill="#D0BEE7" />
-        <circle cx="41" cy="9.5" r="2.7" fill="#D0BEE7" />
-        <circle cx="23" cy="54.5" r="2.7" fill="#D0BEE7" />
-        <circle cx="41" cy="54.5" r="2.7" fill="#D0BEE7" />
+        {/* Inner dotted orbit */}
+        <circle
+          cx="32"
+          cy="32"
+          r="11.8"
+          stroke="#4E2463"
+          strokeWidth="1.3"
+          strokeDasharray="0.1 3.4"
+        />
 
-        <circle cx="32" cy="5.5" r="2.1" fill="#CBB6E4" />
-        <circle cx="32" cy="58.5" r="2.1" fill="#CBB6E4" />
-        <circle cx="5.5" cy="32" r="2.1" fill="#CBB6E4" />
-        <circle cx="58.5" cy="32" r="2.1" fill="#CBB6E4" />
+        {/* Four analytical star points */}
+        <path
+          d="M32 16.8
+             C32.6 20.4 34.6 22.4 38.2 23
+             C34.6 23.6 32.6 25.6 32 29.2
+             C31.4 25.6 29.4 23.6 25.8 23
+             C29.4 22.4 31.4 20.4 32 16.8Z"
+          fill="#3A1E48"
+          stroke="none"
+        />
+        <path
+          d="M47.2 32
+             C43.6 32.6 41.6 34.6 41 38.2
+             C40.4 34.6 38.4 32.6 34.8 32
+             C38.4 31.4 40.4 29.4 41 25.8
+             C41.6 29.4 43.6 31.4 47.2 32Z"
+          fill="#3A1E48"
+          stroke="none"
+        />
+        <path
+          d="M32 47.2
+             C31.4 43.6 29.4 41.6 25.8 41
+             C29.4 40.4 31.4 38.4 32 34.8
+             C32.6 38.4 34.6 40.4 38.2 41
+             C34.6 41.6 32.6 43.6 32 47.2Z"
+          fill="#3A1E48"
+          stroke="none"
+        />
+        <path
+          d="M16.8 32
+             C20.4 31.4 22.4 29.4 23 25.8
+             C23.6 29.4 25.6 31.4 29.2 32
+             C25.6 32.6 23.6 34.6 23 38.2
+             C22.4 34.6 20.4 32.6 16.8 32Z"
+          fill="#3A1E48"
+          stroke="none"
+        />
+
+        {/* Central data core */}
+        <circle
+          cx="32"
+          cy="32"
+          r="6.2"
+          fill="#3A1E48"
+          stroke="none"
+        />
       </g>
     </svg>
   );
