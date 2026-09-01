@@ -1304,10 +1304,11 @@ iframe,
 }
 
 /* =========================================================
-   COMPOUNDS — SINGLE CLEAN EMBED
-   Observable SVG: 1560 × 780.
-   One iframe system only. No Observable Runtime.
-   No internal scrolling. Footer/chrome is clipped by the host.
+   COMPOUNDS — FINAL BALANCED VIEWPORT
+   Observable SVG: 1560 × 860.
+   One stable iframe only.
+   No scaling trick. No internal scrolling.
+   The host clips before Observable footer/chrome.
    ========================================================= */
 
 .atlas-stage-compounds {
@@ -1327,11 +1328,11 @@ iframe,
   width: min(1380px, 100%) !important;
   max-width: min(1380px, 100%) !important;
 
-  /* Visible height of the scaled 1560 × 780 SVG.
-     This ends before Observable's footer/chrome. */
-  height: 690px !important;
-  min-height: 690px !important;
-  max-height: 690px !important;
+  /* 1380 / 1560 × 860 = ~761 px.
+     760 px shows the full SVG while clipping Observable chrome. */
+  height: 760px !important;
+  min-height: 760px !important;
+  max-height: 760px !important;
 
   margin: 0 auto !important;
   overflow: hidden !important;
@@ -1346,21 +1347,18 @@ iframe,
 
 .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
   position: absolute !important;
-  top: 0 !important;
-  left: 50% !important;
+  inset: 0 !important;
+  display: block !important;
 
-  /* The iframe is deliberately narrower, then enlarged.
-     1180 × 1.165 ≈ 1375 px, which fills the 1380 px host.
-     The 1560 × 780 visual therefore renders at ~687 px high. */
-  width: 1180px !important;
+  width: 100% !important;
   max-width: none !important;
-  height: 760px !important;
-  min-height: 760px !important;
+  height: 790px !important;
+  min-height: 790px !important;
   max-height: none !important;
 
   margin: 0 !important;
-  transform: translateX(-50%) scale(1.165) !important;
-  transform-origin: top center !important;
+  transform: none !important;
+  transform-origin: top left !important;
 
   border: 0 !important;
   outline: 0 !important;
@@ -1382,23 +1380,19 @@ iframe,
   display: none !important;
 }
 
-/* Laptop */
 @media (max-width: 1260px) {
   .atlas-stage-compounds .full-compound-visual {
     width: min(1180px, 100%) !important;
-    height: 590px !important;
-    min-height: 590px !important;
-    max-height: 590px !important;
+    height: 651px !important;
+    min-height: 651px !important;
+    max-height: 651px !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    width: 1180px !important;
-    height: 680px !important;
-    transform: translateX(-50%) scale(1) !important;
+    height: 690px !important;
   }
 }
 
-/* Tablet */
 @media (max-width: 1020px) {
   .atlas-stage-compounds .compound-page {
     padding-top: 6px !important;
@@ -1406,27 +1400,23 @@ iframe,
 
   .atlas-stage-compounds .full-compound-visual {
     width: 100% !important;
-    height: 49vw !important;
+    height: 55vw !important;
     min-height: 0 !important;
-    max-height: 500px !important;
+    max-height: 560px !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    left: 0 !important;
-    width: 100% !important;
     height: 620px !important;
-    transform: none !important;
   }
 }
 
-/* Mobile */
 @media (max-width: 720px) {
   .atlas-stage-compounds .compound-page {
     padding-top: 4px !important;
   }
 
   .atlas-stage-compounds .full-compound-visual {
-    height: 48vw !important;
+    height: 54vw !important;
     max-height: none !important;
   }
 
