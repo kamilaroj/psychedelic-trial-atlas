@@ -60,29 +60,34 @@ function AtlasMark() {
         display: "block"
       }}
     >
-      <g
-        fill="none"
-        stroke="#3A1E48"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M14 44L26 34L21 20L35 13L41 27L53 29" strokeWidth="2.3" />
-        <path d="M26 34L39 43L48 51" strokeWidth="2.3" />
-        <path d="M41 27L39 43" strokeWidth="2.3" />
+      <g fill="none" stroke="none">
+        <circle cx="32" cy="32" r="8.5" fill="#3A1E48" />
 
-        <circle cx="14" cy="44" r="4.2" fill="#3A1E48" stroke="none" />
-        <circle cx="26" cy="34" r="5.2" fill="#3A1E48" stroke="none" />
-        <circle cx="21" cy="20" r="4.2" fill="#3A1E48" stroke="none" />
-        <circle cx="35" cy="13" r="4.5" fill="#3A1E48" stroke="none" />
-        <circle cx="41" cy="27" r="5.0" fill="#3A1E48" stroke="none" />
-        <circle cx="53" cy="29" r="4.2" fill="#3A1E48" stroke="none" />
-        <circle cx="39" cy="43" r="4.7" fill="#3A1E48" stroke="none" />
-        <circle cx="48" cy="51" r="3.8" fill="#3A1E48" stroke="none" />
+        <circle cx="32" cy="14" r="4.4" fill="#7F6AA1" />
+        <circle cx="32" cy="50" r="4.4" fill="#B59AD8" />
 
-        <path d="M9 16L10.8 20.2L15 22L10.8 23.8L9 28L7.2 23.8L3 22L7.2 20.2Z"
-              fill="#B99BE3" stroke="none" />
-        <path d="M52 11L53.4 14.1L56.5 15.5L53.4 16.9L52 20L50.6 16.9L47.5 15.5L50.6 14.1Z"
-              fill="#B99BE3" stroke="none" />
+        <circle cx="14" cy="32" r="4.4" fill="#B59AD8" />
+        <circle cx="50" cy="32" r="4.4" fill="#7F6AA1" />
+
+        <circle cx="20" cy="20" r="3.7" fill="#9D83C2" />
+        <circle cx="44" cy="20" r="3.7" fill="#9D83C2" />
+        <circle cx="20" cy="44" r="3.7" fill="#9D83C2" />
+        <circle cx="44" cy="44" r="3.7" fill="#9D83C2" />
+
+        <circle cx="9.5" cy="23" r="2.7" fill="#D0BEE7" />
+        <circle cx="54.5" cy="23" r="2.7" fill="#D0BEE7" />
+        <circle cx="9.5" cy="41" r="2.7" fill="#D0BEE7" />
+        <circle cx="54.5" cy="41" r="2.7" fill="#D0BEE7" />
+
+        <circle cx="23" cy="9.5" r="2.7" fill="#D0BEE7" />
+        <circle cx="41" cy="9.5" r="2.7" fill="#D0BEE7" />
+        <circle cx="23" cy="54.5" r="2.7" fill="#D0BEE7" />
+        <circle cx="41" cy="54.5" r="2.7" fill="#D0BEE7" />
+
+        <circle cx="32" cy="5.5" r="2.1" fill="#CBB6E4" />
+        <circle cx="32" cy="58.5" r="2.1" fill="#CBB6E4" />
+        <circle cx="5.5" cy="32" r="2.1" fill="#CBB6E4" />
+        <circle cx="58.5" cy="32" r="2.1" fill="#CBB6E4" />
       </g>
     </svg>
   );
