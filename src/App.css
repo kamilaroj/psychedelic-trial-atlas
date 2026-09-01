@@ -584,12 +584,15 @@ a:focus-visible {
   overflow: hidden;
   background: transparent;
   isolation: isolate;
+  border: 0;
+  box-shadow: none;
 }
 
 .atlas-iframe {
   display: block;
   width: 100%;
   border: 0;
+  outline: 0;
   background: transparent;
 }
 
@@ -664,10 +667,12 @@ a:focus-visible {
   position: absolute;
   inset: 0;
   z-index: 5;
-  background: linear-gradient(180deg, rgba(251, 250, 249, 1), rgba(248, 246, 245, 1));
+  background: #f8f6f5;
   pointer-events: none;
   opacity: 1;
   transition: opacity 180ms ease;
+  border: 0;
+  box-shadow: none;
 }
 
 .observable-shell .atlas-iframe,
@@ -687,18 +692,6 @@ a:focus-visible {
   opacity: 1;
 }
 
-.full-compound-visual::before,
-.full-phase-visual::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  width: 5px;
-  z-index: 12;
-  background: #f8f6f5;
-  pointer-events: none;
-}
 
 /* COMPANY LANDSCAPE FULL VIEW */
 
