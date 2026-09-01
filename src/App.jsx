@@ -595,17 +595,17 @@ export default function App() {
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1448` +
         `?cells=visual2ChartUnitColumns1` +
         `&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
       visual3:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1448` +
         `?cells=visual3Chart` +
         `&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
       visual4:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1443` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1448` +
         `?cells=visual4PhaseChart` +
         `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
