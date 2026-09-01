@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
+import kamilaPhoto from "./kamila-rojek.png";
 
 const ATLAS_VERSION = "August 2026";
 const CONTACT_EMAIL = "kamila.rojek@gmail.com";
@@ -490,9 +491,9 @@ function AboutView() {
             lineHeight: 1.55
           }}
         >
-          A visual intelligence project mapping what is publicly visible in
-          psychedelic drug development by company, compound, indication,
-          phase, recruitment status and source visibility.
+          A public clinical-development intelligence project mapping what is
+          visible in psychedelic drug development by company, compound,
+          indication, phase, recruitment status and source visibility.
         </p>
       </div>
 
@@ -607,9 +608,8 @@ function AboutView() {
                   lineHeight: 1.6
                 }}
               >
-                I wanted to create a clear, public-facing view of what is
-                actually visible in the development landscape, and at the same
-                time make it easier for people to discover{" "}
+                I wanted to create a clear public view of the development landscape and
+                make it easier to discover{" "}
                 <strong>registered studies</strong>, including trials that may
                 currently be <strong>recruiting</strong>.
               </p>
@@ -666,7 +666,7 @@ function AboutView() {
           }}
         >
           <img
-            src="/kamila-rojek.png"
+            src={kamilaPhoto}
             alt="Kamila Rojek"
             style={{
               display: "block",
