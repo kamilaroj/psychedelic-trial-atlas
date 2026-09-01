@@ -66,36 +66,23 @@ function AtlasMark() {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path
-          d="M32 5
-             L36.2 19.2
-             L47.4 9.6
-             L41.2 23.1
-             L56.3 20.2
-             L43.8 29.1
-             L58.4 32
-             L43.8 34.9
-             L56.3 43.8
-             L41.2 40.9
-             L47.4 54.4
-             L36.2 44.8
-             L32 59
-             L27.8 44.8
-             L16.6 54.4
-             L22.8 40.9
-             L7.7 43.8
-             L20.2 34.9
-             L5.6 32
-             L20.2 29.1
-             L7.7 20.2
-             L22.8 23.1
-             L16.6 9.6
-             L27.8 19.2
-             Z"
-          strokeWidth="2.1"
-        />
-        <circle cx="32" cy="32" r="8.4" strokeWidth="2.1" />
-        <circle cx="32" cy="32" r="2.8" fill="#3A1E48" stroke="none" />
+        <path d="M14 44L26 34L21 20L35 13L41 27L53 29" strokeWidth="2.3" />
+        <path d="M26 34L39 43L48 51" strokeWidth="2.3" />
+        <path d="M41 27L39 43" strokeWidth="2.3" />
+
+        <circle cx="14" cy="44" r="4.2" fill="#3A1E48" stroke="none" />
+        <circle cx="26" cy="34" r="5.2" fill="#3A1E48" stroke="none" />
+        <circle cx="21" cy="20" r="4.2" fill="#3A1E48" stroke="none" />
+        <circle cx="35" cy="13" r="4.5" fill="#3A1E48" stroke="none" />
+        <circle cx="41" cy="27" r="5.0" fill="#3A1E48" stroke="none" />
+        <circle cx="53" cy="29" r="4.2" fill="#3A1E48" stroke="none" />
+        <circle cx="39" cy="43" r="4.7" fill="#3A1E48" stroke="none" />
+        <circle cx="48" cy="51" r="3.8" fill="#3A1E48" stroke="none" />
+
+        <path d="M9 16L10.8 20.2L15 22L10.8 23.8L9 28L7.2 23.8L3 22L7.2 20.2Z"
+              fill="#B99BE3" stroke="none" />
+        <path d="M52 11L53.4 14.1L56.5 15.5L53.4 16.9L52 20L50.6 16.9L47.5 15.5L50.6 14.1Z"
+              fill="#B99BE3" stroke="none" />
       </g>
     </svg>
   );
