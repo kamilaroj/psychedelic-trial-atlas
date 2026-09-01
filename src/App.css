@@ -614,19 +614,45 @@ a:focus-visible {
   max-height: var(--analysis-height) !important;
   margin: 0 auto !important;
   overflow: hidden !important;
-  background: #f8f6f5;
+  background: transparent;
+}
+
+.compound-page {
+  padding-top: 12px;
+}
+
+.full-compound-visual {
+  position: relative !important;
+  width: min(1380px, 100%) !important;
+  max-width: min(1380px, 100%) !important;
+  height: 835px !important;
+  min-height: 835px !important;
+  max-height: 835px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  clip-path: inset(0 0 18px 0);
+  -webkit-clip-path: inset(0 0 18px 0);
 }
 
 .full-compound-visual .atlas-iframe {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 170% !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
   max-width: none !important;
-  height: 1514px !important;
+  height: 920px !important;
+  min-height: 920px !important;
   margin: 0 !important;
-  transform: translateX(-50%) scale(0.588);
-  transform-origin: top center;
+  transform: none !important;
+  transform-origin: top left !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
 }
 
 .full-indication-visual .atlas-iframe {
@@ -1313,4 +1339,68 @@ iframe,
 .observable-shell::after {
   content: none !important;
   display: none !important;
+}
+
+
+/* =========================================================
+   COMPOUNDS — FINAL PREMIUM EMBED
+   ========================================================= */
+
+.atlas-stage-compounds,
+.atlas-stage-compounds .visual-page,
+.atlas-stage-compounds .observable-shell,
+.atlas-stage-compounds .standard-analysis-visual,
+.atlas-stage-compounds iframe {
+  background: transparent !important;
+}
+
+.atlas-stage-compounds .observable-shell,
+.atlas-stage-compounds .full-compound-visual {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Hide the Observable notebook chrome/footer by clipping the embed viewport. */
+.full-compound-visual {
+  overflow: hidden !important;
+  contain: paint;
+}
+
+/* Never show focus edge / left loading stripe around the Compounds embed. */
+.full-compound-visual:focus,
+.full-compound-visual:focus-visible,
+.full-compound-visual iframe:focus,
+.full-compound-visual iframe:focus-visible {
+  outline: none !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}
+
+@media (max-width: 1020px) {
+  .full-compound-visual {
+    height: 720px !important;
+    min-height: 720px !important;
+    max-height: 720px !important;
+  }
+
+  .full-compound-visual .atlas-iframe {
+    height: 800px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .compound-page {
+    padding-top: 8px;
+  }
+
+  .full-compound-visual {
+    height: 620px !important;
+    min-height: 620px !important;
+    max-height: 620px !important;
+  }
+
+  .full-compound-visual .atlas-iframe {
+    height: 700px !important;
+  }
 }
