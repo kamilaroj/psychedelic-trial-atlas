@@ -1,2192 +1,1651 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap");
+visual1CompanyLandscapePremium1 = {
+  const bg = "transparent";
+  const ink = "#1d1d1f";
+  const muted = "#5f6872";
+  const tiny = "#7b838c";
+  const white = "#ffffff";
+  const stroke = "#d9d7cf";
 
-:root {
-  --ink: #24272c;
-  --muted: #68717a;
-  --plum: #38243d;
-  --plum-dark: #2a1534;
-  --plum-mid: #665c91;
-  --line: rgba(56, 36, 61, 0.12);
-  --paper: #f7f5f3;
+  const width = 980;
+  const height = 660;
 
-  --topbar-height: 82px;
-  --page-pad: clamp(24px, 3vw, 52px);
-  --content-max: 1480px;
+  const chartWidth = width;
 
-  --company-panel-width: 230px;
+  const titleFont = `-apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter Tight", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif`;
+  const bodyFont = `-apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", "Helvetica Neue", Arial, system-ui, sans-serif`;
+
+  const urlParams = new URLSearchParams(window.location.search);
+
+  function readJsonParam(name) {
+    const raw = urlParams.get(name);
+
+    if (!raw) return {};
+
+    try {
+      const parsed = JSON.parse(raw);
+
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        return {};
+      }
+
+      return parsed;
+    } catch (error) {
+      return {};
+    }
+  }
+
+  const logoBasePathFromGithub = urlParams.get("logoBase") || "";
+
+  const logoBasePathRaw =
+    logoBasePathFromGithub ||
+    "https://psychedelic-trial-atlas.vercel.app/logos/";
+
+  const logoBasePath = logoBasePathRaw.endsWith("/")
+    ? logoBasePathRaw
+    : `${logoBasePathRaw}/`;
+
+  const logoVisualScaleFromGithub = readJsonParam("logoVisualScale");
+
+  const companyNameOverrides = new Map([
+    ["GH", "GH Research"],
+    ["TRN", "Tryp Therapeutics"],
+    ["UDOV", "Usona Institute"],
+    ["Compass", "Compass Pathways"],
+    ["Janssen", "Janssen"],
+    ["MindMed", "MindMed"],
+    ["Cybin", "Cybin"],
+    ["ATAI", "atai Life Sciences"],
+    ["Atai", "atai Life Sciences"],
+    ["Perception", "Perception Neuroscience"],
+    ["Beckley", "Beckley Psytech"],
+    ["Bright Minds", "Bright Minds Biosciences"],
+    ["Reunion", "Reunion Neuroscience"],
+    ["Gilgamesh", "Gilgamesh Pharmaceuticals"],
+    ["Delix", "Delix Therapeutics"],
+    ["Lykos", "Lykos Therapeutics"],
+    ["MAPS PBC", "MAPS Public Benefit Corporation"],
+    ["Resilient", "Resilient Pharmaceuticals"]
+  ]);
+
+  function text(value) {
+    return String(value ?? "").trim();
+  }
+
+  function lower(value) {
+    return text(value).toLowerCase();
+  }
+
+  function isYes(value) {
+    const v = lower(value);
+
+    return (
+      value === true ||
+      value === 1 ||
+      v === "yes" ||
+      v === "true" ||
+      v === "1" ||
+      v === "y"
+    );
+  }
+
+  function splitList(value) {
+    return text(value)
+      .split(/[,;|]/)
+      .map(d => d.trim())
+      .filter(Boolean);
+  }
+
+  function uniq(values) {
+    return Array.from(new Set(values.filter(Boolean)));
+  }
+
+  function sortAlpha(values) {
+    return values
+      .filter(Boolean)
+      .sort((a, b) => String(a).localeCompare(String(b), "en"));
+  }
+
+  function firstPresent(row, fields) {
+    for (const field of fields) {
+      const value = text(row[field]);
+      if (value) return value;
+    }
+
+    return "";
+  }
+
+  function isProbablyAbbreviation(value) {
+    const v = text(value);
+
+    if (!v) return true;
+    if (v.length <= 5 && v === v.toUpperCase()) return true;
+    if (/^[A-Z0-9]{2,6}$/.test(v)) return true;
+
+    return false;
+  }
+
+  function normalizeCompany(row) {
+    return (
+      firstPresent(row, [
+        "company_visual_label",
+        "company_name_final_v1",
+        "commercial_actor_clean_v1",
+        "official_sponsor_clean_v1",
+        "primary_sponsor_clean_v1",
+        "primary_sponsor",
+        "primary_sponsor_raw_source"
+      ]) || "Unknown company"
+    );
+  }
+
+  function getCompanyDisplayName(companyKey, items) {
+    if (companyNameOverrides.has(companyKey)) {
+      return companyNameOverrides.get(companyKey);
+    }
+
+    const priorityFields = [
+      "company_name_final_v1",
+      "commercial_actor_clean_v1",
+      "company_full_display_name_visual1",
+      "company_display_name_visual1",
+      "official_sponsor_clean_v1",
+      "primary_sponsor_clean_v1",
+      "primary_sponsor_raw_source",
+      "primary_sponsor"
+    ];
+
+    for (const field of priorityFields) {
+      const values = uniq(
+        items
+          .map(row => text(row[field]))
+          .filter(Boolean)
+      );
+
+      const readable = values.find(value => !isProbablyAbbreviation(value));
+
+      if (readable) {
+        return readable;
+      }
+    }
+
+    return companyKey;
+  }
+
+  function getMiniHoverName(d) {
+    return text(d.displayName)
+      .replace(/\s*\/\s*academic clinical research context/gi, "")
+      .replace(/\s*academic clinical research context/gi, "")
+      .replace(/\s*\/\s*research context/gi, "")
+      .replace(/\s*research context/gi, "")
+      .replace(/\s*\/\s*academic clinical/gi, "")
+      .replace(/\s*academic clinical/gi, "")
+      .trim();
+  }
+
+  function normalizeSourceType(row) {
+    return lower(
+      firstPresent(row, [
+        "source_visibility_type",
+        "source_type_clean",
+        "visual_layer",
+        "source_visibility_type_all_visuals"
+      ])
+    );
+  }
+
+  function getTrialIdRaw(row) {
+    return firstPresent(row, [
+      "trial_id_all_visuals",
+      "trial_id",
+      "trial_id_source"
+    ]);
+  }
+
+  function getTrialId(row) {
+    const id = getTrialIdRaw(row);
+    const bad = lower(id);
+
+    if (!id) return "";
+    if (bad.includes("no registered")) return "";
+    if (bad.includes("no public")) return "";
+    if (bad.includes("pipeline")) return "";
+    if (bad.includes("context")) return "";
+    if (bad.includes("preclinical")) return "";
+    if (bad.includes("discovery")) return "";
+
+    return id;
+  }
+
+  function looksLikeRegisteredTrialId(value) {
+    const id = text(value);
+
+    return (
+      /^NCT\d{8}$/i.test(id) ||
+      /^CTIS/i.test(id) ||
+      /^EUCTR/i.test(id) ||
+      /^ISRCTN/i.test(id) ||
+      /^ACTRN/i.test(id) ||
+      /^DRKS/i.test(id) ||
+      /^UMIN/i.test(id) ||
+      /^JPRN/i.test(id) ||
+      /^ChiCTR/i.test(id) ||
+      /^NL-/i.test(id)
+    );
+  }
+
+  function isRegisteredTrialRow(row) {
+    const source = normalizeSourceType(row);
+    const id = getTrialId(row);
+
+    if (
+      source === "registered_trial" ||
+      source === "registered trial" ||
+      source.includes("registered_trial") ||
+      source.includes("registered trial")
+    ) {
+      return true;
+    }
+
+    if (source.includes("pipeline")) return false;
+    if (source.includes("context")) return false;
+    if (source.includes("duplicate")) return false;
+
+    return looksLikeRegisteredTrialId(id);
+  }
+
+  function getTrialUrl(row) {
+    return firstPresent(row, [
+      "web_address_hover_all_visuals",
+      "web_address",
+      "source_url",
+      "url"
+    ]);
+  }
+
+  function getLogoFile(row) {
+    return firstPresent(row, [
+      "company_logo_file_visual1",
+      "company_logo_file",
+      "logo",
+      "logo_file",
+      "company_logo"
+    ]);
+  }
+
+  function getLogoDisplayStatus(row) {
+    return lower(
+      firstPresent(row, [
+        "company_logo_display_status_visual1",
+        "company_logo_display_status",
+        "logo_display_status"
+      ])
+    );
+  }
+
+  function getLogoUrl(value) {
+    const raw = text(value);
+
+    if (!raw) return "";
+
+    if (
+      raw.startsWith("http://") ||
+      raw.startsWith("https://") ||
+      raw.startsWith("data:image")
+    ) {
+      return raw;
+    }
+
+    const normalized = raw
+      .replace(/^\/+/g, "")
+      .replace(/^public\/logos\//i, "")
+      .replace(/^logos\//i, "");
+
+    if (!normalized) return "";
+
+    return `${logoBasePath}${normalized
+      .split("/")
+      .map(part => encodeURIComponent(part))
+      .join("/")}`;
+  }
+
+  function getLogoFit(row, companyName, logoFile) {
+    const explicit = lower(
+      firstPresent(row, [
+        "company_logo_fit_visual1",
+        "company_logo_mode_visual1",
+        "logo_fit_visual1",
+        "logo_fit"
+      ])
+    );
+
+    if (explicit) return explicit;
+
+    const test = lower(`${companyName} ${logoFile}`);
+
+    if (test.includes("janssen")) return "wide";
+    if (test.includes("atai")) return "wide";
+    if (test.includes("beckley")) return "wide";
+    if (test.includes("compass")) return "wide";
+    if (test.includes("bright")) return "wide";
+    if (test.includes("gilgamesh")) return "wide";
+    if (test.includes("mindmed")) return "wide";
+    if (test.includes("cybin")) return "wide";
+    if (test.includes("reunion")) return "wide";
+    if (test.includes("delix")) return "wide";
+    if (test.includes("lykos")) return "wide";
+
+    return "compact";
+  }
+
+  function getVisualLogoScale(d) {
+    const file = text(d.logoFile);
+    const githubScale = Number(logoVisualScaleFromGithub[file]);
+
+    if (Number.isFinite(githubScale) && githubScale > 0) {
+      return githubScale;
+    }
+
+    return 1;
+  }
+
+  function getAsset(row) {
+    return firstPresent(row, [
+      "asset_program_display_v1",
+      "asset_program_clean_v1",
+      "asset_program_clean_v1_original",
+      "compound",
+      "compound_raw_v2_context",
+      "substance_name_raw_hover_v1_v2",
+      "Name of substance"
+    ]);
+  }
+
+  function getCompoundFamily(row) {
+    return firstPresent(row, [
+      "compound_family_v2",
+      "compound_color_group_all_visuals",
+      "compound_color_group"
+    ]);
+  }
+
+  function getIndication(row) {
+    return firstPresent(row, [
+      "indication_group_v3",
+      "indication_group_display_v3",
+      "indication_area_public",
+      "Indication",
+      "condition_raw_hover_v3",
+      "condition"
+    ]);
+  }
+
+  function getCountries(row) {
+    return splitList(
+      firstPresent(row, [
+        "countries_clean_v3",
+        "countries_clean",
+        "countries_raw_hover_v3",
+        "countries"
+      ])
+    );
+  }
+
+  function normalizeWebsiteUrl(value) {
+    const raw = text(value);
+
+    if (!raw) return "";
+
+    if (
+      ["null", "none", "nan", "na", "n/a", "-", "—"].includes(lower(raw))
+    ) {
+      return "";
+    }
+
+    if (lower(raw) === "no official website verified") {
+      return "No official website verified";
+    }
+
+    if (
+      raw.startsWith("http://") ||
+      raw.startsWith("https://")
+    ) {
+      return raw;
+    }
+
+    return `https://${raw}`;
+  }
+
+  function isRealWebsite(value) {
+    const url = normalizeWebsiteUrl(value);
+
+    if (!url) return false;
+    if (url === "No official website verified") return false;
+
+    return true;
+  }
+
+  function getCompanyWebsites(items) {
+    const website1Values = uniq(
+      items
+        .map(d =>
+          firstPresent(d, [
+            "company_website_1",
+            "company_website",
+            "company_website_visual1",
+            "website",
+            "company_url"
+          ])
+        )
+        .map(normalizeWebsiteUrl)
+        .filter(Boolean)
+    );
+
+    const website2Values = uniq(
+      items
+        .map(d =>
+          firstPresent(d, [
+            "company_website_2",
+            "company_website_secondary",
+            "company_website_partner",
+            "partner_website"
+          ])
+        )
+        .map(normalizeWebsiteUrl)
+        .filter(Boolean)
+    );
+
+    const websites = uniq([
+      ...website1Values.filter(isRealWebsite),
+      ...website2Values.filter(isRealWebsite)
+    ]);
+
+    const noVerifiedWebsite =
+      websites.length === 0 &&
+      website1Values.some(
+        d => d === "No official website verified"
+      );
+
+    return {
+      websites,
+      noVerifiedWebsite
+    };
+  }
+
+  function getBestLogoRow(items) {
+    const visibleLogoRows = items.filter(d => {
+      const file = getLogoFile(d);
+      const status = getLogoDisplayStatus(d);
+
+      if (!file) return false;
+
+      if (
+        status === "hide" ||
+        status === "hidden" ||
+        status === "no" ||
+        status === "false" ||
+        status === "exclude"
+      ) {
+        return false;
+      }
+
+      return true;
+    });
+
+    if (visibleLogoRows.length) return visibleLogoRows[0];
+
+    return items.find(d => getLogoFile(d)) || items[0];
+  }
+
+  function htmlEscape(value) {
+    return String(value ?? "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+  }
+
+  function companyPayload(d) {
+    return {
+      company: d.displayName,
+      companyKey: d.company,
+      website: d.websites,
+      websites: d.websites,
+      noVerifiedWebsite: d.noVerifiedWebsite,
+      assets: d.assets,
+      families: d.families,
+      indications: d.indications,
+      countries: d.countries,
+      trials: d.trials,
+      registeredUnits: d.registeredUnits,
+      pipelineUnits: d.pipelineUnits,
+      activityUnits: d.activityUnits,
+      visibleActivity: d.activityUnits,
+      hasRegistered: d.hasRegistered,
+      logoUrl: d.logoUrl,
+      logoFile: d.logoFile,
+      logoFit: d.logoFit
+    };
+  }
+
+  function postToParent(message) {
+    const targets = [];
+
+    try {
+      targets.push(window.parent);
+    } catch (error) {}
+
+    try {
+      targets.push(window.top);
+    } catch (error) {}
+
+    try {
+      targets.push(window.parent?.parent);
+    } catch (error) {}
+
+    [...new Set(targets.filter(Boolean))].forEach(targetWindow => {
+      try {
+        targetWindow.postMessage(message, "*");
+      } catch (error) {}
+    });
+  }
+
+  function sendCompanyToParent(d, mode = "primary") {
+    const payload = companyPayload(d);
+
+    if (mode === "compare") {
+      postToParent({
+        type: "UNICORN_COMPANY_COMPARE_SELECTED",
+        payload
+      });
+
+      postToParent({
+        type: "UNICORN_COMPANY_SELECTED",
+        payload: {
+          ...payload,
+          compareSlot: "compare"
+        }
+      });
+
+      postToParent({
+        type: "UNICORN_COMPARE_SELECTION_MODE",
+        active: false
+      });
+
+      return;
+    }
+
+    postToParent({
+      type: "UNICORN_COMPANY_SELECTED",
+      payload: {
+        ...payload,
+        compareSlot: "primary"
+      }
+    });
+  }
+
+  function clearCompanyInParent() {
+    postToParent({
+      type: "UNICORN_COMPANY_SELECTED",
+      payload: null
+    });
+
+    postToParent({
+      type: "UNICORN_COMPANY_COMPARE_SELECTED",
+      payload: null
+    });
+  }
+
+  const rows = allData.filter(d => {
+    if ("visual1_include" in d) {
+      return isYes(d.visual1_include);
+    }
+
+    if ("visual_include_status_all_visuals" in d) {
+      return lower(d.visual_include_status_all_visuals) !== "exclude";
+    }
+
+    return true;
+  });
+
+  const byCompany = d3.group(rows, normalizeCompany);
+
+  const companies = Array.from(byCompany, ([company, items]) => {
+    const displayName = getCompanyDisplayName(company, items);
+    const registeredRows = items.filter(isRegisteredTrialRow);
+
+    const pipelineRows = items.filter(d => {
+      const source = normalizeSourceType(d);
+      const id = getTrialId(d);
+
+      if (looksLikeRegisteredTrialId(id)) return false;
+
+      return (
+        source.includes("pipeline") ||
+        source.includes("context") ||
+        !isRegisteredTrialRow(d)
+      );
+    });
+
+    const assets = sortAlpha(uniq(items.map(getAsset)));
+    const families = sortAlpha(uniq(items.map(getCompoundFamily)));
+    const indications = sortAlpha(uniq(items.map(getIndication)));
+    const countries = sortAlpha(uniq(registeredRows.flatMap(getCountries)));
+
+    const trials = uniq(
+      registeredRows
+        .map(d => ({
+          id: getTrialId(d),
+          url: getTrialUrl(d)
+        }))
+        .filter(d => d.id)
+        .map(d => JSON.stringify(d))
+    ).map(d => JSON.parse(d));
+
+    const logoSourceRow = getBestLogoRow(items);
+    const logoFile = getLogoFile(logoSourceRow);
+    const logoUrl = getLogoUrl(logoFile);
+
+    const logoFit = logoUrl
+      ? getLogoFit(logoSourceRow || {}, displayName, logoFile)
+      : "none";
+
+    const websiteInfo = getCompanyWebsites(items);
+
+    const registeredUnits = registeredRows.length;
+    const pipelineUnits = pipelineRows.length;
+    const activityUnits = registeredUnits + pipelineUnits;
+
+    /*
+      IMPORTANT:
+      This mathematical weighting is unchanged.
+    */
+
+    const footprint =
+      registeredUnits * 1.65 +
+      pipelineUnits * 0.55 +
+      assets.length * 0.85 +
+      indications.length * 0.3;
+
+    return {
+      company,
+      displayName,
+      logoFile,
+      logoUrl,
+      logoFit,
+      websites: websiteInfo.websites,
+      noVerifiedWebsite: websiteInfo.noVerifiedWebsite,
+      assets,
+      families,
+      indications,
+      countries,
+      trials,
+      registeredUnits,
+      pipelineUnits,
+      activityUnits,
+      visibleActivity: activityUnits,
+      hasRegistered: registeredUnits > 0,
+      footprint
+    };
+  })
+    .filter(d => d.company && d.company !== "Unknown company")
+    .sort((a, b) => d3.descending(a.footprint, b.footprint));
+
+  companies.forEach((d, i) => {
+    d.rank = i + 1;
+  });
+
+  const maxFootprint = d3.max(companies, d => d.footprint) || 1;
 
   /*
-    Shared geometry for the three analytical views.
-    Compounds, Indications and Phases now use the same
-    visible width and the same visible height.
+    IMPORTANT:
+    Radius scale unchanged.
   */
-  --analysis-width: 1320px;
-  --analysis-height: 890px;
-}
 
-* {
-  box-sizing: border-box;
-}
+  const radius = d3.scaleSqrt()
+    .domain([0, maxFootprint])
+    .range([15, 62]);
 
-html,
-body,
-#root {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-}
+  /*
+    IMPORTANT:
+    Everything below that controls the constellation layout
+    remains unchanged.
+  */
 
-html {
-  scroll-behavior: smooth;
-}
+  const centerX = width / 2 + 10;
+  const centerY = height / 2 - 42;
 
-body {
-  color: var(--ink);
-  font-family:
-    "Inter",
-    "Helvetica Neue",
-    Arial,
-    system-ui,
-    sans-serif;
+  const ovalRx = 430;
+  const ovalRy = 238;
 
-  background:
-    radial-gradient(
-      circle at 50% 0%,
-      rgba(232, 226, 239, 0.72),
-      transparent 31%
-    ),
-    radial-gradient(
-      circle at 9% 23%,
-      rgba(239, 226, 233, 0.34),
-      transparent 24%
-    ),
-    linear-gradient(
-      180deg,
-      #fcfbfa 0%,
-      #f8f6f5 100%
+  companies.forEach((d, i) => {
+    d.r = radius(d.footprint);
+
+    if (i === 0) {
+      d.targetX = centerX;
+      d.targetY = centerY + 12;
+    } else if (i === 1) {
+      d.targetX = centerX - 130;
+      d.targetY = centerY + 12;
+    } else if (i === 2) {
+      d.targetX = centerX + 130;
+      d.targetY = centerY + 12;
+    } else if (i === 3) {
+      d.targetX = centerX - 70;
+      d.targetY = centerY - 88;
+    } else if (i === 4) {
+      d.targetX = centerX + 70;
+      d.targetY = centerY - 88;
+    } else if (i < 14) {
+      const local = i - 5;
+      const angle = -Math.PI / 2 + local * (2 * Math.PI / 9);
+
+      d.targetX = centerX + Math.cos(angle) * 194;
+      d.targetY = centerY + Math.sin(angle) * 108;
+    } else {
+      const local = i - 14;
+      const angle = local * 2.399963;
+
+      const totalOuter = Math.max(1, companies.length - 14);
+      const t = local / totalOuter;
+
+      const ring =
+        t < 0.28 ? 0.56 :
+        t < 0.62 ? 0.74 :
+        0.92;
+
+      const wobbleX = Math.sin(i * 1.37) * 8;
+      const wobbleY = Math.cos(i * 1.91) * 6;
+
+      d.targetX =
+        centerX +
+        Math.cos(angle) * ovalRx * ring +
+        wobbleX;
+
+      d.targetY =
+        centerY +
+        Math.sin(angle) * ovalRy * ring +
+        wobbleY;
+    }
+
+    d.x = d.targetX + (Math.random() - 0.5) * 50;
+    d.y = -120 - Math.random() * 520;
+  });
+
+  const container = d3.create("div")
+    .style("position", "relative")
+    .style("width", "100%")
+    .style("max-width", `${width}px`)
+    .style("margin", "0 auto")
+    .style("background", "transparent")
+    .style("font-family", bodyFont)
+    .style("overflow", "visible")
+    .node();
+
+  const style = document.createElement("style");
+
+  style.textContent = `
+    html,
+    body,
+    body > div,
+    .observablehq,
+    .observablehq-root {
+      background: transparent !important;
+    }
+
+    @keyframes unicornVisual1HaloPulse {
+      0% {
+        stroke-opacity: 0.20;
+        transform: scale(1);
+      }
+
+      50% {
+        stroke-opacity: 0.50;
+        transform: scale(1.025);
+      }
+
+      100% {
+        stroke-opacity: 0.20;
+        transform: scale(1);
+      }
+    }
+
+    .visual1-hover-halo-active {
+      animation: unicornVisual1HaloPulse 1.8s ease-in-out infinite;
+      transform-box: fill-box;
+      transform-origin: center;
+    }
+
+    .visual1-mini-tooltip {
+      pointer-events: none;
+    }
+
+    .visual1-compare-instruction {
+      position: absolute;
+      top: 130px;
+      right: 34px;
+      z-index: 42;
+      display: none;
+      padding: 10px 15px 11px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(92,65,108,0.10);
+      box-shadow: 0 14px 32px rgba(29,29,31,0.08);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      font-family: ${bodyFont};
+      font-size: 12px;
+      line-height: 1;
+      font-weight: 760;
+      letter-spacing: -0.02em;
+      color: #352238;
+      pointer-events: none;
+    }
+  `;
+
+  container.appendChild(style);
+
+  // ------------------------------------------------------------
+  // HEADER
+  // ------------------------------------------------------------
+
+  const companyHeader = d3.select(container)
+    .append("div")
+    .style("width", "100%")
+    .style("margin", "0")
+    .style("padding", "0");
+
+  companyHeader
+    .append("h2")
+    .style("margin", "0")
+    .style("font-family", titleFont)
+    .style("font-size", "34px")
+    .style("line-height", "1")
+    .style("letter-spacing", "-0.055em")
+    .style("font-weight", 900)
+    .style("color", "#352238")
+    .text("Company Landscape");
+
+  companyHeader
+    .append("p")
+    .style("max-width", "660px")
+    .style("margin", "10px 0 0")
+    .style("font-family", bodyFont)
+    .style("font-size", "13px")
+    .style("line-height", "1.4")
+    .style("font-weight", 560)
+    .style("letter-spacing", "-0.01em")
+    .style("color", "rgba(53,34,56,0.72)")
+    .text(
+      "A public-intelligence map of companies shaping the visible psychedelic medicine pipeline."
     );
-}
 
-button,
-a {
-  font: inherit;
-}
+  const companyGuide = companyHeader
+    .append("div")
+    .style("display", "flex")
+    .style("align-items", "center")
+    .style("gap", "28px")
+    .style("margin-top", "18px")
+    .style("width", "100%");
 
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid rgba(102, 92, 145, 0.32);
-  outline-offset: 3px;
-}
+  // ------------------------------------------------------------
+  // CIRCLE SIZE GUIDE
+  // ------------------------------------------------------------
 
-.site {
-  width: 100%;
-  min-height: 100dvh;
-  overflow-x: clip;
-}
+  const sizeGuide = companyGuide
+    .append("div")
+    .style("display", "flex")
+    .style("align-items", "center")
+    .style("gap", "10px");
 
-/* =========================================================
-   TOP NAVIGATION
-   ========================================================= */
+  sizeGuide
+    .append("div")
+    .style("width", "27px")
+    .style("min-width", "27px")
+    .style("height", "27px")
+    .style("display", "flex")
+    .style("align-items", "center")
+    .style("justify-content", "center")
+    .html(`
+      <svg width="27" height="27" viewBox="0 0 27 27">
+        <circle
+          cx="13.5"
+          cy="13.5"
+          r="10"
+          fill="rgba(111,88,150,0.52)"
+        />
+      </svg>
+    `);
 
-.atlas-topbar {
-  position: sticky;
-  top: 0;
-  z-index: 200;
+  const sizeCopy = sizeGuide
+    .append("div")
+    .style("display", "flex")
+    .style("flex-direction", "column");
 
-  height: var(--topbar-height);
+  sizeCopy
+    .append("div")
+    .style("margin", "0 0 3px")
+    .style("font-family", bodyFont)
+    .style("font-size", "8.5px")
+    .style("line-height", "1.1")
+    .style("font-weight", 800)
+    .style("letter-spacing", "0.075em")
+    .style("color", "#352238")
+    .text("CIRCLE SIZE");
 
-  border-bottom: 1px solid rgba(56, 36, 61, 0.1);
+  const sizeDescription = sizeCopy
+    .append("div")
+    .style("display", "flex")
+    .style("align-items", "center")
+    .style("gap", "6px");
 
-  background: rgba(255, 255, 255, 0.82);
+  sizeDescription
+    .append("div")
+    .style("font-family", bodyFont)
+    .style("font-size", "9.5px")
+    .style("line-height", "1.32")
+    .style("font-weight", 500)
+    .style("color", "rgba(53,34,56,0.72)")
+    .text("Weighted public visibility");
 
-  backdrop-filter:
-    blur(22px)
-    saturate(140%);
+  const infoWrap = sizeDescription
+    .append("div")
+    .style("position", "relative")
+    .style("display", "inline-flex");
 
-  -webkit-backdrop-filter:
-    blur(22px)
-    saturate(140%);
-}
+  const infoButton = infoWrap
+    .append("button")
+    .attr("type", "button")
+    .attr("aria-label", "How company circle size is calculated")
+    .style("display", "grid")
+    .style("place-items", "center")
+    .style("width", "17px")
+    .style("height", "17px")
+    .style("padding", "0")
+    .style("border", "1px solid rgba(53,34,56,.38)")
+    .style("border-radius", "50%")
+    .style("background", "rgba(255,255,255,.46)")
+    .style("color", "#352238")
+    .style("font-family", bodyFont)
+    .style("font-size", "10px")
+    .style("font-weight", 800)
+    .style("line-height", "1")
+    .style("cursor", "help")
+    .text("i");
 
-.atlas-topbar-inner {
-  width:
-    min(
-      var(--content-max),
-      calc(
-        100vw -
-        (var(--page-pad) * 2)
+  const infoTooltip = infoWrap
+    .append("div")
+    .style("position", "absolute")
+    .style("left", "-12px")
+    .style("top", "27px")
+    .style("z-index", "100")
+    .style("width", "390px")
+    .style("padding", "18px 19px 17px")
+    .style("border", "1px solid rgba(53,34,56,.11)")
+    .style("border-radius", "13px")
+    .style("background", "rgba(255,255,255,.985)")
+    .style("box-shadow", "0 18px 42px rgba(53,34,56,.13)")
+    .style("color", "rgba(53,34,56,0.76)")
+    .style("font-family", bodyFont)
+    .style("font-size", "13px")
+    .style("font-weight", 500)
+    .style("line-height", "1.48")
+    .style("letter-spacing", "-0.01em")
+    .style("opacity", "0")
+    .style("pointer-events", "none")
+    .html(`
+      <strong style="
+        display:block;
+        margin-bottom:9px;
+        color:#352238;
+        font-family:${titleFont};
+        font-size:16px;
+        line-height:1.1;
+        letter-spacing:-0.035em;
+        font-weight:850;
+      ">
+        How circle size is calculated
+      </strong>
+
+      <div style="margin-bottom:10px;">
+        Each company receives a weighted public-visibility footprint based on
+        four observable components:
+      </div>
+
+      <div style="
+        padding:11px 12px;
+        margin:0 0 11px;
+        border-radius:9px;
+        background:rgba(101,72,116,.055);
+        color:#352238;
+        font-size:12.5px;
+        line-height:1.48;
+        font-weight:650;
+      ">
+        Footprint =<br>
+        (registered trials × 1.65)<br>
+        + (pipeline-context items × 0.55)<br>
+        + (distinct assets × 0.85)<br>
+        + (therapeutic indications × 0.30)
+      </div>
+
+      <div style="margin-bottom:10px;">
+        The footprint is then converted into circle radius using a
+        <strong style="color:#352238;font-weight:750;">square-root scale</strong>.
+        The smallest displayed radius is 15 px and the largest is 62 px,
+        relative to the highest footprint in the current dataset.
+      </div>
+
+      <div style="
+        padding-top:10px;
+        border-top:1px solid rgba(53,34,56,.10);
+        color:rgba(53,34,56,.64);
+        font-size:12px;
+        line-height:1.45;
+      ">
+        Circle size represents relative public development visibility.
+        It does not measure company value, company quality, clinical efficacy,
+        safety, regulatory probability or likelihood of commercial success.
+      </div>
+    `);
+
+  infoButton
+    .on("mouseenter", () => {
+      infoTooltip.style("opacity", "1");
+    })
+    .on("mouseleave", () => {
+      infoTooltip.style("opacity", "0");
+    })
+    .on("focus", () => {
+      infoTooltip.style("opacity", "1");
+    })
+    .on("blur", () => {
+      infoTooltip.style("opacity", "0");
+    });
+
+  companyGuide
+    .append("div")
+    .style("width", "1px")
+    .style("height", "34px")
+    .style("background", "rgba(53,34,56,.12)");
+
+  // ------------------------------------------------------------
+  // EXPLORE COMPANIES GUIDE
+  // ------------------------------------------------------------
+
+  const exploreGuide = companyGuide
+    .append("div")
+    .style("display", "flex")
+    .style("align-items", "center")
+    .style("gap", "10px");
+
+  exploreGuide
+    .append("div")
+    .style("width", "27px")
+    .style("min-width", "27px")
+    .style("height", "27px")
+    .style("display", "flex")
+    .style("align-items", "center")
+    .style("justify-content", "center")
+    .html(`
+      <svg width="25" height="25" viewBox="0 0 25 25" fill="none">
+        <path
+          d="M6 19L19 6"
+          stroke="rgba(111,88,150,0.78)"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+        <path
+          d="M10 6H19V15"
+          stroke="rgba(111,88,150,0.78)"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    `);
+
+  const exploreCopy = exploreGuide
+    .append("div")
+    .style("display", "flex")
+    .style("flex-direction", "column");
+
+  exploreCopy
+    .append("div")
+    .style("margin", "0 0 3px")
+    .style("font-family", bodyFont)
+    .style("font-size", "8.5px")
+    .style("line-height", "1.1")
+    .style("font-weight", 800)
+    .style("letter-spacing", "0.075em")
+    .style("color", "#352238")
+    .text("EXPLORE COMPANIES");
+
+  exploreCopy
+    .append("div")
+    .style("font-family", bodyFont)
+    .style("font-size", "9.5px")
+    .style("line-height", "1.32")
+    .style("font-weight", 500)
+    .style("color", "rgba(53,34,56,0.72)")
+    .text("Click a company to view details and compare companies");
+
+  // ------------------------------------------------------------
+  // SVG
+  // ------------------------------------------------------------
+
+  const svg = d3.select(container)
+    .append("svg")
+    .attr("viewBox", `0 0 ${width} ${height}`)
+    .attr("width", "100%")
+    .attr("height", height)
+    .style("display", "block")
+    .style("overflow", "visible")
+    .style("background", "transparent")
+    .style("margin-top", "10px");
+
+  const defs = svg.append("defs");
+
+  companies.forEach((d, i) => {
+    defs.append("clipPath")
+      .attr("id", `logoClipVisual1-${i}`)
+      .append("circle")
+      .attr("r", d.r * 0.92)
+      .attr("cx", 0)
+      .attr("cy", 0);
+  });
+
+  const shadow = defs.append("filter")
+    .attr("id", "softCompanyShadowVisual1")
+    .attr("x", "-50%")
+    .attr("y", "-50%")
+    .attr("width", "200%")
+    .attr("height", "200%");
+
+  shadow.append("feDropShadow")
+    .attr("dx", 0)
+    .attr("dy", 8)
+    .attr("stdDeviation", 10)
+    .attr("flood-color", "#1d1d1f")
+    .attr("flood-opacity", 0.11);
+
+  const selectionGlow = defs.append("filter")
+    .attr("id", "companySelectionGlowVisual1")
+    .attr("x", "-70%")
+    .attr("y", "-70%")
+    .attr("width", "240%")
+    .attr("height", "240%");
+
+  selectionGlow
+    .append("feGaussianBlur")
+    .attr("stdDeviation", 5)
+    .attr("result", "blur");
+
+  selectionGlow
+    .append("feFlood")
+    .attr("flood-color", "#765d89")
+    .attr("flood-opacity", 0.24)
+    .attr("result", "glowColor");
+
+  selectionGlow
+    .append("feComposite")
+    .attr("in", "glowColor")
+    .attr("in2", "blur")
+    .attr("operator", "in")
+    .attr("result", "softGlow");
+
+  const glowMerge = selectionGlow.append("feMerge");
+
+  glowMerge
+    .append("feMergeNode")
+    .attr("in", "softGlow");
+
+  glowMerge
+    .append("feMergeNode")
+    .attr("in", "SourceGraphic");
+
+  const chartLayer = svg.append("g");
+  const nodeLayer = chartLayer.append("g");
+
+  const miniTooltip = d3.select(container)
+    .append("div")
+    .attr("class", "visual1-mini-tooltip")
+    .style("position", "absolute")
+    .style("z-index", 40)
+    .style("display", "none")
+    .style("max-width", "285px")
+    .style("min-width", "210px")
+    .style("background", "rgba(255,255,255,0.76)")
+    .style("border", "1px solid rgba(255,255,255,0.68)")
+    .style("border-radius", "16px")
+    .style("box-shadow", "0 14px 32px rgba(29,29,31,0.08)")
+    .style("padding", "14px 17px 13px")
+    .style("color", ink)
+    .style("font-size", "13px")
+    .style("line-height", "1.2")
+    .style("backdrop-filter", "blur(14px) saturate(138%)")
+    .style("-webkit-backdrop-filter", "blur(14px) saturate(138%)");
+
+  const compareInstruction = d3.select(container)
+    .append("div")
+    .attr("class", "visual1-compare-instruction")
+    .text("Select another company to compare");
+
+  let selectedCompany = null;
+  let hoveredCompany = null;
+  let compareSelectionMode = false;
+
+  function showCompareInstruction() {
+    compareInstruction.style("display", "block");
+  }
+
+  function hideCompareInstruction() {
+    compareInstruction.style("display", "none");
+  }
+
+  function setCompareSelectionMode(active) {
+    compareSelectionMode = !!active;
+
+    if (compareSelectionMode) {
+      showCompareInstruction();
+    } else {
+      hideCompareInstruction();
+    }
+
+    postToParent({
+      type: "UNICORN_COMPARE_SELECTION_MODE_ACK",
+      active: compareSelectionMode
+    });
+  }
+
+  function handleParentMessage(event) {
+    const message = event.data;
+
+    if (!message || typeof message !== "object") return;
+
+    if (
+      message.type === "UNICORN_COMPARE_MODE" ||
+      message.type === "UNICORN_COMPARE_SELECTION_MODE" ||
+      message.type === "UNICORN_COMPARE_START"
+    ) {
+      const active =
+        message.active ??
+        message.payload?.active ??
+        message.payload ??
+        true;
+
+      setCompareSelectionMode(active === true);
+    }
+
+    if (message.type === "UNICORN_COMPARE_CLEAR") {
+      setCompareSelectionMode(false);
+      resetCompanyFocus();
+    }
+
+    if (message.type === "UNICORN_COMPANY_CLEAR") {
+      selectedCompany = null;
+      setCompareSelectionMode(false);
+      resetCompanyFocus();
+    }
+  }
+
+  window.addEventListener("message", handleParentMessage);
+
+  function miniTooltipHtml(d) {
+    const actionText = compareSelectionMode
+      ? "click to compare"
+      : "click to see details";
+
+    return `
+      <div style="
+        font-family:${titleFont};
+        font-size:21px;
+        line-height:1.12;
+        letter-spacing:-0.055em;
+        font-weight:900;
+        color:${ink};
+        max-width:245px;
+      ">
+        ${htmlEscape(getMiniHoverName(d))}
+      </div>
+
+      <div style="
+        width:100%;
+        height:1px;
+        background:rgba(29,29,31,0.12);
+        margin:13px 0 9px;
+      "></div>
+
+      <div style="
+        font-family:${bodyFont};
+        font-size:16px;
+        line-height:1.08;
+        letter-spacing:-0.03em;
+        font-weight:520;
+        color:#9a9ca8;
+      ">
+        ${actionText}
+      </div>
+    `;
+  }
+
+  function showMiniTooltip(event, d) {
+    const bounds = container.getBoundingClientRect();
+
+    miniTooltip
+      .style("display", "block")
+      .html(miniTooltipHtml(d));
+
+    const tooltipNode = miniTooltip.node();
+    const tw = tooltipNode.offsetWidth || 285;
+    const th = tooltipNode.offsetHeight || 96;
+
+    let x = event.clientX - bounds.left + 14;
+    let y = event.clientY - bounds.top + 14;
+
+    const maxX = chartWidth - tw - 12;
+
+    if (x > maxX) {
+      x = event.clientX - bounds.left - tw - 14;
+    }
+
+    if (y + th > container.offsetHeight - 18) {
+      y = container.offsetHeight - th - 18;
+    }
+
+    x = Math.max(10, Math.min(x, maxX));
+    y = Math.max(10, y);
+
+    miniTooltip
+      .style("left", `${x}px`)
+      .style("top", `${y}px`);
+  }
+
+  function hideMiniTooltip() {
+    miniTooltip.style("display", "none");
+  }
+
+  /*
+    Softer focus.
+    No black outline.
+    The selected company receives a subtle plum halo.
+  */
+
+  function focusCompany(d) {
+    node
+      .interrupt()
+      .transition()
+      .duration(140)
+      .style("opacity", n => n === d ? 1 : 0.72);
+
+    d3.selectAll(".company-node")
+      .filter(n => n === d)
+      .raise();
+
+    node.select("circle.hover-halo")
+      .classed("visual1-hover-halo-active", n => n === d)
+      .attr("opacity", n => n === d ? 1 : 0)
+      .attr(
+        "filter",
+        n => n === d
+          ? "url(#companySelectionGlowVisual1)"
+          : null
+      );
+
+    node.select("circle.main-circle")
+      .interrupt()
+      .attr(
+        "stroke",
+        n =>
+          n === d
+            ? "rgba(104,77,119,0.44)"
+            : n.hasRegistered
+            ? stroke
+            : "#aaa69d"
       )
-    );
-
-  height: 100%;
-  margin: 0 auto;
-
-  display: grid;
-
-  grid-template-columns:
-    245px
-    minmax(0, 1fr)
-    155px;
-
-  align-items: center;
-
-  gap: 24px;
-}
-
-.atlas-brand {
-  appearance: none;
-
-  border: 0;
-  background: transparent;
-
-  padding: 0;
-
-  display: inline-flex;
-  align-items: center;
-
-  gap: 12px;
-
-  color: var(--plum);
-
-  cursor: pointer;
-  text-align: left;
-}
-
-.atlas-brand-mark {
-  width: 37px;
-  height: 37px;
-
-  flex: 0 0 37px;
-
-  display: inline-flex;
-
-  color: #32173f;
-}
-
-.atlas-brand-mark svg {
-  width: 37px;
-  height: 37px;
-
-  fill: none;
-
-  stroke: currentColor;
-  stroke-width: 1.75;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.atlas-brand-mark circle {
-  fill: #32173f;
-  stroke: none;
-}
-
-/*
-  New two-line brand.
-*/
-
-.atlas-brand-copy {
-  display: flex;
-  align-items: center;
-}
-
-.atlas-brand-copy strong {
-  display: flex;
-  flex-direction: column;
-
-  font-family:
-    "Inter Tight",
-    "Inter",
-    sans-serif;
-
-  font-size: 20px;
-  line-height: 0.9;
-
-  font-weight: 900;
-
-  letter-spacing: -0.055em;
-
-  color: #2d1837;
-
-  white-space: nowrap;
-}
-
-.atlas-brand-copy strong span {
-  display: block;
-}
-
-.atlas-brand-copy strong span + span {
-  margin-top: 3px;
-}
-
-.atlas-tabs {
-  height: 100%;
-  min-width: 0;
-
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-
-  gap: clamp(22px, 3vw, 44px);
-}
-
-.atlas-tab {
-  position: relative;
-
-  appearance: none;
-
-  border: 0;
-  background: transparent;
-
-  padding: 0;
-
-  color: #1f1a22;
-
-  font-size: 10.5px;
-  line-height: 1;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  cursor: pointer;
-
-  white-space: nowrap;
-}
-
-.atlas-tab::after {
-  content: "";
-
-  position: absolute;
-
-  left: 0;
-  right: 0;
-  bottom: 9px;
-
-  height: 3px;
-
-  border-radius: 999px;
-
-  background: #58246a;
-
-  transform: scaleX(0);
-  transform-origin: center;
-
-  transition: transform 170ms ease;
-}
-
-.atlas-tab:hover::after,
-.atlas-tab-active::after {
-  transform: scaleX(1);
-}
-
-.atlas-tab-active {
-  color: #552365;
-}
-
-.atlas-updated {
-  justify-self: end;
-
-  color: #48414a;
-
-  font-size: 9.5px;
-
-  white-space: nowrap;
-}
-
-/* =========================================================
-   GLOBAL PAGE STAGE
-   ========================================================= */
-
-.atlas-stage {
-  width: 100%;
-
-  padding:
-    0
-    var(--page-pad)
-    36px;
-}
-
-.overview-page,
-.visual-page,
-.content-page {
-  width:
-    min(
-      var(--content-max),
-      100%
-    );
-
-  margin: 0 auto;
-}
-
-/* =========================================================
-   OVERVIEW HERO
-   ========================================================= */
-
-.overview-hero {
-  min-height: 540px;
-
-  padding-top: 34px;
-
-  display: grid;
-
-  grid-template-columns:
-    minmax(410px, 0.96fr)
-    minmax(520px, 1.18fr)
-    minmax(210px, 0.48fr);
-
-  gap: 20px;
-
-  align-items: center;
-}
-
-.overview-hero-copy {
-  min-width: 0;
-  padding-left: 26px;
-}
-
-.hero-eyebrow {
-  margin: 0 0 16px;
-
-  color: #65336f;
-
-  font-size: 9.5px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.3em;
-}
-
-.overview-hero h1 {
-  margin: 0;
-
-  color: #2d2136;
-
-  font-family:
-    "Inter Tight",
-    "Inter",
-    sans-serif;
-
-  font-size:
-    clamp(
-      54px,
-      5vw,
-      78px
-    );
-
-  line-height: 0.92;
-
-  font-weight: 850;
-
-  letter-spacing: -0.07em;
-}
-
-.hero-description {
-  max-width: 560px;
-
-  margin: 23px 0 18px;
-
-  color: #29242c;
-
-  font-size: 14px;
-
-  line-height: 1.5;
-}
-
-.hero-cta {
-  display: none;
-}
-
-/* =========================================================
-   OVERVIEW REAL METRICS
-   ========================================================= */
-
-.overview-real-metrics {
-  position: relative;
-
-  width: 100%;
-  height: 124px;
-
-  margin-top: 22px;
-
-  overflow: hidden;
-
-  pointer-events: none;
-}
-
-.overview-real-metrics iframe {
-  position: absolute;
-
-  top: 0;
-  left: 0;
-
-  width: 166.6667%;
-  height: 1035px;
-
-  border: 0;
-
-  transform: scale(0.6);
-  transform-origin: top left;
-}
-
-/* =========================================================
-   OVERVIEW COMPANY PREVIEW
-   ========================================================= */
-
-.overview-company-hook {
-  min-width: 0;
-
-  align-self: stretch;
-
-  padding-top: 14px;
-
-  display: grid;
-
-  grid-template-rows:
-    auto
-    minmax(0, 1fr);
-}
-
-.overview-company-hook-label {
-  min-height: 36px;
-
-  display: flex;
-
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 16px;
-}
-
-.overview-company-hook-label > span {
-  color: #5c2c67;
-
-  font-size: 8.5px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.18em;
-}
-
-.overview-company-hook-label button {
-  border: 0;
-  background: transparent;
-
-  color: var(--plum);
-
-  padding: 0;
-
-  font-size: 9px;
-
-  font-weight: 750;
-
-  cursor: pointer;
-}
-
-.overview-company-hook-window {
-  position: relative;
-
-  height: 455px;
-  min-height: 455px;
-
-  overflow: hidden;
-
-  background: transparent;
-
-  pointer-events: none;
-}
-
-.overview-company-hook-window iframe {
-  position: absolute;
-
-  top: 0;
-  left: 50%;
-
-  width: 200%;
-  height: 1000px;
-
-  margin: 0;
-
-  border: 0;
-
-  transform:
-    translateX(-50%)
-    scale(0.5);
-
-  transform-origin:
-    top center;
-}
-
-/* =========================================================
-   OVERVIEW READING CARD
-   ========================================================= */
-
-.overview-reading-card {
-  align-self: center;
-
-  min-height: 392px;
-
-  padding:
-    22px
-    20px
-    18px;
-
-  border:
-    1px solid
-    rgba(56, 36, 61, 0.09);
-
-  border-radius: 13px;
-
-  background:
-    rgba(255, 255, 255, 0.65);
-
-  box-shadow:
-    0 12px 32px
-    rgba(58, 39, 70, 0.065);
-}
-
-.page-eyebrow {
-  margin: 0 0 9px;
-
-  color:
-    rgba(56, 36, 61, 0.62);
-
-  font-size: 8.5px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.12em;
-
-  text-transform: uppercase;
-}
-
-.overview-reading-card h2 {
-  margin: 0 0 18px;
-
-  color: var(--plum);
-
-  font-family:
-    "Inter Tight",
-    "Inter",
-    sans-serif;
-
-  font-size: 23px;
-
-  line-height: 0.98;
-
-  letter-spacing: -0.05em;
-}
-
-.reading-row {
-  padding: 12px 0;
-
-  border-bottom:
-    1px solid
-    rgba(56, 36, 61, 0.08);
-}
-
-.reading-row strong {
-  display: block;
-
-  color: var(--plum);
-
-  font-size: 9.5px;
-}
-
-.reading-row span {
-  display: block;
-
-  margin-top: 4px;
-
-  color: var(--muted);
-
-  font-size: 8.5px;
-
-  line-height: 1.35;
-}
-
-.reading-method-link {
-  width: 100%;
-
-  margin-top: 18px;
-
-  padding: 12px 0 0;
-
-  border: 0;
-
-  border-top:
-    1px solid
-    rgba(56, 36, 61, 0.08);
-
-  background: transparent;
-
-  color: var(--plum);
-
-  font-size: 9px;
-
-  font-weight: 750;
-
-  text-align: left;
-
-  cursor: pointer;
-}
-
-/* =========================================================
-   OVERVIEW PREVIEW CARDS
-   ========================================================= */
-
-.inside-section {
-  margin-top: 8px;
-}
-
-.inside-kicker {
-  margin:
-    0
-    0
-    8px
-    22px;
-
-  color: #6a3a72;
-
-  font-size: 8.5px;
-
-  font-weight: 800;
-
-  letter-spacing: 0.22em;
-}
-
-.overview-route-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      4,
-      minmax(0, 1fr)
-    );
-
-  border:
-    1px solid
-    rgba(70, 49, 78, 0.12);
-
-  border-radius: 12px;
-
-  overflow: hidden;
-
-  background:
-    rgba(255, 255, 255, 0.28);
-}
-
-.overview-route-card {
-  appearance: none;
-
-  min-height: 270px;
-
-  padding:
-    14px
-    16px
-    16px;
-
-  border: 0;
-
-  border-right:
-    1px solid
-    rgba(70, 49, 78, 0.12);
-
-  background:
-    rgba(255, 255, 255, 0.1);
-
-  color: var(--ink);
-
-  cursor: pointer;
-
-  text-align: left;
-
-  display: flex;
-
-  flex-direction: column;
-
-  transition:
-    background
-    160ms ease;
-}
-
-.overview-route-card:last-child {
-  border-right: 0;
-}
-
-.overview-route-card:hover {
-  background:
-    rgba(255, 255, 255, 0.56);
-}
-
-.real-preview-window {
-  position: relative;
-
-  width: 100%;
-  height: 150px;
-
-  overflow: hidden;
-
-  pointer-events: none;
-
-  background: #f8f6f5;
-}
-
-.real-preview-iframe {
-  position: absolute;
-
-  border: 0;
-
-  margin: 0;
-}
-
-/* Companies */
-
-.preview-companies .real-preview-iframe {
-  top: 0;
-  left: 0;
-
-  width: 400%;
-  height: 1000px;
-
-  transform: scale(0.25);
-
-  transform-origin:
-    top left;
-}
-
-/* Compounds */
-
-.preview-compounds .real-preview-iframe {
-  top: 0;
-  left: 0;
-
-  width: 400%;
-  height: 1514px;
-
-  transform: scale(0.25);
-
-  transform-origin:
-    top left;
-}
-
-/* Indications */
-
-.preview-indications .real-preview-iframe {
-  top: 0;
-  left: 0;
-
-  width: 320%;
-  height: 824px;
-
-  transform: scale(0.3125);
-
-  transform-origin:
-    top left;
-}
-
-/* Phases */
-
-.preview-phases .real-preview-iframe {
-  top: 0;
-  left: 0;
-
-  width: 360%;
-  height: 1180px;
-
-  transform: scale(0.2777778);
-
-  transform-origin:
-    top left;
-}
-
-.overview-route-copy {
-  flex: 1;
-
-  display: flex;
-
-  flex-direction: column;
-
-  justify-content: space-between;
-
-  padding-top: 12px;
-}
-
-.overview-route-copy h3 {
-  margin: 0 0 7px;
-
-  color: var(--plum);
-
-  font-family:
-    "Inter Tight",
-    "Inter",
-    sans-serif;
-
-  font-size: 15px;
-
-  line-height: 1;
-
-  letter-spacing: -0.04em;
-}
-
-.overview-route-copy p {
-  margin: 0;
-
-  color: #373039;
-
-  font-size: 9.5px;
-
-  line-height: 1.4;
-}
-
-.overview-route-link {
-  display: block;
-
-  margin-top: 16px;
-
-  color: var(--plum);
-
-  font-size: 9px;
-
-  font-weight: 800;
-}
-
-/* =========================================================
-   INFORMATION BAR
-   ========================================================= */
-
-.bottom-insight-bar {
-  margin-top: 10px;
-
-  min-height: 88px;
-
-  padding:
-    16px
-    24px;
-
-  border-radius: 9px;
-
-  background:
-    radial-gradient(
-      circle at 18% 0%,
-      rgba(115, 67, 137, 0.35),
-      transparent 24%
-    ),
-    linear-gradient(
-      90deg,
-      #2a1534 0%,
-      #28122f 100%
-    );
-
-  color: #fff;
-
-  display: grid;
-
-  grid-template-columns:
-    1.42fr
-    1px
-    repeat(
-      4,
-      minmax(0, 1fr)
-    );
-
-  gap: 22px;
-
-  align-items: center;
-}
-
-.insight-primary,
-.insight-item {
-  display: flex;
-
-  align-items: flex-start;
-
-  gap: 11px;
-}
-
-.insight-info {
-  width: 36px;
-  height: 36px;
-
-  flex: 0 0 36px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.44);
-
-  border-radius: 999px;
-
-  display: inline-flex;
-
-  align-items: center;
-  justify-content: center;
-
-  font-family:
-    Georgia,
-    serif;
-
-  font-size: 17px;
-}
-
-.insight-primary strong,
-.insight-item strong {
-  display: block;
-
-  color: #fff;
-
-  font-size: 9.5px;
-
-  line-height: 1.25;
-}
-
-.insight-primary span:not(.insight-info),
-.insight-item span:not(.insight-dot):not(.insight-symbol) {
-  display: block;
-
-  margin-top: 4px;
-
-  color:
-    rgba(255, 255, 255, 0.8);
-
-  font-size: 8px;
-
-  line-height: 1.35;
-}
-
-.insight-divider {
-  width: 1px;
-
-  align-self: stretch;
-
-  background:
-    rgba(255, 255, 255, 0.4);
-}
-
-.insight-dot {
-  width: 18px;
-  height: 18px;
-
-  flex: 0 0 18px;
-
-  border-radius: 999px;
-
-  margin-top: 1px;
-}
-
-.insight-dot-solid {
-  background: #70428a;
-}
-
-.insight-dot-dashed {
-  border:
-    1px dashed
-    rgba(255, 255, 255, 0.8);
-}
-
-.insight-symbol {
-  width: 20px;
-
-  flex: 0 0 20px;
-
-  color: #fff;
-
-  font-size: 20px;
-
-  line-height: 1;
-}
-
-/* =========================================================
-   OBSERVABLE GLOBAL
-   ========================================================= */
-
-.visual-page {
-  min-height:
-    calc(
-      100dvh -
-      var(--topbar-height)
-    );
-
-  padding:
-    26px
-    0
-    44px;
-}
-
-.observable-shell {
-  position: relative;
-
-  width: 100%;
-
-  overflow: hidden;
-
-  background: transparent;
-
-  isolation: isolate;
-}
-
-.atlas-iframe {
-  display: block;
-
-  width: 100%;
-
-  border: 0;
-
-  background: transparent;
-}
-
-.full-visual {
-  width:
-    min(
-      var(--analysis-width),
-      100%
-    );
-
-  margin: 0 auto;
-}
-
-/* =========================================================
-   STANDARD ANALYTICAL VISUAL SYSTEM
-   Compounds / Indications / Phases
-   ========================================================= */
-
-/*
-  All three sections now occupy exactly the same host geometry.
-
-  This is the important part:
-  1320px max width
-  890px visible height
-  same top
-  same center
-*/
-
-.standard-analysis-page {
-  padding-top: 28px;
-}
-
-.standard-analysis-visual {
-  position: relative;
-
-  width:
-    min(
-      var(--analysis-width),
-      100%
-    ) !important;
-
-  max-width:
-    min(
-      var(--analysis-width),
-      100%
-    ) !important;
-
-  height:
-    var(--analysis-height) !important;
-
-  min-height:
-    var(--analysis-height) !important;
-
-  max-height:
-    var(--analysis-height) !important;
-
-  margin:
-    0
-    auto !important;
-
-  overflow: hidden !important;
-
-  background: #f8f6f5;
-}
-
-/*
-  COMPOUNDS
-
-  Native height: 1514
-  1514 × 0.588 ≈ 890
-
-  Width compensation:
-  170% × .588 ≈ 100%
-*/
-
-.full-compound-visual .atlas-iframe {
-  position: absolute;
-
-  top: 0;
-  left: 50%;
-
-  width: 170% !important;
-
-  max-width: none !important;
-
-  height: 1514px !important;
-
-  margin: 0 !important;
-
-  transform:
-    translateX(-50%)
-    scale(0.588);
-
-  transform-origin:
-    top center;
-}
-
-/*
-  INDICATIONS
-
-  Native height: 824
-  Scale slightly upward so its overall visual footprint
-  is comparable with Compounds and Phases.
-
-  824 × 1.08 ≈ 890
-*/
-
-.full-indication-visual .atlas-iframe {
-  position: absolute;
-
-  top: 0;
-  left: 50%;
-
-  width: 92.6% !important;
-
-  max-width: none !important;
-
-  height: 824px !important;
-
-  margin: 0 !important;
-
-  transform:
-    translateX(-50%)
-    scale(1.08);
-
-  transform-origin:
-    top center;
-}
-
-/*
-  PHASES
-
-  The iframe itself is now much taller.
-  This is specifically to prevent the final compound
-  row and its dots from being cut off.
-
-  1180 × 0.754 ≈ 890
-*/
-
-.full-phase-visual .atlas-iframe {
-  position: absolute;
-
-  top: 0;
-  left: 50%;
-
-  width: 132.6% !important;
-
-  max-width: none !important;
-
-  height: 1180px !important;
-
-  min-height: 1180px !important;
-
-  margin: 0 !important;
-
-  transform:
-    translateX(-50%)
-    scale(0.754);
-
-  transform-origin:
-    top center;
-}
-
-/*
-  All three begin at exactly the same y-position.
-  No negative crop.
-*/
-
-.full-compound-visual .atlas-iframe,
-.full-indication-visual .atlas-iframe,
-.full-phase-visual .atlas-iframe {
-  top: 0 !important;
-}
-
-/* =========================================================
-   LOAD FLASH PROTECTION
-   ========================================================= */
-
-.observable-loading-cover,
-.preview-loading-cover {
-  position: absolute;
-
-  inset: 0;
-
-  z-index: 5;
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(251, 250, 249, 1),
-      rgba(248, 246, 245, 1)
-    );
-
-  pointer-events: none;
-
-  opacity: 1;
-
-  transition:
-    opacity
-    180ms ease;
-}
-
-.observable-shell .atlas-iframe,
-.real-preview-window .real-preview-iframe {
-  opacity: 0;
-
-  transition:
-    opacity
-    180ms ease;
-}
-
-.observable-loaded .observable-loading-cover,
-.preview-loaded .preview-loading-cover {
-  display: none;
-  opacity: 0;
-}
-
-.observable-loaded .atlas-iframe,
-.preview-loaded .real-preview-iframe {
-  opacity: 1;
-}
-
-/* Small left-edge mask */
-
-.full-compound-visual::before,
-.full-phase-visual::before {
-  content: "";
-
-  position: absolute;
-
-  top: 0;
-  bottom: 0;
-  left: 0;
-
-  width: 5px;
-
-  z-index: 12;
-
-  background: #f8f6f5;
-
-  pointer-events: none;
-}
-
-/* =========================================================
-   COMPANY LANDSCAPE FULL VIEW
-   ========================================================= */
-
-.company-visual-shell {
-  position: relative;
-
-  width:
-    min(
-      1320px,
-      100%
-    );
-
-  margin: 0 auto;
-
-  overflow: visible;
-}
-
-.company-real-working-frame,
-.full-company-visual.company-real-working-frame {
-  position: relative !important;
-
-  width:
-    min(
-      1320px,
-      100%
-    ) !important;
-
-  max-width:
-    min(
-      1320px,
-      100%
-    ) !important;
-
-  height: 930px !important;
-  min-height: 930px !important;
-  max-height: 930px !important;
-
-  margin:
-    0
-    auto !important;
-
-  overflow: hidden !important;
-
-  background: transparent !important;
-}
-
-.company-real-working-frame > iframe.atlas-iframe,
-.full-company-visual.company-real-working-frame > iframe.atlas-iframe {
-  display: block !important;
-
-  width:
-    calc(
-      100% + 18px
-    ) !important;
-
-  max-width: none !important;
-
-  height: 1000px !important;
-
-  min-height: 1000px !important;
-  max-height: 1000px !important;
-
-  margin:
-    0
-    0
-    0
-    -9px !important;
-
-  transform: none !important;
-
-  border: 0 !important;
-
-  background: transparent !important;
-}
-
-/* =========================================================
-   COMPANY PANEL
-   ========================================================= */
-
-.company-panel {
-  position: absolute;
-
-  top: 22px;
-
-  left:
-    calc(
-      100% -
-      82px
-    );
-
-  z-index: 50;
-
-  width:
-    var(--company-panel-width);
-
-  height:
-    calc(
-      100% -
-      44px
-    );
-
-  overflow: hidden;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.66);
-
-  border-radius: 20px;
-
-  background:
-    rgba(255, 255, 255, 0.5);
-
-  box-shadow:
-    0 22px 50px
-      rgba(58, 42, 84, 0.14),
-    0 6px 18px
-      rgba(29, 29, 31, 0.05);
-
-  backdrop-filter:
-    blur(24px)
-    saturate(140%);
-
-  -webkit-backdrop-filter:
-    blur(24px)
-    saturate(140%);
-}
-
-.company-panel-compare {
-  left:
-    calc(
-      100% +
-      var(--company-panel-width) -
-      82px
-    );
-}
-
-.company-panel-close {
-  position: absolute;
-
-  top: 36px;
-
-  left:
-    calc(
-      100% -
-      97px
-    );
-
-  z-index: 80;
-
-  width: 30px;
-  height: 30px;
-
-  border:
-    1px solid
-    rgba(56, 36, 61, 0.1);
-
-  border-radius: 999px;
-
-  background:
-    rgba(255, 255, 255, 0.92);
-
-  color: var(--ink);
-
-  font-size: 18px;
-
-  font-weight: 700;
-
-  cursor: pointer;
-}
-
-.company-panel-close-compare {
-  left:
-    calc(
-      100% +
-      var(--company-panel-width) -
-      97px
-    );
-}
-
-.company-panel-compare-button {
-  position: absolute;
-
-  top: 50%;
-
-  left:
-    calc(
-      100% +
-      var(--company-panel-width) -
-      103px
-    );
-
-  z-index: 82;
-
-  width: 152px;
-
-  min-height: 38px;
-
-  border:
-    1px solid
-    rgba(56, 36, 61, 0.1);
-
-  border-radius: 999px;
-
-  background:
-    rgba(255, 255, 255, 0.94);
-
-  color: var(--plum);
-
-  font-size: 10px;
-
-  font-weight: 780;
-
-  cursor: pointer;
-
-  transform:
-    translateY(-50%);
-}
-
-.company-panel-compare-button-active {
-  background: var(--plum);
-
-  color: #fff;
-}
-
-.company-panel-inner {
-  height: 100%;
-
-  padding:
-    16px
-    14px;
-
-  overflow: hidden;
-}
-
-.company-panel-header {
-  min-height: 112px;
-}
-
-.company-panel-logo-slot {
-  width: 44px;
-  height: 44px;
-
-  margin-left: auto;
-}
-
-.company-panel-logo {
-  width: 44px;
-  height: 44px;
-
-  border-radius: 999px;
-
-  background:
-    rgba(255, 255, 255, 0.88);
-
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-}
-
-.company-panel-logo img {
-  width: 84%;
-  height: 84%;
-
-  object-fit: contain;
-}
-
-.company-panel-header h3 {
-  margin:
-    3px
-    0
-    5px;
-
-  color: var(--plum);
-
-  font-family:
-    "Inter Tight",
-    "Inter",
-    sans-serif;
-
-  font-size: 16px;
-
-  line-height: 1;
-
-  letter-spacing: -0.045em;
-}
-
-.company-panel-subtitle,
-.company-panel-site-fallback {
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 8.5px;
-
-  line-height: 1.25;
-}
-
-.company-panel-websites {
-  margin-top: 5px;
-
-  display: grid;
-
-  gap: 2px;
-}
-
-.company-panel-websites a {
-  color: var(--plum-mid);
-
-  font-size: 8.5px;
-
-  font-weight: 700;
-}
-
-.company-panel-metrics {
-  display: grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  gap: 6px;
-
-  margin-top: 10px;
-}
-
-.company-panel-metric {
-  min-height: 62px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.48);
-
-  border-radius: 12px;
-
-  background:
-    rgba(255, 255, 255, 0.38);
-
-  display: flex;
-
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-}
-
-.company-panel-metric-main {
-  grid-column:
-    1 / -1;
-
-  min-height: 76px;
-}
-
-.company-panel-metric strong {
-  color: var(--plum);
-
-  font-family:
-    "Inter Tight",
-    "Inter",
-    sans-serif;
-
-  font-size: 17px;
-
-  line-height: 1;
-}
-
-.company-panel-metric-main strong {
-  font-size: 30px;
-}
-
-.company-panel-metric span {
-  margin-top: 4px;
-
-  color: #8c9098;
-
-  font-size: 6.8px;
-
-  font-weight: 800;
-
-  text-transform: uppercase;
-
-  text-align: center;
-}
-
-.company-panel-metric small {
-  margin-top: 3px;
-
-  color: #9ca1a8;
-
-  font-size: 5.6px;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-}
-
-.company-panel-details {
-  margin-top: 10px;
-}
-
-.company-panel-details section {
-  padding: 7px 0;
-
-  border-top:
-    1px solid
-    rgba(56, 36, 61, 0.08);
-}
-
-.company-panel-details section > span {
-  display: block;
-
-  margin-bottom: 3px;
-
-  color: #8c9098;
-
-  font-size: 7.2px;
-
-  font-weight: 800;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.05em;
-}
-
-.company-panel-details p {
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 8.8px;
-
-  line-height: 1.25;
-}
-
-.company-panel-trials {
-  max-height: 70px;
-
-  overflow: hidden;
-
-  display: grid;
-
-  gap: 2px;
-}
-
-.company-panel-trials-many {
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0, 1fr)
-    );
-}
-
-.company-panel-trials a,
-.company-panel-trials span {
-  color: var(--plum-mid);
-
-  font-size: 7.8px;
-
-  font-weight: 700;
-
-  text-decoration: underline;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
-
-  white-space: nowrap;
-}
-
-/* =========================================================
-   METHODOLOGY / ABOUT
-   ========================================================= */
-
-.content-page {
-  width:
-    min(
-      1050px,
-      100%
-    );
-
-  padding:
-    58px
-    0
-    60px;
-}
-
-.content-page-heading {
-  max-width: 740px;
-
-  margin-bottom: 28px;
-}
-
-.content-page-heading h1,
-.content-card h2 {
-  color: var(--plum);
-
-  font-family:
-    "Inter Tight",
-    "Inter",
-    sans-serif;
-}
-
-.content-page-heading h1 {
-  margin:
-    0
-    0
-    12px;
-
-  font-size:
-    clamp(
-      42px,
-      5vw,
-      68px
-    );
-
-  line-height: 0.94;
-
-  letter-spacing: -0.065em;
-}
-
-.content-page-heading > p:last-child {
-  margin: 0;
-
-  color: var(--muted);
-
-  font-size: 14px;
-
-  line-height: 1.55;
-}
-
-.methodology-grid {
-  display: grid;
-
-  grid-template-columns:
-    repeat(
-      2,
-      minmax(0, 1fr)
-    );
-
-  gap: 14px;
-}
-
-.content-card {
-  min-height: 190px;
-
-  padding: 24px;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.6);
-
-  border-radius: 20px;
-
-  background:
-    rgba(255, 255, 255, 0.3);
-
-  box-shadow:
-    0 14px 32px
-      rgba(58, 42, 84, 0.05),
-    inset 0 1px 0
-      rgba(255, 255, 255, 0.58);
-}
-
-.content-card h2 {
-  margin:
-    0
-    0
-    11px;
-
-  font-size: 24px;
-
-  line-height: 1;
-
-  letter-spacing: -0.045em;
-}
-
-.content-card p {
-  color: var(--muted);
-
-  font-size: 12.5px;
-
-  line-height: 1.55;
-}
-
-.contact-card {
-  background: var(--plum);
-}
-
-.contact-card .page-eyebrow,
-.contact-card h2,
-.contact-card a {
-  color: #fff;
-}
-
-.contact-card a {
-  display: block;
-
-  width: fit-content;
-
-  margin-top: 9px;
-
-  font-size: 11px;
-
-  font-weight: 760;
-}
-
-.about-disclaimer {
-  margin:
-    18px
-    0
-    0;
-
-  color:
-    rgba(56, 36, 61, 0.58);
-
-  font-size: 10px;
-
-  line-height: 1.45;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 1260px) {
-  .atlas-topbar-inner {
-    grid-template-columns:
-      225px
-      minmax(0, 1fr)
-      120px;
-  }
-
-  .atlas-tabs {
-    gap: 20px;
-  }
-
-  .overview-hero {
-    grid-template-columns:
-      minmax(380px, 0.95fr)
-      minmax(430px, 1.08fr)
-      200px;
-  }
-
-  .overview-hero h1 {
-    font-size: 56px;
-  }
-
-  .bottom-insight-bar {
-    gap: 15px;
-  }
-}
-
-@media (max-width: 1020px) {
-  :root {
-    --topbar-height: auto;
-    --analysis-height: 760px;
-  }
-
-  .atlas-topbar {
-    height: auto;
-  }
-
-  .atlas-topbar-inner {
-    width:
-      calc(
-        100vw -
-        32px
-      );
-
-    padding:
-      11px
-      0
-      10px;
-
-    grid-template-columns:
-      1fr
-      auto;
-
-    gap: 10px;
-  }
-
-  .atlas-brand-copy strong {
-    font-size: 18px;
-  }
-
-  .atlas-brand-mark,
-  .atlas-brand-mark svg {
-    width: 33px;
-    height: 33px;
-  }
-
-  .atlas-updated {
-    display: none;
-  }
-
-  .atlas-tabs {
-    grid-column:
-      1 / -1;
-
-    width: 100%;
-
-    justify-content: flex-start;
-
-    overflow-x: auto;
-
-    gap: 22px;
-
-    padding-bottom: 3px;
-
-    scrollbar-width: none;
-  }
-
-  .atlas-tabs::-webkit-scrollbar {
-    display: none;
-  }
-
-  .atlas-tab {
-    min-height: 30px;
-  }
-
-  .atlas-stage {
-    padding:
-      0
-      16px
-      30px;
-  }
-
-  .overview-hero {
-    grid-template-columns:
-      1fr
-      1fr;
-  }
-
-  .overview-reading-card {
-    grid-column:
-      1 / -1;
-
-    width:
-      min(
-        100%,
-        560px
-      );
-
-    min-height: auto;
-
-    justify-self: center;
-  }
-
-  .overview-route-grid {
-    grid-template-columns:
-      repeat(
-        2,
-        1fr
+      .attr(
+        "stroke-width",
+        n =>
+          n === d
+            ? 1.15
+            : n.hasRegistered
+            ? 0.8
+            : 0.9
       );
   }
 
-  .overview-route-card:nth-child(2) {
-    border-right: 0;
+  function resetCompanyFocus() {
+    if (hoveredCompany) {
+      focusCompany(hoveredCompany);
+      return;
+    }
+
+    if (selectedCompany) {
+      focusCompany(selectedCompany);
+      return;
+    }
+
+    node
+      .interrupt()
+      .style("opacity", 1);
+
+    node.select("circle.hover-halo")
+      .classed("visual1-hover-halo-active", false)
+      .attr("opacity", 0)
+      .attr("filter", null);
+
+    node.select("circle.main-circle")
+      .attr(
+        "stroke",
+        d => d.hasRegistered ? stroke : "#aaa69d"
+      )
+      .attr(
+        "stroke-width",
+        d => d.hasRegistered ? 0.8 : 0.9
+      );
   }
 
-  .overview-route-card:nth-child(1),
-  .overview-route-card:nth-child(2) {
-    border-bottom:
-      1px solid
-      rgba(70, 49, 78, 0.12);
-  }
+  const node = nodeLayer
+    .append("g")
+    .attr("class", "company-nodes")
+    .selectAll("g.company-node")
+    .data(companies)
+    .join("g")
+    .attr("class", "company-node")
+    .style("cursor", "pointer")
+    .style("opacity", 0)
+    .on("mouseenter", function(event, d) {
+      hoveredCompany = d;
 
-  .bottom-insight-bar {
-    grid-template-columns:
-      1fr
-      1fr;
-  }
+      d3.select(this).raise();
 
-  .insight-divider {
-    display: none;
-  }
+      focusCompany(d);
+      showMiniTooltip(event, d);
+    })
+    .on("mousemove", function(event, d) {
+      hoveredCompany = d;
+      showMiniTooltip(event, d);
+    })
+    .on("mouseleave", function() {
+      hoveredCompany = null;
+      hideMiniTooltip();
+      resetCompanyFocus();
+    })
+    .on("click", function(event, d) {
+      event.stopPropagation();
 
-  .company-real-working-frame,
-  .full-company-visual.company-real-working-frame {
-    height: 1040px !important;
-    max-height: 1040px !important;
-  }
+      if (compareSelectionMode) {
+        hoveredCompany = null;
+        hideMiniTooltip();
+        setCompareSelectionMode(false);
+        resetCompanyFocus();
+        sendCompanyToParent(d, "compare");
+        return;
+      }
 
-  .company-real-working-frame > iframe.atlas-iframe,
-  .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
-    height: 1110px !important;
-    max-height: 1110px !important;
-  }
+      selectedCompany = d;
+      hoveredCompany = null;
+      hideMiniTooltip();
+      focusCompany(d);
+      setCompareSelectionMode(false);
+      sendCompanyToParent(d, "primary");
+    });
 
-  .company-panel,
-  .company-panel-compare {
-    position: fixed;
+  /*
+    IMPORTANT:
+    Original node appearance animation unchanged.
+  */
 
-    left: 16px;
-    right: 16px;
+  node.transition()
+    .delay((d, i) => i * 10)
+    .duration(800)
+    .style("opacity", 1);
 
-    top: auto;
-    bottom: 16px;
+  node.append("circle")
+    .attr("class", "hover-halo")
+    .attr("r", d => d.r + 9)
+    .attr("fill", "none")
+    .attr("stroke", "rgba(111,88,150,0.38)")
+    .attr("stroke-width", 1.4)
+    .attr("opacity", 0)
+    .style("pointer-events", "none");
 
-    width: auto;
+  node.append("circle")
+    .attr("class", "main-circle")
+    .attr("r", d => d.r)
+    .attr("fill", white)
+    .attr(
+      "stroke",
+      d => d.hasRegistered ? stroke : "#aaa69d"
+    )
+    .attr(
+      "stroke-width",
+      d => d.hasRegistered ? 0.8 : 0.9
+    )
+    .attr(
+      "stroke-dasharray",
+      d => d.hasRegistered ? null : "3 3"
+    )
+    .attr(
+      "opacity",
+      d => d.hasRegistered ? 1 : 0.72
+    )
+    .attr(
+      "filter",
+      "url(#softCompanyShadowVisual1)"
+    );
 
-    height:
-      min(
-        64vh,
-        520px
+  node.append("circle")
+    .filter(d => !d.logoUrl)
+    .attr("r", d => d.r * 0.72)
+    .attr("fill", "rgba(255,255,255,0.38)")
+    .attr("stroke", "rgba(255,255,255,0.6)")
+    .attr("stroke-width", 0.8)
+    .style("pointer-events", "none");
+
+  node.each(function(d, i) {
+    const g = d3.select(this);
+
+    if (d.logoUrl) {
+      const logoScale = getVisualLogoScale(d);
+      const logoSize = d.r * logoScale;
+
+      g.append("image")
+        .attr("href", d.logoUrl)
+        .attr("x", -logoSize / 2)
+        .attr("y", -logoSize / 2)
+        .attr("width", logoSize)
+        .attr("height", logoSize)
+        .attr("preserveAspectRatio", "xMidYMid meet")
+        .attr("clip-path", `url(#logoClipVisual1-${i})`)
+        .style("pointer-events", "none")
+        .style("opacity", 0.98)
+        .on("error", function() {
+          d3.select(this).remove();
+        });
+    }
+  });
+
+  svg.on("click", function() {
+    if (compareSelectionMode) return;
+
+    selectedCompany = null;
+    hoveredCompany = null;
+    hideMiniTooltip();
+    hideCompareInstruction();
+    resetCompanyFocus();
+    clearCompanyInParent();
+  });
+
+  /*
+    ==========================================================
+    FORCE SIMULATION
+    COMPLETELY UNCHANGED
+    ==========================================================
+  */
+
+  const simulation = d3.forceSimulation(companies)
+    .force(
+      "x",
+      d3.forceX(d => d.targetX)
+        .strength(d => d.rank <= 5 ? 0.17 : 0.1)
+    )
+    .force(
+      "y",
+      d3.forceY(d => d.targetY)
+        .strength(d => d.rank <= 5 ? 0.17 : 0.1)
+    )
+    .force(
+      "collide",
+      d3.forceCollide(d => d.r + 3.1).iterations(10)
+    )
+    .force(
+      "charge",
+      d3.forceManyBody()
+        .strength(d => d.rank <= 5 ? -12 : -2.5)
+    )
+    .alpha(1)
+    .alphaDecay(0.016)
+    .on("tick", ticked);
+
+  function ticked() {
+    companies.forEach(d => {
+      const dx = d.x - centerX;
+      const dy = d.y - centerY;
+
+      const limit = Math.sqrt(
+        (dx * dx) / (ovalRx * ovalRx) +
+        (dy * dy) / (ovalRy * ovalRy)
       );
 
-    z-index: 300;
-  }
+      if (limit > 1) {
+        d.x = centerX + dx / limit;
+        d.y = centerY + dy / limit;
+      }
 
-  .company-panel-close,
-  .company-panel-close-compare {
-    position: fixed;
-
-    left: 28px;
-
-    top: auto;
-
-    bottom:
-      calc(
-        16px +
-        min(64vh, 520px) -
-        14px
+      d.x = Math.max(
+        d.r + 8,
+        Math.min(width - d.r - 8, d.x)
       );
 
-    z-index: 320;
-  }
-
-  .company-panel-compare-button {
-    position: fixed;
-
-    left: 50%;
-
-    top: auto;
-
-    bottom:
-      calc(
-        16px +
-        min(64vh, 520px) +
-        12px
+      d.y = Math.max(
+        d.r + 10,
+        Math.min(height - d.r - 16, d.y)
       );
+    });
 
-    transform:
-      translateX(-50%);
-
-    z-index: 322;
+    node.attr(
+      "transform",
+      d => `translate(${d.x},${d.y})`
+    );
   }
 
-  .company-panel-inner {
-    overflow-y: auto;
-  }
-}
+  setTimeout(() => {
+    simulation
+      .alphaDecay(0.04)
+      .alphaTarget(0)
+      .restart();
+  }, 1800);
 
-@media (max-width: 720px) {
-  :root {
-    --analysis-height: 640px;
-  }
-
-  .overview-hero {
-    grid-template-columns: 1fr;
-  }
-
-  .overview-hero-copy {
-    padding:
-      20px
-      4px
-      0;
-  }
-
-  .overview-hero h1 {
-    font-size: 49px;
-  }
-
-  .overview-company-hook-window {
-    min-height: 390px;
-    height: 390px;
-  }
-
-  .overview-route-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .overview-route-card {
-    border-right: 0;
-
-    border-bottom:
-      1px solid
-      rgba(70, 49, 78, 0.12);
-  }
-
-  .overview-route-card:last-child {
-    border-bottom: 0;
-  }
-
-  .bottom-insight-bar {
-    grid-template-columns: 1fr;
-  }
-
-  .methodology-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-@media (max-width: 560px) {
-  .atlas-brand-copy strong {
-    font-size: 17px;
-  }
-
-  .atlas-brand-mark,
-  .atlas-brand-mark svg {
-    width: 30px;
-    height: 30px;
-  }
+  return container;
 }
