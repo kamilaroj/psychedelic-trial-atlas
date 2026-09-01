@@ -430,73 +430,402 @@ function MethodologyView() {
 }
 
 function AboutView() {
+  const featureCards = [
+    {
+      eyebrow: "Transparency",
+      title: "Public development intelligence",
+      text:
+        "Making visible clinical-trial and pipeline activity easier to understand."
+    },
+    {
+      eyebrow: "Access",
+      title: "Finding relevant studies",
+      text:
+        "Helping patients, families, researchers and clinicians discover registered studies."
+    },
+    {
+      eyebrow: "Context",
+      title: "Evidence in context",
+      text:
+        "Showing pipeline context without overstating what is publicly proven."
+    },
+    {
+      eyebrow: "Independent",
+      title: "Open information",
+      text:
+        "An independent, non-commercial project focused on public information."
+    }
+  ];
+
   return (
-    <section className="content-page">
-      <div className="content-page-heading">
+    <section
+      className="content-page"
+      style={{
+        width: "min(1180px, 100%)",
+        paddingTop: "42px",
+        paddingBottom: "46px"
+      }}
+    >
+      <div
+        className="content-page-heading"
+        style={{
+          maxWidth: "820px",
+          marginBottom: "24px"
+        }}
+      >
         <p className="page-eyebrow">About the project</p>
 
-        <h1>Psychedelic Trial Atlas</h1>
+        <h1
+          style={{
+            marginBottom: "12px"
+          }}
+        >
+          Psychedelic Trial Atlas
+        </h1>
 
-        <p>
+        <p
+          style={{
+            maxWidth: "790px",
+            fontSize: "14px",
+            lineHeight: 1.55
+          }}
+        >
           A visual intelligence project mapping what is publicly visible in
           psychedelic drug development by company, compound, indication,
           phase, recruitment status and source visibility.
         </p>
       </div>
 
-      <div className="methodology-grid">
-        <article className="content-card">
-          <p className="page-eyebrow">Positioning</p>
-          <h2>Public development intelligence</h2>
-          <p>
-            The Atlas maps visible clinical-development activity and
-            selected pipeline context. It does not predict which company or
-            therapy will succeed.
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "minmax(0, 1.55fr) minmax(280px, .72fr)",
+          gap: "28px",
+          alignItems: "start"
+        }}
+      >
+        <article
+          style={{
+            minHeight: "340px",
+            padding: "28px 30px",
+            border: "1px solid rgba(56,36,61,.09)",
+            borderRadius: "20px",
+            background: "rgba(255,255,255,.48)",
+            boxShadow:
+              "0 14px 34px rgba(58,42,84,.045), inset 0 1px 0 rgba(255,255,255,.72)"
+          }}
+        >
+          <p
+            className="page-eyebrow"
+            style={{
+              marginBottom: "22px",
+              color: "#5c2c67"
+            }}
+          >
+            Why I built this
           </p>
+
+          <div
+            style={{
+              display: "grid",
+              gap: "22px"
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "44px minmax(0, 1fr)",
+                gap: "18px",
+                alignItems: "start"
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "999px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid rgba(88,36,106,.10)",
+                  background: "rgba(125,92,150,.06)",
+                  color: "#6a3a72",
+                  fontSize: "21px",
+                  lineHeight: 1
+                }}
+              >
+                ♡
+              </span>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#373039",
+                  fontSize: "13.5px",
+                  lineHeight: 1.6
+                }}
+              >
+                Psychedelic Trial Atlas started as a passion project combining
+                my interest in <strong>data, clinical research</strong> and the
+                rapidly evolving field of psychedelic medicine.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "44px minmax(0, 1fr)",
+                gap: "18px",
+                alignItems: "start"
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "999px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid rgba(88,36,106,.10)",
+                  background: "rgba(125,92,150,.06)",
+                  color: "#6a3a72",
+                  fontSize: "19px",
+                  lineHeight: 1
+                }}
+              >
+                ⌕
+              </span>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#373039",
+                  fontSize: "13.5px",
+                  lineHeight: 1.6
+                }}
+              >
+                I wanted to create a clear, public-facing view of what is
+                actually visible in the development landscape, and at the same
+                time make it easier for people to discover{" "}
+                <strong>registered studies</strong>, including trials that may
+                currently be <strong>recruiting</strong>.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "44px minmax(0, 1fr)",
+                gap: "18px",
+                alignItems: "start"
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "999px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid rgba(88,36,106,.10)",
+                  background: "rgba(125,92,150,.06)",
+                  color: "#6a3a72",
+                  fontSize: "18px",
+                  lineHeight: 1
+                }}
+              >
+                ✦
+              </span>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#373039",
+                  fontSize: "13.5px",
+                  lineHeight: 1.6
+                }}
+              >
+                The project brings together my background in{" "}
+                <strong>research, analytics and visual storytelling</strong>{" "}
+                with a personal curiosity about how emerging therapies move
+                from early development into real clinical evidence.
+              </p>
+            </div>
+          </div>
         </article>
 
-        <article className="content-card">
-          <p className="page-eyebrow">Portfolio</p>
-          <h2>Data + research + visualization</h2>
-          <p>
-            The project combines data cleaning, data analysis,
-            clinical-trial intelligence, pharma / biotech market research
-            and interactive visualization.
+        <aside
+          style={{
+            textAlign: "center",
+            padding: "8px 4px 0"
+          }}
+        >
+          <img
+            src="/kamila-rojek.png"
+            alt="Kamila Rojek"
+            style={{
+              display: "block",
+              width: "168px",
+              height: "168px",
+              margin: "0 auto 16px",
+              objectFit: "cover",
+              objectPosition: "50% 34%",
+              borderRadius: "18px",
+              border: "1px solid rgba(56,36,61,.08)",
+              boxShadow: "0 14px 32px rgba(58,42,84,.08)"
+            }}
+          />
+
+          <h2
+            style={{
+              margin: "0 0 6px",
+              color: "#2d1837",
+              fontFamily: '"Inter Tight", "Inter", sans-serif',
+              fontSize: "23px",
+              lineHeight: 1,
+              letterSpacing: "-0.045em"
+            }}
+          >
+            Kamila Rojek
+          </h2>
+
+          <p
+            style={{
+              margin: "0 0 18px",
+              color: "#65336f",
+              fontSize: "10.5px",
+              fontWeight: 650,
+              lineHeight: 1.35
+            }}
+          >
+            Data · Research · Human Behavior
           </p>
-        </article>
-
-        <article className="content-card">
-          <p className="page-eyebrow">Citation</p>
-          <h2>Cite this project</h2>
-          <p>
-            Rojek, Kamila. <em>Psychedelic Trial Atlas</em>. Interactive
-            public-source data analysis. Site version {ATLAS_VERSION}.
-          </p>
-        </article>
-
-        <article className="content-card contact-card">
-          <p className="page-eyebrow">Contact</p>
-          <h2>Work with me</h2>
-
-          <a href={`mailto:${CONTACT_EMAIL}`}>
-            {CONTACT_EMAIL}
-          </a>
 
           <a
             href={LINKEDIN_PROFILE}
             target="_blank"
             rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#552365",
+              fontSize: "10.5px",
+              fontWeight: 780,
+              textDecoration: "underline",
+              textUnderlineOffset: "3px"
+            }}
           >
             LinkedIn profile
+            <span aria-hidden="true">↗</span>
           </a>
-        </article>
+        </aside>
       </div>
 
-      <p className="about-disclaimer">
-        This project maps visible clinical-trial and pipeline activity. It
-        does not assess efficacy, safety, approval status, treatment
-        suitability or investment value.
-      </p>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+          gap: "14px",
+          marginTop: "24px"
+        }}
+      >
+        {featureCards.map((card) => (
+          <article
+            key={card.eyebrow}
+            style={{
+              minHeight: "150px",
+              padding: "20px 20px 18px",
+              border: "1px solid rgba(56,36,61,.08)",
+              borderRadius: "18px",
+              background: "rgba(255,255,255,.42)",
+              boxShadow:
+                "0 12px 28px rgba(58,42,84,.035), inset 0 1px 0 rgba(255,255,255,.62)"
+            }}
+          >
+            <p
+              className="page-eyebrow"
+              style={{
+                marginBottom: "10px",
+                color: "#65336f"
+              }}
+            >
+              {card.eyebrow}
+            </p>
+
+            <h2
+              style={{
+                margin: "0 0 8px",
+                color: "#38243d",
+                fontFamily: '"Inter Tight", "Inter", sans-serif',
+                fontSize: "19px",
+                lineHeight: 1.05,
+                letterSpacing: "-0.04em"
+              }}
+            >
+              {card.title}
+            </h2>
+
+            <p
+              style={{
+                margin: 0,
+                color: "#68717a",
+                fontSize: "11px",
+                lineHeight: 1.5
+              }}
+            >
+              {card.text}
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <div
+        style={{
+          marginTop: "20px",
+          padding: "13px 16px",
+          borderRadius: "12px",
+          background: "rgba(101,51,111,.045)",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px"
+        }}
+      >
+        <span
+          aria-hidden="true"
+          style={{
+            width: "20px",
+            height: "20px",
+            flex: "0 0 20px",
+            borderRadius: "999px",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#5c2c67",
+            color: "#fff",
+            fontFamily: "Georgia, serif",
+            fontSize: "12px"
+          }}
+        >
+          i
+        </span>
+
+        <p
+          className="about-disclaimer"
+          style={{
+            margin: 0
+          }}
+        >
+          This project maps visible clinical-trial and pipeline activity. It
+          does not assess efficacy, safety, approval status, treatment
+          suitability or investment value.
+        </p>
+      </div>
     </section>
   );
 }
