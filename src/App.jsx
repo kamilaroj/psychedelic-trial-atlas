@@ -50,17 +50,11 @@ function normalizeUrlLabel(url) {
 
 function AtlasMark() {
   return (
-    <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
-        <path
-          d="M24 5.5L27.4 17.2L38.5 12.7L30.8 22.2L42.5 24L30.8 25.8L38.5 35.3L27.4 30.8L24 42.5L20.6 30.8L9.5 35.3L17.2 25.8L5.5 24L17.2 22.2L9.5 12.7L20.6 17.2L24 5.5Z"
-          strokeWidth="1.8"
-          opacity="0.9"
-        />
-        <circle cx="24" cy="24" r="4.1" fill="currentColor" stroke="none" />
-        <circle cx="24" cy="24" r="10.6" strokeWidth="1.2" opacity="0.22" />
-      </g>
-    </svg>
+    <img
+      src="/csh-logo-star.svg"
+      alt=""
+      aria-hidden="true"
+    />
   );
 }
 
