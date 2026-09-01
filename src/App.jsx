@@ -556,7 +556,25 @@ function AboutView() {
                   lineHeight: 1
                 }}
               >
-                ♡
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    display: "block"
+                  }}
+                >
+                  <path
+                    d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.8l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.4a5.5 5.5 0 0 0 0-7.8Z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
               </span>
 
               <p
@@ -569,7 +587,7 @@ function AboutView() {
               >
                 Psychedelic Trial Atlas started as a passion project combining
                 my interest in <strong>data, clinical research</strong> and the
-                rapidly evolving field of psychedelic medicine.
+                rapidly evolving field of <strong>psychedelic medicine</strong>.
               </p>
             </div>
 
@@ -597,7 +615,32 @@ function AboutView() {
                   lineHeight: 1
                 }}
               >
-                ⌕
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    display: "block"
+                  }}
+                >
+                  <circle
+                    cx="10.5"
+                    cy="10.5"
+                    r="5.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M14.7 14.7 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
               </span>
 
               <p
@@ -639,7 +682,21 @@ function AboutView() {
                   lineHeight: 1
                 }}
               >
-                ✦
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    display: "block"
+                  }}
+                >
+                  <path
+                    d="M12 3.5c.9 4.3 3.2 6.6 7.5 7.5-4.3.9-6.6 3.2-7.5 7.5-.9-4.3-3.2-6.6-7.5-7.5 4.3-.9 6.6-3.2 7.5-7.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
               </span>
 
               <p
