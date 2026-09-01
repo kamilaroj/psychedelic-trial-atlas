@@ -50,11 +50,54 @@ function normalizeUrlLabel(url) {
 
 function AtlasMark() {
   return (
-    <img
-      src="/csh-logo-star.svg"
-      alt=""
+    <svg
+      viewBox="0 0 64 64"
       aria-hidden="true"
-    />
+      focusable="false"
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "block"
+      }}
+    >
+      <g
+        fill="none"
+        stroke="#3A1E48"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <path
+          d="M32 5
+             L36.2 19.2
+             L47.4 9.6
+             L41.2 23.1
+             L56.3 20.2
+             L43.8 29.1
+             L58.4 32
+             L43.8 34.9
+             L56.3 43.8
+             L41.2 40.9
+             L47.4 54.4
+             L36.2 44.8
+             L32 59
+             L27.8 44.8
+             L16.6 54.4
+             L22.8 40.9
+             L7.7 43.8
+             L20.2 34.9
+             L5.6 32
+             L20.2 29.1
+             L7.7 20.2
+             L22.8 23.1
+             L16.6 9.6
+             L27.8 19.2
+             Z"
+          strokeWidth="2.1"
+        />
+        <circle cx="32" cy="32" r="8.4" strokeWidth="2.1" />
+        <circle cx="32" cy="32" r="2.8" fill="#3A1E48" stroke="none" />
+      </g>
+    </svg>
   );
 }
 
@@ -779,15 +822,57 @@ export default function App() {
             className="atlas-brand"
             type="button"
             onClick={() => activateView("overview")}
+            style={{
+              appearance: "none",
+              border: 0,
+              background: "transparent",
+              padding: 0,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "16px",
+              color: "#38243d",
+              cursor: "pointer",
+              textAlign: "left"
+            }}
           >
-            <span className="atlas-brand-mark">
+            <span
+              className="atlas-brand-mark"
+              style={{
+                width: "60px",
+                height: "60px",
+                flex: "0 0 60px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
               <AtlasMark />
             </span>
 
-            <span className="atlas-brand-copy">
-              <strong>
-                <span>Psychedelic</span>
-                <span>Trial Atlas</span>
+            <span
+              className="atlas-brand-copy"
+              style={{
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              <strong
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  fontFamily: '"Inter Tight", "Inter", "Helvetica Neue", Arial, sans-serif',
+                  fontSize: "31px",
+                  lineHeight: 0.94,
+                  fontWeight: 900,
+                  letterSpacing: "-0.06em",
+                  color: "#2d1837",
+                  whiteSpace: "nowrap"
+                }}
+              >
+                <span style={{ display: "block" }}>Psychedelic</span>
+                <span style={{ display: "block", marginTop: "4px" }}>
+                  Trial Atlas
+                </span>
               </strong>
             </span>
           </button>
