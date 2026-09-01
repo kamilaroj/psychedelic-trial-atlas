@@ -1486,3 +1486,116 @@ iframe,
     min-height: 0 !important;
   }
 }
+
+/* =========================================================
+   COMPOUNDS — DIRECT OBSERVABLE RUNTIME
+   No iframe, no Observable attribution/footer strip,
+   no internal scrollbar, no fixed blank iframe height.
+   ========================================================= */
+
+.atlas-stage-compounds {
+  padding-bottom: 0 !important;
+}
+
+.atlas-stage-compounds .compound-page {
+  width: 100% !important;
+  max-width: none !important;
+  min-height: 0 !important;
+  padding: 6px 0 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  overflow: hidden !important;
+}
+
+.full-compound-runtime {
+  position: relative;
+  width: min(
+    1480px,
+    calc(100vw - 48px),
+    calc((100dvh - 100px) * 2)
+  );
+  max-width: 1480px;
+  aspect-ratio: 2 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  box-shadow: none;
+  contain: layout paint;
+}
+
+.observable-runtime-host {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent;
+}
+
+.observable-runtime-host > div,
+.observable-runtime-host .observablehq,
+.observable-runtime-host .observablehq--inspect,
+.observable-runtime-host .observablehq--inspect > div,
+.observable-runtime-host .visual2-runtime-root {
+  width: 100% !important;
+  max-width: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.observable-runtime-host .visual2-runtime-root {
+  overflow: hidden !important;
+}
+
+.observable-runtime-host .visual2-runtime-root svg {
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  max-width: none !important;
+  margin: 0 !important;
+}
+
+.runtime-loading .observable-runtime-host {
+  opacity: 0;
+}
+
+.runtime-loaded .observable-runtime-host {
+  opacity: 1;
+}
+
+.runtime-error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+@media (max-width: 1020px) {
+  .atlas-stage-compounds .compound-page {
+    padding-top: 4px !important;
+  }
+
+  .full-compound-runtime {
+    width: calc(100vw - 32px);
+    max-width: none;
+    aspect-ratio: 2 / 1;
+  }
+}
+
+@media (max-width: 720px) {
+  .full-compound-runtime {
+    width: calc(100vw - 20px);
+    aspect-ratio: 2 / 1;
+  }
+}
+
