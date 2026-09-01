@@ -844,12 +844,12 @@ export default function App() {
         )}
 
         {activeView === "compounds" && (
-          <section className="visual-page standard-analysis-page">
+          <section className="visual-page standard-analysis-page compound-page">
             <ObservableFrame
               title="Compound Activity Landscape"
               src={observableSrc.visual2}
               className="full-visual standard-analysis-visual full-compound-visual"
-              height={1514}
+              height={920}
             />
           </section>
         )}
