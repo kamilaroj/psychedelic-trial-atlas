@@ -1561,3 +1561,26 @@ iframe,
   }
 }
 
+/* =========================================================
+   ABOUT — ICON CONSISTENCY
+   ========================================================= */
+
+.about-page > div:nth-of-type(2) > article > div > div > span {
+  width: 44px !important;
+  height: 44px !important;
+  min-width: 44px !important;
+  min-height: 44px !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 0 !important;
+}
+
+.about-page > div:nth-of-type(2) > article > div > div > span svg {
+  width: 20px !important;
+  height: 20px !important;
+  display: block !important;
+  flex: 0 0 20px !important;
+}
+
