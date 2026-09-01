@@ -39,7 +39,6 @@ function useViewportSize() {
     };
 
     handleResize();
-
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -61,17 +60,54 @@ function normalizeUrlLabel(url) {
     .replace(/\/$/g, "");
 }
 
+/*
+  OPTION 4
+  Minimal molecular structure.
+
+  The icon uses currentColor so its color remains controlled
+  by the existing CSS for .atlas-brand-mark.
+*/
 function AtlasMark() {
   return (
-    <svg viewBox="0 0 36 36" aria-hidden="true">
-      <circle cx="18" cy="18" r="4.2" />
-      <circle cx="7.4" cy="11.1" r="2.35" />
-      <circle cx="28.8" cy="9.1" r="2.35" />
-      <circle cx="29.2" cy="26.7" r="2.35" />
-      <circle cx="8.2" cy="27.2" r="2.35" />
+    <svg
+      viewBox="0 0 52 52"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* central molecular ring */}
+        <path d="M17 18.5 L25 13.5 L34 18.5 L34 28.5 L25 34 L17 29 Z" />
 
-      <path d="M10 12.6 14.7 16M21.4 15.2 26.7 10.8M21.5 20.6 27 25M14.7 20.4 10.2 25.3" />
-      <path d="M18 7.3v6.2M18 22.4v6.3" />
+        {/* outer bonds */}
+        <path d="M25 13.5 L24.5 6.5" />
+        <path d="M34 18.5 L42 13.5" />
+        <path d="M34 28.5 L42 33.5" />
+        <path d="M25 34 L25 43" />
+        <path d="M17 29 L9.5 34" />
+        <path d="M17 18.5 L9.5 14" />
+      </g>
+
+      {/* central atoms */}
+      <circle cx="17" cy="18.5" r="3.3" fill="currentColor" />
+      <circle cx="25" cy="13.5" r="3.3" fill="currentColor" />
+      <circle cx="34" cy="18.5" r="3.3" fill="currentColor" />
+      <circle cx="34" cy="28.5" r="3.3" fill="currentColor" />
+      <circle cx="25" cy="34" r="3.3" fill="currentColor" />
+      <circle cx="17" cy="29" r="3.3" fill="currentColor" />
+
+      {/* outer atoms */}
+      <circle cx="24.5" cy="6.5" r="2.9" fill="currentColor" />
+      <circle cx="42" cy="13.5" r="2.9" fill="currentColor" />
+      <circle cx="42" cy="33.5" r="2.9" fill="currentColor" />
+      <circle cx="25" cy="43" r="2.9" fill="currentColor" />
+      <circle cx="9.5" cy="34" r="2.9" fill="currentColor" />
+      <circle cx="9.5" cy="14" r="2.9" fill="currentColor" />
     </svg>
   );
 }
@@ -815,12 +851,24 @@ export default function App() {
               activateView("overview")
             }
           >
-            <span className="atlas-brand-mark">
+            <span
+              className="atlas-brand-mark"
+              style={{
+                width: "52px",
+                height: "52px",
+                minWidth: "52px"
+              }}
+            >
               <AtlasMark />
             </span>
 
             <span className="atlas-brand-copy">
-              <strong>
+              <strong
+                style={{
+                  fontSize: "1.3em",
+                  lineHeight: "0.94"
+                }}
+              >
                 <span>Psychedelic</span>
                 <span>Trial Atlas</span>
               </strong>
@@ -848,6 +896,9 @@ export default function App() {
                     ? "page"
                     : undefined
                 }
+                style={{
+                  fontSize: "1.3em"
+                }}
               >
                 {item.label}
               </button>
