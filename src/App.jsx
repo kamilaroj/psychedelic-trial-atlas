@@ -961,8 +961,19 @@ export default function App() {
                   className="overview-company-hook-window overview-company-hook-clickable"
                   style={{
                     position: "relative",
-                    cursor: "pointer"
+                    cursor: "pointer",
+                    pointerEvents: "auto"
                   }}
+                  onClick={() => activateView("companies")}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      activateView("companies");
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Open Company Landscape"
                 >
                   <iframe
                     title="Company Landscape overview preview"
@@ -992,7 +1003,8 @@ export default function App() {
                       margin: 0,
                       border: 0,
                       background: "transparent",
-                      cursor: "pointer"
+                      cursor: "pointer",
+                      pointerEvents: "auto"
                     }}
                   />
                 </div>
