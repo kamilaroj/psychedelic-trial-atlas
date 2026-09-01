@@ -60,13 +60,6 @@ function normalizeUrlLabel(url) {
     .replace(/\/$/g, "");
 }
 
-/*
-  OPTION 4
-  Minimal molecular structure.
-
-  The icon uses currentColor so its color remains controlled
-  by the existing CSS for .atlas-brand-mark.
-*/
 function AtlasMark() {
   return (
     <svg
@@ -81,10 +74,8 @@ function AtlasMark() {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {/* central molecular ring */}
         <path d="M17 18.5 L25 13.5 L34 18.5 L34 28.5 L25 34 L17 29 Z" />
 
-        {/* outer bonds */}
         <path d="M25 13.5 L24.5 6.5" />
         <path d="M34 18.5 L42 13.5" />
         <path d="M34 28.5 L42 33.5" />
@@ -93,7 +84,6 @@ function AtlasMark() {
         <path d="M17 18.5 L9.5 14" />
       </g>
 
-      {/* central atoms */}
       <circle cx="17" cy="18.5" r="3.3" fill="currentColor" />
       <circle cx="25" cy="13.5" r="3.3" fill="currentColor" />
       <circle cx="34" cy="18.5" r="3.3" fill="currentColor" />
@@ -101,7 +91,6 @@ function AtlasMark() {
       <circle cx="25" cy="34" r="3.3" fill="currentColor" />
       <circle cx="17" cy="29" r="3.3" fill="currentColor" />
 
-      {/* outer atoms */}
       <circle cx="24.5" cy="6.5" r="2.9" fill="currentColor" />
       <circle cx="42" cy="13.5" r="2.9" fill="currentColor" />
       <circle cx="42" cy="33.5" r="2.9" fill="currentColor" />
@@ -850,13 +839,21 @@ export default function App() {
             onClick={() =>
               activateView("overview")
             }
+            style={{
+              gap: "5px",
+              alignItems: "center"
+            }}
           >
             <span
               className="atlas-brand-mark"
               style={{
-                width: "52px",
-                height: "52px",
-                minWidth: "52px"
+                width: "40px",
+                height: "40px",
+                minWidth: "40px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                flexShrink: 0
               }}
             >
               <AtlasMark />
@@ -896,9 +893,6 @@ export default function App() {
                     ? "page"
                     : undefined
                 }
-                style={{
-                  fontSize: "1.3em"
-                }}
               >
                 {item.label}
               </button>
