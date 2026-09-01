@@ -22,12 +22,15 @@ function useViewportSize() {
   });
 
   useEffect(() => {
-    const handleResize = () => setViewportSize({
-      width: window.innerWidth,
-      height: window.innerHeight
-    });
+    const handleResize = () =>
+      setViewportSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+
     handleResize();
     window.addEventListener("resize", handleResize);
+
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
@@ -73,7 +76,11 @@ function ObservableFrame({
   const [loaded, setLoaded] = useState(false);
 
   return (
-    <div className={`observable-shell ${className} ${loaded ? "observable-loaded" : "observable-loading"}`}>
+    <div
+      className={`observable-shell ${className} ${
+        loaded ? "observable-loaded" : "observable-loading"
+      }`}
+    >
       <iframe
         title={title}
         src={src}
@@ -91,12 +98,23 @@ function ObservableFrame({
   );
 }
 
-function RealPreviewCard({ title, description, cta, onClick, src, previewClass }) {
+function RealPreviewCard({
+  title,
+  description,
+  cta,
+  onClick,
+  src,
+  previewClass
+}) {
   const [loaded, setLoaded] = useState(false);
 
   return (
     <button className="overview-route-card" type="button" onClick={onClick}>
-      <div className={`real-preview-window ${previewClass || ""} ${loaded ? "preview-loaded" : "preview-loading"}`}>
+      <div
+        className={`real-preview-window ${previewClass || ""} ${
+          loaded ? "preview-loaded" : "preview-loading"
+        }`}
+      >
         <iframe
           title={`${title} preview`}
           src={src}
@@ -117,6 +135,7 @@ function RealPreviewCard({ title, description, cta, onClick, src, previewClass }
           <h3>{title}</h3>
           <p>{description}</p>
         </div>
+
         <span className="overview-route-link">
           {cta} <span aria-hidden="true">→</span>
         </span>
@@ -135,7 +154,10 @@ function CompanyExternalPanel({
 }) {
   if (!selectedCompany) return null;
 
-  const listToText = (value, fallback = "Insufficient data to verify") => {
+  const listToText = (
+    value,
+    fallback = "Insufficient data to verify"
+  ) => {
     if (!Array.isArray(value) || value.length === 0) return fallback;
     return value.filter(Boolean).join(", ");
   };
@@ -146,34 +168,55 @@ function CompanyExternalPanel({
       ? selectedCompany.website
       : [];
 
-  const trials = Array.isArray(selectedCompany.trials) ? selectedCompany.trials : [];
-  const visibleActivity = selectedCompany.visibleActivity ?? selectedCompany.activityUnits ?? 0;
+  const trials = Array.isArray(selectedCompany.trials)
+    ? selectedCompany.trials
+    : [];
+
+  const visibleActivity =
+    selectedCompany.visibleActivity ??
+    selectedCompany.activityUnits ??
+    0;
+
   const registeredTrials = selectedCompany.registeredUnits ?? 0;
   const pipelineContext = selectedCompany.pipelineUnits ?? 0;
 
   return (
     <>
       <button
-        className={`company-panel-close ${isComparePanel ? "company-panel-close-compare" : ""}`}
+        className={`company-panel-close ${
+          isComparePanel ? "company-panel-close-compare" : ""
+        }`}
         type="button"
         onClick={onClose}
-        aria-label={isComparePanel ? "Close compared company details" : "Close company details"}
+        aria-label={
+          isComparePanel
+            ? "Close compared company details"
+            : "Close company details"
+        }
       >
         ×
       </button>
 
       {showCompareButton && !isComparePanel && (
         <button
-          className={`company-panel-compare-button ${compareModeActive ? "company-panel-compare-button-active" : ""}`}
+          className={`company-panel-compare-button ${
+            compareModeActive
+              ? "company-panel-compare-button-active"
+              : ""
+          }`}
           type="button"
           onClick={onCompare}
         >
-          {compareModeActive ? "Select another company" : "+ Compare company"}
+          {compareModeActive
+            ? "Select another company"
+            : "+ Compare company"}
         </button>
       )}
 
       <aside
-        className={`company-panel ${isComparePanel ? "company-panel-compare" : ""}`}
+        className={`company-panel ${
+          isComparePanel ? "company-panel-compare" : ""
+        }`}
         aria-label={`${selectedCompany.company || "Company"} details`}
       >
         <div className="company-panel-inner">
@@ -181,7 +224,10 @@ function CompanyExternalPanel({
             <div className="company-panel-logo-slot">
               {selectedCompany.logoUrl ? (
                 <div className="company-panel-logo">
-                  <img src={selectedCompany.logoUrl} alt={`${selectedCompany.company || "Company"} logo`} />
+                  <img
+                    src={selectedCompany.logoUrl}
+                    alt={`${selectedCompany.company || "Company"} logo`}
+                  />
                 </div>
               ) : null}
             </div>
@@ -197,14 +243,21 @@ function CompanyExternalPanel({
             {websites.length > 0 ? (
               <div className="company-panel-websites">
                 {websites.map((url) => (
-                  <a key={url} href={url} target="_blank" rel="noopener noreferrer">
+                  <a
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {normalizeUrlLabel(url)}
                   </a>
                 ))}
               </div>
             ) : (
               selectedCompany.noVerifiedWebsite && (
-                <p className="company-panel-site-fallback">No official website verified</p>
+                <p className="company-panel-site-fallback">
+                  No official website verified
+                </p>
               )
             )}
           </div>
@@ -228,16 +281,40 @@ function CompanyExternalPanel({
           </div>
 
           <div className="company-panel-details">
-            <section><span>Assets</span><p>{listToText(selectedCompany.assets)}</p></section>
-            <section><span>Compound families</span><p>{listToText(selectedCompany.families)}</p></section>
-            <section><span>Therapeutic areas</span><p>{listToText(selectedCompany.indications)}</p></section>
+            <section>
+              <span>Assets</span>
+              <p>{listToText(selectedCompany.assets)}</p>
+            </section>
+
+            <section>
+              <span>Compound families</span>
+              <p>{listToText(selectedCompany.families)}</p>
+            </section>
+
+            <section>
+              <span>Therapeutic areas</span>
+              <p>{listToText(selectedCompany.indications)}</p>
+            </section>
+
             <section>
               <span>Countries</span>
-              <p>{selectedCompany.hasRegistered ? listToText(selectedCompany.countries) : "No registered trial countries"}</p>
+              <p>
+                {selectedCompany.hasRegistered
+                  ? listToText(selectedCompany.countries)
+                  : "No registered trial countries"}
+              </p>
             </section>
+
             <section>
               <span>Trial IDs</span>
-              <div className={`company-panel-trials ${trials.length >= 12 ? "company-panel-trials-many" : ""}`}>
+
+              <div
+                className={`company-panel-trials ${
+                  trials.length >= 12
+                    ? "company-panel-trials-many"
+                    : ""
+                }`}
+              >
                 {trials.length > 0 ? (
                   trials.map((trial) =>
                     trial.url ? (
@@ -270,11 +347,13 @@ function MethodologyView() {
     <section className="content-page">
       <div className="content-page-heading">
         <p className="page-eyebrow">Method / data basis</p>
+
         <h1>How the Atlas is built</h1>
+
         <p>
-          The Atlas separates registered clinical-trial activity from selected
-          pipeline context so different forms of public visibility are not
-          treated as the same type of evidence.
+          The Atlas separates registered clinical-trial activity from
+          selected pipeline context so different forms of public visibility
+          are not treated as the same type of evidence.
         </p>
       </div>
 
@@ -282,15 +361,19 @@ function MethodologyView() {
         <article className="content-card">
           <p className="page-eyebrow">Registered trials</p>
           <h2>Evidence units</h2>
-          <p>Public registry records are treated as registered evidence-generation activity.</p>
+          <p>
+            Public registry records are treated as registered
+            evidence-generation activity.
+          </p>
         </article>
 
         <article className="content-card">
           <p className="page-eyebrow">Pipeline context</p>
           <h2>Context units</h2>
           <p>
-            Company-reported or secondary-source pipeline programs without a
-            public trial ID are treated as context, not clinical-trial evidence.
+            Company-reported or secondary-source pipeline programs without
+            a public trial ID are treated as context, not clinical-trial
+            evidence.
           </p>
         </article>
 
@@ -298,8 +381,9 @@ function MethodologyView() {
           <p className="page-eyebrow">Different views</p>
           <h2>Different analytical questions</h2>
           <p>
-            Company, compound, indication and phase views use different units
-            of analysis. Their circle counts are therefore not directly comparable.
+            Company, compound, indication and phase views use different
+            units of analysis. Their circle counts are therefore not directly
+            comparable.
           </p>
         </article>
 
@@ -307,8 +391,9 @@ function MethodologyView() {
           <p className="page-eyebrow">Limitations</p>
           <h2>Public data can change</h2>
           <p>
-            Trial records may be incomplete, delayed, duplicated or inconsistently
-            structured. Recruitment status should be checked at the original source.
+            Trial records may be incomplete, delayed, duplicated or
+            inconsistently structured. Recruitment status should be checked
+            at the original source.
           </p>
         </article>
       </div>
@@ -321,11 +406,13 @@ function AboutView() {
     <section className="content-page">
       <div className="content-page-heading">
         <p className="page-eyebrow">About the project</p>
+
         <h1>Psychedelic Trial Atlas</h1>
+
         <p>
           A visual intelligence project mapping what is publicly visible in
-          psychedelic drug development by company, compound, indication, phase,
-          recruitment status and source visibility.
+          psychedelic drug development by company, compound, indication,
+          phase, recruitment status and source visibility.
         </p>
       </div>
 
@@ -334,8 +421,9 @@ function AboutView() {
           <p className="page-eyebrow">Positioning</p>
           <h2>Public development intelligence</h2>
           <p>
-            The Atlas maps visible clinical-development activity and selected
-            pipeline context. It does not predict which company or therapy will succeed.
+            The Atlas maps visible clinical-development activity and
+            selected pipeline context. It does not predict which company or
+            therapy will succeed.
           </p>
         </article>
 
@@ -343,8 +431,9 @@ function AboutView() {
           <p className="page-eyebrow">Portfolio</p>
           <h2>Data + research + visualization</h2>
           <p>
-            The project combines data cleaning, data analysis, clinical-trial
-            intelligence, pharma / biotech market research and interactive visualization.
+            The project combines data cleaning, data analysis,
+            clinical-trial intelligence, pharma / biotech market research
+            and interactive visualization.
           </p>
         </article>
 
@@ -360,23 +449,35 @@ function AboutView() {
         <article className="content-card contact-card">
           <p className="page-eyebrow">Contact</p>
           <h2>Work with me</h2>
-          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
-          <a href={LINKEDIN_PROFILE} target="_blank" rel="noopener noreferrer">
+
+          <a href={`mailto:${CONTACT_EMAIL}`}>
+            {CONTACT_EMAIL}
+          </a>
+
+          <a
+            href={LINKEDIN_PROFILE}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             LinkedIn profile
           </a>
         </article>
       </div>
 
       <p className="about-disclaimer">
-        This project maps visible clinical-trial and pipeline activity. It does
-        not assess efficacy, safety, approval status, treatment suitability or investment value.
+        This project maps visible clinical-trial and pipeline activity. It
+        does not assess efficacy, safety, approval status, treatment
+        suitability or investment value.
       </p>
     </section>
   );
 }
 
 export default function App() {
-  const { width: viewportWidth, height: viewportHeight } = useViewportSize();
+  const {
+    width: viewportWidth,
+    height: viewportHeight
+  } = useViewportSize();
 
   const initialHash =
     typeof window !== "undefined"
@@ -384,7 +485,9 @@ export default function App() {
       : "overview";
 
   const [activeView, setActiveView] = useState(
-    NAV_ITEMS.some((item) => item.id === initialHash) ? initialHash : "overview"
+    NAV_ITEMS.some((item) => item.id === initialHash)
+      ? initialHash
+      : "overview"
   );
 
   const [selectedCompany, setSelectedCompany] = useState(null);
@@ -393,10 +496,18 @@ export default function App() {
 
   const compareModeRef = useRef(false);
 
-  const mainApiKey = "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
-  const mainNotebook = "e3028f2577c04f9a@1443";
-  const githubLogoBase = "https://psychedelic-trial-atlas.vercel.app/logos/";
-  const logoTuningVersion = "visual1b-logo-tuning-2026-06-24-full-logo-list";
+  const mainApiKey =
+    "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
+
+  const mainNotebook =
+    "e3028f2577c04f9a@1443";
+
+  const githubLogoBase =
+    "https://psychedelic-trial-atlas.vercel.app/logos/";
+
+  const logoTuningVersion =
+    "visual1b-logo-tuning-2026-06-24-full-logo-list";
+
   const logoVisualScale = {};
   const logoHoverScale = {};
 
@@ -416,9 +527,15 @@ export default function App() {
 
   const visual1CompanyLandscapeParams =
     `&logoBase=${encodeURIComponent(githubLogoBase)}` +
-    `&logoTuningVersion=${encodeURIComponent(logoTuningVersion)}` +
-    `&logoVisualScale=${encodeJsonForUrl(logoVisualScale)}` +
-    `&logoHoverScale=${encodeJsonForUrl(logoHoverScale)}`;
+    `&logoTuningVersion=${encodeURIComponent(
+      logoTuningVersion
+    )}` +
+    `&logoVisualScale=${encodeJsonForUrl(
+      logoVisualScale
+    )}` +
+    `&logoHoverScale=${encodeJsonForUrl(
+      logoHoverScale
+    )}`;
 
   const observableSrc = useMemo(
     () => ({
@@ -440,9 +557,8 @@ export default function App() {
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
-        `?cells=visual2ChartUnitColumns1` +
-        `&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
+        `https://observablehq.com/embed/e3028f2577c04f9a@1483` +
+        `?cells=visual2ChartUnitColumns1`,
 
       visual3:
         `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
@@ -468,20 +584,28 @@ export default function App() {
   };
 
   const getCompanyIframe = () =>
-    document.querySelector('iframe[title="Company Landscape Premium"]');
+    document.querySelector(
+      'iframe[title="Company Landscape Premium"]'
+    );
 
   const postToCompanyIframe = (message) => {
     const iframe = getCompanyIframe();
+
     if (!iframe?.contentWindow) return;
+
     iframe.contentWindow.postMessage(message, "*");
   };
 
   const clearObservableCompanyState = () => {
-    postToCompanyIframe({ type: "UNICORN_COMPANY_CLEAR" });
+    postToCompanyIframe({
+      type: "UNICORN_COMPANY_CLEAR"
+    });
   };
 
   const clearObservableCompareState = () => {
-    postToCompanyIframe({ type: "UNICORN_COMPARE_CLEAR" });
+    postToCompanyIframe({
+      type: "UNICORN_COMPARE_CLEAR"
+    });
   };
 
   const postCompareModeToObservable = (active) => {
@@ -493,7 +617,9 @@ export default function App() {
 
   const handleCompareStart = () => {
     if (!selectedCompany || compareCompany) return;
+
     const nextMode = !compareModeRef.current;
+
     setCompareModeStable(nextMode);
     postCompareModeToObservable(nextMode);
   };
@@ -512,9 +638,14 @@ export default function App() {
   };
 
   const activateView = (viewId) => {
-    if (!NAV_ITEMS.some((item) => item.id === viewId)) return;
+    if (!NAV_ITEMS.some((item) => item.id === viewId)) {
+      return;
+    }
 
-    if (activeView === "companies" && viewId !== "companies") {
+    if (
+      activeView === "companies" &&
+      viewId !== "companies"
+    ) {
       clearObservableCompanyState();
       setSelectedCompany(null);
       setCompareCompany(null);
@@ -524,42 +655,77 @@ export default function App() {
     setActiveView(viewId);
 
     if (typeof window !== "undefined") {
-      window.history.replaceState(null, "", `#${viewId}`);
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.history.replaceState(
+        null,
+        "",
+        `#${viewId}`
+      );
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
     }
   };
 
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace("#", "");
+      const hash =
+        window.location.hash.replace("#", "");
 
-      if (NAV_ITEMS.some((item) => item.id === hash)) {
+      if (
+        NAV_ITEMS.some((item) => item.id === hash)
+      ) {
         setActiveView(hash);
-        window.scrollTo({ top: 0, behavior: "auto" });
+
+        window.scrollTo({
+          top: 0,
+          behavior: "auto"
+        });
       }
     };
 
-    window.addEventListener("hashchange", handleHashChange);
-    return () => window.removeEventListener("hashchange", handleHashChange);
+    window.addEventListener(
+      "hashchange",
+      handleHashChange
+    );
+
+    return () =>
+      window.removeEventListener(
+        "hashchange",
+        handleHashChange
+      );
   }, []);
 
   useEffect(() => {
     const handleCompanyMessage = (event) => {
       const message = event.data;
 
-      if (!message || typeof message !== "object") return;
+      if (!message || typeof message !== "object") {
+        return;
+      }
 
       if (
         message.type !== "UNICORN_COMPANY_SELECTED" &&
-        message.type !== "UNICORN_COMPANY_COMPARE_SELECTED" &&
-        message.type !== "UNICORN_COMPARE_SELECTION_MODE_ACK"
+        message.type !==
+          "UNICORN_COMPANY_COMPARE_SELECTED" &&
+        message.type !==
+          "UNICORN_COMPARE_SELECTION_MODE_ACK"
       ) {
         return;
       }
 
-      if (message.type === "UNICORN_COMPARE_SELECTION_MODE_ACK") return;
+      if (
+        message.type ===
+        "UNICORN_COMPARE_SELECTION_MODE_ACK"
+      ) {
+        return;
+      }
 
-      if (message.type === "UNICORN_COMPANY_COMPARE_SELECTED") {
+      if (
+        message.type ===
+        "UNICORN_COMPANY_COMPARE_SELECTED"
+      ) {
         const payload = message.payload || null;
 
         if (!payload) {
@@ -571,6 +737,7 @@ export default function App() {
         setCompareCompany(payload);
         setCompareModeStable(false);
         postCompareModeToObservable(false);
+
         return;
       }
 
@@ -583,7 +750,10 @@ export default function App() {
         return;
       }
 
-      if (payload.compareSlot === "compare" || compareModeRef.current) {
+      if (
+        payload.compareSlot === "compare" ||
+        compareModeRef.current
+      ) {
         setCompareCompany(payload);
         setCompareModeStable(false);
         postCompareModeToObservable(false);
@@ -595,8 +765,16 @@ export default function App() {
       postCompareModeToObservable(false);
     };
 
-    window.addEventListener("message", handleCompanyMessage);
-    return () => window.removeEventListener("message", handleCompanyMessage);
+    window.addEventListener(
+      "message",
+      handleCompanyMessage
+    );
+
+    return () =>
+      window.removeEventListener(
+        "message",
+        handleCompanyMessage
+      );
   }, []);
 
   return (
@@ -613,34 +791,55 @@ export default function App() {
             </span>
 
             <span className="atlas-brand-copy">
-              <strong>Psychedelic Trial Atlas</strong>
+              <strong>
+                Psychedelic Trial Atlas
+              </strong>
             </span>
           </button>
 
-          <nav className="atlas-tabs" aria-label="Atlas views">
+          <nav
+            className="atlas-tabs"
+            aria-label="Atlas views"
+          >
             {NAV_ITEMS.map((item) => (
               <button
                 key={item.id}
                 type="button"
-                className={`atlas-tab ${activeView === item.id ? "atlas-tab-active" : ""}`}
-                onClick={() => activateView(item.id)}
-                aria-current={activeView === item.id ? "page" : undefined}
+                className={`atlas-tab ${
+                  activeView === item.id
+                    ? "atlas-tab-active"
+                    : ""
+                }`}
+                onClick={() =>
+                  activateView(item.id)
+                }
+                aria-current={
+                  activeView === item.id
+                    ? "page"
+                    : undefined
+                }
               >
                 {item.label}
               </button>
             ))}
           </nav>
 
-          <div className="atlas-updated">Updated: {ATLAS_VERSION}</div>
+          <div className="atlas-updated">
+            Updated: {ATLAS_VERSION}
+          </div>
         </div>
       </header>
 
-      <div className={`atlas-stage atlas-stage-${activeView}`}>
+      <div
+        className={`atlas-stage atlas-stage-${activeView}`}
+      >
         {activeView === "overview" && (
           <section className="overview-page">
             <div className="overview-hero">
               <div className="overview-hero-copy">
-                <p className="hero-eyebrow">THE GLOBAL LANDSCAPE OF</p>
+                <p className="hero-eyebrow">
+                  THE GLOBAL LANDSCAPE OF
+                </p>
 
                 <h1>
                   Psychedelic
@@ -649,9 +848,11 @@ export default function App() {
                 </h1>
 
                 <p className="hero-description">
-                  An interactive view of companies, compounds, indications and
-                  registered clinical-trial activity, together with the pipeline
-                  context shaping the visible development landscape.
+                  An interactive view of companies,
+                  compounds, indications and registered
+                  clinical-trial activity, together with
+                  the pipeline context shaping the visible
+                  development landscape.
                 </p>
 
                 <div className="overview-real-metrics">
@@ -670,8 +871,16 @@ export default function App() {
 
               <div className="overview-company-hook">
                 <div className="overview-company-hook-label">
-                  <span>COMPANY LANDSCAPE</span>
-                  <button type="button" onClick={() => activateView("companies")}>
+                  <span>
+                    COMPANY LANDSCAPE
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      activateView("companies")
+                    }
+                  >
                     View full landscape →
                   </button>
                 </div>
@@ -691,32 +900,52 @@ export default function App() {
               </div>
 
               <aside className="overview-reading-card">
-                <p className="page-eyebrow">How to read the Atlas</p>
-                <h2>One market. Four analytical views.</h2>
+                <p className="page-eyebrow">
+                  How to read the Atlas
+                </p>
+
+                <h2>
+                  One market. Four analytical views.
+                </h2>
 
                 <div className="reading-row">
                   <strong>Companies</strong>
-                  <span>Who is building the visible ecosystem.</span>
+                  <span>
+                    Who is building the visible
+                    ecosystem.
+                  </span>
                 </div>
 
                 <div className="reading-row">
                   <strong>Compounds</strong>
-                  <span>Which compound families show visible activity.</span>
+                  <span>
+                    Which compound families show
+                    visible activity.
+                  </span>
                 </div>
 
                 <div className="reading-row">
                   <strong>Indications</strong>
-                  <span>Where registered patient-indication activity appears.</span>
+                  <span>
+                    Where registered
+                    patient-indication activity
+                    appears.
+                  </span>
                 </div>
 
                 <div className="reading-row">
                   <strong>Phases</strong>
-                  <span>Where registered activity sits in development.</span>
+                  <span>
+                    Where registered activity sits
+                    in development.
+                  </span>
                 </div>
 
                 <button
                   type="button"
-                  onClick={() => activateView("methodology")}
+                  onClick={() =>
+                    activateView("methodology")
+                  }
                   className="reading-method-link"
                 >
                   Read methodology →
@@ -725,14 +954,18 @@ export default function App() {
             </div>
 
             <div className="inside-section">
-              <p className="inside-kicker">WHAT’S INSIDE THE ATLAS</p>
+              <p className="inside-kicker">
+                WHAT’S INSIDE THE ATLAS
+              </p>
 
               <div className="overview-route-grid">
                 <RealPreviewCard
                   title="Companies"
                   description="Explore who is building the visible psychedelic development landscape."
                   cta="Explore companies"
-                  onClick={() => activateView("companies")}
+                  onClick={() =>
+                    activateView("companies")
+                  }
                   src={observableSrc.visual1Company}
                   previewClass="preview-companies"
                 />
@@ -741,7 +974,9 @@ export default function App() {
                   title="Compounds"
                   description="See registered clinical activity and selected pipeline context by compound."
                   cta="Explore compounds"
-                  onClick={() => activateView("compounds")}
+                  onClick={() =>
+                    activateView("compounds")
+                  }
                   src={observableSrc.visual2}
                   previewClass="preview-compounds"
                 />
@@ -750,7 +985,9 @@ export default function App() {
                   title="Indications"
                   description="See included registered patient-indication trials by therapeutic area."
                   cta="Explore indications"
-                  onClick={() => activateView("indications")}
+                  onClick={() =>
+                    activateView("indications")
+                  }
                   src={observableSrc.visual3}
                   previewClass="preview-indications"
                 />
@@ -759,7 +996,9 @@ export default function App() {
                   title="Phases"
                   description="Review where visible registered activity appears across development phases."
                   cta="Explore phases"
-                  onClick={() => activateView("phases")}
+                  onClick={() =>
+                    activateView("phases")
+                  }
                   src={observableSrc.visual4}
                   previewClass="preview-phases"
                 />
@@ -768,10 +1007,19 @@ export default function App() {
 
             <div className="bottom-insight-bar">
               <div className="insight-primary">
-                <span className="insight-info">i</span>
+                <span className="insight-info">
+                  i
+                </span>
+
                 <div>
-                  <strong>Different views. Different units.</strong>
-                  <span>Circle counts are not directly comparable across views.</span>
+                  <strong>
+                    Different views. Different units.
+                  </strong>
+
+                  <span>
+                    Circle counts are not directly
+                    comparable across views.
+                  </span>
                 </div>
               </div>
 
@@ -779,33 +1027,65 @@ export default function App() {
 
               <div className="insight-item">
                 <span className="insight-dot insight-dot-solid" />
+
                 <div>
-                  <strong>Registered trial activity</strong>
-                  <span>Public registry records with a trial ID.</span>
+                  <strong>
+                    Registered trial activity
+                  </strong>
+
+                  <span>
+                    Public registry records with a
+                    trial ID.
+                  </span>
                 </div>
               </div>
 
               <div className="insight-item">
                 <span className="insight-dot insight-dot-dashed" />
+
                 <div>
-                  <strong>Pipeline context</strong>
-                  <span>Selected visible programs without a public trial ID.</span>
+                  <strong>
+                    Pipeline context
+                  </strong>
+
+                  <span>
+                    Selected visible programs without
+                    a public trial ID.
+                  </span>
                 </div>
               </div>
 
               <div className="insight-item">
-                <span className="insight-symbol">◎</span>
+                <span className="insight-symbol">
+                  ◎
+                </span>
+
                 <div>
-                  <strong>Public-source visibility</strong>
-                  <span>Registry and selected company / secondary-source context.</span>
+                  <strong>
+                    Public-source visibility
+                  </strong>
+
+                  <span>
+                    Registry and selected company /
+                    secondary-source context.
+                  </span>
                 </div>
               </div>
 
               <div className="insight-item">
-                <span className="insight-symbol">≠</span>
+                <span className="insight-symbol">
+                  ≠
+                </span>
+
                 <div>
-                  <strong>Visibility is not efficacy</strong>
-                  <span>Activity does not imply safety, approval or success.</span>
+                  <strong>
+                    Visibility is not efficacy
+                  </strong>
+
+                  <span>
+                    Activity does not imply safety,
+                    approval or success.
+                  </span>
                 </div>
               </div>
             </div>
@@ -816,8 +1096,14 @@ export default function App() {
           <section className="visual-page company-page">
             <div
               className={`company-visual-shell ${
-                selectedCompany ? "company-panel-open" : ""
-              } ${compareCompany ? "company-compare-open" : ""}`}
+                selectedCompany
+                  ? "company-panel-open"
+                  : ""
+              } ${
+                compareCompany
+                  ? "company-compare-open"
+                  : ""
+              }`}
             >
               <ObservableFrame
                 title="Company Landscape Premium"
@@ -830,7 +1116,10 @@ export default function App() {
                 selectedCompany={selectedCompany}
                 onClose={handlePrimaryClose}
                 onCompare={handleCompareStart}
-                showCompareButton={!!selectedCompany && !compareCompany}
+                showCompareButton={
+                  !!selectedCompany &&
+                  !compareCompany
+                }
                 compareModeActive={compareMode}
               />
 
@@ -849,7 +1138,7 @@ export default function App() {
               title="Compound Activity Landscape"
               src={observableSrc.visual2}
               className="full-visual standard-analysis-visual full-compound-visual"
-              height={1460}
+              height={1425}
             />
           </section>
         )}
@@ -876,8 +1165,13 @@ export default function App() {
           </section>
         )}
 
-        {activeView === "methodology" && <MethodologyView />}
-        {activeView === "about" && <AboutView />}
+        {activeView === "methodology" && (
+          <MethodologyView />
+        )}
+
+        {activeView === "about" && (
+          <AboutView />
+        )}
       </div>
     </main>
   );
