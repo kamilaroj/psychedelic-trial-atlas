@@ -74,7 +74,6 @@ function ObservableFrame({
 
   return (
     <div className={`observable-shell ${className} ${loaded ? "observable-loaded" : "observable-loading"}`}>
-      <div className="observable-loading-cover" aria-hidden="true" />
       <iframe
         title={title}
         src={src}
@@ -83,6 +82,7 @@ function ObservableFrame({
         frameBorder="0"
         scrolling="no"
         className={`atlas-iframe ${iframeClassName}`}
+        loading="eager"
         aria-hidden={ariaHidden ? "true" : undefined}
         tabIndex={ariaHidden ? -1 : undefined}
         onLoad={() => setLoaded(true)}
@@ -97,7 +97,6 @@ function RealPreviewCard({ title, description, cta, onClick, src, previewClass }
   return (
     <button className="overview-route-card" type="button" onClick={onClick}>
       <div className={`real-preview-window ${previewClass || ""} ${loaded ? "preview-loaded" : "preview-loading"}`}>
-        <div className="preview-loading-cover" aria-hidden="true" />
         <iframe
           title={`${title} preview`}
           src={src}
@@ -108,6 +107,7 @@ function RealPreviewCard({ title, description, cta, onClick, src, previewClass }
           tabIndex="-1"
           aria-hidden="true"
           className="real-preview-iframe"
+          loading="lazy"
           onLoad={() => setLoaded(true)}
         />
       </div>
@@ -429,12 +429,12 @@ export default function App() {
         `${heroResponsiveParams}`,
 
       visual1Overview:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1453` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
         `?cells=visual1EcosystemOverviev` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
 
       visual1Company:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1453` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
         `?cells=visual1CompanyLandscapePremium1` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
         `${visual1CompanyLandscapeParams}`,
