@@ -412,7 +412,7 @@ a:focus-visible {
   height: 150px;
   overflow: hidden;
   pointer-events: none;
-  background: #f8f6f5;
+  background: transparent;
 }
 
 .real-preview-iframe {
@@ -660,38 +660,43 @@ a:focus-visible {
   top: 0 !important;
 }
 
-/* LOAD FLASH PROTECTION */
+/* LOAD FLASH PROTECTION
+   No painted loading layer. Iframes stay completely hidden until onLoad,
+   so no temporary strip / edge can appear on the left.
+*/
 
 .observable-loading-cover,
 .preview-loading-cover {
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  background: #f8f6f5;
-  pointer-events: none;
-  opacity: 1;
-  transition: opacity 180ms ease;
-  border: 0;
-  box-shadow: none;
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
 }
 
 .observable-shell .atlas-iframe,
 .real-preview-window .real-preview-iframe {
   opacity: 0;
-  transition: opacity 180ms ease;
-}
-
-.observable-loaded .observable-loading-cover,
-.preview-loaded .preview-loading-cover {
-  display: none;
-  opacity: 0;
+  visibility: hidden;
+  transition: none !important;
 }
 
 .observable-loaded .atlas-iframe,
 .preview-loaded .real-preview-iframe {
   opacity: 1;
+  visibility: visible;
 }
 
+/* Prevent any temporary iframe edge / native focus outline. */
+.observable-shell,
+.real-preview-window,
+.atlas-iframe,
+.real-preview-iframe {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
 
 /* COMPANY LANDSCAPE FULL VIEW */
 
