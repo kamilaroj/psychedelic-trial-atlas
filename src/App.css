@@ -1404,3 +1404,85 @@ iframe,
     height: 690px !important;
   }
 }
+
+
+/* =========================================================
+   COMPOUNDS — FINAL HOST FIX
+   Exact 1560 × 780 Observable aspect ratio.
+   This override intentionally wins over the older 805/820px rules.
+   ========================================================= */
+
+.atlas-stage-compounds {
+  padding-bottom: 0 !important;
+}
+
+.atlas-stage-compounds .compound-page {
+  min-height: 0 !important;
+  padding-top: 6px !important;
+  padding-bottom: 0 !important;
+}
+
+.atlas-stage-compounds .full-compound-visual {
+  position: relative !important;
+  width: min(1380px, 100%) !important;
+  max-width: min(1380px, 100%) !important;
+  height: auto !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  aspect-ratio: 2 / 1 !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+}
+
+.atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  margin: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+  transform-origin: top left !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+@media (max-width: 1020px) {
+  .atlas-stage-compounds .full-compound-visual {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2 / 1 !important;
+  }
+
+  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-stage-compounds .compound-page {
+    padding-top: 4px !important;
+  }
+
+  .atlas-stage-compounds .full-compound-visual {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    aspect-ratio: 2 / 1 !important;
+  }
+
+  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
+    height: 100% !important;
+    min-height: 0 !important;
+  }
+}
