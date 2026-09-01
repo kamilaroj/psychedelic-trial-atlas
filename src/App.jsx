@@ -959,15 +959,9 @@ export default function App() {
 
                 <div
                   className="overview-company-hook-window overview-company-hook-clickable"
-                  role="button"
-                  tabIndex={0}
-                  aria-label="Open Company Landscape"
-                  onClick={() => activateView("companies")}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      activateView("companies");
-                    }
+                  style={{
+                    position: "relative",
+                    cursor: "pointer"
                   }}
                 >
                   <iframe
@@ -979,6 +973,27 @@ export default function App() {
                     scrolling="no"
                     tabIndex="-1"
                     aria-hidden="true"
+                    style={{
+                      pointerEvents: "none"
+                    }}
+                  />
+
+                  <button
+                    type="button"
+                    aria-label="Open Company Landscape"
+                    onClick={() => activateView("companies")}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      zIndex: 20,
+                      width: "100%",
+                      height: "100%",
+                      padding: 0,
+                      margin: 0,
+                      border: 0,
+                      background: "transparent",
+                      cursor: "pointer"
+                    }}
                   />
                 </div>
               </div>
