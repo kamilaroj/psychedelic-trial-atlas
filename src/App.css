@@ -1488,9 +1488,9 @@ iframe,
 }
 
 /* =========================================================
-   COMPOUNDS — DIRECT OBSERVABLE RUNTIME
-   No iframe, no Observable attribution/footer strip,
-   no internal scrollbar, no fixed blank iframe height.
+   COMPOUNDS — FINAL CROPPED EMBED
+   Uses the stable Observable iframe, fills the content width,
+   clips the Observable footer, and never shows internal scrolling.
    ========================================================= */
 
 .atlas-stage-compounds {
@@ -1498,104 +1498,105 @@ iframe,
 }
 
 .atlas-stage-compounds .compound-page {
-  width: 100% !important;
-  max-width: none !important;
   min-height: 0 !important;
-  padding: 6px 0 0 !important;
-  display: flex !important;
-  justify-content: center !important;
-  align-items: flex-start !important;
+  padding-top: 8px !important;
+  padding-bottom: 0 !important;
+}
+
+.atlas-stage-compounds .full-compound-visual {
+  position: relative !important;
+  width: min(1380px, 100%) !important;
+  max-width: min(1380px, 100%) !important;
+  height: 684px !important;
+  min-height: 684px !important;
+  max-height: 684px !important;
+  margin: 0 auto !important;
   overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
 }
 
-.full-compound-runtime {
-  position: relative;
-  width: min(
-    1480px,
-    calc(100vw - 48px),
-    calc((100dvh - 100px) * 2)
-  );
-  max-width: 1480px;
-  aspect-ratio: 2 / 1;
-  margin: 0 auto;
-  overflow: hidden;
-  background: transparent;
-  border: 0;
-  outline: 0;
-  box-shadow: none;
-  contain: layout paint;
-}
-
-.observable-runtime-host {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background: transparent;
-}
-
-.observable-runtime-host > div,
-.observable-runtime-host .observablehq,
-.observable-runtime-host .observablehq--inspect,
-.observable-runtime-host .observablehq--inspect > div,
-.observable-runtime-host .visual2-runtime-root {
-  width: 100% !important;
+.atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+  display: block !important;
+  width: 1180px !important;
   max-width: none !important;
+  height: 740px !important;
+  min-height: 740px !important;
   margin: 0 !important;
-  padding: 0 !important;
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
   background: transparent !important;
-}
-
-.observable-runtime-host .visual2-runtime-root {
+  transform: translateX(-50%) scale(1.16) !important;
+  transform-origin: top center !important;
   overflow: hidden !important;
 }
 
-.observable-runtime-host .visual2-runtime-root svg {
-  display: block !important;
-  width: 100% !important;
-  height: auto !important;
-  max-width: none !important;
-  margin: 0 !important;
+/* The iframe already has scrolling="no"; these rules prevent the host
+   from adding its own scrollbar or visible notebook edge. */
+.atlas-stage-compounds .observable-shell,
+.atlas-stage-compounds .atlas-iframe {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
 }
 
-.runtime-loading .observable-runtime-host {
-  opacity: 0;
+.atlas-stage-compounds .observable-shell::-webkit-scrollbar,
+.atlas-stage-compounds .atlas-iframe::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
 }
 
-.runtime-loaded .observable-runtime-host {
-  opacity: 1;
-}
+@media (max-width: 1260px) {
+  .atlas-stage-compounds .full-compound-visual {
+    width: min(1180px, 100%) !important;
+    height: 590px !important;
+    min-height: 590px !important;
+    max-height: 590px !important;
+  }
 
-.runtime-error {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--muted);
-  font-size: 12px;
+  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
+    width: 1180px !important;
+    height: 700px !important;
+    transform: translateX(-50%) scale(1) !important;
+  }
 }
 
 @media (max-width: 1020px) {
   .atlas-stage-compounds .compound-page {
-    padding-top: 4px !important;
+    padding-top: 6px !important;
   }
 
-  .full-compound-runtime {
-    width: calc(100vw - 32px);
-    max-width: none;
-    aspect-ratio: 2 / 1;
+  .atlas-stage-compounds .full-compound-visual {
+    width: 100% !important;
+    height: min(520px, 52vw) !important;
+    min-height: 0 !important;
+    max-height: none !important;
+  }
+
+  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
+    left: 0 !important;
+    width: 100% !important;
+    height: 620px !important;
+    transform: none !important;
   }
 }
 
 @media (max-width: 720px) {
-  .full-compound-runtime {
-    width: calc(100vw - 20px);
-    aspect-ratio: 2 / 1;
+  .atlas-stage-compounds .full-compound-visual {
+    height: 48vw !important;
+  }
+
+  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
+    height: 560px !important;
   }
 }
 
