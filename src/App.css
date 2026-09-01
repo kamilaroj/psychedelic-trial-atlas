@@ -27,6 +27,7 @@ html,
 body,
 #root {
   margin: 0;
+
   width: 100%;
   min-height: 100%;
 }
@@ -70,13 +71,17 @@ a {
 
 button:focus-visible,
 a:focus-visible {
-  outline: 3px solid rgba(102, 92, 145, 0.32);
+  outline:
+    3px solid
+    rgba(102, 92, 145, 0.32);
+
   outline-offset: 3px;
 }
 
 .site {
   width: 100%;
   min-height: 100dvh;
+
   overflow-x: clip;
 }
 
@@ -86,7 +91,9 @@ a:focus-visible {
 
 .atlas-topbar {
   position: sticky;
+
   top: 0;
+
   z-index: 200;
 
   height: var(--topbar-height);
@@ -137,11 +144,13 @@ a:focus-visible {
   appearance: none;
 
   border: 0;
+
   background: transparent;
 
   padding: 0;
 
   display: inline-flex;
+
   align-items: center;
 
   gap: 5px;
@@ -149,6 +158,7 @@ a:focus-visible {
   color: var(--plum);
 
   cursor: pointer;
+
   text-align: left;
 }
 
@@ -159,6 +169,7 @@ a:focus-visible {
   flex: 0 0 40px;
 
   display: inline-flex;
+
   align-items: center;
   justify-content: center;
 
@@ -179,16 +190,19 @@ a:focus-visible {
 
 .atlas-brand-mark circle {
   fill: #32173f;
+
   stroke: none;
 }
 
 .atlas-brand-copy {
   display: flex;
+
   align-items: center;
 }
 
 .atlas-brand-copy strong {
   display: flex;
+
   flex-direction: column;
 
   font-family:
@@ -197,6 +211,7 @@ a:focus-visible {
     sans-serif;
 
   font-size: 26px;
+
   line-height: 0.94;
 
   font-weight: 900;
@@ -218,10 +233,13 @@ a:focus-visible {
 
 .atlas-tabs {
   height: 100%;
+
   min-width: 0;
 
   display: flex;
+
   align-items: stretch;
+
   justify-content: center;
 
   gap:
@@ -238,6 +256,7 @@ a:focus-visible {
   appearance: none;
 
   border: 0;
+
   background: transparent;
 
   padding: 0;
@@ -245,6 +264,7 @@ a:focus-visible {
   color: #1f1a22;
 
   font-size: 10.5px;
+
   line-height: 1;
 
   font-weight: 700;
@@ -263,6 +283,7 @@ a:focus-visible {
 
   left: 0;
   right: 0;
+
   bottom: 9px;
 
   height: 3px;
@@ -272,6 +293,7 @@ a:focus-visible {
   background: #58246a;
 
   transform: scaleX(0);
+
   transform-origin: center;
 
   transition:
@@ -346,6 +368,7 @@ a:focus-visible {
 
 .overview-hero-copy {
   min-width: 0;
+
   padding-left: 26px;
 }
 
@@ -388,7 +411,10 @@ a:focus-visible {
 .hero-description {
   max-width: 560px;
 
-  margin: 23px 0 18px;
+  margin:
+    23px
+    0
+    18px;
 
   color: #29242c;
 
@@ -409,6 +435,7 @@ a:focus-visible {
   position: relative;
 
   width: 100%;
+
   height: 124px;
 
   margin-top: 22px;
@@ -425,12 +452,16 @@ a:focus-visible {
   left: 0;
 
   width: 166.6667%;
+
   height: 1035px;
 
   border: 0;
 
-  transform: scale(0.6);
-  transform-origin: top left;
+  transform:
+    scale(0.6);
+
+  transform-origin:
+    top left;
 }
 
 /* =========================================================
@@ -457,6 +488,7 @@ a:focus-visible {
   display: flex;
 
   align-items: center;
+
   justify-content: space-between;
 
   gap: 16px;
@@ -474,6 +506,7 @@ a:focus-visible {
 
 .overview-company-hook-label button {
   border: 0;
+
   background: transparent;
 
   color: var(--plum);
@@ -491,6 +524,7 @@ a:focus-visible {
   position: relative;
 
   height: 455px;
+
   min-height: 455px;
 
   overflow: hidden;
@@ -504,9 +538,11 @@ a:focus-visible {
   position: absolute;
 
   top: 0;
+
   left: 50%;
 
   width: 200%;
+
   height: 1000px;
 
   margin: 0;
@@ -565,7 +601,10 @@ a:focus-visible {
 }
 
 .overview-reading-card h2 {
-  margin: 0 0 18px;
+  margin:
+    0
+    0
+    18px;
 
   color: var(--plum);
 
@@ -727,6 +766,7 @@ a:focus-visible {
   position: relative;
 
   width: 100%;
+
   height: 150px;
 
   overflow: hidden;
@@ -746,12 +786,15 @@ a:focus-visible {
 
 .preview-companies .real-preview-iframe {
   top: 0;
+
   left: 0;
 
   width: 400%;
+
   height: 1000px;
 
-  transform: scale(0.25);
+  transform:
+    scale(0.25);
 
   transform-origin:
     top left;
@@ -759,12 +802,15 @@ a:focus-visible {
 
 .preview-compounds .real-preview-iframe {
   top: 0;
+
   left: 0;
 
   width: 400%;
+
   height: 1514px;
 
-  transform: scale(0.25);
+  transform:
+    scale(0.25);
 
   transform-origin:
     top left;
@@ -772,12 +818,15 @@ a:focus-visible {
 
 .preview-indications .real-preview-iframe {
   top: 0;
+
   left: 0;
 
   width: 320%;
+
   height: 824px;
 
-  transform: scale(0.3125);
+  transform:
+    scale(0.3125);
 
   transform-origin:
     top left;
@@ -785,12 +834,15 @@ a:focus-visible {
 
 .preview-phases .real-preview-iframe {
   top: 0;
+
   left: 0;
 
   width: 360%;
+
   height: 1180px;
 
-  transform: scale(0.2777778);
+  transform:
+    scale(0.2777778);
 
   transform-origin:
     top left;
@@ -809,7 +861,10 @@ a:focus-visible {
 }
 
 .overview-route-copy h3 {
-  margin: 0 0 7px;
+  margin:
+    0
+    0
+    7px;
 
   color: var(--plum);
 
@@ -902,6 +957,7 @@ a:focus-visible {
 
 .insight-info {
   width: 36px;
+
   height: 36px;
 
   flex: 0 0 36px;
@@ -915,6 +971,7 @@ a:focus-visible {
   display: inline-flex;
 
   align-items: center;
+
   justify-content: center;
 
   font-family:
@@ -960,6 +1017,7 @@ a:focus-visible {
 
 .insight-dot {
   width: 18px;
+
   height: 18px;
 
   flex: 0 0 18px;
@@ -1041,7 +1099,7 @@ a:focus-visible {
 }
 
 /* =========================================================
-   STANDARD ANALYTICAL VISUAL SYSTEM
+   STANDARD ANALYTICAL VISUALS
    ========================================================= */
 
 .standard-analysis-page {
@@ -1085,6 +1143,7 @@ a:focus-visible {
   position: absolute;
 
   top: 0;
+
   left: 50%;
 
   width: 170% !important;
@@ -1107,6 +1166,7 @@ a:focus-visible {
   position: absolute;
 
   top: 0;
+
   left: 50%;
 
   width: 92.6% !important;
@@ -1129,6 +1189,7 @@ a:focus-visible {
   position: absolute;
 
   top: 0;
+
   left: 50%;
 
   width: 132.6% !important;
@@ -1195,6 +1256,7 @@ a:focus-visible {
 .observable-loaded .observable-loading-cover,
 .preview-loaded .preview-loading-cover {
   display: none;
+
   opacity: 0;
 }
 
@@ -1235,7 +1297,7 @@ a:focus-visible {
 
   width:
     min(
-      1360px,
+      1380px,
       100%
     );
 
@@ -1250,19 +1312,21 @@ a:focus-visible {
 
   width:
     min(
-      1360px,
+      1380px,
       100%
     ) !important;
 
   max-width:
     min(
-      1360px,
+      1380px,
       100%
     ) !important;
 
-  height: 820px !important;
-  min-height: 820px !important;
-  max-height: 820px !important;
+  height: 950px !important;
+
+  min-height: 950px !important;
+
+  max-height: 950px !important;
 
   margin:
     0
@@ -1273,28 +1337,12 @@ a:focus-visible {
   background: transparent !important;
 }
 
-/*
-  Larger presentation of the existing Observable visual.
-
-  Important:
-  This scales the iframe only.
-  It does NOT alter:
-  - D3 force simulation
-  - target positions
-  - collision
-  - charge
-  - animation
-  - circle radius formula
-
-  Slight negative horizontal translation moves the complete
-  visual presentation left without changing its internal layout.
-*/
-
 .company-real-working-frame > iframe.atlas-iframe,
 .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
   position: absolute !important;
 
   top: 0 !important;
+
   left: 50% !important;
 
   display: block !important;
@@ -1304,13 +1352,15 @@ a:focus-visible {
   max-width: none !important;
 
   height: 1000px !important;
+
   min-height: 1000px !important;
+
   max-height: 1000px !important;
 
   margin: 0 !important;
 
   transform:
-    translateX(calc(-50% - 34px))
+    translateX(calc(-50% - 42px))
     scale(1.085) !important;
 
   transform-origin:
@@ -1341,7 +1391,12 @@ a:focus-visible {
   width:
     var(--company-panel-width);
 
-  height: 690px;
+  /*
+    Previous: 690px
+    New: approx. +30%
+  */
+
+  height: 895px;
 
   overflow: hidden;
 
@@ -1392,6 +1447,7 @@ a:focus-visible {
   z-index: 80;
 
   width: 30px;
+
   height: 30px;
 
   border:
@@ -1472,7 +1528,7 @@ a:focus-visible {
   padding:
     18px
     16px
-    16px;
+    18px;
 
   overflow: hidden;
 }
@@ -1483,6 +1539,7 @@ a:focus-visible {
 
 .company-panel-logo-slot {
   width: 46px;
+
   height: 46px;
 
   margin-left: auto;
@@ -1490,6 +1547,7 @@ a:focus-visible {
 
 .company-panel-logo {
   width: 46px;
+
   height: 46px;
 
   border-radius: 999px;
@@ -1500,6 +1558,7 @@ a:focus-visible {
   display: flex;
 
   align-items: center;
+
   justify-content: center;
 
   overflow: hidden;
@@ -1507,6 +1566,7 @@ a:focus-visible {
 
 .company-panel-logo img {
   width: 84%;
+
   height: 84%;
 
   object-fit: contain;
@@ -1590,6 +1650,7 @@ a:focus-visible {
   flex-direction: column;
 
   align-items: center;
+
   justify-content: center;
 }
 
@@ -1690,7 +1751,12 @@ a:focus-visible {
 }
 
 .company-panel-trials {
-  max-height: 78px;
+  /*
+    More room for companies such as Janssen
+    with many registered trial IDs.
+  */
+
+  max-height: 188px;
 
   overflow: hidden;
 
@@ -1713,7 +1779,7 @@ a:focus-visible {
 
   font-size: 8.7px;
 
-  line-height: 1.2;
+  line-height: 1.25;
 
   font-weight: 700;
 
@@ -1911,7 +1977,7 @@ a:focus-visible {
   .company-real-working-frame > iframe.atlas-iframe,
   .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
     transform:
-      translateX(calc(-50% - 16px))
+      translateX(calc(-50% - 18px))
       scale(1.02) !important;
   }
 }
@@ -1919,6 +1985,7 @@ a:focus-visible {
 @media (max-width: 1020px) {
   :root {
     --topbar-height: auto;
+
     --analysis-height: 760px;
   }
 
@@ -1952,6 +2019,7 @@ a:focus-visible {
   .atlas-brand-mark,
   .atlas-brand-mark svg {
     width: 33px;
+
     height: 33px;
   }
 
@@ -2044,7 +2112,9 @@ a:focus-visible {
   .company-real-working-frame,
   .full-company-visual.company-real-working-frame {
     height: 900px !important;
+
     min-height: 900px !important;
+
     max-height: 900px !important;
   }
 
@@ -2064,17 +2134,19 @@ a:focus-visible {
     position: fixed;
 
     left: 16px;
+
     right: 16px;
 
     top: auto;
+
     bottom: 16px;
 
     width: auto;
 
     height:
       min(
-        64vh,
-        520px
+        72vh,
+        590px
       );
 
     z-index: 300;
@@ -2091,7 +2163,7 @@ a:focus-visible {
     bottom:
       calc(
         16px +
-        min(64vh, 520px) -
+        min(72vh, 590px) -
         14px
       );
 
@@ -2108,7 +2180,7 @@ a:focus-visible {
     bottom:
       calc(
         16px +
-        min(64vh, 520px) +
+        min(72vh, 590px) +
         12px
       );
 
@@ -2129,7 +2201,8 @@ a:focus-visible {
   }
 
   .overview-hero {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
   .overview-hero-copy {
@@ -2145,11 +2218,13 @@ a:focus-visible {
 
   .overview-company-hook-window {
     min-height: 390px;
+
     height: 390px;
   }
 
   .overview-route-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
   .overview-route-card {
@@ -2165,11 +2240,13 @@ a:focus-visible {
   }
 
   .bottom-insight-bar {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 
   .methodology-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns:
+      1fr;
   }
 }
 
@@ -2181,6 +2258,7 @@ a:focus-visible {
   .atlas-brand-mark,
   .atlas-brand-mark svg {
     width: 30px;
+
     height: 30px;
   }
 }
