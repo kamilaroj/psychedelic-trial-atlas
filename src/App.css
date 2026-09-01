@@ -1219,3 +1219,98 @@ a:focus-visible {
     height: 30px;
   }
 }
+
+
+/* =========================================================
+   FINAL FIRST-PAINT FIX
+   Prevents any temporary left-side strip while embeds mount.
+   ========================================================= */
+
+html,
+body,
+#root,
+.site {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+body {
+  margin: 0 !important;
+}
+
+.atlas-stage,
+.overview-page,
+.visual-page,
+.content-page,
+.observable-shell,
+.real-preview-window,
+.company-visual-shell,
+.company-real-working-frame,
+.standard-analysis-visual {
+  min-width: 0 !important;
+  border-left: 0 !important;
+  outline: 0 !important;
+}
+
+/* Hard clipping is important here. It prevents transformed Observable
+   iframes from painting a 1–5 px edge outside their host during first layout. */
+.observable-shell,
+.real-preview-window,
+.company-real-working-frame,
+.standard-analysis-visual,
+.overview-company-hook-window,
+.overview-real-metrics {
+  overflow: hidden !important;
+  clip-path: inset(0);
+  -webkit-clip-path: inset(0);
+  contain: paint;
+}
+
+/* There is no loading overlay anymore. */
+.observable-loading-cover,
+.preview-loading-cover {
+  display: none !important;
+}
+
+/* The iframe is part of layout, but its pixels are not painted before onLoad. */
+.observable-shell:not(.observable-loaded) > iframe.atlas-iframe,
+.real-preview-window:not(.preview-loaded) > iframe.real-preview-iframe {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* No transition on first reveal = no partial edge frame. */
+.observable-shell.observable-loaded > iframe.atlas-iframe,
+.real-preview-window.preview-loaded > iframe.real-preview-iframe {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transition: none !important;
+}
+
+/* Remove every possible native iframe edge. */
+iframe,
+.atlas-iframe,
+.real-preview-iframe {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Do not allow pseudo-elements to create vertical masks/strips. */
+.full-compound-visual::before,
+.full-compound-visual::after,
+.full-phase-visual::before,
+.full-phase-visual::after,
+.full-indication-visual::before,
+.full-indication-visual::after,
+.full-company-visual::before,
+.full-company-visual::after,
+.company-real-working-frame::before,
+.company-real-working-frame::after,
+.observable-shell::before,
+.observable-shell::after {
+  content: none !important;
+  display: none !important;
+}
