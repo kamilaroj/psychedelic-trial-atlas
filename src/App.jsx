@@ -51,15 +51,14 @@ function normalizeUrlLabel(url) {
 function AtlasMark() {
   return (
     <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false">
-      <g fill="none" stroke="currentColor" strokeLinecap="round">
-        <circle cx="24" cy="24" r="15.5" strokeWidth="2.2" opacity="0.28" />
-        <path d="M11.7 18.3A13.6 13.6 0 0 1 29.8 11.6" strokeWidth="2.5" />
-        <path d="M36.4 20.2A13.6 13.6 0 0 1 31.1 35.6" strokeWidth="2.5" />
-        <path d="M26.4 37.3A13.6 13.6 0 0 1 11.2 29.2" strokeWidth="2.5" />
-        <circle cx="29.8" cy="11.6" r="2.7" fill="currentColor" stroke="none" />
-        <circle cx="31.1" cy="35.6" r="2.7" fill="currentColor" stroke="none" />
-        <circle cx="11.2" cy="29.2" r="2.7" fill="currentColor" stroke="none" />
-        <circle cx="24" cy="24" r="3.4" fill="currentColor" stroke="none" />
+      <g fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
+        <path
+          d="M24 5.5L27.4 17.2L38.5 12.7L30.8 22.2L42.5 24L30.8 25.8L38.5 35.3L27.4 30.8L24 42.5L20.6 30.8L9.5 35.3L17.2 25.8L5.5 24L17.2 22.2L9.5 12.7L20.6 17.2L24 5.5Z"
+          strokeWidth="1.8"
+          opacity="0.9"
+        />
+        <circle cx="24" cy="24" r="4.1" fill="currentColor" stroke="none" />
+        <circle cx="24" cy="24" r="10.6" strokeWidth="1.2" opacity="0.22" />
       </g>
     </svg>
   );
@@ -546,18 +545,18 @@ export default function App() {
         `${heroResponsiveParams}`,
 
       visual1Overview:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1487` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1485` +
         `?cells=visual1EcosystemOverviev` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
 
       visual1Company:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1487` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1485` +
         `?cells=visual1CompanyLandscapePremium1` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1487` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1485` +
         `?cells=visual2ChartUnitColumns1` +
         `&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
@@ -793,7 +792,8 @@ export default function App() {
 
             <span className="atlas-brand-copy">
               <strong>
-                Psychedelic Trial Atlas
+                <span>Psychedelic</span>
+                <span>Trial Atlas</span>
               </strong>
             </span>
           </button>
@@ -886,7 +886,19 @@ export default function App() {
                   </button>
                 </div>
 
-                <div className="overview-company-hook-window">
+                <div
+                  className="overview-company-hook-window overview-company-hook-clickable"
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Open Company Landscape"
+                  onClick={() => activateView("companies")}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      activateView("companies");
+                    }
+                  }}
+                >
                   <iframe
                     title="Company Landscape overview preview"
                     src={observableSrc.visual1Company}
