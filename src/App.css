@@ -625,17 +625,17 @@ a:focus-visible {
   position: relative !important;
   width: min(1380px, 100%) !important;
   max-width: min(1380px, 100%) !important;
-  height: 835px !important;
-  min-height: 835px !important;
-  max-height: 835px !important;
+  height: 1425px !important;
+  min-height: 1425px !important;
+  max-height: 1425px !important;
   margin: 0 auto !important;
   overflow: hidden !important;
   background: transparent !important;
   border: 0 !important;
   outline: 0 !important;
   box-shadow: none !important;
-  clip-path: inset(0 0 18px 0);
-  -webkit-clip-path: inset(0 0 18px 0);
+  clip-path: inset(0);
+  -webkit-clip-path: inset(0);
 }
 
 .full-compound-visual .atlas-iframe {
@@ -644,8 +644,8 @@ a:focus-visible {
   left: 0 !important;
   width: 100% !important;
   max-width: none !important;
-  height: 920px !important;
-  min-height: 920px !important;
+  height: 1460px !important;
+  min-height: 1460px !important;
   margin: 0 !important;
   transform: none !important;
   transform-origin: top left !important;
@@ -1379,13 +1379,13 @@ iframe,
 
 @media (max-width: 1020px) {
   .full-compound-visual {
-    height: 720px !important;
-    min-height: 720px !important;
-    max-height: 720px !important;
+    height: 1320px !important;
+    min-height: 1320px !important;
+    max-height: 1320px !important;
   }
 
   .full-compound-visual .atlas-iframe {
-    height: 800px !important;
+    height: 1360px !important;
   }
 }
 
@@ -1395,12 +1395,12 @@ iframe,
   }
 
   .full-compound-visual {
-    height: 620px !important;
-    min-height: 620px !important;
-    max-height: 620px !important;
+    height: 1220px !important;
+    min-height: 1220px !important;
+    max-height: 1220px !important;
   }
 
   .full-compound-visual .atlas-iframe {
-    height: 700px !important;
+    height: 1260px !important;
   }
 }
