@@ -1139,7 +1139,7 @@ export default function App() {
               title="Compound Activity Landscape"
               src={observableSrc.visual2}
               className="full-visual standard-analysis-visual full-compound-visual"
-              height={1425}
+              height={820}
             />
           </section>
         )}
