@@ -558,7 +558,8 @@ export default function App() {
 
       visual2:
         `https://observablehq.com/embed/e3028f2577c04f9a@1483` +
-        `?cells=visual2ChartUnitColumns1`,
+        `?cells=visual2ChartUnitColumns1` +
+        `&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
       visual3:
         `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
