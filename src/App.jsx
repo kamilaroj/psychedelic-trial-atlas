@@ -429,28 +429,28 @@ export default function App() {
         `${heroResponsiveParams}`,
 
       visual1Overview:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1454` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1478` +
         `?cells=visual1EcosystemOverviev` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
 
       visual1Company:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1454` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1478` +
         `?cells=visual1CompanyLandscapePremium1` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1478` +
         `?cells=visual2ChartUnitColumns1` +
         `&api_key=2488895c619fa293677a0791309b410e6db31cb6`,
 
       visual3:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1478` +
         `?cells=visual3Chart` +
         `&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
 
       visual4:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1452` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1478` +
         `?cells=visual4PhaseChart` +
         `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
