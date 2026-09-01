@@ -98,6 +98,100 @@ function ObservableFrame({
   );
 }
 
+function ObservableRuntimeCell({
+  notebookId,
+  version,
+  cellName,
+  apiKey,
+  className = ""
+}) {
+  const hostRef = useRef(null);
+  const runtimeRef = useRef(null);
+  const [loaded, setLoaded] = useState(false);
+  const [failed, setFailed] = useState(false);
+
+  useEffect(() => {
+    let cancelled = false;
+    const host = hostRef.current;
+
+    if (!host) return undefined;
+
+    host.innerHTML = "";
+    setLoaded(false);
+    setFailed(false);
+
+    const load = async () => {
+      try {
+        const runtimePackage = await import(
+          /* @vite-ignore */
+          "https://cdn.jsdelivr.net/npm/@observablehq/runtime@5/dist/runtime.js"
+        );
+
+        const moduleUrl =
+          `https://api.observablehq.com/d/${notebookId}@${version}.js` +
+          `?v=3&api_key=${encodeURIComponent(apiKey)}`;
+
+        const notebook = await import(
+          /* @vite-ignore */
+          moduleUrl
+        );
+
+        if (cancelled) return;
+
+        const { Runtime, Inspector } = runtimePackage;
+        const runtime = new Runtime();
+        runtimeRef.current = runtime;
+
+        runtime.module(notebook.default, (name) => {
+          if (name === cellName) {
+            return new Inspector(host);
+          }
+
+          return undefined;
+        });
+
+        if (!cancelled) setLoaded(true);
+      } catch (error) {
+        console.error("Observable Runtime load failed", error);
+        if (!cancelled) setFailed(true);
+      }
+    };
+
+    load();
+
+    return () => {
+      cancelled = true;
+
+      if (runtimeRef.current) {
+        runtimeRef.current.dispose();
+        runtimeRef.current = null;
+      }
+
+      if (host) host.innerHTML = "";
+    };
+  }, [notebookId, version, cellName, apiKey]);
+
+  return (
+    <div
+      className={`observable-runtime-shell ${className} ${
+        loaded ? "runtime-loaded" : "runtime-loading"
+      }`}
+    >
+      <div
+        ref={hostRef}
+        className="observable-runtime-host"
+        aria-label="Compound Activity Landscape"
+      />
+
+      {failed && (
+        <div className="runtime-error">
+          Visualization could not be loaded.
+        </div>
+      )}
+    </div>
+  );
+}
+
 function RealPreviewCard({
   title,
   description,
@@ -501,6 +595,11 @@ export default function App() {
 
   const mainNotebook =
     "e3028f2577c04f9a@1443";
+
+  const compoundNotebookId = "e3028f2577c04f9a";
+  const compoundNotebookVersion = "1485";
+  const compoundApiKey =
+    "2488895c619fa293677a0791309b410e6db31cb6";
 
   const githubLogoBase =
     "https://psychedelic-trial-atlas.vercel.app/logos/";
@@ -1135,12 +1234,13 @@ export default function App() {
         )}
 
         {activeView === "compounds" && (
-          <section className="visual-page standard-analysis-page compound-page">
-            <ObservableFrame
-              title="Compound Activity Landscape"
-              src={observableSrc.visual2}
-              className="full-visual standard-analysis-visual full-compound-visual"
-              height={690}
+          <section className="visual-page compound-page">
+            <ObservableRuntimeCell
+              notebookId={compoundNotebookId}
+              version={compoundNotebookVersion}
+              cellName="visual2ChartUnitColumns1"
+              apiKey={compoundApiKey}
+              className="full-compound-runtime"
             />
           </section>
         )}
