@@ -618,16 +618,38 @@ a:focus-visible {
 }
 
 
+.indication-page {
+  min-height: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+.full-indication-visual {
+  height: 828px !important;
+  min-height: 828px !important;
+  max-height: 828px !important;
+  overflow: hidden !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+  background: transparent !important;
+}
+
 .full-indication-visual .atlas-iframe {
   position: absolute;
-  top: 0;
+  top: 0 !important;
   left: 50%;
   width: 92.6% !important;
   max-width: none !important;
-  height: 824px !important;
+  height: 765px !important;
+  min-height: 765px !important;
+  max-height: 765px !important;
   margin: 0 !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  overflow: hidden !important;
   transform: translateX(-50%) scale(1.08);
   transform-origin: top center;
+  background: transparent !important;
 }
 
 .full-phase-visual .atlas-iframe {
