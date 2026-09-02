@@ -187,7 +187,9 @@ function ObservableFrame({
   iframeClassName = "",
   height = 700,
   ariaHidden = false,
-  revealDelay = 0
+  revealDelay = 0,
+  viewportHeight = null,
+  hideUntilReady = false
 }) {
   const [loaded, setLoaded] = useState(false);
   const revealTimerRef = useRef(null);
@@ -214,11 +216,31 @@ function ObservableFrame({
     }
   };
 
+  const shellStyle =
+    viewportHeight !== null
+      ? {
+          height: `${viewportHeight}px`,
+          minHeight: `${viewportHeight}px`,
+          maxHeight: `${viewportHeight}px`,
+          overflow: "hidden",
+          position: "relative",
+          background: "transparent"
+        }
+      : undefined;
+
+  const iframeStyle = {
+    opacity: hideUntilReady && !loaded ? 0 : 1,
+    visibility: hideUntilReady && !loaded ? "hidden" : "visible",
+    pointerEvents: hideUntilReady && !loaded ? "none" : "auto",
+    transition: "none"
+  };
+
   return (
     <div
       className={`observable-shell ${className} ${
         loaded ? "observable-loaded" : "observable-loading"
       }`}
+      style={shellStyle}
     >
       <iframe
         title={title}
@@ -232,6 +254,7 @@ function ObservableFrame({
         aria-hidden={ariaHidden ? "true" : undefined}
         tabIndex={ariaHidden ? -1 : undefined}
         onLoad={handleLoad}
+        style={iframeStyle}
       />
     </div>
   );
@@ -1753,8 +1776,10 @@ export default function App() {
               title="Indication Landscape"
               src={observableSrc.visual3}
               className="full-visual standard-analysis-visual full-indication-visual"
-              height={765}
-              revealDelay={900}
+              height={860}
+              viewportHeight={774}
+              revealDelay={1100}
+              hideUntilReady={true}
             />
           </section>
         )}
