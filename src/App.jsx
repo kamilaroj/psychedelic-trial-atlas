@@ -1061,7 +1061,7 @@ export default function App() {
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1517?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1514?cells=visual3Chart",
 
       visual4:
         `https://observablehq.com/embed/e3028f2577c04f9a@1485` +
@@ -1724,12 +1724,12 @@ export default function App() {
         )}
 
         {activeView === "indications" && (
-          <section className="visual-page standard-analysis-page">
+          <section className="visual-page standard-analysis-page indication-page">
             <ObservableFrame
               title="Indication Landscape"
               src={observableSrc.visual3}
               className="full-visual standard-analysis-visual full-indication-visual"
-              height={825}
+              height={765}
             />
           </section>
         )}
