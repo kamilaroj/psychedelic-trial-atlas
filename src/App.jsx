@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import "./App.css";
 import kamilaPhoto from "./kamila-rojek.png";
 
-const ATLAS_VERSION = "August 2026";
+const ATLAS_VERSION = "September 2026";
 const CONTACT_EMAIL = "kamila.rojek@gmail.com";
 const LINKEDIN_PROFILE = "https://www.linkedin.com/in/kamilarojek/";
 
