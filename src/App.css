@@ -1242,7 +1242,7 @@ body {
 }
 
 /* Hard clipping is important here. It prevents transformed Observable
-   iframes from painting a 1–5 px edge outside their host during first layout. */
+   iframes from painting a 1â€“5 px edge outside their host during first layout. */
 .observable-shell,
 .real-preview-window,
 .company-real-working-frame,
@@ -1304,8 +1304,8 @@ iframe,
 }
 
 /* =========================================================
-   COMPOUNDS — FINAL BALANCED VIEWPORT
-   Observable SVG: 1560 × 860.
+   COMPOUNDS â€” FINAL BALANCED VIEWPORT
+   Observable SVG: 1560 Ã— 950.
    One stable iframe only.
    No scaling trick. No internal scrolling.
    The host clips before Observable footer/chrome.
@@ -1328,11 +1328,11 @@ iframe,
   width: min(1380px, 100%) !important;
   max-width: min(1380px, 100%) !important;
 
-  /* 1380 / 1560 × 860 = ~761 px.
-     760 px shows the full SVG while clipping Observable chrome. */
-  height: 760px !important;
-  min-height: 760px !important;
-  max-height: 760px !important;
+  /* 1380 / 1560 Ã— 950 = ~840 px.
+     The host shows the full analytical layer and clips Observable chrome. */
+  height: 842px !important;
+  min-height: 842px !important;
+  max-height: 842px !important;
 
   margin: 0 auto !important;
   overflow: hidden !important;
@@ -1352,8 +1352,8 @@ iframe,
 
   width: 100% !important;
   max-width: none !important;
-  height: 790px !important;
-  min-height: 790px !important;
+  height: 875px !important;
+  min-height: 875px !important;
   max-height: none !important;
 
   margin: 0 !important;
@@ -1383,13 +1383,13 @@ iframe,
 @media (max-width: 1260px) {
   .atlas-stage-compounds .full-compound-visual {
     width: min(1180px, 100%) !important;
-    height: 651px !important;
-    min-height: 651px !important;
-    max-height: 651px !important;
+    height: 718px !important;
+    min-height: 718px !important;
+    max-height: 718px !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 690px !important;
+    height: 750px !important;
   }
 }
 
@@ -1400,13 +1400,13 @@ iframe,
 
   .atlas-stage-compounds .full-compound-visual {
     width: 100% !important;
-    height: 55vw !important;
+    height: 61vw !important;
     min-height: 0 !important;
-    max-height: 560px !important;
+    max-height: 620px !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 620px !important;
+    height: 680px !important;
   }
 }
 
@@ -1416,17 +1416,17 @@ iframe,
   }
 
   .atlas-stage-compounds .full-compound-visual {
-    height: 54vw !important;
+    height: 61vw !important;
     max-height: none !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 560px !important;
+    height: 620px !important;
   }
 }
 
 /* =========================================================
-   ABOUT — FINAL POLISH
+   ABOUT â€” FINAL POLISH
    ========================================================= */
 
 .about-page {
@@ -1562,7 +1562,7 @@ iframe,
 }
 
 /* =========================================================
-   ABOUT — ICON CONSISTENCY
+   ABOUT â€” ICON CONSISTENCY
    ========================================================= */
 
 .about-page > div:nth-of-type(2) > article > div > div > span {
@@ -1583,4 +1583,3 @@ iframe,
   display: block !important;
   flex: 0 0 20px !important;
 }
-
