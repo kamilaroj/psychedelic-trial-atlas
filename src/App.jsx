@@ -306,6 +306,57 @@ function RealPreviewCard({
   );
 }
 
+
+function AtlasReadingIcon({ type }) {
+  const common = { width: "25px", height: "25px", display: "block" };
+
+  if (type === "companies") {
+    return (
+      <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+        <circle cx="10" cy="8" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="19.5" cy="10" r="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M3.5 23c.5-5.1 3.3-7.6 7.2-7.6 4 0 6.6 2.5 7.1 7.6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M17 16.2c3.8.2 6.3 2.4 6.8 6.1" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
+    );
+  }
+
+  if (type === "compounds") {
+    return (
+      <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+        <circle cx="14" cy="14" r="9.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeDasharray="1 3" />
+        <circle cx="14" cy="4.5" r="2.1" fill="currentColor" />
+        <circle cx="23.5" cy="14" r="2.1" fill="currentColor" />
+        <circle cx="14" cy="23.5" r="2.1" fill="currentColor" />
+        <circle cx="4.5" cy="14" r="2.1" fill="currentColor" />
+        <circle cx="8" cy="8" r="1.7" fill="currentColor" />
+        <circle cx="20" cy="8" r="1.7" fill="currentColor" />
+        <circle cx="8" cy="20" r="1.7" fill="currentColor" />
+        <circle cx="20" cy="20" r="1.7" fill="currentColor" />
+      </svg>
+    );
+  }
+
+  if (type === "indications") {
+    return (
+      <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+        <circle cx="14" cy="14" r="10" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="14" cy="14" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="14" cy="14" r="2.5" fill="currentColor" />
+      </svg>
+    );
+  }
+
+  return (
+    <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+      <circle cx="14" cy="5" r="2.4" fill="currentColor" />
+      <circle cx="5" cy="20" r="2.4" fill="currentColor" />
+      <circle cx="23" cy="20" r="2.4" fill="currentColor" />
+      <path d="M14 7.7v5.6M12.2 14.4 6.8 18M15.8 14.4l5.4 3.6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
+}
+
 function CompanyExternalPanel({
   selectedCompany,
   onClose,
@@ -1527,52 +1578,43 @@ export default function App() {
               </div>
 
               <aside className="overview-reading-card">
-                <p className="page-eyebrow">
-                  How to read the Atlas
-                </p>
-
-                <h2>
-                  One market. Four analytical views.
-                </h2>
+                <p className="page-eyebrow">How to read the Atlas</p>
 
                 <div className="reading-row">
-                  <strong>Companies</strong>
-                  <span>
-                    Who is building the visible
-                    ecosystem.
-                  </span>
+                  <span className="reading-row-icon"><AtlasReadingIcon type="companies" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Companies</strong>
+                    <span>Who is building the visible ecosystem.</span>
+                  </div>
                 </div>
 
                 <div className="reading-row">
-                  <strong>Compounds</strong>
-                  <span>
-                    Which compound families show
-                    visible activity.
-                  </span>
+                  <span className="reading-row-icon"><AtlasReadingIcon type="compounds" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Compounds</strong>
+                    <span>Which compound families show visible activity.</span>
+                  </div>
                 </div>
 
                 <div className="reading-row">
-                  <strong>Indications</strong>
-                  <span>
-                    Where registered
-                    patient-indication activity
-                    appears.
-                  </span>
+                  <span className="reading-row-icon"><AtlasReadingIcon type="indications" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Indications</strong>
+                    <span>Where registered patient-indication activity appears.</span>
+                  </div>
                 </div>
 
                 <div className="reading-row">
-                  <strong>Phases</strong>
-                  <span>
-                    Where registered activity sits
-                    in development.
-                  </span>
+                  <span className="reading-row-icon"><AtlasReadingIcon type="phases" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Phases</strong>
+                    <span>Where registered activity sits in development.</span>
+                  </div>
                 </div>
 
                 <button
                   type="button"
-                  onClick={() =>
-                    activateView("methodology")
-                  }
+                  onClick={() => activateView("methodology")}
                   className="reading-method-link"
                 >
                   Read methodology →
