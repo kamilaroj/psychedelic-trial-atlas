@@ -624,19 +624,12 @@ a:focus-visible {
 }
 
 .full-indication-visual {
-  /*
-    The Observable SVG itself ends at ~767 px after the current scale.
-    Observable's notebook footer starts below it.
-    Clip the host immediately after the chart so UNICORN1 / Untitled /
-    Observable can never enter the visible page.
-  */
-  height: 774px !important;
-  min-height: 774px !important;
-  max-height: 774px !important;
+  height: 828px !important;
+  min-height: 828px !important;
+  max-height: 828px !important;
   overflow: hidden !important;
   clip-path: inset(0) !important;
   -webkit-clip-path: inset(0) !important;
-  contain: strict !important;
   background: transparent !important;
 }
 
@@ -1613,37 +1606,370 @@ iframe,
 }
 
 /* =========================================================
-   INDICATIONS — FINAL OBSERVABLE CHROME / LOAD-FLASH BLOCK
+   OVERVIEW — FINAL POLISHED LANDING PAGE
    ========================================================= */
 
-.full-indication-visual.observable-loading {
+.atlas-stage-overview {
+  padding-bottom: 28px;
+}
+
+.atlas-stage-overview .overview-page {
+  width: min(1480px, 100%);
+}
+
+.atlas-stage-overview .overview-hero {
+  min-height: 558px;
+  padding-top: 30px;
+  grid-template-columns:
+    minmax(390px, 0.92fr)
+    minmax(560px, 1.34fr)
+    minmax(205px, 0.48fr);
+  gap: 26px;
+  align-items: center;
+}
+
+.atlas-stage-overview .overview-hero-copy {
+  padding-left: 4px;
+  align-self: center;
+}
+
+.atlas-stage-overview .hero-eyebrow {
+  margin-bottom: 18px;
+  font-size: 9.4px;
+  font-weight: 820;
+  letter-spacing: 0.28em;
+}
+
+.atlas-stage-overview .overview-hero h1 {
+  font-size: clamp(56px, 5.15vw, 80px);
+  line-height: 0.91;
+  font-weight: 900;
+  letter-spacing: -0.072em;
+  color: #2d1837;
+}
+
+.atlas-stage-overview .hero-description {
+  max-width: 520px;
+  margin: 25px 0 20px;
+  font-size: 13.5px;
+  line-height: 1.52;
+  color: #2f2931;
+}
+
+.atlas-stage-overview .overview-real-metrics {
+  height: 132px;
+  margin-top: 24px;
+}
+
+.atlas-stage-overview .overview-company-hook {
+  padding-top: 10px;
+}
+
+.atlas-stage-overview .overview-company-hook-label {
+  min-height: 35px;
+  padding: 0 4px;
+}
+
+.atlas-stage-overview .overview-company-hook-label > span {
+  font-size: 8.5px;
+  font-weight: 820;
+  letter-spacing: 0.19em;
+}
+
+.atlas-stage-overview .overview-company-hook-label button {
+  font-size: 9px;
+  font-weight: 780;
+}
+
+.atlas-stage-overview .overview-company-hook-window {
+  height: 470px;
+  min-height: 470px;
+}
+
+.atlas-stage-overview .overview-company-hook-window iframe {
+  top: -4px;
+  width: 196%;
+  transform: translateX(-50%) scale(0.51);
+}
+
+/* Smaller, quieter reading card so the company map stays dominant. */
+.atlas-stage-overview .overview-reading-card {
+  align-self: center;
+  min-height: 338px;
+  padding: 22px 20px 16px;
+  border-radius: 15px;
+  border: 1px solid rgba(56, 36, 61, 0.085);
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow:
+    0 12px 30px rgba(58, 39, 70, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.atlas-stage-overview .overview-reading-card .page-eyebrow {
+  margin-bottom: 13px;
+  color: #65336f;
+  font-size: 8.4px;
+  font-weight: 820;
+  letter-spacing: 0.14em;
+}
+
+.atlas-stage-overview .overview-reading-card h2 {
+  display: none;
+}
+
+.atlas-stage-overview .reading-row {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  min-height: 61px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(56, 36, 61, 0.075);
+}
+
+.atlas-stage-overview .reading-row-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  color: #6d35a0 !important;
+}
+
+.atlas-stage-overview .reading-row-copy {
+  min-width: 0;
+}
+
+.atlas-stage-overview .reading-row strong {
+  font-size: 9.8px;
+  line-height: 1.15;
+}
+
+.atlas-stage-overview .reading-row-copy > span {
+  display: block;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 8.6px;
+  line-height: 1.38;
+}
+
+.atlas-stage-overview .reading-method-link {
+  margin-top: 13px;
+  padding-top: 8px;
+  border-top: 0;
+  font-size: 9px;
+  font-weight: 780;
+}
+
+/* Tighter four-card exploration section. */
+.atlas-stage-overview .inside-section {
+  margin-top: 2px;
+}
+
+.atlas-stage-overview .inside-kicker {
+  margin: 0 0 10px 2px;
+  font-size: 8.5px;
+  font-weight: 820;
+  letter-spacing: 0.22em;
+}
+
+.atlas-stage-overview .overview-route-grid {
+  border-radius: 14px;
+  border-color: rgba(70, 49, 78, 0.10);
+  background: rgba(255, 255, 255, 0.30);
+}
+
+.atlas-stage-overview .overview-route-card {
+  min-height: 194px;
+  padding: 14px 16px;
+  grid-template-columns: minmax(125px, 0.92fr) minmax(130px, 1.08fr);
+  grid-template-rows: 1fr;
+  column-gap: 13px;
+  align-items: stretch;
+  border-right-color: rgba(70, 49, 78, 0.10);
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.atlas-stage-overview .overview-route-card:hover {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.atlas-stage-overview .real-preview-window {
+  height: 164px;
+  align-self: center;
+}
+
+.atlas-stage-overview .preview-companies .real-preview-iframe {
+  top: 3px;
+  width: 420%;
+  transform: scale(0.2381);
+}
+
+.atlas-stage-overview .preview-compounds .real-preview-iframe {
+  top: 6px;
+  width: 430%;
+  transform: scale(0.2326);
+}
+
+.atlas-stage-overview .preview-indications .real-preview-iframe {
+  top: 5px;
+  width: 340%;
+  transform: scale(0.2941);
+}
+
+.atlas-stage-overview .preview-phases .real-preview-iframe {
+  top: 7px;
+  width: 385%;
+  transform: scale(0.2597);
+}
+
+.atlas-stage-overview .overview-route-copy {
+  justify-content: center;
+  padding: 3px 0 1px;
+}
+
+.atlas-stage-overview .overview-route-copy h3 {
+  margin-bottom: 8px;
+  font-size: 14.8px;
+}
+
+.atlas-stage-overview .overview-route-copy p {
+  font-size: 9.3px;
+  line-height: 1.44;
+}
+
+.atlas-stage-overview .overview-route-link {
+  margin-top: 18px;
+  font-size: 9px;
+}
+
+/* Lighter editorial methodology strip instead of a heavy footer. */
+.atlas-stage-overview .bottom-insight-bar {
+  margin-top: 12px;
+  min-height: 84px;
+  padding: 14px 22px;
+  border: 1px solid rgba(92, 51, 111, 0.08);
+  border-radius: 11px;
   background:
-    radial-gradient(circle at 50% 0%, rgba(232, 226, 239, 0.72), transparent 31%),
-    radial-gradient(circle at 9% 23%, rgba(239, 226, 233, 0.34), transparent 24%),
-    linear-gradient(180deg, #fcfbfa 0%, #f8f6f5 100%) !important;
+    radial-gradient(circle at 16% 0%, rgba(122, 74, 155, 0.10), transparent 30%),
+    linear-gradient(
+      90deg,
+      rgba(122, 74, 155, 0.055) 0%,
+      rgba(255, 255, 255, 0.48) 100%
+    );
+  color: var(--plum);
+  gap: 20px;
 }
 
-.full-indication-visual.observable-loading > iframe.atlas-iframe {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
+.atlas-stage-overview .insight-info {
+  border-color: rgba(82, 37, 98, 0.55);
+  color: #552365;
 }
 
-.full-indication-visual.observable-loaded > iframe.atlas-iframe {
-  opacity: 1 !important;
-  visibility: visible !important;
-  pointer-events: auto !important;
-  transition: none !important;
+.atlas-stage-overview .insight-primary strong,
+.atlas-stage-overview .insight-item strong {
+  color: var(--plum);
+  font-size: 9.4px;
 }
 
-/* Absolute guard against any Observable footer pixels below the chart. */
-.indication-page,
-.indication-page .full-indication-visual,
-.indication-page .observable-shell {
-  overflow: hidden !important;
+.atlas-stage-overview .insight-primary span:not(.insight-info),
+.atlas-stage-overview .insight-item span:not(.insight-dot):not(.insight-symbol) {
+  color: rgba(56, 36, 61, 0.67);
 }
 
-.indication-page {
-  padding-bottom: 0 !important;
-  margin-bottom: 0 !important;
+.atlas-stage-overview .insight-divider {
+  background: rgba(56, 36, 61, 0.18);
+}
+
+.atlas-stage-overview .insight-dot-solid {
+  background: #70428a;
+}
+
+.atlas-stage-overview .insight-dot-dashed {
+  border-color: #70428a;
+  background: transparent;
+}
+
+.atlas-stage-overview .insight-symbol {
+  color: #552365;
+}
+
+/* Responsive polish */
+@media (max-width: 1260px) {
+  .atlas-stage-overview .overview-hero {
+    grid-template-columns:
+      minmax(360px, 0.92fr)
+      minmax(450px, 1.18fr)
+      minmax(190px, 0.45fr);
+    gap: 18px;
+  }
+
+  .atlas-stage-overview .overview-route-card {
+    grid-template-columns: 1fr;
+    min-height: 245px;
+  }
+
+  .atlas-stage-overview .real-preview-window {
+    height: 135px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .atlas-stage-overview .overview-hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .atlas-stage-overview .overview-reading-card {
+    grid-column: 1 / -1;
+    width: min(100%, 560px);
+    justify-self: center;
+  }
+
+  .atlas-stage-overview .overview-route-card {
+    grid-template-columns: minmax(120px, .9fr) minmax(130px, 1.1fr);
+    min-height: 190px;
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-stage-overview .overview-hero {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .atlas-stage-overview .overview-hero-copy {
+    padding-left: 0;
+  }
+
+  .atlas-stage-overview .overview-company-hook-window {
+    height: 390px;
+    min-height: 390px;
+  }
+
+  .atlas-stage-overview .overview-reading-card {
+    width: 100%;
+  }
+
+  .atlas-stage-overview .overview-route-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-stage-overview .overview-route-card {
+    grid-template-columns: minmax(110px, .85fr) minmax(150px, 1.15fr);
+    border-right: 0;
+    border-bottom: 1px solid rgba(70,49,78,.10);
+  }
+
+  .atlas-stage-overview .overview-route-card:last-child {
+    border-bottom: 0;
+  }
+
+  .atlas-stage-overview .bottom-insight-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .atlas-stage-overview .insight-divider {
+    display: none;
+  }
 }
