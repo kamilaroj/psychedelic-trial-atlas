@@ -1085,7 +1085,7 @@ export default function App() {
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1514?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1518?cells=visual3Chart",
 
       visual4:
         `https://observablehq.com/embed/e3028f2577c04f9a@1485` +
