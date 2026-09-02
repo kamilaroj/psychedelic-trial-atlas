@@ -186,9 +186,33 @@ function ObservableFrame({
   className = "",
   iframeClassName = "",
   height = 700,
-  ariaHidden = false
+  ariaHidden = false,
+  revealDelay = 0
 }) {
   const [loaded, setLoaded] = useState(false);
+  const revealTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (revealTimerRef.current) {
+        window.clearTimeout(revealTimerRef.current);
+      }
+    };
+  }, []);
+
+  const handleLoad = () => {
+    if (revealTimerRef.current) {
+      window.clearTimeout(revealTimerRef.current);
+    }
+
+    if (revealDelay > 0) {
+      revealTimerRef.current = window.setTimeout(() => {
+        setLoaded(true);
+      }, revealDelay);
+    } else {
+      setLoaded(true);
+    }
+  };
 
   return (
     <div
@@ -207,7 +231,7 @@ function ObservableFrame({
         loading="eager"
         aria-hidden={ariaHidden ? "true" : undefined}
         tabIndex={ariaHidden ? -1 : undefined}
-        onLoad={() => setLoaded(true)}
+        onLoad={handleLoad}
       />
     </div>
   );
@@ -1061,7 +1085,7 @@ export default function App() {
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1518?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1514?cells=visual3Chart",
 
       visual4:
         `https://observablehq.com/embed/e3028f2577c04f9a@1485` +
@@ -1730,6 +1754,7 @@ export default function App() {
               src={observableSrc.visual3}
               className="full-visual standard-analysis-visual full-indication-visual"
               height={765}
+              revealDelay={900}
             />
           </section>
         )}
