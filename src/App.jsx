@@ -1093,25 +1093,25 @@ export default function App() {
         `${heroResponsiveParams}`,
 
       visual1Overview:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1519` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
         `?cells=visual1EcosystemOverviev` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
 
       visual1Company:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1519` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
         `?cells=visual1CompanyLandscapePremium1` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1519` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1519?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1530?cells=visual3Chart",
 
       visual4:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1521` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
         `?cells=visual4PhaseChart` +
         `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
