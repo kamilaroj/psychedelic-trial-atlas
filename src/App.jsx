@@ -1061,9 +1061,7 @@ export default function App() {
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1504` +
-        `?cells=visual3Chart` +
-        `&api_key=715f3cbfdfce0e9356d08d20a074b04d91101685`,
+        "https://observablehq.com/embed/e3028f2577c04f9a@1507?cells=visual3Chart",
 
       visual4:
         `https://observablehq.com/embed/e3028f2577c04f9a@1485` +
@@ -1731,7 +1729,7 @@ export default function App() {
               title="Indication Landscape"
               src={observableSrc.visual3}
               className="full-visual standard-analysis-visual full-indication-visual"
-              height={824}
+              height={825}
             />
           </section>
         )}
