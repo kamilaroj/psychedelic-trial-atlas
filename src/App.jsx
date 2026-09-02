@@ -1111,7 +1111,7 @@ export default function App() {
         "https://observablehq.com/embed/e3028f2577c04f9a@1519?cells=visual3Chart",
 
       visual4:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1519` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1520` +
         `?cells=visual4PhaseChart` +
         `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
