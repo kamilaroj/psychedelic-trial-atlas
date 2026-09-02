@@ -1057,7 +1057,7 @@ export default function App() {
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1498` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1499` +
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
