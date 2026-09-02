@@ -1305,7 +1305,7 @@ iframe,
 
 /* =========================================================
    COMPOUNDS â€” FINAL BALANCED VIEWPORT
-   Observable SVG: 1560 Ã— 950.
+   Observable SVG: 1560 Ã— 990.
    One stable iframe only.
    No scaling trick. No internal scrolling.
    The host clips before Observable footer/chrome.
@@ -1325,14 +1325,13 @@ iframe,
 
 .atlas-stage-compounds .full-compound-visual {
   position: relative !important;
-  width: min(1380px, 100%) !important;
-  max-width: min(1380px, 100%) !important;
+  width: min(1480px, 100%) !important;
+  max-width: min(1480px, 100%) !important;
 
-  /* 1380 / 1560 Ã— 950 = ~840 px.
-     The host shows the full analytical layer and clips Observable chrome. */
-  height: 842px !important;
-  min-height: 842px !important;
-  max-height: 842px !important;
+  /* Full analytical layer, including the expanded cards. */
+  height: 915px !important;
+  min-height: 915px !important;
+  max-height: 915px !important;
 
   margin: 0 auto !important;
   overflow: hidden !important;
@@ -1352,8 +1351,8 @@ iframe,
 
   width: 100% !important;
   max-width: none !important;
-  height: 875px !important;
-  min-height: 875px !important;
+  height: 945px !important;
+  min-height: 945px !important;
   max-height: none !important;
 
   margin: 0 !important;
@@ -1383,13 +1382,13 @@ iframe,
 @media (max-width: 1260px) {
   .atlas-stage-compounds .full-compound-visual {
     width: min(1180px, 100%) !important;
-    height: 718px !important;
-    min-height: 718px !important;
-    max-height: 718px !important;
+    height: 748px !important;
+    min-height: 748px !important;
+    max-height: 748px !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 750px !important;
+    height: 785px !important;
   }
 }
 
@@ -1400,13 +1399,13 @@ iframe,
 
   .atlas-stage-compounds .full-compound-visual {
     width: 100% !important;
-    height: 61vw !important;
+    height: 63vw !important;
     min-height: 0 !important;
-    max-height: 620px !important;
+    max-height: 650px !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 680px !important;
+    height: 715px !important;
   }
 }
 
@@ -1416,12 +1415,12 @@ iframe,
   }
 
   .atlas-stage-compounds .full-compound-visual {
-    height: 61vw !important;
+    height: 64vw !important;
     max-height: none !important;
   }
 
   .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 620px !important;
+    height: 660px !important;
   }
 }
 
