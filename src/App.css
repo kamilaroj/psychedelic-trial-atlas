@@ -624,12 +624,19 @@ a:focus-visible {
 }
 
 .full-indication-visual {
-  height: 828px !important;
-  min-height: 828px !important;
-  max-height: 828px !important;
+  /*
+    The Observable SVG itself ends at ~767 px after the current scale.
+    Observable's notebook footer starts below it.
+    Clip the host immediately after the chart so UNICORN1 / Untitled /
+    Observable can never enter the visible page.
+  */
+  height: 774px !important;
+  min-height: 774px !important;
+  max-height: 774px !important;
   overflow: hidden !important;
   clip-path: inset(0) !important;
   -webkit-clip-path: inset(0) !important;
+  contain: strict !important;
   background: transparent !important;
 }
 
@@ -1603,4 +1610,40 @@ iframe,
   height: 20px !important;
   display: block !important;
   flex: 0 0 20px !important;
+}
+
+/* =========================================================
+   INDICATIONS — FINAL OBSERVABLE CHROME / LOAD-FLASH BLOCK
+   ========================================================= */
+
+.full-indication-visual.observable-loading {
+  background:
+    radial-gradient(circle at 50% 0%, rgba(232, 226, 239, 0.72), transparent 31%),
+    radial-gradient(circle at 9% 23%, rgba(239, 226, 233, 0.34), transparent 24%),
+    linear-gradient(180deg, #fcfbfa 0%, #f8f6f5 100%) !important;
+}
+
+.full-indication-visual.observable-loading > iframe.atlas-iframe {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+.full-indication-visual.observable-loaded > iframe.atlas-iframe {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+  transition: none !important;
+}
+
+/* Absolute guard against any Observable footer pixels below the chart. */
+.indication-page,
+.indication-page .full-indication-visual,
+.indication-page .observable-shell {
+  overflow: hidden !important;
+}
+
+.indication-page {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
 }
