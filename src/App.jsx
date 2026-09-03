@@ -1875,7 +1875,7 @@ export default function App() {
               <ObservableFrame
                 title="Company Landscape Premium"
                 src={observableSrc.visual1Company}
-                className="full-visual full-company-visual company-real-working-frame"
+                className="full-visual full-company-visual company-real-working-frame title-aligned-visual"
                 height={1000}
               />
 
@@ -1904,7 +1904,7 @@ export default function App() {
             <ObservableFrame
               title="Compound Activity Landscape"
               src={observableSrc.visual2}
-              className="full-visual standard-analysis-visual full-compound-visual"
+              className="full-visual standard-analysis-visual full-compound-visual title-aligned-visual"
               height={825}
             />
           </section>
@@ -1915,7 +1915,7 @@ export default function App() {
             <ObservableFrame
               title="Indication Landscape"
               src={observableSrc.visual3}
-              className="full-visual standard-analysis-visual full-indication-visual"
+              className="full-visual standard-analysis-visual full-indication-visual title-aligned-visual"
               height={793}
               viewportHeight={793}
               revealDelay={1100}
@@ -1929,7 +1929,7 @@ export default function App() {
             <ObservableFrame
               title="Clinical Phase Landscape"
               src={observableSrc.visual4}
-              className="full-visual standard-analysis-visual full-phase-visual"
+              className="full-visual standard-analysis-visual full-phase-visual title-aligned-visual"
               height={1000}
               viewportHeight={940}
               revealDelay={350}
