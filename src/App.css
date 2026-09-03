@@ -2438,3 +2438,224 @@ iframe,
   }
 }
 
+/* =========================================================
+   OVERVIEW — RECRUITING CTA + PREVIEW CHROME CLEANUP
+   2026-09-03
+   ========================================================= */
+
+/* The right-hand overview column becomes a two-item vertical stack:
+   reading guide first, recruiting CTA directly below it. */
+.atlas-stage-overview .overview-hero {
+  align-items: center;
+}
+
+.atlas-stage-overview .overview-reading-card {
+  align-self: end;
+  margin-bottom: 12px;
+}
+
+/* Green recruiting CTA */
+.atlas-stage-overview .overview-recruiting-cta {
+  align-self: start;
+  width: 100%;
+  min-height: 126px;
+  padding: 18px 18px;
+  border: 1px solid rgba(80, 151, 76, 0.34);
+  border-radius: 16px;
+  background:
+    radial-gradient(
+      circle at 18% 12%,
+      rgba(126, 190, 104, 0.15),
+      transparent 33%
+    ),
+    linear-gradient(
+      135deg,
+      rgba(246, 252, 243, 0.96) 0%,
+      rgba(238, 248, 234, 0.88) 100%
+    );
+  color: #244c28;
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr);
+  gap: 13px;
+  align-items: center;
+  text-align: left;
+  cursor: pointer;
+  box-shadow:
+    0 10px 26px rgba(61, 116, 56, 0.055),
+    inset 0 1px 0 rgba(255,255,255,.75);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.atlas-stage-overview .overview-recruiting-cta:hover {
+  transform: translateY(-1px);
+  border-color: rgba(73, 145, 69, 0.46);
+  box-shadow:
+    0 14px 30px rgba(61, 116, 56, 0.085),
+    inset 0 1px 0 rgba(255,255,255,.82);
+}
+
+.atlas-stage-overview .overview-recruiting-cta-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #4f9a45;
+  background: rgba(117, 181, 91, 0.10);
+}
+
+.atlas-stage-overview .overview-recruiting-cta-icon svg {
+  width: 23px;
+  height: 23px;
+  display: block;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-copy {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-copy strong {
+  color: #315c31;
+  font-family: "Inter Tight", "Inter", sans-serif;
+  font-size: 13px;
+  line-height: 1.16;
+  font-weight: 820;
+  letter-spacing: -0.025em;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-copy > span:not(.overview-recruiting-cta-link) {
+  color: rgba(49, 92, 49, 0.78);
+  font-size: 9.2px;
+  line-height: 1.45;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-copy b {
+  font-weight: 760;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-link {
+  color: #3b7d35;
+  font-size: 9.2px;
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+/* ---------------------------------------------------------
+   OVERVIEW PREVIEW CROPPING
+   Observable's footer/chrome lives below the useful chart.
+   The preview window clips before that area so no Observable
+   strip/bar can appear in Companies / Compounds / Indications / Phases.
+   --------------------------------------------------------- */
+
+.atlas-stage-overview .real-preview-window {
+  overflow: hidden !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+  contain: paint !important;
+}
+
+/* Companies: enlarge slightly so its analytical image has the
+   same visual weight as the other three preview cards. */
+.atlas-stage-overview .preview-companies .real-preview-iframe {
+  top: -2px !important;
+  left: 50% !important;
+  width: 470% !important;
+  height: 940px !important;
+  transform: translateX(-50%) scale(0.21275) !important;
+  transform-origin: top center !important;
+}
+
+/* Compounds: lift content and crop the Observable lower strip. */
+.atlas-stage-overview .preview-compounds .real-preview-iframe {
+  top: -4px !important;
+  left: 0 !important;
+  width: 420% !important;
+  height: 742px !important;
+  transform: scale(0.2380952) !important;
+  transform-origin: top left !important;
+}
+
+/* Indications: crop before footer/chrome. */
+.atlas-stage-overview .preview-indications .real-preview-iframe {
+  top: -3px !important;
+  left: 0 !important;
+  width: 445% !important;
+  height: 782px !important;
+  transform: scale(0.2247191) !important;
+  transform-origin: top left !important;
+}
+
+/* Phases: use only the analytical canvas and crop below it. */
+.atlas-stage-overview .preview-phases .real-preview-iframe {
+  top: -3px !important;
+  left: 0 !important;
+  width: 635% !important;
+  height: 1045px !important;
+  transform: scale(0.1574803) !important;
+  transform-origin: top left !important;
+}
+
+/* A subtle bottom mask guarantees that no 1–2 px Observable bar
+   can become visible after iframe paint or browser scaling. */
+.atlas-stage-overview .real-preview-window::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  z-index: 5;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 249, 248, 0) 0%,
+      rgba(250, 249, 248, 0.96) 82%
+    );
+}
+
+/* Make all four preview images occupy a comparable visual footprint. */
+.atlas-stage-overview .overview-route-card .real-preview-window {
+  display: block;
+}
+
+/* Responsive placement of the new CTA */
+@media (max-width: 1260px) {
+  .atlas-stage-overview .overview-recruiting-cta {
+    min-height: 116px;
+    padding: 15px 15px;
+    grid-template-columns: 38px minmax(0, 1fr);
+    gap: 11px;
+  }
+
+  .atlas-stage-overview .overview-recruiting-cta-icon {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+@media (max-width: 1020px) {
+  .atlas-stage-overview .overview-reading-card {
+    margin-bottom: 0;
+  }
+
+  .atlas-stage-overview .overview-recruiting-cta {
+    grid-column: 1 / -1;
+    width: min(100%, 560px);
+    justify-self: center;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-stage-overview .overview-recruiting-cta {
+    width: 100%;
+  }
+}
+
