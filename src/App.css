@@ -652,21 +652,7 @@ a:focus-visible {
   background: transparent !important;
 }
 
-.full-phase-visual .atlas-iframe {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 132.6% !important;
-  max-width: none !important;
-  height: 1180px !important;
-  min-height: 1180px !important;
-  margin: 0 !important;
-  transform: translateX(-50%) scale(0.754);
-  transform-origin: top center;
-}
-
-.full-indication-visual .atlas-iframe,
-.full-phase-visual .atlas-iframe {
+.full-indication-visual .atlas-iframe {
   top: 0 !important;
 }
 
@@ -2145,6 +2131,138 @@ iframe,
   .atlas-stage-overview .real-preview-window {
     height: 166px;
     min-height: 166px;
+  }
+}
+
+/* =========================================================
+   PHASES — 2026-09-03 FINAL STAGE-GATE VIEW
+   Matches Compounds page width / visual weight.
+   Crops Observable chrome and keeps the full analytical composition visible.
+   ========================================================= */
+
+.atlas-stage-phases {
+  padding-bottom: 0 !important;
+}
+
+.atlas-stage-phases .phase-page {
+  width: min(var(--content-max), 100%) !important;
+  min-height: 0 !important;
+  padding-top: 8px !important;
+  padding-bottom: 0 !important;
+  margin: 0 auto !important;
+}
+
+.atlas-stage-phases .full-phase-visual {
+  position: relative !important;
+  width: min(1480px, 100%) !important;
+  max-width: min(1480px, 100%) !important;
+  height: 930px !important;
+  min-height: 930px !important;
+  max-height: 930px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+}
+
+.atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: none !important;
+  height: 1020px !important;
+  min-height: 1020px !important;
+  max-height: 1020px !important;
+  margin: 0 !important;
+  transform: none !important;
+  transform-origin: top left !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+/* Observable footer / notebook chrome must never become visible. */
+.atlas-stage-phases .full-phase-visual,
+.atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.atlas-stage-phases .full-phase-visual::-webkit-scrollbar,
+.atlas-stage-phases .full-phase-visual > iframe.atlas-iframe::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+/* Same top rhythm as the final Compounds page. */
+.atlas-stage-phases .standard-analysis-page {
+  padding-top: 8px !important;
+}
+
+/* Laptop */
+@media (max-width: 1260px) {
+  .atlas-stage-phases .full-phase-visual {
+    width: min(1180px, 100%) !important;
+    height: 744px !important;
+    min-height: 744px !important;
+    max-height: 744px !important;
+  }
+
+  .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
+    width: 125.4% !important;
+    height: 1020px !important;
+    transform: scale(0.797) !important;
+    transform-origin: top left !important;
+  }
+}
+
+/* Tablet */
+@media (max-width: 1020px) {
+  .atlas-stage-phases .phase-page {
+    padding-top: 6px !important;
+  }
+
+  .atlas-stage-phases .full-phase-visual {
+    width: 100% !important;
+    height: 63vw !important;
+    min-height: 0 !important;
+    max-height: 650px !important;
+  }
+
+  .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
+    width: 1560px !important;
+    height: 1020px !important;
+    transform: scale(calc((100vw - 32px) / 1560)) !important;
+    transform-origin: top left !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  .atlas-stage-phases .phase-page {
+    padding-top: 4px !important;
+  }
+
+  .atlas-stage-phases .full-phase-visual {
+    height: 64vw !important;
+    max-height: none !important;
+  }
+
+  .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
+    width: 1560px !important;
+    height: 1020px !important;
+    transform: scale(calc((100vw - 32px) / 1560)) !important;
+    transform-origin: top left !important;
   }
 }
 
