@@ -2773,3 +2773,203 @@ iframe,
   }
 }
 
+/* =========================================================
+   OVERVIEW — RIGHT COLUMN LAYOUT FIX
+   Recruiting CTA sits directly below "How to read the Atlas".
+   Also rebalances the four preview thumbnails.
+   ========================================================= */
+
+/* Explicitly place all four hero children in the intended grid.
+   This prevents the recruiting CTA from falling into a new row
+   under the left-hand hero copy. */
+.atlas-stage-overview .overview-hero {
+  grid-template-rows: auto auto !important;
+  row-gap: 14px !important;
+  align-items: start !important;
+}
+
+.atlas-stage-overview .overview-hero-copy {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: center !important;
+}
+
+.atlas-stage-overview .overview-company-hook {
+  grid-column: 2 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: stretch !important;
+}
+
+.atlas-stage-overview .overview-reading-card {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  align-self: end !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+.atlas-stage-overview .overview-recruiting-cta {
+  grid-column: 3 !important;
+  grid-row: 2 !important;
+  align-self: start !important;
+  width: 100% !important;
+  min-height: 112px !important;
+  margin: 0 !important;
+  padding: 15px 15px !important;
+  grid-template-columns: 38px minmax(0, 1fr) !important;
+  gap: 11px !important;
+  border-radius: 14px !important;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-icon {
+  width: 38px !important;
+  height: 38px !important;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-icon svg {
+  width: 21px !important;
+  height: 21px !important;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-copy {
+  gap: 4px !important;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-copy strong {
+  font-size: 11.5px !important;
+  line-height: 1.18 !important;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-copy > span:not(.overview-recruiting-cta-link) {
+  font-size: 8.5px !important;
+  line-height: 1.38 !important;
+}
+
+.atlas-stage-overview .overview-recruiting-cta-link {
+  margin-top: 1px !important;
+  font-size: 8.7px !important;
+}
+
+/* Pull the next section back up under the hero. */
+.atlas-stage-overview .inside-section {
+  margin-top: -2px !important;
+}
+
+/* ---------------------------------------------------------
+   FOUR OVERVIEW PREVIEWS — VISUAL WEIGHT BALANCE
+   --------------------------------------------------------- */
+
+.atlas-stage-overview .real-preview-window {
+  height: 186px !important;
+  min-height: 186px !important;
+  overflow: hidden !important;
+}
+
+/* Companies was visually too large. Reduce it by ~9% and keep centered. */
+.atlas-stage-overview .preview-companies .real-preview-iframe {
+  top: 0 !important;
+  left: 50% !important;
+  width: 510% !important;
+  height: 960px !important;
+  transform: translateX(-50%) scale(0.1961) !important;
+  transform-origin: top center !important;
+}
+
+/* Keep the other three thumbnails stable, but crop their lower
+   Observable chrome safely inside the preview window. */
+.atlas-stage-overview .preview-compounds .real-preview-iframe {
+  top: -3px !important;
+  left: 0 !important;
+  width: 420% !important;
+  height: 748px !important;
+  transform: scale(0.2380952) !important;
+  transform-origin: top left !important;
+}
+
+.atlas-stage-overview .preview-indications .real-preview-iframe {
+  top: -2px !important;
+  left: 0 !important;
+  width: 445% !important;
+  height: 788px !important;
+  transform: scale(0.2247191) !important;
+  transform-origin: top left !important;
+}
+
+.atlas-stage-overview .preview-phases .real-preview-iframe {
+  top: -2px !important;
+  left: 0 !important;
+  width: 635% !important;
+  height: 1050px !important;
+  transform: scale(0.1574803) !important;
+  transform-origin: top left !important;
+}
+
+/* Slightly stronger footer/chrome crop so no Observable strip appears. */
+.atlas-stage-overview .real-preview-window::after {
+  height: 8px !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 249, 248, 0) 0%,
+      rgba(250, 249, 248, 0.98) 78%
+    ) !important;
+}
+
+/* Responsive: once the right column collapses, let the CTA follow
+   the reading card naturally below the two-column hero. */
+@media (max-width: 1020px) {
+  .atlas-stage-overview .overview-hero {
+    grid-template-rows: auto !important;
+  }
+
+  .atlas-stage-overview .overview-hero-copy {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .atlas-stage-overview .overview-company-hook {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .atlas-stage-overview .overview-reading-card {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: min(100%, 560px) !important;
+    justify-self: center !important;
+  }
+
+  .atlas-stage-overview .overview-recruiting-cta {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    width: min(100%, 560px) !important;
+    justify-self: center !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-stage-overview .overview-hero-copy,
+  .atlas-stage-overview .overview-company-hook,
+  .atlas-stage-overview .overview-reading-card,
+  .atlas-stage-overview .overview-recruiting-cta {
+    grid-column: 1 !important;
+  }
+
+  .atlas-stage-overview .overview-hero-copy {
+    grid-row: 1 !important;
+  }
+
+  .atlas-stage-overview .overview-company-hook {
+    grid-row: 2 !important;
+  }
+
+  .atlas-stage-overview .overview-reading-card {
+    grid-row: 3 !important;
+  }
+
+  .atlas-stage-overview .overview-recruiting-cta {
+    grid-row: 4 !important;
+    width: 100% !important;
+  }
+}
+
