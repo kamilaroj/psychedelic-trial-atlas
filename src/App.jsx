@@ -1504,7 +1504,7 @@ export default function App() {
         className={`atlas-stage atlas-stage-${activeView}`}
       >
         {activeView === "overview" && (
-          <section className="overview-page">
+          <section className="overview-page overview-page-final">
             <div className="overview-hero">
               <div className="overview-hero-copy">
                 <p className="hero-eyebrow">
