@@ -2973,3 +2973,507 @@ iframe,
   }
 }
 
+/* =========================================================
+   OVERVIEW — FINAL LOCKED VERSION
+   2026-09-03
+   Scope: OVERVIEW ONLY.
+   No Company / Compound / Indication / Phase / Methodology /
+   About styles are changed by this block.
+   ========================================================= */
+
+.atlas-stage-overview {
+  padding-bottom: 24px !important;
+}
+
+.atlas-stage-overview .overview-page-final {
+  width: min(1480px, 100%) !important;
+  margin: 0 auto !important;
+}
+
+/* ---------- HERO COMPOSITION ---------- */
+
+.atlas-stage-overview .overview-page-final .overview-hero {
+  min-height: 548px !important;
+  padding-top: 26px !important;
+
+  grid-template-columns:
+    minmax(390px, 0.94fr)
+    minmax(555px, 1.30fr)
+    minmax(208px, 0.49fr) !important;
+
+  grid-template-rows: auto auto !important;
+  column-gap: 26px !important;
+  row-gap: 12px !important;
+  align-items: start !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-hero-copy {
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: center !important;
+  min-width: 0 !important;
+  padding-left: 4px !important;
+}
+
+.atlas-stage-overview .overview-page-final .hero-eyebrow {
+  margin: 0 0 17px !important;
+  color: #65336f !important;
+  font-size: 9.4px !important;
+  line-height: 1 !important;
+  font-weight: 820 !important;
+  letter-spacing: 0.28em !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-hero h1 {
+  margin: 0 !important;
+  color: #2d1837 !important;
+  font-family: "Inter Tight", "Inter", sans-serif !important;
+  font-size: clamp(56px, 5.08vw, 79px) !important;
+  line-height: 0.91 !important;
+  font-weight: 900 !important;
+  letter-spacing: -0.072em !important;
+}
+
+.atlas-stage-overview .overview-page-final .hero-description {
+  max-width: 520px !important;
+  margin: 24px 0 18px !important;
+  color: #2f2931 !important;
+  font-size: 13.5px !important;
+  line-height: 1.52 !important;
+}
+
+/* ---------- ECOSYSTEM METRICS ---------- */
+
+.atlas-stage-overview .overview-page-final .overview-real-metrics {
+  width: 100% !important;
+  height: 128px !important;
+  margin-top: 21px !important;
+  overflow: hidden !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+}
+
+/* ---------- CENTRAL COMPANY LANDSCAPE ---------- */
+
+.atlas-stage-overview .overview-page-final .overview-company-hook {
+  grid-column: 2 !important;
+  grid-row: 1 / span 2 !important;
+  align-self: stretch !important;
+  min-width: 0 !important;
+  padding-top: 8px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-company-hook-label {
+  min-height: 34px !important;
+  padding: 0 4px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-company-hook-label > span {
+  color: #5c2c67 !important;
+  font-size: 8.5px !important;
+  font-weight: 820 !important;
+  letter-spacing: 0.19em !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-company-hook-label button {
+  color: var(--plum) !important;
+  font-size: 9px !important;
+  font-weight: 780 !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-company-hook-window {
+  height: 478px !important;
+  min-height: 478px !important;
+  overflow: hidden !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-company-hook-window iframe {
+  top: -7px !important;
+  left: 50% !important;
+  width: 184% !important;
+  height: 1000px !important;
+  transform: translateX(-50%) scale(0.5435) !important;
+  transform-origin: top center !important;
+}
+
+/* ---------- RIGHT COLUMN ---------- */
+
+.atlas-stage-overview .overview-page-final .overview-reading-card {
+  grid-column: 3 !important;
+  grid-row: 1 !important;
+  align-self: end !important;
+  width: 100% !important;
+  min-height: 326px !important;
+  margin: 0 !important;
+  padding: 20px 19px 15px !important;
+
+  border: 1px solid rgba(56, 36, 61, 0.085) !important;
+  border-radius: 15px !important;
+  background: rgba(255, 255, 255, 0.72) !important;
+  box-shadow:
+    0 12px 30px rgba(58, 39, 70, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72) !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-reading-card .page-eyebrow {
+  margin-bottom: 11px !important;
+  color: #65336f !important;
+  font-size: 8.3px !important;
+  font-weight: 820 !important;
+  letter-spacing: 0.14em !important;
+}
+
+.atlas-stage-overview .overview-page-final .reading-row {
+  grid-template-columns: 35px minmax(0, 1fr) !important;
+  gap: 12px !important;
+  min-height: 58px !important;
+  padding: 9px 0 !important;
+}
+
+.atlas-stage-overview .overview-page-final .reading-row-icon {
+  width: 29px !important;
+  height: 29px !important;
+}
+
+.atlas-stage-overview .overview-page-final .reading-row strong {
+  font-size: 9.7px !important;
+}
+
+.atlas-stage-overview .overview-page-final .reading-row-copy > span {
+  margin-top: 4px !important;
+  font-size: 8.45px !important;
+  line-height: 1.36 !important;
+}
+
+.atlas-stage-overview .overview-page-final .reading-method-link {
+  margin-top: 11px !important;
+  padding-top: 7px !important;
+  font-size: 8.9px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-recruiting-cta {
+  grid-column: 3 !important;
+  grid-row: 2 !important;
+  align-self: start !important;
+
+  width: 100% !important;
+  min-height: 104px !important;
+  margin: 0 !important;
+  padding: 13px 14px !important;
+
+  grid-template-columns: 36px minmax(0, 1fr) !important;
+  gap: 10px !important;
+
+  border: 1px solid rgba(80, 151, 76, 0.31) !important;
+  border-radius: 14px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-recruiting-cta-icon {
+  width: 36px !important;
+  height: 36px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-recruiting-cta-icon svg {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-recruiting-cta-copy {
+  gap: 3px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-recruiting-cta-copy strong {
+  font-size: 11.1px !important;
+  line-height: 1.17 !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-recruiting-cta-copy > span:not(.overview-recruiting-cta-link) {
+  font-size: 8.35px !important;
+  line-height: 1.36 !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-recruiting-cta-link {
+  margin-top: 1px !important;
+  font-size: 8.55px !important;
+}
+
+/* ---------- FOUR PREVIEW CARDS ---------- */
+
+.atlas-stage-overview .overview-page-final .inside-section {
+  margin-top: 0 !important;
+}
+
+.atlas-stage-overview .overview-page-final .inside-kicker {
+  margin: 0 0 9px 2px !important;
+  color: #6a3a72 !important;
+  font-size: 8.5px !important;
+  font-weight: 820 !important;
+  letter-spacing: 0.22em !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-route-grid {
+  border-radius: 14px !important;
+  border-color: rgba(70, 49, 78, 0.10) !important;
+  background: rgba(255, 255, 255, 0.30) !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-route-card {
+  min-height: 286px !important;
+  padding: 15px 16px 16px !important;
+  border-right-color: rgba(70, 49, 78, 0.10) !important;
+  background: rgba(255, 255, 255, 0.18) !important;
+}
+
+.atlas-stage-overview .overview-page-final .real-preview-window {
+  height: 172px !important;
+  min-height: 172px !important;
+  margin-bottom: 3px !important;
+  overflow: hidden !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+}
+
+/* Companies is intentionally slightly quieter than before
+   so all four thumbnails have similar optical weight. */
+.atlas-stage-overview .overview-page-final .preview-companies .real-preview-iframe {
+  top: 0 !important;
+  left: 50% !important;
+  width: 525% !important;
+  height: 955px !important;
+  transform: translateX(-50%) scale(0.19048) !important;
+  transform-origin: top center !important;
+}
+
+.atlas-stage-overview .overview-page-final .preview-compounds .real-preview-iframe {
+  top: -2px !important;
+  left: 0 !important;
+  width: 430% !important;
+  height: 746px !important;
+  transform: scale(0.23256) !important;
+  transform-origin: top left !important;
+}
+
+.atlas-stage-overview .overview-page-final .preview-indications .real-preview-iframe {
+  top: -2px !important;
+  left: 0 !important;
+  width: 456% !important;
+  height: 790px !important;
+  transform: scale(0.2193) !important;
+  transform-origin: top left !important;
+}
+
+.atlas-stage-overview .overview-page-final .preview-phases .real-preview-iframe {
+  top: -1px !important;
+  left: 0 !important;
+  width: 648% !important;
+  height: 1055px !important;
+  transform: scale(0.15432) !important;
+  transform-origin: top left !important;
+}
+
+.atlas-stage-overview .overview-page-final .real-preview-window::after {
+  content: "" !important;
+  display: block !important;
+  position: absolute !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  height: 8px !important;
+  z-index: 5 !important;
+  pointer-events: none !important;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(250, 249, 248, 0) 0%,
+      rgba(250, 249, 248, 0.98) 78%
+    ) !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-route-copy {
+  flex: 1 !important;
+  justify-content: space-between !important;
+  padding-top: 9px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-route-copy h3 {
+  margin-bottom: 7px !important;
+  font-size: 14.6px !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-route-copy p {
+  font-size: 9.2px !important;
+  line-height: 1.43 !important;
+}
+
+.atlas-stage-overview .overview-page-final .overview-route-link {
+  margin-top: 14px !important;
+  font-size: 8.9px !important;
+}
+
+/* ---------- BOTTOM METHODOLOGY STRIP ---------- */
+
+.atlas-stage-overview .overview-page-final .bottom-insight-bar {
+  min-height: 78px !important;
+  margin-top: 10px !important;
+  padding: 13px 20px !important;
+  gap: 18px !important;
+  border-radius: 11px !important;
+}
+
+.atlas-stage-overview .overview-page-final .insight-info {
+  width: 34px !important;
+  height: 34px !important;
+  flex-basis: 34px !important;
+}
+
+.atlas-stage-overview .overview-page-final .insight-primary strong,
+.atlas-stage-overview .overview-page-final .insight-item strong {
+  font-size: 9.2px !important;
+}
+
+.atlas-stage-overview .overview-page-final .insight-primary span:not(.insight-info),
+.atlas-stage-overview .overview-page-final .insight-item span:not(.insight-dot):not(.insight-symbol):not(.insight-source-icon) {
+  font-size: 7.9px !important;
+  line-height: 1.34 !important;
+}
+
+/* ---------- RESPONSIVE ---------- */
+
+@media (max-width: 1260px) {
+  .atlas-stage-overview .overview-page-final .overview-hero {
+    min-height: 520px !important;
+    grid-template-columns:
+      minmax(355px, 0.92fr)
+      minmax(440px, 1.16fr)
+      minmax(188px, 0.46fr) !important;
+    column-gap: 18px !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-company-hook-window {
+    height: 442px !important;
+    min-height: 442px !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-company-hook-window iframe {
+    width: 191% !important;
+    transform: translateX(-50%) scale(0.5236) !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-route-card {
+    min-height: 270px !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .real-preview-window {
+    height: 160px !important;
+    min-height: 160px !important;
+  }
+}
+
+@media (max-width: 1020px) {
+  .atlas-stage-overview .overview-page-final .overview-hero {
+    grid-template-columns: 1fr 1fr !important;
+    grid-template-rows: auto auto auto !important;
+    gap: 16px !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-hero-copy {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-company-hook {
+    grid-column: 2 !important;
+    grid-row: 1 !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-reading-card {
+    grid-column: 1 / -1 !important;
+    grid-row: 2 !important;
+    width: min(100%, 560px) !important;
+    justify-self: center !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-recruiting-cta {
+    grid-column: 1 / -1 !important;
+    grid-row: 3 !important;
+    width: min(100%, 560px) !important;
+    justify-self: center !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-route-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-route-card {
+    min-height: 272px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-stage-overview .overview-page-final .overview-hero {
+    grid-template-columns: 1fr !important;
+    grid-template-rows: auto auto auto auto !important;
+    gap: 14px !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-hero-copy {
+    grid-column: 1 !important;
+    grid-row: 1 !important;
+    padding-left: 0 !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-company-hook {
+    grid-column: 1 !important;
+    grid-row: 2 !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-reading-card {
+    grid-column: 1 !important;
+    grid-row: 3 !important;
+    width: 100% !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-recruiting-cta {
+    grid-column: 1 !important;
+    grid-row: 4 !important;
+    width: 100% !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-company-hook-window {
+    height: 405px !important;
+    min-height: 405px !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-company-hook-window iframe {
+    width: 196% !important;
+    transform: translateX(-50%) scale(0.51) !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-route-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-route-card {
+    min-height: 268px !important;
+    border-right: 0 !important;
+    border-bottom: 1px solid rgba(70,49,78,.10) !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .overview-route-card:last-child {
+    border-bottom: 0 !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .bottom-insight-bar {
+    grid-template-columns: 1fr !important;
+  }
+
+  .atlas-stage-overview .overview-page-final .insight-divider {
+    display: none !important;
+  }
+}
+
