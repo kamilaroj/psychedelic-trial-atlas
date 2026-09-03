@@ -3477,3 +3477,181 @@ iframe,
   }
 }
 
+
+/* =========================================================
+   2026-09-03 — LIVE OBSERVABLE EMBEDS / FINAL HOST FIX
+   The application now points to the current unversioned Observable
+   cells. This block removes the legacy Companies iframe geometry
+   (1110px + scale 1.085) so the current Observable composition is
+   actually visible on the site.
+   ========================================================= */
+
+/* ---------- COMPANIES: CURRENT OBSERVABLE CELL ---------- */
+
+.atlas-stage-companies {
+  padding-bottom: 0 !important;
+}
+
+.atlas-stage-companies .company-page-live {
+  width: min(1480px, 100%) !important;
+  min-height: 0 !important;
+  padding-top: 10px !important;
+  padding-bottom: 0 !important;
+  margin: 0 auto !important;
+}
+
+.atlas-stage-companies .company-page-live .company-visual-shell {
+  position: relative !important;
+  width: min(1380px, 100%) !important;
+  margin: 0 auto !important;
+  overflow: visible !important;
+}
+
+/* Observable content itself is built on a 980px canvas.
+   Host it at its native width and enlarge only the final rendered cell.
+   This makes edits inside Observable visible rather than being diluted
+   by the old oversized iframe wrapper. */
+.atlas-stage-companies .company-page-live .company-real-working-frame,
+.atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame {
+  position: relative !important;
+  width: min(1280px, 100%) !important;
+  max-width: min(1280px, 100%) !important;
+  height: 800px !important;
+  min-height: 800px !important;
+  max-height: 800px !important;
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+.atlas-stage-companies .company-page-live .company-real-working-frame > iframe.atlas-iframe,
+.atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
+  position: absolute !important;
+  top: 0 !important;
+  left: 50% !important;
+
+  /* Native Observable visual width. */
+  width: 980px !important;
+  max-width: none !important;
+
+  /* Enough room for heading + legend + 660px SVG.
+     The host clips before any Observable footer/chrome. */
+  height: 820px !important;
+  min-height: 820px !important;
+  max-height: 820px !important;
+
+  margin: 0 !important;
+  transform: translateX(-50%) scale(1.16) !important;
+  transform-origin: top center !important;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
+/* Keep the details panel aligned with the actual visible chart height. */
+.atlas-stage-companies .company-page-live .company-panel {
+  top: 24px !important;
+  height: 746px !important;
+}
+
+.atlas-stage-companies .company-page-live .company-panel-close {
+  top: 36px !important;
+}
+
+/* ---------- RESPONSIVE COMPANIES ---------- */
+
+@media (max-width: 1260px) {
+  .atlas-stage-companies .company-page-live .company-real-working-frame,
+  .atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame {
+    width: min(1120px, 100%) !important;
+    height: 748px !important;
+    min-height: 748px !important;
+    max-height: 748px !important;
+  }
+
+  .atlas-stage-companies .company-page-live .company-real-working-frame > iframe.atlas-iframe,
+  .atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
+    width: 980px !important;
+    height: 820px !important;
+    left: 50% !important;
+    transform: translateX(-50%) scale(1.08) !important;
+    transform-origin: top center !important;
+  }
+
+  .atlas-stage-companies .company-page-live .company-panel {
+    height: 700px !important;
+  }
+}
+
+@media (max-width: 1020px) {
+  .atlas-stage-companies .company-page-live {
+    padding-top: 6px !important;
+  }
+
+  .atlas-stage-companies .company-page-live .company-real-working-frame,
+  .atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame {
+    width: 100% !important;
+    height: min(76vw, 720px) !important;
+    min-height: 0 !important;
+    max-height: 720px !important;
+  }
+
+  .atlas-stage-companies .company-page-live .company-real-working-frame > iframe.atlas-iframe,
+  .atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
+    width: 980px !important;
+    height: 820px !important;
+    left: 50% !important;
+    transform:
+      translateX(-50%)
+      scale(calc((100vw - 40px) / 980)) !important;
+    transform-origin: top center !important;
+  }
+
+  /* Existing mobile/fixed details panel behavior remains in force. */
+  .atlas-stage-companies .company-page-live .company-panel {
+    height: min(72vh, 590px) !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-stage-companies .company-page-live {
+    padding-top: 4px !important;
+  }
+
+  .atlas-stage-companies .company-page-live .company-real-working-frame,
+  .atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame {
+    height: 78vw !important;
+    max-height: none !important;
+  }
+
+  .atlas-stage-companies .company-page-live .company-real-working-frame > iframe.atlas-iframe,
+  .atlas-stage-companies .company-page-live .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
+    transform:
+      translateX(-50%)
+      scale(calc((100vw - 32px) / 980)) !important;
+  }
+}
+
+/* ---------- EMBED EDGE / CHROME PROTECTION ---------- */
+
+.atlas-stage-companies .company-page-live .company-real-working-frame,
+.atlas-stage-companies .company-page-live .company-real-working-frame > iframe.atlas-iframe {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.atlas-stage-companies .company-page-live .company-real-working-frame::-webkit-scrollbar,
+.atlas-stage-companies .company-page-live .company-real-working-frame > iframe.atlas-iframe::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
