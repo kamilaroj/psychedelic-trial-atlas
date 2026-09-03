@@ -52,7 +52,7 @@ function normalizeUrlLabel(url) {
 function AtlasMark() {
   return (
     <svg
-      viewBox="0 0 64 64"
+      viewBox="0 0 72 72"
       aria-hidden="true"
       focusable="false"
       style={{
@@ -63,117 +63,82 @@ function AtlasMark() {
     >
       <g
         fill="none"
+        stroke="currentColor"
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {/* Outer segmented atlas orbit */}
-        <path
-          d="M32 6
-             A26 26 0 0 1 58 32"
-          stroke="#4A245F"
-          strokeWidth="2.2"
-        />
-        <path
-          d="M58 32
-             A26 26 0 0 1 32 58"
-          stroke="#7A4A9B"
-          strokeWidth="2.2"
-        />
-        <path
-          d="M32 58
-             A26 26 0 0 1 6 32"
-          stroke="#6D3F8A"
-          strokeWidth="2.2"
-        />
-        <path
-          d="M6 32
-             A26 26 0 0 1 32 6"
-          stroke="#3E204F"
-          strokeWidth="2.2"
-        />
-
-        {/* Four outer anchor points */}
-        <circle cx="32" cy="6" r="3.8" fill="#6F3F8D" stroke="none" />
-        <circle cx="58" cy="32" r="3.8" fill="#8F62B3" stroke="none" />
-        <circle cx="32" cy="58" r="3.8" fill="#8F62B3" stroke="none" />
-        <circle cx="6" cy="32" r="3.8" fill="#3A1E48" stroke="none" />
-
-        {/* Middle dotted orbit */}
+        {/* Static desk-globe mark */}
         <circle
-          cx="32"
-          cy="32"
-          r="18.5"
-          stroke="#70428A"
-          strokeWidth="1.5"
-          strokeDasharray="0.1 3.6"
+          cx="36"
+          cy="28"
+          r="18"
+          strokeWidth="2.2"
         />
 
-        {/* Middle anchor points */}
-        <circle cx="32" cy="13.5" r="2.8" fill="#70428A" stroke="none" />
-        <circle cx="50.5" cy="32" r="2.8" fill="#9B73BE" stroke="none" />
-        <circle cx="32" cy="50.5" r="2.8" fill="#5D2D75" stroke="none" />
-        <circle cx="13.5" cy="32" r="2.8" fill="#A27BC4" stroke="none" />
-
-        <circle cx="18.9" cy="18.9" r="2.4" fill="#A27BC4" stroke="none" />
-        <circle cx="45.1" cy="18.9" r="2.4" fill="#8D63AF" stroke="none" />
-        <circle cx="18.9" cy="45.1" r="2.4" fill="#7B4C99" stroke="none" />
-        <circle cx="45.1" cy="45.1" r="2.4" fill="#5A2B72" stroke="none" />
-
-        {/* Inner dotted orbit */}
-        <circle
-          cx="32"
-          cy="32"
-          r="11.8"
-          stroke="#4E2463"
-          strokeWidth="1.3"
-          strokeDasharray="0.1 3.4"
-        />
-
-        {/* Four analytical star points */}
+        {/* Latitude lines */}
         <path
-          d="M32 16.8
-             C32.6 20.4 34.6 22.4 38.2 23
-             C34.6 23.6 32.6 25.6 32 29.2
-             C31.4 25.6 29.4 23.6 25.8 23
-             C29.4 22.4 31.4 20.4 32 16.8Z"
-          fill="#3A1E48"
-          stroke="none"
+          d="M20.5 22.5c4.9 2.2 10.2 3.3 15.5 3.3s10.6-1.1 15.5-3.3"
+          strokeWidth="1.35"
+          opacity="0.58"
         />
         <path
-          d="M47.2 32
-             C43.6 32.6 41.6 34.6 41 38.2
-             C40.4 34.6 38.4 32.6 34.8 32
-             C38.4 31.4 40.4 29.4 41 25.8
-             C41.6 29.4 43.6 31.4 47.2 32Z"
-          fill="#3A1E48"
-          stroke="none"
-        />
-        <path
-          d="M32 47.2
-             C31.4 43.6 29.4 41.6 25.8 41
-             C29.4 40.4 31.4 38.4 32 34.8
-             C32.6 38.4 34.6 40.4 38.2 41
-             C34.6 41.6 32.6 43.6 32 47.2Z"
-          fill="#3A1E48"
-          stroke="none"
-        />
-        <path
-          d="M16.8 32
-             C20.4 31.4 22.4 29.4 23 25.8
-             C23.6 29.4 25.6 31.4 29.2 32
-             C25.6 32.6 23.6 34.6 23 38.2
-             C22.4 34.6 20.4 32.6 16.8 32Z"
-          fill="#3A1E48"
-          stroke="none"
+          d="M20.5 33.5c4.9-2.2 10.2-3.3 15.5-3.3s10.6 1.1 15.5 3.3"
+          strokeWidth="1.35"
+          opacity="0.58"
         />
 
-        {/* Central data core */}
-        <circle
-          cx="32"
-          cy="32"
-          r="6.2"
-          fill="#3A1E48"
+        {/* Meridians */}
+        <path
+          d="M36 10c-5.2 4.9-7.8 10.9-7.8 18S30.8 41.1 36 46"
+          strokeWidth="1.35"
+          opacity="0.62"
+        />
+        <path
+          d="M36 10c5.2 4.9 7.8 10.9 7.8 18S41.2 41.1 36 46"
+          strokeWidth="1.35"
+          opacity="0.62"
+        />
+
+        {/* Desk-globe axis and outer cradle */}
+        <path
+          d="M19.7 13.4A25.5 25.5 0 0 0 52.3 52.6"
+          strokeWidth="2.5"
+        />
+        <path
+          d="M18.1 12.1l3.2 2.6"
+          strokeWidth="2.5"
+        />
+        <path
+          d="M50.7 51.3l3.2 2.6"
+          strokeWidth="2.5"
+        />
+
+        {/* Stem and base */}
+        <path
+          d="M36 46v8.5"
+          strokeWidth="2.3"
+        />
+        <path
+          d="M29.5 58.2h13"
+          strokeWidth="2.3"
+        />
+        <path
+          d="M25 62h22"
+          strokeWidth="2.7"
+        />
+
+        {/* Small geographic cue, kept abstract and clean */}
+        <path
+          d="M29.1 19.5l3.4-2.5 3.4 1.1 1.6 3.3-2.4 2.4-4.3-.8-1.7-3.5Z"
+          fill="currentColor"
           stroke="none"
+          opacity="0.88"
+        />
+        <path
+          d="M39.9 31.3l3.6-1.4 3 2.2-.7 3.8-3 2.5-2.9-1.8-1.4-2.8 1.4-2.5Z"
+          fill="currentColor"
+          stroke="none"
+          opacity="0.72"
         />
       </g>
     </svg>
@@ -1397,9 +1362,9 @@ export default function App() {
             <span
               className="atlas-brand-mark"
               style={{
-                width: "60px",
-                height: "60px",
-                flex: "0 0 60px",
+                width: "54px",
+                height: "54px",
+                flex: "0 0 54px",
                 display: "inline-flex",
                 alignItems: "center",
                 justifyContent: "center"
@@ -1483,15 +1448,15 @@ export default function App() {
                 <h1>
                   Psychedelic
                   <br />
-                  Clinical Development
+                  Drug Development
                 </h1>
 
                 <p className="hero-description">
-                  An interactive view of companies,
+                  An interactive view of biotech companies,
                   compounds, indications and registered
                   clinical-trial activity, together with
-                  the pipeline context shaping the visible
-                  development landscape.
+                  selected pipeline context shaping
+                  psychedelic drug development.
                 </p>
 
                 <div className="overview-real-metrics">
@@ -1725,8 +1690,36 @@ export default function App() {
               </div>
 
               <div className="insight-item">
-                <span className="insight-symbol">
-                  ◎
+                <span
+                  className="insight-source-icon"
+                  aria-hidden="true"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                  >
+                    <path
+                      d="M6.5 3.5h7.2l3.8 3.8v13.2h-11Z"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M13.7 3.5v4h3.8"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M9 12h6M9 15.5h4.7"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                    />
+                  </svg>
                 </span>
 
                 <div>
