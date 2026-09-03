@@ -1109,25 +1109,25 @@ export default function App() {
         `${heroResponsiveParams}`,
 
       visual1Overview:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1531` +
         `?cells=visual1EcosystemOverviev` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
 
       visual1Company:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1531` +
         `?cells=visual1CompanyLandscapePremium1` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1531` +
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1530?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1531?cells=visual3Chart",
 
       visual4:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1530` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1531` +
         `?cells=visual4PhaseChart` +
         `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
@@ -1820,12 +1820,15 @@ export default function App() {
         )}
 
         {activeView === "phases" && (
-          <section className="visual-page standard-analysis-page">
+          <section className="visual-page standard-analysis-page phase-page">
             <ObservableFrame
               title="Clinical Phase Landscape"
               src={observableSrc.visual4}
               className="full-visual standard-analysis-visual full-phase-visual"
-              height={1180}
+              height={1020}
+              viewportHeight={930}
+              revealDelay={450}
+              hideUntilReady={true}
             />
           </section>
         )}
