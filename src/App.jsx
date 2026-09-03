@@ -640,7 +640,7 @@ function AboutView() {
 
   return (
     <section
-      className="content-page"
+      className="content-page about-page"
       style={{
         width: "min(1180px, 100%)",
         paddingTop: "42px",
