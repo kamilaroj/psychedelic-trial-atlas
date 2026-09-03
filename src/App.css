@@ -624,9 +624,11 @@ a:focus-visible {
 }
 
 .full-indication-visual {
-  height: 828px !important;
-  min-height: 828px !important;
-  max-height: 828px !important;
+  /* The Observable embed adds its own footer below the chart. Crop only
+     that chrome while keeping the complete chart and explanatory card. */
+  height: 760px !important;
+  min-height: 760px !important;
+  max-height: 760px !important;
   overflow: hidden !important;
   clip-path: inset(0) !important;
   -webkit-clip-path: inset(0) !important;
