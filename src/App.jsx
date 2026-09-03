@@ -6,6 +6,19 @@ const ATLAS_VERSION = "September 2026";
 const CONTACT_EMAIL = "kamila.rojek@gmail.com";
 const LINKEDIN_PROFILE = "https://www.linkedin.com/in/kamilarojek/";
 
+const OBSERVABLE_EMBEDS = {
+  ecosystem:
+    "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1EcosystemOverviev",
+  companies:
+    "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1CompanyLandscapePremium1",
+  compounds:
+    "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual2ChartUnitColumns1",
+  indications:
+    "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual3Chart",
+  phases:
+    "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual4PhaseChart"
+};
+
 const NAV_ITEMS = [
   { id: "overview", label: "Overview" },
   { id: "companies", label: "Companies" },
@@ -1142,26 +1155,20 @@ export default function App() {
         `&api_key=${mainApiKey}` +
         `${heroResponsiveParams}`,
 
-      visual1Overview:
-        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1EcosystemOverviev",
+            visual1Overview: OBSERVABLE_EMBEDS.ecosystem,
 
-      visual1Company:
-        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1CompanyLandscapePremium1",
+      visual1Company: OBSERVABLE_EMBEDS.companies,
 
-      visual2:
-        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual2ChartUnitColumns1",
+      visual2: OBSERVABLE_EMBEDS.compounds,
 
-      visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual3Chart",
+      visual3: OBSERVABLE_EMBEDS.indications,
 
-      visual4:
-        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual4PhaseChart"
+      visual4: OBSERVABLE_EMBEDS.phases
     }),
     [
       mainNotebook,
       mainApiKey,
-      heroResponsiveParams,
-      visual1CompanyLandscapeParams
+      heroResponsiveParams
     ]
   );
 
@@ -1860,7 +1867,7 @@ export default function App() {
         )}
 
         {activeView === "companies" && (
-          <section className="visual-page company-page">
+          <section className="visual-page company-page company-page-live">
             <div
               className={`company-visual-shell ${
                 selectedCompany
@@ -1876,7 +1883,7 @@ export default function App() {
                 title="Company Landscape Premium"
                 src={observableSrc.visual1Company}
                 className="full-visual full-company-visual company-real-working-frame"
-                height={1000}
+                height={900}
               />
 
               <CompanyExternalPanel
