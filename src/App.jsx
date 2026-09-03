@@ -521,9 +521,40 @@ function CompanyExternalPanel({
 }
 
 function MethodologyView() {
+  const methodologyCards = [
+    {
+      step: "01",
+      eyebrow: "Registered trials",
+      title: "Evidence units",
+      text:
+        "Public registry records are treated as registered evidence-generation activity."
+    },
+    {
+      step: "02",
+      eyebrow: "Pipeline context",
+      title: "Context units",
+      text:
+        "Company-reported or secondary-source pipeline programs without a public trial ID are treated as context, not clinical-trial evidence."
+    },
+    {
+      step: "03",
+      eyebrow: "Different views",
+      title: "Different analytical questions",
+      text:
+        "Company, compound, indication and phase views use different units of analysis. Their circle counts are therefore not directly comparable."
+    },
+    {
+      step: "04",
+      eyebrow: "Limitations",
+      title: "Public data can change",
+      text:
+        "Trial records may be incomplete, delayed, duplicated or inconsistently structured. Recruitment status should be checked at the original source."
+    }
+  ];
+
   return (
-    <section className="content-page">
-      <div className="content-page-heading">
+    <section className="content-page methodology-page">
+      <div className="content-page-heading methodology-heading">
         <p className="page-eyebrow">Method / data basis</p>
 
         <h1>How the Atlas is built</h1>
@@ -536,44 +567,44 @@ function MethodologyView() {
       </div>
 
       <div className="methodology-grid">
-        <article className="content-card">
-          <p className="page-eyebrow">Registered trials</p>
-          <h2>Evidence units</h2>
-          <p>
-            Public registry records are treated as registered
-            evidence-generation activity.
-          </p>
-        </article>
+        {methodologyCards.map((card) => (
+          <article
+            key={card.step}
+            className="content-card methodology-card"
+          >
+            <div className="methodology-card-topline">
+              <span className="methodology-step">
+                {card.step}
+              </span>
 
-        <article className="content-card">
-          <p className="page-eyebrow">Pipeline context</p>
-          <h2>Context units</h2>
-          <p>
-            Company-reported or secondary-source pipeline programs without
-            a public trial ID are treated as context, not clinical-trial
-            evidence.
-          </p>
-        </article>
+              <p className="page-eyebrow">
+                {card.eyebrow}
+              </p>
+            </div>
 
-        <article className="content-card">
-          <p className="page-eyebrow">Different views</p>
-          <h2>Different analytical questions</h2>
-          <p>
-            Company, compound, indication and phase views use different
-            units of analysis. Their circle counts are therefore not directly
-            comparable.
-          </p>
-        </article>
+            <h2>{card.title}</h2>
 
-        <article className="content-card">
-          <p className="page-eyebrow">Limitations</p>
-          <h2>Public data can change</h2>
-          <p>
-            Trial records may be incomplete, delayed, duplicated or
-            inconsistently structured. Recruitment status should be checked
-            at the original source.
-          </p>
-        </article>
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="methodology-core-rule">
+        <span
+          className="methodology-core-icon"
+          aria-hidden="true"
+        >
+          i
+        </span>
+
+        <div className="methodology-core-copy">
+          <strong>Core rule</strong>
+
+          <span>
+            Registered trial = evidence unit · Pipeline-only asset = context unit ·
+            Visible activity ≠ efficacy, approval, safety or commercial success.
+          </span>
+        </div>
       </div>
     </section>
   );
@@ -1109,25 +1140,25 @@ export default function App() {
         `${heroResponsiveParams}`,
 
       visual1Overview:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1540` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1541` +
         `?cells=visual1EcosystemOverviev` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
 
       visual1Company:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1540` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1541` +
         `?cells=visual1CompanyLandscapePremium1` +
         `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
         `${visual1CompanyLandscapeParams}`,
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1540` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1541` +
         `?cells=visual2ChartUnitColumns1`,
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1540?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1541?cells=visual3Chart",
 
       visual4:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1540` +
+        `https://observablehq.com/embed/e3028f2577c04f9a@1541` +
         `?cells=visual4PhaseChart` +
         `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
     }),
@@ -1617,6 +1648,53 @@ export default function App() {
                   Read methodology →
                 </button>
               </aside>
+
+              <button
+                type="button"
+                className="overview-recruiting-cta"
+                onClick={() => activateView("indications")}
+                aria-label="Open Indications and find currently recruiting trials"
+              >
+                <span
+                  className="overview-recruiting-cta-icon"
+                  aria-hidden="true"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                  >
+                    <path
+                      d="M18.5 4.5c-5.7.5-9.4 3-11.2 7.2-1.1 2.6-.9 5.1-.4 6.8 1.6.4 4 .5 6.4-.8 4-2.1 5.8-6.2 5.2-13.2Z"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M6.8 18.8c2.2-3.8 5.3-6.7 9.5-8.8"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <span className="overview-recruiting-cta-copy">
+                  <strong>Looking for currently recruiting trials?</strong>
+
+                  <span>
+                    Open the Indications view and use the
+                    <b> Recruiting Now </b>
+                    filter to see trials actively recruiting participants.
+                  </span>
+
+                  <span className="overview-recruiting-cta-link">
+                    View recruiting trials →
+                  </span>
+                </span>
+              </button>
             </div>
 
             <div className="inside-section">
