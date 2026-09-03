@@ -2661,116 +2661,112 @@ iframe,
 
 /* =========================================================
    ABOUT — PREMIUM ICON MICROINTERACTIONS
-   Hover once, perform a short animation, then return home.
+   FIXED: AboutView now has .about-page, so these selectors apply.
    ========================================================= */
 
 .about-page .about-story-icon {
-  position: relative;
-  transform-style: preserve-3d;
-  will-change: transform;
-  backface-visibility: visible;
-  -webkit-backface-visibility: visible;
-}
-
-/* HEART: a short 3D left/right flip around its own axis. */
-.about-page .about-story-icon-heart:hover {
-  animation: atlas-heart-flip 1.05s cubic-bezier(.22,.72,.22,1) 1 both;
-}
-
-@keyframes atlas-heart-flip {
-  0% {
-    transform: perspective(380px) rotateY(0deg) rotateZ(0deg) scale(1);
-  }
-  18% {
-    transform: perspective(380px) rotateY(-34deg) rotateZ(-3deg) scale(1.035);
-  }
-  38% {
-    transform: perspective(380px) rotateY(28deg) rotateZ(2deg) scale(1.04);
-  }
-  58% {
-    transform: perspective(380px) rotateY(-16deg) rotateZ(-1.5deg) scale(1.025);
-  }
-  78% {
-    transform: perspective(380px) rotateY(8deg) rotateZ(.5deg) scale(1.012);
-  }
-  100% {
-    transform: perspective(380px) rotateY(0deg) rotateZ(0deg) scale(1);
-  }
-}
-
-/* SEARCH: elegant focus pulse, slightly larger then back. */
-.about-page .about-story-icon-search:hover {
-  animation: atlas-search-focus .92s cubic-bezier(.22,.72,.22,1) 1 both;
-}
-
-@keyframes atlas-search-focus {
-  0% {
-    transform: scale(1) translateZ(0);
-    filter: drop-shadow(0 0 0 rgba(101,51,111,0));
-  }
-  30% {
-    transform: scale(1.16) translateZ(0);
-    filter: drop-shadow(0 5px 10px rgba(101,51,111,.10));
-  }
-  52% {
-    transform: scale(1.08) translateZ(0);
-    filter: drop-shadow(0 3px 7px rgba(101,51,111,.07));
-  }
-  72% {
-    transform: scale(1.13) translateZ(0);
-  }
-  100% {
-    transform: scale(1) translateZ(0);
-    filter: drop-shadow(0 0 0 rgba(101,51,111,0));
-  }
-}
-
-/* SPARK: a tiny irregular orbit / fairy-like jitter, then exact return. */
-.about-page .about-story-icon-spark:hover {
-  animation: atlas-spark-orbit 1.45s cubic-bezier(.22,.72,.22,1) 1 both;
-}
-
-@keyframes atlas-spark-orbit {
-  0% {
-    transform: translate3d(0,0,0) rotate(0deg) scale(1);
-  }
-  10% {
-    transform: translate3d(4px,-3px,0) rotate(8deg) scale(1.04);
-  }
-  22% {
-    transform: translate3d(-3px,2px,0) rotate(-7deg) scale(1.02);
-  }
-  34% {
-    transform: translate3d(5px,3px,0) rotate(10deg) scale(1.05);
-  }
-  47% {
-    transform: translate3d(-4px,-2px,0) rotate(-9deg) scale(1.03);
-  }
-  60% {
-    transform: translate3d(3px,-4px,0) rotate(7deg) scale(1.045);
-  }
-  72% {
-    transform: translate3d(-2px,3px,0) rotate(-5deg) scale(1.025);
-  }
-  84% {
-    transform: translate3d(2px,-1px,0) rotate(3deg) scale(1.012);
-  }
-  100% {
-    transform: translate3d(0,0,0) rotate(0deg) scale(1);
-  }
-}
-
-/* Let the SVG itself participate naturally in the motion. */
-.about-page .about-story-icon svg {
+  position: relative !important;
+  overflow: visible !important;
+  cursor: default;
   transform-origin: 50% 50%;
+  transform-style: preserve-3d;
+  perspective: 420px;
+  will-change: transform;
+}
+
+.about-page .about-story-icon svg {
+  display: block !important;
+  transform-origin: 50% 50%;
+  transform-box: fill-box;
+  will-change: transform, filter;
   pointer-events: none;
 }
 
-/* Respect users who disable motion. */
+/* HEART — clearly visible 3D wobble around its own axis */
+.about-page .about-story-icon-heart:hover {
+  animation: atlas-heart-shell 1.15s cubic-bezier(.2,.72,.22,1) 1 both;
+}
+
+.about-page .about-story-icon-heart:hover svg {
+  animation: atlas-heart-svg 1.15s cubic-bezier(.2,.72,.22,1) 1 both;
+}
+
+@keyframes atlas-heart-shell {
+  0%   { transform: perspective(420px) rotateY(0deg) rotateZ(0deg) scale(1); }
+  18%  { transform: perspective(420px) rotateY(-42deg) rotateZ(-4deg) scale(1.07); }
+  38%  { transform: perspective(420px) rotateY(34deg) rotateZ(3deg) scale(1.08); }
+  58%  { transform: perspective(420px) rotateY(-22deg) rotateZ(-2deg) scale(1.05); }
+  76%  { transform: perspective(420px) rotateY(12deg) rotateZ(1deg) scale(1.025); }
+  100% { transform: perspective(420px) rotateY(0deg) rotateZ(0deg) scale(1); }
+}
+
+@keyframes atlas-heart-svg {
+  0%   { transform: scale(1); filter: drop-shadow(0 0 0 rgba(92,44,103,0)); }
+  35%  { transform: scale(1.12); filter: drop-shadow(0 6px 10px rgba(92,44,103,.18)); }
+  70%  { transform: scale(1.05); filter: drop-shadow(0 3px 7px rgba(92,44,103,.10)); }
+  100% { transform: scale(1); filter: drop-shadow(0 0 0 rgba(92,44,103,0)); }
+}
+
+/* SEARCH — obvious focus / zoom pulse */
+.about-page .about-story-icon-search:hover {
+  animation: atlas-search-shell 1s cubic-bezier(.2,.72,.22,1) 1 both;
+}
+
+.about-page .about-story-icon-search:hover svg {
+  animation: atlas-search-svg 1s cubic-bezier(.2,.72,.22,1) 1 both;
+}
+
+@keyframes atlas-search-shell {
+  0%   { transform: scale(1); }
+  28%  { transform: scale(1.22); }
+  48%  { transform: scale(1.10); }
+  68%  { transform: scale(1.17); }
+  100% { transform: scale(1); }
+}
+
+@keyframes atlas-search-svg {
+  0%   { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 0 rgba(92,44,103,0)); }
+  30%  { transform: rotate(-6deg) scale(1.10); filter: drop-shadow(0 7px 12px rgba(92,44,103,.18)); }
+  55%  { transform: rotate(4deg) scale(1.04); }
+  100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 0 rgba(92,44,103,0)); }
+}
+
+/* SPARK — short irregular fairy-like movement, then exact return */
+.about-page .about-story-icon-spark:hover {
+  animation: atlas-spark-shell 1.55s cubic-bezier(.2,.72,.22,1) 1 both;
+}
+
+.about-page .about-story-icon-spark:hover svg {
+  animation: atlas-spark-svg 1.55s cubic-bezier(.2,.72,.22,1) 1 both;
+}
+
+@keyframes atlas-spark-shell {
+  0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  10%  { transform: translate3d(7px,-5px,0) rotate(10deg) scale(1.06); }
+  22%  { transform: translate3d(-5px,4px,0) rotate(-9deg) scale(1.03); }
+  34%  { transform: translate3d(8px,5px,0) rotate(13deg) scale(1.08); }
+  47%  { transform: translate3d(-7px,-3px,0) rotate(-11deg) scale(1.04); }
+  60%  { transform: translate3d(5px,-7px,0) rotate(9deg) scale(1.07); }
+  73%  { transform: translate3d(-4px,5px,0) rotate(-7deg) scale(1.035); }
+  86%  { transform: translate3d(3px,-2px,0) rotate(4deg) scale(1.015); }
+  100% { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+}
+
+@keyframes atlas-spark-svg {
+  0%   { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 0 rgba(92,44,103,0)); }
+  35%  { transform: rotate(26deg) scale(1.18); filter: drop-shadow(0 7px 12px rgba(92,44,103,.20)); }
+  68%  { transform: rotate(-16deg) scale(1.10); }
+  100% { transform: rotate(0deg) scale(1); filter: drop-shadow(0 0 0 rgba(92,44,103,0)); }
+}
+
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .about-page .about-story-icon-heart:hover,
+  .about-page .about-story-icon-heart:hover svg,
   .about-page .about-story-icon-search:hover,
-  .about-page .about-story-icon-spark:hover {
+  .about-page .about-story-icon-search:hover svg,
+  .about-page .about-story-icon-spark:hover,
+  .about-page .about-story-icon-spark:hover svg {
     animation: none !important;
     transform: none !important;
     filter: none !important;
