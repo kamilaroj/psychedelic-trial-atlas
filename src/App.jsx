@@ -721,6 +721,7 @@ function AboutView() {
               }}
             >
               <span
+                className="about-story-icon about-story-icon-heart"
                 aria-hidden="true"
                 style={{
                   width: "44px",
@@ -780,6 +781,7 @@ function AboutView() {
               }}
             >
               <span
+                className="about-story-icon about-story-icon-search"
                 aria-hidden="true"
                 style={{
                   width: "44px",
@@ -847,6 +849,7 @@ function AboutView() {
               }}
             >
               <span
+                className="about-story-icon about-story-icon-spark"
                 aria-hidden="true"
                 style={{
                   width: "44px",
