@@ -2135,9 +2135,7 @@ iframe,
 }
 
 /* =========================================================
-   PHASES — 2026-09-03 FINAL STAGE-GATE VIEW
-   Matches Compounds page width / visual weight.
-   Crops Observable chrome and keeps the full analytical composition visible.
+   PHASES — FINAL REDUCED / ENLARGED COMPOSITION
    ========================================================= */
 
 .atlas-stage-phases {
@@ -2145,7 +2143,8 @@ iframe,
 }
 
 .atlas-stage-phases .phase-page {
-  width: min(var(--content-max), 100%) !important;
+  width: min(1480px, 100%) !important;
+  max-width: min(1480px, 100%) !important;
   min-height: 0 !important;
   padding-top: 8px !important;
   padding-bottom: 0 !important;
@@ -2156,9 +2155,9 @@ iframe,
   position: relative !important;
   width: min(1480px, 100%) !important;
   max-width: min(1480px, 100%) !important;
-  height: 930px !important;
-  min-height: 930px !important;
-  max-height: 930px !important;
+  height: 940px !important;
+  min-height: 940px !important;
+  max-height: 940px !important;
   margin: 0 auto !important;
   overflow: hidden !important;
   background: transparent !important;
@@ -2177,9 +2176,9 @@ iframe,
   display: block !important;
   width: 100% !important;
   max-width: none !important;
-  height: 1020px !important;
-  min-height: 1020px !important;
-  max-height: 1020px !important;
+  height: 1000px !important;
+  min-height: 1000px !important;
+  max-height: 1000px !important;
   margin: 0 !important;
   transform: none !important;
   transform-origin: top left !important;
@@ -2190,7 +2189,6 @@ iframe,
   overflow: hidden !important;
 }
 
-/* Observable footer / notebook chrome must never become visible. */
 .atlas-stage-phases .full-phase-visual,
 .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
   scrollbar-width: none !important;
@@ -2204,29 +2202,22 @@ iframe,
   display: none !important;
 }
 
-/* Same top rhythm as the final Compounds page. */
-.atlas-stage-phases .standard-analysis-page {
-  padding-top: 8px !important;
-}
-
-/* Laptop */
 @media (max-width: 1260px) {
   .atlas-stage-phases .full-phase-visual {
     width: min(1180px, 100%) !important;
-    height: 744px !important;
-    min-height: 744px !important;
-    max-height: 744px !important;
+    height: 742px !important;
+    min-height: 742px !important;
+    max-height: 742px !important;
   }
 
   .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
-    width: 125.4% !important;
-    height: 1020px !important;
-    transform: scale(0.797) !important;
+    width: 1560px !important;
+    height: 1000px !important;
+    transform: scale(0.7564) !important;
     transform-origin: top left !important;
   }
 }
 
-/* Tablet */
 @media (max-width: 1020px) {
   .atlas-stage-phases .phase-page {
     padding-top: 6px !important;
@@ -2234,35 +2225,27 @@ iframe,
 
   .atlas-stage-phases .full-phase-visual {
     width: 100% !important;
-    height: 63vw !important;
+    height: 61vw !important;
     min-height: 0 !important;
-    max-height: 650px !important;
+    max-height: 640px !important;
   }
 
   .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
     width: 1560px !important;
-    height: 1020px !important;
+    height: 1000px !important;
     transform: scale(calc((100vw - 32px) / 1560)) !important;
     transform-origin: top left !important;
   }
 }
 
-/* Mobile */
 @media (max-width: 720px) {
   .atlas-stage-phases .phase-page {
     padding-top: 4px !important;
   }
 
   .atlas-stage-phases .full-phase-visual {
-    height: 64vw !important;
+    height: 62vw !important;
     max-height: none !important;
-  }
-
-  .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
-    width: 1560px !important;
-    height: 1020px !important;
-    transform: scale(calc((100vw - 32px) / 1560)) !important;
-    transform-origin: top left !important;
   }
 }
 
