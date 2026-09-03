@@ -1146,7 +1146,7 @@ export default function App() {
         "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1EcosystemOverviev",
 
       visual1Company:
-        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1CompanyLandscapePremium1",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1544?cells=visual1CompanyLandscapePremium1",
 
       visual2:
         "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual2ChartUnitColumns1",
