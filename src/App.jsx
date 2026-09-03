@@ -1143,24 +1143,19 @@ export default function App() {
         `${heroResponsiveParams}`,
 
       visual1Overview:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1541` +
-        `?cells=visual1EcosystemOverviev` +
-        `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
+        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1EcosystemOverviev",
 
       visual1Company:
         "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual1CompanyLandscapePremium1",
 
       visual2:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1541` +
-        `?cells=visual2ChartUnitColumns1`,
+        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual2ChartUnitColumns1",
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1541?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual3Chart",
 
       visual4:
-        `https://observablehq.com/embed/e3028f2577c04f9a@1541` +
-        `?cells=visual4PhaseChart` +
-        `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
+        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual4PhaseChart"
     }),
     [
       mainNotebook,
@@ -1910,7 +1905,7 @@ export default function App() {
               title="Compound Activity Landscape"
               src={observableSrc.visual2}
               className="full-visual standard-analysis-visual full-compound-visual"
-              height={930}
+              height={825}
             />
           </section>
         )}
@@ -1921,8 +1916,8 @@ export default function App() {
               title="Indication Landscape"
               src={observableSrc.visual3}
               className="full-visual standard-analysis-visual full-indication-visual"
-              height={860}
-              viewportHeight={774}
+              height={793}
+              viewportHeight={793}
               revealDelay={1100}
               hideUntilReady={true}
             />
