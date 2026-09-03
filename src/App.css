@@ -1208,6 +1208,43 @@ a:focus-visible {
   .methodology-grid { grid-template-columns: 1fr; }
 }
 
+/* =========================================================
+   ANALYTICAL TABS — SHARED TITLE GRID
+   Observable remains untouched. Every full visual now starts in the same
+   1380 px grid as Company Landscape, with one shared top spacing.
+   ========================================================= */
+
+:root {
+  --atlas-title-grid: 1380px;
+  --atlas-title-top-gap: 26px;
+}
+
+.atlas-stage-companies .company-page,
+.atlas-stage-compounds .compound-page,
+.atlas-stage-indications .indication-page,
+.atlas-stage-phases .phase-page {
+  padding-top: var(--atlas-title-top-gap) !important;
+}
+
+.atlas-stage .title-aligned-visual {
+  width: min(var(--atlas-title-grid), 100%) !important;
+  max-width: min(var(--atlas-title-grid), 100%) !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+/* Keep each embedded visual anchored to the top of the shared title grid. */
+.atlas-stage .title-aligned-visual > iframe.atlas-iframe {
+  top: 0 !important;
+}
+
+@media (max-width: 1484px) {
+  .atlas-stage .title-aligned-visual {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+}
+
 @media (max-width: 560px) {
   .atlas-brand-copy strong { font-size: 20px; }
 
@@ -3518,5 +3555,19 @@ iframe,
 
   .atlas-stage-overview .overview-page-final .insight-divider {
     display: none !important;
+  }
+}
+
+/* Final cascade position: preserve the shared desktop grid after the
+   individual responsive visual rules above. */
+@media (min-width: 1485px) {
+  .atlas-stage-companies .company-real-working-frame.title-aligned-visual,
+  .atlas-stage-compounds .full-compound-visual.title-aligned-visual,
+  .atlas-stage-indications .full-indication-visual.title-aligned-visual,
+  .atlas-stage-phases .full-phase-visual.title-aligned-visual {
+    width: var(--atlas-title-grid) !important;
+    max-width: var(--atlas-title-grid) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
   }
 }
