@@ -1,2251 +1,1909 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Inter+Tight:wght@700;800;900&display=swap");
-
-:root {
-  --ink: #24272c;
-  --muted: #68717a;
-  --plum: #38243d;
-  --plum-dark: #2a1534;
-  --plum-mid: #665c91;
-  --line: rgba(56, 36, 61, 0.12);
-  --paper: #f7f5f3;
-  --topbar-height: 82px;
-  --page-pad: clamp(24px, 3vw, 52px);
-  --content-max: 1480px;
-  --company-panel-width: 244px;
-  --analysis-width: 1320px;
-  --analysis-height: 890px;
-}
-
-* { box-sizing: border-box; }
-
-html, body, #root {
-  margin: 0;
-  width: 100%;
-  min-height: 100%;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  color: var(--ink);
-  font-family: "Inter", "Helvetica Neue", Arial, system-ui, sans-serif;
-  background:
-    radial-gradient(circle at 50% 0%, rgba(232, 226, 239, 0.72), transparent 31%),
-    radial-gradient(circle at 9% 23%, rgba(239, 226, 233, 0.34), transparent 24%),
-    linear-gradient(180deg, #fcfbfa 0%, #f8f6f5 100%);
-}
-
-button, a { font: inherit; }
-
-button:focus-visible,
-a:focus-visible {
-  outline: 3px solid rgba(102, 92, 145, 0.32);
-  outline-offset: 3px;
-}
-
-.site {
-  width: 100%;
-  min-height: 100dvh;
-  overflow-x: clip;
-}
-
-/* TOP NAVIGATION */
-
-.atlas-topbar {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  height: var(--topbar-height);
-  border-bottom: 1px solid rgba(56, 36, 61, 0.1);
-  background: rgba(255, 255, 255, 0.82);
-  backdrop-filter: blur(22px) saturate(140%);
-  -webkit-backdrop-filter: blur(22px) saturate(140%);
-}
-
-.atlas-topbar-inner {
-  width: min(var(--content-max), calc(100vw - (var(--page-pad) * 2)));
-  height: 100%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 365px minmax(0, 1fr) 155px;
-  align-items: center;
-  gap: 24px;
-}
-
-.atlas-brand {
-  appearance: none;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  color: var(--plum);
-  cursor: pointer;
-  text-align: left;
-}
-
-.atlas-brand-mark {
-  width: 36px;
-  height: 36px;
-  flex: 0 0 36px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #32173f;
-}
-
-.atlas-brand-mark svg {
-  width: 36px;
-  height: 36px;
-  display: block;
-}
-
-.atlas-brand-copy {
-  display: flex;
-  align-items: center;
-}
-
-.atlas-brand-copy strong {
-  display: block;
-  font-family: "Inter Tight", "Inter", sans-serif;
-  font-size: 34px;
-  line-height: 1;
-  font-weight: 900;
-  letter-spacing: -0.055em;
-  color: #2d1837;
-  white-space: nowrap;
-}
-
-.atlas-tabs {
-  height: 100%;
-  min-width: 0;
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  gap: clamp(22px, 3vw, 44px);
-}
-
-.atlas-tab {
-  position: relative;
-  appearance: none;
-  border: 0;
-  background: transparent;
-  padding: 0;
-  color: #1f1a22;
-  font-size: 10.5px;
-  line-height: 1;
-  font-weight: 700;
-  text-transform: uppercase;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.atlas-tab::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 9px;
-  height: 3px;
-  border-radius: 999px;
-  background: #58246a;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 170ms ease;
-}
-
-.atlas-tab:hover::after,
-.atlas-tab-active::after { transform: scaleX(1); }
-
-.atlas-tab-active { color: #552365; }
-
-.atlas-updated {
-  justify-self: end;
-  color: #48414a;
-  font-size: 9.5px;
-  white-space: nowrap;
-}
-
-/* GLOBAL PAGE STAGE */
-
-.atlas-stage {
-  width: 100%;
-  padding: 0 var(--page-pad) 36px;
-}
-
-.overview-page,
-.visual-page,
-.content-page {
-  width: min(var(--content-max), 100%);
-  margin: 0 auto;
-}
-
-/* OVERVIEW HERO */
-
-.overview-hero {
-  min-height: 540px;
-  padding-top: 34px;
-  display: grid;
-  grid-template-columns: minmax(410px, 0.96fr) minmax(520px, 1.18fr) minmax(210px, 0.48fr);
-  gap: 20px;
-  align-items: center;
-}
-
-.overview-hero-copy {
-  min-width: 0;
-  padding-left: 26px;
-}
-
-.hero-eyebrow {
-  margin: 0 0 16px;
-  color: #65336f;
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.3em;
-}
-
-.overview-hero h1 {
-  margin: 0;
-  color: #2d2136;
-  font-family: "Inter Tight", "Inter", sans-serif;
-  font-size: clamp(54px, 5vw, 78px);
-  line-height: 0.92;
-  font-weight: 850;
-  letter-spacing: -0.07em;
-}
-
-.hero-description {
-  max-width: 560px;
-  margin: 23px 0 18px;
-  color: #29242c;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.hero-cta { display: none; }
-
-/* OVERVIEW REAL METRICS */
-
-.overview-real-metrics {
-  position: relative;
-  width: 100%;
-  height: 124px;
-  margin-top: 22px;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.overview-real-metrics iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 166.6667%;
-  height: 1035px;
-  border: 0;
-  transform: scale(0.6);
-  transform-origin: top left;
-}
-
-/* OVERVIEW COMPANY PREVIEW */
-
-.overview-company-hook {
-  min-width: 0;
-  align-self: stretch;
-  padding-top: 14px;
-  display: grid;
-  grid-template-rows: auto minmax(0, 1fr);
-}
-
-.overview-company-hook-label {
-  min-height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.overview-company-hook-label > span {
-  color: #5c2c67;
-  font-size: 8.5px;
-  font-weight: 800;
-  letter-spacing: 0.18em;
-}
-
-.overview-company-hook-label button {
-  border: 0;
-  background: transparent;
-  color: var(--plum);
-  padding: 0;
-  font-size: 9px;
-  font-weight: 750;
-  cursor: pointer;
-}
-
-.overview-company-hook-window {
-  position: relative;
-  height: 455px;
-  min-height: 455px;
-  overflow: hidden;
-  background: transparent;
-  pointer-events: none;
-}
-
-.overview-company-hook-window iframe {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 200%;
-  height: 1000px;
-  margin: 0;
-  border: 0;
-  transform: translateX(-50%) scale(0.5);
-  transform-origin: top center;
-}
-
-/* OVERVIEW READING CARD */
-
-.overview-reading-card {
-  align-self: center;
-  min-height: 392px;
-  padding: 22px 20px 18px;
-  border: 1px solid rgba(56, 36, 61, 0.09);
-  border-radius: 13px;
-  background: rgba(255, 255, 255, 0.65);
-  box-shadow: 0 12px 32px rgba(58, 39, 70, 0.065);
-}
-
-.page-eyebrow {
-  margin: 0 0 9px;
-  color: rgba(56, 36, 61, 0.62);
-  font-size: 8.5px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-.overview-reading-card h2 {
-  margin: 0 0 18px;
-  color: var(--plum);
-  font-family: "Inter Tight", "Inter", sans-serif;
-  font-size: 23px;
-  line-height: 0.98;
-  letter-spacing: -0.05em;
-}
-
-.reading-row {
-  padding: 12px 0;
-  border-bottom: 1px solid rgba(56, 36, 61, 0.08);
-}
-
-.reading-row strong {
-  display: block;
-  color: var(--plum);
-  font-size: 9.5px;
-}
-
-.reading-row span {
-  display: block;
-  margin-top: 4px;
-  color: var(--muted);
-  font-size: 8.5px;
-  line-height: 1.35;
-}
-
-.reading-method-link {
-  width: 100%;
-  margin-top: 18px;
-  padding: 12px 0 0;
-  border: 0;
-  border-top: 1px solid rgba(56, 36, 61, 0.08);
-  background: transparent;
-  color: var(--plum);
-  font-size: 9px;
-  font-weight: 750;
-  text-align: left;
-  cursor: pointer;
-}
-
-/* OVERVIEW PREVIEW CARDS */
-
-.inside-section { margin-top: 8px; }
-
-.inside-kicker {
-  margin: 0 0 8px 22px;
-  color: #6a3a72;
-  font-size: 8.5px;
-  font-weight: 800;
-  letter-spacing: 0.22em;
-}
-
-.overview-route-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  border: 1px solid rgba(70, 49, 78, 0.12);
-  border-radius: 12px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.28);
-}
-
-.overview-route-card {
-  appearance: none;
-  min-height: 270px;
-  padding: 14px 16px 16px;
-  border: 0;
-  border-right: 1px solid rgba(70, 49, 78, 0.12);
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--ink);
-  cursor: pointer;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  transition: background 160ms ease;
-}
-
-.overview-route-card:last-child { border-right: 0; }
-
-.overview-route-card:hover { background: rgba(255, 255, 255, 0.56); }
-
-.real-preview-window {
-  position: relative;
-  width: 100%;
-  height: 150px;
-  overflow: hidden;
-  pointer-events: none;
-  background: transparent;
-}
-
-.real-preview-iframe {
-  position: absolute;
-  border: 0;
-  margin: 0;
-}
-
-.preview-companies .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 400%;
-  height: 1000px;
-  transform: scale(0.25);
-  transform-origin: top left;
-}
-
-.preview-compounds .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 400%;
-  height: 780px;
-  transform: scale(0.25);
-  transform-origin: top left;
-}
-
-.preview-indications .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 320%;
-  height: 824px;
-  transform: scale(0.3125);
-  transform-origin: top left;
-}
-
-.preview-phases .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 360%;
-  height: 1180px;
-  transform: scale(0.2777778);
-  transform-origin: top left;
-}
-
-.overview-route-copy {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding-top: 12px;
-}
-
-.overview-route-copy h3 {
-  margin: 0 0 7px;
-  color: var(--plum);
-  font-family: "Inter Tight", "Inter", sans-serif;
-  font-size: 15px;
-  line-height: 1;
-  letter-spacing: -0.04em;
-}
-
-.overview-route-copy p {
-  margin: 0;
-  color: #373039;
-  font-size: 9.5px;
-  line-height: 1.4;
-}
-
-.overview-route-link {
-  display: block;
-  margin-top: 16px;
-  color: var(--plum);
-  font-size: 9px;
-  font-weight: 800;
-}
-
-/* INFORMATION BAR */
-
-.bottom-insight-bar {
-  margin-top: 10px;
-  min-height: 88px;
-  padding: 16px 24px;
-  border-radius: 9px;
-  background:
-    radial-gradient(circle at 18% 0%, rgba(115, 67, 137, 0.35), transparent 24%),
-    linear-gradient(90deg, #2a1534 0%, #28122f 100%);
-  color: #fff;
-  display: grid;
-  grid-template-columns: 1.42fr 1px repeat(4, minmax(0, 1fr));
-  gap: 22px;
-  align-items: center;
-}
-
-.insight-primary,
-.insight-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 11px;
-}
-
-.insight-info {
-  width: 36px;
-  height: 36px;
-  flex: 0 0 36px;
-  border: 1px solid rgba(255, 255, 255, 0.44);
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Georgia, serif;
-  font-size: 17px;
-}
-
-.insight-primary strong,
-.insight-item strong {
-  display: block;
-  color: #fff;
-  font-size: 9.5px;
-  line-height: 1.25;
-}
-
-.insight-primary span:not(.insight-info),
-.insight-item span:not(.insight-dot):not(.insight-symbol) {
-  display: block;
-  margin-top: 4px;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 8px;
-  line-height: 1.35;
-}
-
-.insight-divider {
-  width: 1px;
-  align-self: stretch;
-  background: rgba(255, 255, 255, 0.4);
-}
-
-.insight-dot {
-  width: 18px;
-  height: 18px;
-  flex: 0 0 18px;
-  border-radius: 999px;
-  margin-top: 1px;
-}
-
-.insight-dot-solid { background: #70428a; }
-
-.insight-dot-dashed {
-  border: 1px dashed rgba(255, 255, 255, 0.8);
-}
-
-.insight-symbol {
-  width: 20px;
-  flex: 0 0 20px;
-  color: #fff;
-  font-size: 20px;
-  line-height: 1;
-}
-
-/* OBSERVABLE GLOBAL */
-
-.visual-page {
-  min-height: calc(100dvh - var(--topbar-height));
-  padding: 26px 0 44px;
-}
-
-.observable-shell {
-  position: relative;
-  width: 100%;
-  overflow: hidden;
-  background: transparent;
-  isolation: isolate;
-  border: 0;
-  box-shadow: none;
-}
-
-.atlas-iframe {
-  display: block;
-  width: 100%;
-  border: 0;
-  outline: 0;
-  background: transparent;
-}
-
-.full-visual {
-  width: min(var(--analysis-width), 100%);
-  margin: 0 auto;
-}
-
-/* STANDARD ANALYTICAL VISUALS */
-
-.standard-analysis-page { padding-top: 28px; }
-
-.standard-analysis-visual {
-  position: relative;
-  width: min(var(--analysis-width), 100%) !important;
-  max-width: min(var(--analysis-width), 100%) !important;
-  height: var(--analysis-height) !important;
-  min-height: var(--analysis-height) !important;
-  max-height: var(--analysis-height) !important;
-  margin: 0 auto !important;
-  overflow: hidden !important;
-  background: transparent;
-}
-
-
-.indication-page {
-  min-height: 0 !important;
-  padding-bottom: 0 !important;
-}
-
-.full-indication-visual {
-  height: 828px !important;
-  min-height: 828px !important;
-  max-height: 828px !important;
-  overflow: hidden !important;
-  clip-path: inset(0) !important;
-  -webkit-clip-path: inset(0) !important;
-  background: transparent !important;
-}
-
-.full-indication-visual .atlas-iframe {
-  position: absolute;
-  top: 0 !important;
-  left: 50%;
-  width: 92.6% !important;
-  max-width: none !important;
-  height: 765px !important;
-  min-height: 765px !important;
-  max-height: 765px !important;
-  margin: 0 !important;
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  overflow: hidden !important;
-  transform: translateX(-50%) scale(1.08);
-  transform-origin: top center;
-  background: transparent !important;
-}
-
-.full-indication-visual .atlas-iframe {
-  top: 0 !important;
-}
-
-/* LOAD FLASH PROTECTION
-   No painted loading layer. Iframes stay completely hidden until onLoad,
-   so no temporary strip / edge can appear on the left.
-*/
-
-.observable-loading-cover,
-.preview-loading-cover {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  width: 0 !important;
-  height: 0 !important;
-  pointer-events: none !important;
-}
-
-.observable-shell .atlas-iframe,
-.real-preview-window .real-preview-iframe {
-  opacity: 0;
-  visibility: hidden;
-  transition: none !important;
-}
-
-.observable-loaded .atlas-iframe,
-.preview-loaded .real-preview-iframe {
-  opacity: 1;
-  visibility: visible;
-}
-
-/* Prevent any temporary iframe edge / native focus outline. */
-.observable-shell,
-.real-preview-window,
-.atlas-iframe,
-.real-preview-iframe {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-}
-
-/* COMPANY LANDSCAPE FULL VIEW */
-
-.company-page {
-  padding-top: 8px;
-}
-
-.company-visual-shell {
-  position: relative;
-  width: min(1380px, 100%);
-  margin: 0 auto;
-  overflow: visible;
-}
-
-.company-real-working-frame,
-.full-company-visual.company-real-working-frame {
-  position: relative !important;
-  width: min(1380px, 100%) !important;
-  max-width: min(1380px, 100%) !important;
-  height: 950px !important;
-  min-height: 950px !important;
-  max-height: 950px !important;
-  margin: 0 auto !important;
-  overflow: hidden !important;
-  background: transparent !important;
-}
-
-.company-real-working-frame > iframe.atlas-iframe,
-.full-company-visual.company-real-working-frame > iframe.atlas-iframe {
-  position: absolute !important;
-  top: 0 !important;
-  left: 50% !important;
-  display: block !important;
-  width: 1110px !important;
-  max-width: none !important;
-  height: 1000px !important;
-  min-height: 1000px !important;
-  max-height: 1000px !important;
-  margin: 0 !important;
-  transform: translateX(calc(-50% - 42px)) scale(1.085) !important;
-  transform-origin: top center !important;
-  border: 0 !important;
-  background: transparent !important;
-}
-
-/* COMPANY PANEL */
-
-.company-panel {
-  position: absolute;
-  top: 24px;
-  left: calc(100% - 94px);
-  z-index: 50;
-  width: var(--company-panel-width);
-  height: 895px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.56);
-  box-shadow: 0 22px 50px rgba(58, 42, 84, 0.12), 0 6px 18px rgba(29, 29, 31, 0.045);
-  backdrop-filter: blur(24px) saturate(140%);
-  -webkit-backdrop-filter: blur(24px) saturate(140%);
-}
-
-.company-panel-compare {
-  left: calc(100% + var(--company-panel-width) - 94px);
-}
-
-.company-panel-close {
-  position: absolute;
-  top: 36px;
-  left: calc(100% - 108px);
-  z-index: 80;
-  width: 30px;
-  height: 30px;
-  border: 1px solid rgba(56, 36, 61, 0.1);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.94);
-  color: var(--ink);
-  font-size: 18px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.company-panel-close-compare {
-  left: calc(100% + var(--company-panel-width) - 108px);
-}
-
-.company-panel-compare-button {
-  position: absolute;
-  top: 50%;
-  left: calc(100% + var(--company-panel-width) - 112px);
-  z-index: 82;
-  width: 158px;
-  min-height: 40px;
-  border: 1px solid rgba(56, 36, 61, 0.1);
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.95);
-  color: var(--plum);
-  font-size: 10.5px;
-  font-weight: 780;
-  cursor: pointer;
-  transform: translateY(-50%);
-}
-
-.company-panel-compare-button-active {
-  background: var(--plum);
-  color: #fff;
-}
-
-.company-panel-inner {
-  height: 100%;
-  padding: 18px 16px 18px;
-  overflow: hidden;
-}
-
-.company-panel-header { min-height: 116px; }
-
-.company-panel-logo-slot {
-  width: 46px;
-  height: 46px;
-  margin-left: auto;
-}
-
-.company-panel-logo {
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.company-panel-logo img {
-  width: 84%;
-  height: 84%;
-  object-fit: contain;
-}
-
-.company-panel-header h3 {
-  margin: 3px 0 6px;
-  color: var(--plum);
-  font-family: "Inter Tight", "Inter", sans-serif;
-  font-size: 18px;
-  line-height: 1.02;
-  letter-spacing: -0.045em;
-}
-
-.company-panel-subtitle,
-.company-panel-site-fallback {
-  margin: 0;
-  color: var(--muted);
-  font-size: 9.7px;
-  line-height: 1.35;
-}
-
-.company-panel-websites {
-  margin-top: 6px;
-  display: grid;
-  gap: 3px;
-}
-
-.company-panel-websites a {
-  color: var(--plum-mid);
-  font-size: 9.5px;
-  line-height: 1.2;
-  font-weight: 700;
-}
-
-.company-panel-metrics {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7px;
-  margin-top: 12px;
-}
-
-.company-panel-metric {
-  min-height: 64px;
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.42);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.company-panel-metric-main {
-  grid-column: 1 / -1;
-  min-height: 80px;
-}
-
-.company-panel-metric strong {
-  color: var(--plum);
-  font-family: "Inter Tight", "Inter", sans-serif;
-  font-size: 19px;
-  line-height: 1;
-}
-
-.company-panel-metric-main strong { font-size: 32px; }
-
-.company-panel-metric span {
-  margin-top: 5px;
-  color: #7d818a;
-  font-size: 7.8px;
-  line-height: 1.2;
-  font-weight: 800;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.company-panel-metric small {
-  margin-top: 4px;
-  color: #9499a1;
-  font-size: 6.7px;
-  line-height: 1.2;
-  font-weight: 700;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.company-panel-details { margin-top: 11px; }
-
-.company-panel-details section {
-  padding: 8px 0;
-  border-top: 1px solid rgba(56, 36, 61, 0.08);
-}
-
-.company-panel-details section > span {
-  display: block;
-  margin-bottom: 4px;
-  color: #858a92;
-  font-size: 8px;
-  line-height: 1.1;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.company-panel-details p {
-  margin: 0;
-  color: #59616a;
-  font-size: 9.7px;
-  line-height: 1.32;
-}
-
-.company-panel-trials {
-  max-height: 188px;
-  overflow: hidden;
-  display: grid;
-  gap: 3px;
-}
-
-.company-panel-trials-many {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.company-panel-trials a,
-.company-panel-trials span {
-  color: var(--plum-mid);
-  font-size: 8.7px;
-  line-height: 1.25;
-  font-weight: 700;
-  text-decoration: underline;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-
-/* METHODOLOGY / ABOUT */
-
-.content-page {
-  width: min(1050px, 100%);
-  padding: 58px 0 60px;
-}
-
-.content-page-heading {
-  max-width: 740px;
-  margin-bottom: 28px;
-}
-
-.content-page-heading h1,
-.content-card h2 {
-  color: var(--plum);
-  font-family: "Inter Tight", "Inter", sans-serif;
-}
-
-.content-page-heading h1 {
-  margin: 0 0 12px;
-  font-size: clamp(42px, 5vw, 68px);
-  line-height: 0.94;
-  letter-spacing: -0.065em;
-}
-
-.content-page-heading > p:last-child {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-.methodology-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.content-card {
-  min-height: 190px;
-  padding: 24px;
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 14px 32px rgba(58, 42, 84, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.58);
-}
-
-.content-card h2 {
-  margin: 0 0 11px;
-  font-size: 24px;
-  line-height: 1;
-  letter-spacing: -0.045em;
-}
-
-.content-card p {
-  color: var(--muted);
-  font-size: 12.5px;
-  line-height: 1.55;
-}
-
-.contact-card { background: var(--plum); }
-
-.contact-card .page-eyebrow,
-.contact-card h2,
-.contact-card a { color: #fff; }
-
-.contact-card a {
-  display: block;
-  width: fit-content;
-  margin-top: 9px;
-  font-size: 11px;
-  font-weight: 760;
-}
-
-.about-disclaimer {
-  margin: 18px 0 0;
-  color: rgba(56, 36, 61, 0.58);
-  font-size: 10px;
-  line-height: 1.45;
-}
-
-/* RESPONSIVE */
-
-@media (max-width: 1260px) {
-  .atlas-topbar-inner {
-    grid-template-columns: 320px minmax(0, 1fr) 120px;
-  }
-
-  .atlas-tabs { gap: 20px; }
-
-  .overview-hero {
-    grid-template-columns: minmax(380px, 0.95fr) minmax(430px, 1.08fr) 200px;
-  }
-
-  .overview-hero h1 { font-size: 56px; }
-
-  .bottom-insight-bar { gap: 15px; }
-
-  .company-real-working-frame > iframe.atlas-iframe,
-  .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
-    transform: translateX(calc(-50% - 18px)) scale(1.02) !important;
-  }
-}
-
-@media (max-width: 1020px) {
-  :root {
-    --topbar-height: auto;
-    --analysis-height: 760px;
-  }
-
-  .atlas-topbar { height: auto; }
-
-  .atlas-topbar-inner {
-    width: calc(100vw - 32px);
-    padding: 11px 0 10px;
-    grid-template-columns: 1fr auto;
-    gap: 10px;
-  }
-
-  .atlas-brand-copy strong { font-size: 22px; }
-
-  .atlas-brand-mark,
-  .atlas-brand-mark svg {
-    width: 33px;
-    height: 33px;
-  }
-
-  .atlas-updated { display: none; }
-
-  .atlas-tabs {
-    grid-column: 1 / -1;
-    width: 100%;
-    justify-content: flex-start;
-    overflow-x: auto;
-    gap: 22px;
-    padding-bottom: 3px;
-    scrollbar-width: none;
-  }
-
-  .atlas-tabs::-webkit-scrollbar { display: none; }
-
-  .atlas-tab { min-height: 30px; }
-
-  .atlas-stage { padding: 0 16px 30px; }
-
-  .overview-hero { grid-template-columns: 1fr 1fr; }
-
-  .overview-reading-card {
-    grid-column: 1 / -1;
-    width: min(100%, 560px);
-    min-height: auto;
-    justify-self: center;
-  }
-
-  .overview-route-grid { grid-template-columns: repeat(2, 1fr); }
-
-  .overview-route-card:nth-child(2) { border-right: 0; }
-
-  .overview-route-card:nth-child(1),
-  .overview-route-card:nth-child(2) {
-    border-bottom: 1px solid rgba(70, 49, 78, 0.12);
-  }
-
-  .bottom-insight-bar { grid-template-columns: 1fr 1fr; }
-
-  .insight-divider { display: none; }
-
-  .company-real-working-frame,
-  .full-company-visual.company-real-working-frame {
-    height: 900px !important;
-    min-height: 900px !important;
-    max-height: 900px !important;
-  }
-
-  .company-real-working-frame > iframe.atlas-iframe,
-  .full-company-visual.company-real-working-frame > iframe.atlas-iframe {
-    width: 100% !important;
-    height: 1000px !important;
-    left: 0 !important;
-    transform: none !important;
-  }
-
-  .company-panel,
-  .company-panel-compare {
-    position: fixed;
-    left: 16px;
-    right: 16px;
-    top: auto;
-    bottom: 16px;
-    width: auto;
-    height: min(72vh, 590px);
-    z-index: 300;
-  }
-
-  .company-panel-close,
-  .company-panel-close-compare {
-    position: fixed;
-    left: 28px;
-    top: auto;
-    bottom: calc(16px + min(72vh, 590px) - 14px);
-    z-index: 320;
-  }
-
-  .company-panel-compare-button {
-    position: fixed;
-    left: 50%;
-    top: auto;
-    bottom: calc(16px + min(72vh, 590px) + 12px);
-    transform: translateX(-50%);
-    z-index: 322;
-  }
-
-  .company-panel-inner { overflow-y: auto; }
-}
-
-@media (max-width: 720px) {
-  :root { --analysis-height: 640px; }
-
-  .overview-hero { grid-template-columns: 1fr; }
-
-  .overview-hero-copy { padding: 20px 4px 0; }
-
-  .overview-hero h1 { font-size: 49px; }
-
-  .overview-company-hook-window {
-    min-height: 390px;
-    height: 390px;
-  }
-
-  .overview-route-grid { grid-template-columns: 1fr; }
-
-  .overview-route-card {
-    border-right: 0;
-    border-bottom: 1px solid rgba(70, 49, 78, 0.12);
-  }
-
-  .overview-route-card:last-child { border-bottom: 0; }
-
-  .bottom-insight-bar { grid-template-columns: 1fr; }
-
-  .methodology-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 560px) {
-  .atlas-brand-copy strong { font-size: 20px; }
-
-  .atlas-brand-mark,
-  .atlas-brand-mark svg {
-    width: 30px;
-    height: 30px;
-  }
-}
-
-
-/* =========================================================
-   FINAL FIRST-PAINT FIX
-   Prevents any temporary left-side strip while embeds mount.
-   ========================================================= */
-
-html,
-body,
-#root,
-.site {
-  width: 100%;
-  max-width: 100%;
-  overflow-x: hidden !important;
-}
-
-body {
-  margin: 0 !important;
-}
-
-.atlas-stage,
-.overview-page,
-.visual-page,
-.content-page,
-.observable-shell,
-.real-preview-window,
-.company-visual-shell,
-.company-real-working-frame,
-.standard-analysis-visual {
-  min-width: 0 !important;
-  border-left: 0 !important;
-  outline: 0 !important;
-}
-
-/* Hard clipping is important here. It prevents transformed Observable
-   iframes from painting a 1â€“5 px edge outside their host during first layout. */
-.observable-shell,
-.real-preview-window,
-.company-real-working-frame,
-.standard-analysis-visual,
-.overview-company-hook-window,
-.overview-real-metrics {
-  overflow: hidden !important;
-  clip-path: inset(0);
-  -webkit-clip-path: inset(0);
-  contain: paint;
-}
-
-/* There is no loading overlay anymore. */
-.observable-loading-cover,
-.preview-loading-cover {
-  display: none !important;
-}
-
-/* The iframe is part of layout, but its pixels are not painted before onLoad. */
-.observable-shell:not(.observable-loaded) > iframe.atlas-iframe,
-.real-preview-window:not(.preview-loaded) > iframe.real-preview-iframe {
-  opacity: 0 !important;
-  visibility: hidden !important;
-  pointer-events: none !important;
-}
-
-/* No transition on first reveal = no partial edge frame. */
-.observable-shell.observable-loaded > iframe.atlas-iframe,
-.real-preview-window.preview-loaded > iframe.real-preview-iframe {
-  opacity: 1 !important;
-  visibility: visible !important;
-  transition: none !important;
-}
-
-/* Remove every possible native iframe edge. */
-iframe,
-.atlas-iframe,
-.real-preview-iframe {
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-}
-
-/* Do not allow pseudo-elements to create vertical masks/strips. */
-.full-compound-visual::before,
-.full-compound-visual::after,
-.full-phase-visual::before,
-.full-phase-visual::after,
-.full-indication-visual::before,
-.full-indication-visual::after,
-.full-company-visual::before,
-.full-company-visual::after,
-.company-real-working-frame::before,
-.company-real-working-frame::after,
-.observable-shell::before,
-.observable-shell::after {
-  content: none !important;
-  display: none !important;
-}
-
-/* =========================================================
-   COMPOUNDS â€” FINAL BALANCED VIEWPORT
-   Observable SVG: 1560 Ã— 990.
-   One stable iframe only.
-   No scaling trick. No internal scrolling.
-   The host clips before Observable footer/chrome.
-   ========================================================= */
-
-.atlas-stage-compounds {
-  padding-bottom: 0 !important;
-}
-
-.atlas-stage-compounds .compound-page {
-  width: min(var(--content-max), 100%);
-  min-height: 0 !important;
-  padding-top: 8px !important;
-  padding-bottom: 0 !important;
-  margin: 0 auto !important;
-}
-
-.atlas-stage-compounds .full-compound-visual {
-  position: relative !important;
-  width: min(1480px, 100%) !important;
-  max-width: min(1480px, 100%) !important;
-
-  /* Full analytical layer, including the expanded cards. */
-  height: 915px !important;
-  min-height: 915px !important;
-  max-height: 915px !important;
-
-  margin: 0 auto !important;
-  overflow: hidden !important;
-  background: transparent !important;
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  contain: paint !important;
-  clip-path: inset(0) !important;
-  -webkit-clip-path: inset(0) !important;
-}
-
-.atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-  position: absolute !important;
-  inset: 0 !important;
-  display: block !important;
-
-  width: 100% !important;
-  max-width: none !important;
-  height: 945px !important;
-  min-height: 945px !important;
-  max-height: none !important;
-
-  margin: 0 !important;
-  transform: none !important;
-  transform-origin: top left !important;
-
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  overflow: hidden !important;
-}
-
-.atlas-stage-compounds .full-compound-visual,
-.atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-}
-
-.atlas-stage-compounds .full-compound-visual::-webkit-scrollbar,
-.atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
-  display: none !important;
-}
-
-@media (max-width: 1260px) {
-  .atlas-stage-compounds .full-compound-visual {
-    width: min(1180px, 100%) !important;
-    height: 748px !important;
-    min-height: 748px !important;
-    max-height: 748px !important;
-  }
-
-  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 785px !important;
-  }
-}
-
-@media (max-width: 1020px) {
-  .atlas-stage-compounds .compound-page {
-    padding-top: 6px !important;
-  }
-
-  .atlas-stage-compounds .full-compound-visual {
-    width: 100% !important;
-    height: 63vw !important;
-    min-height: 0 !important;
-    max-height: 650px !important;
-  }
-
-  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 715px !important;
-  }
-}
-
-@media (max-width: 720px) {
-  .atlas-stage-compounds .compound-page {
-    padding-top: 4px !important;
-  }
-
-  .atlas-stage-compounds .full-compound-visual {
-    height: 64vw !important;
-    max-height: none !important;
-  }
-
-  .atlas-stage-compounds .full-compound-visual > iframe.atlas-iframe {
-    height: 660px !important;
-  }
-}
-
-/* =========================================================
-   ABOUT â€” FINAL POLISH
-   ========================================================= */
-
-.about-page {
-  width: min(1180px, 100%) !important;
-  padding-top: 42px !important;
-  padding-bottom: 44px !important;
-}
-
-.about-page .content-page-heading {
-  max-width: 860px !important;
-  margin-bottom: 24px !important;
-}
-
-.about-page .content-page-heading h1 {
-  margin-bottom: 12px !important;
-  font-size: clamp(40px, 4.2vw, 60px) !important;
-  line-height: 0.96 !important;
-  letter-spacing: -0.06em !important;
-}
-
-.about-page .content-page-heading > p:last-child {
-  max-width: 825px !important;
-  font-size: 13.5px !important;
-  line-height: 1.55 !important;
-}
-
-.about-page > div:nth-of-type(2) {
-  grid-template-columns: minmax(0, 1.62fr) minmax(250px, 0.62fr) !important;
-  gap: 34px !important;
-}
-
-.about-page > div:nth-of-type(2) > article {
-  min-height: 0 !important;
-  padding: 26px 30px 28px !important;
-}
-
-.about-page > div:nth-of-type(2) > article > .page-eyebrow {
-  margin-bottom: 20px !important;
-}
-
-.about-page > div:nth-of-type(2) > article > div {
-  gap: 19px !important;
-}
-
-.about-page > div:nth-of-type(2) > article > div > div {
-  grid-template-columns: 40px minmax(0, 1fr) !important;
-  gap: 16px !important;
-}
-
-.about-page > div:nth-of-type(2) > article > div > div > span {
-  width: 40px !important;
-  height: 40px !important;
-  font-size: 18px !important;
-}
-
-.about-page > div:nth-of-type(2) > article p:not(.page-eyebrow) {
-  font-size: 12.9px !important;
-  line-height: 1.58 !important;
-}
-
-.about-page > div:nth-of-type(2) > aside {
-  padding-top: 4px !important;
-}
-
-.about-page > div:nth-of-type(2) > aside img {
-  width: 148px !important;
-  height: 148px !important;
-  margin-bottom: 15px !important;
-  object-fit: cover !important;
-  object-position: 50% 34% !important;
-}
-
-.about-page > div:nth-of-type(2) > aside h2 {
-  font-size: 21px !important;
-  font-weight: 850 !important;
-}
-
-.about-page > div:nth-of-type(2) > aside > p {
-  margin-bottom: 17px !important;
-  font-size: 9.7px !important;
-}
-
-.about-page > div:nth-of-type(3) {
-  gap: 14px !important;
-  margin-top: 22px !important;
-}
-
-.about-page > div:nth-of-type(3) > article {
-  min-height: 126px !important;
-  padding: 18px 18px 17px !important;
-  border-color: rgba(56, 36, 61, 0.065) !important;
-  background: rgba(255, 255, 255, 0.34) !important;
-  box-shadow:
-    0 10px 24px rgba(58, 42, 84, 0.025),
-    inset 0 1px 0 rgba(255, 255, 255, 0.58) !important;
-}
-
-.about-page > div:nth-of-type(3) > article h2 {
-  font-size: 17px !important;
-  line-height: 1.08 !important;
-  font-weight: 760 !important;
-  letter-spacing: -0.035em !important;
-}
-
-.about-page > div:nth-of-type(3) > article > p:last-child {
-  font-size: 10.5px !important;
-  line-height: 1.5 !important;
-}
-
-.about-page > div:last-child {
-  margin-top: 18px !important;
-  padding: 12px 15px !important;
-}
-
-@media (max-width: 900px) {
-  .about-page > div:nth-of-type(2) {
-    grid-template-columns: 1fr !important;
-  }
-
-  .about-page > div:nth-of-type(3) {
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-  }
-}
-
-@media (max-width: 560px) {
-  .about-page {
-    padding-top: 30px !important;
-  }
-
-  .about-page > div:nth-of-type(3) {
-    grid-template-columns: 1fr !important;
-  }
-}
-
-/* =========================================================
-   ABOUT â€” ICON CONSISTENCY
-   ========================================================= */
-
-.about-page > div:nth-of-type(2) > article > div > div > span {
-  width: 44px !important;
-  height: 44px !important;
-  min-width: 44px !important;
-  min-height: 44px !important;
-  padding: 0 !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  font-size: 0 !important;
-}
-
-.about-page > div:nth-of-type(2) > article > div > div > span svg {
-  width: 20px !important;
-  height: 20px !important;
-  display: block !important;
-  flex: 0 0 20px !important;
-}
-
-/* =========================================================
-   OVERVIEW — FINAL POLISHED LANDING PAGE
-   ========================================================= */
-
-.atlas-stage-overview {
-  padding-bottom: 28px;
-}
-
-.atlas-stage-overview .overview-page {
-  width: min(1480px, 100%);
-}
-
-.atlas-stage-overview .overview-hero {
-  min-height: 558px;
-  padding-top: 30px;
-  grid-template-columns:
-    minmax(390px, 0.92fr)
-    minmax(560px, 1.34fr)
-    minmax(205px, 0.48fr);
-  gap: 26px;
-  align-items: center;
-}
-
-.atlas-stage-overview .overview-hero-copy {
-  padding-left: 4px;
-  align-self: center;
-}
-
-.atlas-stage-overview .hero-eyebrow {
-  margin-bottom: 18px;
-  font-size: 9.4px;
-  font-weight: 820;
-  letter-spacing: 0.28em;
-}
-
-.atlas-stage-overview .overview-hero h1 {
-  font-size: clamp(56px, 5.15vw, 80px);
-  line-height: 0.91;
-  font-weight: 900;
-  letter-spacing: -0.072em;
-  color: #2d1837;
-}
-
-.atlas-stage-overview .hero-description {
-  max-width: 520px;
-  margin: 25px 0 20px;
-  font-size: 13.5px;
-  line-height: 1.52;
-  color: #2f2931;
-}
-
-.atlas-stage-overview .overview-real-metrics {
-  height: 132px;
-  margin-top: 24px;
-}
-
-.atlas-stage-overview .overview-company-hook {
-  padding-top: 10px;
-}
-
-.atlas-stage-overview .overview-company-hook-label {
-  min-height: 35px;
-  padding: 0 4px;
-}
-
-.atlas-stage-overview .overview-company-hook-label > span {
-  font-size: 8.5px;
-  font-weight: 820;
-  letter-spacing: 0.19em;
-}
-
-.atlas-stage-overview .overview-company-hook-label button {
-  font-size: 9px;
-  font-weight: 780;
-}
-
-.atlas-stage-overview .overview-company-hook-window {
-  height: 470px;
-  min-height: 470px;
-}
-
-.atlas-stage-overview .overview-company-hook-window iframe {
-  top: -4px;
-  width: 196%;
-  transform: translateX(-50%) scale(0.51);
-}
-
-/* Smaller, quieter reading card so the company map stays dominant. */
-.atlas-stage-overview .overview-reading-card {
-  align-self: center;
-  min-height: 338px;
-  padding: 22px 20px 16px;
-  border-radius: 15px;
-  border: 1px solid rgba(56, 36, 61, 0.085);
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow:
-    0 12px 30px rgba(58, 39, 70, 0.055),
-    inset 0 1px 0 rgba(255, 255, 255, 0.72);
-}
-
-.atlas-stage-overview .overview-reading-card .page-eyebrow {
-  margin-bottom: 13px;
-  color: #65336f;
-  font-size: 8.4px;
-  font-weight: 820;
-  letter-spacing: 0.14em;
-}
-
-.atlas-stage-overview .overview-reading-card h2 {
-  display: none;
-}
-
-.atlas-stage-overview .reading-row {
-  display: grid;
-  grid-template-columns: 36px minmax(0, 1fr);
-  gap: 13px;
-  align-items: center;
-  min-height: 61px;
-  padding: 10px 0;
-  border-bottom: 1px solid rgba(56, 36, 61, 0.075);
-}
-
-.atlas-stage-overview .reading-row-icon {
-  width: 30px;
-  height: 30px;
-  display: inline-flex !important;
-  align-items: center;
-  justify-content: center;
-  margin: 0 !important;
-  color: #6d35a0 !important;
-}
-
-.atlas-stage-overview .reading-row-copy {
-  min-width: 0;
-}
-
-.atlas-stage-overview .reading-row strong {
-  font-size: 9.8px;
-  line-height: 1.15;
-}
-
-.atlas-stage-overview .reading-row-copy > span {
-  display: block;
-  margin-top: 5px;
-  color: var(--muted);
-  font-size: 8.6px;
-  line-height: 1.38;
-}
-
-.atlas-stage-overview .reading-method-link {
-  margin-top: 13px;
-  padding-top: 8px;
-  border-top: 0;
-  font-size: 9px;
-  font-weight: 780;
-}
-
-/* Tighter four-card exploration section. */
-.atlas-stage-overview .inside-section {
-  margin-top: 2px;
-}
-
-.atlas-stage-overview .inside-kicker {
-  margin: 0 0 10px 2px;
-  font-size: 8.5px;
-  font-weight: 820;
-  letter-spacing: 0.22em;
-}
-
-.atlas-stage-overview .overview-route-grid {
-  border-radius: 14px;
-  border-color: rgba(70, 49, 78, 0.10);
-  background: rgba(255, 255, 255, 0.30);
-}
-
-.atlas-stage-overview .overview-route-card {
-  min-height: 194px;
-  padding: 14px 16px;
-  grid-template-columns: minmax(125px, 0.92fr) minmax(130px, 1.08fr);
-  grid-template-rows: 1fr;
-  column-gap: 13px;
-  align-items: stretch;
-  border-right-color: rgba(70, 49, 78, 0.10);
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.atlas-stage-overview .overview-route-card:hover {
-  background: rgba(255, 255, 255, 0.62);
-}
-
-.atlas-stage-overview .real-preview-window {
-  height: 164px;
-  align-self: center;
-}
-
-.atlas-stage-overview .preview-companies .real-preview-iframe {
-  top: 3px;
-  width: 420%;
-  transform: scale(0.2381);
-}
-
-.atlas-stage-overview .preview-compounds .real-preview-iframe {
-  top: 6px;
-  width: 430%;
-  transform: scale(0.2326);
-}
-
-.atlas-stage-overview .preview-indications .real-preview-iframe {
-  top: 5px;
-  width: 340%;
-  transform: scale(0.2941);
-}
-
-.atlas-stage-overview .preview-phases .real-preview-iframe {
-  top: 7px;
-  width: 385%;
-  transform: scale(0.2597);
-}
-
-.atlas-stage-overview .overview-route-copy {
-  justify-content: center;
-  padding: 3px 0 1px;
-}
-
-.atlas-stage-overview .overview-route-copy h3 {
-  margin-bottom: 8px;
-  font-size: 14.8px;
-}
-
-.atlas-stage-overview .overview-route-copy p {
-  font-size: 9.3px;
-  line-height: 1.44;
-}
-
-.atlas-stage-overview .overview-route-link {
-  margin-top: 18px;
-  font-size: 9px;
-}
-
-/* Lighter editorial methodology strip instead of a heavy footer. */
-.atlas-stage-overview .bottom-insight-bar {
-  margin-top: 12px;
-  min-height: 84px;
-  padding: 14px 22px;
-  border: 1px solid rgba(92, 51, 111, 0.08);
-  border-radius: 11px;
-  background:
-    radial-gradient(circle at 16% 0%, rgba(122, 74, 155, 0.10), transparent 30%),
-    linear-gradient(
-      90deg,
-      rgba(122, 74, 155, 0.055) 0%,
-      rgba(255, 255, 255, 0.48) 100%
+import React, { useEffect, useMemo, useRef, useState } from "react";
+import "./App.css";
+import kamilaPhoto from "./kamila-rojek.png";
+
+const ATLAS_VERSION = "September 2026";
+const CONTACT_EMAIL = "kamila.rojek@gmail.com";
+const LINKEDIN_PROFILE = "https://www.linkedin.com/in/kamilarojek/";
+
+const NAV_ITEMS = [
+  { id: "overview", label: "Overview" },
+  { id: "companies", label: "Companies" },
+  { id: "compounds", label: "Compounds" },
+  { id: "indications", label: "Indications" },
+  { id: "phases", label: "Phases" },
+  { id: "methodology", label: "Methodology" },
+  { id: "about", label: "About" }
+];
+
+function useViewportSize() {
+  const [viewportSize, setViewportSize] = useState(() => {
+    if (typeof window === "undefined") return { width: 1440, height: 900 };
+    return { width: window.innerWidth, height: window.innerHeight };
+  });
+
+  useEffect(() => {
+    const handleResize = () =>
+      setViewportSize({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return viewportSize;
+}
+
+function encodeJsonForUrl(value) {
+  return encodeURIComponent(JSON.stringify(value));
+}
+
+function normalizeUrlLabel(url) {
+  return String(url || "")
+    .replace(/^https?:\/\//i, "")
+    .replace(/^www\./i, "")
+    .replace(/\/$/g, "");
+}
+
+function AtlasMark() {
+  return (
+    <svg
+      viewBox="0 0 72 72"
+      aria-hidden="true"
+      focusable="false"
+      style={{
+        width: "100%",
+        height: "100%",
+        display: "block"
+      }}
+    >
+      <g
+        fill="none"
+        stroke="currentColor"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        {/* Static desk-globe mark */}
+        <circle
+          cx="36"
+          cy="28"
+          r="18"
+          strokeWidth="2.2"
+        />
+
+        {/* Latitude lines */}
+        <path
+          d="M20.5 22.5c4.9 2.2 10.2 3.3 15.5 3.3s10.6-1.1 15.5-3.3"
+          strokeWidth="1.35"
+          opacity="0.58"
+        />
+        <path
+          d="M20.5 33.5c4.9-2.2 10.2-3.3 15.5-3.3s10.6 1.1 15.5 3.3"
+          strokeWidth="1.35"
+          opacity="0.58"
+        />
+
+        {/* Meridians */}
+        <path
+          d="M36 10c-5.2 4.9-7.8 10.9-7.8 18S30.8 41.1 36 46"
+          strokeWidth="1.35"
+          opacity="0.62"
+        />
+        <path
+          d="M36 10c5.2 4.9 7.8 10.9 7.8 18S41.2 41.1 36 46"
+          strokeWidth="1.35"
+          opacity="0.62"
+        />
+
+        {/* Desk-globe axis and outer cradle */}
+        <path
+          d="M19.7 13.4A25.5 25.5 0 0 0 52.3 52.6"
+          strokeWidth="2.5"
+        />
+        <path
+          d="M18.1 12.1l3.2 2.6"
+          strokeWidth="2.5"
+        />
+        <path
+          d="M50.7 51.3l3.2 2.6"
+          strokeWidth="2.5"
+        />
+
+        {/* Stem and base */}
+        <path
+          d="M36 46v8.5"
+          strokeWidth="2.3"
+        />
+        <path
+          d="M29.5 58.2h13"
+          strokeWidth="2.3"
+        />
+        <path
+          d="M25 62h22"
+          strokeWidth="2.7"
+        />
+
+        {/* Small geographic cue, kept abstract and clean */}
+        <path
+          d="M29.1 19.5l3.4-2.5 3.4 1.1 1.6 3.3-2.4 2.4-4.3-.8-1.7-3.5Z"
+          fill="currentColor"
+          stroke="none"
+          opacity="0.88"
+        />
+        <path
+          d="M39.9 31.3l3.6-1.4 3 2.2-.7 3.8-3 2.5-2.9-1.8-1.4-2.8 1.4-2.5Z"
+          fill="currentColor"
+          stroke="none"
+          opacity="0.72"
+        />
+      </g>
+    </svg>
+  );
+}
+
+function ObservableFrame({
+  title,
+  src,
+  className = "",
+  iframeClassName = "",
+  height = 700,
+  ariaHidden = false,
+  revealDelay = 0,
+  viewportHeight = null,
+  hideUntilReady = false
+}) {
+  const [loaded, setLoaded] = useState(false);
+  const revealTimerRef = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (revealTimerRef.current) {
+        window.clearTimeout(revealTimerRef.current);
+      }
+    };
+  }, []);
+
+  const handleLoad = () => {
+    if (revealTimerRef.current) {
+      window.clearTimeout(revealTimerRef.current);
+    }
+
+    if (revealDelay > 0) {
+      revealTimerRef.current = window.setTimeout(() => {
+        setLoaded(true);
+      }, revealDelay);
+    } else {
+      setLoaded(true);
+    }
+  };
+
+  const shellStyle =
+    viewportHeight !== null
+      ? {
+          height: `${viewportHeight}px`,
+          minHeight: `${viewportHeight}px`,
+          maxHeight: `${viewportHeight}px`,
+          overflow: "hidden",
+          position: "relative",
+          background: "transparent"
+        }
+      : undefined;
+
+  const iframeStyle = {
+    opacity: hideUntilReady && !loaded ? 0 : 1,
+    visibility: hideUntilReady && !loaded ? "hidden" : "visible",
+    pointerEvents: hideUntilReady && !loaded ? "none" : "auto",
+    transition: "none"
+  };
+
+  return (
+    <div
+      className={`observable-shell ${className} ${
+        loaded ? "observable-loaded" : "observable-loading"
+      }`}
+      style={shellStyle}
+    >
+      <iframe
+        title={title}
+        src={src}
+        width="100%"
+        height={height}
+        frameBorder="0"
+        scrolling="no"
+        className={`atlas-iframe ${iframeClassName}`}
+        loading="eager"
+        aria-hidden={ariaHidden ? "true" : undefined}
+        tabIndex={ariaHidden ? -1 : undefined}
+        onLoad={handleLoad}
+        style={iframeStyle}
+      />
+    </div>
+  );
+}
+
+function RealPreviewCard({
+  title,
+  description,
+  cta,
+  onClick,
+  src,
+  previewClass
+}) {
+  const [loaded, setLoaded] = useState(false);
+
+  return (
+    <button className="overview-route-card" type="button" onClick={onClick}>
+      <div
+        className={`real-preview-window ${previewClass || ""} ${
+          loaded ? "preview-loaded" : "preview-loading"
+        }`}
+      >
+        <iframe
+          title={`${title} preview`}
+          src={src}
+          width="100%"
+          height="1600"
+          frameBorder="0"
+          scrolling="no"
+          tabIndex="-1"
+          aria-hidden="true"
+          className="real-preview-iframe"
+          loading="lazy"
+          onLoad={() => setLoaded(true)}
+        />
+      </div>
+
+      <div className="overview-route-copy">
+        <div>
+          <h3>{title}</h3>
+          <p>{description}</p>
+        </div>
+
+        <span className="overview-route-link">
+          {cta} <span aria-hidden="true">→</span>
+        </span>
+      </div>
+    </button>
+  );
+}
+
+
+function AtlasReadingIcon({ type }) {
+  const common = { width: "25px", height: "25px", display: "block" };
+
+  if (type === "companies") {
+    return (
+      <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+        <circle cx="10" cy="8" r="4" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="19.5" cy="10" r="3.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <path d="M3.5 23c.5-5.1 3.3-7.6 7.2-7.6 4 0 6.6 2.5 7.1 7.6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+        <path d="M17 16.2c3.8.2 6.3 2.4 6.8 6.1" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+      </svg>
     );
-  color: var(--plum);
-  gap: 20px;
-}
-
-.atlas-stage-overview .insight-info {
-  border-color: rgba(82, 37, 98, 0.55);
-  color: #552365;
-}
-
-.atlas-stage-overview .insight-primary strong,
-.atlas-stage-overview .insight-item strong {
-  color: var(--plum);
-  font-size: 9.4px;
-}
-
-.atlas-stage-overview .insight-primary span:not(.insight-info),
-.atlas-stage-overview .insight-item span:not(.insight-dot):not(.insight-symbol) {
-  color: rgba(56, 36, 61, 0.67);
-}
-
-.atlas-stage-overview .insight-divider {
-  background: rgba(56, 36, 61, 0.18);
-}
-
-.atlas-stage-overview .insight-dot-solid {
-  background: #70428a;
-}
-
-.atlas-stage-overview .insight-dot-dashed {
-  border-color: #70428a;
-  background: transparent;
-}
-
-.atlas-stage-overview .insight-symbol {
-  color: #552365;
-}
-
-/* Responsive polish */
-@media (max-width: 1260px) {
-  .atlas-stage-overview .overview-hero {
-    grid-template-columns:
-      minmax(360px, 0.92fr)
-      minmax(450px, 1.18fr)
-      minmax(190px, 0.45fr);
-    gap: 18px;
   }
 
-  .atlas-stage-overview .overview-route-card {
-    grid-template-columns: 1fr;
-    min-height: 245px;
+  if (type === "compounds") {
+    return (
+      <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+        <circle cx="14" cy="14" r="9.5" fill="none" stroke="currentColor" strokeWidth="1.7" strokeDasharray="1 3" />
+        <circle cx="14" cy="4.5" r="2.1" fill="currentColor" />
+        <circle cx="23.5" cy="14" r="2.1" fill="currentColor" />
+        <circle cx="14" cy="23.5" r="2.1" fill="currentColor" />
+        <circle cx="4.5" cy="14" r="2.1" fill="currentColor" />
+        <circle cx="8" cy="8" r="1.7" fill="currentColor" />
+        <circle cx="20" cy="8" r="1.7" fill="currentColor" />
+        <circle cx="8" cy="20" r="1.7" fill="currentColor" />
+        <circle cx="20" cy="20" r="1.7" fill="currentColor" />
+      </svg>
+    );
   }
 
-  .atlas-stage-overview .real-preview-window {
-    height: 135px;
-  }
-}
-
-@media (max-width: 1020px) {
-  .atlas-stage-overview .overview-hero {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .atlas-stage-overview .overview-reading-card {
-    grid-column: 1 / -1;
-    width: min(100%, 560px);
-    justify-self: center;
+  if (type === "indications") {
+    return (
+      <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+        <circle cx="14" cy="14" r="10" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="14" cy="14" r="6.2" fill="none" stroke="currentColor" strokeWidth="1.8" />
+        <circle cx="14" cy="14" r="2.5" fill="currentColor" />
+      </svg>
+    );
   }
 
-  .atlas-stage-overview .overview-route-card {
-    grid-template-columns: minmax(120px, .9fr) minmax(130px, 1.1fr);
-    min-height: 190px;
-  }
+  return (
+    <svg viewBox="0 0 28 28" aria-hidden="true" style={common}>
+      <circle cx="14" cy="5" r="2.4" fill="currentColor" />
+      <circle cx="5" cy="20" r="2.4" fill="currentColor" />
+      <circle cx="23" cy="20" r="2.4" fill="currentColor" />
+      <path d="M14 7.7v5.6M12.2 14.4 6.8 18M15.8 14.4l5.4 3.6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  );
 }
 
-@media (max-width: 720px) {
-  .atlas-stage-overview .overview-hero {
-    grid-template-columns: 1fr;
-    gap: 14px;
-  }
+function CompanyExternalPanel({
+  selectedCompany,
+  onClose,
+  onCompare,
+  showCompareButton = false,
+  compareModeActive = false,
+  isComparePanel = false
+}) {
+  if (!selectedCompany) return null;
 
-  .atlas-stage-overview .overview-hero-copy {
-    padding-left: 0;
-  }
+  const listToText = (
+    value,
+    fallback = "Insufficient data to verify"
+  ) => {
+    if (!Array.isArray(value) || value.length === 0) return fallback;
+    return value.filter(Boolean).join(", ");
+  };
 
-  .atlas-stage-overview .overview-company-hook-window {
-    height: 390px;
-    min-height: 390px;
-  }
+  const websites = Array.isArray(selectedCompany.websites)
+    ? selectedCompany.websites
+    : Array.isArray(selectedCompany.website)
+      ? selectedCompany.website
+      : [];
 
-  .atlas-stage-overview .overview-reading-card {
-    width: 100%;
-  }
+  const trials = Array.isArray(selectedCompany.trials)
+    ? selectedCompany.trials
+    : [];
 
-  .atlas-stage-overview .overview-route-grid {
-    grid-template-columns: 1fr;
-  }
+  const visibleActivity =
+    selectedCompany.visibleActivity ??
+    selectedCompany.activityUnits ??
+    0;
 
-  .atlas-stage-overview .overview-route-card {
-    grid-template-columns: minmax(110px, .85fr) minmax(150px, 1.15fr);
-    border-right: 0;
-    border-bottom: 1px solid rgba(70,49,78,.10);
-  }
+  const registeredTrials = selectedCompany.registeredUnits ?? 0;
+  const pipelineContext = selectedCompany.pipelineUnits ?? 0;
 
-  .atlas-stage-overview .overview-route-card:last-child {
-    border-bottom: 0;
-  }
+  return (
+    <>
+      <button
+        className={`company-panel-close ${
+          isComparePanel ? "company-panel-close-compare" : ""
+        }`}
+        type="button"
+        onClick={onClose}
+        aria-label={
+          isComparePanel
+            ? "Close compared company details"
+            : "Close company details"
+        }
+      >
+        ×
+      </button>
 
-  .atlas-stage-overview .bottom-insight-bar {
-    grid-template-columns: 1fr;
-  }
+      {showCompareButton && !isComparePanel && (
+        <button
+          className={`company-panel-compare-button ${
+            compareModeActive
+              ? "company-panel-compare-button-active"
+              : ""
+          }`}
+          type="button"
+          onClick={onCompare}
+        >
+          {compareModeActive
+            ? "Select another company"
+            : "+ Compare company"}
+        </button>
+      )}
 
-  .atlas-stage-overview .insight-divider {
-    display: none;
-  }
+      <aside
+        className={`company-panel ${
+          isComparePanel ? "company-panel-compare" : ""
+        }`}
+        aria-label={`${selectedCompany.company || "Company"} details`}
+      >
+        <div className="company-panel-inner">
+          <div className="company-panel-header">
+            <div className="company-panel-logo-slot">
+              {selectedCompany.logoUrl ? (
+                <div className="company-panel-logo">
+                  <img
+                    src={selectedCompany.logoUrl}
+                    alt={`${selectedCompany.company || "Company"} logo`}
+                  />
+                </div>
+              ) : null}
+            </div>
+
+            <h3>{selectedCompany.company || "Company"}</h3>
+
+            <p className="company-panel-subtitle">
+              {selectedCompany.hasRegistered
+                ? "Company with public registered trial activity"
+                : "Company visible through pipeline or context sources"}
+            </p>
+
+            {websites.length > 0 ? (
+              <div className="company-panel-websites">
+                {websites.map((url) => (
+                  <a
+                    key={url}
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {normalizeUrlLabel(url)}
+                  </a>
+                ))}
+              </div>
+            ) : (
+              selectedCompany.noVerifiedWebsite && (
+                <p className="company-panel-site-fallback">
+                  No official website verified
+                </p>
+              )
+            )}
+          </div>
+
+          <div className="company-panel-metrics">
+            <div className="company-panel-metric company-panel-metric-main">
+              <strong>{visibleActivity}</strong>
+              <span>Visible activity</span>
+              <small>Registered trials + pipeline context</small>
+            </div>
+
+            <div className="company-panel-metric">
+              <strong>{registeredTrials}</strong>
+              <span>Registered trials</span>
+            </div>
+
+            <div className="company-panel-metric">
+              <strong>{pipelineContext}</strong>
+              <span>Pipeline context</span>
+            </div>
+          </div>
+
+          <div className="company-panel-details">
+            <section>
+              <span>Assets</span>
+              <p>{listToText(selectedCompany.assets)}</p>
+            </section>
+
+            <section>
+              <span>Compound families</span>
+              <p>{listToText(selectedCompany.families)}</p>
+            </section>
+
+            <section>
+              <span>Therapeutic areas</span>
+              <p>{listToText(selectedCompany.indications)}</p>
+            </section>
+
+            <section>
+              <span>Countries</span>
+              <p>
+                {selectedCompany.hasRegistered
+                  ? listToText(selectedCompany.countries)
+                  : "No registered trial countries"}
+              </p>
+            </section>
+
+            <section>
+              <span>Trial IDs</span>
+
+              <div
+                className={`company-panel-trials ${
+                  trials.length >= 12
+                    ? "company-panel-trials-many"
+                    : ""
+                }`}
+              >
+                {trials.length > 0 ? (
+                  trials.map((trial) =>
+                    trial.url ? (
+                      <a
+                        key={`${trial.id}-${trial.url}`}
+                        href={trial.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {trial.id}
+                      </a>
+                    ) : (
+                      <span key={trial.id}>{trial.id}</span>
+                    )
+                  )
+                ) : (
+                  <p>No public registered trial IDs</p>
+                )}
+              </div>
+            </section>
+          </div>
+        </div>
+      </aside>
+    </>
+  );
 }
 
-/* =========================================================
-   2026-09-03 — OVERVIEW REFINEMENTS
-   New static desk-globe brand mark, larger company hook,
-   complete route previews and source-document icon.
-   ========================================================= */
+function MethodologyView() {
+  const methodologyCards = [
+    {
+      step: "01",
+      eyebrow: "Registered trials",
+      title: "Evidence units",
+      text:
+        "Public registry records are treated as registered evidence-generation activity."
+    },
+    {
+      step: "02",
+      eyebrow: "Pipeline context",
+      title: "Context units",
+      text:
+        "Company-reported or secondary-source pipeline programs without a public trial ID are treated as context, not clinical-trial evidence."
+    },
+    {
+      step: "03",
+      eyebrow: "Different views",
+      title: "Different analytical questions",
+      text:
+        "Company, compound, indication and phase views use different units of analysis. Their circle counts are therefore not directly comparable."
+    },
+    {
+      step: "04",
+      eyebrow: "Limitations",
+      title: "Public data can change",
+      text:
+        "Trial records may be incomplete, delayed, duplicated or inconsistently structured. Recruitment status should be checked at the original source."
+    }
+  ];
 
-/* The new Atlas mark is a static desk-globe drawing.
-   Keep the symbol compact and let the wordmark remain dominant. */
-.atlas-brand-mark {
-  color: #4f255f;
+  return (
+    <section className="content-page methodology-page">
+      <div className="content-page-heading methodology-heading">
+        <p className="page-eyebrow">Method / data basis</p>
+
+        <h1>How the Atlas is built</h1>
+
+        <p>
+          The Atlas separates registered clinical-trial activity from
+          selected pipeline context so different forms of public visibility
+          are not treated as the same type of evidence.
+        </p>
+      </div>
+
+      <div className="methodology-grid">
+        {methodologyCards.map((card) => (
+          <article
+            key={card.step}
+            className="content-card methodology-card"
+          >
+            <div className="methodology-card-topline">
+              <span className="methodology-step">
+                {card.step}
+              </span>
+
+              <p className="page-eyebrow">
+                {card.eyebrow}
+              </p>
+            </div>
+
+            <h2>{card.title}</h2>
+
+            <p>{card.text}</p>
+          </article>
+        ))}
+      </div>
+
+      <div className="methodology-core-rule">
+        <span
+          className="methodology-core-icon"
+          aria-hidden="true"
+        >
+          i
+        </span>
+
+        <div className="methodology-core-copy">
+          <strong>Core rule</strong>
+
+          <span>
+            Registered trial = evidence unit · Pipeline-only asset = context unit ·
+            Visible activity ≠ efficacy, approval, safety or commercial success.
+          </span>
+        </div>
+      </div>
+    </section>
+  );
 }
 
-.atlas-brand-mark svg {
-  width: 100% !important;
-  height: 100% !important;
+function AboutView() {
+  const featureCards = [
+    {
+      eyebrow: "Transparency",
+      title: "Public development intelligence",
+      text:
+        "Making visible clinical-trial and pipeline activity easier to understand."
+    },
+    {
+      eyebrow: "Access",
+      title: "Finding relevant studies",
+      text:
+        "Helping patients, families, researchers and clinicians discover registered studies."
+    },
+    {
+      eyebrow: "Context",
+      title: "Evidence in context",
+      text:
+        "Showing pipeline context without overstating what is publicly proven."
+    },
+    {
+      eyebrow: "Independent",
+      title: "Open information",
+      text:
+        "An independent, non-commercial project focused on public information."
+    }
+  ];
+
+  return (
+    <section
+      className="content-page"
+      style={{
+        width: "min(1180px, 100%)",
+        paddingTop: "42px",
+        paddingBottom: "46px"
+      }}
+    >
+      <div
+        className="content-page-heading"
+        style={{
+          maxWidth: "820px",
+          marginBottom: "24px"
+        }}
+      >
+        <p className="page-eyebrow">About the project</p>
+
+        <h1
+          style={{
+            marginBottom: "12px"
+          }}
+        >
+          Psychedelic Trial Atlas
+        </h1>
+
+        <p
+          style={{
+            maxWidth: "790px",
+            fontSize: "14px",
+            lineHeight: 1.55
+          }}
+        >
+          A public clinical-development intelligence project mapping what is
+          visible in psychedelic drug development by company, compound,
+          indication, phase, recruitment status and source visibility.
+        </p>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "minmax(0, 1.55fr) minmax(280px, .72fr)",
+          gap: "28px",
+          alignItems: "start"
+        }}
+      >
+        <article
+          style={{
+            minHeight: "340px",
+            padding: "28px 30px",
+            border: "1px solid rgba(56,36,61,.09)",
+            borderRadius: "20px",
+            background: "rgba(255,255,255,.48)",
+            boxShadow:
+              "0 14px 34px rgba(58,42,84,.045), inset 0 1px 0 rgba(255,255,255,.72)"
+          }}
+        >
+          <p
+            className="page-eyebrow"
+            style={{
+              marginBottom: "22px",
+              color: "#5c2c67"
+            }}
+          >
+            Why I built this
+          </p>
+
+          <div
+            style={{
+              display: "grid",
+              gap: "22px"
+            }}
+          >
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "44px minmax(0, 1fr)",
+                gap: "18px",
+                alignItems: "start"
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "999px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid rgba(88,36,106,.10)",
+                  background: "rgba(125,92,150,.06)",
+                  color: "#6a3a72",
+                  fontSize: "21px",
+                  lineHeight: 1
+                }}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    display: "block"
+                  }}
+                >
+                  <path
+                    d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.8l-1-1a5.5 5.5 0 0 0-7.8 7.8L12 21l8.8-8.4a5.5 5.5 0 0 0 0-7.8Z"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#373039",
+                  fontSize: "13.5px",
+                  lineHeight: 1.6
+                }}
+              >
+                Psychedelic Trial Atlas started as a passion project combining
+                my interest in <strong>data, clinical research</strong> and the
+                rapidly evolving field of <strong>psychedelic medicine</strong>.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "44px minmax(0, 1fr)",
+                gap: "18px",
+                alignItems: "start"
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "999px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid rgba(88,36,106,.10)",
+                  background: "rgba(125,92,150,.06)",
+                  color: "#6a3a72",
+                  fontSize: "19px",
+                  lineHeight: 1
+                }}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    display: "block"
+                  }}
+                >
+                  <circle
+                    cx="10.5"
+                    cy="10.5"
+                    r="5.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  />
+                  <path
+                    d="M14.7 14.7 20 20"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#373039",
+                  fontSize: "13.5px",
+                  lineHeight: 1.6
+                }}
+              >
+                I wanted to create a clear public view of the development landscape and
+                make it easier to discover{" "}
+                <strong>registered studies</strong>, including trials that may
+                currently be <strong>recruiting</strong>.
+              </p>
+            </div>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "44px minmax(0, 1fr)",
+                gap: "18px",
+                alignItems: "start"
+              }}
+            >
+              <span
+                aria-hidden="true"
+                style={{
+                  width: "44px",
+                  height: "44px",
+                  borderRadius: "999px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  border: "1px solid rgba(88,36,106,.10)",
+                  background: "rgba(125,92,150,.06)",
+                  color: "#6a3a72",
+                  fontSize: "18px",
+                  lineHeight: 1
+                }}
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  focusable="false"
+                  style={{
+                    width: "20px",
+                    height: "20px",
+                    display: "block"
+                  }}
+                >
+                  <path
+                    d="M12 3.5c.9 4.3 3.2 6.6 7.5 7.5-4.3.9-6.6 3.2-7.5 7.5-.9-4.3-3.2-6.6-7.5-7.5 4.3-.9 6.6-3.2 7.5-7.5Z"
+                    fill="currentColor"
+                  />
+                </svg>
+              </span>
+
+              <p
+                style={{
+                  margin: 0,
+                  color: "#373039",
+                  fontSize: "13.5px",
+                  lineHeight: 1.6
+                }}
+              >
+                The project brings together my background in{" "}
+                <strong>research, analytics and visual storytelling</strong>{" "}
+                with a personal curiosity about how emerging therapies move
+                from early development into real clinical evidence.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        <aside
+          style={{
+            textAlign: "center",
+            padding: "8px 4px 0"
+          }}
+        >
+          <img
+            src={kamilaPhoto}
+            alt="Kamila Rojek"
+            style={{
+              display: "block",
+              width: "168px",
+              height: "168px",
+              margin: "0 auto 16px",
+              objectFit: "cover",
+              objectPosition: "50% 34%",
+              borderRadius: "18px",
+              border: "1px solid rgba(56,36,61,.08)",
+              boxShadow: "0 14px 32px rgba(58,42,84,.08)"
+            }}
+          />
+
+          <h2
+            style={{
+              margin: "0 0 6px",
+              color: "#2d1837",
+              fontFamily: '"Inter Tight", "Inter", sans-serif',
+              fontSize: "23px",
+              lineHeight: 1,
+              letterSpacing: "-0.045em"
+            }}
+          >
+            Kamila Rojek
+          </h2>
+
+          <p
+            style={{
+              margin: "0 0 18px",
+              color: "#65336f",
+              fontSize: "10.5px",
+              fontWeight: 650,
+              lineHeight: 1.35
+            }}
+          >
+            Data · Research · Human Behavior
+          </p>
+
+          <a
+            href={LINKEDIN_PROFILE}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "8px",
+              color: "#552365",
+              fontSize: "10.5px",
+              fontWeight: 780,
+              textDecoration: "underline",
+              textUnderlineOffset: "3px"
+            }}
+          >
+            LinkedIn profile
+            <span aria-hidden="true">↗</span>
+          </a>
+        </aside>
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, minmax(0, 1fr))",
+          gap: "14px",
+          marginTop: "24px"
+        }}
+      >
+        {featureCards.map((card) => (
+          <article
+            key={card.eyebrow}
+            style={{
+              minHeight: "150px",
+              padding: "20px 20px 18px",
+              border: "1px solid rgba(56,36,61,.08)",
+              borderRadius: "18px",
+              background: "rgba(255,255,255,.42)",
+              boxShadow:
+                "0 12px 28px rgba(58,42,84,.035), inset 0 1px 0 rgba(255,255,255,.62)"
+            }}
+          >
+            <p
+              className="page-eyebrow"
+              style={{
+                marginBottom: "10px",
+                color: "#65336f"
+              }}
+            >
+              {card.eyebrow}
+            </p>
+
+            <h2
+              style={{
+                margin: "0 0 8px",
+                color: "#38243d",
+                fontFamily: '"Inter Tight", "Inter", sans-serif',
+                fontSize: "19px",
+                lineHeight: 1.05,
+                letterSpacing: "-0.04em"
+              }}
+            >
+              {card.title}
+            </h2>
+
+            <p
+              style={{
+                margin: 0,
+                color: "#68717a",
+                fontSize: "11px",
+                lineHeight: 1.5
+              }}
+            >
+              {card.text}
+            </p>
+          </article>
+        ))}
+      </div>
+
+      <div
+        style={{
+          marginTop: "20px",
+          padding: "13px 16px",
+          borderRadius: "12px",
+          background: "rgba(101,51,111,.045)",
+          display: "flex",
+          alignItems: "center",
+          gap: "10px"
+        }}
+      >
+        <span
+          aria-hidden="true"
+          style={{
+            width: "20px",
+            height: "20px",
+            flex: "0 0 20px",
+            borderRadius: "999px",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            background: "#5c2c67",
+            color: "#fff",
+            fontFamily: "Georgia, serif",
+            fontSize: "12px"
+          }}
+        >
+          i
+        </span>
+
+        <p
+          className="about-disclaimer"
+          style={{
+            margin: 0
+          }}
+        >
+          This project maps visible clinical-trial and pipeline activity. It
+          does not assess efficacy, safety, approval status, treatment
+          suitability or investment value.
+        </p>
+      </div>
+    </section>
+  );
 }
 
-/* Give the central Company Landscape more visual weight.
-   The iframe stays centered, but is enlarged into the available
-   left/right/bottom whitespace. */
-.atlas-stage-overview .overview-company-hook-window {
-  height: 490px;
-  min-height: 490px;
+export default function App() {
+  const {
+    width: viewportWidth,
+    height: viewportHeight
+  } = useViewportSize();
+
+  const initialHash =
+    typeof window !== "undefined"
+      ? window.location.hash.replace("#", "")
+      : "overview";
+
+  const [activeView, setActiveView] = useState(
+    NAV_ITEMS.some((item) => item.id === initialHash)
+      ? initialHash
+      : "overview"
+  );
+
+  const [selectedCompany, setSelectedCompany] = useState(null);
+  const [compareCompany, setCompareCompany] = useState(null);
+  const [compareMode, setCompareMode] = useState(false);
+
+  const compareModeRef = useRef(false);
+
+  const mainApiKey =
+    "515f6c33729f1bf487d1dbfd16abac4e81acfbd2";
+
+  const mainNotebook =
+    "e3028f2577c04f9a@1443";
+
+  const githubLogoBase =
+    "https://psychedelic-trial-atlas.vercel.app/logos/";
+
+  const logoTuningVersion =
+    "visual1b-logo-tuning-2026-06-24-full-logo-list";
+
+  const logoVisualScale = {};
+  const logoHoverScale = {};
+
+  const heroResponsiveMode =
+    viewportWidth <= 767
+      ? "mobile"
+      : viewportWidth <= 1024
+        ? "tablet"
+        : viewportWidth <= 1400 || viewportHeight <= 820
+          ? "laptop"
+          : "desktop";
+
+  const heroResponsiveParams =
+    `&heroMode=${encodeURIComponent(heroResponsiveMode)}` +
+    `&hostWidth=${viewportWidth}` +
+    `&hostHeight=${viewportHeight}`;
+
+  const visual1CompanyLandscapeParams =
+    `&logoBase=${encodeURIComponent(githubLogoBase)}` +
+    `&logoTuningVersion=${encodeURIComponent(
+      logoTuningVersion
+    )}` +
+    `&logoVisualScale=${encodeJsonForUrl(
+      logoVisualScale
+    )}` +
+    `&logoHoverScale=${encodeJsonForUrl(
+      logoHoverScale
+    )}`;
+
+  const observableSrc = useMemo(
+    () => ({
+      heroSection1:
+        `https://observablehq.com/embed/${mainNotebook}` +
+        `?cells=heroSection1` +
+        `&api_key=${mainApiKey}` +
+        `${heroResponsiveParams}`,
+
+      visual1Overview:
+        `https://observablehq.com/embed/e3028f2577c04f9a@1539` +
+        `?cells=visual1EcosystemOverviev` +
+        `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18`,
+
+      visual1Company:
+        `https://observablehq.com/embed/e3028f2577c04f9a@1539` +
+        `?cells=visual1CompanyLandscapePremium1` +
+        `&api_key=ecf9f0bfb7b84e805b81fe519905418231789a18` +
+        `${visual1CompanyLandscapeParams}`,
+
+      visual2:
+        `https://observablehq.com/embed/e3028f2577c04f9a@1539` +
+        `?cells=visual2ChartUnitColumns1`,
+
+      visual3:
+        "https://observablehq.com/embed/e3028f2577c04f9a@1539?cells=visual3Chart",
+
+      visual4:
+        `https://observablehq.com/embed/e3028f2577c04f9a@1539` +
+        `?cells=visual4PhaseChart` +
+        `&api_key=85cae8d02263045c184f5e4a5369f63938945a3e`
+    }),
+    [
+      mainNotebook,
+      mainApiKey,
+      heroResponsiveParams,
+      visual1CompanyLandscapeParams
+    ]
+  );
+
+  const setCompareModeStable = (active) => {
+    compareModeRef.current = !!active;
+    setCompareMode(!!active);
+  };
+
+  const getCompanyIframe = () =>
+    document.querySelector(
+      'iframe[title="Company Landscape Premium"]'
+    );
+
+  const postToCompanyIframe = (message) => {
+    const iframe = getCompanyIframe();
+
+    if (!iframe?.contentWindow) return;
+
+    iframe.contentWindow.postMessage(message, "*");
+  };
+
+  const clearObservableCompanyState = () => {
+    postToCompanyIframe({
+      type: "UNICORN_COMPANY_CLEAR"
+    });
+  };
+
+  const clearObservableCompareState = () => {
+    postToCompanyIframe({
+      type: "UNICORN_COMPARE_CLEAR"
+    });
+  };
+
+  const postCompareModeToObservable = (active) => {
+    postToCompanyIframe({
+      type: "UNICORN_COMPARE_SELECTION_MODE",
+      active: !!active
+    });
+  };
+
+  const handleCompareStart = () => {
+    if (!selectedCompany || compareCompany) return;
+
+    const nextMode = !compareModeRef.current;
+
+    setCompareModeStable(nextMode);
+    postCompareModeToObservable(nextMode);
+  };
+
+  const handlePrimaryClose = () => {
+    setSelectedCompany(null);
+    setCompareCompany(null);
+    setCompareModeStable(false);
+    clearObservableCompanyState();
+  };
+
+  const handleCompareClose = () => {
+    setCompareCompany(null);
+    setCompareModeStable(false);
+    clearObservableCompareState();
+  };
+
+  const activateView = (viewId) => {
+    if (!NAV_ITEMS.some((item) => item.id === viewId)) {
+      return;
+    }
+
+    if (
+      activeView === "companies" &&
+      viewId !== "companies"
+    ) {
+      clearObservableCompanyState();
+      setSelectedCompany(null);
+      setCompareCompany(null);
+      setCompareModeStable(false);
+    }
+
+    setActiveView(viewId);
+
+    if (typeof window !== "undefined") {
+      window.history.replaceState(
+        null,
+        "",
+        `#${viewId}`
+      );
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash =
+        window.location.hash.replace("#", "");
+
+      if (
+        NAV_ITEMS.some((item) => item.id === hash)
+      ) {
+        setActiveView(hash);
+
+        window.scrollTo({
+          top: 0,
+          behavior: "auto"
+        });
+      }
+    };
+
+    window.addEventListener(
+      "hashchange",
+      handleHashChange
+    );
+
+    return () =>
+      window.removeEventListener(
+        "hashchange",
+        handleHashChange
+      );
+  }, []);
+
+  useEffect(() => {
+    const handleCompanyMessage = (event) => {
+      const message = event.data;
+
+      if (!message || typeof message !== "object") {
+        return;
+      }
+
+      if (
+        message.type !== "UNICORN_COMPANY_SELECTED" &&
+        message.type !==
+          "UNICORN_COMPANY_COMPARE_SELECTED" &&
+        message.type !==
+          "UNICORN_COMPARE_SELECTION_MODE_ACK"
+      ) {
+        return;
+      }
+
+      if (
+        message.type ===
+        "UNICORN_COMPARE_SELECTION_MODE_ACK"
+      ) {
+        return;
+      }
+
+      if (
+        message.type ===
+        "UNICORN_COMPANY_COMPARE_SELECTED"
+      ) {
+        const payload = message.payload || null;
+
+        if (!payload) {
+          setCompareCompany(null);
+          setCompareModeStable(false);
+          return;
+        }
+
+        setCompareCompany(payload);
+        setCompareModeStable(false);
+        postCompareModeToObservable(false);
+
+        return;
+      }
+
+      const payload = message.payload || null;
+
+      if (!payload) {
+        setSelectedCompany(null);
+        setCompareCompany(null);
+        setCompareModeStable(false);
+        return;
+      }
+
+      if (
+        payload.compareSlot === "compare" ||
+        compareModeRef.current
+      ) {
+        setCompareCompany(payload);
+        setCompareModeStable(false);
+        postCompareModeToObservable(false);
+        return;
+      }
+
+      setSelectedCompany(payload);
+      setCompareModeStable(false);
+      postCompareModeToObservable(false);
+    };
+
+    window.addEventListener(
+      "message",
+      handleCompanyMessage
+    );
+
+    return () =>
+      window.removeEventListener(
+        "message",
+        handleCompanyMessage
+      );
+  }, []);
+
+
+  useEffect(() => {
+    const handleAtlasNavigation = (event) => {
+      const message = event.data;
+
+      if (
+        !message ||
+        typeof message !== "object" ||
+        message.type !== "ATLAS_NAVIGATE"
+      ) {
+        return;
+      }
+
+      if (
+        NAV_ITEMS.some((item) => item.id === message.view)
+      ) {
+        activateView(message.view);
+      }
+    };
+
+    window.addEventListener(
+      "message",
+      handleAtlasNavigation
+    );
+
+    return () =>
+      window.removeEventListener(
+        "message",
+        handleAtlasNavigation
+      );
+  }, [activeView]);
+
+  return (
+    <main className="site">
+      <header className="atlas-topbar">
+        <div className="atlas-topbar-inner">
+          <button
+            className="atlas-brand"
+            type="button"
+            onClick={() => activateView("overview")}
+            style={{
+              appearance: "none",
+              border: 0,
+              background: "transparent",
+              padding: 0,
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "16px",
+              color: "#38243d",
+              cursor: "pointer",
+              textAlign: "left"
+            }}
+          >
+            <span
+              className="atlas-brand-mark"
+              style={{
+                width: "54px",
+                height: "54px",
+                flex: "0 0 54px",
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+            >
+              <AtlasMark />
+            </span>
+
+            <span
+              className="atlas-brand-copy"
+              style={{
+                display: "flex",
+                alignItems: "center"
+              }}
+            >
+              <strong
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  fontFamily: '"Inter Tight", "Inter", "Helvetica Neue", Arial, sans-serif',
+                  fontSize: "31px",
+                  lineHeight: 0.94,
+                  fontWeight: 900,
+                  letterSpacing: "-0.06em",
+                  color: "#2d1837",
+                  whiteSpace: "nowrap"
+                }}
+              >
+                <span style={{ display: "block" }}>Psychedelic</span>
+                <span style={{ display: "block", marginTop: "4px" }}>
+                  Trial Atlas
+                </span>
+              </strong>
+            </span>
+          </button>
+
+          <nav
+            className="atlas-tabs"
+            aria-label="Atlas views"
+          >
+            {NAV_ITEMS.map((item) => (
+              <button
+                key={item.id}
+                type="button"
+                className={`atlas-tab ${
+                  activeView === item.id
+                    ? "atlas-tab-active"
+                    : ""
+                }`}
+                onClick={() =>
+                  activateView(item.id)
+                }
+                aria-current={
+                  activeView === item.id
+                    ? "page"
+                    : undefined
+                }
+              >
+                {item.label}
+              </button>
+            ))}
+          </nav>
+
+          <div className="atlas-updated">
+            Updated: {ATLAS_VERSION}
+          </div>
+        </div>
+      </header>
+
+      <div
+        className={`atlas-stage atlas-stage-${activeView}`}
+      >
+        {activeView === "overview" && (
+          <section className="overview-page">
+            <div className="overview-hero">
+              <div className="overview-hero-copy">
+                <p className="hero-eyebrow">
+                  THE GLOBAL LANDSCAPE OF
+                </p>
+
+                <h1>
+                  Psychedelic
+                  <br />
+                  Drug Development
+                </h1>
+
+                <p className="hero-description">
+                  An interactive view of biotech companies,
+                  compounds, indications and registered
+                  clinical-trial activity, together with
+                  selected pipeline context shaping
+                  psychedelic drug development.
+                </p>
+
+                <div className="overview-real-metrics">
+                  <iframe
+                    title="Real ecosystem metrics"
+                    src={observableSrc.visual1Overview}
+                    width="100%"
+                    height="1125"
+                    frameBorder="0"
+                    scrolling="no"
+                    tabIndex="-1"
+                    aria-hidden="true"
+                  />
+                </div>
+              </div>
+
+              <div className="overview-company-hook">
+                <div className="overview-company-hook-label">
+                  <span>
+                    COMPANY LANDSCAPE
+                  </span>
+
+                  <button
+                    type="button"
+                    onClick={() =>
+                      activateView("companies")
+                    }
+                  >
+                    View full landscape →
+                  </button>
+                </div>
+
+                <div
+                  className="overview-company-hook-window overview-company-hook-clickable"
+                  style={{
+                    position: "relative",
+                    cursor: "pointer",
+                    pointerEvents: "auto"
+                  }}
+                  onClick={() => activateView("companies")}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      activateView("companies");
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label="Open Company Landscape"
+                >
+                  <iframe
+                    title="Company Landscape overview preview"
+                    src={observableSrc.visual1Company}
+                    width="100%"
+                    height="1000"
+                    frameBorder="0"
+                    scrolling="no"
+                    tabIndex="-1"
+                    aria-hidden="true"
+                    style={{
+                      pointerEvents: "none"
+                    }}
+                  />
+
+                  <button
+                    type="button"
+                    aria-label="Open Company Landscape"
+                    onClick={() => activateView("companies")}
+                    style={{
+                      position: "absolute",
+                      inset: 0,
+                      zIndex: 20,
+                      width: "100%",
+                      height: "100%",
+                      padding: 0,
+                      margin: 0,
+                      border: 0,
+                      background: "transparent",
+                      cursor: "pointer",
+                      pointerEvents: "auto"
+                    }}
+                  />
+                </div>
+              </div>
+
+              <aside className="overview-reading-card">
+                <p className="page-eyebrow">How to read the Atlas</p>
+
+                <div className="reading-row">
+                  <span className="reading-row-icon"><AtlasReadingIcon type="companies" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Companies</strong>
+                    <span>Who is building the visible ecosystem.</span>
+                  </div>
+                </div>
+
+                <div className="reading-row">
+                  <span className="reading-row-icon"><AtlasReadingIcon type="compounds" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Compounds</strong>
+                    <span>Which compound families show visible activity.</span>
+                  </div>
+                </div>
+
+                <div className="reading-row">
+                  <span className="reading-row-icon"><AtlasReadingIcon type="indications" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Indications</strong>
+                    <span>Where registered patient-indication activity appears.</span>
+                  </div>
+                </div>
+
+                <div className="reading-row">
+                  <span className="reading-row-icon"><AtlasReadingIcon type="phases" /></span>
+                  <div className="reading-row-copy">
+                    <strong>Phases</strong>
+                    <span>Where registered activity sits in development.</span>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => activateView("methodology")}
+                  className="reading-method-link"
+                >
+                  Read methodology →
+                </button>
+              </aside>
+            </div>
+
+            <div className="inside-section">
+              <p className="inside-kicker">
+                WHAT’S INSIDE THE ATLAS
+              </p>
+
+              <div className="overview-route-grid">
+                <RealPreviewCard
+                  title="Companies"
+                  description="Explore who is building the visible psychedelic development landscape."
+                  cta="Explore companies"
+                  onClick={() =>
+                    activateView("companies")
+                  }
+                  src={observableSrc.visual1Company}
+                  previewClass="preview-companies"
+                />
+
+                <RealPreviewCard
+                  title="Compounds"
+                  description="See registered clinical activity and selected pipeline context by compound."
+                  cta="Explore compounds"
+                  onClick={() =>
+                    activateView("compounds")
+                  }
+                  src={observableSrc.visual2}
+                  previewClass="preview-compounds"
+                />
+
+                <RealPreviewCard
+                  title="Indications"
+                  description="See included registered patient-indication trials by therapeutic area."
+                  cta="Explore indications"
+                  onClick={() =>
+                    activateView("indications")
+                  }
+                  src={observableSrc.visual3}
+                  previewClass="preview-indications"
+                />
+
+                <RealPreviewCard
+                  title="Phases"
+                  description="Review where visible registered activity appears across development phases."
+                  cta="Explore phases"
+                  onClick={() =>
+                    activateView("phases")
+                  }
+                  src={observableSrc.visual4}
+                  previewClass="preview-phases"
+                />
+              </div>
+            </div>
+
+            <div className="bottom-insight-bar">
+              <div className="insight-primary">
+                <span className="insight-info">
+                  i
+                </span>
+
+                <div>
+                  <strong>
+                    Different views. Different units.
+                  </strong>
+
+                  <span>
+                    Circle counts are not directly
+                    comparable across views.
+                  </span>
+                </div>
+              </div>
+
+              <div className="insight-divider" />
+
+              <div className="insight-item">
+                <span className="insight-dot insight-dot-solid" />
+
+                <div>
+                  <strong>
+                    Registered trial activity
+                  </strong>
+
+                  <span>
+                    Public registry records with a
+                    trial ID.
+                  </span>
+                </div>
+              </div>
+
+              <div className="insight-item">
+                <span className="insight-dot insight-dot-dashed" />
+
+                <div>
+                  <strong>
+                    Pipeline context
+                  </strong>
+
+                  <span>
+                    Selected visible programs without
+                    a public trial ID.
+                  </span>
+                </div>
+              </div>
+
+              <div className="insight-item">
+                <span
+                  className="insight-source-icon"
+                  aria-hidden="true"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    focusable="false"
+                  >
+                    <path
+                      d="M6.5 3.5h7.2l3.8 3.8v13.2h-11Z"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M13.7 3.5v4h3.8"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinejoin="round"
+                    />
+                    <path
+                      d="M9 12h6M9 15.5h4.7"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="1.7"
+                      strokeLinecap="round"
+                    />
+                  </svg>
+                </span>
+
+                <div>
+                  <strong>
+                    Public-source visibility
+                  </strong>
+
+                  <span>
+                    Registry and selected company /
+                    secondary-source context.
+                  </span>
+                </div>
+              </div>
+
+              <div className="insight-item">
+                <span className="insight-symbol">
+                  ≠
+                </span>
+
+                <div>
+                  <strong>
+                    Visibility is not efficacy
+                  </strong>
+
+                  <span>
+                    Activity does not imply safety,
+                    approval or success.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {activeView === "companies" && (
+          <section className="visual-page company-page">
+            <div
+              className={`company-visual-shell ${
+                selectedCompany
+                  ? "company-panel-open"
+                  : ""
+              } ${
+                compareCompany
+                  ? "company-compare-open"
+                  : ""
+              }`}
+            >
+              <ObservableFrame
+                title="Company Landscape Premium"
+                src={observableSrc.visual1Company}
+                className="full-visual full-company-visual company-real-working-frame"
+                height={1000}
+              />
+
+              <CompanyExternalPanel
+                selectedCompany={selectedCompany}
+                onClose={handlePrimaryClose}
+                onCompare={handleCompareStart}
+                showCompareButton={
+                  !!selectedCompany &&
+                  !compareCompany
+                }
+                compareModeActive={compareMode}
+              />
+
+              <CompanyExternalPanel
+                selectedCompany={compareCompany}
+                onClose={handleCompareClose}
+                isComparePanel={true}
+              />
+            </div>
+          </section>
+        )}
+
+        {activeView === "compounds" && (
+          <section className="visual-page standard-analysis-page compound-page">
+            <ObservableFrame
+              title="Compound Activity Landscape"
+              src={observableSrc.visual2}
+              className="full-visual standard-analysis-visual full-compound-visual"
+              height={930}
+            />
+          </section>
+        )}
+
+        {activeView === "indications" && (
+          <section className="visual-page standard-analysis-page indication-page">
+            <ObservableFrame
+              title="Indication Landscape"
+              src={observableSrc.visual3}
+              className="full-visual standard-analysis-visual full-indication-visual"
+              height={860}
+              viewportHeight={774}
+              revealDelay={1100}
+              hideUntilReady={true}
+            />
+          </section>
+        )}
+
+        {activeView === "phases" && (
+          <section className="visual-page standard-analysis-page phase-page">
+            <ObservableFrame
+              title="Clinical Phase Landscape"
+              src={observableSrc.visual4}
+              className="full-visual standard-analysis-visual full-phase-visual"
+              height={1000}
+              viewportHeight={940}
+              revealDelay={350}
+              hideUntilReady={true}
+            />
+          </section>
+        )}
+
+        {activeView === "methodology" && (
+          <MethodologyView />
+        )}
+
+        {activeView === "about" && (
+          <AboutView />
+        )}
+      </div>
+    </main>
+  );
 }
-
-.atlas-stage-overview .overview-company-hook-window iframe {
-  top: -8px;
-  left: 50%;
-  width: 180.2%;
-  height: 1000px;
-  transform: translateX(-50%) scale(0.555);
-  transform-origin: top center;
-}
-
-/* Route previews: show the full analytical thumbnail before
-   the copy starts. The scale is matched to each embed height. */
-.atlas-stage-overview .overview-route-card {
-  min-height: 304px;
-  padding: 16px 16px 18px;
-}
-
-.atlas-stage-overview .real-preview-window {
-  height: 186px;
-  min-height: 186px;
-  margin-bottom: 5px;
-}
-
-.atlas-stage-overview .preview-companies .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 520%;
-  height: 1000px;
-  transform: scale(0.1923077);
-  transform-origin: top left;
-}
-
-.atlas-stage-overview .preview-compounds .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 420%;
-  height: 780px;
-  transform: scale(0.2380952);
-  transform-origin: top left;
-}
-
-.atlas-stage-overview .preview-indications .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 445%;
-  height: 824px;
-  transform: scale(0.2247191);
-  transform-origin: top left;
-}
-
-.atlas-stage-overview .preview-phases .real-preview-iframe {
-  top: 0;
-  left: 0;
-  width: 635%;
-  height: 1180px;
-  transform: scale(0.1574803);
-  transform-origin: top left;
-}
-
-.atlas-stage-overview .overview-route-copy {
-  flex: 1;
-  justify-content: space-between;
-  padding-top: 10px;
-}
-
-.atlas-stage-overview .overview-route-copy h3 {
-  margin-bottom: 7px;
-}
-
-.atlas-stage-overview .overview-route-link {
-  margin-top: 15px;
-}
-
-/* Public-source visibility now uses a document/source mark,
-   so it cannot be confused with circle encoding in the charts. */
-.insight-source-icon {
-  width: 20px;
-  height: 20px;
-  flex: 0 0 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  color: #552365;
-  margin-top: 0;
-}
-
-.insight-source-icon svg {
-  width: 19px;
-  height: 19px;
-  display: block;
-}
-
-.atlas-stage-overview .insight-source-icon {
-  color: #552365;
-}
-
-/* Keep responsive cards readable after the taller previews. */
-@media (max-width: 1260px) {
-  .atlas-stage-overview .overview-company-hook-window {
-    height: 450px;
-    min-height: 450px;
-  }
-
-  .atlas-stage-overview .overview-company-hook-window iframe {
-    width: 190%;
-    transform: translateX(-50%) scale(0.5263);
-  }
-
-  .atlas-stage-overview .overview-route-card {
-    min-height: 286px;
-  }
-
-  .atlas-stage-overview .real-preview-window {
-    height: 174px;
-    min-height: 174px;
-  }
-}
-
-@media (max-width: 1020px) {
-  .atlas-stage-overview .overview-route-card {
-    min-height: 280px;
-  }
-
-  .atlas-stage-overview .real-preview-window {
-    height: 170px;
-    min-height: 170px;
-  }
-}
-
-@media (max-width: 720px) {
-  .atlas-stage-overview .overview-company-hook-window {
-    height: 410px;
-    min-height: 410px;
-  }
-
-  .atlas-stage-overview .overview-company-hook-window iframe {
-    width: 196%;
-    transform: translateX(-50%) scale(0.51);
-  }
-
-  .atlas-stage-overview .overview-route-card {
-    min-height: 276px;
-  }
-
-  .atlas-stage-overview .real-preview-window {
-    height: 166px;
-    min-height: 166px;
-  }
-}
-
-/* =========================================================
-   PHASES — FINAL REDUCED / ENLARGED COMPOSITION
-   ========================================================= */
-
-.atlas-stage-phases {
-  padding-bottom: 0 !important;
-}
-
-.atlas-stage-phases .phase-page {
-  width: min(1480px, 100%) !important;
-  max-width: min(1480px, 100%) !important;
-  min-height: 0 !important;
-  padding-top: 8px !important;
-  padding-bottom: 0 !important;
-  margin: 0 auto !important;
-}
-
-.atlas-stage-phases .full-phase-visual {
-  position: relative !important;
-  width: min(1480px, 100%) !important;
-  max-width: min(1480px, 100%) !important;
-  height: 940px !important;
-  min-height: 940px !important;
-  max-height: 940px !important;
-  margin: 0 auto !important;
-  overflow: hidden !important;
-  background: transparent !important;
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  contain: paint !important;
-  clip-path: inset(0) !important;
-  -webkit-clip-path: inset(0) !important;
-}
-
-.atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
-  position: absolute !important;
-  top: 0 !important;
-  left: 0 !important;
-  display: block !important;
-  width: 100% !important;
-  max-width: none !important;
-  height: 1000px !important;
-  min-height: 1000px !important;
-  max-height: 1000px !important;
-  margin: 0 !important;
-  transform: none !important;
-  transform-origin: top left !important;
-  border: 0 !important;
-  outline: 0 !important;
-  box-shadow: none !important;
-  background: transparent !important;
-  overflow: hidden !important;
-}
-
-.atlas-stage-phases .full-phase-visual,
-.atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
-  scrollbar-width: none !important;
-  -ms-overflow-style: none !important;
-}
-
-.atlas-stage-phases .full-phase-visual::-webkit-scrollbar,
-.atlas-stage-phases .full-phase-visual > iframe.atlas-iframe::-webkit-scrollbar {
-  width: 0 !important;
-  height: 0 !important;
-  display: none !important;
-}
-
-@media (max-width: 1260px) {
-  .atlas-stage-phases .full-phase-visual {
-    width: min(1180px, 100%) !important;
-    height: 742px !important;
-    min-height: 742px !important;
-    max-height: 742px !important;
-  }
-
-  .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
-    width: 1560px !important;
-    height: 1000px !important;
-    transform: scale(0.7564) !important;
-    transform-origin: top left !important;
-  }
-}
-
-@media (max-width: 1020px) {
-  .atlas-stage-phases .phase-page {
-    padding-top: 6px !important;
-  }
-
-  .atlas-stage-phases .full-phase-visual {
-    width: 100% !important;
-    height: 61vw !important;
-    min-height: 0 !important;
-    max-height: 640px !important;
-  }
-
-  .atlas-stage-phases .full-phase-visual > iframe.atlas-iframe {
-    width: 1560px !important;
-    height: 1000px !important;
-    transform: scale(calc((100vw - 32px) / 1560)) !important;
-    transform-origin: top left !important;
-  }
-}
-
-@media (max-width: 720px) {
-  .atlas-stage-phases .phase-page {
-    padding-top: 4px !important;
-  }
-
-  .atlas-stage-phases .full-phase-visual {
-    height: 62vw !important;
-    max-height: none !important;
-  }
-}
-
