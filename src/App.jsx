@@ -1152,7 +1152,7 @@ export default function App() {
         "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual2ChartUnitColumns1",
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a@1547?cells=visual3Chart",
+        "https://observablehq.com/embed/5500e3b793ac7202@1547?cells=visual3Chart&api_key=47107f5337b44dc95cc33ea40ad2eb1de0d40b60",
 
       visual4:
         "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual4PhaseChart"
