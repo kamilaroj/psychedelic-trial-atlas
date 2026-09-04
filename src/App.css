@@ -3571,3 +3571,134 @@ iframe,
     margin-right: auto !important;
   }
 }
+
+/* =========================================================
+   INDICATIONS — FINAL COMPOUNDS-MATCHED VIEWPORT
+   2026-09-04
+   Observable notebook version: @1547
+   Goal: same page width, top spacing, margins and visual viewport
+   as the Compounds tab.
+   ========================================================= */
+
+.atlas-stage-indications {
+  padding-bottom: 0 !important;
+}
+
+.atlas-stage-indications .indication-page {
+  width: min(var(--content-max), 100%) !important;
+  min-height: 0 !important;
+  padding-top: 8px !important;
+  padding-bottom: 0 !important;
+  margin: 0 auto !important;
+}
+
+.atlas-stage-indications .full-indication-visual {
+  position: relative !important;
+  width: min(1480px, 100%) !important;
+  max-width: min(1480px, 100%) !important;
+
+  /* Exact desktop viewport match to Compounds. */
+  height: 915px !important;
+  min-height: 915px !important;
+  max-height: 915px !important;
+
+  margin: 0 auto !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  contain: paint !important;
+  clip-path: inset(0) !important;
+  -webkit-clip-path: inset(0) !important;
+}
+
+.atlas-stage-indications .full-indication-visual > iframe.atlas-iframe {
+  position: absolute !important;
+  inset: 0 !important;
+  display: block !important;
+
+  width: 100% !important;
+  max-width: none !important;
+  height: 945px !important;
+  min-height: 945px !important;
+  max-height: none !important;
+
+  margin: 0 !important;
+  transform: none !important;
+  transform-origin: top left !important;
+
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: hidden !important;
+}
+
+.atlas-stage-indications .full-indication-visual,
+.atlas-stage-indications .full-indication-visual > iframe.atlas-iframe {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.atlas-stage-indications .full-indication-visual::-webkit-scrollbar,
+.atlas-stage-indications .full-indication-visual > iframe.atlas-iframe::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+@media (max-width: 1260px) {
+  .atlas-stage-indications .full-indication-visual {
+    width: min(1180px, 100%) !important;
+    height: 748px !important;
+    min-height: 748px !important;
+    max-height: 748px !important;
+  }
+
+  .atlas-stage-indications .full-indication-visual > iframe.atlas-iframe {
+    height: 785px !important;
+  }
+}
+
+@media (max-width: 1020px) {
+  .atlas-stage-indications .indication-page {
+    padding-top: 6px !important;
+  }
+
+  .atlas-stage-indications .full-indication-visual {
+    width: 100% !important;
+    height: 63vw !important;
+    min-height: 0 !important;
+    max-height: 650px !important;
+  }
+
+  .atlas-stage-indications .full-indication-visual > iframe.atlas-iframe {
+    height: 715px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .atlas-stage-indications .indication-page {
+    padding-top: 4px !important;
+  }
+
+  .atlas-stage-indications .full-indication-visual {
+    height: 64vw !important;
+    max-height: none !important;
+  }
+
+  .atlas-stage-indications .full-indication-visual > iframe.atlas-iframe {
+    height: 660px !important;
+  }
+}
+
+/* Final desktop shared-grid lock. */
+@media (min-width: 1485px) {
+  .atlas-stage-indications .full-indication-visual.title-aligned-visual {
+    width: var(--atlas-title-grid) !important;
+    max-width: var(--atlas-title-grid) !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
