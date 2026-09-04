@@ -1152,7 +1152,7 @@ export default function App() {
         "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual2ChartUnitColumns1",
 
       visual3:
-        "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual3Chart",
+        "https://observablehq.com/embed/e3028f2577c04f9a@1547?cells=visual3Chart",
 
       visual4:
         "https://observablehq.com/embed/e3028f2577c04f9a?cells=visual4PhaseChart"
@@ -1916,10 +1916,7 @@ export default function App() {
               title="Indication Landscape"
               src={observableSrc.visual3}
               className="full-visual standard-analysis-visual full-indication-visual title-aligned-visual"
-              height={793}
-              viewportHeight={793}
-              revealDelay={1100}
-              hideUntilReady={true}
+              height={825}
             />
           </section>
         )}
